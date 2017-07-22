@@ -249,7 +249,7 @@ if ($action === 'Edit') {
 
 $xoopsTpl->assign('showSocial', $cal->enablesocial);
 $xoopsTpl->assign('showTellaFriend', $cal->enabletellafriend);
-
+/** @var xos_opal_Theme $xoTheme */
 if ($action === 'View') {
     $event_id   = isset($_GET['event_id']) && $_GET['event_id'] > 0 ? $_GET['event_id'] : 0;
     $event      = $GLOBALS['xoopsDB']->fetchArray($GLOBALS['xoopsDB']->queryF("SELECT summary, description, location, categories, contact, start FROM {$GLOBALS['xoopsDB']->prefix('apcal_event')} WHERE id={$event_id} LIMIT 0,1"));

@@ -96,7 +96,7 @@ $xoopsTpl->assign('adminmenu', $xoopsModule->adminmenu);
 $xoopsTpl->assign('moduleID', $xoopsModule->getVar('mid', 's'));
 $xoopsTpl->assign('moduleHelp', $xoopsModule->getInfo('help'));
 //$xoopsTpl->assign('infoBoxes', $infoBoxes);
-
+/** @var xos_opal_Theme $xoTheme */
 $xoTheme->addStylesheet($MODURL . '/assets/css/admin.css');
 //echo $xoopsTpl->fetch(XOOPS_ROOT_PATH . '/modules/apcal/templates/admin/apcal_index.tpl');
 

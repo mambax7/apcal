@@ -1,6 +1,7 @@
 <?php
 
 if (substr(XOOPS_VERSION, 6) < '2.5.0' && isset($xoopsModule) && $xoopsModule->getInfo('system_menu')) {
+    /** @var xos_opal_Theme $xoTheme */
     $xoTheme->addStylesheet(XOOPS_URL . '/modules/apcal/admin/menu.css');
     $xoopsModule->loadAdminMenu();
     // Get menu tab handler

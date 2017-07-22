@@ -82,6 +82,7 @@ class ApcalUtility extends XoopsObject
      * Verifies XOOPS version meets minimum requirements for this module
      * @static
      * @param XoopsModule $module
+     * @param null|string        $requiredVer
      *
      * @return bool true if meets requirements, false if not
      */
