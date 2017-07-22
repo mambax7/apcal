@@ -41,7 +41,7 @@ if (defined('FOR_XOOPS_LANG_CHECKER') || !defined('_AM_APCAL_LOADED')) {
 
     // format
     define('_AM_APCAL_DTFMT_LIST_ALLDAY', 'y-m-d');
-    define('_AM_APCAL_DTFMT_LIST_NORMAL', 'y-m-d<\b\r >H:i');
+    define('_AM_APCAL_DTFMT_LIST_NORMAL', 'y-m-d<\b\r>H:i');
 
     // timezones
     define('_AM_APCAL_TZOPT_SERVER', 'As server timezone');
@@ -92,8 +92,7 @@ if (defined('FOR_XOOPS_LANG_CHECKER') || !defined('_AM_APCAL_LOADED')) {
     define('_AM_APCAL_ALRT_CATTABLENOTEXIST', "The categories table does not exist.<br>\nDo you wish to create the table?");
     define('_AM_APCAL_ALRT_OLDTABLE', "The structure of events table is old.<br>\nDo you wish to upgrade the table?");
     define('_AM_APCAL_ALRT_TOOOLDTABLE', "Table error occured.<br>\nPerhaps you used APCal 0.3x or earlier.<br>\nFirst, update into 0.4x or 0.5x.");
-    define('_AM_APCAL_FMT_SERVER_TZ_ALL',
-           'Timezone of the server (winter): %+2.1f<br>Timezone of the server (summer): %+2.1f<br>Zonename of the server: %s<br>The value of XOOPS config: %+2.1f<br>The value of APCal using: %+2.1f<br>');
+    define('_AM_APCAL_FMT_SERVER_TZ_ALL', 'Timezone of the server (winter): %+2.1f<br>Timezone of the server (summer): %+2.1f<br>Zonename of the server: %s<br>The value of XOOPS config: %+2.1f<br>The value of APCal using: %+2.1f<br>');
     define('_AM_APCAL_FMT_WRONGSTZ', 'Ther is %s event(s) saved with a bad timezone.<br>Would you like to repair them?');
     define('_AM_APCAL_TH_SERVER_TZ_COUNT', 'Events');
     define('_AM_APCAL_TH_SERVER_TZ_VALUE', 'Timezone');
@@ -180,6 +179,4 @@ if (defined('FOR_XOOPS_LANG_CHECKER') || !defined('_AM_APCAL_LOADED')) {
     define('_AM_APCAL_SYSTEMCANT', 'System blocks cannot be deleted!');
     define('_AM_APCAL_SYSTEMLEVEL', 'System Level');
     define('_AM_APCAL_TOPPAGE', 'Top Page');
-
-
 }

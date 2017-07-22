@@ -873,8 +873,7 @@ class iCal_parser
                     }
                 }
 
-                $this->events[$uid] = compact('start_unixtime', 'end_unixtime', 'summary', 'description', 'status', 'class', 'categories', 'contact', 'location', 'dtstamp', 'sequence', 'allday_start',
-                                              'allday_end', 'tz_dtstart', 'tz_dtend', 'event_tz', 'rrule', 'uid_valid');    // GIJ added 03/05/27
+                $this->events[$uid] = compact('start_unixtime', 'end_unixtime', 'summary', 'description', 'status', 'class', 'categories', 'contact', 'location', 'dtstamp', 'sequence', 'allday_start', 'allday_end', 'tz_dtstart', 'tz_dtend', 'event_tz', 'rrule', 'uid_valid');    // GIJ added 03/05/27
 
                 // Begin VTODO Support
                 /*      } elseif ($line == 'END:VTODO') {

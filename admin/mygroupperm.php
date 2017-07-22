@@ -80,8 +80,7 @@ if (is_array($_POST['perms']) && !empty($_POST['perms'])) {
                             foreach ($parent_ids as $pid) {
                                 if ($pid != 0 && !in_array($pid, array_keys($item_ids))) {
                                     // one of the parent items were not selected, so skip this item
-                                    $msg[] = sprintf(_MD_APCAL_PERMADDNG, '<b>' . $perm_name . '</b>', '<b>' . $perm_data['itemname'][$item_id] . '</b>',
-                                                     '<b>' . $group_list[$group_id] . '</b>') . ' (' . _MD_APCAL_PERMADDNGP . ')';
+                                    $msg[] = sprintf(_MD_APCAL_PERMADDNG, '<b>' . $perm_name . '</b>', '<b>' . $perm_data['itemname'][$item_id] . '</b>', '<b>' . $group_list[$group_id] . '</b>') . ' (' . _MD_APCAL_PERMADDNGP . ')';
                                     continue 2;
                                 }
                             }

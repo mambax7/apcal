@@ -770,12 +770,7 @@ if (!class_exists('APCal_xoops')) {
                     //$whr_term = "end>$this->unixtime" ;
                     break;
                 case 'on':
-                    $whr_term = "(allday AND start<='$this->unixtime' AND end>'$this->unixtime') || ( ! allday AND start<='"
-                                . ($toptime_of_day + 86400 - $tzoffset)
-                                . "' AND end>'"
-                                . ($toptime_of_day
-                                   - $tzoffset)
-                                . "')";
+                    $whr_term = "(allday AND start<='$this->unixtime' AND end>'$this->unixtime') || ( ! allday AND start<='" . ($toptime_of_day + 86400 - $tzoffset) . "' AND end>'" . ($toptime_of_day - $tzoffset) . "')";
                     break;
             }
 
@@ -819,8 +814,7 @@ if (!class_exists('APCal_xoops')) {
                 }
             }
 
-            $ymdo_selects = sprintf(_APCAL_FMT_YMDO, "<select name='apcal_year'>$year_options</select>", "<select name='apcal_month'>$month_options</select>",
-                                    "<select name='apcal_date'>$date_options</select>", "<select name='op'>$op_options</select>");
+            $ymdo_selects = sprintf(_APCAL_FMT_YMDO, "<select name='apcal_year'>$year_options</select>", "<select name='apcal_month'>$month_options</select>", "<select name='apcal_date'>$date_options</select>", "<select name='op'>$op_options</select>");
 
             // �쥳���ɿ��μ���
             $whr      = "($whr_term) AND ($whr_categories) AND ($whr_class)";
@@ -859,9 +853,7 @@ if (!class_exists('APCal_xoops')) {
                              'op'                    => $op,
                              'order'                 => $order,
                              'user_can_output_ics'   => $this->can_output_ics,
-                             'print_link'            => "$this->base_url/print.php?cid=$this->now_cid&amp;smode=List&amp;num=$num&amp;pos=$pos&amp;order="
-                                                        . urlencode($order)
-                                                        . "&amp;caldate=$this->caldate",
+                             'print_link'            => "$this->base_url/print.php?cid=$this->now_cid&amp;smode=List&amp;num=$num&amp;pos=$pos&amp;order=" . urlencode($order) . "&amp;caldate=$this->caldate",
                              'apcal_copyright'       => _MD_APCAL_COPYRIGHT,
                              'ymdo_selects'          => $ymdo_selects,
                              'calhead_bgcolor'       => $this->calhead_bgcolor,
@@ -1229,9 +1221,7 @@ if (!class_exists('APCal_xoops')) {
 
             // plugins
             $plugins = array();
-            $prs     = $GLOBALS['xoopsDB']->query("SELECT pi_title,pi_dirname AS dirname,pi_file AS file,pi_dotgif AS dotgif,pi_options AS options FROM $this->plugin_table WHERE pi_type='"
-                                                  . addslashes($type)
-                                                  . "' AND pi_enabled ORDER BY pi_weight");
+            $prs     = $GLOBALS['xoopsDB']->query("SELECT pi_title,pi_dirname AS dirname,pi_file AS file,pi_dotgif AS dotgif,pi_options AS options FROM $this->plugin_table WHERE pi_type='" . addslashes($type) . "' AND pi_enabled ORDER BY pi_weight");
             while ($plugin = $GLOBALS['xoopsDB']->fetchArray($prs)) {
                 $dirname4sql = addslashes($plugin['dirname']);
                 $mrs         = $GLOBALS['xoopsDB']->query('SELECT mid,name FROM ' . $GLOBALS['xoopsDB']->prefix('modules') . " WHERE dirname='$dirname4sql'");

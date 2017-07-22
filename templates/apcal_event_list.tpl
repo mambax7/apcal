@@ -57,7 +57,7 @@
                 </span>
                                     <span class="googleplus">
                     <script type="text/javascript" src="https://apis.google.com/js/plusone.js">{
-                            '<{$smarty.const._APCAL_GPLUS_LNG}>'
+                            lang: '<{$smarty.const._APCAL_GPLUS_LNG}>'
                         }</script>
                     <g:plusone size="medium" count="false" href="<{$xoops_url}>/modules/APCal"></g:plusone>
                 </span>

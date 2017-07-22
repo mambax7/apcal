@@ -10,8 +10,8 @@
  */
 
 /**
- * @copyright   {@link https://xoops.org/ XOOPS Project}
- * @license     {@link http://www.fsf.org/copyleft/gpl.html GNU public license}
+ * @copyright    {@link https://xoops.org/ XOOPS Project}
+ * @license      {@link http://www.fsf.org/copyleft/gpl.html GNU public license}
  * @package
  * @since
  * @author       XOOPS Development Team,
@@ -86,8 +86,8 @@ switch ($tz) {
 if (isset($_POST['http_import']) && !empty($_POST['import_uri'])) {
 
     // Ticket Check
-    if (!$xoopsGTicket->check()) {
-        redirect_header(XOOPS_URL . '/', 3, $xoopsGTicket->getErrors());
+    if (!$GLOBALS['xoopsSecurity']->check()) {
+        redirect_header(XOOPS_URL . '/', 3, $GLOBALS['xoopsSecurity']->getErrors());
     }
 
     // http���ͥ�������ͳ�ޤ��ϥ?����ե������iCalendar����ݡ���
@@ -102,12 +102,11 @@ if (isset($_POST['http_import']) && !empty($_POST['import_uri'])) {
         exit;
     }
 } elseif (isset($_POST['local_import']) && isset($_FILES['user_ics']['tmp_name'])
-          && is_readable($_FILES['user_ics']['tmp_name'])
-) {
+          && is_readable($_FILES['user_ics']['tmp_name'])) {
 
     // Ticket Check
-    if (!$xoopsGTicket->check()) {
-        redirect_header(XOOPS_URL . '/', 3, $xoopsGTicket->getErrors());
+    if (!$GLOBALS['xoopsSecurity']->check()) {
+        redirect_header(XOOPS_URL . '/', 3, $GLOBALS['xoopsSecurity']->getErrors());
     }
 
     // �ե����륢�åץ?�ɤˤ��iCalendar����ݡ���
@@ -124,8 +123,8 @@ if (isset($_POST['http_import']) && !empty($_POST['import_uri'])) {
 } elseif (isset($_POST['delete'])) {
 
     // Ticket Check
-    if (!$xoopsGTicket->check()) {
-        redirect_header(XOOPS_URL . '/', 3, $xoopsGTicket->getErrors());
+    if (!$GLOBALS['xoopsSecurity']->check()) {
+        redirect_header(XOOPS_URL . '/', 3, $GLOBALS['xoopsSecurity']->getErrors());
     }
 
     // �쥳���ɤκ��
@@ -191,7 +190,7 @@ xoops_cp_header();
 $adminObject->displayNavigation(basename(__FILE__));
 
 // 3�Ĥ�ɽ�������Τǥ��ꥢ���Ƥ���
-$xoopsGTicket->clear();
+$GLOBALS['xoopsSecurity']->clearTokens();
 
 echo '
 <h4>' . _AM_APCAL_ICALENDAR_IMPORT . "</h4>
@@ -200,18 +199,18 @@ echo '
   " . _AM_APCAL_LABEL_IMPORTFROMWEB . "<br>
   <input type='text' name='import_uri' size='80'>
   <input type='submit' name='http_import' value='" . _APCAL_BTN_IMPORT . "'>
-  " . $xoopsGTicket->getTicketHtml(__LINE__) . "
+  " . $GLOBALS['xoopsSecurity']->getTokenHTML() . "
 </form>
 <form action='?tz=$tz&amp;num=$num' method='post' enctype='multipart/form-data'>
   " . _AM_APCAL_LABEL_UPLOADFROMFILE . "<br>
   <input type='hidden' name='MAX_FILE_SIZE' value='65536'>
   <input type='file' name='user_ics' size='72'>
   <input type='submit' name='local_import' value='" . _APCAL_BTN_UPLOAD . "'>
-  " . $xoopsGTicket->getTicketHtml(__LINE__) . "
+  " . $GLOBALS['xoopsSecurity']->getTokenHTML() . "
 </form>
 <form action='' method='get' style='margin-bottom:0px;text-align:left'>
   <select name='tz' onChange='submit();'>$tzoptions</select>
-  <input type='hidden' name='num' value='$num' >
+  <input type='hidden' name='num' value='$num'>
 </form>
 <table width='100%' cellpadding='0' cellspacing='0' border='0'>
   <tr>
@@ -221,14 +220,14 @@ echo '
     <td>
       <form action='' method='get' style='margin-bottom:0px;text-align:right'>
         $nav_html &nbsp;
-        <input type='hidden' name='num' value='$num' >
-        <input type='hidden' name='tz' value='$tz' >
+        <input type='hidden' name='num' value='$num'>
+        <input type='hidden' name='tz' value='$tz'>
       </form>
     </td>
   </tr>
 </table>
 <form name='MainForm' action='?tz=$tz&amp;num=$num' method='post' style='margin-top:0px;'>
-" . $xoopsGTicket->getTicketHtml(__LINE__) . "
+" . $GLOBALS['xoopsSecurity']->getTokenHTML() . "
 <table width='100%' class='outer' cellpadding='4' cellspacing='1'>
   <tr valign='middle'>
     <th>" . _AM_APCAL_IO_TH0 . '</th>
@@ -238,7 +237,7 @@ echo '
     <th>' . _AM_APCAL_IO_TH4 . '</th>
     <th>' . _AM_APCAL_IO_TH5 . "</th>
     <th></th>
-    <th><input type='checkbox' name='dummy' onclick=\"with(document.MainForm){for (i=0;i<length;i++) {if (elements[i].type=='checkbox') {elements[i].checked=this.checked;}}}\" ></th>
+    <th><input type='checkbox' name='dummy' onclick=\"with(document.MainForm){for (i=0;i<length;i++) {if (elements[i].type=='checkbox') {elements[i].checked=this.checked;}}}\"></th>
   </tr>
 ";
 
@@ -269,27 +268,17 @@ while ($event = $GLOBALS['xoopsDB']->fetchObject($rs)) {
     <td class='$oddeven' $newer_style><a href='$mod_url/index.php?action=View&amp;event_id=$event->id'>$summary4disp</a></td>
     <td class='$oddeven' $newer_style>" . $cal->rrule_to_human_language($event->rrule) . "</td>
     <td class='$oddeven' $newer_style>" . ($event->admission ? _YES : _NO) . "</td>
-    <td class='$oddeven' align='right' $newer_style><a href='$mod_url/index.php?action=Edit&amp;event_id=$event->id' target='_blank'><img src='$cal->images_url/addevent.gif' border='0' width='14' height='12' ></a></td>
-    <td class='$oddeven' align='right' $newer_style><input type='checkbox' name='ids[]' value='$event->id' ></td>
+    <td class='$oddeven' align='right' $newer_style><a href='$mod_url/index.php?action=Edit&amp;event_id=$event->id' target='_blank'><img src='$cal->images_url/addevent.gif' border='0' width='14' height='12'></a></td>
+    <td class='$oddeven' align='right' $newer_style><input type='checkbox' name='ids[]' value='$event->id'></td>
   </tr>\n";
 }
 
 echo "
   <tr>
-    <td colspan='8' align='right' class='head'>"
-     . _AM_APCAL_LABEL_IO_CHECKEDITEMS
-     . ' &nbsp; '
-     . _AM_APCAL_LABEL_IO_DELETE
-     . "<input type='submit' name='delete' value='"
-     . _DELETE
-     . "' onclick='return confirm(\""
-     . _AM_APCAL_CONFIRM_DELETE
-     . "\")' ></td>
+    <td colspan='8' align='right' class='head'>" . _AM_APCAL_LABEL_IO_CHECKEDITEMS . ' &nbsp; ' . _AM_APCAL_LABEL_IO_DELETE . "<input type='submit' name='delete' value='" . _DELETE . "' onclick='return confirm(\"" . _AM_APCAL_CONFIRM_DELETE . "\")'></td>
   </tr>
   <tr>
-    <td colspan='8' align='right' valign='bottom' height='50'>"
-     . _AM_APCAL_COPYRIGHT
-     . '</td>
+    <td colspan='8' align='right' valign='bottom' height='50'>" . _AM_APCAL_COPYRIGHT . '</td>
   </tr>
 </table>
 </form>

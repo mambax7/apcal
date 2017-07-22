@@ -10,8 +10,8 @@
  */
 
 /**
- * @copyright   {@link https://xoops.org/ XOOPS Project}
- * @license     {@link http://www.fsf.org/copyleft/gpl.html GNU public license}
+ * @copyright    {@link https://xoops.org/ XOOPS Project}
+ * @license      {@link http://www.fsf.org/copyleft/gpl.html GNU public license}
  * @package
  * @since
  * @author       XOOPS Development Team,
@@ -29,8 +29,6 @@ xoops_cp_header();
 
 $adminObject = \Xmf\Module\Admin::getInstance();
 $adminObject->displayNavigation(basename(__FILE__));
-
-
 
 $MODURL  = XOOPS_URL . '/modules/' . $xoopsModule->getVar('dirname');
 $MODPATH = XOOPS_ROOT_PATH . '/modules/' . $xoopsModule->getVar('dirname');
@@ -72,8 +70,7 @@ $infoBoxes[_AM_APCAL_TIMEZONE][]   = sprintf(_AM_APCAL_FMT_SERVER_TZ_ALL, date('
 */
 
 $adminObject->addInfoBox(_MI_APCAL_ADMENU1);
-$adminObject->addInfoBoxLine(sprintf(_AM_APCAL_NBWAITINGEVENTS,
-                                     '<span style="color:' . ($nbWaitingEvents > 0 ? '#aa0000' : '#00aa00') . '; font-weight : bold;">' . $nbWaitingEvents . '</span>'));
+$adminObject->addInfoBoxLine(sprintf(_AM_APCAL_NBWAITINGEVENTS, '<span style="color:' . ($nbWaitingEvents > 0 ? '#aa0000' : '#00aa00') . '; font-weight : bold;">' . $nbWaitingEvents . '</span>'));
 $adminObject->addInfoBoxLine(sprintf(_AM_APCAL_NBEVENTS, '<span style="font-weight : bold;">' . $nbEvents . '</span>'));
 
 $adminObject->addInfoBox(_MI_APCAL_ADMENU_CAT);
@@ -99,6 +96,5 @@ $xoopsTpl->assign('moduleHelp', $xoopsModule->getInfo('help'));
 /** @var xos_opal_Theme $xoTheme */
 $xoTheme->addStylesheet($MODURL . '/assets/css/admin.css');
 //echo $xoopsTpl->fetch(XOOPS_ROOT_PATH . '/modules/apcal/templates/admin/apcal_index.tpl');
-
 
 xoops_cp_footer();

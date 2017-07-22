@@ -56,9 +56,7 @@ function xoops_module_install_apcal(XoopsModule $xoopsModule)
     require_once  __DIR__ . '/../../../mainfile.php';
     require_once  __DIR__ . '/../include/config.php';
 
-    if (!isset($moduleDirName)) {
         $moduleDirName = basename(dirname(__DIR__));
-    }
 
     if (false !== ($moduleHelper = Xmf\Module\Helper::getHelper($moduleDirName))) {
     } else {
@@ -69,7 +67,7 @@ function xoops_module_install_apcal(XoopsModule $xoopsModule)
     $moduleHelper->loadLanguage('admin');
     $moduleHelper->loadLanguage('modinfo');
 
-    $configurator = new ModuleConfigurator();
+    $configurator = new ApcalConfigurator();
     $classUtility    = ucfirst($moduleDirName) . 'Utility';
     if (!class_exists($classUtility)) {
         xoops_load('utility', $moduleDirName);

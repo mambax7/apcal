@@ -87,7 +87,7 @@ while (list($bid, $bname, $show_func, $func_file, $template) = $db->fetchRow($re
 // for 2.2
 function list_blockinstances()
 {
-    global $query4redirect, $block_arr, $xoopsGTicket;
+    global $query4redirect, $block_arr;
 
     $myts = MyTextSanitizer::getInstance();
 
@@ -312,7 +312,7 @@ function list_blockinstances()
                 <input type='hidden' name='query4redirect' value='$query4redirect' >
                 <input type='hidden' name='fct' value='blocksadmin' >
                 <input type='hidden' name='op' value='order2' >
-                " . $xoopsGTicket->getTicketHtml(__LINE__, 1800, 'myblocksadmin') . "
+                " . $GLOBALS['xoopsSecurity']->getTokenHTML('myblocksadmin') . "
                 <input type='submit' name='submit' value='" . _SUBMIT . "' >
             </td>
         </tr>
@@ -325,11 +325,7 @@ function list_groups2()
 {
     global $target_mid, $target_mname, $xoopsDB;
 
-    $result = $GLOBALS['xoopsDB']->query('SELECT i.instanceid,i.title FROM '
-                                         . $GLOBALS['xoopsDB']->prefix('block_instance')
-                                         . ' i LEFT JOIN '
-                                         . $GLOBALS['xoopsDB']->prefix('newblocks')
-                                         . " b ON i.bid=b.bid WHERE b.mid='$target_mid'");
+    $result = $GLOBALS['xoopsDB']->query('SELECT i.instanceid,i.title FROM ' . $GLOBALS['xoopsDB']->prefix('block_instance') . ' i LEFT JOIN ' . $GLOBALS['xoopsDB']->prefix('newblocks') . " b ON i.bid=b.bid WHERE b.mid='$target_mid'");
 
     $item_list = array();
     while (list($iid, $title) = $GLOBALS['xoopsDB']->fetchRow($result)) {
@@ -348,8 +344,8 @@ function list_groups2()
 }
 
 if (!empty($_POST['submit'])) {
-    if (!$xoopsGTicket->check(true, 'myblocksadmin')) {
-        redirect_header(XOOPS_URL . '/', 3, $xoopsGTicket->getErrors());
+    if (!$GLOBALS['xoopsSecurity']->check(true, $_REQUEST['myblocksadmin'])) {
+        redirect_header(XOOPS_URL . '/', 3, $GLOBALS['xoopsSecurity']->getErrors());
     }
 
     include __DIR__ . '/mygroupperm.php';

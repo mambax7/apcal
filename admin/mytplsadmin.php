@@ -83,8 +83,8 @@ if (!$syspermHandler->checkRight('system_admin', XOOPS_SYSTEM_TPLSET, $xoopsUser
 // Newly DB template clone (all of module)
 if (!empty($_POST['clone_tplset_do']) && !empty($_POST['clone_tplset_from']) && !empty($_POST['clone_tplset_to'])) {
     // Ticket Check
-    if (!$xoopsGTicket->check()) {
-        redirect_header(XOOPS_URL . '/', 3, $xoopsGTicket->getErrors());
+    if (!$GLOBALS['xoopsSecurity']->check()) {
+        redirect_header(XOOPS_URL . '/', 3, $GLOBALS['xoopsSecurity']->getErrors());
     }
 
     $tplset_from = $myts->stripSlashesGPC($_POST['clone_tplset_from']);
@@ -116,8 +116,8 @@ if (is_array(@$_POST['copy_do'])) {
     foreach ($_POST['copy_do'] as $tplset_from_tmp => $val) {
         if (!empty($val)) {
             // Ticket Check
-            if (!$xoopsGTicket->check()) {
-                redirect_header(XOOPS_URL . '/', 3, $xoopsGTicket->getErrors());
+            if (!$GLOBALS['xoopsSecurity']->check()) {
+                redirect_header(XOOPS_URL . '/', 3, $GLOBALS['xoopsSecurity']->getErrors());
             }
 
             $tplset_from = $myts->stripSlashesGPC($tplset_from_tmp);
@@ -144,8 +144,8 @@ if (is_array(@$_POST['copy_do'])) {
 // File to DB template copy (checked templates)
 if (!empty($_POST['copyf2db_do'])) {
     // Ticket Check
-    if (!$xoopsGTicket->check()) {
-        redirect_header(XOOPS_URL . '/', 3, $xoopsGTicket->getErrors());
+    if (!$GLOBALS['xoopsSecurity']->check()) {
+        redirect_header(XOOPS_URL . '/', 3, $GLOBALS['xoopsSecurity']->getErrors());
     }
 
     if (empty($_POST['copyf2db_to'])) {
@@ -171,8 +171,8 @@ if (is_array(@$_POST['del_do'])) {
     foreach ($_POST['del_do'] as $tplset_from_tmp => $val) {
         if (!empty($val)) {
             // Ticket Check
-            if (!$xoopsGTicket->check()) {
-                redirect_header(XOOPS_URL . '/', 3, $xoopsGTicket->getErrors());
+            if (!$GLOBALS['xoopsSecurity']->check()) {
+                redirect_header(XOOPS_URL . '/', 3, $GLOBALS['xoopsSecurity']->getErrors());
             }
 
             $tplset_from = $myts->stripSlashesGPC($tplset_from_tmp);
@@ -233,7 +233,7 @@ echo "<h3 style='text-align:left;'>" . _MD_APCAL_TPLSETS . " : $target_mname</h3
 // beggining of table & form
 echo "
     <form name='MainForm' action='?dirname=" . htmlspecialchars($target_dirname, ENT_QUOTES) . "' method='post'>
-    " . $xoopsGTicket->getTicketHtml(__LINE__) . "
+    " . $GLOBALS['xoopsSecurity']->getTokenHTML() . "
     <table class='outer'>
         <tr>
             <th>" . _MD_APCAL_FILENAME . "</th>
@@ -275,11 +275,7 @@ while (list($tpl_file, $tpl_desc, $type, $count) = $db->fetchRow($frs)) {
     if (file_exists($basefilepath)) {
         $fingerprint                = get_fingerprint(file($basefilepath));
         $fingerprints[$fingerprint] = 1;
-        echo "<td class='$evenodd'>"
-             . formatTimestamp(filemtime($basefilepath), 'm')
-             . '<br>'
-             . substr($fingerprint, 0, 16)
-             . "<br><input type='checkbox' name='basecheck[$tpl_file]' value='1' ></td>\n";
+        echo "<td class='$evenodd'>" . formatTimestamp(filemtime($basefilepath), 'm') . '<br>' . substr($fingerprint, 0, 16) . "<br><input type='checkbox' name='basecheck[$tpl_file]' value='1'></td>\n";
     } else {
         echo "<td class='$evenodd'><br></td>";
     }
@@ -289,15 +285,7 @@ while (list($tpl_file, $tpl_desc, $type, $count) = $db->fetchRow($frs)) {
         $tplset4disp = htmlspecialchars($tplset, ENT_QUOTES);
 
         // query for templates in db
-        $drs     = $db->query('SELECT * FROM '
-                              . $db->prefix('tplfile')
-                              . ' f NATURAL LEFT JOIN '
-                              . $db->prefix('tplsource')
-                              . " s WHERE tpl_file='"
-                              . addslashes($tpl_file)
-                              . "' AND tpl_tplset='"
-                              . addslashes($tplset)
-                              . "'");
+        $drs     = $db->query('SELECT * FROM ' . $db->prefix('tplfile') . ' f NATURAL LEFT JOIN ' . $db->prefix('tplsource') . " s WHERE tpl_file='" . addslashes($tpl_file) . "' AND tpl_tplset='" . addslashes($tplset) . "'");
         $numrows = $db->getRowsNum($drs);
         $tpl     = $db->fetchArray($drs);
         if (empty($tpl['tpl_id'])) {
@@ -332,12 +320,8 @@ while (list($tpl_file, $tpl_desc, $type, $count) = $db->fetchRow($frs)) {
 echo "
     <tr>
         <td class='head'>
-            "
-     . _CLONE
-     . ": <br>
-            <select name='clone_tplset_from'>$tplset_options</select>-&gt;<input type='text' name='clone_tplset_to' size='8' ><input type='submit' name='clone_tplset_do' value='"
-     . _MD_APCAL_GENERATE
-     . "' >
+            " . _CLONE . ": <br>
+            <select name='clone_tplset_from'>$tplset_options</select>-&gt;<input type='text' name='clone_tplset_to' size='8'><input type='submit' name='clone_tplset_do' value='" . _MD_APCAL_GENERATE . "'>
         </td>
         <td class='head'></td>
         <td class='head'>
@@ -400,15 +384,7 @@ function copy_templates_db2db($tplset_from, $tplset_to, $whr_append = '1')
     while ($row = $db->fetchArray($result)) {
         $tpl_source = array_pop($row);
 
-        $drs = $db->query('SELECT tpl_id FROM '
-                          . $db->prefix('tplfile')
-                          . " WHERE tpl_tplset='"
-                          . addslashes($tplset_to)
-                          . "' AND ($whr_append) AND tpl_file='"
-                          . addslashes($row['tpl_file'])
-                          . "' AND tpl_refid='"
-                          . addslashes($row['tpl_refid'])
-                          . "'");
+        $drs = $db->query('SELECT tpl_id FROM ' . $db->prefix('tplfile') . " WHERE tpl_tplset='" . addslashes($tplset_to) . "' AND ($whr_append) AND tpl_file='" . addslashes($row['tpl_file']) . "' AND tpl_refid='" . addslashes($row['tpl_refid']) . "'");
 
         if (!$db->getRowsNum($drs)) {
             // INSERT mode
@@ -460,15 +436,7 @@ function copy_templates_f2db($tplset_to, $whr_append = '1')
         $tpl_source   = rtrim(implode('', file($basefilepath)));
         $lastmodified = filemtime($basefilepath);
 
-        $drs = $db->query('SELECT tpl_id FROM '
-                          . $db->prefix('tplfile')
-                          . " WHERE tpl_tplset='"
-                          . addslashes($tplset_to)
-                          . "' AND ($whr_append) AND tpl_file='"
-                          . addslashes($row['tpl_file'])
-                          . "' AND tpl_refid='"
-                          . addslashes($row['tpl_refid'])
-                          . "'");
+        $drs = $db->query('SELECT tpl_id FROM ' . $db->prefix('tplfile') . " WHERE tpl_tplset='" . addslashes($tplset_to) . "' AND ($whr_append) AND tpl_file='" . addslashes($row['tpl_file']) . "' AND tpl_refid='" . addslashes($row['tpl_refid']) . "'");
 
         if (!$db->getRowsNum($drs)) {
             // INSERT mode

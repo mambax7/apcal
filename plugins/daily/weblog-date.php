@@ -10,8 +10,8 @@
  */
 
 /**
- * @copyright   {@link https://xoops.org/ XOOPS Project}
- * @license     {@link http://www.fsf.org/copyleft/gpl.html GNU public license}
+ * @copyright    {@link https://xoops.org/ XOOPS Project}
+ * @license      {@link http://www.fsf.org/copyleft/gpl.html GNU public license}
  * @package
  * @since
  * @author       XOOPS Development Team,
@@ -54,21 +54,17 @@ if (!defined('_WEBLOG_COMMON_FUNCTIONS')) {
     require_once sprintf('%s/modules/%s/config.php', XOOPS_ROOT_PATH, $plugin['dirname']);
 }
 if (function_exists('weblog_create_permissionsql')) {
-    $moduleHandler                 = xoops_getHandler('module');
+    $moduleHandler              = xoops_getHandler('module');
     $weblogmodule_configHandler = xoops_getHandler('config');
-    $mod_weblog                  = $moduleHandler->getByDirname($plugin['dirname']);
-    $weblog_config               = $weblogmodule_configHandler->getConfigList($mod_weblog->mid());
+    $mod_weblog                 = $moduleHandler->getByDirname($plugin['dirname']);
+    $weblog_config              = $weblogmodule_configHandler->getConfigList($mod_weblog->mid());
     list($bl_contents_field, $add_whr) = weblog_create_permissionsql($weblog_config);
 } else {
     $add_whr = '';
 }
 
 // query (added 86400 second margin "begin" & "end")
-$weblog_minical_sql = 'SELECT title,blog_id,`created`,count(blog_id) FROM '
-                      . $db->prefix('weblog' . $mydirnumber)
-                      . " as bl WHERE `created` >= $range_start_s AND `created` < $range_end_s and private!='Y' "
-                      . $add_whr
-                      . $group_by;
+$weblog_minical_sql = 'SELECT title,blog_id,`created`,count(blog_id) FROM ' . $db->prefix('weblog' . $mydirnumber) . " as bl WHERE `created` >= $range_start_s AND `created` < $range_end_s and private!='Y' " . $add_whr . $group_by;
 $result             = $db->query($weblog_minical_sql);
 while (list($title, $blog_id, $server_time, $entry_num) = $db->fetchRow($result)) {
     $user_time = $server_time + $tzoffset_s2u;

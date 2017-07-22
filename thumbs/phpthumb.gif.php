@@ -1068,8 +1068,7 @@ class CGIF
                 if (($x >= $this->m_img->m_gih->m_nLeft)
                     && ($y >= $this->m_img->m_gih->m_nTop)
                     && ($x < ($this->m_img->m_gih->m_nLeft + $this->m_img->m_gih->m_nWidth))
-                    && ($y < ($this->m_img->m_gih->m_nTop + $this->m_img->m_gih->m_nHeight))
-                ) {
+                    && ($y < ($this->m_img->m_gih->m_nTop + $this->m_img->m_gih->m_nHeight))) {
                     // PART OF IMAGE
                     if (@$this->m_img->m_bTrans && (ord($data{$nPxl}) == $this->m_img->m_nTrans)) {
                         // TRANSPARENT -> BACKGROUND
@@ -1171,8 +1170,7 @@ class CGIF
                 if (($x >= $this->m_img->m_gih->m_nLeft)
                     && ($y >= $this->m_img->m_gih->m_nTop)
                     && ($x < ($this->m_img->m_gih->m_nLeft + $this->m_img->m_gih->m_nWidth))
-                    && ($y < ($this->m_img->m_gih->m_nTop + $this->m_img->m_gih->m_nHeight))
-                ) {
+                    && ($y < ($this->m_img->m_gih->m_nTop + $this->m_img->m_gih->m_nHeight))) {
                     // PART OF IMAGE
                     $bmp .= $data{$nPxl};
                 } else {
@@ -1274,8 +1272,7 @@ class CGIF
                 if (($x >= $this->m_img->m_gih->m_nLeft)
                     && ($y >= $this->m_img->m_gih->m_nTop)
                     && ($x < ($this->m_img->m_gih->m_nLeft + $this->m_img->m_gih->m_nWidth))
-                    && ($y < ($this->m_img->m_gih->m_nTop + $this->m_img->m_gih->m_nHeight))
-                ) {
+                    && ($y < ($this->m_img->m_gih->m_nTop + $this->m_img->m_gih->m_nHeight))) {
                     // PART OF IMAGE
                     if (@$this->m_img->m_bTrans && (ord($data{$nPxl}) == $this->m_img->m_nTrans)) {
                         imagesetpixel($PlottingIMG, $x, $this->m_gfh->m_nHeight - $y - 1, $ThisImageColor[$this->m_gfh->m_nBgColor]);

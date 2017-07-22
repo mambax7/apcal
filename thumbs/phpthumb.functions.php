@@ -576,8 +576,7 @@ class phpthumb_functions
                 $alphapct     = $OverlayPixel['alpha'] / 127;
                 $overlaypct   = (1 - $alphapct) * $opacipct;
 
-                $newcolor = phpthumb_functions::ImageColorAllocateAlphaSafe($dst_im, round($RealPixel['red'] * (1 - $overlaypct)) + ($OverlayPixel['red'] * $overlaypct),
-                                                                            round($RealPixel['green'] * (1 - $overlaypct)) + ($OverlayPixel['green'] * $overlaypct),
+                $newcolor = phpthumb_functions::ImageColorAllocateAlphaSafe($dst_im, round($RealPixel['red'] * (1 - $overlaypct)) + ($OverlayPixel['red'] * $overlaypct), round($RealPixel['green'] * (1 - $overlaypct)) + ($OverlayPixel['green'] * $overlaypct),
                                                                             round($RealPixel['blue'] * (1 - $overlaypct)) + ($OverlayPixel['blue'] * $overlaypct), //$RealPixel['alpha']);
                                                                             0);
 
@@ -1158,8 +1157,7 @@ class phpthumb_functions
         $open_basedirs      = preg_split('#[;:]#', ini_get('open_basedir'));
         foreach ($open_basedirs as $key => $open_basedir) {
             if (preg_match('#^' . preg_quote($open_basedir) . '#', $dirname)
-                && (strlen($dirname) > strlen($open_basedir))
-            ) {
+                && (strlen($dirname) > strlen($open_basedir))) {
                 $startoffset = count(explode(DIRECTORY_SEPARATOR, $open_basedir));
                 break;
             }
@@ -1250,6 +1248,7 @@ class phpthumb_functions
         $strength += strlen(preg_replace('#[^A-Z]#', '', $password)) * 0.8; // uppercase characters are somewhat better
         $strength += strlen(preg_replace('#[^0-9]#', '', $password)) * 1.0; // numbers are somewhat better
         $strength += strlen(preg_replace('#[a-zA-Z0-9]#', '', $password)) * 2.0; // other non-alphanumeric characters are best
+
         return $strength;
     }
 }

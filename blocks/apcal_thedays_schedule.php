@@ -10,8 +10,8 @@
  */
 
 /**
- * @copyright   {@link https://xoops.org/ XOOPS Project}
- * @license     {@link http://www.fsf.org/copyleft/gpl.html GNU public license}
+ * @copyright    {@link https://xoops.org/ XOOPS Project}
+ * @license      {@link http://www.fsf.org/copyleft/gpl.html GNU public license}
  * @package
  * @since
  * @author       XOOPS Development Team,
@@ -65,8 +65,7 @@ if (!defined('APCAL_BLOCK_THEDAYS_SCHEDULE_INCLUDED')) {
         // ¥Ö¥í¥Ã¥¯ÇÛÎó¤Î¼«Ê¬¼«¿È¤ò½ñ¤­´¹¤¨¤ë title ¤Ë %s ¤ò´Þ¤á¤ë¤³¤È
         if (substr(XOOPS_VERSION, 6, 3) > 2.0) {
             $title_fmt = $GLOBALS['apcal_blockinstance_object']->getVar('title');
-            $GLOBALS['apcal_blockinstance_object']->setVar('title', sprintf($title_fmt, sprintf(_APCAL_FMT_MD, $cal->month_short_names[date('n', $cal->unixtime)],
-                                                                                                $cal->date_short_names[date('j', $cal->unixtime)])));
+            $GLOBALS['apcal_blockinstance_object']->setVar('title', sprintf($title_fmt, sprintf(_APCAL_FMT_MD, $cal->month_short_names[date('n', $cal->unixtime)], $cal->date_short_names[date('j', $cal->unixtime)])));
         } else {
             global $block_arr, $i;
             if (is_object($block_arr[$i])) {
@@ -112,7 +111,7 @@ if (!defined('APCAL_BLOCK_THEDAYS_SCHEDULE_INCLUDED')) {
         $cal->images_url  = "$mod_url/assets/images/$skin_folder";
         $cal->images_path = "$mod_path/assets/images/$skin_folder";
 
-        $ret = "<input type='hidden' name='options[0]' value='$moduleDirName' >\n";
+        $ret = "<input type='hidden' name='options[0]' value='$moduleDirName'>\n";
 
         // ¥«¥Æ¥´¥ê¡¼ÁªÂò¥Ü¥Ã¥¯¥¹¤ÎÀ¸À®
         $ret .= _MB_APCAL_CATSEL . ':';

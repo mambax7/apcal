@@ -64,20 +64,10 @@ $myts = MyTextSanitizer::getInstance();
 $mcx_blocks = array();
 if (substr(XOOPS_VERSION, 6, 3) > 2.0) {
     // block instance of XOOPS 2.1/2.2
-    $mcx_rs = $GLOBALS['xoopsDB']->query('SELECT i.instanceid,i.title FROM '
-                                         . $GLOBALS['xoopsDB']->prefix('block_instance')
-                                         . ' i LEFT JOIN '
-                                         . $GLOBALS['xoopsDB']->prefix('newblocks')
-                                         . " b ON i.bid=b.bid WHERE b.mid='"
-                                         . $xoopsModule->getVar('mid')
-                                         . "' AND b.show_func='apcal_minical_ex_show'");
+    $mcx_rs = $GLOBALS['xoopsDB']->query('SELECT i.instanceid,i.title FROM ' . $GLOBALS['xoopsDB']->prefix('block_instance') . ' i LEFT JOIN ' . $GLOBALS['xoopsDB']->prefix('newblocks') . " b ON i.bid=b.bid WHERE b.mid='" . $xoopsModule->getVar('mid') . "' AND b.show_func='apcal_minical_ex_show'");
 } else {
     // newblocks of XOOPS 2.0.x
-    $mcx_rs = $GLOBALS['xoopsDB']->query('SELECT bid,title FROM '
-                                         . $GLOBALS['xoopsDB']->prefix('newblocks')
-                                         . " WHERE mid='"
-                                         . $xoopsModule->getVar('mid')
-                                         . "' AND show_func='apcal_minical_ex_show'");
+    $mcx_rs = $GLOBALS['xoopsDB']->query('SELECT bid,title FROM ' . $GLOBALS['xoopsDB']->prefix('newblocks') . " WHERE mid='" . $xoopsModule->getVar('mid') . "' AND show_func='apcal_minical_ex_show'");
 }
 while (list($bid, $title) = $GLOBALS['xoopsDB']->fetchRow($mcx_rs)) {
     $mcx_blocks[$bid] = $title;
@@ -87,8 +77,8 @@ while (list($bid, $title) = $GLOBALS['xoopsDB']->fetchRow($mcx_rs)) {
 if (!empty($_POST['update'])) {
 
     // Ticket Check
-    if (!$xoopsGTicket->check()) {
-        redirect_header(XOOPS_URL . '/', 3, $xoopsGTicket->getErrors());
+    if (!$GLOBALS['xoopsSecurity']->check()) {
+        redirect_header(XOOPS_URL . '/', 3, $GLOBALS['xoopsSecurity']->getErrors());
     }
 
     // new
@@ -111,9 +101,7 @@ if (!empty($_POST['update'])) {
 
         foreach ($types as $type) {
             $type4sql = addslashes($type);
-            if (!$GLOBALS['xoopsDB']->query("INSERT INTO $cal->plugin_table SET pi_type='$type4sql', pi_options='$pi_options4sql', pi_weight='$pi_weight4sql', pi_title='$pi_title4sql', pi_dirname='$pi_dirname4sql', pi_file='$pi_file4sql', pi_dotgif='$pi_dotgif4sql', pi_enabled='1'",
-                                            $conn)
-            ) {
+            if (!$GLOBALS['xoopsDB']->query("INSERT INTO $cal->plugin_table SET pi_type='$type4sql', pi_options='$pi_options4sql', pi_weight='$pi_weight4sql', pi_title='$pi_title4sql', pi_dirname='$pi_dirname4sql', pi_file='$pi_file4sql', pi_dotgif='$pi_dotgif4sql', pi_enabled='1'", $conn)) {
                 die($GLOBALS['xoopsDB']->error());
             }
         }
@@ -140,8 +128,7 @@ if (!empty($_POST['update'])) {
             $pi_enabled4sql = !empty($_POST['pi_enableds'][$pi_id]) ? 1 : 0;
 
             if (!$GLOBALS['xoopsDB']->query("UPDATE $cal->plugin_table SET pi_type='$pi_type4sql', pi_options='$pi_options4sql', pi_weight='$pi_weight4sql', pi_title='$pi_title4sql', pi_dirname='$pi_dirname4sql', pi_file='$pi_file4sql', pi_dotgif='$pi_dotgif4sql', pi_enabled='$pi_enabled4sql' WHERE pi_id=$pi_id",
-                                            $conn)
-            ) {
+                                            $conn)) {
                 die($GLOBALS['xoopsDB']->error());
             }
         }
@@ -157,8 +144,7 @@ if (!empty($_POST['update'])) {
     }
 
     $mes                 = urlencode(sprintf(_AM_APCAL_PI_UPDATED));
-    $redirect_str4header = strtr("Location: $cal->connection://{$_SERVER['HTTP_HOST']}{$_SERVER['PHP_SELF']}?mes=$mes&limit_type=$limit_type&limit_dirname=$limit_dirname&limit_file=$limit_file",
-                                 "\r\n\0", '   ');
+    $redirect_str4header = strtr("Location: $cal->connection://{$_SERVER['HTTP_HOST']}{$_SERVER['PHP_SELF']}?mes=$mes&limit_type=$limit_type&limit_dirname=$limit_dirname&limit_file=$limit_file", "\r\n\0", '   ');
 
     header($redirect_str4header);
     exit;
@@ -285,7 +271,7 @@ $prs = $GLOBALS['xoopsDB']->query("SELECT * FROM $cal->plugin_table WHERE ($whr_
 // TH Part
 echo "
     <form name='MainForm' action='?limit_type=$limit_type&amp;limit_dirname=$limit_dirname&amp;limit_file=$limit_file' method='post' style='margin:0px;'>
-    " . $xoopsGTicket->getTicketHtml(__LINE__) . "
+    " . $GLOBALS['xoopsSecurity']->getTokenHTML() . "
     <table width='100%' class='outer' cellpadding='4' cellspacing='1'>
       <tr valign='middle'>
         <th><a href='?order=pi_type' style='color:white;'>" . _AM_APCAL_PI_TH_TYPE . "</a></th>

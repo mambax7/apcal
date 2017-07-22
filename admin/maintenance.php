@@ -73,8 +73,8 @@ $default_TZ = $xoopsConfig['default_TZ'];
 if (!empty($_POST['do_04to06'])) {
 
     // Ticket Check
-    if (!$xoopsGTicket->check()) {
-        redirect_header(XOOPS_URL . '/', 3, $xoopsGTicket->getErrors());
+    if (!$GLOBALS['xoopsSecurity']->check()) {
+        redirect_header(XOOPS_URL . '/', 3, $GLOBALS['xoopsSecurity']->getErrors());
     }
 
     // table structure
@@ -120,8 +120,8 @@ if (!empty($_POST['do_04to06'])) {
 } elseif (!empty($_POST['create_cat'])) {
 
     // Ticket Check
-    if (!$xoopsGTicket->check()) {
-        redirect_header(XOOPS_URL . '/', 3, $xoopsGTicket->getErrors());
+    if (!$GLOBALS['xoopsSecurity']->check()) {
+        redirect_header(XOOPS_URL . '/', 3, $GLOBALS['xoopsSecurity']->getErrors());
     }
 
     $sql = "CREATE TABLE $table_cat (
@@ -151,8 +151,8 @@ if (!empty($_POST['do_04to06'])) {
 } elseif (!empty($_POST['repair_stz'])) {
 
     // Ticket Check
-    if (!$xoopsGTicket->check()) {
-        redirect_header(XOOPS_URL . '/', 3, $xoopsGTicket->getErrors());
+    if (!$GLOBALS['xoopsSecurity']->check()) {
+        redirect_header(XOOPS_URL . '/', 3, $GLOBALS['xoopsSecurity']->getErrors());
     }
 
     foreach ($_POST['stz'] as $from_stz => $to_stz) {
@@ -200,8 +200,8 @@ if (!$is_040) {
     echo "
         <br>(0.4x, 0.5x -> 0.6)
         <form action='' method='post'>
-            " . $xoopsGTicket->getTicketHtml(__LINE__) . "
-            <input type='submit' name='do_04to06' value='" . _GO . "' >
+            " . $GLOBALS['xoopsSecurity']->getTokenHTML() . "
+            <input type='submit' name='do_04to06' value='" . _GO . "'>
         </form>\n";
     CloseTable();
 } elseif (!$has_cat) {
@@ -210,8 +210,8 @@ if (!$is_040) {
     echo "
         <br>
         <form action='' method='post'>
-            " . $xoopsGTicket->getTicketHtml(__LINE__) . "
-            <input type='submit' name='create_cat' value='" . _GO . "' >
+            " . $GLOBALS['xoopsSecurity']->getTokenHTML() . "
+            <input type='submit' name='create_cat' value='" . _GO . "'>
         </form>\n";
     CloseTable();
 } else {
@@ -249,14 +249,14 @@ if (!$is_040) {
                     " . sprintf('%+2.1f', $server_tz) . "
                 </td>
                 <td>
-                    <input type='textbox' name='stz[$server_tz]' size='4' >
+                    <input type='textbox' name='stz[$server_tz]' size='4'>
                 </td>
             </tr>\n";
 
         /*      printf( _AM_APCAL_FMT_WRONGSTZ , $wrong_stzs ) ;
                 echo "
                     <br>
-                        <input type='submit' name='repair_stz' value='"._GO."' >
+                        <input type='submit' name='repair_stz' value='"._GO."'>
                     </form>\n" ;
         */
     }
@@ -265,8 +265,8 @@ if (!$is_040) {
 
     if ($server_tz_wrong) {
         echo "
-        <input type='submit' value='" . _SUBMIT . "' name='repair_stz' onclick='return confirm(\"" . _AM_APCAL_JSALRT_SERVER_TZ . "\");' >
-        " . $xoopsGTicket->getTicketHtml(__LINE__) . "
+        <input type='submit' value='" . _SUBMIT . "' name='repair_stz' onclick='return confirm(\"" . _AM_APCAL_JSALRT_SERVER_TZ . "\");'>
+        " . $GLOBALS['xoopsSecurity']->getTokenHTML() . "
         </form>\n";
         echo _AM_APCAL_NOTICE_SERVER_TZ;
     } else {

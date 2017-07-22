@@ -21,8 +21,7 @@
  */
 
 if ((!defined('XOOPS_ROOT_PATH')) || !($GLOBALS['xoopsUser'] instanceof XoopsUser)
-    || !$GLOBALS['xoopsUser']->IsAdmin()
-) {
+    || !$GLOBALS['xoopsUser']->IsAdmin()) {
     exit('Restricted access' . PHP_EOL);
 }
 
@@ -169,7 +168,7 @@ function xoops_module_update_apcal(XoopsModule $module)
     //    }
 
     require_once __DIR__ . '/config.php';
-    $configurator = new ModuleConfigurator();
+    $configurator = new ApcalConfigurator();
     $classUtility = ucfirst($moduleDirName) . 'Utility';
     if (!class_exists($classUtility)) {
         xoops_load('utility', $moduleDirName);
@@ -180,7 +179,7 @@ function xoops_module_update_apcal(XoopsModule $module)
         foreach ($configurator->templateFolders as $folder) {
             $templateFolder = $GLOBALS['xoops']->path('modules/' . $moduleDirName . $folder);
             if (is_dir($templateFolder)) {
-                $templateList = array_diff(scandir($templateFolder), array('..', '.'));
+                $templateList = array_diff(scandir($templateFolder, SCANDIR_SORT_NONE), array('..', '.'));
                 foreach ($templateList as $k => $v) {
                     $fileInfo = new SplFileInfo($templateFolder . $v);
                     if ($fileInfo->getExtension() === 'html' && $fileInfo->getFilename() !== 'index.html') {

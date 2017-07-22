@@ -10,8 +10,8 @@
  */
 
 /**
- * @copyright   {@link https://xoops.org/ XOOPS Project}
- * @license     {@link http://www.fsf.org/copyleft/gpl.html GNU public license}
+ * @copyright    {@link https://xoops.org/ XOOPS Project}
+ * @license      {@link http://www.fsf.org/copyleft/gpl.html GNU public license}
  * @package
  * @since
  * @author       XOOPS Development Team,
@@ -51,9 +51,7 @@ if (!empty($options[0])) {
 }
 
 // query (added 86400 second margin "begin" & "end")
-$result = $db->query('SELECT title,storyid,published FROM '
-                     . $db->prefix('bulletin_stories')
-                     . " WHERE ($whr_topic) AND published < UNIX_TIMESTAMP() AND published >= $range_start_s AND published < $range_end_s AND (expired = 0 OR expired > '$now')");
+$result = $db->query('SELECT title,storyid,published FROM ' . $db->prefix('bulletin_stories') . " WHERE ($whr_topic) AND published < UNIX_TIMESTAMP() AND published >= $range_start_s AND published < $range_end_s AND (expired = 0 OR expired > '$now')");
 
 while (list($title, $id, $server_time) = $db->fetchRow($result)) {
     $user_time = $server_time + $tzoffset_s2u;

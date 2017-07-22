@@ -15,7 +15,7 @@
  * @package
  * @since
  * @author       XOOPS Development Team,
- * @author      A plugin for wordpress ME by nobunobu
+ * @author       A plugin for wordpress ME by nobunobu
  */
 
 defined('XOOPS_ROOT_PATH') || exit('XOOPS Root Path not defined');
@@ -46,9 +46,7 @@ $range_start_s = mktime(0, 0, 0, $this->month, 0, $this->year);
 $range_end_s   = mktime(0, 0, 0, $this->month + 1, 1, $this->year);
 
 // query (added 86400 second margin "begin" & "end")
-$result = $db->query('SELECT post_title,ID,UNIX_TIMESTAMP(post_date) FROM '
-                     . $db->prefix("wp{$mydirnumber}_posts")
-                     . " WHERE UNIX_TIMESTAMP(post_date) >= $range_start_s AND UNIX_TIMESTAMP(post_date) < $range_end_s AND post_status='publish'");
+$result = $db->query('SELECT post_title,ID,UNIX_TIMESTAMP(post_date) FROM ' . $db->prefix("wp{$mydirnumber}_posts") . " WHERE UNIX_TIMESTAMP(post_date) >= $range_start_s AND UNIX_TIMESTAMP(post_date) < $range_end_s AND post_status='publish'");
 
 while (list($title, $id, $server_time) = $db->fetchRow($result)) {
     $user_time = $server_time + $tzoffset_s2u;

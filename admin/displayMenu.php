@@ -9,10 +9,7 @@ if (substr(XOOPS_VERSION, 6) < '2.5.0' && isset($xoopsModule) && $xoopsModule->g
     // Define top navigation
     $menuHandler->addMenuTop(XOOPS_URL . '/modules/system/admin.php?fct=preferences&amp;op=showmod&amp;mod=' . $xoopsModule->getVar('mid', 'e'), _AM_APCAL_PREFS);
     $menuHandler->addMenuTop(XOOPS_URL . '/modules/system/admin.php?fct=modulesadmin&amp;op=update&amp;module=' . $xoopsModule->getVar('dirname', 'e'), _AM_APCAL_UPDATE);
-    $menuHandler->addMenuTop(XOOPS_URL
-                              . '/modules/system/admin.php?fct=blocksadmin&amp;op=list&amp;filter=1&amp;selgen='
-                              . $xoopsModule->getVar('mid', 'e')
-                              . '&amp;selmod=-2&amp;selgrp=-1&amp;selvis=-1', _AM_APCAL_BLOCKS);
+    $menuHandler->addMenuTop(XOOPS_URL . '/modules/system/admin.php?fct=blocksadmin&amp;op=list&amp;filter=1&amp;selgen=' . $xoopsModule->getVar('mid', 'e') . '&amp;selmod=-2&amp;selgrp=-1&amp;selvis=-1', _AM_APCAL_BLOCKS);
     $menuHandler->addMenuTop(XOOPS_URL . '/modules/' . $xoopsModule->getVar('dirname', 'e') . '/', _AM_APCAL_GOTOMODULE);
     // Define main tab navigation
     $i = 0;

@@ -10,8 +10,8 @@
  */
 
 /**
- * @copyright   {@link https://xoops.org/ XOOPS Project}
- * @license     {@link http://www.fsf.org/copyleft/gpl.html GNU public license}
+ * @copyright    {@link https://xoops.org/ XOOPS Project}
+ * @license      {@link http://www.fsf.org/copyleft/gpl.html GNU public license}
  * @package
  * @since
  * @author       XOOPS Development Team,
@@ -94,8 +94,8 @@ switch ($tz) {
 if (isset($_POST['admit']) && isset($_POST['ids']) && is_array($_POST['ids'])) {
 
     // Ticket Check
-    if (!$xoopsGTicket->check()) {
-        redirect_header(XOOPS_URL . '/', 3, $xoopsGTicket->getErrors());
+    if (!$GLOBALS['xoopsSecurity']->check()) {
+        redirect_header(XOOPS_URL . '/', 3, $GLOBALS['xoopsSecurity']->getErrors());
     }
 
     $whr = '';
@@ -116,8 +116,8 @@ if (isset($_POST['admit']) && isset($_POST['ids']) && is_array($_POST['ids'])) {
 } elseif (isset($_POST['delete'])) {
 
     // Ticket Check
-    if (!$xoopsGTicket->check()) {
-        redirect_header(XOOPS_URL . '/', 3, $xoopsGTicket->getErrors());
+    if (!$GLOBALS['xoopsSecurity']->check()) {
+        redirect_header(XOOPS_URL . '/', 3, $GLOBALS['xoopsSecurity']->getErrors());
     }
 
     if (isset($_POST['ids']) && is_array($_POST['ids'])) {
@@ -190,9 +190,9 @@ echo '<h4 xmlns="http://www.w3.org/1999/html">' . _AM_APCAL_ADMISSION . "</h4>
 <p><style='color: blue; '>" . (isset($_GET['mes']) ? htmlspecialchars($_GET['mes'], ENT_QUOTES) : '') . "</style></p>
 <form action='' method='get' style='margin-bottom:0px;text-align:left'>
   <select name='tz' onChange='submit();'>$tzoptions</select>
-  <input type='hidden' name='cid' value='$cid' >
-  <input type='hidden' name='num' value='$num' >
-  <input type='hidden' name='txt' value='" . htmlspecialchars($txt, ENT_QUOTES) . "' >
+  <input type='hidden' name='cid' value='$cid'>
+  <input type='hidden' name='num' value='$num'>
+  <input type='hidden' name='txt' value='" . htmlspecialchars($txt, ENT_QUOTES) . "'>
 </form>
 <table width='100%' cellpadding='0' cellspacing='0' border='0'>
   <tr>
@@ -202,11 +202,11 @@ echo '<h4 xmlns="http://www.w3.org/1999/html">' . _AM_APCAL_ADMISSION . "</h4>
     <td align='left'>
       <form action='' method='get' style='margin-bottom:0px;text-align:right'>
         $cat_selbox4extract
-        <input type='text' name='txt' value='" . htmlspecialchars($txt, ENT_QUOTES) . "' >
-        <input type='submit' value='" . _AM_APCAL_BUTTON_EXTRACT . "' > &nbsp;
+        <input type='text' name='txt' value='" . htmlspecialchars($txt, ENT_QUOTES) . "'>
+        <input type='submit' value='" . _AM_APCAL_BUTTON_EXTRACT . "'> &nbsp;
         $nav_html &nbsp;
-        <input type='hidden' name='num' value='$num' >
-        <input type='hidden' name='tz' value='$tz' >
+        <input type='hidden' name='num' value='$num'>
+        <input type='hidden' name='tz' value='$tz'>
       </form>
     </td>
   </tr>
@@ -220,7 +220,7 @@ echo '<h4 xmlns="http://www.w3.org/1999/html">' . _AM_APCAL_ADMISSION . "</h4>
     <th>" . _AM_APCAL_ADMIT_TH3 . '</th>
     <th>' . _AM_APCAL_ADMIT_TH4 . "</th>
     <th></th>
-    <th><input type='checkbox' name='dummy' onclick=\"with(document.MainForm){for (i=0;i<length;i++) {if (elements[i].type=='checkbox') {elements[i].checked=this.checked;}}}\" ></th>
+    <th><input type='checkbox' name='dummy' onclick=\"with(document.MainForm){for (i=0;i<length;i++) {if (elements[i].type=='checkbox') {elements[i].checked=this.checked;}}}\"></th>
   </tr>
 ";
 
@@ -244,8 +244,8 @@ while ($event = $GLOBALS['xoopsDB']->fetchObject($rs)) {
     <td class='$oddeven' nowrap='nowrap'>$end_desc</td>
     <td class='$oddeven'><a href='$mod_url/index.php?action=View&amp;event_id=$event->id'>$summary4disp</a></td>
     <td class='$oddeven'>" . $cal->rrule_to_human_language($event->rrule) . "</td>
-    <td class='$oddeven' align='right'><a href='$mod_url/index.php?action=Edit&amp;event_id=$event->id' target='_blank'><img src='$cal->images_url/addevent.gif' border='0' width='14' height='12' ></a></td>
-    <td class='$oddeven' align='right'><input type='checkbox' name='ids[]' value='$event->id' ></td>
+    <td class='$oddeven' align='right'><a href='$mod_url/index.php?action=Edit&amp;event_id=$event->id' target='_blank'><img src='$cal->images_url/addevent.gif' border='0' width='14' height='12'></a></td>
+    <td class='$oddeven' align='right'><input type='checkbox' name='ids[]' value='$event->id'></td>
   </tr>\n";
 }
 
@@ -255,13 +255,13 @@ echo "
      . _AM_APCAL_LABEL_ADMIT
      . "<input type='submit' name='admit' value='"
      . _AM_APCAL_BUTTON_ADMIT
-     . "' > &nbsp; "
+     . "'> &nbsp; "
      . _AM_APCAL_LABEL_IO_DELETE
      . "<input type='submit' name='delete' value='"
      . _DELETE
      . "' onclick='return confirm(\""
      . _AM_APCAL_CONFIRM_DELETE
-     . "\")' ></td>
+     . "\")'></td>
   </tr>
   <tr>
     <td colspan='8' align='right' valign='bottom' height='50'>"
@@ -270,7 +270,7 @@ echo "
   </tr>
 </table>
 '
-     . $xoopsGTicket->getTicketHtml(__LINE__)
+     . $GLOBALS['xoopsSecurity']->getTokenHTML()
      . '
 </form>
 ';

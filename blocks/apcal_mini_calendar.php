@@ -10,8 +10,8 @@
  */
 
 /**
- * @copyright   {@link https://xoops.org/ XOOPS Project}
- * @license     {@link http://www.fsf.org/copyleft/gpl.html GNU public license}
+ * @copyright    {@link https://xoops.org/ XOOPS Project}
+ * @license      {@link http://www.fsf.org/copyleft/gpl.html GNU public license}
  * @package
  * @since
  * @author       XOOPS Development Team,
@@ -37,8 +37,7 @@ if (!defined('APCAL_BLOCK_MINI_CALENDAR_INCLUDED')) {
         // ¾ì¹ç¤Ë¤Ï¡¢¥­¥ã¥Ã¥·¥å¤ò»È¤¦
         if (empty($_GET['caldate']) && empty($_POST['apcal_jumpcaldate'])
             && (!is_object($xoopsUser)
-                || $xoopsUser->timezone() == $xoopsConfig['default_TZ'])
-        ) {
+                || $xoopsUser->timezone() == $xoopsConfig['default_TZ'])) {
             $use_cache = true;
             $cachefile = XOOPS_CACHE_PATH . "/{$moduleDirName }_minical_cache_{$xoopsConfig['language']}.html";
             // 5 minutes

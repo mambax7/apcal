@@ -10,8 +10,8 @@
  */
 
 /**
- * @copyright   {@link https://xoops.org/ XOOPS Project}
- * @license     {@link http://www.fsf.org/copyleft/gpl.html GNU public license}
+ * @copyright    {@link https://xoops.org/ XOOPS Project}
+ * @license      {@link http://www.fsf.org/copyleft/gpl.html GNU public license}
  * @package
  * @since
  * @author       XOOPS Development Team,
@@ -41,14 +41,10 @@ while ($row = $GLOBALS['xoopsDB']->fetchArray($result)) {
     $row['start']   = $startD . ' ' . htmlentities($startM, ENT_QUOTES, 'UTF-8');
     $row['end']     = $endD . ' ' . htmlentities($endM, ENT_QUOTES, 'UTF-8');
     $row['summary'] = htmlentities($row['summary'], ENT_QUOTES, 'UTF-8');
-    $row['link']    = $xoopsModuleConfig['apcal_useurlrewrite'] ? XOOPS_URL . '/modules/apcal/' . $row['shortsummary'] . '-' . date('j-n-Y', $start) : XOOPS_URL
-                                                                                                                                                       . '/modules/apcal/?event_id='
-                                                                                                                                                       . $row['id'];
+    $row['link']    = $xoopsModuleConfig['apcal_useurlrewrite'] ? XOOPS_URL . '/modules/apcal/' . $row['shortsummary'] . '-' . date('j-n-Y', $start) : XOOPS_URL . '/modules/apcal/?event_id=' . $row['id'];
     $array[]        = $row;
 }
-$c = $_GET['c']
-     > 0 ? htmlentities($GLOBALS['xoopsDB']->fetchObject($GLOBALS['xoopsDB']->queryF("SELECT cat_title FROM {$GLOBALS['xoopsDB']->prefix('apcal_cat')} WHERE cid={$_GET['c']} LIMIT 0,1"))->cat_title,
-                        ENT_QUOTES, 'UTF-8') : '';
+$c = $_GET['c'] > 0 ? htmlentities($GLOBALS['xoopsDB']->fetchObject($GLOBALS['xoopsDB']->queryF("SELECT cat_title FROM {$GLOBALS['xoopsDB']->prefix('apcal_cat')} WHERE cid={$_GET['c']} LIMIT 0,1"))->cat_title, ENT_QUOTES, 'UTF-8') : '';
 $l = '</dl><div class="APfooter">'
      . _APCAL_PROVIDEDBY
      . ' <a href="'

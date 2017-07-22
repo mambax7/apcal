@@ -10,8 +10,8 @@
  */
 
 /**
- * @copyright   {@link https://xoops.org/ XOOPS Project}
- * @license     {@link http://www.fsf.org/copyleft/gpl.html GNU public license}
+ * @copyright    {@link https://xoops.org/ XOOPS Project}
+ * @license      {@link http://www.fsf.org/copyleft/gpl.html GNU public license}
  * @package
  * @since
  * @author       XOOPS Development Team,
@@ -83,17 +83,7 @@ if (substr(XOOPS_VERSION, 6, 3) < 2.1) {
         }
 
         for ($i = 1; $i <= $count; ++$i) {
-            $sql     = 'SELECT name,options FROM '
-                       . $GLOBALS['xoopsDB']->prefix('newblocks')
-                       . ' WHERE mid='
-                       . $mid
-                       . ' AND func_num='
-                       . $i
-                       . " AND show_func='"
-                       . addslashes($modversion['blocks'][$i]['show_func'])
-                       . "' AND func_file='"
-                       . addslashes($modversion['blocks'][$i]['file'])
-                       . "'";
+            $sql     = 'SELECT name,options FROM ' . $GLOBALS['xoopsDB']->prefix('newblocks') . ' WHERE mid=' . $mid . ' AND func_num=' . $i . " AND show_func='" . addslashes($modversion['blocks'][$i]['show_func']) . "' AND func_file='" . addslashes($modversion['blocks'][$i]['file']) . "'";
             $fresult = $GLOBALS['xoopsDB']->query($sql);
             $fblock  = $GLOBALS['xoopsDB']->fetchArray($fresult);
             if (isset($fblock['options'])) {
@@ -107,17 +97,9 @@ if (substr(XOOPS_VERSION, 6, 3) < 2.1) {
                         $def_vals[$j] = $old_vals[$j];
                     }
                     $modversion['blocks'][$i]['options'] = implode('|', $def_vals);
-                    $local_msgs[]                        = "Option's values of the block <b>"
-                                                           . $fblock['name']
-                                                           . '</b> will be kept and new option(s) are added. (value = <b>'
-                                                           . $modversion['blocks'][$i]['options']
-                                                           . '</b>)';
+                    $local_msgs[]                        = "Option's values of the block <b>" . $fblock['name'] . '</b> will be kept and new option(s) are added. (value = <b>' . $modversion['blocks'][$i]['options'] . '</b>)';
                 } else {
-                    $local_msgs[] = "Option's values of the block <b>"
-                                    . $fblock['name']
-                                    . '</b> will be reset to the default, because of some decrease of options. (value = <b>'
-                                    . $modversion['blocks'][$i]['options']
-                                    . '</b>)';
+                    $local_msgs[] = "Option's values of the block <b>" . $fblock['name'] . '</b> will be reset to the default, because of some decrease of options. (value = <b>' . $modversion['blocks'][$i]['options'] . '</b>)';
                 }
             }
         }

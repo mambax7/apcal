@@ -10,8 +10,8 @@
  */
 
 /**
- * @copyright   {@link https://xoops.org/ XOOPS Project}
- * @license     {@link http://www.fsf.org/copyleft/gpl.html GNU public license}
+ * @copyright    {@link https://xoops.org/ XOOPS Project}
+ * @license      {@link http://www.fsf.org/copyleft/gpl.html GNU public license}
  * @package
  * @since
  * @author       XOOPS Development Team,
@@ -91,7 +91,7 @@ function display_edit_form($cat, $form_title, $action)
     $form->addElement($button_tray);
 
     // Ticket
-    $GLOBALS['xoopsGTicket']->addTicketXoopsFormElement($form, __LINE__);
+    //    $GLOBALS['xoopsGTicket']->addTicketXoopsFormElement($form, __LINE__);
 
     // End of XoopsForm
     $form->display();
@@ -197,16 +197,16 @@ $cal->images_url  = "$mod_url/assets/images/$skin_folder";
 $cal->images_path = "$mod_path/assets/images/$skin_folder";
 
 // XOOPS関連の初期化
-$myts          = MyTextSanitizer::getInstance();
-$cattree       = new XoopsTree($cal->cat_table, 'cid', 'pid');
+$myts         = MyTextSanitizer::getInstance();
+$cattree      = new XoopsTree($cal->cat_table, 'cid', 'pid');
 $gpermHandler = xoops_getHandler('groupperm');
 
 // データベース更新などがからむ処理
 if ($action === 'insert') {
 
     // Ticket Check
-    if (!$xoopsGTicket->check()) {
-        redirect_header(XOOPS_URL . '/', 3, $xoopsGTicket->getErrors());
+    if (!$GLOBALS['xoopsSecurity']->check()) {
+        redirect_header(XOOPS_URL . '/', 3, $GLOBALS['xoopsSecurity']->getErrors());
     }
 
     // 新規登録
@@ -232,8 +232,8 @@ if ($action === 'insert') {
 } elseif ($action === 'update' && $_POST['cid'] > 0) {
 
     // Ticket Check
-    if (!$xoopsGTicket->check()) {
-        redirect_header(XOOPS_URL . '/', 3, $xoopsGTicket->getErrors());
+    if (!$GLOBALS['xoopsSecurity']->check()) {
+        redirect_header(XOOPS_URL . '/', 3, $GLOBALS['xoopsSecurity']->getErrors());
     }
 
     // ����
@@ -261,8 +261,8 @@ if ($action === 'insert') {
 } elseif (!empty($_POST['delcat'])) {
 
     // Ticket Check
-    if (!$xoopsGTicket->check()) {
-        redirect_header(XOOPS_URL . '/', 3, $xoopsGTicket->getErrors());
+    if (!$GLOBALS['xoopsSecurity']->check()) {
+        redirect_header(XOOPS_URL . '/', 3, $GLOBALS['xoopsSecurity']->getErrors());
     }
 
     // Delete
@@ -304,8 +304,8 @@ if ($action === 'insert') {
 } elseif (!empty($_POST['batch_update'])) {
 
     // Ticket Check
-    if (!$xoopsGTicket->check()) {
-        redirect_header(XOOPS_URL . '/', 3, $xoopsGTicket->getErrors());
+    if (!$GLOBALS['xoopsSecurity']->check()) {
+        redirect_header(XOOPS_URL . '/', 3, $GLOBALS['xoopsSecurity']->getErrors());
     }
 
     // バッチアップデート
@@ -368,7 +368,7 @@ if ($disp === 'edit' && $cid > 0) {
         echo "<p><style='color: blue; '>" . htmlspecialchars($_GET['mes'], ENT_QUOTES) . '</style></p>';
     }
 
-    echo "<p><a href='?disp=new&cid=0'>" . _AM_APCAL_MB_MAKETOPCAT . "<img src='../assets/images/cat_add.gif' width='18' height='15' alt='' ></a></p>\n";
+    echo "<p><a href='?disp=new&cid=0'>" . _AM_APCAL_MB_MAKETOPCAT . "<img src='../assets/images/cat_add.gif' width='18' height='15' alt=''></a></p>\n";
 
     // ���ƥ��꡼�ǡ�������
     $cat_tree_array = $cattree->getChildTreeArray(0, 'weight ASC,cat_title');
@@ -376,8 +376,8 @@ if ($disp === 'edit' && $cid > 0) {
     // TH Part
     echo "
     <form name='MainForm' action='' method='post' style='margin:10px;'>
-    " . $xoopsGTicket->getTicketHtml(__LINE__) . "
-    <input type='hidden' name='delcat' value='' >
+    " . $GLOBALS['xoopsSecurity']->getTokenHTML() . "
+    <input type='hidden' name='delcat' value=''>
     <table width='75%' class='outer' cellpadding='4' cellspacing='1'>
       <tr valign='middle'>
         <th>" . _AM_APCAL_CAT_TH_TITLE . '</th>
@@ -402,23 +402,23 @@ if ($disp === 'edit' && $cid > 0) {
       <tr>
         <td class='$oddeven' width='100%'><a href='?disp=edit&amp;cid=$cid'>$prefix&nbsp;$cat_title</a></td>
         <td class='$oddeven' align='center' nowrap='nowrap'>
-          <a href='$mod_url/index.php?action=Edit&amp;cid=$cid' target='_blank'><img src='$cal->images_url/addevent.gif' border='0' width='14' height='12' ></a>
+          <a href='$mod_url/index.php?action=Edit&amp;cid=$cid' target='_blank'><img src='$cal->images_url/addevent.gif' border='0' width='14' height='12'></a>
           &nbsp;
-          <a href='?disp=edit&amp;cid=$cid'><img src='../assets/images/cat_edit.gif' width='18' height='15' alt='" . _AM_APCAL_MENU_CAT_EDIT . "' title='" . _AM_APCAL_MENU_CAT_EDIT . "' ></a>
+          <a href='?disp=edit&amp;cid=$cid'><img src='../assets/images/cat_edit.gif' width='18' height='15' alt='" . _AM_APCAL_MENU_CAT_EDIT . "' title='" . _AM_APCAL_MENU_CAT_EDIT . "'></a>
           &nbsp;
-          <a href='?disp=new&amp;cid=$cid'><img src='../assets/images/cat_add.gif' width='18' height='15' alt='" . _AM_APCAL_MENU_CAT_NEW . "' title='" . _AM_APCAL_MENU_CAT_NEW . "' ></a>
+          <a href='?disp=new&amp;cid=$cid'><img src='../assets/images/cat_add.gif' width='18' height='15' alt='" . _AM_APCAL_MENU_CAT_NEW . "' title='" . _AM_APCAL_MENU_CAT_NEW . "'></a>
           &nbsp;
-          <input type='button' value='" . _DELETE . "'  onclick='if ($del_confirm) {document.MainForm.delcat.value=\"$cid\"; submit();}' >
+          <input type='button' value='" . _DELETE . "'  onclick='if ($del_confirm) {document.MainForm.delcat.value=\"$cid\"; submit();}'>
         </td>
-        <td class='$oddeven' align='center'><input type='checkbox' name='enabled[$cid]' value='1' $enable_checked ></td>
-        <td class='$oddeven' align='right'><input type='text' name='weights[$cid]' size='4' maxlength='6' value='$weight' ></td>
+        <td class='$oddeven' align='center'><input type='checkbox' name='enabled[$cid]' value='1' $enable_checked></td>
+        <td class='$oddeven' align='right'><input type='text' name='weights[$cid]' size='4' maxlength='6' value='$weight'></td>
       </tr>\n";
     }
 
     // �ơ��֥�եå���
     echo "
       <tr>
-        <td colspan='4' align='right' class='head'><input type='submit' name='batch_update' value='" . _AM_APCAL_BTN_UPDATE . "' ></td>
+        <td colspan='4' align='right' class='head'><input type='submit' name='batch_update' value='" . _AM_APCAL_BTN_UPDATE . "'></td>
       </tr>
       <tr>
         <td colspan='8' align='right' valign='bottom' height='50'>" . _AM_APCAL_COPYRIGHT . '</td>

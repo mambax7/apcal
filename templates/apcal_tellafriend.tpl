@@ -31,6 +31,7 @@
     }
 </script>
 <form name="tellafriend" action="<{$xoops_url}>/modules/apcal/tellafriend.php" method="post">
+    <{securityToken}><{*//mb*}>
     <table>
         <tr>
             <td class="head"><{$smarty.const._APCAL_TO}></td>

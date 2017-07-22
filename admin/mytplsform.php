@@ -77,8 +77,8 @@ if (empty($tpl)) {
 //************//
 if (!empty($_POST['do_modify'])) {
     // Ticket Check
-    if (!$xoopsGTicket->check()) {
-        redirect_header(XOOPS_URL . '/', 3, $xoopsGTicket->getErrors());
+    if (!$GLOBALS['xoopsSecurity']->check()) {
+        redirect_header(XOOPS_URL . '/', 3, $GLOBALS['xoopsSecurity']->getErrors());
     }
 
     $result = $db->query('SELECT tpl_id FROM ' . $db->prefix('tplfile') . " WHERE tpl_file='$tpl_file4sql' AND tpl_tplset='$tpl_tplset4sql'");
@@ -100,15 +100,7 @@ if (file_exists('./mymenu.php')) {
     include __DIR__ . '/mymenu.php';
 }
 
-echo "<h3 style='text-align:left;'>"
-     . _MD_APCAL_TPLSETS
-     . ' : '
-     . htmlspecialchars($tpl['tpl_type'], ENT_QUOTES)
-     . ' : '
-     . htmlspecialchars($tpl['tpl_file'], ENT_QUOTES)
-     . ' ('
-     . htmlspecialchars($tpl['tpl_tplset'], ENT_QUOTES)
-     . ")</h3>\n";
+echo "<h3 style='text-align:left;'>" . _MD_APCAL_TPLSETS . ' : ' . htmlspecialchars($tpl['tpl_type'], ENT_QUOTES) . ' : ' . htmlspecialchars($tpl['tpl_file'], ENT_QUOTES) . ' (' . htmlspecialchars($tpl['tpl_tplset'], ENT_QUOTES) . ")</h3>\n";
 
 // diff from file to selected DB template
 $basefilepath        = XOOPS_ROOT_PATH . '/modules/' . $tpl['tpl_module'] . '/templates/' . ($tpl['tpl_type'] === 'block' ? 'blocks/' : '') . $tpl['tpl_file'];
@@ -130,16 +122,8 @@ if (file_exists($basefilepath)) {
 
 // diff from DB-default to selected DB template
 $diff_from_default4disp = '';
-if ($tpl['tpl_tplset'] !== 'default') {
-    list($default_source) = $db->fetchRow($db->query('SELECT tpl_source FROM '
-                                                     . $db->prefix('tplfile')
-                                                     . ' NATURAL LEFT JOIN '
-                                                     . $db->prefix('tplsource')
-                                                     . " WHERE tpl_tplset='default' AND tpl_file='"
-                                                     . addslashes($tpl['tpl_file'])
-                                                     . "' AND tpl_module='"
-                                                     . addslashes($tpl['tpl_module'])
-                                                     . "'"));
+if ($tpl['tpl_tplset'] != 'default') {
+    list($default_source) = $db->fetchRow($db->query('SELECT tpl_source FROM ' . $db->prefix('tplfile') . ' NATURAL LEFT JOIN ' . $db->prefix('tplsource') . " WHERE tpl_tplset='default' AND tpl_file='" . addslashes($tpl['tpl_file']) . "' AND tpl_module='" . addslashes($tpl['tpl_module']) . "'"));
     $diff     = new Text_Diff(explode("\n", $default_source), explode("\n", $tpl['tpl_source']));
     $renderer = new Text_Diff_Renderer_unified();
     $diff_str = htmlspecialchars($renderer->render($diff), ENT_QUOTES);
@@ -164,7 +148,7 @@ echo "
 
 echo "
 <form name='MainForm' action='?tpl_file=" . htmlspecialchars($tpl['tpl_file'], ENT_QUOTES) . '&amp;tpl_tplset=' . htmlspecialchars($tpl['tpl_tplset'], ENT_QUOTES) . "' method='post'>
-    " . $xoopsGTicket->getTicketHtml(__LINE__) . "
+    " . $GLOBALS['xoopsSecurity']->getTokenHTML() . "
     <textarea name='tpl_source' wrap='off' style='width:600px;height:400px;'>" . htmlspecialchars($tpl['tpl_source'], ENT_QUOTES) . "</textarea>
     <br>
     <input type='submit' name='do_modify' value='" . _SUBMIT . "' >

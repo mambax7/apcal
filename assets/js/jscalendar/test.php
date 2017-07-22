@@ -53,7 +53,6 @@ setcookie('lang', $lang);
         } ?>
 
     <?php
-
     } else {
         ?>
 
@@ -118,7 +117,6 @@ setcookie('lang', $lang);
     </form>
 
     <?php
-
     } ?>
 
 </body>

@@ -98,7 +98,7 @@ while ($myrow = $db->fetchArray($result)) {
 
 function list_blocks()
 {
-    global $query4redirect, $block_arr, $xoopsGTicket;
+    global $query4redirect, $block_arr;
 
     // cachetime options
     $cachetimes = array(
@@ -297,7 +297,7 @@ function list_blocks()
                 <input type='hidden' name='query4redirect' value='$query4redirect' >
                 <input type='hidden' name='fct' value='blocksadmin' >
                 <input type='hidden' name='op' value='order' >
-                " . $xoopsGTicket->getTicketHtml(__LINE__, 1800, 'myblocksadmin') . "
+                " . $GLOBALS['xoopsSecurity']->getTokenHTML('myblocksadmin') . "
                 <input type='submit' name='submit' value='" . _SUBMIT . "' >
             </td>
         </tr>
@@ -345,8 +345,8 @@ function list_groups()
 }
 
 if (!empty($_POST['submit'])) {
-    if (!$xoopsGTicket->check(true, 'myblocksadmin')) {
-        redirect_header(XOOPS_URL . '/', 3, $xoopsGTicket->getErrors());
+    if (!$GLOBALS['xoopsSecurity']->check(true, $_REQUEST['myblocksadmin'])) {
+        redirect_header(XOOPS_URL . '/', 3, $GLOBALS['xoopsSecurity']->getErrors());
     }
 
     include __DIR__ . '/mygroupperm.php';

@@ -51,13 +51,10 @@ $PHPTHUMB_CONFIG['cache_directory_depth'] = 4; // If this larger than zero, cach
 //   based on last-access date and/or number of files and/or total filesize.
 
 //$PHPTHUMB_CONFIG['cache_maxage'] = null;            // never delete cached thumbnails based on last-access time
-$PHPTHUMB_CONFIG['cache_maxage'] = 86400
-                                   * 30;        // delete cached thumbnails that haven't been accessed in more than [30 days] (value is maximum time since last access in seconds to avoid deletion)
+$PHPTHUMB_CONFIG['cache_maxage'] = 86400 * 30;        // delete cached thumbnails that haven't been accessed in more than [30 days] (value is maximum time since last access in seconds to avoid deletion)
 
 //$PHPTHUMB_CONFIG['cache_maxsize'] = null;           // never delete cached thumbnails based on byte size of cache directory
-$PHPTHUMB_CONFIG['cache_maxsize'] = 10
-                                    * 1024
-                                    * 1024; // delete least-recently-accessed cached thumbnails when more than [10MB] of cached files are present (value is maximum bytesize of all cached files)
+$PHPTHUMB_CONFIG['cache_maxsize'] = 10 * 1024 * 1024; // delete least-recently-accessed cached thumbnails when more than [10MB] of cached files are present (value is maximum bytesize of all cached files)
 
 //$PHPTHUMB_CONFIG['cache_maxfiles'] = null;          // never delete cached thumbnails based on number of cached files
 $PHPTHUMB_CONFIG['cache_maxfiles'] = 200;             // delete least-recently-accessed cached thumbnails when more than [200] cached files are present (value is maximum number of cached files to keep)
@@ -106,8 +103,7 @@ $PHPTHUMB_CONFIG['temp_directory'] = $PHPTHUMB_CONFIG['cache_directory'];  // se
 // As a general guideline, this number will be about 20% of your PHP memory
 // configuration, so 8M = 1,677,722; 16M = 3,355,443; 32M = 6,710,886; etc.
 if (phpthumb_functions::version_compare_replacement(PHP_VERSION, '4.3.2', '>=') && !defined('memory_get_usage')
-    && !@ini_get('memory_limit')
-) {
+    && !@ini_get('memory_limit')) {
     // memory_get_usage() will only be defined if your PHP is compiled with the --enable-memory-limit configuration option.
     $PHPTHUMB_CONFIG['max_source_pixels'] = 0;         // no memory limit
 } else {
@@ -241,8 +237,7 @@ function phpThumbURL($ParameterString)
 {
     global $PHPTHUMB_CONFIG;
 
-    return str_replace(@$PHPTHUMB_CONFIG['document_root'], '', __DIR__) . DIRECTORY_SEPARATOR . 'phpThumb.php?' . $ParameterString . '&hash=' . md5($ParameterString
-                                                                                                                                                    . @$PHPTHUMB_CONFIG['high_security_password']);
+    return str_replace(@$PHPTHUMB_CONFIG['document_root'], '', __DIR__) . DIRECTORY_SEPARATOR . 'phpThumb.php?' . $ParameterString . '&hash=' . md5($ParameterString . @$PHPTHUMB_CONFIG['high_security_password']);
 }
 
 ///////////////////////////////////////////////////////////////////////////////

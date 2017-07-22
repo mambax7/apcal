@@ -40,7 +40,6 @@ define($capsDirName . '_UPLOAD_URL', XOOPS_UPLOAD_URL . '/' .$moduleDirName); //
 //define("XXXXXX_UPLOAD_PATH", $img_dir); // WITHOUT Trailing slash
 define($capsDirName . '_UPLOAD_PATH', XOOPS_UPLOAD_PATH . '/' . $moduleDirName); // WITHOUT Trailing slash
 
-
 //constant($cloned_lang . '_CATEGORY_NOTIFY')
 /*
 $uploadFolders = [
@@ -63,9 +62,9 @@ $oldFiles = [
 */
 
 /**
- * Class ModuleConfigurator
+ * Class ApcalConfigurator
  */
-class ModuleConfigurator
+class ApcalConfigurator
 {
     public $uploadFolders   = [];
     public $blankFiles  = [];
@@ -75,7 +74,7 @@ class ModuleConfigurator
     public $name;
 
     /**
-     * ModuleConfigurator constructor.
+     * ApcalConfigurator constructor.
      */
     public function __construct()
     {
@@ -109,6 +108,5 @@ class ModuleConfigurator
 }
 
 // module information
-$modCopyright
-    = "<a href='https://xoops.org' title='XOOPS Project' target='_blank'>
+$modCopyright = "<a href='https://xoops.org' title='XOOPS Project' target='_blank'>
                      <img src='" . constant($capsDirName . '_AUTHOR_LOGOIMG') . '\' alt=\'XOOPS Project\' ></a>';

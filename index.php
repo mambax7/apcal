@@ -32,8 +32,7 @@ if ((!isset($_GET['action']) || $_GET['action'] === '') && isset($_GET['cid']) &
         $_GET['cid'] = $cat->cid;
     }
 } elseif (isset($_GET['action']) && $_GET['action'] === 'View' && !is_numeric($_GET['event_id'])
-          && isset($_GET['date'])
-) {
+          && isset($_GET['date'])) {
     $summary = addslashes($_GET['event_id']);
     $date    = isset($_GET['date']) ? strtotime($_GET['date']) : time();
     $event   = $GLOBALS['xoopsDB']->queryF("SELECT id FROM {$GLOBALS['xoopsDB']->prefix('apcal_event')} WHERE shortsummary='$summary' AND UNIX_TIMESTAMP(DATE(FROM_UNIXTIME(start)))=$date LIMIT 0,1");
@@ -101,8 +100,8 @@ if (isset($_POST['update'])) {
         die(_MB_APCAL_ERR_NOPERMTOUPDATE);
     }
     // Ticket Check
-    if (!$xoopsGTicket->check()) {
-        redirect_header(XOOPS_URL . '/', 3, $xoopsGTicket->getErrors());
+    if (!$GLOBALS['xoopsSecurity']->check()) {
+        redirect_header(XOOPS_URL . '/', 3, $GLOBALS['xoopsSecurity']->getErrors());
     }
     $cal->update_schedule("$admission_update_sql", $whr_sql_append);
 } elseif (isset($_POST['insert']) || isset($_POST['saveas'])) {
@@ -113,8 +112,8 @@ if (isset($_POST['update'])) {
     $_POST['event_oldid'] = $_POST['event_id'];
     $_POST['event_id']    = '';
     // Ticket Check
-    if (!$xoopsGTicket->check()) {
-        redirect_header(XOOPS_URL . '/', 3, $xoopsGTicket->getErrors());
+    if (!$GLOBALS['xoopsSecurity']->check()) {
+        redirect_header(XOOPS_URL . '/', 3, $GLOBALS['xoopsSecurity']->getErrors());
     }
     $cal->update_schedule(",uid='$user_id' $admission_insert_sql", '', 'notify_new_event');
 } elseif (!empty($_POST['delete'])) {
@@ -123,8 +122,8 @@ if (isset($_POST['update'])) {
         die(_MD_APCAL_ERR_NOPERMTODELETE);
     }
     // Ticket Check
-    if (!$xoopsGTicket->check()) {
-        redirect_header(XOOPS_URL . '/', 3, $xoopsGTicket->getErrors());
+    if (!$GLOBALS['xoopsSecurity']->check()) {
+        redirect_header(XOOPS_URL . '/', 3, $GLOBALS['xoopsSecurity']->getErrors());
     }
     $cal->delete_schedule($whr_sql_append, 'global $xoopsModule; xoops_comment_delete($xoopsModule->mid(),$id);');
 } elseif (!empty($_POST['delete_one'])) {
@@ -133,8 +132,8 @@ if (isset($_POST['update'])) {
         die(_MD_APCAL_ERR_NOPERMTODELETE);
     }
     // Ticket Check
-    if (!$xoopsGTicket->check()) {
-        redirect_header(XOOPS_URL . '/', 3, $xoopsGTicket->getErrors());
+    if (!$GLOBALS['xoopsSecurity']->check()) {
+        redirect_header(XOOPS_URL . '/', 3, $GLOBALS['xoopsSecurity']->getErrors());
     }
     $cal->delete_schedule_one($whr_sql_append);
 } elseif (!empty($_GET['output_ics']) /* || ! empty( $_POST[ 'output_ics' ] ) */) {

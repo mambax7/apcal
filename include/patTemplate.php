@@ -973,6 +973,7 @@ if (!class_exists('PatTemplate')) {
             if (!$this->plain_templates[$name] = @implode('', @file($fname))) {
                 die("Couldn't open template '" . $name . "' (file: '" . $fname . "') for reading.");
             }
+
             return false;
         }
 

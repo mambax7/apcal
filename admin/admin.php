@@ -72,8 +72,7 @@ if ($admintest != 0) {
             if ($category > 0) {
                 $groups =& $xoopsUser->getGroups();
                 if (in_array(XOOPS_GROUP_ADMIN, $groups)
-                    || false !== $syspermHandler->checkRight('system_admin', $category, $groups, $xoopsModule->getVar('mid'))
-                ) {
+                    || false !== $syspermHandler->checkRight('system_admin', $category, $groups, $xoopsModule->getVar('mid'))) {
                     //                  if (file_exists(XOOPS_ROOT_PATH."/modules/system/admin/".$fct."/main.php")) {
                     //                      require_once XOOPS_ROOT_PATH."/modules/system/admin/".$fct."/main.php"; GIJ
                     if (file_exists("../include/{$fct}.inc.php")) {

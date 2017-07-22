@@ -41,9 +41,7 @@ if ($ref === '' || strpos($ref, XOOPS_URL . '/modules/system/admin.php') === 0) 
     // 0.76 to 0.8
     $result = $GLOBALS['xoopsDB']->query('SELECT * FROM ' . $GLOBALS['xoopsDB']->prefix("apcal{$mydirnumber}_plugins") . ' LIMIT 1');
     if (!$result) {
-        $GLOBALS['xoopsDB']->queryF('ALTER TABLE '
-                                    . $GLOBALS['xoopsDB']->prefix("apcal{$mydirnumber}_cat")
-                                    . " CHANGE cat_extkey1 cat_depth TINYINT UNSIGNED NOT NULL DEFAULT 0, ADD cat_style VARCHAR(255) NOT NULL DEFAULT '', ADD KEY (pid), ADD KEY (weight), ADD KEY (cat_depth)");
+        $GLOBALS['xoopsDB']->queryF('ALTER TABLE ' . $GLOBALS['xoopsDB']->prefix("apcal{$mydirnumber}_cat") . " CHANGE cat_extkey1 cat_depth TINYINT UNSIGNED NOT NULL DEFAULT 0, ADD cat_style VARCHAR(255) NOT NULL DEFAULT '', ADD KEY (pid), ADD KEY (weight), ADD KEY (cat_depth)");
 
         $GLOBALS['xoopsDB']->queryF('CREATE TABLE ' . $GLOBALS['xoopsDB']->prefix("apcal{$mydirnumber}_plugins") . " (
           pi_id SMALLINT(5) UNSIGNED ZEROFILL NOT NULL AUTO_INCREMENT,

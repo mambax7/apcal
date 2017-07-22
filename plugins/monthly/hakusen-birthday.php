@@ -10,8 +10,8 @@
  */
 
 /**
- * @copyright   {@link https://xoops.org/ XOOPS Project}
- * @license     {@link http://www.fsf.org/copyleft/gpl.html GNU public license}
+ * @copyright    {@link https://xoops.org/ XOOPS Project}
+ * @license      {@link http://www.fsf.org/copyleft/gpl.html GNU public license}
  * @package
  * @since
  * @author       XOOPS Development Team,
@@ -42,11 +42,7 @@ $range_start_s = $this->month * 100;
 $range_end_s   = $this->month * 100 + 31;
 
 // query (added 86400 second margin "begin" & "end")
-$result = $db->query('SELECT u.uname,u.uid,h.birthday FROM '
-                     . $db->prefix('hakusen_users')
-                     . ' h LEFT JOIN '
-                     . $db->prefix('users')
-                     . " u ON u.uid=h.uid WHERE h.birthday % 10000 >= $range_start_s AND h.birthday % 10000 <= $range_end_s AND `bd_open` AND u.level > 0");
+$result = $db->query('SELECT u.uname,u.uid,h.birthday FROM ' . $db->prefix('hakusen_users') . ' h LEFT JOIN ' . $db->prefix('users') . " u ON u.uid=h.uid WHERE h.birthday % 10000 >= $range_start_s AND h.birthday % 10000 <= $range_end_s AND `bd_open` AND u.level > 0");
 
 while (list($uname, $uid, $birthday) = $db->fetchRow($result)) {
     $target_date = $birthday % 100;

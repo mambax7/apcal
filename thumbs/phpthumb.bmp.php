@@ -120,9 +120,9 @@ class phpthumb_bmp
 
         // shortcuts
         $ThisFileInfo['bmp']['header']['raw'] = array();
-        $thisfile_bmp                         = &$ThisFileInfo['bmp'];
-        $thisfile_bmp_header                  = &$thisfile_bmp['header'];
-        $thisfile_bmp_header_raw              = &$thisfile_bmp_header['raw'];
+        $thisfile_bmp                         =& $ThisFileInfo['bmp'];
+        $thisfile_bmp_header                  =& $thisfile_bmp['header'];
+        $thisfile_bmp_header_raw              =& $thisfile_bmp_header['raw'];
 
         // BITMAPFILEHEADER [14 bytes] - http://msdn.microsoft.com/library/en-us/gdi/bitmaps_62uq.asp
         // all versions
@@ -386,8 +386,7 @@ class phpthumb_bmp
             if ($thisfile_bmp_header_raw['bits_per_pixel'] < 16) {
                 $PaletteEntries = pow(2, $thisfile_bmp_header_raw['bits_per_pixel']);
             } elseif (isset($thisfile_bmp_header_raw['colors_used']) && ($thisfile_bmp_header_raw['colors_used'] > 0)
-                      && ($thisfile_bmp_header_raw['colors_used'] <= 256)
-            ) {
+                      && ($thisfile_bmp_header_raw['colors_used'] <= 256)) {
                 $PaletteEntries = $thisfile_bmp_header_raw['colors_used'];
             }
             if ($PaletteEntries > 0) {
@@ -475,9 +474,7 @@ class phpthumb_bmp
                         case 24:
                             for ($row = ($thisfile_bmp_header_raw['height'] - 1); $row >= 0; $row--) {
                                 for ($col = 0; $col < $thisfile_bmp_header_raw['width']; $col++) {
-                                    $thisfile_bmp['data'][$row][$col] = (ord($BMPpixelData{$pixeldataoffset + 2}) << 16)
-                                                                        | (ord($BMPpixelData{$pixeldataoffset + 1}) << 8)
-                                                                        | ord($BMPpixelData{$pixeldataoffset});
+                                    $thisfile_bmp['data'][$row][$col] = (ord($BMPpixelData{$pixeldataoffset + 2}) << 16) | (ord($BMPpixelData{$pixeldataoffset + 1}) << 8) | ord($BMPpixelData{$pixeldataoffset});
                                     $pixeldataoffset                  += 3;
                                 }
                                 while (($pixeldataoffset % 4) != 0) {
@@ -490,10 +487,7 @@ class phpthumb_bmp
                         case 32:
                             for ($row = ($thisfile_bmp_header_raw['height'] - 1); $row >= 0; $row--) {
                                 for ($col = 0; $col < $thisfile_bmp_header_raw['width']; $col++) {
-                                    $thisfile_bmp['data'][$row][$col] = (ord($BMPpixelData{$pixeldataoffset + 3}) << 24)
-                                                                        | (ord($BMPpixelData{$pixeldataoffset + 2}) << 16)
-                                                                        | (ord($BMPpixelData{$pixeldataoffset + 1}) << 8)
-                                                                        | ord($BMPpixelData{$pixeldataoffset});
+                                    $thisfile_bmp['data'][$row][$col] = (ord($BMPpixelData{$pixeldataoffset + 3}) << 24) | (ord($BMPpixelData{$pixeldataoffset + 2}) << 16) | (ord($BMPpixelData{$pixeldataoffset + 1}) << 8) | ord($BMPpixelData{$pixeldataoffset});
                                     $pixeldataoffset                  += 4;
                                 }
                                 while (($pixeldataoffset % 4) != 0) {
@@ -678,8 +672,7 @@ class phpthumb_bmp
                             $greenshift = 0;
                             $blueshift  = 0;
                             if (!$thisfile_bmp_header_raw['red_mask'] || !$thisfile_bmp_header_raw['green_mask']
-                                || !$thisfile_bmp_header_raw['blue_mask']
-                            ) {
+                                || !$thisfile_bmp_header_raw['blue_mask']) {
                                 $ThisFileInfo['error'][] = 'missing $thisfile_bmp_header_raw[(red|green|blue)_mask]';
 
                                 return false;
@@ -698,12 +691,9 @@ class phpthumb_bmp
                                     $pixelvalue      = $this->LittleEndian2Int(substr($BMPpixelData, $pixeldataoffset, $thisfile_bmp_header_raw['bits_per_pixel'] / 8));
                                     $pixeldataoffset += $thisfile_bmp_header_raw['bits_per_pixel'] / 8;
 
-                                    $red                              = (int)round(((($pixelvalue & $thisfile_bmp_header_raw['red_mask']) >> $redshift) / ($thisfile_bmp_header_raw['red_mask']
-                                                                                                                                                           >> $redshift)) * 255);
-                                    $green                            = (int)round(((($pixelvalue & $thisfile_bmp_header_raw['green_mask']) >> $greenshift) / ($thisfile_bmp_header_raw['green_mask']
-                                                                                                                                                               >> $greenshift)) * 255);
-                                    $blue                             = (int)round(((($pixelvalue & $thisfile_bmp_header_raw['blue_mask']) >> $blueshift) / ($thisfile_bmp_header_raw['blue_mask']
-                                                                                                                                                             >> $blueshift)) * 255);
+                                    $red                              = (int)round(((($pixelvalue & $thisfile_bmp_header_raw['red_mask']) >> $redshift) / ($thisfile_bmp_header_raw['red_mask'] >> $redshift)) * 255);
+                                    $green                            = (int)round(((($pixelvalue & $thisfile_bmp_header_raw['green_mask']) >> $greenshift) / ($thisfile_bmp_header_raw['green_mask'] >> $greenshift)) * 255);
+                                    $blue                             = (int)round(((($pixelvalue & $thisfile_bmp_header_raw['blue_mask']) >> $blueshift) / ($thisfile_bmp_header_raw['blue_mask'] >> $blueshift)) * 255);
                                     $thisfile_bmp['data'][$row][$col] = (($red << 16) | ($green << 8) | $blue);
                                 }
                                 while (($pixeldataoffset % 4) != 0) {

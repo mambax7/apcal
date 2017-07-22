@@ -73,6 +73,7 @@
     window.onload = GMinit;
 </script>
 <form name="getCoords" action="" method="post">
+    <{securityToken}><{*//mb*}>
     <input type="text" name="address">
     <input type="button" name="search" value="Search" onclick="moveMap(document.getCoords.address.value);">
     <input type="button" name="getLatLngZoom" value="Get latitude/longitude/zoom" onclick="sendCoords();">
