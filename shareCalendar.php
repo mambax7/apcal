@@ -10,7 +10,7 @@
  */
 
 /**
- * @copyright   {@link http://xoops.org/ XOOPS Project}
+ * @copyright   {@link https://xoops.org/ XOOPS Project}
  * @license     {@link http://www.fsf.org/copyleft/gpl.html GNU public license}
  * @package
  * @since
@@ -25,8 +25,8 @@ include XOOPS_ROOT_PATH . '/header.php';
 require_once XOOPS_ROOT_PATH . '/class/xoopsformloader.php';
 
 $tpl        = new XoopsTpl();
-$form       = new XoopsThemeForm(_APCAL_SHARECALENDARFORM, 'calendar', '', 'post');
-$formCustom = new XoopsThemeForm(_APCAL_IFCUSTOM, 'custom', '', 'post');
+$form       = new XoopsThemeForm(_APCAL_SHARECALENDARFORM, 'calendar', '', 'post', true);
+$formCustom = new XoopsThemeForm(_APCAL_IFCUSTOM, 'custom', '', 'post', true);
 
 $catSelect = new XoopsFormSelect(_APCAL_CATEGORIES, 'c', 0);
 $catSelect->addOptionArray(getCategories());
