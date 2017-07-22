@@ -218,7 +218,7 @@ while (list($tplset) = $db->fetchRow($srs)) {
     $tplset4disp     = htmlspecialchars($tplset, ENT_QUOTES);
     $tplsets[]       = $tplset;
     $th_style        = $tplset == $xoopsConfig['template_set'] ? "style='color:yellow;'" : '';
-    $tplsets_th4disp .= "<th $th_style><input type='checkbox' onclick=\"with(document.MainForm){for (i=0;i<length;i++) {if(elements[i].type=='checkbox'&&elements[i].name.indexOf('{$tplset4disp}_check')>=0) {elements[i].checked=this.checked;}}}\" />DB-{$tplset4disp}</th>";
+    $tplsets_th4disp .= "<th $th_style><input type='checkbox' onclick=\"with(document.MainForm){for (i=0;i<length;i++) {if(elements[i].type=='checkbox'&&elements[i].name.indexOf('{$tplset4disp}_check')>=0) {elements[i].checked=this.checked;}}}\" >DB-{$tplset4disp}</th>";
     $tplset_options  .= "<option value='$tplset4disp'>$tplset4disp</option>\n";
 }
 
@@ -238,7 +238,7 @@ echo "
         <tr>
             <th>" . _MD_APCAL_FILENAME . "</th>
             <th>type</th>
-            <th><input type='checkbox' onclick=\"with(document.MainForm){for (i=0;i<length;i++) {if(elements[i].type=='checkbox'&&elements[i].name.indexOf('basecheck')>=0) {elements[i].checked=this.checked;}}}\" />file</th>
+            <th><input type='checkbox' onclick=\"with(document.MainForm){for (i=0;i<length;i++) {if(elements[i].type=='checkbox'&&elements[i].name.indexOf('basecheck')>=0) {elements[i].checked=this.checked;}}}\" >file</th>
             $tplsets_th4disp
         </tr>\n";
 
@@ -279,7 +279,7 @@ while (list($tpl_file, $tpl_desc, $type, $count) = $db->fetchRow($frs)) {
              . formatTimestamp(filemtime($basefilepath), 'm')
              . '<br>'
              . substr($fingerprint, 0, 16)
-             . "<br><input type='checkbox' name='basecheck[$tpl_file]' value='1' /></td>\n";
+             . "<br><input type='checkbox' name='basecheck[$tpl_file]' value='1' ></td>\n";
     } else {
         echo "<td class='$evenodd'><br></td>";
     }
@@ -315,7 +315,7 @@ while (list($tpl_file, $tpl_desc, $type, $count) = $db->fetchRow($frs)) {
                  . formatTimestamp($tpl['tpl_lastmodified'], 'm')
                  . '<br>'
                  . substr($fingerprint, 0, 16)
-                 . "<br><input type='checkbox' name='{$tplset4disp}_check[{$tpl_file}]' value='1' /> &nbsp; <a href='mytplsform.php?tpl_file="
+                 . "<br><input type='checkbox' name='{$tplset4disp}_check[{$tpl_file}]' value='1' > &nbsp; <a href='mytplsform.php?tpl_file="
                  . htmlspecialchars($tpl['tpl_file'], ENT_QUOTES)
                  . '&amp;tpl_tplset='
                  . htmlspecialchars($tpl['tpl_tplset'], ENT_QUOTES)
@@ -335,21 +335,21 @@ echo "
             "
      . _CLONE
      . ": <br>
-            <select name='clone_tplset_from'>$tplset_options</select>-&gt;<input type='text' name='clone_tplset_to' size='8' /><input type='submit' name='clone_tplset_do' value='"
+            <select name='clone_tplset_from'>$tplset_options</select>-&gt;<input type='text' name='clone_tplset_to' size='8' ><input type='submit' name='clone_tplset_do' value='"
      . _MD_APCAL_GENERATE
-     . "' />
+     . "' >
         </td>
         <td class='head'></td>
         <td class='head'>
-            <input name='copyf2db_do' type='submit' value='copy to-&gt;' /><br>
+            <input name='copyf2db_do' type='submit' value='copy to-&gt;' ><br>
             <select name='copyf2db_to'>$tplset_options
         </td>\n";
 
 foreach ($tplsets as $tplset) {
     $tplset4disp = htmlspecialchars($tplset, ENT_QUOTES);
     echo "\t\t<td class='head'>
-            " . ($tplset === 'default' ? '' : "<input name='del_do[{$tplset4disp}]' type='submit' value='" . _DELETE . "' onclick='return confirm(\"" . _DELETE . " OK?\");' /><br>") . "
-            <input name='copy_do[{$tplset4disp}]' type='submit' value='copy to-&gt;' /><br>
+            " . ($tplset === 'default' ? '' : "<input name='del_do[{$tplset4disp}]' type='submit' value='" . _DELETE . "' onclick='return confirm(\"" . _DELETE . " OK?\");' ><br>") . "
+            <input name='copy_do[{$tplset4disp}]' type='submit' value='copy to-&gt;' ><br>
             <select name='copy_to[{$tplset4disp}]'>$tplset_options</select>
         </td>\n";
 }

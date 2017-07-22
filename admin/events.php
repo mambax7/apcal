@@ -273,9 +273,9 @@ echo '
 <p><style='color: blue; '>" . (isset($_GET['mes']) ? htmlspecialchars($_GET['mes'], ENT_QUOTES) : '') . "</style></p>\n" . (isset($confirm_html) ? $confirm_html : '') . "
 <form action='' method='get' style='margin-bottom:0px;text-align:left'>
   <select name='tz' onChange='submit();'>$tzoptions</select>
-  <input type='hidden' name='cid' value='$cid' />
-  <input type='hidden' name='num' value='$num' />
-  <input type='hidden' name='txt' value='" . htmlspecialchars($txt, ENT_QUOTES) . "' />
+  <input type='hidden' name='cid' value='$cid' >
+  <input type='hidden' name='num' value='$num' >
+  <input type='hidden' name='txt' value='" . htmlspecialchars($txt, ENT_QUOTES) . "' >
 </form>
 <table width='100%' cellpadding='0' cellspacing='0' border='0'>
   <tr>
@@ -288,11 +288,11 @@ echo '
           $pf_options
         </select>
         $cat_selbox4extract
-        <input type='text' name='txt' value='" . htmlspecialchars($txt, ENT_QUOTES) . "' />
-        <input type='submit' value='" . _AM_APCAL_BUTTON_EXTRACT . "' /> &nbsp;
+        <input type='text' name='txt' value='" . htmlspecialchars($txt, ENT_QUOTES) . "' >
+        <input type='submit' value='" . _AM_APCAL_BUTTON_EXTRACT . "' > &nbsp;
         $nav_html &nbsp;
-        <input type='hidden' name='num' value='$num' />
-        <input type='hidden' name='tz' value='$tz' />
+        <input type='hidden' name='num' value='$num' >
+        <input type='hidden' name='tz' value='$tz' >
       </form>
     </td>
   </tr>
@@ -308,7 +308,7 @@ echo '
     <th>' . _AM_APCAL_IO_TH4 . '</th>
     <th>' . _AM_APCAL_IO_TH5 . "</th>
     <th></th>
-    <th><input type='checkbox' name='dummy' onclick=\"with(document.MainForm){for (i=0;i<length;i++) {if (elements[i].type=='checkbox') {elements[i].checked=this.checked;}}}\" /></th>
+    <th><input type='checkbox' name='dummy' onclick=\"with(document.MainForm){for (i=0;i<length;i++) {if (elements[i].type=='checkbox') {elements[i].checked=this.checked;}}}\" ></th>
   </tr>
 ";
 
@@ -333,8 +333,8 @@ while ($event = $GLOBALS['xoopsDB']->fetchObject($rs)) {
     <td class='$oddeven'><a href='$mod_url/index.php?action=View&amp;event_id=$event->id'>$summary4disp</a></td>
     <td class='$oddeven'>" . $cal->rrule_to_human_language($event->rrule) . "</td>
     <td class='$oddeven'>" . ($event->admission ? _YES : _NO) . "</td>
-    <td class='$oddeven' align='right'><a href='$mod_url/index.php?action=Edit&amp;event_id=$event->id' target='_blank'><img src='$cal->images_url/addevent.gif' border='0' width='14' height='12' /></a></td>
-    <td class='$oddeven' align='right'><input type='checkbox' name='ids[]' value='$event->id' /></td>
+    <td class='$oddeven' align='right'><a href='$mod_url/index.php?action=Edit&amp;event_id=$event->id' target='_blank'><img src='$cal->images_url/addevent.gif' border='0' width='14' height='12' ></a></td>
+    <td class='$oddeven' align='right'><input type='checkbox' name='ids[]' value='$event->id' ></td>
   </tr>\n";
 }
 
@@ -347,13 +347,13 @@ echo "
      . _AM_APCAL_LABEL_IO_OUTPUT
      . "<input type='submit' name='output_ics_confirm' value='"
      . _APCAL_BTN_EXPORT
-     . "' /> &nbsp; "
+     . "' > &nbsp; "
      . _AM_APCAL_LABEL_IO_DELETE
      . "<input type='submit' name='delete' value='"
      . _DELETE
      . "' onclick='return confirm(\""
      . _AM_APCAL_CONFIRM_DELETE
-     . "\")' /><br>
+     . "\")' ><br>
       <br>
       $cat_selbox <input type='submit' name='movelink' value='"
      . _AM_APCAL_BUTTON_MOVE
@@ -361,12 +361,12 @@ echo "
      . _AM_APCAL_CONFIRM_MOVE
      . "\")' "
      . ($cid <= 0 ? "disabled='disabled'" : '')
-     . " /> <input type='submit' name='addlink' value='"
+     . " > <input type='submit' name='addlink' value='"
      . _AM_APCAL_BUTTON_COPY
      . "' onclick='return confirm(\""
      . _AM_APCAL_CONFIRM_COPY
-     . "\")' />
-      <input type='hidden' name='old_cid' value='$cid' />
+     . "\")' >
+      <input type='hidden' name='old_cid' value='$cid' >
     </td>
   </tr>
   <tr>

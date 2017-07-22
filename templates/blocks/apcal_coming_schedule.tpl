@@ -21,7 +21,7 @@
  *}>
 
 <script type="text/javascript" src="<{$xoops_url}>/modules/apcal/assets/images/js/highslide/highslide-with-gallery.js"></script>
-<link rel="stylesheet" type="text/css" href="<{$xoops_url}>/modules/apcal/assets/images/js/highslide/highslide.css"/>
+<link rel="stylesheet" type="text/css" href="<{$xoops_url}>/modules/apcal/assets/images/js/highslide/highslide.css">
 <script type="text/javascript">
     hs.graphicsDir = '<{$xoops_url}>/modules/apcal/assets/images/js/highslide/graphics/';
     hs.align = 'center';
@@ -56,12 +56,12 @@
                 <a href="<{$xoops_upload_url}>/apcal/<{$event.picture}>" class="highslide" title="<{$event.summary}>"
                    onclick="return hs.expand(this)">
                     <img src="<{$xoops_upload_url}>/apcal/thumbs/<{$event.picture}>" alt="<{$event.summary}>"
-                         title="<{$event.summary}>" style='max-width: 18px; max-height: 20px;'/>
+                         title="<{$event.summary}>" style='max-width: 18px; max-height: 20px;'>
                 </a>
                 <{else}>
                 <span style='font-size: x-small; '>
                     <img src="<{$block.images_url}>/<{$event.dot_gif}>" alt="<{$event.summary}>"
-                         title="<{$event.summary}>" style='max-width: 18px; max-height: 20px;'/>&nbsp;
+                         title="<{$event.summary}>" style='max-width: 18px; max-height: 20px;'>&nbsp;
                     <{/if}>
 
                     <{if $event.distance == 0}>
@@ -103,7 +103,7 @@
                 <span style='font-size: x-small; '>
                     <small><a href='<{$block.get_target}>?smode=Daily&amp;action=Edit&amp;caldate=<{$block.caldate}>'>
                             <img src='<{$block.images_url}>/addevent.gif' border='0' width='14'
-                                 height='12'/><{$block.lang_APCAL_MB_APCALADDEVENT}>
+                                 height='12'><{$block.lang_APCAL_MB_APCALADDEVENT}>
                         </a></small>
                 </span>
             </td>

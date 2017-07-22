@@ -35,7 +35,7 @@
                                 <div class="socialNetworks">
                 <span class="print">
                     <a href="<{$print_link}>" target="_blank">
-                        <img src="<{$images_url}>/print.gif" alt="<{$alt_print}>" title="<{$alt_print}>" border="0"/>
+                        <img src="<{$images_url}>/print.gif" alt="<{$alt_print}>" title="<{$alt_print}>" border="0">
                     </a>
                 </span>
                                     <{if $showTellaFriend}>
@@ -44,7 +44,7 @@
                        onclick="window.open('<{$xoops_url}>/modules/apcal/tellafriend.php?url='+encodeURIComponent(location.href)+'&title='+encodeURIComponent(document.title), '<{$smarty.const._APCAL_TELLAFRIEND}>', 'toolbar=no, width=550, height=550'); return false;">
                         <img src="<{$xoops_url}>/modules/apcal/assets/images/tellafriend.png" height="20" width="20"
                              alt="<{$smarty.const._APCAL_TELLAFRIEND}>"
-                             title="<{$smarty.const._APCAL_TELLAFRIEND}>"/>
+                             title="<{$smarty.const._APCAL_TELLAFRIEND}>">
                     </a>
                 </span>
                                     <{/if}>
@@ -52,7 +52,7 @@
                     <a href="http://www.delicious.com/save" title="Delicious"
                        onclick="window.open('http://www.delicious.com/save?v=5&noui&jump=close&url='+encodeURIComponent(location.href)+'&title='+encodeURIComponent(document.title), 'delicious','toolbar=no,width=550,height=550'); return false;">
                         <img src="<{$xoops_url}>/modules/apcal/assets/images/delicious.png" height="20" width="20"
-                             alt="Delicious" title="Delicious"/>
+                             alt="Delicious" title="Delicious">
                     </a>
                 </span>
                                     <span class="googleplus">
@@ -81,7 +81,7 @@
                             <div class="share">
                                 <a href="<{$xoops_url}>/modules/apcal/shareCalendar.php"
                                    title="<{$smarty.const._APCAL_SHARECALENDAR}>">
-                                    <img src="<{$xoops_url}>/modules/apcal/assets/images/share.png"/>
+                                    <img src="<{$xoops_url}>/modules/apcal/assets/images/share.png">
                                     <span style="line-height: 32px; margin-bottom: 15px;"><{$smarty.const._APCAL_SHARECALENDAR}></span>
                                 </a>
                             </div>
@@ -99,40 +99,40 @@
                                     </td>
 
                                     <td width='8'>
-                                        <img src='<{$images_url}>/spacer.gif' alt='' width='8' height='4'/>
+                                        <img src='<{$images_url}>/spacer.gif' alt='' width='8' height='4'>
                                     </td>
 
                                     <{* DATE DESCRIPTION *}>
                                     <td width='350' align='center' valign='middle' nowrap='nowrap'
                                         style='vertical-align:middle;'>
-                                        <img src='<{$images_url}>/spacer.gif' alt='' width='350' height='4'/><br>
+                                        <img src='<{$images_url}>/spacer.gif' alt='' width='350' height='4'><br>
                                         <form action='<{$get_target}>?smode=List&amp;num=<{$num}>&amp;cid=<{$now_cid}>&amp;order=<{$order}>'
                                               method='POST' style='margin:0;'>
                                             <span style="font-size: medium; color: <{$calhead_color}>; "><span
                                                         class='calhead'><{$ymdo_selects}><input type='submit'
                                                                                                 name='apcal_jumpcaldate'
-                                                                                                value='<{$lang_button_jump}>'/></span></span>
+                                                                                                value='<{$lang_button_jump}>'></span></span>
                                             <br>
                                         </form>
-                                        <img src='<{$images_url}>/spacer.gif' alt='' width='350' height='4'/>
+                                        <img src='<{$images_url}>/spacer.gif' alt='' width='350' height='4'>
                                     </td>
 
                                     <td align='right' valign='middle' style='vertical-align:middle;'>
 
                                         <{* ICONS *}>
-                                        <img src='<{$images_url}>/spacer.gif' alt='' width='128' height='4'/><br>
+                                        <img src='<{$images_url}>/spacer.gif' alt='' width='128' height='4'><br>
                                         <a href='<{$YEARLYVIEW}>'><img src='<{$images_url}>/year_on.gif' border='0'
                                                                        width='30' height='24' alt='<{$alt_yearly}>'
-                                                                       title='<{$alt_yearly}>'/></a>
+                                                                       title='<{$alt_yearly}>'></a>
                                         <a href='<{$MONTHLYVIEW}>'><img src='<{$images_url}>/month_on.gif' border='0'
                                                                         width='30' height='24' alt='<{$alt_monthly}>'
-                                                                        title='<{$alt_monthly}>'/></a>
+                                                                        title='<{$alt_monthly}>'></a>
                                         <a href='<{$WEEKLYVIEW}>'><img src='<{$images_url}>/week_on.gif' border='0'
                                                                        width='30' height='24' alt='<{$alt_weekly}>'
-                                                                       title='<{$alt_weekly}>'/></a>
+                                                                       title='<{$alt_weekly}>'></a>
                                         <a href='<{$DAILYVIEW}>'><img src='<{$images_url}>/day_on.gif' border='0'
                                                                       width='30' height='24' alt='<{$alt_daily}>'
-                                                                      title='<{$alt_daily}>'/></a>
+                                                                      title='<{$alt_daily}>'></a>
 
                                     </td>
                                 </tr>
@@ -146,7 +146,7 @@
             <td align="center">
 
                 <br>
-                <hr/>
+                <hr>
 
                 <{if $num_rows > 1}>
                     <div>
@@ -157,41 +157,41 @@
                             <{$lang_startdatetime}> (
                             <a href="<{$get_target}>?smode=List&amp;cid=<{$now_cid}>&amp;caldate=<{$caldate}>&amp;op=<{$op}>&amp;order=start"><img
                                         src="<{$images_url}>/up.gif" border="0"
-                                        align="middle" alt=""/></a>
+                                        align="middle" alt=""></a>
                             <a href="<{$get_target}>?smode=List&amp;cid=<{$now_cid}>&amp;caldate=<{$caldate}>&amp;op=<{$op}>&amp;order=start+DESC"><img
                                         src="<{$images_url}>/down.gif" border="0"
-                                        align="middle" alt=""/></a>
+                                        align="middle" alt=""></a>
                             )
                             <{$lang_lastmodified}> (
                             <a href="<{$get_target}>?smode=List&amp;cid=<{$now_cid}>&amp;caldate=<{$caldate}>&amp;op=<{$op}>&amp;order=dtstamp"><img
                                         src="<{$images_url}>/up.gif" border="0"
-                                        align="middle" alt=""/></a>
+                                        align="middle" alt=""></a>
                             <a href="<{$get_target}>?smode=List&amp;cid=<{$now_cid}>&amp;caldate=<{$caldate}>&amp;op=<{$op}>&amp;order=dtstamp+DESC"><img
                                         src="<{$images_url}>/down.gif" border="0"
-                                        align="middle" alt=""/></a>
+                                        align="middle" alt=""></a>
                             )
                             <{$lang_summary}> (
                             <a href="<{$get_target}>?smode=List&amp;cid=<{$now_cid}>&amp;caldate=<{$caldate}>&amp;op=<{$op}>&amp;order=summary"><img
                                         src="<{$images_url}>/up.gif" border="0"
-                                        align="middle" alt=""/></a>
+                                        align="middle" alt=""></a>
                             <a href="<{$get_target}>?smode=List&amp;cid=<{$now_cid}>&amp;caldate=<{$caldate}>&amp;op=<{$op}>&amp;order=summary+DESC"><img
                                         src="<{$images_url}>/down.gif" border="0"
-                                        align="middle" alt=""/></a>
+                                        align="middle" alt=""></a>
                             )
                             <{$lang_submitter}> (
                             <a href="<{$get_target}>?smode=List&amp;cid=<{$now_cid}>&amp;caldate=<{$caldate}>&amp;op=<{$op}>&amp;order=uid"><img
                                         src="<{$images_url}>/up.gif" border="0" align="middle"
-                                        alt=""/></a>
+                                        alt=""></a>
                             <a href="<{$get_target}>?smode=List&amp;cid=<{$now_cid}>&amp;caldate=<{$caldate}>&amp;op=<{$op}>&amp;order=uid+DESC"><img
                                         src="<{$images_url}>/down.gif" border="0"
-                                        align="middle" alt=""/></a>
+                                        align="middle" alt=""></a>
                             )
                             <br>
                         <{/if}>
 
                         <b><{$lang_cursortedby}> <{$lang_order}></b>
                     </div>
-                    <hr/>
+                    <hr>
                 <{/if}>
 
                 <br>
@@ -223,7 +223,7 @@
                             <{if $isAdmin}>
                                 <th class='head'><{$lang_admission}></th><{/if}>
                             <th class='head'><input type='checkbox' name='dummy'
-                                                    onclick="with(document.MainForm){for(i=0;i<length;i++){if(elements[i].type=='checkbox'){elements[i].checked=this.checked;}}}"/>
+                                                    onclick="with(document.MainForm){for(i=0;i<length;i++){if(elements[i].type=='checkbox'){elements[i].checked=this.checked;}}}">
                             </th>
                         </tr>
                         <!-- Start event loop -->
@@ -251,10 +251,10 @@
                                         href='<{$get_target}>?smode=Daily&amp;action=Edit&amp;event_id=<{$event.id}>&amp;caldate=<{$caldate}>'>
                                         <img
                                         src='<{$images_url}>/addevent.gif' border='0' width='14'
-                                        height='12' /><{$lang_editevent}></a><{/if}>
+                                        height='12' ><{$lang_editevent}></a><{/if}>
                                     </td><{/if}>
                                 <td class='<{$event.oddeven}>' align='right'><input type='checkbox' name='ids[]'
-                                                                                    value='<{$event.target_id}>'/></td>
+                                                                                    value='<{$event.target_id}>'></td>
                             </tr>
                         <{/foreach}>
                         <!-- End event loop -->
@@ -264,7 +264,7 @@
                                 <td colspan='7' align='right' class='head'>
                                     <{$lang_checkeditems}> &nbsp; <{$lang_icalendar_output}><input type='submit'
                                                                                                    name='output_ics_confirm'
-                                                                                                   value='<{$lang_button_export}>'/>
+                                                                                                   value='<{$lang_button_export}>'>
                                 </td>
                             </tr>
                         <{/if}>
@@ -273,17 +273,17 @@
 
                     <table border='0' cellspacing='0' cellpadding='0' width='570'>
                         <tr>
-                            <td width='10'><img src='<{$images_url}>/spacer.gif' alt='' width='10' height='10'/></td>
+                            <td width='10'><img src='<{$images_url}>/spacer.gif' alt='' width='10' height='10'></td>
                             <td width='100%' align='right'><{$apcal_copyright}></td>
                         </tr>
                         <{if $for_print <> true}>
                             <tr>
-                                <td width='10'><img src='<{$images_url}>/spacer.gif' alt='' width='10' height='10'/>
+                                <td width='10'><img src='<{$images_url}>/spacer.gif' alt='' width='10' height='10'>
                                 </td>
                                 <td width='100%' align='right'><a href="<{$print_link}>" target="_blank"><img
                                                 src="<{$images_url}>/print.gif" alt="<{$alt_print}>"
                                                 title="<{$alt_print}>"
-                                                border="0"/></a></td>
+                                                border="0"></a></td>
                             </tr>
                         <{/if}>
                     </table>

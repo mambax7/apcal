@@ -41,7 +41,7 @@ if (defined('FOR_XOOPS_LANG_CHECKER') || !defined('_AM_APCAL_LOADED')) {
 
     // format
     define('_AM_APCAL_DTFMT_LIST_ALLDAY', 'y-m-d');
-    define('_AM_APCAL_DTFMT_LIST_NORMAL', 'y-m-d<\b\r />H:i');
+    define('_AM_APCAL_DTFMT_LIST_NORMAL', 'y-m-d<\b\r >H:i');
 
     // timezones
     define('_AM_APCAL_TZOPT_SERVER', 'As server timezone');

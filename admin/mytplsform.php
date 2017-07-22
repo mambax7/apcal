@@ -156,9 +156,9 @@ if ($tpl['tpl_tplset'] !== 'default') {
 
 echo "
     <form name='diff_form' id='diff_form' action='' method='get'>
-    <input type='checkbox' name='display_diff2file' value='1' onClick=\"if (this.checked) {document.getElementById('diff2file').style.display='block'} else {document.getElementById('diff2file').style.display='none'};\" id='display_diff2file' checked />&nbsp;<label for='display_diff2file'>diff from file</label>
+    <input type='checkbox' name='display_diff2file' value='1' onClick=\"if (this.checked) {document.getElementById('diff2file').style.display='block'} else {document.getElementById('diff2file').style.display='none'};\" id='display_diff2file' checked >&nbsp;<label for='display_diff2file'>diff from file</label>
     <pre id='diff2file' style='display:block;border:1px solid black;'>$diff_from_file4disp</pre>
-    <input type='checkbox' name='display_diff2default' value='1' onClick=\"if (this.checked) {document.getElementById('diff2default').style.display='block'} else {document.getElementById('diff2default').style.display='none'};\" id='display_diff2default' />&nbsp;<label for='display_diff2default'>diff from default</label>
+    <input type='checkbox' name='display_diff2default' value='1' onClick=\"if (this.checked) {document.getElementById('diff2default').style.display='block'} else {document.getElementById('diff2default').style.display='none'};\" id='display_diff2default' >&nbsp;<label for='display_diff2default'>diff from default</label>
     <pre id='diff2default' style='display:none;border:1px solid black;'>$diff_from_default4disp</pre>
     </form>\n";
 
@@ -167,8 +167,8 @@ echo "
     " . $xoopsGTicket->getTicketHtml(__LINE__) . "
     <textarea name='tpl_source' wrap='off' style='width:600px;height:400px;'>" . htmlspecialchars($tpl['tpl_source'], ENT_QUOTES) . "</textarea>
     <br>
-    <input type='submit' name='do_modify' value='" . _SUBMIT . "' />
-    <input type='reset' name='reset' value='reset' />
+    <input type='submit' name='do_modify' value='" . _SUBMIT . "' >
+    <input type='reset' name='reset' value='reset' >
 </form>\n";
 
 xoops_cp_footer();

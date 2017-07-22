@@ -368,7 +368,7 @@ if ($disp === 'edit' && $cid > 0) {
         echo "<p><style='color: blue; '>" . htmlspecialchars($_GET['mes'], ENT_QUOTES) . '</style></p>';
     }
 
-    echo "<p><a href='?disp=new&cid=0'>" . _AM_APCAL_MB_MAKETOPCAT . "<img src='../assets/images/cat_add.gif' width='18' height='15' alt='' /></a></p>\n";
+    echo "<p><a href='?disp=new&cid=0'>" . _AM_APCAL_MB_MAKETOPCAT . "<img src='../assets/images/cat_add.gif' width='18' height='15' alt='' ></a></p>\n";
 
     // ���ƥ��꡼�ǡ�������
     $cat_tree_array = $cattree->getChildTreeArray(0, 'weight ASC,cat_title');
@@ -377,7 +377,7 @@ if ($disp === 'edit' && $cid > 0) {
     echo "
     <form name='MainForm' action='' method='post' style='margin:10px;'>
     " . $xoopsGTicket->getTicketHtml(__LINE__) . "
-    <input type='hidden' name='delcat' value='' />
+    <input type='hidden' name='delcat' value='' >
     <table width='75%' class='outer' cellpadding='4' cellspacing='1'>
       <tr valign='middle'>
         <th>" . _AM_APCAL_CAT_TH_TITLE . '</th>
@@ -402,23 +402,23 @@ if ($disp === 'edit' && $cid > 0) {
       <tr>
         <td class='$oddeven' width='100%'><a href='?disp=edit&amp;cid=$cid'>$prefix&nbsp;$cat_title</a></td>
         <td class='$oddeven' align='center' nowrap='nowrap'>
-          <a href='$mod_url/index.php?action=Edit&amp;cid=$cid' target='_blank'><img src='$cal->images_url/addevent.gif' border='0' width='14' height='12' /></a>
+          <a href='$mod_url/index.php?action=Edit&amp;cid=$cid' target='_blank'><img src='$cal->images_url/addevent.gif' border='0' width='14' height='12' ></a>
           &nbsp;
-          <a href='?disp=edit&amp;cid=$cid'><img src='../assets/images/cat_edit.gif' width='18' height='15' alt='" . _AM_APCAL_MENU_CAT_EDIT . "' title='" . _AM_APCAL_MENU_CAT_EDIT . "' /></a>
+          <a href='?disp=edit&amp;cid=$cid'><img src='../assets/images/cat_edit.gif' width='18' height='15' alt='" . _AM_APCAL_MENU_CAT_EDIT . "' title='" . _AM_APCAL_MENU_CAT_EDIT . "' ></a>
           &nbsp;
-          <a href='?disp=new&amp;cid=$cid'><img src='../assets/images/cat_add.gif' width='18' height='15' alt='" . _AM_APCAL_MENU_CAT_NEW . "' title='" . _AM_APCAL_MENU_CAT_NEW . "' /></a>
+          <a href='?disp=new&amp;cid=$cid'><img src='../assets/images/cat_add.gif' width='18' height='15' alt='" . _AM_APCAL_MENU_CAT_NEW . "' title='" . _AM_APCAL_MENU_CAT_NEW . "' ></a>
           &nbsp;
-          <input type='button' value='" . _DELETE . "'  onclick='if ($del_confirm) {document.MainForm.delcat.value=\"$cid\"; submit();}' />
+          <input type='button' value='" . _DELETE . "'  onclick='if ($del_confirm) {document.MainForm.delcat.value=\"$cid\"; submit();}' >
         </td>
-        <td class='$oddeven' align='center'><input type='checkbox' name='enabled[$cid]' value='1' $enable_checked /></td>
-        <td class='$oddeven' align='right'><input type='text' name='weights[$cid]' size='4' maxlength='6' value='$weight' /></td>
+        <td class='$oddeven' align='center'><input type='checkbox' name='enabled[$cid]' value='1' $enable_checked ></td>
+        <td class='$oddeven' align='right'><input type='text' name='weights[$cid]' size='4' maxlength='6' value='$weight' ></td>
       </tr>\n";
     }
 
     // �ơ��֥�եå���
     echo "
       <tr>
-        <td colspan='4' align='right' class='head'><input type='submit' name='batch_update' value='" . _AM_APCAL_BTN_UPDATE . "' /></td>
+        <td colspan='4' align='right' class='head'><input type='submit' name='batch_update' value='" . _AM_APCAL_BTN_UPDATE . "' ></td>
       </tr>
       <tr>
         <td colspan='8' align='right' valign='bottom' height='50'>" . _AM_APCAL_COPYRIGHT . '</td>

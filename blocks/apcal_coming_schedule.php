@@ -101,11 +101,11 @@ if (!defined('APCAL_BLOCK_COMING_SCHEDULE_INCLUDED')) {
         $cal->images_url  = "$mod_url/assets/images/$skin_folder";
         $cal->images_path = "$mod_path/assets/images/$skin_folder";
 
-        $ret = "<input type='hidden' name='options[0]' value='$moduleDirName' />\n";
+        $ret = "<input type='hidden' name='options[0]' value='$moduleDirName' >\n";
 
         // É½¼¨¸Ä¿ô
         $ret .= _MB_APCAL_MAXITEMS . ':';
-        $ret .= "<input type='text' size='4' name='options[1]' value='$maxitem' style='text-align:right;' /><br>\n";
+        $ret .= "<input type='text' size='4' name='options[1]' value='$maxitem' style='text-align:right;' ><br>\n";
 
         // ¥«¥Æ¥´¥ê¡¼ÁªÂò¥Ü¥Ã¥¯¥¹¤ÎÀ¸À®
         $ret .= _MB_APCAL_CATSEL . ':';
@@ -119,14 +119,14 @@ if (!defined('APCAL_BLOCK_COMING_SCHEDULE_INCLUDED')) {
         $ret .= "</select><br>\n";
 
         // ¥µ¥Ö¥«¥Æ¥´¥ê¡¼É½¼¨¤Î¼ÂÁõ¤Ï¤Þ¤À¤Þ¤ÀÀè¡Ê°ì±þÍ½Ìó¤À¤±¤·¤Æ¤ª¤¯¡Ë
-        //$ret .= "<input type='hidden' name='options[3]' value='0' />\n" ;
+        //$ret .= "<input type='hidden' name='options[3]' value='0' >\n" ;
 
         $ret .= _MB_APCAL_SHOWPICTURES . ':&nbsp;';
-        $ret .= _MB_APCAL_YES . " <input type='radio' name='options[3]' value='1'" . ($showPictures == 1 ? 'checked' : '') . " style='text-align:right;' />&nbsp;";
-        $ret .= _MB_APCAL_NO . " <input type='radio' name='options[3]' value='0'" . ($showPictures == 0 ? 'checked' : '') . " style='text-align:right;' /><br>\n";
+        $ret .= _MB_APCAL_YES . " <input type='radio' name='options[3]' value='1'" . ($showPictures == 1 ? 'checked' : '') . " style='text-align:right;' >&nbsp;";
+        $ret .= _MB_APCAL_NO . " <input type='radio' name='options[3]' value='0'" . ($showPictures == 0 ? 'checked' : '') . " style='text-align:right;' ><br>\n";
 
         // É½¼¨¾å¸ÂÆü¿ô
-        $ret .= sprintf(_MB_APCAL_UNTILDAYS, "<input type='text' size='4' name='options[4]' value='$untildays' style='text-align:right;' />") . "<br>\n";
+        $ret .= sprintf(_MB_APCAL_UNTILDAYS, "<input type='text' size='4' name='options[4]' value='$untildays' style='text-align:right;' >") . "<br>\n";
 
         return $ret;
     }

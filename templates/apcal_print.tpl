@@ -22,10 +22,10 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=<{$charset}>"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=<{$charset}>">
     <title><{$sitename}></title>
-    <meta name="COPYRIGHT" content="Copyright (c) 2004 by <{$sitename}>"/>
-    <meta name="GENERATOR" content="APCal with XOOPS"/>
+    <meta name="COPYRIGHT" content="Copyright (c) 2004 by <{$sitename}>">
+    <meta name="GENERATOR" content="APCal with XOOPS">
     <style><!--
         table.outer {
             border-collapse: collapse;

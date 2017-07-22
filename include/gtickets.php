@@ -40,7 +40,7 @@ if (!class_exists('XoopsGTicket')) {
          */
         public function getTicketHtml($salt = '', $timeout = 1800, $area = '')
         {
-            return '<input type="hidden" name="XOOPS_G_TICKET" value="' . $this->issue($salt, $timeout, $area) . '" />';
+            return '<input type="hidden" name="XOOPS_G_TICKET" value="' . $this->issue($salt, $timeout, $area) . '" >';
         }
 
         // returns an object of XoopsFormHidden including theh ticket

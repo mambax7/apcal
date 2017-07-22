@@ -73,7 +73,7 @@ class DHTML_Calendar
      */
     public function get_load_files_code()
     {
-        $code = ('<link rel="stylesheet" type="text/css" media="all" href="' . $this->calendar_lib_path . $this->calendar_theme_file . '" />' . NEWLINE);
+        $code = ('<link rel="stylesheet" type="text/css" media="all" href="' . $this->calendar_lib_path . $this->calendar_theme_file . '" >' . NEWLINE);
         $code .= ('<script type="text/javascript" src="' . $this->calendar_lib_path . $this->calendar_file . '"></script>' . NEWLINE);
         $code .= ('<script type="text/javascript" src="' . $this->calendar_lib_path . $this->calendar_lang_file . '"></script>' . NEWLINE);
         $code .= ('<script type="text/javascript" src="' . $this->calendar_lib_path . $this->calendar_setup_file . '"></script>');
@@ -104,8 +104,8 @@ class DHTML_Calendar
             'id'   => $this->_field_id($id),
             'type' => 'text'
         )));
-        echo '<input ' . $attrstr . '/>';
-        echo '<a href="#" id="' . $this->_trigger_id($id) . '">' . '<img align="middle" border="0" src="' . $this->calendar_lib_path . 'img.gif" alt="" /></a>';
+        echo '<input ' . $attrstr . '>';
+        echo '<a href="#" id="' . $this->_trigger_id($id) . '">' . '<img align="middle" border="0" src="' . $this->calendar_lib_path . 'img.gif" alt="" ></a>';
 
         $options = array_merge($cal_options, array(
             'inputField' => $this->_field_id($id),

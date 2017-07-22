@@ -275,7 +275,7 @@ echo "
         <select name='limit_type'>" . make_selected($type_options, $limit_type) . "</select>
         <select name='limit_dirname'>" . make_selected($dirname_options, $limit_dirname) . "</select>
         <select name='limit_file'>" . make_selected($file_options, $limit_file) . "</select>
-        <input type='submit' value='" . _AM_APCAL_BUTTON_EXTRACT . "' />
+        <input type='submit' value='" . _AM_APCAL_BUTTON_EXTRACT . "' >
     </form>
     ";
 
@@ -328,7 +328,7 @@ while ($plugin = $GLOBALS['xoopsDB']->fetchObject($prs)) {
           </select>
         </td>
         <td class='$oddeven'>
-          <input type='text' name='pi_titles[$pi_id]' value='$pi_title' size='8' />
+          <input type='text' name='pi_titles[$pi_id]' value='$pi_title' size='8' >
         </td>
         <td class='$oddeven'>
           <select name='pi_dotgifs[$pi_id]'>
@@ -336,16 +336,16 @@ while ($plugin = $GLOBALS['xoopsDB']->fetchObject($prs)) {
           </select>
         </td>
         <td class='$oddeven'>
-          <input type='text' name='pi_options[$pi_id]' value='$pi_options4disp' size='10' />
+          <input type='text' name='pi_options[$pi_id]' value='$pi_options4disp' size='10' >
         </td>
         <td class='$oddeven'>
-          <input type='text' name='pi_weight[$pi_id]' value='$plugin->pi_weight' size='2' style='text-align:right;' />
+          <input type='text' name='pi_weight[$pi_id]' value='$plugin->pi_weight' size='2' style='text-align:right;' >
         </td>
         <td class='$oddeven'>
-          <input type='checkbox' value='1' name='pi_enableds[$pi_id]' $enable_checked />
+          <input type='checkbox' value='1' name='pi_enableds[$pi_id]' $enable_checked >
         </td>
         <td class='$oddeven'>
-          <input type='checkbox' value='1' name='deletes[$pi_id]' />
+          <input type='checkbox' value='1' name='deletes[$pi_id]' >
         </td>
       </tr>
         \n";
@@ -369,7 +369,7 @@ echo "
           </select>
         </td>
         <td class='$oddeven' style='background-color:#FFCCCC;'>
-          <input type='text' name='pi_titles[0]' value='' size='8' />
+          <input type='text' name='pi_titles[0]' value='' size='8' >
         </td>
         <td class='$oddeven' style='background-color:#FFCCCC;'>
           <select name='pi_dotgifs[0]'>
@@ -377,10 +377,10 @@ echo "
           </select>
         </td>
         <td class='$oddeven' style='background-color:#FFCCCC;'>
-          <input type='text' name='pi_options[0]' value='' size='10' />
+          <input type='text' name='pi_options[0]' value='' size='10' >
         </td>
         <td class='$oddeven' style='background-color:#FFCCCC;'>
-          <input type='text' name='pi_weight[0]' value='0' size='2' style='text-align:right;' />
+          <input type='text' name='pi_weight[0]' value='0' size='2' style='text-align:right;' >
         </td>
         <td class='$oddeven' colspan='2' style='background-color:#FFCCCC;'>
           " . _AM_APCAL_PI_NEW . "
@@ -391,7 +391,7 @@ echo "
 // ¥Æ¡¼¥Ö¥ë¥Õ¥Ã¥¿Éô
 echo "
       <tr>
-        <td colspan='9' align='right' class='head'><input type='submit' name='update' value='" . _AM_APCAL_BTN_UPDATE . "' /></td>
+        <td colspan='9' align='right' class='head'><input type='submit' name='update' value='" . _AM_APCAL_BTN_UPDATE . "' ></td>
       </tr>
       <tr>
         <td colspan='9' align='right' valign='bottom' height='50'>" . _AM_APCAL_COPYRIGHT . '</td>

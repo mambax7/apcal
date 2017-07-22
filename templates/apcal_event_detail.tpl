@@ -20,7 +20,7 @@
  *}>
 
 <script type="text/javascript" src="<{$xoops_url}>/modules/apcal/assets/images/js/highslide/highslide-with-gallery.js"></script>
-<link rel="stylesheet" type="text/css" href="<{$xoops_url}>/modules/apcal/assets/images/js/highslide/highslide.css"/>
+<link rel="stylesheet" type="text/css" href="<{$xoops_url}>/modules/apcal/assets/images/js/highslide/highslide.css">
 <script type="text/javascript">
     hs.graphicsDir = '<{$xoops_url}>/modules/apcal/assets/images/js/highslide/graphics/';
     hs.align = 'center';
@@ -99,7 +99,7 @@
             <div class="socialNetworks" style="float: right; text-align: right;">
         <span class="print">
             <a href="<{$print_link}>" target="_blank">
-                <img src="<{$skinpath}>/print.gif" alt="<{$lang_print}>" title="<{$lang_print}>" border="0"/>
+                <img src="<{$skinpath}>/print.gif" alt="<{$lang_print}>" title="<{$lang_print}>" border="0">
             </a>
         </span>
                 <{if $showTellaFriend}>
@@ -107,7 +107,7 @@
             <a href="" title="<{$smarty.const._APCAL_TELLAFRIEND}>"
                onclick="window.open('<{$xoops_url}>/modules/apcal/tellafriend.php?url='+encodeURIComponent(location.href)+'&title='+encodeURIComponent(document.title), '<{$smarty.const._APCAL_TELLAFRIEND}>', 'toolbar=no, width=550, height=550'); return false;">
                 <img src="<{$xoops_url}>/modules/apcal/assets/images/tellafriend.png" height="20" width="20"
-                     alt="<{$smarty.const._APCAL_TELLAFRIEND}>" title="<{$smarty.const._APCAL_TELLAFRIEND}>"/>
+                     alt="<{$smarty.const._APCAL_TELLAFRIEND}>" title="<{$smarty.const._APCAL_TELLAFRIEND}>">
             </a>
         </span>
                 <{/if}>
@@ -115,7 +115,7 @@
             <a href="http://www.delicious.com/save" title="Delicious"
                onclick="window.open('http://www.delicious.com/save?v=5&noui&jump=close&url='+encodeURIComponent(location.href)+'&title='+encodeURIComponent(document.title), 'delicious','toolbar=no,width=550,height=550'); return false;">
                 <img src="<{$xoops_url}>/modules/apcal/assets/images/delicious.png" height="20" width="20"
-                     alt="Delicious" title="Delicious"/>
+                     alt="Delicious" title="Delicious">
             </a>
         </span>
                 <span class="googleplus">

@@ -87,7 +87,7 @@ setcookie('lang', $lang);
     </form>
 
     <form action="test.php" method="get">
-        <input type="hidden" name="submitted" value="1"/>
+        <input type="hidden" name="submitted" value="1">
 
         <table>
             <tr>
@@ -112,7 +112,7 @@ setcookie('lang', $lang);
             </tr>
         </table>
 
-        <hr/>
+        <hr>
         <button>Submit</button>
 
     </form>

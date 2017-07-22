@@ -218,16 +218,16 @@ if (!defined('APCAL_BLOCK_MINICAL_EX')) {
         $cal->images_url  = "$mod_url/assets/images/$skin_folder";
         $cal->images_path = "$mod_path/assets/images/$skin_folder";
 
-        $ret = "<input type='hidden' name='options[0]' value='$moduleDirName' />\n";
+        $ret = "<input type='hidden' name='options[0]' value='$moduleDirName' >\n";
 
         // max dotgifs a day
         $ret .= _MB_APCAL_MAXGIFSADAY . ':';
-        $ret .= "<input type='text' size='4' name='options[1]' value='$gifaday' style='text-align:right;' /><br>\n";
+        $ret .= "<input type='text' size='4' name='options[1]' value='$gifaday' style='text-align:right;' ><br>\n";
 
         // disallow multi gifs per a plugin per a day
         $ret .= _MB_APCAL_JUSTONCEADAYAPLUGIN . ':';
-        $ret .= "<input type='radio' name='options[2]' value='1' $just1gif_radio_yes />" . _YES . "&nbsp;\n";
-        $ret .= "<input type='radio' name='options[2]' value='0' $just1gif_radio_no />" . _NO . "<br>\n";
+        $ret .= "<input type='radio' name='options[2]' value='1' $just1gif_radio_yes >" . _YES . "&nbsp;\n";
+        $ret .= "<input type='radio' name='options[2]' value='0' $just1gif_radio_no >" . _NO . "<br>\n";
 
         return $ret;
     }

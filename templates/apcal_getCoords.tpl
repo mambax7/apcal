@@ -73,9 +73,9 @@
     window.onload = GMinit;
 </script>
 <form name="getCoords" action="" method="post">
-    <input type="text" name="address"/>
-    <input type="button" name="search" value="Search" onclick="moveMap(document.getCoords.address.value);"/>
-    <input type="button" name="getLatLngZoom" value="Get latitude/longitude/zoom" onclick="sendCoords();"/>
+    <input type="text" name="address">
+    <input type="button" name="search" value="Search" onclick="moveMap(document.getCoords.address.value);">
+    <input type="button" name="getLatLngZoom" value="Get latitude/longitude/zoom" onclick="sendCoords();">
 </form>
 <div id="googlemap" style="width: 100%; height: 70%;"></div>
 latitude:<span id="lat"></span><br>

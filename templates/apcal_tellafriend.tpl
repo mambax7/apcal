@@ -2,10 +2,10 @@
         "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
-    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
     <title><{$title}></title>
-    <meta name="description" content=""/>
-    <link rel="stylesheet" href="<{$xoops_url}>//modules/apcal/assets/css/apcal.css" type="text/css"/>
+    <meta name="description" content="">
+    <link rel="stylesheet" href="<{$xoops_url}>//modules/apcal/assets/css/apcal.css" type="text/css">
 </head>
 <body>
 <script type="text/javascript">
@@ -35,7 +35,7 @@
         <tr>
             <td class="head"><{$smarty.const._APCAL_TO}></td>
             <td class="even"><input type="text" name="to" value="<{if isset($vars.to)}><{$vars.to}><{/if}>"
-                                    style="width: 400px;" onkeypress="if(window.event.keyCode == 13){validate();}"/>
+                                    style="width: 400px;" onkeypress="if(window.event.keyCode == 13){validate();}">
             </td>
         </tr>
         <tr>
@@ -43,7 +43,7 @@
             <td class="odd"><input type="text" name="from"
                                    value="<{if isset($vars.from)}><{$vars.from}><{else}><{$from}><{/if}>"
                                    style="width: 400px;"
-                                   onkeypress="if(window.event.keyCode == 13){validate();}"/></td>
+                                   onkeypress="if(window.event.keyCode == 13){validate();}"></td>
         </tr>
         <{if $captcha != ''}>
             <tr>
@@ -60,7 +60,7 @@
             <td class="odd"><input type="text" name="subject"
                                    value="<{if isset($vars.subject)}><{$vars.subject}><{else}><{$title}><{/if}>"
                                    style="width: 400px;"
-                                   onkeypress="if(window.event.keyCode == 13){validate();}"/></td>
+                                   onkeypress="if(window.event.keyCode == 13){validate();}"></td>
         </tr>
         <tr>
             <td class="head"><{$smarty.const._APCAL_MESSAGE}></td>
@@ -77,7 +77,7 @@
         </tr>
         <tr>
             <td></td>
-            <td><input type="button" name="send" value="<{$smarty.const._SUBMIT}>" onclick="validate();"/></td>
+            <td><input type="button" name="send" value="<{$smarty.const._SUBMIT}>" onclick="validate();"></td>
         </tr>
     </table>
 

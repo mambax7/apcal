@@ -327,7 +327,7 @@ class MyXoopsGroupFormCheckBox extends XoopsFormElement
                 $name    = 'perms[' . $append['permname'] . ']';
                 $itemid  = $append['itemid'];
                 $itemid  = $append['itemid'];
-                $ret     .= "<td class=\"odd\"><input type=\"checkbox\" name=\"{$name}[groups][$this->_groupId][$itemid]\" id=\"{$name}[groups][$this->_groupId][$itemid]\" value=\"1\" $checked />{$append['itemname']}<input type=\"hidden\" name=\"{$name}[parents][$itemid]\" value=\"\" /><input type=\"hidden\" name=\"{$name}[itemname][$itemid]\" value=\"{$append['itemname']}\" /><br></td>";
+                $ret     .= "<td class=\"odd\"><input type=\"checkbox\" name=\"{$name}[groups][$this->_groupId][$itemid]\" id=\"{$name}[groups][$this->_groupId][$itemid]\" value=\"1\" $checked >{$append['itemname']}<input type=\"hidden\" name=\"{$name}[parents][$itemid]\" value=\"\" ><input type=\"hidden\" name=\"{$name}[itemname][$itemid]\" value=\"{$append['itemname']}\" ><br></td>";
                 ++$cols;
             }
             $ret .= '</tr></table>';
@@ -397,7 +397,7 @@ class MyXoopsGroupFormCheckBox extends XoopsFormElement
         if (isset($this->_value) && in_array($option['id'], $this->_value)) {
             $tree .= ' checked';
         }
-        $tree .= ' />'
+        $tree .= ' >'
                  . $option['name']
                  . '<input type="hidden" name="'
                  . $this->getName()
@@ -405,13 +405,13 @@ class MyXoopsGroupFormCheckBox extends XoopsFormElement
                  . $option['id']
                  . ']" value="'
                  . implode(':', $parentIds)
-                 . '" /><input type="hidden" name="'
+                 . '" ><input type="hidden" name="'
                  . $this->getName()
                  . '[itemname]['
                  . $option['id']
                  . ']" value="'
                  . htmlspecialchars($option['name'])
-                 . "\" /><br>\n";
+                 . "\" ><br>\n";
         if (isset($option['children'])) {
             foreach ($option['children'] as $child) {
                 array_push($parentIds, $option['id']);

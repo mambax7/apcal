@@ -1,14 +1,14 @@
 function deleteMain() {
     document.getElementById("mainPicture").innerHTML =
-        '<input type="hidden" name="MAX_FILE_SIZE" value="5000000" />' +
-        '<input type="file" name="picture0" id="picture0" />' +
+        '<input type="hidden" name="MAX_FILE_SIZE" value="5000000" >' +
+        '<input type="file" name="picture0" id="picture0" >' +
         '<input type="hidden" name="files[]" id="files[]" value="picture0">';
 }
 
 function deleteOther(p, n) {
     document.getElementById("picList").innerHTML +=
-        '<input type="hidden" name="MAX_FILE_SIZE" value="5000000" />' +
-        '<input type="file" name="picture' + n + '" id="picture' + n + '" />' +
+        '<input type="hidden" name="MAX_FILE_SIZE" value="5000000" >' +
+        '<input type="file" name="picture' + n + '" id="picture' + n + '" >' +
         '<input type="hidden" name="files[]" id="files[]" value="picture' + n + '">' +
         '<br>';
 

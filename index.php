@@ -162,7 +162,7 @@ if ($action === 'View') {
 
 // XOOPS�إå�����
 include XOOPS_ROOT_PATH . '/header.php';
-$xoopsTpl->assign('xoops_module_header', '<link rel="stylesheet" type="text/css" href="' . XOOPS_URL . '/modules/apcal/assets/css/apcal.css" />' . $xoopsTpl->get_template_vars('xoops_module_header'));
+$xoopsTpl->assign('xoops_module_header', '<link rel="stylesheet" type="text/css" href="' . XOOPS_URL . '/modules/apcal/assets/css/apcal.css" >' . $xoopsTpl->get_template_vars('xoops_module_header'));
 
 // embed style sheet �ν��� (thx Ryuji)
 $xoopsTpl->assign('xoops_module_header', "<style><!-- \n" . $cal->get_embed_css() . "\n--></style>\n" . $xoopsTpl->get_template_vars('xoops_module_header'));
@@ -181,7 +181,7 @@ if ($action === 'Edit') {
         // jscalendar in module dir (recommended)
         $jscalurl = XOOPS_URL . '/modules/apcal/assets/js/jscalendar';
         $xoopsTpl->assign('xoops_module_header', '
-                <link rel="stylesheet" type="text/css" media="all" href="' . $jscalurl . '/calendar-system.css" />
+                <link rel="stylesheet" type="text/css" media="all" href="' . $jscalurl . '/calendar-system.css" >
                 <script type="text/javascript" src="' . $jscalurl . '/calendar.js"></script>
                 <script type="text/javascript" src="' . $jscalurl . '/lang/' . $cal->jscalendar_lang_file . '"></script>
                 <script type="text/javascript" src="' . $jscalurl . '/calendar-setup.js"></script>
@@ -195,7 +195,7 @@ if ($action === 'Edit') {
         // jscalendar in XOOPS 2.2 core
         $jscalurl = XOOPS_URL . '/class/calendar';
         $xoopsTpl->assign('xoops_module_header', '
-                <link rel="stylesheet" type="text/css" media="all" href="' . $jscalurl . '/CSS/calendar-blue.css" title="system" />
+                <link rel="stylesheet" type="text/css" media="all" href="' . $jscalurl . '/CSS/calendar-blue.css" title="system" >
                 <script type="text/javascript" src="' . $jscalurl . '/calendar.js"></script>
                 <script type="text/javascript" src="' . $jscalurl . '/lang/' . $cal->jscalendar_lang_file . '"></script>
                 <script type="text/javascript" src="' . $jscalurl . '/calendar-setup.js"></script>
@@ -330,19 +330,19 @@ if ($action === 'View') {
         echo '<div class="socialNetworks">
                 <span class="print">
                     <a href="' . $cal->base_url . '/print.php?cid=' . $cal->now_cid . '&smode=' . $smode . '&caldate=' . $cal->caldate . '" target="_blank">
-                        <img src="' . $cal->images_url . '/print.gif" alt="' . _APCAL_BTN_PRINT . '" border="0" ' . PRINT_ATTRIB . ' />
+                        <img src="' . $cal->images_url . '/print.gif" alt="' . _APCAL_BTN_PRINT . '" border="0" ' . PRINT_ATTRIB . ' >
                     </a>
                 </span>';
         if ($cal->enabletellafriend) {
             echo '<span class="tellafriend">
                         <a href="" title="' . _APCAL_TELLAFRIEND . '" onclick="window.open(\'' . XOOPS_URL . '/modules/apcal/tellafriend.php?url=\'+encodeURIComponent(location.href)+\'&title=\'+encodeURIComponent(document.title), \'_blank\',\'toolbar=no,width=800,height=450\'); return false;">
-                            <img src="' . XOOPS_URL . '/modules/apcal/assets/images/tellafriend.png" height="20" width="20" alt="' . _APCAL_TELLAFRIEND . '" title="' . _APCAL_TELLAFRIEND . '" />
+                            <img src="' . XOOPS_URL . '/modules/apcal/assets/images/tellafriend.png" height="20" width="20" alt="' . _APCAL_TELLAFRIEND . '" title="' . _APCAL_TELLAFRIEND . '" >
                         </a>
                     </span>';
         }
         echo '<span class="delicious">
                     <a href="http://www.delicious.com/save" title="Delicious" onclick="window.open(\'http://www.delicious.com/save?v=5&noui&jump=close&url=\'+encodeURIComponent(location.href)+\'&title=\'+encodeURIComponent(document.title), \'delicious\',\'toolbar=no,width=550,height=550\'); return false;">
-                        <img src="' . XOOPS_URL . '/modules/apcal/assets/images/delicious.png" height="20" width="20" alt="Delicious" title="Delicious" />
+                        <img src="' . XOOPS_URL . '/modules/apcal/assets/images/delicious.png" height="20" width="20" alt="Delicious" title="Delicious" >
                     </a>
                 </span>
                 <span class="googleplus">
@@ -366,7 +366,7 @@ if ($action === 'View') {
         //<script src="http://static.ak.fbcdn.net/connect.php/js/FB.Share" type="text/javascript"></script>
     }
     if ($cal->enablesharing && $smode !== 'List') {
-        echo '<div class="share"><a href="' . XOOPS_URL . '/modules/apcal/shareCalendar.php" title="' . _APCAL_SHARECALENDAR . '"><img src="' . XOOPS_URL . '/modules/apcal/assets/images/share.png" /><span style="line-height: 32px; margin-bottom: 15px;">' . _APCAL_SHARECALENDAR . '</span></a></div>';
+        echo '<div class="share"><a href="' . XOOPS_URL . '/modules/apcal/shareCalendar.php" title="' . _APCAL_SHARECALENDAR . '"><img src="' . XOOPS_URL . '/modules/apcal/assets/images/share.png" ><span style="line-height: 32px; margin-bottom: 15px;">' . _APCAL_SHARECALENDAR . '</span></a></div>';
     }
 }
 

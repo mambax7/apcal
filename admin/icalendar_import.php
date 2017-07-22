@@ -211,7 +211,7 @@ echo '
 </form>
 <form action='' method='get' style='margin-bottom:0px;text-align:left'>
   <select name='tz' onChange='submit();'>$tzoptions</select>
-  <input type='hidden' name='num' value='$num' />
+  <input type='hidden' name='num' value='$num' >
 </form>
 <table width='100%' cellpadding='0' cellspacing='0' border='0'>
   <tr>
@@ -221,8 +221,8 @@ echo '
     <td>
       <form action='' method='get' style='margin-bottom:0px;text-align:right'>
         $nav_html &nbsp;
-        <input type='hidden' name='num' value='$num' />
-        <input type='hidden' name='tz' value='$tz' />
+        <input type='hidden' name='num' value='$num' >
+        <input type='hidden' name='tz' value='$tz' >
       </form>
     </td>
   </tr>
@@ -238,7 +238,7 @@ echo '
     <th>' . _AM_APCAL_IO_TH4 . '</th>
     <th>' . _AM_APCAL_IO_TH5 . "</th>
     <th></th>
-    <th><input type='checkbox' name='dummy' onclick=\"with(document.MainForm){for (i=0;i<length;i++) {if (elements[i].type=='checkbox') {elements[i].checked=this.checked;}}}\" /></th>
+    <th><input type='checkbox' name='dummy' onclick=\"with(document.MainForm){for (i=0;i<length;i++) {if (elements[i].type=='checkbox') {elements[i].checked=this.checked;}}}\" ></th>
   </tr>
 ";
 
@@ -269,8 +269,8 @@ while ($event = $GLOBALS['xoopsDB']->fetchObject($rs)) {
     <td class='$oddeven' $newer_style><a href='$mod_url/index.php?action=View&amp;event_id=$event->id'>$summary4disp</a></td>
     <td class='$oddeven' $newer_style>" . $cal->rrule_to_human_language($event->rrule) . "</td>
     <td class='$oddeven' $newer_style>" . ($event->admission ? _YES : _NO) . "</td>
-    <td class='$oddeven' align='right' $newer_style><a href='$mod_url/index.php?action=Edit&amp;event_id=$event->id' target='_blank'><img src='$cal->images_url/addevent.gif' border='0' width='14' height='12' /></a></td>
-    <td class='$oddeven' align='right' $newer_style><input type='checkbox' name='ids[]' value='$event->id' /></td>
+    <td class='$oddeven' align='right' $newer_style><a href='$mod_url/index.php?action=Edit&amp;event_id=$event->id' target='_blank'><img src='$cal->images_url/addevent.gif' border='0' width='14' height='12' ></a></td>
+    <td class='$oddeven' align='right' $newer_style><input type='checkbox' name='ids[]' value='$event->id' ></td>
   </tr>\n";
 }
 
@@ -284,7 +284,7 @@ echo "
      . _DELETE
      . "' onclick='return confirm(\""
      . _AM_APCAL_CONFIRM_DELETE
-     . "\")' /></td>
+     . "\")' ></td>
   </tr>
   <tr>
     <td colspan='8' align='right' valign='bottom' height='50'>"

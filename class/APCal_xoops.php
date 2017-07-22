@@ -117,7 +117,7 @@ if (!class_exists('APCal_xoops')) {
 
                 // <input type='reset' value='...' onclick='
                 return "
-            <input type='text' name='$name' id='$name' size='15' maxlength='15' value='$ymd' />
+            <input type='text' name='$name' id='$name' size='15' maxlength='15' value='$ymd' >
             <input type='image' src='$this->images_url/button_date_selecting.gif' onclick='
 
           var el = xoopsGetElementById(\"$name\");
@@ -137,12 +137,12 @@ if (!class_exists('APCal_xoops')) {
 
           return false;
 
-        ' />
+        ' >
         ";
             } else {
                 return "
-        <input type='text' name='$name' id='$name' size='12' maxlength='12' value='$ymd' />
-        <img src='$this->images_url/button_date_selecting.gif' id='trigger_{$name}' style='cursor: pointer; vertical-align:bottom;' title='Date selector' />
+        <input type='text' name='$name' id='$name' size='12' maxlength='12' value='$ymd' >
+        <img src='$this->images_url/button_date_selecting.gif' id='trigger_{$name}' style='cursor: pointer; vertical-align:bottom;' title='Date selector' >
         <span id='display_{$name}'>$long_ymdn</span>
 
         <script type='text/javascript'>
@@ -960,7 +960,7 @@ if (!class_exists('APCal_xoops')) {
                 $eventURL         = $this->make_event_link($event->id, $get_target, date('Y-n-j', $event->start));
                 // Get picture
                 $pic     = $GLOBALS['xoopsDB']->fetchObject($GLOBALS['xoopsDB']->query("SELECT picture FROM {$this->pic_table} WHERE event_id={$event->id} AND main_pic=1 LIMIT 0,1"));
-                $picture = $pic && $this->showPicList ? "<img src='" . XOOPS_UPLOAD_URL . "/apcal/{$pic->picture}' alt='{$summary}' height='50' style='vertical-align: middle;' />" : '';
+                $picture = $pic && $this->showPicList ? "<img src='" . XOOPS_UPLOAD_URL . "/apcal/{$pic->picture}' alt='{$summary}' height='50' style='vertical-align: middle;' >" : '';
 
                 $events[] = array(
                     'count'           => $count,

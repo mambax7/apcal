@@ -241,36 +241,36 @@ function list_blocks()
             <td class='$class'>
                 $name
                 <br>
-                <input type='text' name='title[$bid]' value='$title' size='20' />
+                <input type='text' name='title[$bid]' value='$title' size='20' >
             </td>
             <td class='$class' align='center' nowrap='nowrap' width='125px'>
                 <div style='float:left;background-color:$scol0;'>
-                    <input type='radio' name='side[$bid]' value='" . XOOPS_SIDEBLOCK_LEFT . "' style='background-color:$scol0;' $ssel0 />
+                    <input type='radio' name='side[$bid]' value='" . XOOPS_SIDEBLOCK_LEFT . "' style='background-color:$scol0;' $ssel0 >
                 </div>
                 <div style='float:left;'>-</div>
                 <div style='float:left;background-color:$scol2;'>
-                    <input type='radio' name='side[$bid]' value='" . XOOPS_CENTERBLOCK_LEFT . "' style='background-color:$scol2;' $ssel2 />
+                    <input type='radio' name='side[$bid]' value='" . XOOPS_CENTERBLOCK_LEFT . "' style='background-color:$scol2;' $ssel2 >
                 </div>
                 <div style='float:left;background-color:$scol3;'>
-                    <input type='radio' name='side[$bid]' value='" . XOOPS_CENTERBLOCK_CENTER . "' style='background-color:$scol3;' $ssel3 />
+                    <input type='radio' name='side[$bid]' value='" . XOOPS_CENTERBLOCK_CENTER . "' style='background-color:$scol3;' $ssel3 >
                 </div>
                 <div style='float:left;background-color:$scol4;'>
-                    <input type='radio' name='side[$bid]' value='" . XOOPS_CENTERBLOCK_RIGHT . "' style='background-color:$scol4;' $ssel4 />
+                    <input type='radio' name='side[$bid]' value='" . XOOPS_CENTERBLOCK_RIGHT . "' style='background-color:$scol4;' $ssel4 >
                 </div>
                 <div style='float:left;'>-</div>
                 <div style='float:left;background-color:$scol1;'>
-                    <input type='radio' name='side[$bid]' value='" . XOOPS_SIDEBLOCK_RIGHT . "' style='background-color:$scol1;' $ssel1 />
+                    <input type='radio' name='side[$bid]' value='" . XOOPS_SIDEBLOCK_RIGHT . "' style='background-color:$scol1;' $ssel1 >
                 </div>
                 <br>
                 <br>
                 <div style='float:left;width:40px;'>&nbsp;</div>
                 <div style='float:left;background-color:$scoln;'>
-                    <input type='radio' name='side[$bid]' value='-1' style='background-color:$scoln;' $sseln />
+                    <input type='radio' name='side[$bid]' value='-1' style='background-color:$scoln;' $sseln >
                 </div>
                 <div style='float:left;'>" . _NONE . "</div>
             </td>
             <td class='$class' align='center'>
-                <input type='text' name=weight[$bid] value='$weight' size='3' maxlength='5' style='text-align:right;' />
+                <input type='text' name=weight[$bid] value='$weight' size='3' maxlength='5' style='text-align:right;' >
             </td>
             <td class='$class' align='center'>
                 <select name='bmodule[$bid][]' size='5' multiple='multiple'>
@@ -284,7 +284,7 @@ function list_blocks()
             </td>
             <td class='$class' align='right'>
                 <a href='admin.php?fct=blocksadmin&amp;op=edit&amp;bid=$bid'>" . _EDIT . "</a>{$delete_link}{$clone_link}
-                <input type='hidden' name='bid[$bid]' value='$bid' />
+                <input type='hidden' name='bid[$bid]' value='$bid' >
             </td>
         </tr>\n";
 
@@ -294,11 +294,11 @@ function list_blocks()
     echo "
         <tr>
             <td class='foot' align='center' colspan='6'>
-                <input type='hidden' name='query4redirect' value='$query4redirect' />
-                <input type='hidden' name='fct' value='blocksadmin' />
-                <input type='hidden' name='op' value='order' />
+                <input type='hidden' name='query4redirect' value='$query4redirect' >
+                <input type='hidden' name='fct' value='blocksadmin' >
+                <input type='hidden' name='op' value='order' >
                 " . $xoopsGTicket->getTicketHtml(__LINE__, 1800, 'myblocksadmin') . "
-                <input type='submit' name='submit' value='" . _SUBMIT . "' />
+                <input type='submit' name='submit' value='" . _SUBMIT . "' >
             </td>
         </tr>
         </table>

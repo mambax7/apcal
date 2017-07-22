@@ -52,7 +52,7 @@
             &nbsp; <span style='font-size: x-small; '><a
                         href='<{$block.get_target}>?smode=Daily&amp;action=Edit&amp;caldate=<{$block.caldate}>'><img
                             src='<{$block.images_url}>/addevent.gif' border='0' width='14'
-                            height='12'/><{$block.lang_APCAL_MB_APCALADDEVENT}></a></span>
+                            height='12'><{$block.lang_APCAL_MB_APCALADDEVENT}></a></span>
         </dt>
     </dl>
 <{/if}>

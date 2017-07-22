@@ -595,7 +595,7 @@ if (!class_exists('APCal')) {
                         $ret .= "
            <table border='0' cellpadding='0' cellspacing='0' width='100%'>
              <tr>
-               <td><img border='0' src='$this->images_url/dot_allday.gif' /> &nbsp; </td>
+               <td><img border='0' src='$this->images_url/dot_allday.gif' > &nbsp; </td>
                <td><span style='font-size: x-small; '><a href='$get_target?cid=$this->now_cid&amp;smode=Daily&amp;action=View&amp;event_id=$event->id&amp;caldate=$this->caldate' class='calsummary_allday'>$summary</a></span></td>
              </tr>
            </table>\n";
@@ -621,7 +621,7 @@ if (!class_exists('APCal')) {
                 $ret .= "
            <dl>
              <dt>
-               &nbsp; <span style='font-size: x-small; '><a href='$get_target?smode=Daily&amp;action=Edit&amp;caldate=$this->caldate'><img src='$this->images_url/addevent.gif' border='0' width='14' height='12' />"
+               &nbsp; <span style='font-size: x-small; '><a href='$get_target?smode=Daily&amp;action=Edit&amp;caldate=$this->caldate'><img src='$this->images_url/addevent.gif' border='0' width='14' height='12' >"
                         . _APCAL_MB_APCALADDEVENT
                         . "</a></span>
              </dt>
@@ -679,7 +679,7 @@ if (!class_exists('APCal')) {
                         $ret .= "
            <dl>
              <dt>
-               <span style='font-size: x-small; '><img border='0' src='$this->images_url/dot_allday.gif' /> " . $this->get_middle_md($event->start) . "</span>
+               <span style='font-size: x-small; '><img border='0' src='$this->images_url/dot_allday.gif' > " . $this->get_middle_md($event->start) . "</span>
              </dt>
              <dd>
                <span style='font-size: x-small; '><a href='$get_target?cid=$this->now_cid&amp;smode=Daily&amp;action=View&amp;event_id=$event->id&amp;caldate=$this->caldate' class='calsummary_allday'>$summary</a></span>
@@ -717,7 +717,7 @@ if (!class_exists('APCal')) {
                 $ret .= "
            <dl>
              <dt>
-               &nbsp; <span style='font-size: x-small; '><a href='$get_target?smode=Daily&amp;action=Edit&amp;caldate=$this->caldate'><img src='$this->images_url/addevent.gif' border='0' width='14' height='12' />"
+               &nbsp; <span style='font-size: x-small; '><a href='$get_target?smode=Daily&amp;action=Edit&amp;caldate=$this->caldate'><img src='$this->images_url/addevent.gif' border='0' width='14' height='12' >"
                         . _APCAL_MB_APCALADDEVENT
                         . "</a></span>
              </dt>
@@ -1705,14 +1705,14 @@ if (!class_exists('APCal')) {
             $ret     = "
      <table border='0' cellspacing='0' cellpadding='0' width='100%' style='border-collapse:collapse;margin:0px;'>
      <tr>
-       <td><img src='$this->images_url/spacer.gif' alt='' width='10' height='10' /></td>
-       <td><img src='$this->images_url/spacer.gif' alt='' width='80' height='10' /></td>
-       <td><img src='$this->images_url/spacer.gif' alt='' width='80' height='10' /></td>
-       <td><img src='$this->images_url/spacer.gif' alt='' width='80' height='10' /></td>
-       <td><img src='$this->images_url/spacer.gif' alt='' width='80' height='10' /></td>
-       <td><img src='$this->images_url/spacer.gif' alt='' width='80' height='10' /></td>
-       <td><img src='$this->images_url/spacer.gif' alt='' width='80' height='10' /></td>
-       <td><img src='$this->images_url/spacer.gif' alt='' width='80' height='10' /></td>
+       <td><img src='$this->images_url/spacer.gif' alt='' width='10' height='10' ></td>
+       <td><img src='$this->images_url/spacer.gif' alt='' width='80' height='10' ></td>
+       <td><img src='$this->images_url/spacer.gif' alt='' width='80' height='10' ></td>
+       <td><img src='$this->images_url/spacer.gif' alt='' width='80' height='10' ></td>
+       <td><img src='$this->images_url/spacer.gif' alt='' width='80' height='10' ></td>
+       <td><img src='$this->images_url/spacer.gif' alt='' width='80' height='10' ></td>
+       <td><img src='$this->images_url/spacer.gif' alt='' width='80' height='10' ></td>
+       <td><img src='$this->images_url/spacer.gif' alt='' width='80' height='10' ></td>
      </tr>\n";
 
             $wtop_date      = $this->date - ($this->day - $this->week_start + 7) % 7;
@@ -1794,8 +1794,8 @@ if (!class_exists('APCal')) {
                 $event_str         = "
                 <table cellpadding='0' cellspacing='2' style='margin:0px;'>
                   <tr>
-                    <td><img src='$this->images_url/spacer.gif' alt='' border='0' width='120' height='4' /></td>
-                    <td><img src='$this->images_url/spacer.gif' alt='' border='0' width='360' height='4' /></td>
+                    <td><img src='$this->images_url/spacer.gif' alt='' border='0' width='120' height='4' ></td>
+                    <td><img src='$this->images_url/spacer.gif' alt='' border='0' width='360' height='4' ></td>
                   </tr>
         \n";
 
@@ -1840,18 +1840,18 @@ if (!class_exists('APCal')) {
 
                     // Get picture
                     $pic     = $GLOBALS['xoopsDB']->fetchObject($GLOBALS['xoopsDB']->query("SELECT picture FROM {$this->pic_table} WHERE event_id={$event->id} AND main_pic=1 LIMIT 0,1"));
-                    $picture = $pic && $this->showPicWeekly ? "<img src='" . XOOPS_UPLOAD_URL . "/apcal/{$pic->picture}' alt='{$summary}' height='50' style='vertical-align: middle;' />" : '';
+                    $picture = $pic && $this->showPicWeekly ? "<img src='" . XOOPS_UPLOAD_URL . "/apcal/{$pic->picture}' alt='{$summary}' height='50' style='vertical-align: middle;' >" : '';
 
                     if ($event->allday) {
                         if ($event->allday & 4) {
                             $date_part_append .= "<span style='font-size: x-small; '><a href='{$this->make_event_link($event->id, $get_target)}' class='cal_summary_specialday'><font color='$this->holiday_color'>$summary</a></span>";
                             if ($event->extkey0 == 1) {
-                                $event_str .= "&nbsp;&nbsp;<img src='{$roimage}' height='15px' alt='" . _APCAL_RO_ONLINE_POSS . "' title='" . _APCAL_RO_ONLINE_POSS . "' />";
+                                $event_str .= "&nbsp;&nbsp;<img src='{$roimage}' height='15px' alt='" . _APCAL_RO_ONLINE_POSS . "' title='" . _APCAL_RO_ONLINE_POSS . "' >";
                             } // added by goffy: mark this event, that online registration is active
                             $event_str .= "</a></font><br>\n";
                             continue;
                         } else {
-                            $time_part     = "             <img border='0' src='$this->images_url/dot_allday.gif' />";
+                            $time_part     = "             <img border='0' src='$this->images_url/dot_allday.gif' >";
                             $summary_class = 'calsummary_allday';
                         }
                     } else {
@@ -1868,7 +1868,7 @@ if (!class_exists('APCal')) {
                       $picture
                       <span style='font-size: x-small; '><a href='{$this->make_event_link($event->id, $get_target)}' class='$summary_class'>$summary</a></span>";
                     if ($event->extkey0 == 1) {
-                        $event_str .= "&nbsp;&nbsp;<img src='{$roimage}' height='15px' alt='" . _APCAL_RO_ONLINE_POSS . "' title='" . _APCAL_RO_ONLINE_POSS . "' />";
+                        $event_str .= "&nbsp;&nbsp;<img src='{$roimage}' height='15px' alt='" . _APCAL_RO_ONLINE_POSS . "' title='" . _APCAL_RO_ONLINE_POSS . "' >";
                     } // added by goffy: mark this event, that online registration is active
                     $event_str .= "
                     </td>
@@ -1902,10 +1902,10 @@ if (!class_exists('APCal')) {
 
                         // Get picture
                         $pic     = $GLOBALS['xoopsDB']->fetchObject($GLOBALS['xoopsDB']->query("SELECT picture FROM {$this->pic_table} WHERE event_id={$event->id} AND main_pic=1 LIMIT 0,1"));
-                        $picture = $pic && $this->showPicWeekly ? "<img src='" . XOOPS_UPLOAD_URL . "/apcal/{$pic->picture}' alt='{$summary}' height='50' style='vertical-align: middle;' />" : '';
+                        $picture = $pic && $this->showPicWeekly ? "<img src='" . XOOPS_UPLOAD_URL . "/apcal/{$pic->picture}' alt='{$summary}' height='50' style='vertical-align: middle;' >" : '';
 
                         if ($event->allday) {
-                            $time_part     = "             <img border='0' src='$this->images_url/dot_notadmit.gif' />";
+                            $time_part     = "             <img border='0' src='$this->images_url/dot_notadmit.gif' >";
                             $summary_class = 'calsummary_allday';
                         } else {
                             $time_part     = $this->get_time_desc_for_a_day($event, $tzoffset, $bottomtime_of_day - $this->day_start, true, false);
@@ -1923,7 +1923,7 @@ if (!class_exists('APCal')) {
                                       . _APCAL_MB_APCALEVENT_NEEDADMIT
                                       . ')</a></span>';
                         if ($event->extkey0 == 1) {
-                            $event_str .= "&nbsp;&nbsp;<img src='{$roimage}' height='15px' alt='" . _APCAL_RO_ONLINE_POSS . "' title='" . _APCAL_RO_ONLINE_POSS . "' />";
+                            $event_str .= "&nbsp;&nbsp;<img src='{$roimage}' height='15px' alt='" . _APCAL_RO_ONLINE_POSS . "' title='" . _APCAL_RO_ONLINE_POSS . "' >";
                         } // added by goffy: mark this event, that online registration is active
                         $event_str .= "
                         </td>
@@ -1939,7 +1939,7 @@ if (!class_exists('APCal')) {
                   <tr>
                     <td></td>
                     <td valign='top'>
-                      <span style='font-size: x-small; '><a href='{$item['link']}' class='$summary_class'><img src='$this->images_url/{$item['dotgif']}' alt='{$item['title']}>' />{$item['title']}</a></span>
+                      <span style='font-size: x-small; '><a href='{$item['link']}' class='$summary_class'><img src='$this->images_url/{$item['dotgif']}' alt='{$item['title']}>' >{$item['title']}</a></span>
                     </td>
                   </tr>\n";
                     }
@@ -1949,7 +1949,7 @@ if (!class_exists('APCal')) {
                     $event_str .= "
                   <tr>
                     <td valign='bottom' colspan='2'>
-                      &nbsp; <span style='font-size: x-small; '><a href='$get_target?cid=$this->now_cid&amp;smode=Weekly&amp;action=Edit&amp;caldate=$link'><img src='$this->images_url/addevent.gif' border='0' width='14' height='12' />"
+                      &nbsp; <span style='font-size: x-small; '><a href='$get_target?cid=$this->now_cid&amp;smode=Weekly&amp;action=Edit&amp;caldate=$link'><img src='$this->images_url/addevent.gif' border='0' width='14' height='12' >"
                                   . _APCAL_MB_APCALADDEVENT
                                   . "</a></span>
                     </td>
@@ -1989,7 +1989,7 @@ if (!class_exists('APCal')) {
 
                 $ret .= "
      <tr>
-       <td><img src='$this->images_url/spacer.gif' alt='' width='10' height='80' /></td>
+       <td><img src='$this->images_url/spacer.gif' alt='' width='10' height='80' ></td>
        <td bgcolor='$bgcolor' align='center' valign='middle' style='vertical-align:middle;text-align:center;$this->frame_css background-color:$bgcolor;'>
          <a href='{$this->make_cal_link($get_target, 'Daily', $this->now_cid, $link)}' class='calbody'><font size='3' color='$color'><b><span class='calbody'>$disp</span></b></font></a><br>
          $date_part_append
@@ -2041,15 +2041,15 @@ if (!class_exists('APCal')) {
      <td width='100%' class='calframe'>
      <table border='0' cellspacing='0' cellpadding='0' width='100%' style='margin:0px;'>
      <tr>
-       <td colspan='8'><img src='$this->images_url/spacer.gif' alt='' width='570' height='10' /></td>
+       <td colspan='8'><img src='$this->images_url/spacer.gif' alt='' width='570' height='10' ></td>
      </tr>
      <tr>
-       <td><img src='$this->images_url/spacer.gif' alt='' width='10' height='350' /></td>
+       <td><img src='$this->images_url/spacer.gif' alt='' width='10' height='350' ></td>
        <td colospan='7' valign='top' bgcolor='$bgcolor' style='$this->frame_css;background-color:$bgcolor'>
          <table border='0' cellpadding='0' cellspacing='0' style='margin:0px;'>
            <tr>
-             <td><img src='$this->images_url/spacer.gif' alt='' width='120' height='10' /></td>
-             <td><img src='$this->images_url/spacer.gif' alt='' width='440' height='10' /></td>
+             <td><img src='$this->images_url/spacer.gif' alt='' width='120' height='10' ></td>
+             <td><img src='$this->images_url/spacer.gif' alt='' width='440' height='10' ></td>
            </tr>
     \n";
 
@@ -2075,7 +2075,7 @@ if (!class_exists('APCal')) {
                 while ($event = $GLOBALS['xoopsDB']->fetchObject($yrs)) {
                     // Get picture
                     $pic     = $GLOBALS['xoopsDB']->fetchObject($GLOBALS['xoopsDB']->query("SELECT picture FROM {$this->pic_table} WHERE event_id={$event->id} AND main_pic=1 LIMIT 0,1"));
-                    $picture = $pic && $this->showPicDaily ? "<img src='" . XOOPS_UPLOAD_URL . "/apcal/{$pic->picture}' alt='{$summary}' height='50' style='vertical-align: middle;' />" : '';
+                    $picture = $pic && $this->showPicDaily ? "<img src='" . XOOPS_UPLOAD_URL . "/apcal/{$pic->picture}' alt='{$summary}' height='50' style='vertical-align: middle;' >" : '';
 
                     // Google map
                     if ($event->gmlat > 0 || $event->gmlong > 0) {
@@ -2091,7 +2091,7 @@ if (!class_exists('APCal')) {
                     }
 
                     if ($event->allday) {
-                        $time_part = "             <img border='0' src='$this->images_url/dot_allday.gif' />";
+                        $time_part = "             <img border='0' src='$this->images_url/dot_allday.gif' >";
                     } else {
                         $time_part = $this->get_time_desc_for_a_day($event, $tzoffset, $bottomtime_of_day - $this->day_start, true, true);
                     }
@@ -2125,7 +2125,7 @@ if (!class_exists('APCal')) {
 
                 while ($event = $GLOBALS['xoopsDB']->fetchObject($yrs)) {
                     if ($event->allday) {
-                        $time_part = "             <img border='0' src='$this->images_url/dot_notadmit.gif' />";
+                        $time_part = "             <img border='0' src='$this->images_url/dot_notadmit.gif' >";
                     } else {
                         $time_part = $this->get_time_desc_for_a_day($event, $tzoffset, $bottomtime_of_day - $this->day_start, true, false);
                     }
@@ -2157,7 +2157,7 @@ if (!class_exists('APCal')) {
            <tr>
              <td></td>
              <td valign='top'>
-               <font size='3'><a href='{$item['link']}' class='$summary_class'><img src='$this->images_url/{$item['dotgif']}' alt='{$item['title']}>' />{$item['title']}</a></font><br>
+               <font size='3'><a href='{$item['link']}' class='$summary_class'><img src='$this->images_url/{$item['dotgif']}' alt='{$item['title']}>' >{$item['title']}</a></font><br>
                <span style='font-size: x-small; '>{$item['description']}</span><br>
                &nbsp;
              </td>
@@ -2170,7 +2170,7 @@ if (!class_exists('APCal')) {
                 $ret .= "
            <tr>
              <td valign='bottom' colspan='2'>
-               &nbsp; <span style='font-size: x-small; '><a href='$get_target?cid=$this->now_cid&amp;smode=Daily&amp;action=Edit&amp;caldate=$this->caldate'><img src='$this->images_url/addevent.gif' border='0' width='14' height='12' />"
+               &nbsp; <span style='font-size: x-small; '><a href='$get_target?cid=$this->now_cid&amp;smode=Daily&amp;action=Edit&amp;caldate=$this->caldate'><img src='$this->images_url/addevent.gif' border='0' width='14' height='12' >"
                         . _APCAL_MB_APCALADDEVENT
                         . "</a></span>
              </td>
@@ -2294,11 +2294,11 @@ if (!class_exists('APCal')) {
             if ($editable && !$for_print) {
                 $edit_button = "
             <form method='get' action='" . XOOPS_URL . "/modules/apcal/index.php' style='margin:0px;'>
-                <input type='hidden' name='smode' value='$smode' />
-                <input type='hidden' name='action' value='Edit' />
-                <input type='hidden' name='event_id' value='$event->id' />
-                <input type='hidden' name='caldate' value='{$_GET['date']}' />
-                <input type='submit' value='" . _APCAL_BTN_EDITEVENT . "' />
+                <input type='hidden' name='smode' value='$smode' >
+                <input type='hidden' name='action' value='Edit' >
+                <input type='hidden' name='event_id' value='$event->id' >
+                <input type='hidden' name='caldate' value='{$_GET['date']}' >
+                <input type='submit' value='" . _APCAL_BTN_EDITEVENT . "' >
             </form>\n";
             } else {
                 $edit_button = '';
@@ -2309,23 +2309,23 @@ if (!class_exists('APCal')) {
             <form method='post' action='"
                                  . XOOPS_URL
                                  . "/modules/apcal/index.php' name='MainForm' style='margin:0px;'>
-                <input type='hidden' name='smode' value='$smode' />
-                <input type='hidden' name='last_smode' value='$smode' />
-                <input type='hidden' name='event_id' value='$event->id' />
-                <input type='hidden' name='subevent_id' value='$event_id' />
-                <input type='hidden' name='caldate' value='$this->caldate' />
-                <input type='hidden' name='last_caldate' value='{$_GET['date']}' />
+                <input type='hidden' name='smode' value='$smode' >
+                <input type='hidden' name='last_smode' value='$smode' >
+                <input type='hidden' name='event_id' value='$event->id' >
+                <input type='hidden' name='subevent_id' value='$event_id' >
+                <input type='hidden' name='caldate' value='$this->caldate' >
+                <input type='hidden' name='last_caldate' value='{$_GET['date']}' >
                 <input type='submit' name='delete' value='"
                                  . _APCAL_BTN_DELETE
                                  . "' onclick='return confirm(\""
                                  . _APCAL_CNFM_DELETE_YN
-                                 . "\")' />
+                                 . "\")' >
                 "
                                  . (!empty($is_extracted_record) ? "<input type='submit' name='delete_one' value='"
                                                                    . _APCAL_BTN_DELETE_ONE
                                                                    . "' onclick='return confirm(\""
                                                                    . _APCAL_CNFM_DELETE_YN
-                                                                   . "\")' />" : '')
+                                                                   . "\")' >" : '')
                                  . '
                 '
                                  . $GLOBALS['xoopsGTicket']->getTicketHtml(__LINE__)
@@ -2343,12 +2343,12 @@ if (!class_exists('APCal')) {
                                      . _APCAL_BTN_OUTPUTICS_WIN
                                      . "' title='"
                                      . _APCAL_BTN_OUTPUTICS_WIN
-                                     . "' /></a>
+                                     . "' ></a>
             <a href='webcal://{$_SERVER['HTTP_HOST']}$php_self4disp?fmt=single&amp;event_id=$event->id&amp;output_ics=1' target='_blank'><img border='0' src='$this->images_url/output_ics_mac.gif' alt='"
                                      . _APCAL_BTN_OUTPUTICS_MAC
                                      . "' title='"
                                      . _APCAL_BTN_OUTPUTICS_MAC
-                                     . "' /></a>\n";
+                                     . "' ></a>\n";
             } else {
                 $ics_output_button = '';
             }
@@ -2534,20 +2534,20 @@ if (!class_exists('APCal')) {
 
                     $eventmembers_form = "
         <form method='post' action='ro_regonlinehandler.php' name='roformmembers1' style='margin:0px;'>
-            <input type='hidden' name='eventid' value='$event->id' />
-            <input type='hidden' name='uid' value='$this->user_id' />
-            <input type='hidden' name='eventurl' value='$this->redirecturl' />
-            <input type='hidden' name='summary' value='$summary' />
-            <input type='hidden' name='date' value='$start_date_str' />
-            <input type='hidden' name='location' value='$location' />
+            <input type='hidden' name='eventid' value='$event->id' >
+            <input type='hidden' name='uid' value='$this->user_id' >
+            <input type='hidden' name='eventurl' value='$this->redirecturl' >
+            <input type='hidden' name='summary' value='$summary' >
+            <input type='hidden' name='date' value='$start_date_str' >
+            <input type='hidden' name='location' value='$location' >
             <div style='float:right;'>";
                     if ($registered == 1) {
-                        $eventmembers_form .= "<input type='submit' name='form_add' value='" . _APCAL_RO_BTN_ADDMORE . "' />";
+                        $eventmembers_form .= "<input type='submit' name='form_add' value='" . _APCAL_RO_BTN_ADDMORE . "' >";
                     } else {
-                        $eventmembers_form .= "<input type='submit' name='form_add' value='" . _APCAL_RO_BTN_ADD . "' />&nbsp;";
+                        $eventmembers_form .= "<input type='submit' name='form_add' value='" . _APCAL_RO_BTN_ADD . "' >&nbsp;";
                     }
                     if ($editable && !$for_print && $itemstotal > 0) {
-                        $eventmembers_form .= "<input type='submit' name='list' value='" . _APCAL_RO_BTN_LISTMEMBERS . "' />";
+                        $eventmembers_form .= "<input type='submit' name='list' value='" . _APCAL_RO_BTN_LISTMEMBERS . "' >";
                     }
                     $eventmembers_form .= "</div></form>\n";
                 } else {
@@ -2583,7 +2583,7 @@ if (!class_exists('APCal')) {
                 }
                 $pictures .= '<div style="padding: 10px 0;">
                 <a href="' . XOOPS_UPLOAD_URL . '/apcal/' . $pic->picture . '" class="highslide" onclick="return hs.expand(this)">
-                    <img src="' . XOOPS_UPLOAD_URL . '/apcal/thumbs/' . $pic->picture . '" alt="Image" />
+                    <img src="' . XOOPS_UPLOAD_URL . '/apcal/thumbs/' . $pic->picture . '" alt="Image" >
                 </a>
              </div>';
             }
@@ -2701,7 +2701,7 @@ if (!class_exists('APCal')) {
         </td>
     </tr>
     <tr>
-        <td><img src='$this->images_url/spacer.gif' alt='' width='150' height='4' /></td>       <td width='100%'></td>
+        <td><img src='$this->images_url/spacer.gif' alt='' width='150' height='4' ></td>       <td width='100%'></td>
     </tr>
     <tr>
         <td width='100%' align='right' colspan='2'>" . _MD_APCAL_COPYRIGHT . "</td>
@@ -2763,9 +2763,9 @@ if (!class_exists('APCal')) {
                 $groupid          = $event->groupid;
                 $rrule            = $event->rrule;
                 $admission_status = $event->admission ? _APCAL_MB_APCALEVENT_ADMITTED : _APCAL_MB_APCALEVENT_NEEDADMIT;
-                $update_button    = $editable ? "<input name='update' type='submit' value='" . _APCAL_BTN_SUBMITCHANGES . "' />" : '';
-                $insert_button    = "<input name='saveas' type='submit' value='" . _APCAL_BTN_SAVEAS . "' onclick='return confirm(\"" . _APCAL_CNFM_SAVEAS_YN . "\")' />";
-                $delete_button    = $deletable ? "<input name='delete' type='submit' value='" . _APCAL_BTN_DELETE . "' onclick='return confirm(\"" . _APCAL_CNFM_DELETE_YN . "\")' />" : '';
+                $update_button    = $editable ? "<input name='update' type='submit' value='" . _APCAL_BTN_SUBMITCHANGES . "' >" : '';
+                $insert_button    = "<input name='saveas' type='submit' value='" . _APCAL_BTN_SAVEAS . "' onclick='return confirm(\"" . _APCAL_CNFM_SAVEAS_YN . "\")' >";
+                $delete_button    = $deletable ? "<input name='delete' type='submit' value='" . _APCAL_BTN_DELETE . "' onclick='return confirm(\"" . _APCAL_CNFM_DELETE_YN . "\")' >" : '';
                 $tz_options       = $this->get_tz_options($event->event_tz);
                 $poster_tz        = $event->poster_tz;
 
@@ -2781,19 +2781,19 @@ if (!class_exists('APCal')) {
 
                 $regonline_state .= "
         <form method='post' action='ro_regonlinehandler.php' name='roformactivate1' style='margin:0px;'>
-            <input type='hidden' name='eventid' value='$event->id' />
-            <input type='hidden' name='uid' value='$this->user_id' />
-            <input type='hidden' name='eventurl' value='$this->redirecturl' />
-            <input type='hidden' name='title' value='$event->summary' />
-            <input type='hidden' name='eventdate' value='$event->start' />
-            <input type='hidden' name='location' value='$event->location' />
+            <input type='hidden' name='eventid' value='$event->id' >
+            <input type='hidden' name='uid' value='$this->user_id' >
+            <input type='hidden' name='eventurl' value='$this->redirecturl' >
+            <input type='hidden' name='title' value='$event->summary' >
+            <input type='hidden' name='eventdate' value='$event->start' >
+            <input type='hidden' name='location' value='$event->location' >
             <div align='left'>";
                 if ($event->extkey0 == 1) {
                     $regonline_state .= "
-                <input type='submit' name='form_activate' value='" . _APCAL_RO_BTN_RO_EDIT . "' />
-                <input type='submit' name='deactivate_x' value='" . _APCAL_RO_BTN_RO_DEACTIVATE . "' />";
+                <input type='submit' name='form_activate' value='" . _APCAL_RO_BTN_RO_EDIT . "' >
+                <input type='submit' name='deactivate_x' value='" . _APCAL_RO_BTN_RO_DEACTIVATE . "' >";
                 } else {
-                    $regonline_state .= "<input type='submit' name='form_activate' value='" . _APCAL_RO_BTN_RO_ACTIVATE . "' />";
+                    $regonline_state .= "<input type='submit' name='form_activate' value='" . _APCAL_RO_BTN_RO_ACTIVATE . "' >";
                 }
                 $regonline_state .= '</div>
         </form>';
@@ -2915,7 +2915,7 @@ if (!class_exists('APCal')) {
                 $end_min                  = 0;
                 $admission_status         = _APCAL_MB_APCALEVENT_NOTREGISTER;
                 $update_button            = '';
-                $insert_button            = "<input name='insert' type='submit' value='" . _APCAL_BTN_NEWINSERTED . "' />";
+                $insert_button            = "<input name='insert' type='submit' value='" . _APCAL_BTN_NEWINSERTED . "' >";
                 $delete_button            = '';
                 $allday_checkbox          = $allday_select = '';
                 $allday_bit1              = $allday_bit2 = $allday_bit3 = $allday_bit4 = '';
@@ -2986,16 +2986,16 @@ if (!class_exists('APCal')) {
                 $category_checkboxes .= str_repeat('-', $cat->cat_depth - 1)
                                         . "<input type='checkbox' name='cids[]' value='$cid' "
                                         . (strstr($categories, $cid4sql) ? 'checked' : '')
-                                        . " />$cat_title4show<br>\n";
+                                        . " >$cat_title4show<br>\n";
             }
             $category_checkboxes = substr(str_replace('<div', '</div><div', $category_checkboxes), 6) . "</div>\n";
 
             // Select for selecting main category
             $category_select = "<select name='mainCategory'>\n";
-            $category_select .= "<option  value='0' " . ($mainCategory == 0 ? 'selected' : '') . ' />' . _APCAL_NONE . "</option>\n";
+            $category_select .= "<option  value='0' " . ($mainCategory == 0 ? 'selected' : '') . ' >' . _APCAL_NONE . "</option>\n";
             foreach ($this->canbemain_cats as $cid => $cat) {
                 $cat_title4show  = $this->text_sanitizer_for_show($cat->cat_title);
-                $category_select .= "<option  value='$cid' " . ($mainCategory == $cid ? 'selected' : '') . ' />' . str_repeat('&nbsp;&nbsp;', $cat->cat_depth - 1) . " $cat_title4show</option>\n";
+                $category_select .= "<option  value='$cid' " . ($mainCategory == $cid ? 'selected' : '') . ' >' . str_repeat('&nbsp;&nbsp;', $cat->cat_depth - 1) . " $cat_title4show</option>\n";
             }
             $category_select .= "</select>\n";
 
@@ -3028,15 +3028,15 @@ if (!class_exists('APCal')) {
                 $picture = $GLOBALS['xoopsDB']->fetchObject($picture);
                 $mainPic = '<div id=mainPicture>
                 <a href="' . XOOPS_UPLOAD_URL . '/apcal/' . $picture->picture . '">
-                    <img src="' . XOOPS_URL . '/modules/apcal/thumbs/phpThumb.php?src=' . XOOPS_UPLOAD_PATH . '/apcal/' . $picture->picture . '&h=120&w=120" alt="" />
+                    <img src="' . XOOPS_URL . '/modules/apcal/thumbs/phpThumb.php?src=' . XOOPS_UPLOAD_PATH . '/apcal/' . $picture->picture . '&h=120&w=120" alt="" >
                  </a>
                  <a href="javascript:deletePic(\'' . XOOPS_URL . '\', ' . $picture->id . ', ' . $event_id . ', 1, ' . $this->nbPictures . ');" title="Delete picture">
-                     <img src="' . XOOPS_URL . '/modules/apcal/assets/images/delete.png" border="0" alt="Delete picture" />
+                     <img src="' . XOOPS_URL . '/modules/apcal/assets/images/delete.png" border="0" alt="Delete picture" >
                  </a>
              </div>';
             } else {
-                $mainPic = '<input type="hidden" name="MAX_FILE_SIZE" value="5000000" />
-            <input type="file" name="picture0" id="picture0" />
+                $mainPic = '<input type="hidden" name="MAX_FILE_SIZE" value="5000000" >
+            <input type="file" name="picture0" id="picture0" >
             <input type="hidden" name="files[]" id="files[]" value="picture0">';
             }
 
@@ -3049,10 +3049,10 @@ if (!class_exists('APCal')) {
                 while ($pic = $GLOBALS['xoopsDB']->fetchObject($pictures)) {
                     $picturesList .= '<span id="pic' . $pic->id . '">
                     <a href="' . XOOPS_UPLOAD_URL . '/apcal/' . $pic->picture . '">
-                        <img src="' . XOOPS_URL . '/modules/apcal/thumbs/phpThumb.php?src=' . XOOPS_UPLOAD_PATH . '/apcal/' . $pic->picture . '&h=120&w=120" alt="" />
+                        <img src="' . XOOPS_URL . '/modules/apcal/thumbs/phpThumb.php?src=' . XOOPS_UPLOAD_PATH . '/apcal/' . $pic->picture . '&h=120&w=120" alt="" >
                      </a>
                      <a href="javascript:deletePic(\'' . XOOPS_URL . '\', ' . $pic->id . ', ' . $event_id . ', 0, ' . $this->nbPictures . ');" title="Delete the picture">
-                         <img src="' . XOOPS_URL . '/modules/apcal/assets/images/delete.png" border="0" alt="Delete the picture" />
+                         <img src="' . XOOPS_URL . '/modules/apcal/assets/images/delete.png" border="0" alt="Delete the picture" >
                      </a>
                  </span>';
                 }
@@ -3060,8 +3060,8 @@ if (!class_exists('APCal')) {
             $pictures = '<div id="picList">';
             $maxInput = $this->nbPictures - $nbPictures;
             for ($i = 1; $i < $maxInput; ++$i) {
-                $pictures .= '<input type="hidden" name="MAX_FILE_SIZE" value="5000000" />
-            <input type="file" name="picture' . $i . '" id="picture' . $i . '" />
+                $pictures .= '<input type="hidden" name="MAX_FILE_SIZE" value="5000000" >
+            <input type="file" name="picture' . $i . '" id="picture' . $i . '" >
             <input type="hidden" name="files[]" id="files[]" value="picture' . $i . '">
             <br>';
             }
@@ -3080,20 +3080,20 @@ if (!class_exists('APCal')) {
     "
                        . $GLOBALS['xoopsGTicket']->getTicketHtml(__LINE__)
                        . "
-    <input type='hidden' name='caldate' value='{$caldate}' />
-    <input type='hidden' name='event_id' value='$event_id' />
-    <input type='hidden' name='last_smode' value='$smode' />
-    <input type='hidden' name='last_caldate' value='$this->caldate' />
-    <input type='hidden' name='poster_tz' value='$poster_tz' />
-    <input type='hidden' name='gmlatitude' value='$this->gmlat' />
-    <input type='hidden' name='gmlongitude' value='$this->gmlng' />
-    <input type='hidden' name='gmzoomlevel' value='$this->gmzoom' />
+    <input type='hidden' name='caldate' value='{$caldate}' >
+    <input type='hidden' name='event_id' value='$event_id' >
+    <input type='hidden' name='last_smode' value='$smode' >
+    <input type='hidden' name='last_caldate' value='$this->caldate' >
+    <input type='hidden' name='poster_tz' value='$poster_tz' >
+    <input type='hidden' name='gmlatitude' value='$this->gmlat' >
+    <input type='hidden' name='gmlongitude' value='$this->gmlng' >
+    <input type='hidden' name='gmzoomlevel' value='$this->gmzoom' >
     <table border='0' cellpadding='0' cellspacing='2'>
     <tr>
         <td class='head'>"
                        . _APCAL_TH_SUMMARY
                        . "</td>
-        <td class='even'><input type='text' name='summary' size='60' maxlength='250' value='$summary' /></td>
+        <td class='even'><input type='text' name='summary' size='60' maxlength='250' value='$summary' ></td>
     </tr>"
                        . ($this->displayTimezone ? "<tr>
         <td class='head'>" . _APCAL_TH_TIMEZONE . "</td>
@@ -3128,13 +3128,13 @@ if (!class_exists('APCal')) {
                        . _APCAL_TH_ALLDAYOPTIONS
                        . "</td>
         <td class='even'>
-            <input type='radio' name='allday_bits[]' value='2' {$allday_checkbox} onClick='document.MainForm.StartHour.disabled=document.MainForm.StartMin.disabled=document.MainForm.EndHour.disabled=document.MainForm.EndMin.disabled=true;enableSelects(true);' />"
+            <input type='radio' name='allday_bits[]' value='2' {$allday_checkbox} onClick='document.MainForm.StartHour.disabled=document.MainForm.StartMin.disabled=document.MainForm.EndHour.disabled=document.MainForm.EndMin.disabled=true;enableSelects(true);' >"
                        . _APCAL_MB_APCALALLDAY_EVENT
                        . " &nbsp;
-            <input type='radio' name='allday_bits[]' value='0' {$samehours_checkbox} onClick='document.MainForm.StartHour.disabled=document.MainForm.StartMin.disabled=document.MainForm.EndHour.disabled=document.MainForm.EndMin.disabled=false;enableSelects(true);' />"
+            <input type='radio' name='allday_bits[]' value='0' {$samehours_checkbox} onClick='document.MainForm.StartHour.disabled=document.MainForm.StartMin.disabled=document.MainForm.EndHour.disabled=document.MainForm.EndMin.disabled=false;enableSelects(true);' >"
                        . _APCAL_SAMEHOURS
                        . " &nbsp;
-            <input type='radio' name='allday_bits[]' value='8' {$diffhours_checkbox} onClick='document.MainForm.StartHour.disabled=document.MainForm.StartMin.disabled=document.MainForm.EndHour.disabled=document.MainForm.EndMin.disabled=false;enableSelects(false);' />"
+            <input type='radio' name='allday_bits[]' value='8' {$diffhours_checkbox} onClick='document.MainForm.StartHour.disabled=document.MainForm.StartMin.disabled=document.MainForm.EndHour.disabled=document.MainForm.EndMin.disabled=false;enableSelects(false);' >"
                        . _APCAL_DIFFERENTHOURS
                        . "
         </td>
@@ -3143,7 +3143,7 @@ if (!class_exists('APCal')) {
         <td class='head'>"
                        . _APCAL_TH_LOCATION
                        . "</td>
-        <td class='even'><input type='text' name='location' size='40' maxlength='250' value='$location' /></td>
+        <td class='even'><input type='text' name='location' size='40' maxlength='250' value='$location' ></td>
     </tr>
         <tr>
         <td class='head'></td>
@@ -3153,7 +3153,7 @@ if (!class_exists('APCal')) {
                        . "/modules/apcal/getCoords.php', '_blank', 'height=450,width=550,modal=yes,alwaysRaised=yes');return false;\">
                         <img src='"
                        . XOOPS_URL
-                       . "/modules/apcal/assets/images/gmap.png' />"
+                       . "/modules/apcal/assets/images/gmap.png' >"
                        . _APCAL_TH_GETCOORDS
                        . "</a>
                 </td>
@@ -3162,37 +3162,37 @@ if (!class_exists('APCal')) {
         <td class='head'>"
                        . _APCAL_TH_LATITUDE
                        . "</td>
-        <td class='even'><input type='text' name='gmlat' size='40' maxlength='250' value='$gmlat' /></td>
+        <td class='even'><input type='text' name='gmlat' size='40' maxlength='250' value='$gmlat' ></td>
     </tr>
         <tr>
         <td class='head'>"
                        . _APCAL_TH_LONGITUDE
                        . "</td>
-        <td class='even'><input type='text' name='gmlong' size='40' maxlength='250' value='$gmlong' /></td>
+        <td class='even'><input type='text' name='gmlong' size='40' maxlength='250' value='$gmlong' ></td>
     </tr>
         <tr>
         <td class='head'>"
                        . _APCAL_TH_ZOOM
                        . "</td>
-        <td class='even'><input type='text' name='gmzoom' size='40' maxlength='250' value='$gmzoom' /></td>
+        <td class='even'><input type='text' name='gmzoom' size='40' maxlength='250' value='$gmzoom' ></td>
     </tr>
     <tr>
         <td class='head'>"
                        . _APCAL_TH_CONTACT
                        . "</td>
-        <td class='even'><input type='text' name='contact' size='50' maxlength='250' value='$contact' /></td>
+        <td class='even'><input type='text' name='contact' size='50' maxlength='250' value='$contact' ></td>
     </tr>
     <tr>
         <td class='head'>"
                        . _APCAL_TH_EMAIL
                        . "</td>
-        <td class='even'><input type='text' name='email' size='50' maxlength='250' value='$email' /></td>
+        <td class='even'><input type='text' name='email' size='50' maxlength='250' value='$email' ></td>
     </tr>
     <tr>
         <td class='head'>"
                        . _APCAL_TH_URL
                        . "</td>
-        <td class='even'><input type='text' name='url' size='50' maxlength='250' value='$url' /></td>
+        <td class='even'><input type='text' name='url' size='50' maxlength='250' value='$url' ></td>
     </tr>
     <tr>
         <td class='head'>"
@@ -3228,9 +3228,9 @@ if (!class_exists('APCal')) {
         <td class='head'>"
                        . _APCAL_TH_CLASS
                        . "</td>
-        <td class='even'><input type='radio' name='class' value='PUBLIC' $class_public onClick='document.MainForm.groupid.disabled=true' />"
+        <td class='even'><input type='radio' name='class' value='PUBLIC' $class_public onClick='document.MainForm.groupid.disabled=true' >"
                        . _APCAL_MB_APCALPUBLIC
-                       . " &nbsp;  &nbsp; <input type='radio' name='class' value='PRIVATE' $class_private onClick='document.MainForm.groupid.disabled=false' />"
+                       . " &nbsp;  &nbsp; <input type='radio' name='class' value='PRIVATE' $class_private onClick='document.MainForm.groupid.disabled=false' >"
                        . _APCAL_MB_APCALPRIVATE
                        . sprintf(_APCAL_MB_APCALPRIVATETARGET, $select_private)
                        . "</td>
@@ -3258,7 +3258,7 @@ if (!class_exists('APCal')) {
                 $ret .= "
     <tr>
         <td style='text-align:center' colspan='2'>
-            <input name='reset' type='reset' value='" . _APCAL_BTN_RESET . "' />
+            <input name='reset' type='reset' value='" . _APCAL_BTN_RESET . "' >
             $update_button
             $insert_button
             $delete_button
@@ -3268,7 +3268,7 @@ if (!class_exists('APCal')) {
 
             $ret .= "
     <tr>
-        <td><img src='$this->images_url/spacer.gif' alt='' width='150' height='4' /></td>       <td width='100%'></td>
+        <td><img src='$this->images_url/spacer.gif' alt='' width='150' height='4' ></td>       <td width='100%'></td>
     </tr>
     </table>
 </form>
@@ -3278,7 +3278,7 @@ if (!class_exists('APCal')) {
                 $ret .= $ro_form_edit;
             } // splitted and added one line by goffy
             $ret .= "<table>
-        <tr><td><img src='$this->images_url/spacer.gif' alt='' height='4' /></td></tr>
+        <tr><td><img src='$this->images_url/spacer.gif' alt='' height='4' ></td></tr>
         <tr><td width='100%' align='right'>" . _MD_APCAL_COPYRIGHT . '</td></tr>
     </table>';
 
@@ -3704,7 +3704,7 @@ if (!class_exists('APCal')) {
             <html>
             <head>
             <title>redirection</title>
-            <meta http-equiv='Refresh' content='0; url=?$query' />
+            <meta http-equiv='Refresh' content='0; url=?$query' >
             </head>
             <body>
             <p>
@@ -3850,9 +3850,9 @@ if (!class_exists('APCal')) {
             $ret .= "}\n";
             $ret .= "</script>\n";
             $ret .= "<form action='$get_target' name='catSel' method='GET' style='margin:0px;'>\n";
-            $ret .= "<input type='hidden' name='caldate' value='$this->caldate' />\n";
-            $ret .= "<input type='hidden' name='smode' value='$smode' />\n";
-            $ret .= "<input type='hidden' name='op' value='$op' />\n";
+            $ret .= "<input type='hidden' name='caldate' value='$this->caldate' >\n";
+            $ret .= "<input type='hidden' name='smode' value='$smode' >\n";
+            $ret .= "<input type='hidden' name='op' value='$op' >\n";
             $ret .= "<select name='cid' onchange='submitCat(document.catSel.cid.value, document.catSel.smode.value, document.catSel.caldate.value);'>\n";
             $ret .= $this->useurlrewrite ? "\t<option value='All'>" . _APCAL_MB_APCALSHOWALLCAT . "</option>\n" : "\t<option value='0'>" . _APCAL_MB_APCALSHOWALLCAT . "</option>\n";
             foreach ($this->categories as $cid => $cat) {
@@ -4126,25 +4126,25 @@ END:VTIMEZONE\r\n";
             if ($admission) {
                 $dot = '';
             } else {
-                $dot = "<img border='0' src='$this->images_url/dot_notadmit.gif' />";
+                $dot = "<img border='0' src='$this->images_url/dot_notadmit.gif' >";
             }
 
             if ($start >= $now && $start - $now < 86400) {
                 // 24ï¿½ï¿½ï¿½Ö°ï¿½ï¿½ï¿½Î¥ï¿½ï¿½Ù¥ï¿½ï¿½
                 if (!$dot) {
-                    $dot = "<img border='0' src='$this->images_url/dot_today.gif' />";
+                    $dot = "<img border='0' src='$this->images_url/dot_today.gif' >";
                 }
                 $ret = "$dot <b>" . $this->get_middle_hi($start) . '</b>' . _APCAL_MB_APCALTIMESEPARATOR;
             } elseif ($start < $now) {
                 // ï¿½ï¿½ï¿½Ç¤Ë³ï¿½ï¿½Ï¤ï¿½ï¿½ì¤¿ï¿½ï¿½ï¿½Ù¥ï¿½ï¿½
                 if (!$dot) {
-                    $dot = "<img border='0' src='$this->images_url/dot_started.gif' />";
+                    $dot = "<img border='0' src='$this->images_url/dot_started.gif' >";
                 }
                 $ret = "$dot " . _APCAL_MB_APCALCONTINUING;
             } else {
                 // ï¿½ï¿½ï¿½ï¿½Ê¹ß¤Ë³ï¿½ï¿½Ï¤Ë¤Ê¤ë¥¤ï¿½Ù¥ï¿½ï¿½
                 if (!$dot) {
-                    $dot = "<img border='0' src='$this->images_url/dot_future.gif' />";
+                    $dot = "<img border='0' src='$this->images_url/dot_future.gif' >";
                 }
                 //      $ret = "$dot " . date( "n/j H:i" , $start ) . _APCAL_MB_APCALTIMESEPARATOR ;
                 $ret = "$dot " . $this->get_middle_md($start) . ' ' . $this->get_middle_hi($start) . _APCAL_MB_APCALTIMESEPARATOR;
@@ -4204,14 +4204,14 @@ END:VTIMEZONE\r\n";
             // Í½ï¿½ï¿½ï¿½ï¿½Ö»ï¿½ï¿½ï¿½ï¿½Í­Ìµï¿½ï¿½ï¿½ï¿½Ç§ï¿½ï¿½Í­Ìµï¿½Ë¤ï¿½Ã¤Æ¥É¥Ã¥ï¿½GIFï¿½ï¿½ï¿½Ø¤ï¿½ï¿½ï¿½
             if ($admission) {
                 if ($is_start_date) {
-                    $dot = "<img border='0' src='$this->images_url/dot_startday.gif' />";
+                    $dot = "<img border='0' src='$this->images_url/dot_startday.gif' >";
                 } elseif ($is_end_date) {
-                    $dot = "<img border='0' src='$this->images_url/dot_endday.gif' />";
+                    $dot = "<img border='0' src='$this->images_url/dot_endday.gif' >";
                 } else {
-                    $dot = "<img border='0' src='$this->images_url/dot_interimday.gif' />";
+                    $dot = "<img border='0' src='$this->images_url/dot_interimday.gif' >";
                 }
             } else {
-                $dot = "<img border='0' src='$this->images_url/dot_notadmit.gif' />";
+                $dot = "<img border='0' src='$this->images_url/dot_notadmit.gif' >";
             }
 
             if ($is_start_date) {
@@ -4269,14 +4269,14 @@ END:VTIMEZONE\r\n";
             // Í½ï¿½ï¿½ï¿½ï¿½Ö»ï¿½ï¿½ï¿½ï¿½Í­Ìµï¿½ï¿½ï¿½ï¿½Ç§ï¿½ï¿½Í­Ìµï¿½Ë¤ï¿½Ã¤Æ¥É¥Ã¥ï¿½GIFï¿½ï¿½ï¿½Ø¤ï¿½ï¿½ï¿½
             if ($admission) {
                 if ($event->is_start_date) {
-                    $dot = "<img border='0' src='$this->images_url/dot_startday.gif' />";
+                    $dot = "<img border='0' src='$this->images_url/dot_startday.gif' >";
                 } elseif ($event->is_end_date) {
-                    $dot = "<img border='0' src='$this->images_url/dot_endday.gif' />";
+                    $dot = "<img border='0' src='$this->images_url/dot_endday.gif' >";
                 } else {
-                    $dot = "<img border='0' src='$this->images_url/dot_interimday.gif' />";
+                    $dot = "<img border='0' src='$this->images_url/dot_interimday.gif' >";
                 }
             } else {
-                $dot = "<img border='0' src='$this->images_url/dot_notadmit.gif' />";
+                $dot = "<img border='0' src='$this->images_url/dot_notadmit.gif' >";
             }
 
             if ($event->is_start_date) {
@@ -4305,7 +4305,7 @@ END:VTIMEZONE\r\n";
          */
         public function get_formtextdateselect($name, $value)
         {
-            return "<input type='text' name='$name' size='12' value='$value' style='ime-mode:disabled' />";
+            return "<input type='text' name='$name' size='12' value='$value' style='ime-mode:disabled' >";
         }
 
         // $this->images_urlï¿½ï¿½ï¿½Ë¤ï¿½ï¿½ï¿½style.cssï¿½ï¿½ï¿½É¤ß¹ï¿½ï¿½ß¡ï¿½ï¿½ï¿½ï¿½Ë¥ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ°ï¿½ï¿½Ï¤ï¿½
@@ -4484,7 +4484,7 @@ END:VTIMEZONE\r\n";
             $hiddens = '';
             foreach ($_POST['ids'] as $id) {
                 $id      = (int)$id;
-                $hiddens .= "<input type='hidden' name='event_ids[]' value='$id' />\n";
+                $hiddens .= "<input type='hidden' name='event_ids[]' value='$id' >\n";
             }
             // webcalï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
             $webcal_url = str_replace('http://', 'webcal://', $post_target);
@@ -4497,13 +4497,13 @@ END:VTIMEZONE\r\n";
     <td align='right' width='50%'>
     <form action='$post_target?output_ics=1' method='post' target='$target'>
         $hiddens
-        <input type='submit' name='do_output' value='" . _APCAL_BTN_OUTPUTICS_WIN . "' />
+        <input type='submit' name='do_output' value='" . _APCAL_BTN_OUTPUTICS_WIN . "' >
     </form>
     </td>
     <td align='left' width='50%'>
     <form action='$webcal_url?output_ics=1' method='post' target='$target'>
         $hiddens
-        <input type='submit' name='do_output' value='" . _APCAL_BTN_OUTPUTICS_MAC . "' />
+        <input type='submit' name='do_output' value='" . _APCAL_BTN_OUTPUTICS_MAC . "' >
     </form>
     </td>
     </tr>
@@ -5060,13 +5060,13 @@ END:VEVENT\r\n";
             // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ã¥ï¿½ï¿½Ü¥Ã¥ï¿½ï¿½ï¿½ï¿½ï¿½Å¸ï¿½ï¿½
             $wdays_checkbox = '';
             foreach ($this->byday2langday_w as $key => $val) {
-                $wdays_checkbox .= "<input type='checkbox' name='rrule_weekly_bydays[]' value='$key' {$wdays_checked[$key]} />$val &nbsp; \n";
+                $wdays_checkbox .= "<input type='checkbox' name='rrule_weekly_bydays[]' value='$key' {$wdays_checked[$key]} >$val &nbsp; \n";
             }
 
             // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ã¥ï¿½ï¿½Ü¥Ã¥ï¿½ï¿½ï¿½ï¿½ï¿½Å¸ï¿½ï¿½
             $bymonth_checkbox = "<table border='0' cellpadding='2'><tr>\n";
             foreach ($bymonths_checked as $key => $val) {
-                $bymonth_checkbox .= "<td><input type='checkbox' name='rrule_bymonths[]' value='$key' $val />{$this->month_short_names[$key]}</td>\n";
+                $bymonth_checkbox .= "<td><input type='checkbox' name='rrule_bymonths[]' value='$key' $val >{$this->month_short_names[$key]}</td>\n";
                 if ($key == 6) {
                     $bymonth_checkbox .= "</tr>\n<tr>\n";
                 }
@@ -5084,7 +5084,7 @@ END:VEVENT\r\n";
             }
 
             return "
-            <input type='radio' name='rrule_freq' value='none' $norrule_checked />"
+            <input type='radio' name='rrule_freq' value='none' $norrule_checked >"
                    . _APCAL_RR_R_NORRULE
                    . "<br>
             <br>
@@ -5093,35 +5093,35 @@ END:VEVENT\r\n";
                    . _APCAL_RR_R_YESRRULE
                    . "</legend>
                 <fieldset>
-                    <legend class='blockTitle'><input type='radio' name='rrule_freq' value='daily' $daily_checked />"
+                    <legend class='blockTitle'><input type='radio' name='rrule_freq' value='daily' $daily_checked >"
                    . _APCAL_RR_FREQDAILY
                    . '</legend>
                     '
                    . _APCAL_RR_FREQDAILY_PRE
-                   . " <input type='text' size='2' name='rrule_daily_interval' value='$daily_interval_init' /> "
+                   . " <input type='text' size='2' name='rrule_daily_interval' value='$daily_interval_init' > "
                    . _APCAL_RR_FREQDAILY_SUF
                    . "
                 </fieldset>
                 <br>
                 <fieldset>
-                    <legend class='blockTitle'><input type='radio' name='rrule_freq' value='weekly' $weekly_checked />"
+                    <legend class='blockTitle'><input type='radio' name='rrule_freq' value='weekly' $weekly_checked >"
                    . _APCAL_RR_FREQWEEKLY
                    . '</legend>
                     '
                    . _APCAL_RR_FREQWEEKLY_PRE
-                   . "<input type='text' size='2' name='rrule_weekly_interval' value='$weekly_interval_init' /> "
+                   . "<input type='text' size='2' name='rrule_weekly_interval' value='$weekly_interval_init' > "
                    . _APCAL_RR_FREQWEEKLY_SUF
                    . " <br>
                     $wdays_checkbox
                 </fieldset>
                 <br>
                 <fieldset>
-                    <legend class='blockTitle'><input type='radio' name='rrule_freq' value='monthly' $monthly_checked />"
+                    <legend class='blockTitle'><input type='radio' name='rrule_freq' value='monthly' $monthly_checked >"
                    . _APCAL_RR_FREQMONTHLY
                    . '</legend>
                     '
                    . _APCAL_RR_FREQMONTHLY_PRE
-                   . "<input type='text' size='2' name='rrule_monthly_interval' value='$monthly_interval_init' /> "
+                   . "<input type='text' size='2' name='rrule_monthly_interval' value='$monthly_interval_init' > "
                    . _APCAL_RR_FREQMONTHLY_SUF
                    . " &nbsp;
                     <select name='rrule_monthly_byday'>
@@ -5132,18 +5132,18 @@ END:VEVENT\r\n";
                     </select> &nbsp; "
                    . _APCAL_RR_OR
                    . " &nbsp;
-                    <input type='text' size='10' name='rrule_bymonthday' value='$bymonthday_init' />"
+                    <input type='text' size='10' name='rrule_bymonthday' value='$bymonthday_init' >"
                    . _APCAL_NTC_MONTHLYBYMONTHDAY
                    . "
                 </fieldset>
                 <br>
                 <fieldset>
-                    <legend class='blockTitle'><input type='radio' name='rrule_freq' value='yearly' $yearly_checked />"
+                    <legend class='blockTitle'><input type='radio' name='rrule_freq' value='yearly' $yearly_checked >"
                    . _APCAL_RR_FREQYEARLY
                    . '</legend>
                     '
                    . _APCAL_RR_FREQYEARLY_PRE
-                   . "<input type='text' size='2' name='rrule_yearly_interval' value='$yearly_interval_init' /> "
+                   . "<input type='text' size='2' name='rrule_yearly_interval' value='$yearly_interval_init' > "
                    . _APCAL_RR_FREQYEARLY_SUF
                    . " <br>
                     $bymonth_checkbox <br>
@@ -5155,17 +5155,17 @@ END:VEVENT\r\n";
                     </select>
                 </fieldset>
                 <br>
-                <input type='radio' name='rrule_terminator' value='noterm' $noterm_checked onClick='document.MainForm.rrule_until.disabled=true;document.MainForm.rrule_count.disabled=true;' />"
+                <input type='radio' name='rrule_terminator' value='noterm' $noterm_checked onClick='document.MainForm.rrule_until.disabled=true;document.MainForm.rrule_count.disabled=true;' >"
                    . _APCAL_RR_R_NOCOUNTUNTIL
                    . ' &nbsp; '
                    . sprintf(_APCAL_NTC_EXTRACTLIMIT, $this->max_rrule_extract)
                    . "  <br>
-                <input type='radio' name='rrule_terminator' value='count' $count_checked onClick='document.MainForm.rrule_until.disabled=true;document.MainForm.rrule_count.disabled=false;' />"
+                <input type='radio' name='rrule_terminator' value='count' $count_checked onClick='document.MainForm.rrule_until.disabled=true;document.MainForm.rrule_count.disabled=false;' >"
                    . _APCAL_RR_R_USECOUNT_PRE
-                   . " <input type='text' size='3' name='rrule_count' value='$count_init' /> "
+                   . " <input type='text' size='3' name='rrule_count' value='$count_init' > "
                    . _APCAL_RR_R_USECOUNT_SUF
                    . "<br>
-                <input type='radio' name='rrule_terminator' value='until' $until_checked onClick='document.MainForm.rrule_until.disabled=false;document.MainForm.rrule_count.disabled=true;' />"
+                <input type='radio' name='rrule_terminator' value='until' $until_checked onClick='document.MainForm.rrule_until.disabled=false;document.MainForm.rrule_count.disabled=true;' >"
                    . _APCAL_RR_R_USEUNTIL
                    . " $textbox_until
             </fieldset>

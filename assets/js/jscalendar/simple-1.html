@@ -1,12 +1,12 @@
 <html style="background-color: buttonface; color: buttontext;">
 
 <head>
-    <meta http-equiv="content-type" content="text/xml; charset=utf-8"/>
+    <meta http-equiv="content-type" content="text/xml; charset=utf-8">
 
     <title>Simple calendar setups [popup calendar]</title>
 
     <!-- calendar stylesheet -->
-    <link rel="stylesheet" type="text/css" media="all" href="calendar-win2k-cold-1.css" title="win2k-cold-1"/>
+    <link rel="stylesheet" type="text/css" media="all" href="calendar-win2k-cold-1.css" title="win2k-cold-1">
 
     <!-- main calendar program -->
     <script type="text/javascript" src="calendar.js"></script>
@@ -44,7 +44,7 @@
 </blockquote>
 
 
-<hr/>
+<hr>
 
 <p><b>Basic setup: one input per calendar.</b> Clicking in the input field
     activates the calendar. The date format is "%m/%d/%Y %I:%M %p". The
@@ -56,8 +56,8 @@
     property useful here is "onUpdate".</p>
 
 <form action="#" method="get">
-    <input type="text" name="date" id="f_date_a"/>
-    <input type="text" name="date" id="f_calcdate"/>
+    <input type="text" name="date" id="f_date_a">
+    <input type="text" name="date" id="f_calcdate">
 </form>
 
 <script type="text/javascript">
@@ -92,7 +92,7 @@
 </script>
 
 
-<hr/>
+<hr>
 
 <p><b>Input field with a trigger button.</b> Clicking the button activates
     the calendar. Note that this one needs double-click (singleClick parameter
@@ -101,7 +101,7 @@
     other year as default).</p>
 
 <form action="#" method="get">
-    <input type="text" name="date" id="f_date_b"/>
+    <input type="text" name="date" id="f_date_b">
     <button type="reset" id="f_trigger_b">...</button>
 </form>
 
@@ -117,7 +117,7 @@
 </script>
 
 
-<hr/>
+<hr>
 
 <p><b>Input field with a trigger image.</b> Note that the Calendar.setup
     function doesn't care if the trigger is a button, image, or anything else.
@@ -127,10 +127,10 @@
 <form action="#" method="get">
     <table cellspacing="0" cellpadding="0" style="border-collapse: collapse;">
         <tr>
-            <td><input type="text" name="date" id="f_date_c" readonly="1"/></td>
+            <td><input type="text" name="date" id="f_date_c" readonly="1"></td>
             <td><img src="img.gif" id="f_trigger_c" style="cursor: pointer; border: 1px solid red;"
                      title="Date selector"
-                     onmouseover="this.style.background='red';" onmouseout="this.style.background=''"/></td>
+                     onmouseover="this.style.background='red';" onmouseout="this.style.background=''"></td>
     </table>
 </form>
 
@@ -145,7 +145,7 @@
 </script>
 
 
-<hr/>
+<hr>
 
 <p><b>Hidden field, display area.</b> The calendar now puts the date into 2
     elements: one is an input field of type "hidden"&mdash;so that the user
@@ -157,7 +157,7 @@
     field) but we wanna show a friendlier format to the end-user.</p>
 
 <form action="#" method="get" style="visibility: hidden;">
-    <input type="hidden" name="date" id="f_date_d"/>
+    <input type="hidden" name="date" id="f_date_d">
 </form>
 
 <p>Your birthday:
@@ -179,19 +179,19 @@
 </script>
 
 
-<hr/>
+<hr>
 
 <p><b>Hidden field, display area, trigger image.</b> Very similar to the
     previous example. The difference is that we also have a trigger image.</p>
 
 <form action="#" method="get" style="visibility: hidden;">
-    <input type="hidden" name="date" id="f_date_e"/>
+    <input type="hidden" name="date" id="f_date_e">
 </form>
 
 <p>Your birthday: <span id="show_e">-- not entered --</span> <img
         src="img.gif" id="f_trigger_e" style="cursor: pointer; border: 1px solid
 red;" title="Date selector" onmouseover="this.style.background='red';"
-        onmouseout="this.style.background=''"/>.</p>
+        onmouseout="this.style.background=''">.</p>
 
 <script type="text/javascript">
     Calendar.setup({
@@ -206,14 +206,14 @@ red;" title="Date selector" onmouseover="this.style.background='red';"
 </script>
 
 
-<hr/>
+<hr>
 
 <p><b>Hidden field, display area.</b> Very much like the previous examples,
     but we now disable some dates (all weekends, that is, Saturdays and
     Sundays).</p>
 
 <form action="#" method="get" style="visibility: hidden;">
-    <input type="hidden" name="date" id="f_date_f"/>
+    <input type="hidden" name="date" id="f_date_f">
 </form>
 
 <p>Your birthday:

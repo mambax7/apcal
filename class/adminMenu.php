@@ -203,7 +203,7 @@ class APCalAdminMenuHandler
                 } else {
                     $system_image = XOOPS_URL . '/modules/' . $_dirname . '/assets/images/' . $modversion['image'];
                 }
-                $menu .= "<img src='$system_image' align='middle' height='32' width='32' alt='' />";
+                $menu .= "<img src='$system_image' align='middle' height='32' width='32' alt='' >";
                 $menu .= ' ' . $modversion['name'] . "</h4>\n";
             } else {
                 $menu .= ' ' . $this->_header . "</h4>\n";

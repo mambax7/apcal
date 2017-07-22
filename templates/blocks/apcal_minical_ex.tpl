@@ -32,12 +32,12 @@
                             style="background-color:<{$block.calhead_bgcolor}>;text-align:center;vertical-align:middle;padding:3px 1px;">
                             <a href="<{$block.root_url}>?caldate=<{$block.prev_month}><{$block.additional_get}>"><img
                                         src="<{$block.skinpath}>/miniarrowleft.gif" width="18" height="14" border="0"
-                                        alt="<{$block.lang_prev_month}>" title="<{$block.lang_prev_month}>"/></a>
+                                        alt="<{$block.lang_prev_month}>" title="<{$block.lang_prev_month}>"></a>
                             <span style="font-size: x-small; "><span class="apcal_head"
                                                                      style="color:<{$block.calhead_color}>;"><b><{$block.year_month_title}></b></span></span>
                             <a href="<{$block.root_url}>?caldate=<{$block.next_month}><{$block.additional_get}>"><img
                                         src="<{$block.skinpath}>/miniarrowright.gif" width="18" height="14" border="0"
-                                        alt="<{$block.lang_next_month}>" title="<{$block.lang_next_month}>"/></a>
+                                        alt="<{$block.lang_next_month}>" title="<{$block.lang_next_month}>"></a>
                         </td>
                     </tr>
 
@@ -59,7 +59,7 @@
                                 <{if $day.type == 0 }>
                                     <td class="apcal_miniday">
                                         <span class="apcal_miniday"><img src="<{$block.skinpath}>/spacer.gif" alt=""
-                                                                         width="20" height="20"/></span>
+                                                                         width="20" height="20"></span>
                                     </td>
                                 <{else}>
                                     <td class="apcal_miniday"
@@ -70,7 +70,7 @@
 
                   <{foreach from=$day.ex item=ex}>
                       <a href="<{$ex.link}>"><img src="<{$block.skinpath}>/<{$ex.dotgif}>" alt="<{$ex.title}>"
-                                                  title="<{$ex.title}>" width="8" height="8"/></a>
+                                                  title="<{$ex.title}>" width="8" height="8"></a>
 
 
 
@@ -82,7 +82,7 @@
 
 
 
-                      <img src="<{$block.skinpath}>/spacer.gif" alt="" width="8" height="8"/>
+                      <img src="<{$block.skinpath}>/spacer.gif" alt="" width="8" height="8">
                   <{/foreach}>
                 </span>
                                     </td>
@@ -98,7 +98,7 @@
                         <div style='float:right;height:1.5em;'>
                             <nobr>
                                 <img src="<{$block.skinpath}>/<{$plugin.dotgif}>"
-                                     alt="<{$plugin.pi_title}>"/>&nbsp;<{$plugin.pi_title}>&nbsp;&nbsp;
+                                     alt="<{$plugin.pi_title}>">&nbsp;<{$plugin.pi_title}>&nbsp;&nbsp;
                             </nobr>
                         </div>
                     <{/foreach}>
