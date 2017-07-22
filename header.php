@@ -19,9 +19,7 @@
 
 include XOOPS_ROOT_PATH . '/header.php';
 
-
-$moduleDirName = basename(__DIR__);
-
+$moduleDirName = basename((__DIR__));
 
 if (false !== ($moduleHelper = Xmf\Module\Helper::getHelper($moduleDirName))) {
 } else {

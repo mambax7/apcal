@@ -20,9 +20,7 @@
 include __DIR__ . '/../../mainfile.php';
 require_once XOOPS_ROOT_PATH . '/class/template.php';
 
-if (!isset($moduleDirName)) {
-    $moduleDirName = basename(__DIR__);
-}
+$moduleDirName = basename(__DIR__);
 
 if (false !== ($moduleHelper = Xmf\Module\Helper::getHelper($moduleDirName))) {
 } else {
