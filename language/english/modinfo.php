@@ -183,7 +183,7 @@ if (defined('FOR_XOOPS_LANG_CHECKER') || !defined('_MI_APCAL_APCALLOADED')) {
 
     //Help
     define('_MI_APCAL_DIRNAME', basename(dirname(dirname(__DIR__))));
-    define('_MI_APCAL_HELP_HEADER', __DIR__.'/help/helpheader.html');
+    define('_MI_APCAL_HELP_HEADER', __DIR__ . '/help/helpheader.tpl');
     define('_MI_APCAL_BACK_2_ADMIN', 'Back to Administration of ');
     define('_MI_APCAL_OVERVIEW', 'Overview');
 
@@ -197,5 +197,4 @@ if (defined('FOR_XOOPS_LANG_CHECKER') || !defined('_MI_APCAL_APCALLOADED')) {
     //Google Maps API Key
     define('_MI_APCAL_GMAPS_API', 'Paste your Google Maps API key for http://www.yoursite.com/ here.');
     define('_MI_APCAL_GMAPS_API_DESC', 'Get keys from <a href="https://developers.google.com/maps/documentation/javascript/get-api-key/">https://developers.google.com/maps/documentation/javascript/get-api-key/</a>');
-
 }

@@ -84,7 +84,7 @@ if (defined('FOR_XOOPS_LANG_CHECKER') || !defined('APCAL_MB_APCALLOADED')) {
     define('_APCAL_GPLUS_LNG', 'en');
     define('_MD_APCAL_DBUPDATED', 'Database Updated');
 
-//    define('_MD_APCAL_ERR_NOPERMTOINSERT', 'en_US');
+    //    define('_MD_APCAL_ERR_NOPERMTOINSERT', 'en_US');
 
     define('_MD_APCAL_MODCONFIG', 'Module Config Options');
     define('_MD_APCAL_TPLSETS', 'Templates'); //
