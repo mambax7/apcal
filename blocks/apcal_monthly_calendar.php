@@ -10,8 +10,8 @@
  */
 
 /**
- * @copyright   {@link https://xoops.org/ XOOPS Project}
- * @license     {@link http://www.fsf.org/copyleft/gpl.html GNU public license}
+ * @copyright    {@link https://xoops.org/ XOOPS Project}
+ * @license      {@link http://www.fsf.org/copyleft/gpl.html GNU public license}
  * @package
  * @since
  * @author       XOOPS Development Team,
@@ -28,7 +28,6 @@ if (!defined('APCAL_BLOCK_MONTHLY_CALENDAR_INCLUDED')) {
     function apcal_monthly_calendar_show($options)
     {
         global $xoopsConfig, $xoopsDB;
-
 
         $moduleDirName = empty($options[0]) ? basename(dirname(__DIR__)) : $options[0];
         xoops_loadLanguage('main', $moduleDirName);
@@ -61,7 +60,7 @@ if (!defined('APCAL_BLOCK_MONTHLY_CALENDAR_INCLUDED')) {
 
         require_once "$mod_path/include/patTemplate.php";
         $tmpl = new PatTemplate();
-        $tmpl->readTemplatesFromFile("$cal->images_path/default/block_monthly.tmpl.html");
+        $tmpl->readTemplatesFromFile("$cal->images_path/block_monthly.tmpl.html");
 
         // setting skin folder
         $tmpl->addVar('WholeBoard', 'SKINPATH', $cal->images_url);
