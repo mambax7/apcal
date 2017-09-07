@@ -10,8 +10,8 @@
  */
 
 /**
- * @copyright   {@link https://xoops.org/ XOOPS Project}
- * @license     {@link http://www.fsf.org/copyleft/gpl.html GNU public license}
+ * @copyright    {@link https://xoops.org/ XOOPS Project}
+ * @license      {@link http://www.fsf.org/copyleft/gpl.html GNU public license}
  * @package
  * @since
  * @author       XOOPS Development Team,
@@ -96,11 +96,11 @@ if (!defined('APCAL_BLOCK_NEW_EVENT_INCLUDED')) {
         $cal->images_url  = "$mod_url/assets/images/$skin_folder";
         $cal->images_path = "$mod_path/assets/images/$skin_folder";
 
-        $ret = "<input type='hidden' name='options[0]' value='$moduleDirName' >\n";
+        $ret = "<input type='hidden' name='options[0]' value='$moduleDirName'>\n";
 
         // É½¼¨¸Ä¿ô
         $ret .= _MB_APCAL_MAXITEMS . ':';
-        $ret .= "<input type='text' size='4' name='options[1]' value='$maxitem' style='text-align:right;' ><br>\n";
+        $ret .= "<input type='text' size='4' name='options[1]' value='$maxitem' style='text-align:right;'><br>\n";
 
         // ¥«¥Æ¥´¥ê¡¼ÁªÂò¥Ü¥Ã¥¯¥¹¤ÎÀ¸À®
         $ret .= _MB_APCAL_CATSEL . ':';

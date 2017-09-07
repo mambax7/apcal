@@ -133,7 +133,7 @@
                                    style="border-left-color: <{$cats_color[$event.cat]}>; border-bottom-color: <{$cats_color[$event.cat]}>; background: <{$event_bgcolor}>; color: <{$event_color}>;">
                                     <{if $events[$id].extkey0 == 1}><img src="<{$ro_image}>" height="12px"
                                                                          alt="<{$smarty.const._APCAL_RO_ONLINE_POSS}>"
-                                                                         title="<{$smarty.const._APCAL_RO_ONLINE_POSS}>" ><{/if}>
+                                                                         title="<{$smarty.const._APCAL_RO_ONLINE_POSS}>"><{/if}>
                                     <{$events[$id].summary}>
                                 </a>
                                 <{if !$for_print}>
@@ -142,13 +142,13 @@
                                         <div class="summary" style="background: <{$cats_color[$event.cat]}>;">
                                             <{if $events[$id].extkey0 == 1}><img src="<{$ro_image}>" height="15px"
                                                                                  alt="<{$smarty.const._APCAL_RO_ONLINE_POSS}>"
-                                                                                 title="<{$smarty.const._APCAL_RO_ONLINE_POSS}>" ><{/if}>
+                                                                                 title="<{$smarty.const._APCAL_RO_ONLINE_POSS}>"><{/if}>
                                             &nbsp;<{$events[$id].summary}>
                                         </div>
                                         <div class="details">
                                             <{if $events[$id].picture}><img src="<{$events[$id].picture}>"
                                                                             alt="<{$events[$id].summary}>"
-                                                                            title="<{$events[$id].summary}>" ><{/if}>
+                                                                            title="<{$events[$id].summary}>"><{/if}>
                                             <div class="info">
                                                 <{if $events[$id].start}><span
                                                         class="bold"><{$smarty.const._APCAL_BEGIN}>

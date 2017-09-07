@@ -20,7 +20,7 @@
 
 // a plugin for weblog
 
-defined('XOOPS_ROOT_PATH') || exit('XOOPS Root Path not defined');
+defined('XOOPS_ROOT_PATH') || exit('Restricted access.');
 
 /*
     $db : db instance
@@ -73,7 +73,7 @@ while (list($title, $blog_id, $server_time, $entry_num) = $db->fetchRow($result)
         continue;
     }
     $target_date = date('j', $user_time);
-    $tmp_array   = array(
+    $tmp_array   = [
         'dotgif'      => $plugin['dotgif'],
         'dirname'     => $plugin['dirname'],
         'link'        => XOOPS_URL . '/modules/' . $plugin['dirname'] . '/index.php?caldate=' . date('Y-n-j', $user_time) . '&date=' . date('Ymd', $user_time),
@@ -82,7 +82,7 @@ while (list($title, $blog_id, $server_time, $entry_num) = $db->fetchRow($result)
         'user_time'   => $user_time,
         'name'        => 'blog_id',
         'title'       => $plugin['name'] . '(' . $entry_num . ')'
-    );
+    ];
     if ($just1gif) {
         // just 1 gif per a plugin & per a day
         $plugin_returns[$target_date][$plugin['dirname']] = $tmp_array;

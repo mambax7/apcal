@@ -30,7 +30,7 @@ class Thumb
             $nHeight = $nWidth * $ratio;
         }
 
-        return array('width' => $nWidth, 'height' => $nHeight);
+        return ['width' => $nWidth, 'height' => $nHeight];
     }
 
     /**

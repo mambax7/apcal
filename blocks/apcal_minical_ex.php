@@ -51,7 +51,7 @@ if (!defined('APCAL_BLOCK_MINICAL_EX')) {
                 // bid from newblocks
                 $bid = $GLOBALS['block_arr'][$GLOBALS['i']]->getVar('bid');
             } else {
-                return array();
+                return [];
             }
         }
 
@@ -82,7 +82,7 @@ if (!defined('APCAL_BLOCK_MINICAL_EX')) {
         // cache enable or not
         if (empty($_POST['apcal_jumpcaldate'])
             && (empty($_GET['caldate'])
-                || in_array(substr($_GET['caldate'], 0, 4), array(date('Y'), date('Y') - 1)))) {
+                || in_array(substr($_GET['caldate'], 0, 4), [date('Y'), date('Y') - 1]))) {
             $enable_cache = true;
             //      $enable_cache = false ;
         } else {

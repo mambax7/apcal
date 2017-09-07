@@ -10,15 +10,15 @@
  */
 
 /**
- * @copyright   {@link https://xoops.org/ XOOPS Project}
- * @license     {@link http://www.fsf.org/copyleft/gpl.html GNU public license}
+ * @copyright    {@link https://xoops.org/ XOOPS Project}
+ * @license      {@link http://www.fsf.org/copyleft/gpl.html GNU public license}
  * @package
  * @since
  * @author       XOOPS Development Team,
- * @author      Chia (http://www.cyai.net/)
+ * @author       Chia (http://www.cyai.net/)
  */
 
-$this->holidays = array(
+$this->holidays = [
     '2005-2-8'  => '除夕',
     '2005-2-9'  => '春節',
     '2005-2-10' => '回娘家',
@@ -67,7 +67,7 @@ $this->holidays = array(
     '2010-2-18' => '開市',
     '2010-6-16' => '端午節',
     '2010-9-22' => '中秋節'
-);
+];
 
 for ($y = 2001; $y < 2020; ++$y) {
     $this->holidays["$y-1-1"]   = '元旦';

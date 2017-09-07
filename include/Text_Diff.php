@@ -32,8 +32,8 @@ class Text_Diff
      */
     public function __construct($from_lines, $to_lines)
     {
-        array_walk($from_lines, array($this, '_trimNewlines'));
-        array_walk($to_lines, array($this, '_trimNewlines'));
+        array_walk($from_lines, [$this, '_trimNewlines']);
+        array_walk($to_lines, [$this, '_trimNewlines']);
 
         if (extension_loaded('xdiff')) {
             $engine = new Text_Diff_Engine_xdiff();
@@ -73,7 +73,7 @@ class Text_Diff
         } else {
             $rev = $this;
         }
-        $rev->_edits = array();
+        $rev->_edits = [];
         foreach ($this->_edits as $edit) {
             $rev->_edits[] = $edit->reverse();
         }
@@ -125,7 +125,7 @@ class Text_Diff
      */
     public function getOriginal()
     {
-        $lines = array();
+        $lines = [];
         foreach ($this->_edits as $edit) {
             if ($edit->orig) {
                 array_splice($lines, count($lines), 0, $edit->orig);
@@ -144,7 +144,7 @@ class Text_Diff
      */
     public function getFinal()
     {
-        $lines = array();
+        $lines = [];
         foreach ($this->_edits as $edit) {
             if ($edit->final) {
                 array_splice($lines, count($lines), 0, $edit->final);
@@ -163,7 +163,7 @@ class Text_Diff
      */
     public function _trimNewlines(&$line, $key)
     {
-        $line = str_replace(array("\n", "\r"), '', $line);
+        $line = str_replace(["\n", "\r"], '', $line);
     }
 
     /**
@@ -236,13 +236,13 @@ class Text_MappedDiff extends Text_Diff
 
         $xi = $yi = 0;
         for ($i = 0, $iMax = count($this->_edits); $i < $iMax; ++$i) {
-            $orig = &$this->_edits[$i]->orig;
+            $orig =& $this->_edits[$i]->orig;
             if (is_array($orig)) {
                 $orig = array_slice($from_lines, $xi, count($orig));
                 $xi   += count($orig);
             }
 
-            $final = &$this->_edits[$i]->final;
+            $final =& $this->_edits[$i]->final;
             if (is_array($final)) {
                 $final = array_slice($to_lines, $yi, count($final));
                 $yi    += count($final);
@@ -286,19 +286,19 @@ class Text_Diff_Engine_xdiff
          * lines using this approach, so we can't add Text_Diff_Op_changed
          * instances to the $edits array.  The result is still perfectly
          * valid, albeit a little less descriptive and efficient. */
-        $edits = array();
+        $edits = [];
         foreach ($diff as $line) {
             switch ($line[0]) {
                 case ' ':
-                    $edits[] = new Text_Diff_Op_copy(array(substr($line, 1)));
+                    $edits[] = new Text_Diff_Op_copy([substr($line, 1)]);
                     break;
 
                 case '+':
-                    $edits[] = new Text_Diff_Op_add(array(substr($line, 1)));
+                    $edits[] = new Text_Diff_Op_add([substr($line, 1)]);
                     break;
 
                 case '-':
-                    $edits[] = new Text_Diff_Op_delete(array(substr($line, 1)));
+                    $edits[] = new Text_Diff_Op_delete([substr($line, 1)]);
                     break;
             }
         }
@@ -343,9 +343,9 @@ class Text_Diff_Engine_native
         $n_from = count($from_lines);
         $n_to   = count($to_lines);
 
-        $this->xchanged = $this->ychanged = array();
-        $this->xv       = $this->yv = array();
-        $this->xind     = $this->yind = array();
+        $this->xchanged = $this->ychanged = [];
+        $this->xv       = $this->yv = [];
+        $this->xind     = $this->yind = [];
         unset($this->seq, $this->in_seq, $this->lcs);
 
         // Skip leading common lines.
@@ -396,14 +396,14 @@ class Text_Diff_Engine_native
         $this->_shiftBoundaries($to_lines, $this->ychanged, $this->xchanged);
 
         // Compute the edit operations.
-        $edits = array();
+        $edits = [];
         $xi    = $yi = 0;
         while ($xi < $n_from || $yi < $n_to) {
             assert($yi < $n_to || $this->xchanged[$xi]);
             assert($xi < $n_from || $this->ychanged[$yi]);
 
             // Skip matching "snake".
-            $copy = array();
+            $copy = [];
             while ($xi < $n_from && $yi < $n_to && !$this->xchanged[$xi] && !$this->ychanged[$yi]) {
                 $copy[] = $from_lines[$xi++];
                 ++$yi;
@@ -413,12 +413,12 @@ class Text_Diff_Engine_native
             }
 
             // Find deletes & adds.
-            $delete = array();
+            $delete = [];
             while ($xi < $n_from && $this->xchanged[$xi]) {
                 $delete[] = $from_lines[$xi++];
             }
 
-            $add = array();
+            $add = [];
             while ($yi < $n_to && $this->ychanged[$yi]) {
                 $add[] = $to_lines[$yi++];
             }
@@ -465,7 +465,7 @@ class Text_Diff_Engine_native
             /* Things seems faster (I'm not sure I understand why) when the
              * shortest sequence is in X. */
             $flip = true;
-            list($xoff, $xlim, $yoff, $ylim) = array($yoff, $ylim, $xoff, $xlim);
+            list($xoff, $xlim, $yoff, $ylim) = [$yoff, $ylim, $xoff, $xlim];
         }
 
         if ($flip) {
@@ -480,8 +480,8 @@ class Text_Diff_Engine_native
 
         $this->lcs    = 0;
         $this->seq[0] = $yoff - 1;
-        $this->in_seq = array();
-        $ymids[0]     = array();
+        $this->in_seq = [];
+        $ymids[0]     = [];
 
         $numer = $xlim - $xoff + $nchunks - 1;
         $x     = $xoff;
@@ -526,17 +526,17 @@ class Text_Diff_Engine_native
             }
         }
 
-        $seps[] = $flip ? array($yoff, $xoff) : array($xoff, $yoff);
+        $seps[] = $flip ? [$yoff, $xoff] : [$xoff, $yoff];
         $ymid   = $ymids[$this->lcs];
         for ($n = 0; $n < $nchunks - 1; ++$n) {
             $x1     = $xoff + (int)(($numer + ($xlim - $xoff) * $n) / $nchunks);
             $y1     = $ymid[$n] + 1;
-            $seps[] = $flip ? array($y1, $x1) : array($x1, $y1);
+            $seps[] = $flip ? [$y1, $x1] : [$x1, $y1];
         }
 
-        $seps[] = $flip ? array($ylim, $xlim) : array($xlim, $ylim);
+        $seps[] = $flip ? [$ylim, $xlim] : [$xlim, $ylim];
 
-        return array($this->lcs, $seps);
+        return [$this->lcs, $seps];
     }
 
     /**

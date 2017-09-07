@@ -10,8 +10,8 @@
  */
 
 /**
- * @copyright   {@link https://xoops.org/ XOOPS Project}
- * @license     {@link http://www.fsf.org/copyleft/gpl.html GNU public license}
+ * @copyright    {@link https://xoops.org/ XOOPS Project}
+ * @license      {@link http://www.fsf.org/copyleft/gpl.html GNU public license}
  * @package
  * @since
  * @author       XOOPS Development Team,
@@ -29,7 +29,7 @@ if (!preg_match('/^(\D+)(\d*)$/', $moduleDirName, $regs)) {
 }
 $mydirnumber = $regs[2] === '' ? '' : (int)$regs[2];
 
-require_once XOOPS_ROOT_PATH . "/modules/$moduleDirName/include/gtickets.php";
+//require_once XOOPS_ROOT_PATH . "/modules/$moduleDirName/include/gtickets.php";
 
 // fetch & sanitize from POST & GET
 $action = empty($_POST['action']) ? '' : preg_replace('/[^a-zA-Z0-9_-]/', '', $_POST['type']);
@@ -61,7 +61,7 @@ $cal->images_path = "$mod_path/assets/images/$skin_folder";
 $myts = MyTextSanitizer::getInstance();
 
 // get block instances of minicalex
-$mcx_blocks = array();
+$mcx_blocks = [];
 if (substr(XOOPS_VERSION, 6, 3) > 2.0) {
     // block instance of XOOPS 2.1/2.2
     $mcx_rs = $GLOBALS['xoopsDB']->query('SELECT i.instanceid,i.title FROM ' . $GLOBALS['xoopsDB']->prefix('block_instance') . ' i LEFT JOIN ' . $GLOBALS['xoopsDB']->prefix('newblocks') . " b ON i.bid=b.bid WHERE b.mid='" . $xoopsModule->getVar('mid') . "' AND b.show_func='apcal_minical_ex_show'");
@@ -84,12 +84,12 @@ if (!empty($_POST['update'])) {
     // new
     if (!empty($_POST['pi_types'][0])) {
         if ($_POST['pi_types'][0] === 'all') {
-            $types = array('monthly', 'weekly', 'daily');
+            $types = ['monthly', 'weekly', 'daily'];
             foreach ($mcx_blocks as $bid => $title) {
                 $types[] = "mcx{$bid}";
             }
         } else {
-            $types = array(addslashes($_POST['pi_types'][0]));
+            $types = [addslashes($_POST['pi_types'][0])];
         }
 
         $pi_options4sql = addslashes($_POST['pi_options'][0]);
@@ -127,8 +127,10 @@ if (!empty($_POST['update'])) {
             $pi_dotgif4sql  = addslashes($_POST['pi_dotgifs'][$pi_id]);
             $pi_enabled4sql = !empty($_POST['pi_enableds'][$pi_id]) ? 1 : 0;
 
-            if (!$GLOBALS['xoopsDB']->query("UPDATE $cal->plugin_table SET pi_type='$pi_type4sql', pi_options='$pi_options4sql', pi_weight='$pi_weight4sql', pi_title='$pi_title4sql', pi_dirname='$pi_dirname4sql', pi_file='$pi_file4sql', pi_dotgif='$pi_dotgif4sql', pi_enabled='$pi_enabled4sql' WHERE pi_id=$pi_id",
-                                            $conn)) {
+            if (!$GLOBALS['xoopsDB']->query(
+                "UPDATE $cal->plugin_table SET pi_type='$pi_type4sql', pi_options='$pi_options4sql', pi_weight='$pi_weight4sql', pi_title='$pi_title4sql', pi_dirname='$pi_dirname4sql', pi_file='$pi_file4sql', pi_dotgif='$pi_dotgif4sql', pi_enabled='$pi_enabled4sql' WHERE pi_id=$pi_id",
+                                            $conn
+            )) {
                 die($GLOBALS['xoopsDB']->error());
             }
         }
@@ -181,7 +183,7 @@ while (list($dirname) = $GLOBALS['xoopsDB']->fetchRow($dn_rs)) {
 $file_options = "<option value=''>----</option>\n";
 $plugins_dir  = $cal->base_path . '/' . $cal->plugins_path_monthly;
 $dir_handle   = opendir($plugins_dir);
-$valid_files  = array();
+$valid_files  = [];
 while (($file = readdir($dir_handle)) !== false) {
     if (is_file("$plugins_dir/$file")) {
         list($node, $ext) = explode('.', $file);
@@ -201,7 +203,7 @@ foreach ($valid_files as $file) {
 // dotgif options
 $dotgif_options = '';
 $dir_handle     = opendir($cal->images_path);
-$valid_images   = array();
+$valid_images   = [];
 while (($file = readdir($dir_handle)) !== false) {
     if (is_file("$cal->images_path/$file")) {
         list($node, $ext) = explode('.', $file);
@@ -222,7 +224,7 @@ foreach ($valid_images as $file) {
 }
 
 // ordering the records of plugins
-$columns = array(
+$columns = [
     'pi_id',
     'pi_title',
     'pi_type',
@@ -232,7 +234,7 @@ $columns = array(
     'pi_options',
     'pi_enabled',
     'pi_weight'
-);
+];
 $order   = in_array(@$_GET['order'], $columns) ? $_GET['order'] : 'pi_type';
 // type limitation
 if (!empty($limit_type)) {
@@ -261,7 +263,7 @@ echo "
         <select name='limit_type'>" . make_selected($type_options, $limit_type) . "</select>
         <select name='limit_dirname'>" . make_selected($dirname_options, $limit_dirname) . "</select>
         <select name='limit_file'>" . make_selected($file_options, $limit_file) . "</select>
-        <input type='submit' value='" . _AM_APCAL_BUTTON_EXTRACT . "' >
+        <input type='submit' value='" . _AM_APCAL_BUTTON_EXTRACT . "'>
     </form>
     ";
 
@@ -314,7 +316,7 @@ while ($plugin = $GLOBALS['xoopsDB']->fetchObject($prs)) {
           </select>
         </td>
         <td class='$oddeven'>
-          <input type='text' name='pi_titles[$pi_id]' value='$pi_title' size='8' >
+          <input type='text' name='pi_titles[$pi_id]' value='$pi_title' size='8'>
         </td>
         <td class='$oddeven'>
           <select name='pi_dotgifs[$pi_id]'>
@@ -322,16 +324,16 @@ while ($plugin = $GLOBALS['xoopsDB']->fetchObject($prs)) {
           </select>
         </td>
         <td class='$oddeven'>
-          <input type='text' name='pi_options[$pi_id]' value='$pi_options4disp' size='10' >
+          <input type='text' name='pi_options[$pi_id]' value='$pi_options4disp' size='10'>
         </td>
         <td class='$oddeven'>
-          <input type='text' name='pi_weight[$pi_id]' value='$plugin->pi_weight' size='2' style='text-align:right;' >
+          <input type='text' name='pi_weight[$pi_id]' value='$plugin->pi_weight' size='2' style='text-align:right;'>
         </td>
         <td class='$oddeven'>
-          <input type='checkbox' value='1' name='pi_enableds[$pi_id]' $enable_checked >
+          <input type='checkbox' value='1' name='pi_enableds[$pi_id]' $enable_checked>
         </td>
         <td class='$oddeven'>
-          <input type='checkbox' value='1' name='deletes[$pi_id]' >
+          <input type='checkbox' value='1' name='deletes[$pi_id]'>
         </td>
       </tr>
         \n";
@@ -355,7 +357,7 @@ echo "
           </select>
         </td>
         <td class='$oddeven' style='background-color:#FFCCCC;'>
-          <input type='text' name='pi_titles[0]' value='' size='8' >
+          <input type='text' name='pi_titles[0]' value='' size='8'>
         </td>
         <td class='$oddeven' style='background-color:#FFCCCC;'>
           <select name='pi_dotgifs[0]'>
@@ -363,10 +365,10 @@ echo "
           </select>
         </td>
         <td class='$oddeven' style='background-color:#FFCCCC;'>
-          <input type='text' name='pi_options[0]' value='' size='10' >
+          <input type='text' name='pi_options[0]' value='' size='10'>
         </td>
         <td class='$oddeven' style='background-color:#FFCCCC;'>
-          <input type='text' name='pi_weight[0]' value='0' size='2' style='text-align:right;' >
+          <input type='text' name='pi_weight[0]' value='0' size='2' style='text-align:right;'>
         </td>
         <td class='$oddeven' colspan='2' style='background-color:#FFCCCC;'>
           " . _AM_APCAL_PI_NEW . "
@@ -377,7 +379,7 @@ echo "
 // ¥Æ¡¼¥Ö¥ë¥Õ¥Ã¥¿Éô
 echo "
       <tr>
-        <td colspan='9' align='right' class='head'><input type='submit' name='update' value='" . _AM_APCAL_BTN_UPDATE . "' ></td>
+        <td colspan='9' align='right' class='head'><input type='submit' name='update' value='" . _AM_APCAL_BTN_UPDATE . "'></td>
       </tr>
       <tr>
         <td colspan='9' align='right' valign='bottom' height='50'>" . _AM_APCAL_COPYRIGHT . '</td>

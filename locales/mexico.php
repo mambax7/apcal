@@ -10,15 +10,15 @@
  */
 
 /**
- * @copyright   {@link https://xoops.org/ XOOPS Project}
- * @license     {@link http://www.fsf.org/copyleft/gpl.html GNU public license}
+ * @copyright    {@link https://xoops.org/ XOOPS Project}
+ * @license      {@link http://www.fsf.org/copyleft/gpl.html GNU public license}
  * @package
  * @since
  * @author       XOOPS Development Team,
  * @author       GIJ=CHECKMATE (PEAK Corp. http://www.peak.ne.jp/)
  */
 
-$this->holidays = array(
+$this->holidays = [
     '2003-1-1'   => 1,
     '2003-1-20'  => 1,
     '2003-2-12'  => 1,
@@ -47,4 +47,4 @@ $this->holidays = array(
 
     '2005-1-1' => 1
 
-);
+];

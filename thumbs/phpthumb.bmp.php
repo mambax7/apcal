@@ -35,7 +35,7 @@ class phpthumb_bmp
      */
     public function phpthumb_bmp2gd(&$BMPdata, $truecolor = true)
     {
-        $ThisFileInfo = array();
+        $ThisFileInfo = [];
         if ($this->getid3_bmp($BMPdata, $ThisFileInfo, true, true)) {
             $gd = $this->PlotPixelsGD($ThisFileInfo['bmp'], $truecolor);
 
@@ -119,7 +119,7 @@ class phpthumb_bmp
     {
 
         // shortcuts
-        $ThisFileInfo['bmp']['header']['raw'] = array();
+        $ThisFileInfo['bmp']['header']['raw'] = [];
         $thisfile_bmp                         =& $ThisFileInfo['bmp'];
         $thisfile_bmp_header                  =& $thisfile_bmp['header'];
         $thisfile_bmp_header_raw              =& $thisfile_bmp_header['raw'];
@@ -728,7 +728,7 @@ class phpthumb_bmp
         $green = ($color & 0x0000FF00) >> 8;
         $blue  = ($color & 0x000000FF);
 
-        return array($red, $green, $blue);
+        return [$red, $green, $blue];
     }
 
     /**
@@ -821,14 +821,14 @@ class phpthumb_bmp
      */
     public function BMPcompressionWindowsLookup($compressionid)
     {
-        static $BMPcompressionWindowsLookup = array(
+        static $BMPcompressionWindowsLookup = [
             0 => 'BI_RGB',
             1 => 'BI_RLE8',
             2 => 'BI_RLE4',
             3 => 'BI_BITFIELDS',
             4 => 'BI_JPEG',
             5 => 'BI_PNG'
-        );
+        ];
 
         return (isset($BMPcompressionWindowsLookup[$compressionid]) ? $BMPcompressionWindowsLookup[$compressionid] : 'invalid');
     }
@@ -839,13 +839,13 @@ class phpthumb_bmp
      */
     public function BMPcompressionOS2Lookup($compressionid)
     {
-        static $BMPcompressionOS2Lookup = array(
+        static $BMPcompressionOS2Lookup = [
             0 => 'BI_RGB',
             1 => 'BI_RLE8',
             2 => 'BI_RLE4',
             3 => 'Huffman 1D',
             4 => 'BI_RLE24'
-        );
+        ];
 
         return (isset($BMPcompressionOS2Lookup[$compressionid]) ? $BMPcompressionOS2Lookup[$compressionid] : 'invalid');
     }

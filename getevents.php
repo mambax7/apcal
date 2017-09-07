@@ -27,7 +27,7 @@ header('Access-Control-Allow-Origin: *');
 
 $locales = new apcal_locale();
 
-$array   = array();
+$array   = [];
 $catcrit = $_GET['c'] > 0 ? 'categories LIKE \'%' . str_pad($_GET['c'], 5, '0', STR_PAD_LEFT) . '%\' AND' : '';
 $result  = $GLOBALS['xoopsDB']->queryF("SELECT id, start, end, summary, shortsummary FROM {$GLOBALS['xoopsDB']->prefix('apcal_event')} WHERE {$catcrit} end>UNIX_TIMESTAMP() ORDER BY start ASC LIMIT 0,{$_GET['n']}");
 while ($row = $GLOBALS['xoopsDB']->fetchArray($result)) {
@@ -64,7 +64,7 @@ $l = '</dl><div class="APfooter">'
      . '" title="'
      . _APCAL_AP
      . '" target="_blank">AP</a></div>';
-echo check() ? json_encode(array($array, $l, '<div class="APtitle">' . $c . '</div>')) : '';
+echo check() ? json_encode([$array, $l, '<div class="APtitle">' . $c . '</div>']) : '';
 
 /**
  * Class apcal_locale

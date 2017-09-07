@@ -30,7 +30,7 @@ if (!preg_match('/^(\D+)(\d*)$/', $moduleDirName, $regs)) {
 }
 $mydirnumber = $regs[2] === '' ? '' : (int)$regs[2];
 
-require_once XOOPS_ROOT_PATH . "/modules/$moduleDirName/include/gtickets.php";
+//require_once XOOPS_ROOT_PATH . "/modules/$moduleDirName/include/gtickets.php";
 
 // language files
 $language = $xoopsConfig['language'];
@@ -49,17 +49,16 @@ if (!empty($_POST['submit'])) {
 
     include __DIR__ . '/mygroupperm.php';
     redirect_header(XOOPS_URL . "/modules/$moduleDirName/admin/groupperm.php", 1, _AM_APCALAM_APCALDBUPDATED);
-    exit;
 }
 
-$item_list = array(
+$item_list = [
     '1'  => _AM_APCAL_GPERM_G_INSERTABLE,
     '2'  => _AM_APCAL_GPERM_G_SUPERINSERT,
     '4'  => _AM_APCAL_GPERM_G_EDITABLE,
     '8'  => _AM_APCAL_GPERM_G_SUPEREDIT,
     //  '16' => _AM_APCAL_GPERM_G_DELETABLE ,
     '32' => _AM_APCAL_GPERM_G_SUPERDELETE//  '64' => _AM_APCAL_GPERM_G_TOUCHOTHERS
-);
+];
 
 $form = new MyXoopsGroupPermForm(_AM_APCAL_GROUPPERM, $xoopsModule->mid(), 'apcal_global', _AM_APCAL_GROUPPERMDESC);
 foreach ($item_list as $item_id => $item_name) {

@@ -10,8 +10,8 @@
  */
 
 /**
- * @copyright   {@link https://xoops.org/ XOOPS Project}
- * @license     {@link http://www.fsf.org/copyleft/gpl.html GNU public license}
+ * @copyright    {@link https://xoops.org/ XOOPS Project}
+ * @license      {@link http://www.fsf.org/copyleft/gpl.html GNU public license}
  * @package
  * @since
  * @author       XOOPS Development Team,
@@ -20,7 +20,7 @@
 
 require_once __DIR__ . '/../../../include/cp_header.php';
 
-require_once __DIR__ . '/../include/gtickets.php';
+//require_once __DIR__ . '/../include/gtickets.php';
 require_once XOOPS_ROOT_PATH . '/class/template.php';
 
 // initials
@@ -108,7 +108,6 @@ if (!empty($_POST['clone_tplset_do']) && !empty($_POST['clone_tplset_from']) && 
     $db->query('INSERT INTO ' . $db->prefix('tplset') . " SET tplset_name='" . addslashes($tplset_to) . "', tplset_desc='Created by tplsadmin', tplset_created=UNIX_TIMESTAMP()");
     copy_templates_db2db($tplset_from, $tplset_to, "tpl_module='$target_dirname4sql'");
     redirect_header('mytplsadmin.php?dirname=' . $target_dirname, 1, _AM_APCALAM_APCALDBUPDATED);
-    exit;
 }
 
 // DB to DB template copy (checked templates)
@@ -136,7 +135,6 @@ if (is_array(@$_POST['copy_do'])) {
                 copy_templates_db2db($tplset_from, $tplset_to, "tpl_file='" . addslashes($tplfile) . "'");
             }
             redirect_header('mytplsadmin.php?dirname=' . $target_dirname, 1, _AM_APCALAM_APCALDBUPDATED);
-            exit;
         }
     }
 }
@@ -163,7 +161,6 @@ if (!empty($_POST['copyf2db_do'])) {
         copy_templates_f2db($tplset_to, "tpl_file='" . addslashes($tplfile) . "'");
     }
     redirect_header('mytplsadmin.php?dirname=' . $target_dirname, 1, _AM_APCALAM_APCALDBUPDATED);
-    exit;
 }
 
 // DB template remove (checked templates)
@@ -199,7 +196,6 @@ if (is_array(@$_POST['del_do'])) {
                 $tpl->clear_compiled_tpl('db:' . $tplfile);
             }
             redirect_header('mytplsadmin.php?dirname=' . $target_dirname, 1, _AM_APCALAM_APCALDBUPDATED);
-            exit;
         }
     }
 }
@@ -211,14 +207,14 @@ if (is_array(@$_POST['del_do'])) {
 // get tplsets
 $sql             = 'SELECT DISTINCT tpl_tplset FROM ' . $db->prefix('tplfile') . " ORDER BY tpl_tplset='default' DESC,tpl_tplset";
 $srs             = $db->query($sql);
-$tplsets         = array();
+$tplsets         = [];
 $tplsets_th4disp = '';
 $tplset_options  = "<option value=''>----</option>\n";
 while (list($tplset) = $db->fetchRow($srs)) {
     $tplset4disp     = htmlspecialchars($tplset, ENT_QUOTES);
     $tplsets[]       = $tplset;
     $th_style        = $tplset == $xoopsConfig['template_set'] ? "style='color:yellow;'" : '';
-    $tplsets_th4disp .= "<th $th_style><input type='checkbox' onclick=\"with(document.MainForm){for (i=0;i<length;i++) {if(elements[i].type=='checkbox'&&elements[i].name.indexOf('{$tplset4disp}_check')>=0) {elements[i].checked=this.checked;}}}\" >DB-{$tplset4disp}</th>";
+    $tplsets_th4disp .= "<th $th_style><input type='checkbox' onclick=\"with(document.MainForm){for (i=0;i<length;i++) {if(elements[i].type=='checkbox'&&elements[i].name.indexOf('{$tplset4disp}_check')>=0) {elements[i].checked=this.checked;}}}\">DB-{$tplset4disp}</th>";
     $tplset_options  .= "<option value='$tplset4disp'>$tplset4disp</option>\n";
 }
 
@@ -238,12 +234,12 @@ echo "
         <tr>
             <th>" . _MD_APCAL_FILENAME . "</th>
             <th>type</th>
-            <th><input type='checkbox' onclick=\"with(document.MainForm){for (i=0;i<length;i++) {if(elements[i].type=='checkbox'&&elements[i].name.indexOf('basecheck')>=0) {elements[i].checked=this.checked;}}}\" >file</th>
+            <th><input type='checkbox' onclick=\"with(document.MainForm){for (i=0;i<length;i++) {if(elements[i].type=='checkbox'&&elements[i].name.indexOf('basecheck')>=0) {elements[i].checked=this.checked;}}}\">file</th>
             $tplsets_th4disp
         </tr>\n";
 
 // STYLE for distinguishing fingerprints
-$fingerprint_styles = array(
+$fingerprint_styles = [
     '',
     'background-color:#00FF00',
     'background-color:#00CC88',
@@ -252,7 +248,7 @@ $fingerprint_styles = array(
     'background-color:#FF8800',
     'background-color:#0000FF',
     'background-color:#FFFFFF'
-);
+];
 
 // template ROWS
 while (list($tpl_file, $tpl_desc, $type, $count) = $db->fetchRow($frs)) {
@@ -303,7 +299,7 @@ while (list($tpl_file, $tpl_desc, $type, $count) = $db->fetchRow($frs)) {
                  . formatTimestamp($tpl['tpl_lastmodified'], 'm')
                  . '<br>'
                  . substr($fingerprint, 0, 16)
-                 . "<br><input type='checkbox' name='{$tplset4disp}_check[{$tpl_file}]' value='1' > &nbsp; <a href='mytplsform.php?tpl_file="
+                 . "<br><input type='checkbox' name='{$tplset4disp}_check[{$tpl_file}]' value='1'> &nbsp; <a href='mytplsform.php?tpl_file="
                  . htmlspecialchars($tpl['tpl_file'], ENT_QUOTES)
                  . '&amp;tpl_tplset='
                  . htmlspecialchars($tpl['tpl_tplset'], ENT_QUOTES)
@@ -325,7 +321,7 @@ echo "
         </td>
         <td class='head'></td>
         <td class='head'>
-            <input name='copyf2db_do' type='submit' value='copy to-&gt;' ><br>
+            <input name='copyf2db_do' type='submit' value='copy to-&gt;'><br>
             <select name='copyf2db_to'>$tplset_options
         </td>\n";
 
@@ -333,7 +329,7 @@ foreach ($tplsets as $tplset) {
     $tplset4disp = htmlspecialchars($tplset, ENT_QUOTES);
     echo "\t\t<td class='head'>
             " . ($tplset === 'default' ? '' : "<input name='del_do[{$tplset4disp}]' type='submit' value='" . _DELETE . "' onclick='return confirm(\"" . _DELETE . " OK?\");' ><br>") . "
-            <input name='copy_do[{$tplset4disp}]' type='submit' value='copy to-&gt;' ><br>
+            <input name='copy_do[{$tplset4disp}]' type='submit' value='copy to-&gt;'><br>
             <select name='copy_to[{$tplset4disp}]'>$tplset_options</select>
         </td>\n";
 }

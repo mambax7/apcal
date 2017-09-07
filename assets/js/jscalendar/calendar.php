@@ -48,10 +48,10 @@ class DHTML_Calendar
         $this->calendar_lang_file  = 'lang/calendar-' . $lang . '.js';
         $this->calendar_theme_file = $theme . '.css';
         $this->calendar_lib_path   = preg_replace('/\/+$/', '/', $calendar_lib_path);
-        $this->calendar_options    = array(
+        $this->calendar_options    = [
             'ifFormat' => '%Y/%m/%d',
             'daFormat' => '%Y/%m/%d'
-        );
+        ];
     }
 
     /**
@@ -73,7 +73,7 @@ class DHTML_Calendar
      */
     public function get_load_files_code()
     {
-        $code = ('<link rel="stylesheet" type="text/css" media="all" href="' . $this->calendar_lib_path . $this->calendar_theme_file . '" >' . NEWLINE);
+        $code = ('<link rel="stylesheet" type="text/css" media="all" href="' . $this->calendar_lib_path . $this->calendar_theme_file . '">' . NEWLINE);
         $code .= ('<script type="text/javascript" src="' . $this->calendar_lib_path . $this->calendar_file . '"></script>' . NEWLINE);
         $code .= ('<script type="text/javascript" src="' . $this->calendar_lib_path . $this->calendar_lang_file . '"></script>' . NEWLINE);
         $code .= ('<script type="text/javascript" src="' . $this->calendar_lib_path . $this->calendar_setup_file . '"></script>');
@@ -85,7 +85,7 @@ class DHTML_Calendar
      * @param  array $other_options
      * @return string
      */
-    public function _make_calendar($other_options = array())
+    public function _make_calendar($other_options = [])
     {
         $js_options = $this->_make_js_hash(array_merge($this->calendar_options, $other_options));
         $code       = ('<script type="text/javascript">Calendar.setup({' . $js_options . '});</script>');
@@ -97,20 +97,20 @@ class DHTML_Calendar
      * @param array $cal_options
      * @param array $field_attributes
      */
-    public function make_input_field($cal_options = array(), $field_attributes = array())
+    public function make_input_field($cal_options = [], $field_attributes = [])
     {
         $id      = $this->_gen_id();
-        $attrstr = $this->_make_html_attr(array_merge($field_attributes, array(
+        $attrstr = $this->_make_html_attr(array_merge($field_attributes, [
             'id'   => $this->_field_id($id),
             'type' => 'text'
-        )));
+        ]));
         echo '<input ' . $attrstr . '>';
-        echo '<a href="#" id="' . $this->_trigger_id($id) . '">' . '<img align="middle" border="0" src="' . $this->calendar_lib_path . 'img.gif" alt="" ></a>';
+        echo '<a href="#" id="' . $this->_trigger_id($id) . '">' . '<img align="middle" border="0" src="' . $this->calendar_lib_path . 'img.gif" alt=""></a>';
 
-        $options = array_merge($cal_options, array(
+        $options = array_merge($cal_options, [
             'inputField' => $this->_field_id($id),
             'button'     => $this->_trigger_id($id)
-        ));
+        ]);
         echo $this->_make_calendar($options);
     }
 
@@ -151,8 +151,8 @@ class DHTML_Calendar
     public function _make_js_hash($array)
     {
         $jstr = '';
-//        reset($array);
-//        while (list($key, $val) = each($array)) {
+        //        reset($array);
+        //        while (list($key, $val) = each($array)) {
         foreach ($array as $key => $val) {
             if (is_bool($val)) {
                 $val = $val ? 'true' : 'false';
@@ -175,8 +175,8 @@ class DHTML_Calendar
     public function _make_html_attr($array)
     {
         $attrstr = '';
-//        reset($array);
-//        while (list($key, $val) = each($array)) {
+        //        reset($array);
+        //        while (list($key, $val) = each($array)) {
         foreach ($array as $key => $val) {
             $attrstr .= $key . '="' . $val . '" ';
         }

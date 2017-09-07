@@ -30,17 +30,17 @@
 function xoops_module_pre_install_apcal(XoopsModule $module)
 {
     $moduleDirName = basename(dirname(__DIR__));
-    $classUtility     = ucfirst($moduleDirName) . 'Utility';
-    if (!class_exists($classUtility)) {
+    $utilityClass  = ucfirst($moduleDirName) . 'Utility';
+    if (!class_exists($utilityClass)) {
         xoops_load('utility', $moduleDirName);
     }
     //check for minimum XOOPS version
-    if (!$classUtility::checkVerXoops($module)) {
+    if (!$utilityClass::checkVerXoops($module)) {
         return false;
     }
 
     // check for minimum PHP version
-    if (!$classUtility::checkVerPhp($module)) {
+    if (!$utilityClass::checkVerPhp($module)) {
         return false;
     }
 
@@ -53,10 +53,10 @@ function xoops_module_pre_install_apcal(XoopsModule $module)
 }
 function xoops_module_install_apcal(XoopsModule $xoopsModule)
 {
-    require_once  __DIR__ . '/../../../mainfile.php';
-    require_once  __DIR__ . '/../include/config.php';
+    require_once __DIR__ . '/../../../mainfile.php';
+    require_once __DIR__ . '/../include/config.php';
 
-        $moduleDirName = basename(dirname(__DIR__));
+    $moduleDirName = basename(dirname(__DIR__));
 
     if (false !== ($moduleHelper = Xmf\Module\Helper::getHelper($moduleDirName))) {
     } else {
@@ -68,11 +68,12 @@ function xoops_module_install_apcal(XoopsModule $xoopsModule)
     $moduleHelper->loadLanguage('modinfo');
 
     $configurator = new ApcalConfigurator();
-    $classUtility    = ucfirst($moduleDirName) . 'Utility';
-    if (!class_exists($classUtility)) {
+    /** @var ApcalUtility $utilityClass */
+    $utilityClass = ucfirst($moduleDirName) . 'Utility';
+    if (!class_exists($utilityClass)) {
         xoops_load('utility', $moduleDirName);
     }
-//------------------------------------
+    //------------------------------------
     $ret    = true;
     $errors = transferTable('event');
     if ($errors !== '') {
@@ -96,18 +97,18 @@ function xoops_module_install_apcal(XoopsModule $xoopsModule)
     $GLOBALS['xoopsDB']->queryF("UPDATE {$GLOBALS['xoopsDB']->prefix('apcal_event')} SET start_date=NULL,end_date=NULL");
     $GLOBALS['xoopsDB']->queryF("UPDATE {$GLOBALS['xoopsDB']->prefix('apcal_event')} t, (SELECT id, shortsummary FROM {$GLOBALS['xoopsDB']->prefix('apcal_event')} x WHERE x.rrule_pid>0 GROUP BY x.shortsummary ORDER BY start) AS e SET t.rrule_pid=e.id WHERE t.shortsummary=e.shortsummary;");
 
-//    if (!is_dir(XOOPS_UPLOAD_PATH . '/apcal/')) {
-//        mkdir(XOOPS_UPLOAD_PATH . '/apcal/', 0755);
-//    }
-//    if (!is_dir(XOOPS_UPLOAD_PATH . '/apcal/thumbs/')) {
-//        mkdir(XOOPS_UPLOAD_PATH . '/apcal/thumbs/', 0755);
-//    }
+    //    if (!is_dir(XOOPS_UPLOAD_PATH . '/apcal/')) {
+    //        mkdir(XOOPS_UPLOAD_PATH . '/apcal/', 0755);
+    //    }
+    //    if (!is_dir(XOOPS_UPLOAD_PATH . '/apcal/thumbs/')) {
+    //        mkdir(XOOPS_UPLOAD_PATH . '/apcal/thumbs/', 0755);
+    //    }
 
     //  ---  CREATE FOLDERS ---------------
     if (count($configurator->uploadFolders) > 0) {
         //    foreach (array_keys($GLOBALS['uploadFolders']) as $i) {
         foreach (array_keys($configurator->uploadFolders) as $i) {
-            $classUtility::createFolder($configurator->uploadFolders[$i]);
+            $utilityClass::createFolder($configurator->uploadFolders[$i]);
         }
     }
 
@@ -116,7 +117,7 @@ function xoops_module_install_apcal(XoopsModule $xoopsModule)
         $file = __DIR__ . '/../assets/images/blank.png';
         foreach (array_keys($configurator->blankFiles) as $i) {
             $dest = $configurator->blankFiles[$i] . '/blank.png';
-            $classUtility::copyFile($file, $dest);
+            $utilityClass::copyFile($file, $dest);
         }
     }
     //delete .html entries from the tpl table
@@ -137,7 +138,6 @@ function makeShortEventAftertransfer()
 
 function makeShortCatAftertransfer()
 {
-
     $result = $GLOBALS['xoopsDB']->queryF("SELECT cid, cat_title FROM {$GLOBALS['xoopsDB']->prefix('apcal_cat')}");
     while ($row = $GLOBALS['xoopsDB']->fetchArray($result)) {
         $cat_shorttitle = makeShort($row['cat_title']);
@@ -175,9 +175,9 @@ function transferTable($tablename)
 
 function setDefaultPerm()
 {
-    $moduleHnd     = xoops_getHandler('module');
-    $module        = $moduleHnd->getByDirname('APCal');
-    $modid         = $module->getVar('mid');
+    $moduleHnd    = xoops_getHandler('module');
+    $module       = $moduleHnd->getByDirname('APCal');
+    $modid        = $module->getVar('mid');
     $gpermHandler = xoops_getHandler('groupperm');
     //$item_ids = array(1, 2, 4, 8, 32);
 
@@ -221,7 +221,7 @@ function setDefaultPerm()
  */
 function makeShort($str)
 {
-    $replacements = array(
+    $replacements = [
         'Š' => 'S',
         'š' => 's',
         'Ž' => 'Z',
@@ -287,10 +287,10 @@ function makeShort($str)
         'ý' => 'y',
         'þ' => 'b',
         'ÿ' => 'y'
-    );
+    ];
 
     $str = strip_tags($str);
     $str = strtr($str, $replacements);
 
-    return str_replace(array(' ', '-', '/', "\\", "'", '"', "\r", "\n", '&', '?', '!', '%', ',', '.'), '', $str);
+    return str_replace([' ', '-', '/', "\\", "'", '"', "\r", "\n", '&', '?', '!', '%', ',', '.'], '', $str);
 }

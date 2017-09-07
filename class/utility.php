@@ -15,15 +15,15 @@ class ApcalUtility extends XoopsObject
     public static function createFolder($folder)
     {
         //        try {
-//            if (!mkdir($folder) && !is_dir($folder)) {
-//                throw new \RuntimeException(sprintf('Unable to create the %s directory', $folder));
-//            } else {
-//                file_put_contents($folder . '/index.html', '<script>history.go(-1);</script>');
-//            }
-//        }
-//        catch (Exception $e) {
-//            echo 'Caught exception: ', $e->getMessage(), "\n", '<br>';
-//        }
+        //            if (!mkdir($folder) && !is_dir($folder)) {
+        //                throw new \RuntimeException(sprintf('Unable to create the %s directory', $folder));
+        //            } else {
+        //                file_put_contents($folder . '/index.html', '<script>history.go(-1);</script>');
+        //            }
+        //        }
+        //        catch (Exception $e) {
+        //            echo 'Caught exception: ', $e->getMessage(), "\n", '<br>';
+        //        }
         try {
             if (!file_exists($folder)) {
                 if (!mkdir($folder) && !is_dir($folder)) {
@@ -82,7 +82,7 @@ class ApcalUtility extends XoopsObject
      * Verifies XOOPS version meets minimum requirements for this module
      * @static
      * @param XoopsModule $module
-     * @param null|string        $requiredVer
+     * @param null|string $requiredVer
      *
      * @return bool true if meets requirements, false if not
      */
@@ -94,13 +94,13 @@ class ApcalUtility extends XoopsObject
         }
         xoops_loadLanguage('admin', $moduleDirName);
         //check for minimum XOOPS version
-        $currentVer  = substr(XOOPS_VERSION, 6); // get the numeric part of string
-        $currArray   = explode('.', $currentVer);
+        $currentVer = substr(XOOPS_VERSION, 6); // get the numeric part of string
+        $currArray  = explode('.', $currentVer);
         if (null === $requiredVer) {
-        $requiredVer = '' . $module->getInfo('min_xoops'); //making sure it's a string
+            $requiredVer = '' . $module->getInfo('min_xoops'); //making sure it's a string
         }
-        $reqArray    = explode('.', $requiredVer);
-        $success     = true;
+        $reqArray = explode('.', $requiredVer);
+        $success  = true;
         foreach ($reqArray as $k => $v) {
             if (isset($currArray[$k])) {
                 if ($currArray[$k] > $v) {
@@ -112,14 +112,14 @@ class ApcalUtility extends XoopsObject
                     break;
                 }
             } else {
-                if ((int)$v > 0) { // handles things like x.x.x.0_RC2
+                if ((int)$v > 0) { // handles versions like x.x.x.0_RC2
                     $success = false;
                     break;
                 }
             }
         }
 
-        if (!$success) {
+        if (false === $success) {
             $module->setErrors(sprintf(_AM_APCAL_ERROR_BAD_XOOPS, $requiredVer, $currentVer));
         }
 

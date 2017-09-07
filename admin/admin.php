@@ -10,8 +10,8 @@
  */
 
 /**
- * @copyright   {@link https://xoops.org/ XOOPS Project}
- * @license     {@link http://www.fsf.org/copyleft/gpl.html GNU public license}
+ * @copyright    {@link https://xoops.org/ XOOPS Project}
+ * @license      {@link http://www.fsf.org/copyleft/gpl.html GNU public license}
  * @package
  * @since
  * @author       XOOPS Development Team,
@@ -33,7 +33,7 @@ include __DIR__ . '/../../../mainfile.php';
 include XOOPS_ROOT_PATH . '/include/cp_functions.php';
 
 require_once XOOPS_ROOT_PATH . '/kernel/module.php';
-require_once __DIR__ . '/../include/gtickets.php';// GIJ
+//require_once __DIR__ . '/../include/gtickets.php';// GIJ
 
 $admintest = 0;
 
@@ -67,7 +67,7 @@ if ($admintest != 0) {
             }
             include XOOPS_ROOT_PATH . '/modules/system/admin/' . $fct . '/xoops_version.php';
             $syspermHandler = xoops_getHandler('groupperm');
-            $category        = !empty($modversion['category']) ? (int)$modversion['category'] : 0;
+            $category       = !empty($modversion['category']) ? (int)$modversion['category'] : 0;
             unset($modversion);
             if ($category > 0) {
                 $groups =& $xoopsUser->getGroups();
@@ -109,7 +109,7 @@ if (false !== $error) {
     $all_ok = false;
     if (!in_array(XOOPS_GROUP_ADMIN, $groups)) {
         $syspermHandler = xoops_getHandler('groupperm');
-        $ok_syscats      = $syspermHandler->getItemIds('system_admin', $groups);
+        $ok_syscats     = $syspermHandler->getItemIds('system_admin', $groups);
     } else {
         $all_ok = true;
     }

@@ -14,7 +14,7 @@
  * @license      GNU GPL 2 or later (http://www.gnu.org/licenses/gpl-2.0.html)
  * @package
  * @since
- * @author     XOOPS Development Team
+ * @author       XOOPS Development Team
  */
 
 include XOOPS_ROOT_PATH . '/header.php';
@@ -33,11 +33,4 @@ if (!isset($GLOBALS['xoopsTpl']) || !($GLOBALS['xoopsTpl'] instanceof XoopsTpl))
 
 $GLOBALS['xoopsTpl']->assign('api_key', $moduleHelper->getConfig('apcal_mapsapi'));
 
-$skin_folder   = $moduleHelper->getConfig('skin_folder');
-
-
-
-
-
-
-
+$skin_folder = $moduleHelper->getConfig('skin_folder');

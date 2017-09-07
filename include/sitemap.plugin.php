@@ -10,15 +10,15 @@
  */
 
 /**
- * @copyright   {@link https://xoops.org/ XOOPS Project}
- * @license     {@link http://www.fsf.org/copyleft/gpl.html GNU public license}
+ * @copyright    {@link https://xoops.org/ XOOPS Project}
+ * @license      {@link http://www.fsf.org/copyleft/gpl.html GNU public license}
  * @package
  * @since
  * @author       XOOPS Development Team,
  * @author       GIJ=CHECKMATE (PEAK Corp. http://www.peak.ne.jp/)
  */
 
-defined('XOOPS_ROOT_PATH') || exit('XOOPS Root Path not defined');
+defined('XOOPS_ROOT_PATH') || exit('Restricted access.');
 
 $moduleDirName = basename(dirname(__DIR__));
 
@@ -65,7 +65,7 @@ if (!function_exists('b_sitemap_APCal_base')) {
         //$cal->table = $xoopsDB->prefix( APCAL_EVENT_TABLE ) ;
         include "$mod_path/include/read_configs.php";
 
-        $ret = array();
+        $ret = [];
         foreach ($cal->categories as $cat) {
 
             // only Top category is shown
@@ -73,11 +73,11 @@ if (!function_exists('b_sitemap_APCal_base')) {
                 continue;
             }
 
-            $ret['parent'][] = array(
+            $ret['parent'][] = [
                 'id'    => $cat->cid,
                 'title' => $myts->htmlSpecialChars($cat->cat_title),
                 'url'   => "index.php?cid=$cat->cid"
-            );
+            ];
         }
 
         return $ret;

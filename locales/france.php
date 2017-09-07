@@ -10,8 +10,8 @@
  */
 
 /**
- * @copyright   {@link https://xoops.org/ XOOPS Project}
- * @license     {@link http://www.fsf.org/copyleft/gpl.html GNU public license}
+ * @copyright    {@link https://xoops.org/ XOOPS Project}
+ * @license      {@link http://www.fsf.org/copyleft/gpl.html GNU public license}
  * @package
  * @since
  * @author       XOOPS Development Team,
@@ -38,7 +38,7 @@ if (!function_exists('easter')) {
     }
 }
 
-$this->holidays = array();
+$this->holidays = [];
 $start          = (int)date('Y') - 10;
 $end            = $start + 30;
 

@@ -14,7 +14,7 @@
  * @license     {@link http://www.fsf.org/copyleft/gpl.html GNU public license}
  * @package
  * @since
- * @author     XOOPS Development Team
+ * @author      XOOPS Development Team
  */
 
 require_once __DIR__ . '/../../../include/cp_header.php';
@@ -31,8 +31,8 @@ if (false !== ($moduleHelper = Xmf\Module\Helper::getHelper($moduleDirName))) {
 }
 $adminObject = \Xmf\Module\Admin::getInstance();
 
-$pathIcon16      = \Xmf\Module\Admin::iconUrl('', 16);
-$pathIcon32      = \Xmf\Module\Admin::iconUrl('', 32);
+$pathIcon16    = \Xmf\Module\Admin::iconUrl('', 16);
+$pathIcon32    = \Xmf\Module\Admin::iconUrl('', 32);
 $pathModIcon32 = $moduleHelper->getModule()->getInfo('modicons32');
 
 // Load language files
@@ -40,7 +40,7 @@ $moduleHelper->loadLanguage('admin');
 $moduleHelper->loadLanguage('modinfo');
 $moduleHelper->loadLanguage('main');
 
-$skin_folder   = $moduleHelper->getConfig('skin_folder');
+$skin_folder = $moduleHelper->getConfig('skin_folder');
 
 $myts = MyTextSanitizer::getInstance();
 
@@ -58,4 +58,3 @@ $GLOBALS['xoopsTpl']->assign('api_key', $moduleHelper->getConfig('apcal_mapsapi'
 //$XXXHandler = xoops_getModuleHandler('XXX', $moduleDirName);
 
 //xoops_cp_header();
-

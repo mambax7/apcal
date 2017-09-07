@@ -10,8 +10,8 @@
  */
 
 /**
- * @copyright   {@link https://xoops.org/ XOOPS Project}
- * @license     {@link http://www.fsf.org/copyleft/gpl.html GNU public license}
+ * @copyright    {@link https://xoops.org/ XOOPS Project}
+ * @license      {@link http://www.fsf.org/copyleft/gpl.html GNU public license}
  * @package
  * @since
  * @author       XOOPS Development Team,
@@ -19,7 +19,7 @@
  * @author       Antiques Promotion (http://www.antiquespromotion.ca)
  */
 
-defined('XOOPS_ROOT_PATH') || exit('XOOPS Root Path not defined');
+defined('XOOPS_ROOT_PATH') || exit('Restricted access.');
 
 // for "Duplicatable"
 $moduleDirName = basename(dirname(__DIR__));
@@ -82,7 +82,7 @@ if (is_object($xoopsUser)) {
     $isadmin = $xoopsUser->isAdmin($mid);
 
     $memberHandler = xoops_getHandler('member');
-    $system_groups  = $memberHandler->getGroupList();
+    $system_groups = $memberHandler->getGroupList();
 
     if ($isadmin) {
 
@@ -97,7 +97,7 @@ if (is_object($xoopsUser)) {
         // ����ԤΥ��ƥ��ꥢ���������¡������ƥ����
         $sql             = "SELECT cid,pid,cat_shorttitle,cat_title,cat_desc,color,ismenuitem,cat_depth,canbemain FROM $cal->cat_table ORDER BY weight";
         $rs              = $GLOBALS['xoopsDB']->query($sql);
-        $cal->categories = array();
+        $cal->categories = [];
         while ($cat = $GLOBALS['xoopsDB']->fetchObject($rs)) {
             $cal->categories[(int)$cat->cid] = $cat;
             if ($cat->canbemain == 1) {
@@ -111,7 +111,7 @@ if (is_object($xoopsUser)) {
 
         // ���̥桼���ϼ�ʬ�ν�°���륰�롼�פΤ�
         $my_group_ids = $memberHandler->getGroupsByUser($user_id);
-        $cal->groups  = array();
+        $cal->groups  = [];
         $ids4sql      = '(';
         foreach ($my_group_ids as $id) {
             $cal->groups[$id] = $system_groups[$id];
@@ -124,7 +124,7 @@ if (is_object($xoopsUser)) {
                            . $GLOBALS['xoopsDB']->prefix('group_permission')
                            . " ON cid=gperm_itemid WHERE gperm_name='apcal_cat' AND gperm_modid='$mid' AND enabled AND gperm_groupid IN $ids4sql ORDER BY weight";
         $rs              = $GLOBALS['xoopsDB']->query($sql);
-        $cal->categories = array();
+        $cal->categories = [];
         while ($cat = $GLOBALS['xoopsDB']->fetchObject($rs)) {
             $cal->categories[(int)$cat->cid] = $cat;
             if ($cat->canbemain == 1) {
@@ -198,7 +198,7 @@ if (is_object($xoopsUser)) {
                        . XOOPS_GROUP_ANONYMOUS
                        . "' ORDER BY weight";
     $rs              = $GLOBALS['xoopsDB']->query($sql);
-    $cal->categories = array();
+    $cal->categories = [];
     while ($cat = $GLOBALS['xoopsDB']->fetchObject($rs)) {
         $cal->categories[(int)$cat->cid] = $cat;
         if ($cat->canbemain == 1) {
@@ -215,7 +215,7 @@ if (is_object($xoopsUser)) {
     $admission_insert_sql = ',admission=' . (($guests_authority & 2) ? '1' : '0');
     $admission_update_sql = '';
     // �����Ȥ����������롼�������Բ�
-    $cal->groups = array();
+    $cal->groups = [];
 }
 
 // �Ƽ︢�¤�APCal���֥������Ȥؤ���Ͽ

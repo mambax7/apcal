@@ -10,15 +10,14 @@
  */
 
 /**
- * @copyright   {@link https://xoops.org/ XOOPS Project}
- * @license     {@link http://www.fsf.org/copyleft/gpl.html GNU public license}
+ * @copyright    {@link https://xoops.org/ XOOPS Project}
+ * @license      {@link http://www.fsf.org/copyleft/gpl.html GNU public license}
  * @package
  * @since
  * @author       XOOPS Development Team,
  * @author       GIJ=CHECKMATE (PEAK Corp. http://www.peak.ne.jp/)
  * @author       Antiques Promotion (http://www.antiquespromotion.ca)
  */
-
 class cssParser
 {
     public $_css = '';
@@ -41,7 +40,7 @@ class cssParser
      */
     public function parseColor($selector, $style)
     {
-        $match = array();
+        $match = [];
 
         if (preg_match('/[\.\S]*' . $selector . '([^a-zA-Z0-9]{1}[\.\S]*{|{)([\s\S][^{}]+)(})/', $this->_css, $match)) {
             preg_match('/[^-]*' . $style . '([^;]*):([^;]*)#([a-zA-Z0-9]+)/', $match[2], $match);

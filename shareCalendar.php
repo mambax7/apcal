@@ -10,8 +10,8 @@
  */
 
 /**
- * @copyright   {@link https://xoops.org/ XOOPS Project}
- * @license     {@link http://www.fsf.org/copyleft/gpl.html GNU public license}
+ * @copyright    {@link https://xoops.org/ XOOPS Project}
+ * @license      {@link http://www.fsf.org/copyleft/gpl.html GNU public license}
  * @package
  * @since
  * @author       XOOPS Development Team,
@@ -82,7 +82,7 @@ function getCategories()
 {
     global $xoopsDB;
 
-    $cats   = array(0 => _APCAL_SHOWALLCAT);
+    $cats   = [0 => _APCAL_SHOWALLCAT];
     $result = $GLOBALS['xoopsDB']->queryF("SELECT cid, cat_title, cat_depth FROM {$GLOBALS['xoopsDB']->prefix('apcal_cat')} ORDER BY weight");
 
     while ($cat = $GLOBALS['xoopsDB']->fetchObject($result)) {

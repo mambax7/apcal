@@ -42,7 +42,7 @@ function display_edit_form($cat, $form_title, $action)
     // Description
     $tarea_tray = new XoopsFormElementTray(_AM_APCAL_CAT_TH_DESC, '<br>');
     if (class_exists('XoopsFormEditor')) {
-        $configs = array(
+        $configs = [
             'name'   => 'cat_desc',
             'value'  => htmlspecialchars($cat->cat_desc, ENT_QUOTES),
             'rows'   => 15,
@@ -50,7 +50,7 @@ function display_edit_form($cat, $form_title, $action)
             'width'  => '100%',
             'height' => '400px',
             'editor' => 'tinymce'
-        );
+        ];
         $tarea_tray->addElement(new XoopsFormEditor('', 'cat_desc', $configs, false, $onfailure = 'textarea'));
     } else {
         $tarea_tray->addElement(new XoopsFormDhtmlTextArea('', 'cat_desc', htmlspecialchars($cat->cat_desc, ENT_QUOTES), 15, 60));
@@ -106,10 +106,10 @@ function rebuild_cat_tree($cat_table)
     global $conn, $xoopsDB;
 
     $rs      = $GLOBALS['xoopsDB']->query("SELECT cid,pid FROM $cat_table ORDER BY pid ASC,weight DESC");
-    $cats[0] = array('cid' => 0, 'pid' => -1, 'next_key' => -1, 'depth' => 0);
+    $cats[0] = ['cid' => 0, 'pid' => -1, 'next_key' => -1, 'depth' => 0];
     $key     = 1;
     while ($cat = $GLOBALS['xoopsDB']->fetchObject($rs)) {
-        $cats[$key] = array('cid' => (int)$cat->cid, 'pid' => (int)$cat->pid, 'next_key' => $key + 1, 'depth' => 0);
+        $cats[$key] = ['cid' => (int)$cat->cid, 'pid' => (int)$cat->pid, 'next_key' => $key + 1, 'depth' => 0];
         ++$key;
     }
     $sizeofcats = $key;
@@ -170,7 +170,7 @@ if (!preg_match('/^(\D+)(\d*)$/', $moduleDirName, $regs)) {
 }
 $mydirnumber = $regs[2] === '' ? '' : (int)$regs[2];
 
-require_once XOOPS_ROOT_PATH . "/modules/$moduleDirName/include/gtickets.php";
+//require_once XOOPS_ROOT_PATH . "/modules/$moduleDirName/include/gtickets.php";
 
 // SERVER, GET �ѿ��μ���
 $action = isset($_POST['action']) ? preg_replace('/[^a-zA-Z0-9_-]/', '', $_POST['action']) : '';
@@ -211,14 +211,14 @@ if ($action === 'insert') {
 
     // 新規登録
     $sql  = "INSERT INTO $cal->cat_table SET ";
-    $cols = array(
+    $cols = [
         'weight'     => 'I:N:0',
         'ismenuitem' => 'I:N:0',
         'canbemain'  => 'I:N:0',
         'cat_title'  => '255:J:1',
         'cat_desc'   => 'A:J:0',
         'pid'        => 'I:N:0'
-    );
+    ];
     $sql  .= $cal->get_sql_set($cols);
     $sql  .= ",cat_shorttitle='" . $cal->makeShort(utf8_decode($_POST['cat_title'])) . "'";
     $sql  .= ",color='" . $_POST['color'] . '\'';
@@ -239,14 +239,14 @@ if ($action === 'insert') {
     // ����
     $cid  = (int)$_POST['cid'];
     $sql  = "UPDATE $cal->cat_table SET ";
-    $cols = array(
+    $cols = [
         'weight'     => 'I:N:0',
         'ismenuitem' => 'I:N:0',
         'canbemain'  => 'I:N:0',
         'cat_title'  => '255:J:1',
         'cat_desc'   => 'A:J:0',
         'pid'        => 'I:N:0'
-    );
+    ];
     $sql  .= $cal->get_sql_set($cols);
     $sql  .= ",cat_shorttitle='" . $cal->makeShort(utf8_decode($_POST['cat_title'])) . "'";
     $sql  .= ",color='" . $_POST['color'] . '\'';

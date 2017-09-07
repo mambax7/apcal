@@ -20,7 +20,7 @@
 
 // a plugin for mylinks
 
-defined('XOOPS_ROOT_PATH') || exit('XOOPS Root Path not defined');
+defined('XOOPS_ROOT_PATH') || exit('Restricted access.');
 
 /*
     $db : db instance
@@ -46,7 +46,7 @@ $result = $db->query('SELECT u.uname,u.uid,h.birthday FROM ' . $db->prefix('haku
 
 while (list($uname, $uid, $birthday) = $db->fetchRow($result)) {
     $target_date = $birthday % 100;
-    $tmp_array   = array(
+    $tmp_array   = [
         'dotgif'      => $plugin['dotgif'],
         'dirname'     => $plugin['dirname'],
         'link'        => XOOPS_URL . "/modules/{$plugin['dirname']}/userinfo.php?uid=$uid&amp;caldate={$this->year}-{$this->month}-$target_date",
@@ -55,7 +55,7 @@ while (list($uname, $uid, $birthday) = $db->fetchRow($result)) {
         'user_time'   => 0,
         'name'        => 'uid',
         'title'       => $myts->htmlSpecialChars($uname)
-    );
+    ];
     if ($just1gif) {
         // just 1 gif per a plugin & per a day
         $plugin_returns[$target_date][$plugin['dirname']] = $tmp_array;

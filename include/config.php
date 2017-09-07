@@ -14,16 +14,16 @@
  * @license      GNU GPL 2 or later (http://www.gnu.org/licenses/gpl-2.0.html)
  * @package
  * @since
- * @author     XOOPS Development Team
+ * @author       XOOPS Development Team
  */
 
-require_once  __DIR__ . '/../../../mainfile.php';
+require_once __DIR__ . '/../../../mainfile.php';
 
 $moduleDirName = basename(dirname(__DIR__));
-$capsDirName = strtoupper($moduleDirName);
+$capsDirName   = strtoupper($moduleDirName);
 
 if (!defined($capsDirName . '_DIRNAME')) {
-//if (!defined(($capsDirName . '_DIRNAME'))) {
+    //if (!defined(($capsDirName . '_DIRNAME'))) {
     define($capsDirName . '_DIRNAME', $GLOBALS['xoopsModule']->dirname());
     define($capsDirName . '_PATH', XOOPS_ROOT_PATH . '/modules/' . constant($capsDirName . '_DIRNAME'));
     define($capsDirName . '_URL', XOOPS_URL . '/modules/' . constant($capsDirName . '_DIRNAME'));
@@ -36,7 +36,7 @@ if (!defined($capsDirName . '_DIRNAME')) {
 
 //$img_dir = $GLOBALS['xoopsModuleConfig']['uploaddir'];
 
-define($capsDirName . '_UPLOAD_URL', XOOPS_UPLOAD_URL . '/' .$moduleDirName); // WITHOUT Trailing slash
+define($capsDirName . '_UPLOAD_URL', XOOPS_UPLOAD_URL . '/' . $moduleDirName); // WITHOUT Trailing slash
 //define("XXXXXX_UPLOAD_PATH", $img_dir); // WITHOUT Trailing slash
 define($capsDirName . '_UPLOAD_PATH', XOOPS_UPLOAD_PATH . '/' . $moduleDirName); // WITHOUT Trailing slash
 
@@ -67,7 +67,7 @@ $oldFiles = [
 class ApcalConfigurator
 {
     public $uploadFolders   = [];
-    public $blankFiles  = [];
+    public $blankFiles      = [];
     public $templateFolders = [];
     public $oldFiles        = [];
     public $oldFolders      = [];
@@ -78,35 +78,35 @@ class ApcalConfigurator
      */
     public function __construct()
     {
-        $moduleDirName        = basename(dirname(__DIR__));
-        $capsDirName          = strtoupper($moduleDirName);
-        $this->name           = 'Module Configurator';
-        $this->uploadFolders  = [
+        $moduleDirName       = basename(dirname(__DIR__));
+        $capsDirName         = strtoupper($moduleDirName);
+        $this->name          = 'Module Configurator';
+        $this->uploadFolders = [
             constant($capsDirName . '_UPLOAD_PATH'),
             constant($capsDirName . '_UPLOAD_PATH') . '/thumbs',
         ];
-        $this->blankFiles = [
+        $this->blankFiles    = [
             constant($capsDirName . '_UPLOAD_PATH'),
             constant($capsDirName . '_UPLOAD_PATH') . '/thumbs',
         ];
 
         $this->templateFolders = [
-//            '/templates/',
-//            '/templates/blocks/',
-//            '/templates/admin/'
+            //            '/templates/',
+            //            '/templates/blocks/',
+            //            '/templates/admin/'
 
         ];
         $this->oldFiles        = [
-//            '/admin/admin.css',
-//            '/class/utilities.php',
+            //            '/admin/admin.css',
+            //            '/class/utilities.php',
         ];
         $this->oldFolders      = [
-//            '/images',
-//            '/style',
+            //            '/images',
+            //            '/style',
         ];
     }
 }
 
 // module information
 $modCopyright = "<a href='https://xoops.org' title='XOOPS Project' target='_blank'>
-                     <img src='" . constant($capsDirName . '_AUTHOR_LOGOIMG') . '\' alt=\'XOOPS Project\' ></a>';
+                     <img src='" . constant($capsDirName . '_AUTHOR_LOGOIMG') . '\' alt=\'XOOPS Project\'></a>';

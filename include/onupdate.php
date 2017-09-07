@@ -47,17 +47,17 @@ function tableExists($tablename)
 function xoops_module_pre_update_apcal(XoopsModule $module)
 {
     $moduleDirName = basename(dirname(__DIR__));
-    $classUtility  = ucfirst($moduleDirName) . 'Utility';
-    if (!class_exists($classUtility)) {
+    $utilityClass  = ucfirst($moduleDirName) . 'Utility';
+    if (!class_exists($utilityClass)) {
         xoops_load('utility', $moduleDirName);
     }
     //check for minimum XOOPS version
-    if (!$classUtility::checkVerXoops($module)) {
+    if (!$utilityClass::checkVerXoops($module)) {
         return false;
     }
 
     // check for minimum PHP version
-    if (!$classUtility::checkVerPhp($module)) {
+    if (!$utilityClass::checkVerPhp($module)) {
         return false;
     }
 
@@ -169,8 +169,9 @@ function xoops_module_update_apcal(XoopsModule $module)
 
     require_once __DIR__ . '/config.php';
     $configurator = new ApcalConfigurator();
-    $classUtility = ucfirst($moduleDirName) . 'Utility';
-    if (!class_exists($classUtility)) {
+    /** @var ApcalUtility $utilityClass */
+    $utilityClass = ucfirst($moduleDirName) . 'Utility';
+    if (!class_exists($utilityClass)) {
         xoops_load('utility', $moduleDirName);
     }
 
@@ -179,7 +180,7 @@ function xoops_module_update_apcal(XoopsModule $module)
         foreach ($configurator->templateFolders as $folder) {
             $templateFolder = $GLOBALS['xoops']->path('modules/' . $moduleDirName . $folder);
             if (is_dir($templateFolder)) {
-                $templateList = array_diff(scandir($templateFolder, SCANDIR_SORT_NONE), array('..', '.'));
+                $templateList = array_diff(scandir($templateFolder, SCANDIR_SORT_NONE), ['..', '.']);
                 foreach ($templateList as $k => $v) {
                     $fileInfo = new SplFileInfo($templateFolder . $v);
                     if ($fileInfo->getExtension() === 'html' && $fileInfo->getFilename() !== 'index.html') {
@@ -219,7 +220,7 @@ function xoops_module_update_apcal(XoopsModule $module)
     if (count($configurator->uploadFolders) > 0) {
         //    foreach (array_keys($GLOBALS['uploadFolders']) as $i) {
         foreach (array_keys($configurator->uploadFolders) as $i) {
-            $classUtility::createFolder($configurator->uploadFolders[$i]);
+            $utilityClass::createFolder($configurator->uploadFolders[$i]);
         }
     }
 
@@ -228,7 +229,7 @@ function xoops_module_update_apcal(XoopsModule $module)
         $file = __DIR__ . '/../assets/images/blank.png';
         foreach (array_keys($configurator->blankFiles) as $i) {
             $dest = $configurator->blankFiles[$i] . '/blank.png';
-            $classUtility::copyFile($file, $dest);
+            $utilityClass::copyFile($file, $dest);
         }
     }
 
@@ -250,7 +251,7 @@ function xoops_module_update_apcal(XoopsModule $module)
  */
 function makeShort($str)
 {
-    $replacements = array(
+    $replacements = [
         'Š' => 'S',
         'š' => 's',
         'Ž' => 'Z',
@@ -316,10 +317,10 @@ function makeShort($str)
         'ý' => 'y',
         'þ' => 'b',
         'ÿ' => 'y'
-    );
+    ];
 
     $str = strip_tags($str);
     $str = strtr($str, $replacements);
 
-    return str_replace(array(' ', '-', '/', "\\", "'", '"', "\r", "\n", '&', '?', '!', '%', ',', '.'), '', $str);
+    return str_replace([' ', '-', '/', "\\", "'", '"', "\r", "\n", '&', '?', '!', '%', ',', '.'], '', $str);
 }

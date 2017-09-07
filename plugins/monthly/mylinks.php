@@ -20,7 +20,7 @@
 
 // a plugin for mylinks
 
-defined('XOOPS_ROOT_PATH') || exit('XOOPS Root Path not defined');
+defined('XOOPS_ROOT_PATH') || exit('Restricted access.');
 
 /*
     $db : db instance
@@ -50,7 +50,7 @@ while (list($title, $id, $server_time, $cid) = $db->fetchRow($result)) {
         continue;
     }
     $target_date = date('j', $user_time);
-    $tmp_array   = array(
+    $tmp_array   = [
         'dotgif'      => $plugin['dotgif'],
         'dirname'     => $plugin['dirname'],
         'link'        => XOOPS_URL . "/modules/{$plugin['dirname']}/singlelink.php?lid=$id&amp;cid=$cid&amp;caldate={$this->year}-{$this->month}-$target_date",
@@ -59,7 +59,7 @@ while (list($title, $id, $server_time, $cid) = $db->fetchRow($result)) {
         'user_time'   => $user_time,
         'name'        => 'lid',
         'title'       => $myts->htmlSpecialChars($title)
-    );
+    ];
     if ($just1gif) {
         // just 1 gif per a plugin & per a day
         $plugin_returns[$target_date][$plugin['dirname']] = $tmp_array;

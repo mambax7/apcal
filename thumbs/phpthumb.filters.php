@@ -679,7 +679,7 @@ class phpthumb_filters
                 }
             }
         }
-        $keys = array('red', 'green', 'blue', 'alpha');
+        $keys = ['red', 'green', 'blue', 'alpha'];
         if ($calculateGray) {
             $keys[] = 'gray';
         }
@@ -703,13 +703,13 @@ class phpthumb_filters
         // method 0 stretches according to RGB colors. Gives a more conservative stretch.
         // method 1 band stretches according to grayscale which is color-biased (59% green, 30% red, 11% blue). May give a punchier / more aggressive stretch, possibly appearing over-saturated
         $Analysis = phpthumb_filters::HistogramAnalysis($gdimg, true);
-        $keys     = array(
+        $keys     = [
             'r' => 'red',
             'g' => 'green',
             'b' => 'blue',
             'a' => 'alpha',
             '*' => ($method == 0) ? 'all' : 'gray'
-        );
+        ];
         $band     = substr($band, 0, 1);
         if (!isset($keys[$band])) {
             return false;
@@ -826,16 +826,16 @@ class phpthumb_filters
                 ImageSaveAlpha($gdHistTemp, true);
                 imagefilledrectangle($gdHistTemp, 0, 0, imagesx($gdHistTemp), imagesy($gdHistTemp), $color_back_temp);
 
-                $DefaultColors = array(
+                $DefaultColors = [
                     'r' => 'FF0000',
                     'g' => '00FF00',
                     'b' => '0000FF',
                     'a' => '999999',
                     '*' => 'FFFFFF'
-                );
+                ];
                 $Colors        = explode(';', $colors);
                 $BandsToGraph  = array_unique(preg_split('##', $bands));
-                $keys          = array('r' => 'red', 'g' => 'green', 'b' => 'blue', 'a' => 'alpha', '*' => 'gray');
+                $keys          = ['r' => 'red', 'g' => 'green', 'b' => 'blue', 'a' => 'alpha', '*' => 'gray'];
                 foreach ($BandsToGraph as $key => $band) {
                     if (!isset($keys[$band])) {
                         continue;
@@ -1247,7 +1247,7 @@ class phpthumb_filters
             $R           = hexdec(substr($hexcolor, 0, 2));
             $G           = hexdec(substr($hexcolor, 2, 2));
             $B           = hexdec(substr($hexcolor, 4, 2));
-            $targetPixel = array('red' => $R, 'green' => $G, 'blue' => $B);
+            $targetPixel = ['red' => $R, 'green' => $G, 'blue' => $B];
             $cutoffRange = $max_limit - $min_limit;
             for ($x = 0; $x < $width; $x++) {
                 for ($y = 0; $y < $height; $y++) {
@@ -1337,18 +1337,18 @@ class phpthumb_filters
     public function WhiteBalance(&$gdimg, $targetColor = '')
     {
         if (phpthumb_functions::IsHexColor($targetColor)) {
-            $targetPixel = array(
+            $targetPixel = [
                 'red'   => hexdec(substr($targetColor, 0, 2)),
                 'green' => hexdec(substr($targetColor, 2, 2)),
                 'blue'  => hexdec(substr($targetColor, 4, 2))
-            );
+            ];
         } else {
             $Analysis    = phpthumb_filters::HistogramAnalysis($gdimg, false);
-            $targetPixel = array(
+            $targetPixel = [
                 'red'   => max(array_keys($Analysis['red'])),
                 'green' => max(array_keys($Analysis['green'])),
                 'blue'  => max(array_keys($Analysis['blue']))
-            );
+            ];
         }
         $grayValue = phpthumb_functions::GrayscaleValue($targetPixel['red'], $targetPixel['green'], $targetPixel['blue']);
         $scaleR    = $grayValue / $targetPixel['red'];
@@ -1411,7 +1411,7 @@ class phpthumb_filters
             $originOffsetY = 0;
         }
 
-        $metaTextArray = array(
+        $metaTextArray = [
             '^Fb' => $this->phpThumbObject->getimagesizeinfo['filesize'],
             '^Fk' => round($this->phpThumbObject->getimagesizeinfo['filesize'] / 1024),
             '^Fm' => round($this->phpThumbObject->getimagesizeinfo['filesize'] / 1048576),
@@ -1420,7 +1420,7 @@ class phpthumb_filters
             '^x'  => imagesx($gdimg),
             '^y'  => imagesy($gdimg),
             '^^'  => '^'
-        );
+        ];
         $text          = strtr($text, $metaTextArray);
 
         $text      = str_replace("\r\n", "\n", $text);

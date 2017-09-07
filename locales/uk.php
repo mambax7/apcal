@@ -10,15 +10,15 @@
  */
 
 /**
- * @copyright   {@link https://xoops.org/ XOOPS Project}
- * @license     {@link http://www.fsf.org/copyleft/gpl.html GNU public license}
+ * @copyright    {@link https://xoops.org/ XOOPS Project}
+ * @license      {@link http://www.fsf.org/copyleft/gpl.html GNU public license}
  * @package
  * @since
  * @author       XOOPS Development Team,
  * @author       GIJ=CHECKMATE (PEAK Corp. http://www.peak.ne.jp/)
  */
 
-$this->holidays = array(
+$this->holidays = [
     '2005-1-3'   => 'New Years Bank Holiday',
     '2005-3-25'  => 'Good Friday',
     '2005-3-28'  => 'Easter Monday',
@@ -46,7 +46,7 @@ $this->holidays = array(
     '2008-5-26' => 'Spring Bank Holiday',
     '2008-8-25' => 'Summer Bank Holiday'
 
-);
+];
 
 for ($y = 2001; $y < 2020; ++$y) {
     $this->holidays["$y-1-1"]   = 'New Years Day';

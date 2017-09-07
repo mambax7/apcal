@@ -226,7 +226,7 @@ if (isset($_GET['phpThumbDebug']) && ($_GET['phpThumbDebug'] == '0')) {
 // returned the fixed string if the evil "magic_quotes_gpc" setting is on
 if (get_magic_quotes_gpc()) {
     // deprecated: 'err', 'file', 'goto',
-    $RequestVarsToStripSlashes = array('src', 'wmf', 'down');
+    $RequestVarsToStripSlashes = ['src', 'wmf', 'down'];
     foreach ($RequestVarsToStripSlashes as $key) {
         if (isset($_GET[$key])) {
             if (is_string($_GET[$key])) {
@@ -296,7 +296,7 @@ if ($phpThumb->config_nohotlink_enabled
 if ($phpThumb->config_mysql_query) {
     if ($phpThumb->config_mysql_extension == 'mysqli') {
         $found_missing_function = false;
-        foreach (array('mysqli_connect') as $required_mysqli_function) {
+        foreach (['mysqli_connect'] as $required_mysqli_function) {
             if (!function_exists($required_mysqli_function)) {
                 $found_missing_function = $required_mysqli_function;
                 break;
@@ -330,7 +330,7 @@ if ($phpThumb->config_mysql_query) {
     } elseif ($phpThumb->config_mysql_extension == 'mysql') {
         $found_missing_function = false;
         //foreach (array('mysql_connect', 'mysql_select_db', 'mysql_query', 'mysql_fetch_array', 'mysql_free_result', '$GLOBALS['xoopsDB']->close', 'mysql_error') as $required_mysql_function) {
-        foreach (array('mysql_connect') as $required_mysql_function) {
+        foreach (['mysql_connect'] as $required_mysql_function) {
             if (!function_exists($required_mysql_function)) {
                 $found_missing_function = $required_mysql_function;
                 break;
@@ -382,7 +382,7 @@ $PHPTHUMB_DEFAULTS_DISABLEGETPARAMS = (bool)($phpThumb->config_cache_default_onl
                                              && (strpos($phpThumb->config_cache_default_only_suffix, '*') !== false));
 
 // deprecated: 'err', 'file', 'goto',
-$allowedGETparameters = array(
+$allowedGETparameters = [
     'src',
     'new',
     'w',
@@ -419,7 +419,7 @@ $allowedGETparameters = array(
     'dpi',
     'sia',
     'nocache'
-);
+];
 foreach ($_GET as $key => $value) {
     if (!empty($PHPTHUMB_DEFAULTS_DISABLEGETPARAMS) && ($key != 'src')) {
         // disabled, do not set parameter
@@ -563,11 +563,11 @@ while ($CanPassThroughDirectly && $phpThumb->src) {
                 break 2;
         }
 
-        $ImageCreateFunctions   = array(
+        $ImageCreateFunctions   = [
             1 => 'ImageCreateFromGIF',
             2 => 'ImageCreateFromJPEG',
             3 => 'ImageCreateFromPNG'
-        );
+        ];
         $theImageCreateFunction = @$ImageCreateFunctions[$phpThumb->getimagesizeinfo[2]];
         if ($phpThumb->config_disable_onlycreateable_passthru
             || (function_exists($theImageCreateFunction)

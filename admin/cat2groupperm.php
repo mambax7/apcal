@@ -30,7 +30,7 @@ if (!preg_match('/^(\D+)(\d*)$/', $moduleDirName, $regs)) {
 }
 $mydirnumber = $regs[2] === '' ? '' : (int)$regs[2];
 
-require_once XOOPS_ROOT_PATH . "/modules/$moduleDirName/include/gtickets.php";
+//require_once XOOPS_ROOT_PATH . "/modules/$moduleDirName/include/gtickets.php";
 
 // the names of tables
 $cat_table = $GLOBALS['xoopsDB']->prefix("apcal{$mydirnumber}_cat");
@@ -51,7 +51,6 @@ if (!empty($_POST['submit'])) {
 
     include __DIR__ . '/mygroupperm.php';
     redirect_header(XOOPS_URL . "/modules/$moduleDirName/admin/cat2groupperm.php", 1, _AM_APCALAM_APCALDBUPDATED);
-    exit;
 }
 
 // creating Objects of XOOPS

@@ -10,8 +10,8 @@
  */
 
 /**
- * @copyright   {@link https://xoops.org/ XOOPS Project}
- * @license     {@link http://www.fsf.org/copyleft/gpl.html GNU public license}
+ * @copyright    {@link https://xoops.org/ XOOPS Project}
+ * @license      {@link http://www.fsf.org/copyleft/gpl.html GNU public license}
  * @package
  * @since
  * @author       XOOPS Development Team,
@@ -19,7 +19,7 @@
  */
 
 require_once __DIR__ . '/../../../include/cp_header.php';
-require_once __DIR__ . '/../include/gtickets.php';
+//require_once __DIR__ . '/../include/gtickets.php';
 require_once XOOPS_ROOT_PATH . '/class/template.php';
 
 require_once __DIR__ . '/../include/Text_Diff.php';
@@ -91,7 +91,6 @@ if (!empty($_POST['do_modify'])) {
         xoops_template_touch($tpl_id);
     }
     redirect_header('mytplsadmin.php?dirname=' . $tpl['tpl_module'], 1, _AM_APCALAM_APCALDBUPDATED);
-    exit;
 }
 
 xoops_cp_header();
@@ -140,9 +139,9 @@ if ($tpl['tpl_tplset'] != 'default') {
 
 echo "
     <form name='diff_form' id='diff_form' action='' method='get'>
-    <input type='checkbox' name='display_diff2file' value='1' onClick=\"if (this.checked) {document.getElementById('diff2file').style.display='block'} else {document.getElementById('diff2file').style.display='none'};\" id='display_diff2file' checked >&nbsp;<label for='display_diff2file'>diff from file</label>
+    <input type='checkbox' name='display_diff2file' value='1' onClick=\"if (this.checked) {document.getElementById('diff2file').style.display='block'} else {document.getElementById('diff2file').style.display='none'};\" id='display_diff2file' checked>&nbsp;<label for='display_diff2file'>diff from file</label>
     <pre id='diff2file' style='display:block;border:1px solid black;'>$diff_from_file4disp</pre>
-    <input type='checkbox' name='display_diff2default' value='1' onClick=\"if (this.checked) {document.getElementById('diff2default').style.display='block'} else {document.getElementById('diff2default').style.display='none'};\" id='display_diff2default' >&nbsp;<label for='display_diff2default'>diff from default</label>
+    <input type='checkbox' name='display_diff2default' value='1' onClick=\"if (this.checked) {document.getElementById('diff2default').style.display='block'} else {document.getElementById('diff2default').style.display='none'};\" id='display_diff2default'>&nbsp;<label for='display_diff2default'>diff from default</label>
     <pre id='diff2default' style='display:none;border:1px solid black;'>$diff_from_default4disp</pre>
     </form>\n";
 
@@ -151,8 +150,8 @@ echo "
     " . $GLOBALS['xoopsSecurity']->getTokenHTML() . "
     <textarea name='tpl_source' wrap='off' style='width:600px;height:400px;'>" . htmlspecialchars($tpl['tpl_source'], ENT_QUOTES) . "</textarea>
     <br>
-    <input type='submit' name='do_modify' value='" . _SUBMIT . "' >
-    <input type='reset' name='reset' value='reset' >
+    <input type='submit' name='do_modify' value='" . _SUBMIT . "'>
+    <input type='reset' name='reset' value='reset'>
 </form>\n";
 
 xoops_cp_footer();

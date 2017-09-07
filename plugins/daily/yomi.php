@@ -10,15 +10,15 @@
  */
 
 /**
- * @copyright   {@link https://xoops.org/ XOOPS Project}
- * @license     {@link http://www.fsf.org/copyleft/gpl.html GNU public license}
+ * @copyright    {@link https://xoops.org/ XOOPS Project}
+ * @license      {@link http://www.fsf.org/copyleft/gpl.html GNU public license}
  * @package
  * @since
  * @author       XOOPS Development Team,
  * @author       A plugin for xoops yomi by naopon
  */
 
-defined('XOOPS_ROOT_PATH') || exit('XOOPS Root Path not defined');
+defined('XOOPS_ROOT_PATH') || exit('Restricted access.');
 
 /*
     $db : db instance
@@ -49,7 +49,7 @@ while (list($title, $id, $server_time) = $db->fetchRow($result)) {
         continue;
     }
     $target_date = date('j', $user_time);
-    $tmp_array   = array(
+    $tmp_array   = [
         'dotgif'      => $plugin['dotgif'],
         'dirname'     => $plugin['dirname'],
         'link'        => XOOPS_URL . "/modules/{$plugin['dirname']}/single_link.php?item_id=$id&amp;caldate={$this->year}-{$this->month}-$target_date",
@@ -59,7 +59,7 @@ while (list($title, $id, $server_time) = $db->fetchRow($result)) {
         'name'        => 'item_id',
         'title'       => $myts->htmlSpecialChars($title),
         'description' => ''
-    );
+    ];
 
     // multiple gifs allowed per a plugin & per a day
     $plugin_returns[$target_date][] = $tmp_array;

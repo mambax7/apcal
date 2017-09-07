@@ -10,8 +10,8 @@
  */
 
 /**
- * @copyright   {@link https://xoops.org/ XOOPS Project}
- * @license     {@link http://www.fsf.org/copyleft/gpl.html GNU public license}
+ * @copyright    {@link https://xoops.org/ XOOPS Project}
+ * @license      {@link http://www.fsf.org/copyleft/gpl.html GNU public license}
  * @package
  * @since
  * @author       XOOPS Development Team,
@@ -218,8 +218,8 @@ if (!is_object($xoopsUser) || !is_object($xoopsModule) || !$xoopsUser->isAdmin($
                             // generate compiled files for the new theme
                             // block files only for now..
                             $tplfileHandler = xoops_getHandler('tplfile');
-                            $dtemplates      = $tplfileHandler->find('default', 'block');
-                            $dcount          = count($dtemplates);
+                            $dtemplates     = $tplfileHandler->find('default', 'block');
+                            $dcount         = count($dtemplates);
 
                             // need to do this to pass to xoops_template_touch function
                             $GLOBALS['xoopsConfig']['template_set'] = $newtplset;
@@ -237,7 +237,7 @@ if (!is_object($xoopsUser) || !is_object($xoopsModule) || !$xoopsUser->isAdmin($
 
                             // generate image cache files from image binary data, save them under cache/
                             $imageHandler = xoops_getHandler('imagesetimg');
-                            $imagefiles    = $imageHandler->getObjects(new Criteria('tplset_name', $newtplset), true);
+                            $imagefiles   = $imageHandler->getObjects(new Criteria('tplset_name', $newtplset), true);
                             foreach (array_keys($imagefiles) as $j) {
                                 if (!$fp = fopen(XOOPS_CACHE_PATH . '/' . $newtplset . '_' . $imagefiles[$j]->getVar('imgsetimg_file'), 'wb')) {
                                 } else {
@@ -254,7 +254,7 @@ if (!is_object($xoopsUser) || !is_object($xoopsModule) || !$xoopsUser->isAdmin($
                         && $config->getVar('conf_name') === 'startpage'
                     ) {
                         $memberHandler     = xoops_getHandler('member');
-                        $groups             = $memberHandler->getGroupList();
+                        $groups            = $memberHandler->getGroupList();
                         $modulepermHandler = xoops_getHandler('groupperm');
                         /** @var XoopsModuleHandler $moduleHandler */
                         $moduleHandler = xoops_getHandler('module');

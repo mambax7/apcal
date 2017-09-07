@@ -104,7 +104,7 @@ if (!defined('APCAL_BLOCK_MINI_CALENDAR_INCLUDED')) {
                 break;
         }
 
-        $block            = array();
+        $block            = [];
         $block['content'] = $cal->get_mini_calendar_html($get_target, $query_string);
 
         // ¥­¥ã¥Ã¥·¥å¤Î½ñ¤­½Ð¤·

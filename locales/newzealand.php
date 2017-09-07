@@ -10,15 +10,15 @@
  */
 
 /**
- * @copyright   {@link https://xoops.org/ XOOPS Project}
- * @license     {@link http://www.fsf.org/copyleft/gpl.html GNU public license}
+ * @copyright    {@link https://xoops.org/ XOOPS Project}
+ * @license      {@link http://www.fsf.org/copyleft/gpl.html GNU public license}
  * @package
  * @since
  * @author       XOOPS Development Team,
- * @author      zANavAShi
+ * @author       zANavAShi
  */
 
-$this->holidays = array(
+$this->holidays = [
     '2001-1-2'   => 'Public Holiday',
     '2001-4-13'  => 'Good Friday',
     '2001-4-16'  => 'Easter Monday',
@@ -76,7 +76,7 @@ $this->holidays = array(
     '2010-10-25' => 'Labour Day',
     '2010-12-27' => 'Public Holiday',
     '2010-12-28' => 'Public Holiday'
-);
+];
 
 for ($y = 2001; $y < 2020; ++$y) {
     $this->holidays["$y-1-1"]   = 'New Years Day';

@@ -18,7 +18,7 @@
  * @author       A plugin for wordpress ME by nobunobu
  */
 
-defined('XOOPS_ROOT_PATH') || exit('XOOPS Root Path not defined');
+defined('XOOPS_ROOT_PATH') || exit('Restricted access.');
 
 /*
     $db : db instance
@@ -55,7 +55,7 @@ while (list($title, $id, $server_time) = $db->fetchRow($result)) {
     }
     $target_date                                      = date('j', $user_time);
     $target_Ymd                                       = sprintf('%04d%02d%02d', $this->year, $this->month, $target_date);
-    $tmp_array                                        = array(
+    $tmp_array                                        = [
         'dotgif'      => $plugin['dotgif'],
         'dirname'     => $plugin['dirname'],
         'link'        => XOOPS_URL . "/modules/{$plugin['dirname']}/index.php?m=$target_Ymd&amp;caldate={$this->year}-{$this->month}-$target_date",
@@ -64,6 +64,6 @@ while (list($title, $id, $server_time) = $db->fetchRow($result)) {
         'user_time'   => $user_time,
         'name'        => 'm',
         'title'       => $myts->htmlSpecialChars($title)
-    );
+    ];
     $plugin_returns[$target_date][$plugin['dirname']] = $tmp_array;
 }

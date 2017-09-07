@@ -5,13 +5,13 @@
 //                          GIJOE <http://www.peak.ne.jp>                   //
 // ------------------------------------------------------------------------- //
 
-defined('XOOPS_ROOT_PATH') || exit('XOOPS Root Path not defined');
+defined('XOOPS_ROOT_PATH') || exit('Restricted access.');
 
 require_once __DIR__ . '/../../../include/cp_header.php';
 
 require_once __DIR__ . '/mygrouppermform.php';
 require_once XOOPS_ROOT_PATH . '/class/xoopsblock.php';
-require_once __DIR__ . '/../include/gtickets.php';
+//require_once __DIR__ . '/../include/gtickets.php';
 
 $xoops_system_path = XOOPS_ROOT_PATH . '/modules/system';
 
@@ -74,14 +74,14 @@ if (!$syspermHandler->checkRight('system_admin', XOOPS_SYSTEM_BLOCK, $xoopsUser-
 $db        = XoopsDatabaseFactory::getDatabaseConnection();
 $sql       = 'SELECT bid,name,show_func,func_file,template FROM ' . $db->prefix('newblocks') . " WHERE mid='$target_mid'";
 $result    = $db->query($sql);
-$block_arr = array();
+$block_arr = [];
 while (list($bid, $bname, $show_func, $func_file, $template) = $db->fetchRow($result)) {
-    $block_arr[$bid] = array(
+    $block_arr[$bid] = [
         'name'      => $bname,
         'show_func' => $show_func,
         'func_file' => $func_file,
         'template'  => $template
-    );
+    ];
 }
 
 // for 2.2
@@ -92,7 +92,7 @@ function list_blockinstances()
     $myts = MyTextSanitizer::getInstance();
 
     // cachetime options
-    $cachetimes = array(
+    $cachetimes = [
         '0'       => _NOCACHE,
         '30'      => sprintf(_SECONDS, 30),
         '60'      => _MINUTE,
@@ -104,7 +104,7 @@ function list_blockinstances()
         '259200'  => sprintf(_DAYS, 3),
         '604800'  => _WEEK,
         '2592000' => _MONTH
-    );
+    ];
 
     // displaying TH
     echo "
@@ -124,7 +124,7 @@ function list_blockinstances()
     $criteria = new CriteriaCompo($crit);
     $criteria->setSort('visible DESC, side ASC, weight');
     $instanceHandler = xoops_getHandler('blockinstance');
-    $instances        = $instanceHandler->getObjects($criteria, true, true);
+    $instances       = $instanceHandler->getObjects($criteria, true, true);
 
     //Get modules and pages for visible in
     $module_list[_AM_APCAL_SYSTEMLEVEL]['0-2'] = _AM_APCAL_ADMINBLOCK;
@@ -142,7 +142,7 @@ function list_blockinstances()
             if ($pages === false) {
                 $pages = $module_main[$mid]->getInfo('sub');
             }
-            if (is_array($pages) && $pages != array()) {
+            if (is_array($pages) && $pages != []) {
                 foreach ($pages as $id => $pageinfo) {
                     $module_list[$module_main[$mid]->getVar('name')][$mid . '-' . $id] = $pageinfo['name'];
                 }
@@ -227,36 +227,36 @@ function list_blockinstances()
             <td class='$class'>
                 $name
                 <br>
-                <input type='text' name='title[$i]' value='$title' size='20' >
+                <input type='text' name='title[$i]' value='$title' size='20'>
             </td>
             <td class='$class' align='center' nowrap='nowrap' width='125px'>
                 <div style='float:left;background-color:$scol0;'>
-                    <input type='radio' name='side[$i]' value='" . XOOPS_SIDEBLOCK_LEFT . "' style='background-color:$scol0;' $ssel0 >
+                    <input type='radio' name='side[$i]' value='" . XOOPS_SIDEBLOCK_LEFT . "' style='background-color:$scol0;' $ssel0>
                 </div>
                 <div style='float:left;'>-</div>
                 <div style='float:left;background-color:$scol2;'>
-                    <input type='radio' name='side[$i]' value='" . XOOPS_CENTERBLOCK_LEFT . "' style='background-color:$scol2;' $ssel2 >
+                    <input type='radio' name='side[$i]' value='" . XOOPS_CENTERBLOCK_LEFT . "' style='background-color:$scol2;' $ssel2>
                 </div>
                 <div style='float:left;background-color:$scol3;'>
-                    <input type='radio' name='side[$i]' value='" . XOOPS_CENTERBLOCK_CENTER . "' style='background-color:$scol3;' $ssel3 >
+                    <input type='radio' name='side[$i]' value='" . XOOPS_CENTERBLOCK_CENTER . "' style='background-color:$scol3;' $ssel3>
                 </div>
                 <div style='float:left;background-color:$scol4;'>
-                    <input type='radio' name='side[$i]' value='" . XOOPS_CENTERBLOCK_RIGHT . "' style='background-color:$scol4;' $ssel4 >
+                    <input type='radio' name='side[$i]' value='" . XOOPS_CENTERBLOCK_RIGHT . "' style='background-color:$scol4;' $ssel4>
                 </div>
                 <div style='float:left;'>-</div>
                 <div style='float:left;background-color:$scol1;'>
-                    <input type='radio' name='side[$i]' value='" . XOOPS_SIDEBLOCK_RIGHT . "' style='background-color:$scol1;' $ssel1 >
+                    <input type='radio' name='side[$i]' value='" . XOOPS_SIDEBLOCK_RIGHT . "' style='background-color:$scol1;' $ssel1>
                 </div>
                 <br>
                 <br>
                 <div style='float:left;width:40px;'>&nbsp;</div>
                 <div style='float:left;background-color:$scoln;'>
-                    <input type='radio' name='side[$i]' value='-1' style='background-color:$scoln;' $sseln >
+                    <input type='radio' name='side[$i]' value='-1' style='background-color:$scoln;' $sseln>
                 </div>
                 <div style='float:left;'>" . _NONE . "</div>
             </td>
             <td class='$class' align='center'>
-                <input type='text' name=weight[$i] value='$weight' size='3' maxlength='5' style='text-align:right;' >
+                <input type='text' name=weight[$i] value='$weight' size='3' maxlength='5' style='text-align:right;'>
             </td>
             <td class='$class' align='center'>
                 <select name='bmodule[$i][]' size='5' multiple='multiple'>
@@ -270,7 +270,7 @@ function list_blockinstances()
             </td>
             <td class='$class' align='right'>
                 <a href='" . XOOPS_URL . "/modules/system/admin.php?fct=blocksadmin&amp;op=edit&amp;id=$i'>" . _EDIT . "</a>{$delete_link}
-                <input type='hidden' name='id[$i]' value='$i' >
+                <input type='hidden' name='id[$i]' value='$i'>
             </td>
         </tr>\n";
 
@@ -299,7 +299,7 @@ function list_blockinstances()
                 $description4show
             </td>
             <td class='$class' align='center'>
-                <input type='submit' name='addblock[$bid]' value='" . _ADD . "' >
+                <input type='submit' name='addblock[$bid]' value='" . _ADD . "'>
             </td>
         </tr>
         \n";
@@ -309,11 +309,11 @@ function list_blockinstances()
     echo "
         <tr>
             <td class='foot' align='center' colspan='6'>
-                <input type='hidden' name='query4redirect' value='$query4redirect' >
-                <input type='hidden' name='fct' value='blocksadmin' >
-                <input type='hidden' name='op' value='order2' >
+                <input type='hidden' name='query4redirect' value='$query4redirect'>
+                <input type='hidden' name='fct' value='blocksadmin'>
+                <input type='hidden' name='op' value='order2'>
                 " . $GLOBALS['xoopsSecurity']->getTokenHTML('myblocksadmin') . "
-                <input type='submit' name='submit' value='" . _SUBMIT . "' >
+                <input type='submit' name='submit' value='" . _SUBMIT . "'>
             </td>
         </tr>
         </table>
@@ -327,7 +327,7 @@ function list_groups2()
 
     $result = $GLOBALS['xoopsDB']->query('SELECT i.instanceid,i.title FROM ' . $GLOBALS['xoopsDB']->prefix('block_instance') . ' i LEFT JOIN ' . $GLOBALS['xoopsDB']->prefix('newblocks') . " b ON i.bid=b.bid WHERE b.mid='$target_mid'");
 
-    $item_list = array();
+    $item_list = [];
     while (list($iid, $title) = $GLOBALS['xoopsDB']->fetchRow($result)) {
         $item_list[$iid] = $title;
     }

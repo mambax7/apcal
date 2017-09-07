@@ -251,7 +251,7 @@
                                         href='<{$get_target}>?smode=Daily&amp;action=Edit&amp;event_id=<{$event.id}>&amp;caldate=<{$caldate}>'>
                                         <img
                                         src='<{$images_url}>/addevent.gif' border='0' width='14'
-                                        height='12' ><{$lang_editevent}></a><{/if}>
+                                        height='12'><{$lang_editevent}></a><{/if}>
                                     </td><{/if}>
                                 <td class='<{$event.oddeven}>' align='right'><input type='checkbox' name='ids[]'
                                                                                     value='<{$event.target_id}>'></td>

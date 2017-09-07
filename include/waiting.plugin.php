@@ -10,15 +10,15 @@
  */
 
 /**
- * @copyright   {@link https://xoops.org/ XOOPS Project}
- * @license     {@link http://www.fsf.org/copyleft/gpl.html GNU public license}
+ * @copyright    {@link https://xoops.org/ XOOPS Project}
+ * @license      {@link http://www.fsf.org/copyleft/gpl.html GNU public license}
  * @package
  * @since
  * @author       XOOPS Development Team,
  * @author       GIJ=CHECKMATE (PEAK Corp. http://www.peak.ne.jp/)
  */
 
-defined('XOOPS_ROOT_PATH') || exit('XOOPS Root Path not defined');
+defined('XOOPS_ROOT_PATH') || exit('Restricted access.');
 
 $moduleDirName = basename(dirname(__DIR__));
 
@@ -38,7 +38,7 @@ if (!function_exists('b_waiting_APCal_base')) {
     function b_waiting_APCal_base($moduleDirName)
     {
         $xoopsDB = XoopsDatabaseFactory::getDatabaseConnection();
-        $block   = array();
+        $block   = [];
 
         // get $mydirnumber
         if (!preg_match('/^(\D+)(\d*)$/', $moduleDirName, $regs)) {

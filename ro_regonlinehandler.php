@@ -139,52 +139,52 @@ if ($show_form_activate) {
         <tr><td width='100%' class='itemHead'><span class='itemTitle'>" . _APCAL_RO_TITLE2 . "</span></td></tr>
         <tr><td width='100%'>
         <form method='post' action='ro_regonlinehandler.php' name='roformactivate' style='margin:0px;'>
-            <input type='hidden' name='eventid' value='$eventid' >
-            <input type='hidden' name='uid' value='$uid' >
-            <input type='hidden' name='eventurl' value='$eventurl' >
-            <input type='hidden' name='url' value='$url' >
-            <input type='hidden' name='typeedit' value='$typeedit' >
+            <input type='hidden' name='eventid' value='$eventid'>
+            <input type='hidden' name='uid' value='$uid'>
+            <input type='hidden' name='eventurl' value='$eventurl'>
+            <input type='hidden' name='url' value='$url'>
+            <input type='hidden' name='typeedit' value='$typeedit'>
             <table>
                 <tr>
                     <td class='even' width='300px'>" . _APCAL_RO_EVENT . ":</td>
-                    <td class='odd'><input type='text' name='event' disabled='disabled' value='$event'  size='80' ></td>
+                    <td class='odd'><input type='text' name='event' disabled='disabled' value='$event'  size='80'></td>
                 </tr>";
     $ret .= "
                 <tr>
                     <td class='even' width='120px'>" . _APCAL_RO_DATE . ":</td>
-                    <td class='odd'><input type='text' name='eventdate' disabled='disabled' value='$eventdate'  size='80' ></td>
+                    <td class='odd'><input type='text' name='eventdate' disabled='disabled' value='$eventdate'  size='80'></td>
                 </tr>
                  <tr>
                     <td class='even' width='120px'>" . _APCAL_RO_LOCATION . ":</td>
-                    <td class='odd'><input type='text' name='location' disabled='disabled' value='$location'  size='80' ></td>
+                    <td class='odd'><input type='text' name='location' disabled='disabled' value='$location'  size='80'></td>
                 </tr>";
     $ret .= "
                 <tr>
                     <td class='even' width='300px'>" . _APCAL_RO_QUANTITY . ":</td>
-                    <td class='odd'><input type='text' name='number' value='$number' size='80' ></td>
+                    <td class='odd'><input type='text' name='number' value='$number' size='80'></td>
                 </tr>
                 <tr>
                     <td class='even' width='300px'>" . _APCAL_RO_DATELIMIT . ":</td>
-                    <td class='odd'><input type='text' name='datelimit' value='$datelimit' size='80' ></td>
+                    <td class='odd'><input type='text' name='datelimit' value='$datelimit' size='80'></td>
                 </tr>
                 <tr>
                     <td class='even' width='300px'>" . _APCAL_RO_EMAIL_NOTIFY . ":</td>
                     <td class='odd'>
                         <table cellspacing='0' cellpading='0'>
                             <tr>
-                                <td class='odd'><input type='text' name='email1' value='$email1' size='80' ></td>
+                                <td class='odd'><input type='text' name='email1' value='$email1' size='80'></td>
                             </tr>
                             <tr>
-                                <td class='odd'><input type='text' name='email2' value='$email2' size='80' ></td>
+                                <td class='odd'><input type='text' name='email2' value='$email2' size='80'></td>
                             </tr>
                             <tr>
-                                <td class='odd'><input type='text' name='email3' value='$email3' size='80' ></td>
+                                <td class='odd'><input type='text' name='email3' value='$email3' size='80'></td>
                             </tr>
                             <tr>
-                                <td class='odd'><input type='text' name='email4' value='$email4' size='80' ></td>
+                                <td class='odd'><input type='text' name='email4' value='$email4' size='80'></td>
                             </tr>
                             <tr>
-                                <td class='odd'><input type='text' name='email5' value='$email5' size='80' ></td>
+                                <td class='odd'><input type='text' name='email5' value='$email5' size='80'></td>
                             </tr>
                         </table>
                     </td>
@@ -419,41 +419,41 @@ if (isset($_REQUEST['form_add'])) {
             <tr><td width='100%' class='itemHead'><span class='itemTitle'>" . _APCAL_RO_TITLE1 . "</span></td></tr>
             <tr><td width='100%'>
             <form method='post' action='ro_regonlinehandler.php' name='roformaddmember' style='margin:0px;'>
-                <input type='hidden' name='eventid' value='$eventid' >
-                <input type='hidden' name='uid' value='$uid' >
-                <input type='hidden' name='uname' value='$uname' >
-                <input type='hidden' name='url' value='$url' >
-                <input type='hidden' name='eventurl' value='$eventurl' >
-                <input type='hidden' name='title' value='$title' >
-                <input type='hidden' name='summary' value='$summary' >
-                <input type='hidden' name='date' value='$date' >
-                <input type='hidden' name='location' value='$location' >
+                <input type='hidden' name='eventid' value='$eventid'>
+                <input type='hidden' name='uid' value='$uid'>
+                <input type='hidden' name='uname' value='$uname'>
+                <input type='hidden' name='url' value='$url'>
+                <input type='hidden' name='eventurl' value='$eventurl'>
+                <input type='hidden' name='title' value='$title'>
+                <input type='hidden' name='summary' value='$summary'>
+                <input type='hidden' name='date' value='$date'>
+                <input type='hidden' name='location' value='$location'>
                 <table>
                     <tr>
                         <td class='even' width='120px'>" . _APCAL_RO_EVENT . ":</td>
-                        <td class='odd'><input type='text' name='title' disabled='disabled' value='$summary'  size='100' ></td>
+                        <td class='odd'><input type='text' name='title' disabled='disabled' value='$summary'  size='100'></td>
                     </tr>
                     <tr>
                         <td class='even' width='120px'>" . _APCAL_RO_DATE . ":</td>
-                        <td class='odd'><input type='text' name='date' disabled='disabled' value='$date'  size='100' ></td>
+                        <td class='odd'><input type='text' name='date' disabled='disabled' value='$date'  size='100'></td>
                     </tr>
                      <tr>
                         <td class='even' width='120px'>" . _APCAL_RO_LOCATION . ":</td>
-                        <td class='odd'><input type='text' name='location' disabled='disabled' value='$location'  size='100' ></td>
+                        <td class='odd'><input type='text' name='location' disabled='disabled' value='$location'  size='100'></td>
                     </tr>
                      <tr>
                         <td class='even' width='120px'>" . _APCAL_RO_FIRSTNAME . "*:</td>
-                        <td class='odd'><input type='text' name='firstname' value='' size='100' ></td>
+                        <td class='odd'><input type='text' name='firstname' value='' size='100'></td>
                     </tr>
                     <tr>
                         <td class='even' width='120px'>" . _APCAL_RO_LASTNAME . "*:</td>
-                        <td class='odd'><input type='text' name='lastname' value='' size='100' ></td>
+                        <td class='odd'><input type='text' name='lastname' value='' size='100'></td>
                     </tr>
                     <tr>
                         <td class='even' width='120px'>" . _APCAL_RO_EMAIL . ":</td>
                         <td class='odd'>
-                            <input type='text' name='email' disabled='disabled' value='$email' size='100' >
-                            <input type='hidden' name='email' value='$email' >
+                            <input type='text' name='email' disabled='disabled' value='$email' size='100'>
+                            <input type='hidden' name='email' value='$email'>
                             <br>" . _APCAL_RO_SEND_CONF3 . "
                             <input type='radio' name='sendconf' value='yes' checked> " . _APCAL_RO_RADIO_YES . "
                             <input type='radio' name='sendconf' value='no'> " . _APCAL_RO_RADIO_NO . '
@@ -463,35 +463,35 @@ if (isset($_REQUEST['form_add'])) {
             $ret .= "
                     <tr>
                         <td class='even' width='120px'>" . _APCAL_RO_EXTRAINFO1 . ":</td>
-                        <td class='odd'><input type='text' name='extrainfo1' value='' size='100' ></td>
+                        <td class='odd'><input type='text' name='extrainfo1' value='' size='100'></td>
                     </tr>";
         }
         if (_APCAL_RO_EXTRAINFO2 !== '') {
             $ret .= "
                     <tr>
                         <td class='even' width='120px'>" . _APCAL_RO_EXTRAINFO2 . ":</td>
-                        <td class='odd'><input type='text' name='extrainfo2' value='' size='100' ></td>
+                        <td class='odd'><input type='text' name='extrainfo2' value='' size='100'></td>
                     </tr>";
         }
         if (_APCAL_RO_EXTRAINFO3 !== '') {
             $ret .= "
                     <tr>
                         <td class='even' width='120px'>" . _APCAL_RO_EXTRAINFO3 . ":</td>
-                        <td class='odd'><input type='text' name='extrainfo3' value='' size='100' ></td>
+                        <td class='odd'><input type='text' name='extrainfo3' value='' size='100'></td>
                     </tr>";
         }
         if (_APCAL_RO_EXTRAINFO4 !== '') {
             $ret .= "
                     <tr>
                         <td class='even' width='120px'>" . _APCAL_RO_EXTRAINFO4 . ":</td>
-                        <td class='odd'><input type='text' name='extrainfo4' value='' size='100' ></td>
+                        <td class='odd'><input type='text' name='extrainfo4' value='' size='100'></td>
                     </tr>";
         }
         if (_APCAL_RO_EXTRAINFO5 !== '') {
             $ret .= "
                     <tr>
                         <td class='even' width='120px'>" . _APCAL_RO_EXTRAINFO5 . ":</td>
-                        <td class='odd'><input type='text' name='extrainfo5' value='' size='100' ></td>
+                        <td class='odd'><input type='text' name='extrainfo5' value='' size='100'></td>
                     </tr>";
         }
         $ret .= '
@@ -565,26 +565,26 @@ if (isset($_REQUEST['form_add'])) {
                 $unique_id      = uniqid(mt_rand());
                 $formeditremove = "
                         <form method='post' action='ro_regonlinehandler.php' name='roformeditremovemember_" . $unique_id . "' style='margin:0px;'>
-                            <input type='hidden' name='eventid' value='$eventid' >
-                            <input type='hidden' name='uid' value='$uid' >
-                            <input type='hidden' name='uname' value='$uname' >
-                            <input type='hidden' name='url' value='$url' >
-                            <input type='hidden' name='eventurl' value='$eventurl' >
-                            <input type='hidden' name='summary' value='$summary' >
-                            <input type='hidden' name='date' value='$date' >
-                            <input type='hidden' name='location' value='$location' >
-                            <input type='hidden' name='rom_id' value='$rom_id' >
-                            <input type='hidden' name='firstname' value='$romfirstname' >
-                            <input type='hidden' name='lastname' value='$romlastname' >
-                            <input type='hidden' name='email' value='$romemail' >
-                            <input type='hidden' name='extrainfo1' value='$romextrainfo1' >
-                            <input type='hidden' name='extrainfo2' value='$romextrainfo2' >
-                            <input type='hidden' name='extrainfo3' value='$romextrainfo3' >
-                            <input type='hidden' name='extrainfo4' value='$romextrainfo4' >
-                            <input type='hidden' name='extrainfo5' value='$romextrainfo5' >
-                            <input type='hidden' name='num_members' value='$num_rows' >
-                            <input type='image' src='$roimageedit' name='form_edit' alt='" . _APCAL_RO_BTN_EDIT . "' title='" . _APCAL_RO_BTN_EDIT . "'  height='32px' >
-                            <input type='image' src='$roimagedelete' name='remove_member' alt='" . _APCAL_RO_BTN_REMOVE . "' title='" . _APCAL_RO_BTN_REMOVE . "'  height='32px' >
+                            <input type='hidden' name='eventid' value='$eventid'>
+                            <input type='hidden' name='uid' value='$uid'>
+                            <input type='hidden' name='uname' value='$uname'>
+                            <input type='hidden' name='url' value='$url'>
+                            <input type='hidden' name='eventurl' value='$eventurl'>
+                            <input type='hidden' name='summary' value='$summary'>
+                            <input type='hidden' name='date' value='$date'>
+                            <input type='hidden' name='location' value='$location'>
+                            <input type='hidden' name='rom_id' value='$rom_id'>
+                            <input type='hidden' name='firstname' value='$romfirstname'>
+                            <input type='hidden' name='lastname' value='$romlastname'>
+                            <input type='hidden' name='email' value='$romemail'>
+                            <input type='hidden' name='extrainfo1' value='$romextrainfo1'>
+                            <input type='hidden' name='extrainfo2' value='$romextrainfo2'>
+                            <input type='hidden' name='extrainfo3' value='$romextrainfo3'>
+                            <input type='hidden' name='extrainfo4' value='$romextrainfo4'>
+                            <input type='hidden' name='extrainfo5' value='$romextrainfo5'>
+                            <input type='hidden' name='num_members' value='$num_rows'>
+                            <input type='image' src='$roimageedit' name='form_edit' alt='" . _APCAL_RO_BTN_EDIT . "' title='" . _APCAL_RO_BTN_EDIT . "'  height='32px'>
+                            <input type='image' src='$roimagedelete' name='remove_member' alt='" . _APCAL_RO_BTN_REMOVE . "' title='" . _APCAL_RO_BTN_REMOVE . "'  height='32px'>
 
                         </form>";
                 $ret2           .= "<tr>
@@ -613,7 +613,7 @@ if (isset($_REQUEST['form_add'])) {
             $ret2 .= '</table></td></tr></table>';
             $ret2 .= "<p style='text-align:center;align:center;'>
             <form method='post' action='ro_regonlinehandler.php' name='roformgoback' style='margin:0px;'>
-                <input type='hidden' name='eventurl' value='$eventurl' >
+                <input type='hidden' name='eventurl' value='$eventurl'>
                 <div align='center'>
                 <input type='image' src='$roimagecancel' name='goback' alt='" . _APCAL_RO_BTN_BACK . "' title='" . _APCAL_RO_BTN_BACK . "' height='32px'>
                 </div>
@@ -1069,20 +1069,20 @@ if (isset($_REQUEST['list'])) {
                 $unique_id = uniqid(mt_rand());
                 $ret       .= "
                     <form method='post' action='ro_regonlinehandler.php' name='roformlist_" . $unique_id . "' style='margin:0px;'>
-                        <input type='hidden' name='url' value='$url' >
-                        <input type='hidden' name='rom_id' value='$rom_id' >
-                        <input type='hidden' name='firstname' value='$firstname' >
-                        <input type='hidden' name='lastname' value='$lastname' >
-                        <input type='hidden' name='email' value='$email' >
-                        <input type='hidden' name='extrainfo1' value='$extrainfo1' >
-                        <input type='hidden' name='extrainfo2' value='$extrainfo2' >
-                        <input type='hidden' name='extrainfo3' value='$extrainfo3' >
-                        <input type='hidden' name='extrainfo4' value='$extrainfo4' >
-                        <input type='hidden' name='extrainfo5' value='$extrainfo5' >
-                        <input type='hidden' name='num_members' value='$num_rows' >
+                        <input type='hidden' name='url' value='$url'>
+                        <input type='hidden' name='rom_id' value='$rom_id'>
+                        <input type='hidden' name='firstname' value='$firstname'>
+                        <input type='hidden' name='lastname' value='$lastname'>
+                        <input type='hidden' name='email' value='$email'>
+                        <input type='hidden' name='extrainfo1' value='$extrainfo1'>
+                        <input type='hidden' name='extrainfo2' value='$extrainfo2'>
+                        <input type='hidden' name='extrainfo3' value='$extrainfo3'>
+                        <input type='hidden' name='extrainfo4' value='$extrainfo4'>
+                        <input type='hidden' name='extrainfo5' value='$extrainfo5'>
+                        <input type='hidden' name='num_members' value='$num_rows'>
                         <div style='display:inline;'>
-                            <input type='image' src='$roimageedit' name='form_edit' alt='" . _APCAL_RO_BTN_EDIT . "' title='" . _APCAL_RO_BTN_EDIT . "'  height='22px' >
-                            <input type='image' src='$roimagedelete' name='remove_member' alt='" . _APCAL_RO_BTN_REMOVE . "' title='" . _APCAL_RO_BTN_REMOVE . "'  height='22px' >
+                            <input type='image' src='$roimageedit' name='form_edit' alt='" . _APCAL_RO_BTN_EDIT . "' title='" . _APCAL_RO_BTN_EDIT . "'  height='22px'>
+                            <input type='image' src='$roimagedelete' name='remove_member' alt='" . _APCAL_RO_BTN_REMOVE . "' title='" . _APCAL_RO_BTN_REMOVE . "'  height='22px'>
                         </div>
                     </form>
                     </td>
@@ -1092,7 +1092,7 @@ if (isset($_REQUEST['list'])) {
 
             $ret .= "
             <form method='post' action='ro_regonlinehandler.php' name='roformgoback' style='margin:0px;'>
-                <input type='hidden' name='eventurl' value='$eventurl' >
+                <input type='hidden' name='eventurl' value='$eventurl'>
                 <div align='center'>
                 <input type='image' src='$roimagecancel' name='goback' alt='" . _APCAL_RO_BTN_BACK . "' title='" . _APCAL_RO_BTN_BACK . "' height='32px'>
                 </div>
@@ -1136,9 +1136,9 @@ if (isset($_REQUEST['list'])) {
                     <textarea rows='25' name='mailtext' cols='95'>$mailtext</textarea></td>
               </tr>
             </table>
-                <input type='hidden' name='url' value='$url' >
-                <input type='hidden' name='eventurl' value='$eventurl' >
-                <input type='hidden' name='eventid' value='$eventid' >
+                <input type='hidden' name='url' value='$url'>
+                <input type='hidden' name='eventurl' value='$eventurl'>
+                <input type='hidden' name='eventid' value='$eventid'>
                 <p style='text-align:center;align:center'><input type='image' src='$roimagesend' name='ro_notify_all' alt='" . _APCAL_RO_BTN_SEND . "' title='" . _APCAL_RO_BTN_SEND . "' height='32px'></p>
             </form>
             \n";
@@ -1176,55 +1176,55 @@ if (isset($_POST['form_edit']) || isset($_POST['form_edit_x'])) {
             <tr><td width='100%' class='itemHead'><span class='itemTitle'>" . _APCAL_RO_TITLE5 . "</span></td></tr>
             <tr><td width='100%'>
             <form method='post' action='ro_regonlinehandler.php' name='roformeditmember' style='margin:0px;'>
-                <input type='hidden' name='url' value='$url' >
-                <input type='hidden' name='rom_id' value='$rom_id' >
+                <input type='hidden' name='url' value='$url'>
+                <input type='hidden' name='rom_id' value='$rom_id'>
 
                 <table>
                     <tr>
                         <td class='even' width='120px'>" . _APCAL_RO_FIRSTNAME . "*:</td>
-                        <td class='odd'><input type='text' name='firstname' value='$firstname' size='100' ></td>
+                        <td class='odd'><input type='text' name='firstname' value='$firstname' size='100'></td>
                     </tr>
                     <tr>
                         <td class='even' width='120px'>" . _APCAL_RO_LASTNAME . "*:</td>
-                        <td class='odd'><input type='text' name='lastname' value='$lastname' size='100' ></td>
+                        <td class='odd'><input type='text' name='lastname' value='$lastname' size='100'></td>
                     </tr>
                     <tr>
                         <td class='even' width='120px'>" . _APCAL_RO_EMAIL . ":</td>
-                        <td class='odd'><input type='text' name='email' value='$email' size='100' ></td>
+                        <td class='odd'><input type='text' name='email' value='$email' size='100'></td>
                     </tr>";
         if (_APCAL_RO_EXTRAINFO1 !== '') {
             $ret .= "
                     <tr>
                         <td class='even' width='120px'>" . _APCAL_RO_EXTRAINFO1 . ":</td>
-                        <td class='odd'><input type='text' name='extrainfo1' value='$extrainfo1' size='100' ></td>
+                        <td class='odd'><input type='text' name='extrainfo1' value='$extrainfo1' size='100'></td>
                     </tr>";
         }
         if (_APCAL_RO_EXTRAINFO2 !== '') {
             $ret .= "
                     <tr>
                         <td class='even' width='120px'>" . _APCAL_RO_EXTRAINFO2 . ":</td>
-                        <td class='odd'><input type='text' name='extrainfo2' value='$extrainfo2' size='100' ></td>
+                        <td class='odd'><input type='text' name='extrainfo2' value='$extrainfo2' size='100'></td>
                     </tr>";
         }
         if (_APCAL_RO_EXTRAINFO3 !== '') {
             $ret .= "
                     <tr>
                         <td class='even' width='120px'>" . _APCAL_RO_EXTRAINFO3 . ":</td>
-                        <td class='odd'><input type='text' name='extrainfo3' value='$extrainfo3' size='100' ></td>
+                        <td class='odd'><input type='text' name='extrainfo3' value='$extrainfo3' size='100'></td>
                     </tr>";
         }
         if (_APCAL_RO_EXTRAINFO4 !== '') {
             $ret .= "
                     <tr>
                         <td class='even' width='120px'>" . _APCAL_RO_EXTRAINFO4 . ":</td>
-                        <td class='odd'><input type='text' name='extrainfo4' value='$extrainfo4' size='100' ></td>
+                        <td class='odd'><input type='text' name='extrainfo4' value='$extrainfo4' size='100'></td>
                     </tr>";
         }
         if (_APCAL_RO_EXTRAINFO5 !== '') {
             $ret .= "
                     <tr>
                         <td class='even' width='120px'>" . _APCAL_RO_EXTRAINFO5 . ":</td>
-                        <td class='odd'><input type='text' name='extrainfo5' value='$extrainfo5' size='100' ></td>
+                        <td class='odd'><input type='text' name='extrainfo5' value='$extrainfo5' size='100'></td>
                     </tr>";
         }
         $ret .= '
