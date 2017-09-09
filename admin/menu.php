@@ -31,49 +31,75 @@ $pathIcon32 = \Xmf\Module\Admin::menuIconPath('');
 //$pathModIcon32 = $moduleHelper->getModule()->getInfo('modicons32');
 
 $moduleHelper->loadLanguage('modinfo');
-$i                      = 0;
-$adminmenu[$i]['title'] = _MI_APCAL_INDEX;
-$adminmenu[$i]['link']  = 'admin/index.php';
-$adminmenu[$i]['icon']  = 'assets/images/admin/home.png';
-++$i;
-$adminmenu[$i]['title'] = _MI_APCAL_ADMENU0;
-$adminmenu[$i]['link']  = 'admin/admission.php';
-$adminmenu[$i]['icon']  = 'assets/images/admin/admitting.png';
-++$i;
-$adminmenu[$i]['title'] = _MI_APCAL_ADMENU1;
-$adminmenu[$i]['link']  = 'admin/events.php';
-$adminmenu[$i]['icon']  = 'assets/images/admin/events.png';
-++$i;
-$adminmenu[$i]['title'] = _MI_APCAL_ADMENU_CAT;
-$adminmenu[$i]['link']  = 'admin/categories.php';
-$adminmenu[$i]['icon']  = 'assets/images/admin/category.png';
-++$i;
-$adminmenu[$i]['title'] = _MI_APCAL_ADMENU_CAT2GROUP;
-$adminmenu[$i]['link']  = 'admin/cat2groupperm.php';
-$adminmenu[$i]['icon']  = 'assets/images/admin/permissions.png';
-++$i;
-$adminmenu[$i]['title'] = _MI_APCAL_ADMENU2;
-$adminmenu[$i]['link']  = 'admin/groupperm.php';
-$adminmenu[$i]['icon']  = 'assets/images/admin/permissions.png';
-++$i;
-$adminmenu[$i]['title'] = _MI_APCAL_ADMENU_ICAL;
-$adminmenu[$i]['link']  = 'admin/icalendar_import.php';
-$adminmenu[$i]['icon']  = 'assets/images/admin/import.png';
-//++$i;
-//$adminmenu[$i]['title'] = _MI_APCAL_ADMENU_TM;
-//$adminmenu[$i]['link'] = "admin/maintenance.php";
-//++$i;
-//$adminmenu[$i]['title'] = _MI_APCAL_ADMENU_PLUGINS;
-//$adminmenu[$i]['link'] = "admin/pluginsmanager.php";
-//++$i;
-//$adminmenu[$i]['title'] = _MI_APCAL_ADMENU_MYTPLSADMIN;
-//$adminmenu[$i]['link'] = "admin/mytplsadmin.php";
-//++$i;
-//$adminmenu[$i]['title'] = _MI_APCAL_ADMENU_MYBLOCKSADMIN;
-//$adminmenu[$i]['link'] = "admin/myblocksadmin.php";
-//++$i;
-//$adminmenu[$i]['title'] = _PREFERENCES;
-//$adminmenu[$i]['link'] = "admin/admin.php?fct=preferences&op=showmod";
+
+
+$adminmenu[] = [
+'title' =>  _MI_APCAL_INDEX,
+'link' =>  'admin/index.php',
+'icon' =>  'assets/images/admin/home.png',
+];
+
+$adminmenu[] = [
+'title' =>  _MI_APCAL_ADMENU0,
+'link' =>  'admin/admission.php',
+'icon' =>  'assets/images/admin/admitting.png',
+];
+
+$adminmenu[] = [
+'title' =>  _MI_APCAL_ADMENU1,
+'link' =>  'admin/events.php',
+'icon' =>  'assets/images/admin/events.png',
+];
+
+$adminmenu[] = [
+'title' =>  _MI_APCAL_ADMENU_CAT,
+'link' =>  'admin/categories.php',
+'icon' =>  'assets/images/admin/category.png',
+];
+
+$adminmenu[] = [
+'title' =>  _MI_APCAL_ADMENU_CAT2GROUP,
+'link' =>  'admin/cat2groupperm.php',
+'icon' =>  'assets/images/admin/permissions.png',
+];
+
+$adminmenu[] = [
+'title' =>  _MI_APCAL_ADMENU2,
+'link' =>  'admin/groupperm.php',
+'icon' =>  'assets/images/admin/permissions.png',
+];
+
+$adminmenu[] = [
+'title' =>  _MI_APCAL_ADMENU_ICAL,
+'link' =>  'admin/icalendar_import.php',
+'icon' =>  'assets/images/admin/import.png',
+];
+
+//$adminmenu[] = [
+//'title' =>  _MI_APCAL_ADMENU_TM,
+//'link' =>  "admin/maintenance.php",
+//];
+
+//$adminmenu[] = [
+//'title' =>  _MI_APCAL_ADMENU_PLUGINS,
+//'link' =>  "admin/pluginsmanager.php",
+//];
+//
+//$adminmenu[] = [
+//'title' =>  _MI_APCAL_ADMENU_MYTPLSADMIN,
+//'link' =>  "admin/mytplsadmin.php",
+//];
+//
+//$adminmenu[] = [
+//'title' =>  _MI_APCAL_ADMENU_MYBLOCKSADMIN,
+//'link' =>  "admin/myblocksadmin.php",
+//];
+//
+//$adminmenu[] = [
+//'title' =>  _PREFERENCES,
+//'link' => showmod",
+//];
+
 
 $adminmenu[] = [
     'title' => _AM_MODULEADMIN_ABOUT,
