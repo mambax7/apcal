@@ -203,7 +203,7 @@ class phpthumb_filters
      */
     public function Brightness(&$gdimg, $amount = 0)
     {
-        if ($amount == 0) {
+        if (0 == $amount) {
             return true;
         }
         $amount = max(-255, min(255, $amount));
@@ -240,7 +240,7 @@ class phpthumb_filters
      */
     public function Contrast(&$gdimg, $amount = 0)
     {
-        if ($amount == 0) {
+        if (0 == $amount) {
             return true;
         }
         $amount = max(-255, min(255, $amount));
@@ -285,13 +285,13 @@ class phpthumb_filters
         $amountPct   = $amount / 100;
         $targetColor = (phpthumb_functions::IsHexColor($targetColor) ? $targetColor : 'gray');
 
-        if ($amount == 0) {
+        if (0 == $amount) {
             return true;
         }
 
         if (phpthumb_functions::version_compare_replacement(PHP_VERSION, '5.0.0', '>=')
             && phpthumb_functions::gd_is_bundled()) {
-            if ($targetColor == 'gray') {
+            if ('gray' == $targetColor) {
                 $targetColor = '808080';
             }
             $r = round($amountPct * hexdec(substr($targetColor, 0, 2)));
@@ -305,7 +305,7 @@ class phpthumb_filters
         }
 
         // overridden below for grayscale
-        if ($targetColor != 'gray') {
+        if ('gray' != $targetColor) {
             $TargetPixel['red']   = hexdec(substr($targetColor, 0, 2));
             $TargetPixel['green'] = hexdec(substr($targetColor, 2, 2));
             $TargetPixel['blue']  = hexdec(substr($targetColor, 4, 2));
@@ -314,7 +314,7 @@ class phpthumb_filters
         for ($x = 0; $x < imagesx($gdimg); $x++) {
             for ($y = 0; $y < imagesy($gdimg); $y++) {
                 $OriginalPixel = phpthumb_functions::GetPixelColor($gdimg, $x, $y);
-                if ($targetColor == 'gray') {
+                if ('gray' == $targetColor) {
                     $TargetPixel = phpthumb_functions::GrayscalePixel($OriginalPixel);
                 }
                 foreach ($TargetPixel as $key => $value) {
@@ -383,7 +383,7 @@ class phpthumb_filters
      */
     public function Desaturate(&$gdimg, $amount, $color = '')
     {
-        if ($amount == 0) {
+        if (0 == $amount) {
             return true;
         }
 
@@ -632,7 +632,7 @@ class phpthumb_filters
      */
     public function Gamma(&$gdimg, $amount)
     {
-        if (number_format($amount, 4) == '1.0000') {
+        if ('1.0000' == number_format($amount, 4)) {
             return true;
         }
 
@@ -708,7 +708,7 @@ class phpthumb_filters
             'g' => 'green',
             'b' => 'blue',
             'a' => 'alpha',
-            '*' => ($method == 0) ? 'all' : 'gray'
+            '*' => (0 == $method) ? 'all' : 'gray'
         ];
         $band     = substr($band, 0, 1);
         if (!isset($keys[$band])) {
@@ -727,7 +727,7 @@ class phpthumb_filters
         //} else {
         $countsum = 0;
         for ($i = 0; $i <= 255; $i++) {
-            if ($method == 0) {
+            if (0 == $method) {
                 $countsum = max(@$Analysis['red'][$i], @$Analysis['green'][$i], @$Analysis['blue'][$i]);
             } else {
                 $countsum += @$Analysis[$key][$i];
@@ -744,7 +744,7 @@ class phpthumb_filters
         //} else {
         $countsum = 0;
         for ($i = 255; $i >= 0; $i--) {
-            if ($method == 0) {
+            if (0 == $method) {
                 $countsum = max(@$Analysis['red'][$i], @$Analysis['green'][$i], @$Analysis['blue'][$i]);
             } else {
                 $countsum += @$Analysis[$key][$i];
@@ -757,7 +757,7 @@ class phpthumb_filters
         $range_max = min($range_max, 255);
         //}
         $range_scale = (($range_max == $range_min) ? 1 : (255 / ($range_max - $range_min)));
-        if (($range_min == 0) && ($range_max == 255)) {
+        if ((0 == $range_min) && (255 == $range_max)) {
             // no adjustment neccesary - don't waste CPU time!
             return true;
         }
@@ -767,7 +767,7 @@ class phpthumb_filters
         for ($x = 0; $x < $ImageSX; $x++) {
             for ($y = 0; $y < $ImageSY; $y++) {
                 $OriginalPixel = phpthumb_functions::GetPixelColor($gdimg, $x, $y);
-                if ($band == '*') {
+                if ('*' == $band) {
                     $new['red']   = min(255, max(0, ($OriginalPixel['red'] - $range_min) * $range_scale));
                     $new['green'] = min(255, max(0, ($OriginalPixel['green'] - $range_min) * $range_scale));
                     $new['blue']  = min(255, max(0, ($OriginalPixel['blue'] - $range_min) * $range_scale));
@@ -965,7 +965,7 @@ class phpthumb_filters
             $rotate_angle += 360;
         }
         $rotate_angle %= 360;
-        if ($rotate_angle != 0) {
+        if (0 != $rotate_angle) {
             $background_color = phpthumb_functions::ImageHexColorAllocate($gdimg_source, $config_background_hexcolor);
 
             if ((phpthumb_functions::gd_version() >= 2) && !$bg && ($rotate_angle % 90)) {
@@ -1136,7 +1136,7 @@ class phpthumb_filters
      */
     public function Saturation(&$gdimg, $amount, $color = '')
     {
-        if ($amount == 0) {
+        if (0 == $amount) {
             return true;
         } elseif ($amount > 0) {
             $amount = 0 - $amount;
@@ -1159,7 +1159,7 @@ class phpthumb_filters
         $amountPct   = $amount / 100;
         $targetColor = (phpthumb_functions::IsHexColor($targetColor) ? $targetColor : 'A28065');
 
-        if ($amount == 0) {
+        if (0 == $amount) {
             return true;
         }
 
@@ -1215,7 +1215,7 @@ class phpthumb_filters
     public function Smooth(&$gdimg, $amount = 6)
     {
         $amount = min(25, max(0, $amount));
-        if ($amount == 0) {
+        if (0 == $amount) {
             return true;
         }
         if (phpthumb_functions::version_compare_replacement(PHP_VERSION, '5.0.0', '>=')
@@ -1451,7 +1451,7 @@ class phpthumb_filters
             $char_max_y  = max($TTFboxChar[1], $TTFboxChar[3], $TTFboxChar[5], $TTFboxChar[7]);
             $char_height = round($char_max_y - $char_min_y);
 
-            if ($alignment == '*') {
+            if ('*' == $alignment) {
                 $text_origin_y = $char_height + $margin;
                 while (($text_origin_y - $text_height) < imagesy($gdimg)) {
                     $text_origin_x = $margin;

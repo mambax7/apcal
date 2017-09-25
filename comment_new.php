@@ -24,7 +24,7 @@ $moduleDirName = basename(__DIR__);
 if (!preg_match('/^(\D+)(\d*)$/', $moduleDirName, $regs)) {
     echo('invalid dirname: ' . htmlspecialchars($moduleDirName));
 }
-$mydirnumber = $regs[2] === '' ? '' : (int)$regs[2];
+$mydirnumber = '' === $regs[2] ? '' : (int)$regs[2];
 
 // MySQL¤Ø¤ÎÀÜÂ³
 $conn = $GLOBALS['xoopsDB']->conn;
@@ -57,7 +57,7 @@ if ($event_id > 0) {
     $com_replytitle = $title;
 
     // RRULE events
-    if ($rrule_pid != 0) {
+    if (0 != $rrule_pid) {
         $_GET['com_itemid']          = $rrule_pid;
         $HTTP_GET_VARS['com_itemid'] = $rrule_pid;
     }

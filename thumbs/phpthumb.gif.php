@@ -81,7 +81,7 @@ function gif_loadFileToGDimageResource($gifFilename, $bgColor = -1)
  */
 function gif_outputAsBmp($gif, $lpszFileName, $bgColor = -1)
 {
-    if (!isset($gif) || (@get_class($gif) <> 'cgif') || !$gif->loaded() || ($lpszFileName == '')) {
+    if (!isset($gif) || ('cgif' <> @get_class($gif)) || !$gif->loaded() || ('' == $lpszFileName)) {
         return false;
     }
 
@@ -110,7 +110,7 @@ function gif_outputAsBmp($gif, $lpszFileName, $bgColor = -1)
  */
 function gif_outputAsPng($gif, $lpszFileName, $bgColor = -1)
 {
-    if (!isset($gif) || (@get_class($gif) <> 'cgif') || !$gif->loaded() || ($lpszFileName == '')) {
+    if (!isset($gif) || ('cgif' <> @get_class($gif)) || !$gif->loaded() || ('' == $lpszFileName)) {
         return false;
     }
 
@@ -140,7 +140,7 @@ function gif_outputAsPng($gif, $lpszFileName, $bgColor = -1)
 function gif_outputAsJpeg($gif, $lpszFileName, $bgColor = -1)
 {
     // JPEG output that does not require cjpeg added by James Heinrich <info@silisoftware.com> - December 10, 2003
-    if ((strtoupper(substr(PHP_OS, 0, 3)) != 'WIN') && (file_exists('/usr/local/bin/cjpeg') || `which cjpeg`)) {
+    if (('WIN' != strtoupper(substr(PHP_OS, 0, 3))) && (file_exists('/usr/local/bin/cjpeg') || `which cjpeg`)) {
         if (gif_outputAsBmp($gif, $lpszFileName . '.bmp', $bgColor)) {
             exec('cjpeg ' . $lpszFileName . '.bmp >' . $lpszFileName . ' 2>/dev/null');
             @unlink($lpszFileName . '.bmp');
@@ -176,7 +176,7 @@ function gif_outputAsJpeg($gif, $lpszFileName, $bgColor = -1)
  */
 function gif_getSize($gif, &$width, &$height)
 {
-    if (isset($gif) && (@get_class($gif) == 'cgif') && $gif->loaded()) {
+    if (isset($gif) && ('cgif' == @get_class($gif)) && $gif->loaded()) {
         $width  = $gif->width();
         $height = $gif->height();
     } elseif (@file_exists($gif)) {
@@ -442,7 +442,7 @@ class CGIFLZW
 
         $iRet = 0;
         for ($i = $this->CurBit, $j = 0; $j < $this->CodeSize; $i++, $j++) {
-            $iRet |= (($this->Buf[(int)($i / 8)] & (1 << ($i % 8))) != 0) << $j;
+            $iRet |= (0 != ($this->Buf[(int)($i / 8)] & (1 << ($i % 8)))) << $j;
         }
 
         $this->CurBit += $this->CodeSize;
@@ -615,7 +615,7 @@ class CGIFFILEHEADER
         $hdrLen = 0;
 
         $this->m_lpVer = substr($lpData, 0, 6);
-        if (($this->m_lpVer <> 'GIF87a') && ($this->m_lpVer <> 'GIF89a')) {
+        if (('GIF87a' <> $this->m_lpVer) && ('GIF89a' <> $this->m_lpVer)) {
             return false;
         }
 

@@ -41,7 +41,7 @@ $moduleDirName = basename(dirname(__DIR__));
 if (!preg_match('/^(\D+)(\d*)$/', $moduleDirName, $regs)) {
     echo('invalid dirname: ' . htmlspecialchars($moduleDirName));
 }
-$mydirnumber = $regs[2] === '' ? '' : (int)$regs[2];
+$mydirnumber = '' === $regs[2] ? '' : (int)$regs[2];
 
 //require_once XOOPS_ROOT_PATH . "/modules/$moduleDirName/include/gtickets.php";
 
@@ -157,7 +157,7 @@ if (!empty($_POST['do_04to06'])) {
 
     foreach ($_POST['stz'] as $from_stz => $to_stz) {
         $to_stz = str_replace('+', '', $to_stz);
-        if (trim($to_stz) === '') {
+        if ('' === trim($to_stz)) {
             continue;
         }
         $to_stz_sec = (int)($to_stz * 3600);

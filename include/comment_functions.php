@@ -40,7 +40,7 @@ if (!defined('APCAL_COMMENT_FUNCTIONS_INCLUDED')) {
             if (!preg_match('/^(\D+)(\d*)$/', $moduleDirName, $regs)) {
                 echo('invalid dirname: ' . htmlspecialchars($moduleDirName));
             }
-            $mydirnumber = $regs[2] === '' ? '' : (int)$regs[2];
+            $mydirnumber = '' === $regs[2] ? '' : (int)$regs[2];
             $tablename   = $GLOBALS['xoopsDB']->prefix("apcal{$mydirnumber}_event");
         }
 

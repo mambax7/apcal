@@ -44,7 +44,7 @@ if (!function_exists('b_waiting_APCal_base')) {
         if (!preg_match('/^(\D+)(\d*)$/', $moduleDirName, $regs)) {
             echo('invalid dirname: ' . htmlspecialchars($moduleDirName));
         }
-        $mydirnumber = $regs[2] === '' ? '' : (int)$regs[2];
+        $mydirnumber = '' === $regs[2] ? '' : (int)$regs[2];
 
         $result = $GLOBALS['xoopsDB']->query('SELECT COUNT(*) FROM ' . $GLOBALS['xoopsDB']->prefix("apcal{$mydirnumber}_event") . ' WHERE admission<1 AND (rrule_pid=0 OR rrule_pid=id)');
         if ($result) {

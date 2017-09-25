@@ -41,7 +41,7 @@ defined('XOOPS_ROOT_PATH') || exit('Restricted access.');
 if (!preg_match('/^(\D+)(\d*)$/', $plugin['dirname'], $regs)) {
     echo('invalid dirname: ' . htmlspecialchars($plugin['dirname']));
 }
-$mydirnumber = $regs[2] === '' ? '' : (int)$regs[2];
+$mydirnumber = '' === $regs[2] ? '' : (int)$regs[2];
 
 if ($this->base_url == XOOPS_URL . '/modules/' . $plugin['dirname']) {
     $cal = $this;

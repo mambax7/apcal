@@ -122,8 +122,8 @@ if (!defined('APCAL_BLOCK_COMING_SCHEDULE_INCLUDED')) {
         //$ret .= "<input type='hidden' name='options[3]' value='0'>\n" ;
 
         $ret .= _MB_APCAL_SHOWPICTURES . ':&nbsp;';
-        $ret .= _MB_APCAL_YES . " <input type='radio' name='options[3]' value='1'" . ($showPictures == 1 ? 'checked' : '') . " style='text-align:right;'>&nbsp;";
-        $ret .= _MB_APCAL_NO . " <input type='radio' name='options[3]' value='0'" . ($showPictures == 0 ? 'checked' : '') . " style='text-align:right;'><br>\n";
+        $ret .= _MB_APCAL_YES . " <input type='radio' name='options[3]' value='1'" . (1 == $showPictures ? 'checked' : '') . " style='text-align:right;'>&nbsp;";
+        $ret .= _MB_APCAL_NO . " <input type='radio' name='options[3]' value='0'" . (0 == $showPictures ? 'checked' : '') . " style='text-align:right;'><br>\n";
 
         // É½¼¨¾å¸ÂÆü¿ô
         $ret .= sprintf(_MB_APCAL_UNTILDAYS, "<input type='text' size='4' name='options[4]' value='$untildays' style='text-align:right;'>") . "<br>\n";

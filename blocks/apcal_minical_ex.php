@@ -67,7 +67,7 @@ if (!defined('APCAL_BLOCK_MINICAL_EX')) {
         $additional_get = '';
         if (!$robots_mode) {
             foreach ($_GET as $g_key => $g_val) {
-                if ($g_key === 'caldate' || $g_key == session_name()) {
+                if ('caldate' === $g_key || $g_key == session_name()) {
                     continue;
                 }
                 if ((int)$g_val != $g_val) {
@@ -106,7 +106,7 @@ if (!defined('APCAL_BLOCK_MINICAL_EX')) {
             $cache_file = XOOPS_CACHE_PATH . "/{$moduleDirName }_minical_ex_{$bid_hash}_{$xoopsConfig['language']}_";
             if (file_exists($cache_file . $Ym)) {
                 $cache_bodies = file($cache_file . $Ym);
-                if (count($cache_bodies) == 3) {
+                if (3 == count($cache_bodies)) {
                     $expire   = (int)$cache_bodies[0];
                     $prev_uid = (int)$cache_bodies[1];
                     if ($expire > time() && $prev_uid == $uid) {

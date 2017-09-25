@@ -108,7 +108,7 @@ if (!defined('APCAL_BLOCK_MINI_CALENDAR_INCLUDED')) {
         $block['content'] = $cal->get_mini_calendar_html($get_target, $query_string);
 
         // ¥­¥ã¥Ã¥·¥å¤Î½ñ¤­½Ð¤·
-        if ($use_cache && $mini_calendar_target !== 'PHP_SELF') {
+        if ($use_cache && 'PHP_SELF' !== $mini_calendar_target) {
             if (false !== $fp = fopen($cachefile, 'w')) {
                 fwrite($fp, $block['content']);
                 fclose($fp);

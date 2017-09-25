@@ -56,7 +56,7 @@ $end            = $start + 30;
 
 for ($y = $start; $y < $end; ++$y) {
     easter($y, $this->holidays);
-    $v = ((int)date('N', strtotime("$y-5-25")) == 1) ? '25' : date('j', strtotime('Last Monday', strtotime("$y-5-25")));
+    $v = (1 == (int)date('N', strtotime("$y-5-25"))) ? '25' : date('j', strtotime('Last Monday', strtotime("$y-5-25")));
     $m = date('j', strtotime('+2 Sunday', strtotime("$y-5-1")));
     $f = date('j', strtotime('+3 Sunday', strtotime("$y-6-1")));
     $c = date('j', strtotime('+1 Monday', strtotime("$y-8-1")));

@@ -70,7 +70,7 @@ setcookie('lang', $lang);
                 $selected = 'selected ';
             }
             $display = $l;
-            if ($l === 'en') {
+            if ('en' === $l) {
                 $display = 'EN';
             }
             echo '<option ' . $selected . 'value="' . $l . '">' . $display . '</option>';

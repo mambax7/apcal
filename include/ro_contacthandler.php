@@ -15,7 +15,7 @@ function convertmycontacts($strcontact)
     $pos1 = 0;
     $pos2 = strpos($strcontact, $strsearch, $pos1);
 
-    if ($pos2 === false) {
+    if (false === $pos2) {
         //echo "<br>kein leerzeichen";
         $struser = $strcontact;
         $struid  = getuid($struser);
@@ -26,10 +26,10 @@ function convertmycontacts($strcontact)
         }
     } else {
         //Leerzeichen vorhanden
-        while ($pos2 !== false) {
+        while (false !== $pos2) {
             //alle wörter zwischen Leerzeichen ermitteln
             $struser = substr($strcontact, $pos1, $pos2 - $pos1);
-            if (substr($struser, -1) === ',') {
+            if (',' === substr($struser, -1)) {
                 $struser      = substr($struser, 0, strlen($struser) - 1);
                 $strseperator = ', ';
             } else {
@@ -45,7 +45,7 @@ function convertmycontacts($strcontact)
             $pos2 = strpos($strcontact, $strsearch, $pos1);
         }
 
-        if ($pos2 == 0) {
+        if (0 == $pos2) {
             //Rest ab letztem Leerzeichen einlesen
             $struser = substr($strcontact, $pos1);
             $struid  = getuid($struser);
@@ -73,7 +73,7 @@ function getuid($UserName)
 
     $result = $db->query($sql);
     if ($result) {
-        if ($db->getRowsNum($result) == 1) {
+        if (1 == $db->getRowsNum($result)) {
             $member = $GLOBALS['xoopsDB']->fetchObject($result);
             $userid = $member->uid;
             $rc     = $userid;

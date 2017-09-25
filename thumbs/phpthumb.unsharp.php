@@ -64,7 +64,7 @@ class phpUnsharpMask
         $amount    = min($amount, 500) * 0.016;
         $radius    = abs(round(min(50, $radius) * 2)); // Only integers make sense.
         $threshold = min(255, $threshold);
-        if ($radius == 0) {
+        if (0 == $radius) {
             return true;
         }
         $w         = imagesx($img);

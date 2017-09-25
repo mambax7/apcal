@@ -140,7 +140,7 @@ class phpthumb_bmp
         $thisfile_bmp_header_raw['identifier'] = substr($BMPheader, $offset, 2);
         $offset                                += 2;
 
-        if ($thisfile_bmp_header_raw['identifier'] != 'BM') {
+        if ('BM' != $thisfile_bmp_header_raw['identifier']) {
             $ThisFileInfo['error'][] = 'Expecting "BM" at offset ' . (int)(@$ThisFileInfo['avdataoffset']) . ', found "' . $thisfile_bmp_header_raw['identifier'] . '"';
             unset($ThisFileInfo['fileformat']);
             unset($ThisFileInfo['bmp']);
@@ -162,22 +162,22 @@ class phpthumb_bmp
         // check if the hardcoded-to-1 "planes" is at offset 22 or 26
         $planes22 = $this->LittleEndian2Int(substr($BMPheader, 22, 2));
         $planes26 = $this->LittleEndian2Int(substr($BMPheader, 26, 2));
-        if (($planes22 == 1) && ($planes26 != 1)) {
+        if ((1 == $planes22) && (1 != $planes26)) {
             $thisfile_bmp['type_os']      = 'OS/2';
             $thisfile_bmp['type_version'] = 1;
-        } elseif (($planes26 == 1) && ($planes22 != 1)) {
+        } elseif ((1 == $planes26) && (1 != $planes22)) {
             $thisfile_bmp['type_os']      = 'Windows';
             $thisfile_bmp['type_version'] = 1;
-        } elseif ($thisfile_bmp_header_raw['header_size'] == 12) {
+        } elseif (12 == $thisfile_bmp_header_raw['header_size']) {
             $thisfile_bmp['type_os']      = 'OS/2';
             $thisfile_bmp['type_version'] = 1;
-        } elseif ($thisfile_bmp_header_raw['header_size'] == 40) {
+        } elseif (40 == $thisfile_bmp_header_raw['header_size']) {
             $thisfile_bmp['type_os']      = 'Windows';
             $thisfile_bmp['type_version'] = 1;
-        } elseif ($thisfile_bmp_header_raw['header_size'] == 84) {
+        } elseif (84 == $thisfile_bmp_header_raw['header_size']) {
             $thisfile_bmp['type_os']      = 'Windows';
             $thisfile_bmp['type_version'] = 4;
-        } elseif ($thisfile_bmp_header_raw['header_size'] == 100) {
+        } elseif (100 == $thisfile_bmp_header_raw['header_size']) {
             $thisfile_bmp['type_os']      = 'Windows';
             $thisfile_bmp['type_version'] = 5;
         } else {
@@ -193,7 +193,7 @@ class phpthumb_bmp
         $ThisFileInfo['video']['lossless']           = true;
         $ThisFileInfo['video']['pixel_aspect_ratio'] = (float)1;
 
-        if ($thisfile_bmp['type_os'] == 'OS/2') {
+        if ('OS/2' == $thisfile_bmp['type_os']) {
 
             // OS/2-format BMP
             // http://netghost.narod.ru/gff/graphics/summary/os2bmp.htm
@@ -267,7 +267,7 @@ class phpthumb_bmp
 
                 $ThisFileInfo['video']['codec'] = $thisfile_bmp_header['compression'] . ' ' . $thisfile_bmp_header_raw['bits_per_pixel'] . '-bit';
             }
-        } elseif ($thisfile_bmp['type_os'] == 'Windows') {
+        } elseif ('Windows' == $thisfile_bmp['type_os']) {
 
             // Windows-format BMP
 
@@ -312,7 +312,7 @@ class phpthumb_bmp
             $ThisFileInfo['video']['codec']           = $thisfile_bmp_header['compression'] . ' ' . $thisfile_bmp_header_raw['bits_per_pixel'] . '-bit';
             $ThisFileInfo['video']['bits_per_sample'] = $thisfile_bmp_header_raw['bits_per_pixel'];
 
-            if (($thisfile_bmp['type_version'] >= 4) || ($thisfile_bmp_header_raw['compression'] == 3)) {
+            if (($thisfile_bmp['type_version'] >= 4) || (3 == $thisfile_bmp_header_raw['compression'])) {
                 // should only be v4+, but BMPs with type_version==1 and BI_BITFIELDS compression have been seen
                 $BMPheader     .= substr($BMPdata, $overalloffset, 44);
                 $overalloffset += 44;
@@ -403,7 +403,7 @@ class phpthumb_bmp
                     $blue  = $this->LittleEndian2Int(substr($BMPpalette, $paletteoffset++, 1));
                     $green = $this->LittleEndian2Int(substr($BMPpalette, $paletteoffset++, 1));
                     $red   = $this->LittleEndian2Int(substr($BMPpalette, $paletteoffset++, 1));
-                    if (($thisfile_bmp['type_os'] == 'OS/2') && ($thisfile_bmp['type_version'] == 1)) {
+                    if (('OS/2' == $thisfile_bmp['type_os']) && (1 == $thisfile_bmp['type_version'])) {
                         // no padding byte
                     } else {
                         $paletteoffset++; // padding byte
@@ -434,7 +434,7 @@ class phpthumb_bmp
                                         $col++;
                                     }
                                 }
-                                while (($pixeldataoffset % 4) != 0) {
+                                while (0 != ($pixeldataoffset % 4)) {
                                     // lines are padded to nearest DWORD
                                     $pixeldataoffset++;
                                 }
@@ -451,7 +451,7 @@ class phpthumb_bmp
                                         $col++;
                                     }
                                 }
-                                while (($pixeldataoffset % 4) != 0) {
+                                while (0 != ($pixeldataoffset % 4)) {
                                     // lines are padded to nearest DWORD
                                     $pixeldataoffset++;
                                 }
@@ -464,7 +464,7 @@ class phpthumb_bmp
                                     $paletteindex                     = ord($BMPpixelData{$pixeldataoffset++});
                                     $thisfile_bmp['data'][$row][$col] = $thisfile_bmp['palette'][$paletteindex];
                                 }
-                                while (($pixeldataoffset % 4) != 0) {
+                                while (0 != ($pixeldataoffset % 4)) {
                                     // lines are padded to nearest DWORD
                                     $pixeldataoffset++;
                                 }
@@ -477,7 +477,7 @@ class phpthumb_bmp
                                     $thisfile_bmp['data'][$row][$col] = (ord($BMPpixelData{$pixeldataoffset + 2}) << 16) | (ord($BMPpixelData{$pixeldataoffset + 1}) << 8) | ord($BMPpixelData{$pixeldataoffset});
                                     $pixeldataoffset                  += 3;
                                 }
-                                while (($pixeldataoffset % 4) != 0) {
+                                while (0 != ($pixeldataoffset % 4)) {
                                     // lines are padded to nearest DWORD
                                     $pixeldataoffset++;
                                 }
@@ -490,7 +490,7 @@ class phpthumb_bmp
                                     $thisfile_bmp['data'][$row][$col] = (ord($BMPpixelData{$pixeldataoffset + 3}) << 24) | (ord($BMPpixelData{$pixeldataoffset + 2}) << 16) | (ord($BMPpixelData{$pixeldataoffset + 1}) << 8) | ord($BMPpixelData{$pixeldataoffset});
                                     $pixeldataoffset                  += 4;
                                 }
-                                while (($pixeldataoffset % 4) != 0) {
+                                while (0 != ($pixeldataoffset % 4)) {
                                     // lines are padded to nearest DWORD
                                     $pixeldataoffset++;
                                 }
@@ -514,7 +514,7 @@ class phpthumb_bmp
                             while ($pixeldataoffset < strlen($BMPpixelData)) {
                                 $firstbyte  = $this->LittleEndian2Int(substr($BMPpixelData, $pixeldataoffset++, 1));
                                 $secondbyte = $this->LittleEndian2Int(substr($BMPpixelData, $pixeldataoffset++, 1));
-                                if ($firstbyte == 0) {
+                                if (0 == $firstbyte) {
 
                                     // escaped/absolute mode - the first byte of the pair can be set to zero to
                                     // indicate an escape character that denotes the end of a line, the end of
@@ -553,7 +553,7 @@ class phpthumb_bmp
                                                 $thisfile_bmp['data'][$row][$col] = $thisfile_bmp['palette'][$paletteindex];
                                                 $pixelcounter++;
                                             }
-                                            while (($pixeldataoffset % 2) != 0) {
+                                            while (0 != ($pixeldataoffset % 2)) {
                                                 // Each run must be aligned on a word boundary.
                                                 $pixeldataoffset++;
                                             }
@@ -586,7 +586,7 @@ class phpthumb_bmp
                             while ($pixeldataoffset < strlen($BMPpixelData)) {
                                 $firstbyte  = $this->LittleEndian2Int(substr($BMPpixelData, $pixeldataoffset++, 1));
                                 $secondbyte = $this->LittleEndian2Int(substr($BMPpixelData, $pixeldataoffset++, 1));
-                                if ($firstbyte == 0) {
+                                if (0 == $firstbyte) {
 
                                     // escaped/absolute mode - the first byte of the pair can be set to zero to
                                     // indicate an escape character that denotes the end of a line, the end of
@@ -624,7 +624,7 @@ class phpthumb_bmp
                                                 $paletteindexes[] = ($paletteindexbyte & 0xF0) >> 4;
                                                 $paletteindexes[] = ($paletteindexbyte & 0x0F);
                                             }
-                                            while (($pixeldataoffset % 2) != 0) {
+                                            while (0 != ($pixeldataoffset % 2)) {
                                                 // Each run must be aligned on a word boundary.
                                                 $pixeldataoffset++;
                                             }
@@ -677,13 +677,13 @@ class phpthumb_bmp
 
                                 return false;
                             }
-                            while ((($thisfile_bmp_header_raw['red_mask'] >> $redshift) & 0x01) == 0) {
+                            while (0 == (($thisfile_bmp_header_raw['red_mask'] >> $redshift) & 0x01)) {
                                 $redshift++;
                             }
-                            while ((($thisfile_bmp_header_raw['green_mask'] >> $greenshift) & 0x01) == 0) {
+                            while (0 == (($thisfile_bmp_header_raw['green_mask'] >> $greenshift) & 0x01)) {
                                 $greenshift++;
                             }
-                            while ((($thisfile_bmp_header_raw['blue_mask'] >> $blueshift) & 0x01) == 0) {
+                            while (0 == (($thisfile_bmp_header_raw['blue_mask'] >> $blueshift) & 0x01)) {
                                 $blueshift++;
                             }
                             for ($row = ($thisfile_bmp_header_raw['height'] - 1); $row >= 0; $row--) {
@@ -696,7 +696,7 @@ class phpthumb_bmp
                                     $blue                             = (int)round(((($pixelvalue & $thisfile_bmp_header_raw['blue_mask']) >> $blueshift) / ($thisfile_bmp_header_raw['blue_mask'] >> $blueshift)) * 255);
                                     $thisfile_bmp['data'][$row][$col] = (($red << 16) | ($green << 8) | $blue);
                                 }
-                                while (($pixeldataoffset % 4) != 0) {
+                                while (0 != ($pixeldataoffset % 4)) {
                                     // lines are padded to nearest DWORD
                                     $pixeldataoffset++;
                                 }
@@ -934,7 +934,7 @@ class phpthumb_bmp
     {
         $signmult = 1;
         if ($signed) {
-            if ($binstring{0} == '1') {
+            if ('1' == $binstring{0}) {
                 $signmult = -1;
             }
             $binstring = substr($binstring, 1);

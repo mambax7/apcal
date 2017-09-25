@@ -41,7 +41,7 @@ defined('XOOPS_ROOT_PATH') || exit('Restricted access.');
 if (!preg_match('/^(\D+)(\d*)$/', $plugin['dirname'], $regs)) {
     echo('invalid dirname: ' . htmlspecialchars($plugin['dirname']));
 }
-$mydirnumber = $regs[2] === '' ? '' : (int)$regs[2];
+$mydirnumber = '' === $regs[2] ? '' : (int)$regs[2];
 
 // set range (added 86400 second margin "begin" & "end")
 $range_start_s = mktime(0, 0, 0, $this->month, 0, $this->year);

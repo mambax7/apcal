@@ -41,9 +41,9 @@ class phpthumb_ico
                     $g    = $argb['green'];
                     $b    = $argb['blue'];
 
-                    if ($bpp[$key] == 32) {
+                    if (32 == $bpp[$key]) {
                         $icXOR[$key] .= chr($b) . chr($g) . chr($r) . chr($a);
-                    } elseif ($bpp[$key] == 24) {
+                    } elseif (24 == $bpp[$key]) {
                         $icXOR[$key] .= chr($b) . chr($g) . chr($r);
                     }
 

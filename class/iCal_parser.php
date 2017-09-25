@@ -709,7 +709,7 @@ class iCal_parser
         $hours = substr($offset_str, 1, 2);
         $mins  = substr($offset_str, 3, 2);
         $secs  = ((int)$hours * 3600) + ((int)$mins * 60);
-        if ($sign == '-') {
+        if ('-' == $sign) {
             $secs = 0 - $secs;
         }
 
@@ -728,7 +728,7 @@ class iCal_parser
      */
     public function calcTime($have, $want, $time)
     {
-        if ($have === 'none' || $want === 'none') {
+        if ('none' === $have || 'none' === $want) {
             return $time;
         }
         $have_secs = $this->calcOffset($have);
@@ -787,11 +787,11 @@ class iCal_parser
     public function parse($filename, $calendar_name)
     {
         $ifile = @fopen($filename, 'r');
-        if ($ifile === false) {
+        if (false === $ifile) {
             return "-1: File cannot open. filename: $filename";
         }
         $nextline = fgets($ifile, 1024);
-        if (trim($nextline) !== 'BEGIN:VCALENDAR') {
+        if ('BEGIN:VCALENDAR' !== trim($nextline)) {
             return "-2: This file is not iCalendar(RFC2445). filename: $filename";
         }
 
@@ -815,13 +815,13 @@ class iCal_parser
             $line     = $nextline;
             $nextline = fgets($ifile, 1024);
             $nextline = preg_replace("/[\r\n]/", '', $nextline);
-            while (substr($nextline, 0, 1) === ' ') {
+            while (' ' === substr($nextline, 0, 1)) {
                 $line     .= substr($nextline, 1);
                 $nextline = fgets($ifile, 1024);
                 $nextline = preg_replace("/[\r\n]/", '', $nextline);
             }
             $line = trim($line);
-            if ($line === 'BEGIN:VEVENT') {
+            if ('BEGIN:VEVENT' === $line) {
                 // each of these vars were being set to an empty string
                 unset($start_time, $end_time, $start_date, $end_date, $summary, $allday_start, $allday_end, $start, $end, $the_duration, $beginning, $rrule, $start_of_vevent, $description, $status, $class, $categories, $contact, $location, $dtstamp, $sequence, $tz_dtstart, $tz_dtend, $event_tz, $valarm_description, $start_unixtime, $end_unixtime, $recurrence_id, $uid, $uid_valid);
 
@@ -830,7 +830,7 @@ class iCal_parser
                 $first_duration = true;
                 $count          = 1000000;
                 $valarm_set     = false;
-            } elseif ($line === 'END:VEVENT') {
+            } elseif ('END:VEVENT' === $line) {
                 // make sure we have some value for $uid
                 if (!isset($uid)) {
                     $uid = $uid_counter;
@@ -860,9 +860,9 @@ class iCal_parser
                 }
 
                 // Handling of the all day events¡ÊÁ´Æü¥¤¥Ù¥ó¥È¡Ë
-                if (isset($allday_start) && $allday_start !== '') {
+                if (isset($allday_start) && '' !== $allday_start) {
                     $start_unixtime = strtotime($allday_start);
-                    if (isset($allday_end) && $allday_end !== '') {
+                    if (isset($allday_end) && '' !== $allday_end) {
                         $end_unixtime = strtotime($allday_end);
                         if ($start_unixtime == $end_unixtime) {
                             $end_unixtime = $start_unixtime + 86400;
@@ -902,7 +902,7 @@ class iCal_parser
 
                 $property = $field;
                 $prop_pos = strpos($property, ';');
-                if ($prop_pos !== false) {
+                if (false !== $prop_pos) {
                     $property = substr($property, 0, $prop_pos);
                 }
                 $property = strtoupper($property);
@@ -1026,7 +1026,7 @@ class iCal_parser
 
                     case 'DTSTART':
                         $zulu_time = false;
-                        if (substr($data, -1) === 'Z') {
+                        if ('Z' === substr($data, -1)) {
                             $zulu_time = true;
                         }
                         $data  = preg_replace('/T/', '', $data);
@@ -1077,7 +1077,7 @@ class iCal_parser
 
                     case 'DTEND':
                         $zulu_time = false;
-                        if (substr($data, -1) === 'Z') {
+                        if ('Z' === substr($data, -1)) {
                             $zulu_time = true;
                         }
                         $data  = preg_replace('/T/', '', $data);
@@ -1251,7 +1251,7 @@ class iCal_parser
 
             // »þ´Ö¤Î¥»¥Ã¥È
             $ret .= "start='$start_unixtime',end='$end_unixtime',";
-            if (isset($allday_start) && $allday_start !== '') {
+            if (isset($allday_start) && '' !== $allday_start) {
                 // Á´Æü¥¤¥Ù¥ó¥È
                 $ret .= "allday='1',";
             } else {
@@ -1260,9 +1260,9 @@ class iCal_parser
             }
 
             // tzid ¤Îµ­Ï¿¡Ê°ì±þ¡Ë
-            if (isset($tz_dtstart) && $tz_dtstart !== '') {
+            if (isset($tz_dtstart) && '' !== $tz_dtstart) {
                 $ret .= "tzid='$tz_dtstart',";
-            } elseif (isset($tz_dtend) && $tz_dtend !== '') {
+            } elseif (isset($tz_dtend) && '' !== $tz_dtend) {
                 $ret .= "tzid='$tz_dtend',";
             }
 
@@ -1272,7 +1272,7 @@ class iCal_parser
             }
 
             // summary¤Î¥Á¥§¥Ã¥¯¡ÊÌ¤µ­Æþ¤Ê¤é¤½¤Î»Ý¤òÄÉ²Ã¡Ë
-            if (empty($summary) || $summary === '') {
+            if (empty($summary) || '' === $summary) {
                 $event['summary'] = '¡Ê·ïÌ¾¤Ê¤·¡Ë';
             }
 
@@ -1361,7 +1361,7 @@ class iCal_parser
     public function mb_convert_kana($str, $option)
     {
         // convert_kana ¤Î½èÍý¤Ï¡¢ÆüËÜ¸ì¤Ç¤Î¤ß¹Ô¤¦
-        if ($this->language !== 'japanese' || !function_exists('mb_convert_kana')) {
+        if ('japanese' !== $this->language || !function_exists('mb_convert_kana')) {
             return $str;
         } else {
             return mb_convert_kana($str, $option);

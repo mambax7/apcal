@@ -209,7 +209,7 @@ if (!class_exists('APCal')) {
 
             // SSLï¿½ï¿½Í­Ìµï¿½ï¿½$_SERVER['HTTPS'] ï¿½Ë¤ï¿½È½ï¿½ï¿½
             if (defined('XOOPS_URL')) {
-                $this->connection = substr(XOOPS_URL, 0, 8) === 'https://' ? 'https' : 'http';
+                $this->connection = 'https://' === substr(XOOPS_URL, 0, 8) ? 'https' : 'http';
             } elseif (!empty($_SERVER['HTTPS'])) {
                 $this->connection = 'https';
             } else {
@@ -269,14 +269,14 @@ if (!class_exists('APCal')) {
             if ($cid < 0) {
                 $cid = $this->now_cid;
             }
-            if ($caldate === '') {
+            if ('' === $caldate) {
                 $caldate = $this->caldate;
             }
-            if ($smode === '') {
+            if ('' === $smode) {
                 $smode = $this->default_view;
             }
 
-            $isAllCat      = $cid == 0;
+            $isAllCat      = 0 == $cid;
             $isDefaultView = $smode == $this->default_view;
             $isToday       = date('Y-n-j') == $caldate;
 
@@ -315,7 +315,7 @@ if (!class_exists('APCal')) {
 
                 return $link;
             } else {
-                return ($get_target === '' ? XOOPS_URL . '/modules/apcal/' : $get_target) . "?cid=$cid&smode=$smode&caldate=$caldate";
+                return ('' === $get_target ? XOOPS_URL . '/modules/apcal/' : $get_target) . "?cid=$cid&smode=$smode&caldate=$caldate";
             }
         }
 
@@ -327,7 +327,7 @@ if (!class_exists('APCal')) {
          */
         public function make_event_link($event_id, $get_target = '', $caldate = '')
         {
-            if ($caldate === '') {
+            if ('' === $caldate) {
                 $caldate = $this->caldate;
             }
 
@@ -339,13 +339,13 @@ if (!class_exists('APCal')) {
                 $event = urlencode(urlencode($event->shortsummary));
             } else {
                 $event = $event_id;
-                $date  = $caldate !== '' ? date('j-n-Y', strtotime($caldate)) : date('j-n-Y');
+                $date  = '' !== $caldate ? date('j-n-Y', strtotime($caldate)) : date('j-n-Y');
             }
 
             if ($this->useurlrewrite) {
                 return XOOPS_URL . "/modules/apcal/$event-$date";
             } else {
-                return ($get_target === '' ? XOOPS_URL . '/modules/apcal/' : $get_target) . "?event_id=$event_id&action=View&caldate=$caldate";
+                return ('' === $get_target ? XOOPS_URL . '/modules/apcal/' : $get_target) . "?event_id=$event_id&action=View&caldate=$caldate";
             }
         }
 
@@ -475,9 +475,9 @@ if (!class_exists('APCal')) {
             $day = ($year + floor($year / 4) - floor($year / 100) + floor($year / 400) + floor(2.6 * $month + 1.6) + $date) % 7;
 
             $this->day = $day;
-            if ($day == 0) {
+            if (0 == $day) {
                 $this->daytype = 2;
-            } elseif ($day == 6) {
+            } elseif (6 == $day) {
                 $this->daytype = 1;
             } else {
                 $this->daytype = 0;
@@ -538,9 +538,9 @@ if (!class_exists('APCal')) {
             }
             $day = ($year + floor($year / 4) - floor($year / 100) + floor($year / 400) + floor(2.6 * $month + 1.6) + $date) % 7;
 
-            if ($day == 0) {
+            if (0 == $day) {
                 return 2;
-            } elseif ($day == 6) {
+            } elseif (6 == $day) {
                 return 1;
             } else {
                 return 0;
@@ -564,7 +564,7 @@ if (!class_exists('APCal')) {
 
             // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½×»ï¿½ï¿½ï¿½ï¿½Ä¤Ä¡ï¿½WHEREï¿½ï¿½Î´ï¿½Ö¤Ë´Ø¤ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
             $tzoffset = ($this->user_TZ - $this->server_TZ) * 3600;
-            if ($tzoffset == 0) {
+            if (0 == $tzoffset) {
                 // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê¤ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½MySQLï¿½ï¿½ï¿½ï¿½Ù¤ò¤«¤ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê¤ï¿½ï¿½ï¿½ï¿½á¡¢ï¿½ï¿½ï¿½ï¿½ï¿½Ç¾ï¿½ï¿½Ê¬ï¿½ï¿½ï¿½ï¿½ï¿½È¤ï¿½)
                 $whr_term = "start<'" . ($this->unixtime + 86400) . "' AND end>'$this->unixtime'";
             } else {
@@ -582,7 +582,7 @@ if (!class_exists('APCal')) {
             $yrs      = $GLOBALS['xoopsDB']->query("SELECT start,end,summary,id,allday FROM $this->table WHERE admission>0 AND ($whr_term) AND ($whr_categories) AND ($whr_class) ORDER BY start,end");
             $num_rows = $GLOBALS['xoopsDB']->getRowsNum($yrs);
 
-            if ($num_rows == 0) {
+            if (0 == $num_rows) {
                 $ret .= _APCAL_MB_APCALNOEVENT . "\n";
             } else {
                 while ($event = $GLOBALS['xoopsDB']->fetchObject($yrs)) {
@@ -642,7 +642,7 @@ if (!class_exists('APCal')) {
 
             // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½×»ï¿½ï¿½ï¿½ï¿½Ä¤Ä¡ï¿½WHEREï¿½ï¿½Î´ï¿½Ö¤Ë´Ø¤ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
             $tzoffset = ($this->user_TZ - $this->server_TZ) * 3600;
-            if ($tzoffset == 0) {
+            if (0 == $tzoffset) {
                 // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê¤ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½MySQLï¿½ï¿½ï¿½ï¿½Ù¤ò¤«¤ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê¤ï¿½ï¿½ï¿½ï¿½á¡¢ï¿½ï¿½ï¿½ï¿½ï¿½Ç¾ï¿½ï¿½Ê¬ï¿½ï¿½ï¿½ï¿½ï¿½È¤ï¿½)
                 $whr_term = "end>'$this->unixtime'";
             } else {
@@ -660,12 +660,12 @@ if (!class_exists('APCal')) {
             $yrs      = $GLOBALS['xoopsDB']->query("SELECT start,end,summary,id,allday FROM $this->table WHERE admission>0 AND ($whr_term) AND ($whr_categories) AND ($whr_class) ORDER BY start");
             $num_rows = $GLOBALS['xoopsDB']->getRowsNum($yrs);
 
-            if ($num_rows == 0) {
+            if (0 == $num_rows) {
                 $ret .= _APCAL_MB_APCALNOEVENT . "\n";
             } else {
                 for ($i = 0; $i < $num; ++$i) {
                     $event = $GLOBALS['xoopsDB']->fetchObject($yrs);
-                    if ($event === false) {
+                    if (false === $event) {
                         break;
                     }
                     $summary = $this->text_sanitizer_for_show($event->summary);
@@ -770,7 +770,7 @@ if (!class_exists('APCal')) {
             // ï¿½ï¿½ï¿½ï¿½Ù¥ï¿½È°Ê³ï¿½ï¿½Î½ï¿½ï¿½ï¿½
             $result = $GLOBALS['xoopsDB']->query("SELECT summary,id,start,location,contact,gmlat,gmlong FROM $this->table WHERE admission > 0 AND start >= $range_start_s AND start < $range_end_s AND ($whr_categories) AND ($whr_class) AND allday <= 0");
             while (list($title, $id, $server_time, $location, $contact, $gmlat, $gmlong) = $GLOBALS['xoopsDB']->fetchRow($result)) {
-                if ($mode === 'NO_YEAR' && ($gmlat > 0 || $gmlong > 0)) {
+                if ('NO_YEAR' === $mode && ($gmlat > 0 || $gmlong > 0)) {
                     $this->gmPoints[] = [
                         'summary'   => $title,
                         'gmlat'     => $gmlat,
@@ -802,7 +802,7 @@ if (!class_exists('APCal')) {
                 while ($start_s < $end_s) {
                     $user_time = $start_s + $tzoffset_s2u;
                     if (date('n', $user_time) == $this->month) {
-                        if ($mode === 'NO_YEAR' && ($gmlat > 0 || $gmlong > 0)) {
+                        if ('NO_YEAR' === $mode && ($gmlat > 0 || $gmlong > 0)) {
                             $this->gmPoints[] = [
                                 'summary'   => $title,
                                 'gmlat'     => $gmlat,
@@ -897,11 +897,11 @@ if (!class_exists('APCal')) {
             // ï¿½ï¿½ï¿½ï¿½Ì¾ï¿½ë¡¼ï¿½ï¿½
             $rows = [];
             for ($wday = $this->week_start; $wday < $wday_end; ++$wday) {
-                if ($wday % 7 == 0) {
+                if (0 == $wday % 7) {
                     //  Sunday
                     $bgcolor = $this->sunday_bgcolor;
                     $color   = $this->sunday_color;
-                } elseif ($wday == 6) {
+                } elseif (6 == $wday) {
                     //  Saturday
                     $bgcolor = $this->saturday_bgcolor;
                     $color   = $this->saturday_color;
@@ -949,11 +949,11 @@ if (!class_exists('APCal')) {
                         //  Holiday
                         $bgcolor = $this->holiday_bgcolor;
                         $color   = $this->holiday_color;
-                    } elseif ($wday % 7 == 0) {
+                    } elseif (0 == $wday % 7) {
                         //  Sunday
                         $bgcolor = $this->sunday_bgcolor;
                         $color   = $this->sunday_color;
-                    } elseif ($wday == 6) {
+                    } elseif (6 == $wday) {
                         //  Saturday
                         $bgcolor = $this->saturday_bgcolor;
                         $color   = $this->saturday_color;
@@ -972,7 +972,7 @@ if (!class_exists('APCal')) {
                     array_push($rows, [
                         'GET_TARGET'   => $get_target,
                         'QUERY_STRING' => $query_string,
-                        'DAY_URL'      => substr($this->make_cal_link($get_target, ($mode === 'NO_YEAR' ? 'Daily' : 'Monthly'), $this->now_cid, ' '), 0, -1),
+                        'DAY_URL'      => substr($this->make_cal_link($get_target, ('NO_YEAR' === $mode ? 'Daily' : 'Monthly'), $this->now_cid, ' '), 0, -1),
 
                         'BGCOLOR'   => $bgcolor,
                         'COLOR'     => $color,
@@ -1384,7 +1384,7 @@ if (!class_exists('APCal')) {
             $ret['MONTH_OPTIONS'] = $month_options;
 
             // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
-            if ($mode === 'W' || $mode === 'D') {
+            if ('W' === $mode || 'D' === $mode) {
                 $date_options = '';
                 for ($d = 1; $d <= 31; ++$d) {
                     if ($d == $date) {
@@ -1396,7 +1396,7 @@ if (!class_exists('APCal')) {
 
                 $ret['YMD_SELECTS'] = sprintf(_APCAL_FMT_YMD, "<select name='apcal_year'>{$ret['YEAR_OPTIONS']}</select> &nbsp; ", "<select name='apcal_month'>{$ret['MONTH_OPTIONS']}</select> &nbsp; ", "<select name='apcal_date'>$date_options</select> &nbsp; ");
                 if ($this->week_numbering) {
-                    if ($this->day == 0 && !$this->week_start) {
+                    if (0 == $this->day && !$this->week_start) {
                         $weekno = date('W', $this->unixtime + 86400);
                     } else {
                         $weekno = date('W', $this->unixtime);
@@ -1457,7 +1457,7 @@ if (!class_exists('APCal')) {
             $mlast_unixtime = mktime(0, 0, 0, $this->month + 1, 1, $this->year);
 
             $tzoffset = (int)(($this->user_TZ - $this->server_TZ) * 3600);
-            if ($tzoffset == 0) {
+            if (0 == $tzoffset) {
                 $whr_term = "start<='$mlast_unixtime' AND end>'$mtop_unixtime'";
             } else {
                 $whr_term = "(allday AND start<='" . ($mlast_unixtime - $tzoffset) . "' AND end>'" . ($mtop_unixtime - $tzoffset) . "') || (!allday AND start<='" . ($mlast_unixtime - $tzoffset) . "' AND end>'" . ($mtop_unixtime - $tzoffset) . "')";
@@ -1524,7 +1524,7 @@ if (!class_exists('APCal')) {
                                 'startDate' => $startDay,
                                 'event_id'  => $event->id
                             ];
-                            if ($endDay != $startDay && $endHour !== '00:00:00') {
+                            if ($endDay != $startDay && '00:00:00' !== $endHour) {
                                 $nbDays = date('j', $event->end) - $startDay;
                                 for ($i = 1; $i <= $nbDays; ++$i) {
                                     $this->gmPoints[$event->id . ($startDay + $i)] = [
@@ -1589,7 +1589,7 @@ if (!class_exists('APCal')) {
                         $wday = date('w', mktime(0, 0, 0, $this->month, $d, $this->year));
 
                         if ($d == $startDay) {
-                            $wday_left         = $week_end == 7 && $wday == 0 ? 0 : $week_end - $wday;
+                            $wday_left         = 7 == $week_end && 0 == $wday ? 0 : $week_end - $wday;
                             $duration          = min($events[$event_id]['duration'], $wday_left + 1);
                             $eventsids[$d][$i] = ['id' => $event_id, 'first' => 1, 'duration' => $duration];
                         } elseif ($wday == $this->week_start) {
@@ -1705,7 +1705,7 @@ if (!class_exists('APCal')) {
 
             // get the result of plugins
             $plugin_returns = [];
-            if (strtolower(get_class($this)) === 'apcal_xoops') {
+            if ('apcal_xoops' === strtolower(get_class($this))) {
                 $db       = XoopsDatabaseFactory::getDatabaseConnection();
                 $myts     = MyTextSanitizer::getInstance();
                 $now      = time();
@@ -1715,7 +1715,7 @@ if (!class_exists('APCal')) {
                 $plugins      = $this->get_plugins('weekly');
                 foreach ($plugins as $plugin) {
                     $include_ret = @include $this->base_path . '/' . $this->plugins_path_weekly . '/' . $plugin['file'];
-                    if ($include_ret === false) {
+                    if (false === $include_ret) {
                         // weekly emulator by monthly plugin
                         $wtop_month   = date('n', $wtop_unixtime);
                         $wlast_month  = date('n', $wlast_unixtime - 86400);
@@ -1746,7 +1746,7 @@ if (!class_exists('APCal')) {
             }
 
             $tzoffset = (int)(($this->user_TZ - $this->server_TZ) * 3600);
-            if ($tzoffset == 0) {
+            if (0 == $tzoffset) {
                 $whr_term = "start<='$wlast_unixtime' AND end>'$wtop_unixtime'";
             } else {
                 $whr_term = "(allday AND start<='$wlast_unixtime' AND end>'$wtop_unixtime') || ( ! allday AND start<='" . ($wlast_unixtime - $tzoffset) . "' AND end>'" . ($wtop_unixtime - $tzoffset) . "')";
@@ -1823,7 +1823,7 @@ if (!class_exists('APCal')) {
                     if ($event->allday) {
                         if ($event->allday & 4) {
                             $date_part_append .= "<span style='font-size: x-small; '><a href='{$this->make_event_link($event->id, $get_target)}' class='cal_summary_specialday'><font color='$this->holiday_color'>$summary</a></span>";
-                            if ($event->extkey0 == 1) {
+                            if (1 == $event->extkey0) {
                                 $event_str .= "&nbsp;&nbsp;<img src='{$roimage}' height='15px' alt='" . _APCAL_RO_ONLINE_POSS . "' title='" . _APCAL_RO_ONLINE_POSS . "'>";
                             } // added by goffy: mark this event, that online registration is active
                             $event_str .= "</a></font><br>\n";
@@ -1845,7 +1845,7 @@ if (!class_exists('APCal')) {
                     <td valign='top'>
                       $picture
                       <span style='font-size: x-small; '><a href='{$this->make_event_link($event->id, $get_target)}' class='$summary_class'>$summary</a></span>";
-                    if ($event->extkey0 == 1) {
+                    if (1 == $event->extkey0) {
                         $event_str .= "&nbsp;&nbsp;<img src='{$roimage}' height='15px' alt='" . _APCAL_RO_ONLINE_POSS . "' title='" . _APCAL_RO_ONLINE_POSS . "'>";
                     } // added by goffy: mark this event, that online registration is active
                     $event_str .= "
@@ -1896,7 +1896,7 @@ if (!class_exists('APCal')) {
                         <td valign='top'>
                           $picture
                           <span style='font-size: x-small; '><a href='{$this->make_event_link($event->id, $get_target)}' class='$summary_class'><font color='#00FF00'>$summary(" . _APCAL_MB_APCALEVENT_NEEDADMIT . ')</a></span>';
-                        if ($event->extkey0 == 1) {
+                        if (1 == $event->extkey0) {
                             $event_str .= "&nbsp;&nbsp;<img src='{$roimage}' height='15px' alt='" . _APCAL_RO_ONLINE_POSS . "' title='" . _APCAL_RO_ONLINE_POSS . "'>";
                         } // added by goffy: mark this event, that online registration is active
                         $event_str .= "
@@ -1935,14 +1935,14 @@ if (!class_exists('APCal')) {
                     //  Holiday
                     $bgcolor = $this->holiday_bgcolor;
                     $color   = $this->holiday_color;
-                    if ($this->holidays[$link] != 1) {
+                    if (1 != $this->holidays[$link]) {
                         $date_part_append .= "<span color='$this->holiday_color'>{$this->holidays[ $link ]}</span>\n";
                     }
-                } elseif ($wday % 7 == 0) {
+                } elseif (0 == $wday % 7) {
                     //  Sunday
                     $bgcolor = $this->sunday_bgcolor;
                     $color   = $this->sunday_color;
-                } elseif ($wday == 6) {
+                } elseif (6 == $wday) {
                     //  Saturday
                     $bgcolor = $this->saturday_bgcolor;
                     $color   = $this->saturday_color;
@@ -1988,7 +1988,7 @@ if (!class_exists('APCal')) {
             $roimage = XOOPS_URL . '/modules/apcal/assets/images/regonline/regonline.png'; // added by goffy: image for online registration
             // get the result of plugins
             $plugin_returns = [];
-            if (strtolower(get_class($this)) === 'apcal_xoops') {
+            if ('apcal_xoops' === strtolower(get_class($this))) {
                 $db       = XoopsDatabaseFactory::getDatabaseConnection();
                 $myts     = MyTextSanitizer::getInstance();
                 $now      = time();
@@ -1998,7 +1998,7 @@ if (!class_exists('APCal')) {
                 $plugins      = $this->get_plugins('daily');
                 foreach ($plugins as $plugin) {
                     $include_ret = @include $this->base_path . '/' . $this->plugins_path_daily . '/' . $plugin['file'];
-                    if ($include_ret === false) {
+                    if (false === $include_ret) {
                         // daily emulator by monthly plugin
                         @include $this->base_path . '/' . $this->plugins_path_monthly . '/' . $plugin['file'];
                     }
@@ -2041,7 +2041,7 @@ if (!class_exists('APCal')) {
             $yrs      = $GLOBALS['xoopsDB']->query("SELECT *,(start>='$toptime_of_day') AS is_start_date,(end<='$bottomtime_of_day') AS is_end_date FROM $this->table WHERE admission>0 AND ($whr_term) AND ($whr_categories) AND ($whr_class) ORDER BY start,end");
             $num_rows = $GLOBALS['xoopsDB']->getRowsNum($yrs);
 
-            if ($num_rows == 0) {
+            if (0 == $num_rows) {
                 $ret .= '<tr><td></td><td>' . _APCAL_MB_APCALNOEVENT . "</td></tr>\n";
             } else {
                 while ($event = $GLOBALS['xoopsDB']->fetchObject($yrs)) {
@@ -2080,7 +2080,7 @@ if (!class_exists('APCal')) {
              <td valign='middle'>
                <a href='{$this->make_event_link($event->id, $get_target)}'>{$picture}</a>
                <font size='3'><a href='{$this->make_event_link($event->id, $get_target)}' class='$summary_class'>$summary</a></font>";
-                    if ($event->extkey0 == 1) {
+                    if (1 == $event->extkey0) {
                         $ret .= "&nbsp;&nbsp;<img src='{$roimage}' height='15px' alt='" . _APCAL_RO_ONLINE_POSS . "' title='" . _APCAL_RO_ONLINE_POSS . "'>";
                     }    // added by goffy: mark this event, that online registration is active
                     $ret .= "<br>
@@ -2113,7 +2113,7 @@ if (!class_exists('APCal')) {
              </td>
              <td vlalign='top'>
                <font size='3'><a href='{$this->make_event_link($event->id, $get_target)}' class='$summary_class'><font color='#00FF00'>{$summary}</a></font>";
-                    if ($event->extkey0 == 1) {
+                    if (1 == $event->extkey0) {
                         $ret .= "&nbsp;&nbsp;<img src='{$roimage}' height='15px' alt='" . _APCAL_RO_ONLINE_POSS . "' title='" . _APCAL_RO_ONLINE_POSS . "'>";
                     }    // added by goffy: mark this event, that online registration is active
                     $ret .= ' (' . _APCAL_MB_APCALEVENT_NEEDADMIT . ")
@@ -2180,7 +2180,7 @@ if (!class_exists('APCal')) {
             $uploader->setPrefix('APCal');
             $err = [];
             foreach ($_POST['files'] as $i => $file) {
-                $main_pic = $file === 'picture0' ? 1 : 0;
+                $main_pic = 'picture0' === $file ? 1 : 0;
                 if ($uploader->fetchMedia($file)) {
                     if (!$uploader->upload()) {
                         $err[] = $uploader->getErrors();
@@ -2232,7 +2232,7 @@ if (!class_exists('APCal')) {
             $event = $GLOBALS['xoopsDB']->fetchObject($yrs);
 
             // rrule
-            if (trim($event->rrule) !== '') {
+            if ('' !== trim($event->rrule)) {
                 if ($event->rrule_pid != $event->id) {
                     $event->id = $event->rrule_pid;
                     $yrs       = $GLOBALS['xoopsDB']->query("SELECT id,start,start_date FROM $this->table WHERE id='$event->rrule_pid' AND ($whr_categories) AND ($whr_class)");
@@ -2326,7 +2326,7 @@ if (!class_exists('APCal')) {
             $start_datetime_str = "$start_date_str&nbsp;$start_time_str";
             $end_datetime_str   = "$end_date_str&nbsp;$end_time_str";
 
-            if (trim($event->rrule) !== '') {
+            if ('' !== trim($event->rrule)) {
                 if (isset($parent_event) && $parent_event != $event) {
                     if (isset($parent_event->start_date)) {
                         $parent_date_str = $parent_event->start_date; // GIJ TODO
@@ -2347,15 +2347,15 @@ if (!class_exists('APCal')) {
                     $cat_titles4show .= "<a href='{$this->make_cal_link('', '', $cid, date('Y-n-j', $event->start))}'>" . $this->text_sanitizer_for_show($this->categories[$cid]->cat_title) . '</a>, ';
                 }
             }
-            if ($cat_titles4show !== '') {
+            if ('' !== $cat_titles4show) {
                 $cat_titles4show = substr($cat_titles4show, 0, -2);
             }
 
             $submitter_info = $this->get_submitter_info($event->uid);
 
-            if ($event->class === 'PRIVATE') {
+            if ('PRIVATE' === $event->class) {
                 $groupid = (int)$event->groupid;
-                if ($groupid == 0) {
+                if (0 == $groupid) {
                     $group = _APCAL_OPT_PRIVATEMYSELF;
                 } elseif (isset($this->groups[$groupid])) {
                     $group = sprintf(_APCAL_OPT_PRIVATEGROUP, $this->groups[$groupid]);
@@ -2376,9 +2376,9 @@ if (!class_exists('APCal')) {
             $contact          = convertmycontacts($contact); // added one line by goffy: converting the contact name(s) into a link to member account this is not necessary for online registration
             $email            = $this->text_sanitizer_for_show($event->email);
             $url              = $this->text_sanitizer_for_show($event->url);
-            $url              = $url !== '' && substr($url, 0, 4) !== 'http' ? 'http://' . $url : $url;
+            $url              = '' !== $url && 'http' !== substr($url, 0, 4) ? 'http://' . $url : $url;
             $otherHour        = explode('-', $event->otherHours);
-            if ($otherHour[0] !== '') {
+            if ('' !== $otherHour[0]) {
                 //$event->end += 300 ;
                 $h          = [
                     0,
@@ -2403,13 +2403,13 @@ if (!class_exists('APCal')) {
             /********************************************************************/
             $this->regonline = (int)$event->extkey0;
             $registered      = 0;
-            if ($this->regonline == 1) {
+            if (1 == $this->regonline) {
                 $result_ro  = $GLOBALS['xoopsDB']->query('SELECT ' . XOOPS_DB_PREFIX . $this->table_ro_events . '.roe_number
                 FROM ' . XOOPS_DB_PREFIX . $this->table_ro_events . '
                 WHERE (((roe_eventid)=' . $event->id . '))');
                 $row        = $GLOBALS['xoopsDB']->fetchRow($result_ro);
                 $itemstotal = $row[0];
-                if ($itemstotal == 0) {
+                if (0 == $itemstotal) {
                     //$eventmembersall = "No limit for online registration";
                 } else {
                     $eventmembersall = _APCAL_RO_QUANTITY2 . ': ' . $itemstotal . '<br>';
@@ -2420,19 +2420,19 @@ if (!class_exists('APCal')) {
                 WHERE (((rom_eventid)=' . $event->id . '))');
                 $row        = $GLOBALS['xoopsDB']->fetchRow($result_ro);
                 $itemstotal = $row[0];
-                if ($itemstotal == 0) {
+                if (0 == $itemstotal) {
                     $eventmembersall .= _APCAL_RO_NOMEMBERS;
                     $eventmembers    = '';
                 } else {
                     $eventmembersall .= _APCAL_RO_ONLINE . ': ' . $itemstotal;
-                    if (!$this->user_id == 0) {
+                    if (0 == !$this->user_id) {
                         $eventmembers .= '<br>' . _APCAL_RO_UNAME . ':';
                     } else {
                         $eventmembers = '';
                     }
                 }
 
-                if (!$this->user_id == 0) {
+                if (0 == !$this->user_id) {
                     $result_ro = $GLOBALS['xoopsDB']->query('SELECT ' . XOOPS_DB_PREFIX . '_users.uname,
                     ' . XOOPS_DB_PREFIX . '_users.uid, count(rom_id) as counter
                     FROM ' . XOOPS_DB_PREFIX . $this->table_ro_members . ' INNER JOIN ' . XOOPS_DB_PREFIX . '_users ON ' . XOOPS_DB_PREFIX . $this->table_ro_members . '.rom_submitter = ' . XOOPS_DB_PREFIX . '_users.uid
@@ -2444,7 +2444,7 @@ if (!class_exists('APCal')) {
                         $uname        = $row[0];
                         $uid          = $row[1];
                         $counter      = $row[2];
-                        $eventmembers = (substr($eventmembers, strlen($eventmembers) - 1, 1) === ':') ? $eventmembers .= ' ' : $eventmembers .= ', ';
+                        $eventmembers = (':' === substr($eventmembers, strlen($eventmembers) - 1, 1)) ? $eventmembers .= ' ' : $eventmembers .= ', ';
                         $eventmembers .= "<a href='" . XOOPS_URL . '/userinfo.php?uid=' . $uid . "' title=" . $uname . '>' . $uname . '</a>';
 
                         if ($this->user_id == $uid) {
@@ -2470,7 +2470,7 @@ if (!class_exists('APCal')) {
             <input type='hidden' name='date' value='$start_date_str'>
             <input type='hidden' name='location' value='$location'>
             <div style='float:right;'>";
-                    if ($registered == 1) {
+                    if (1 == $registered) {
                         $eventmembers_form .= "<input type='submit' name='form_add' value='" . _APCAL_RO_BTN_ADDMORE . "'>";
                     } else {
                         $eventmembers_form .= "<input type='submit' name='form_add' value='" . _APCAL_RO_BTN_ADD . "'>&nbsp;";
@@ -2548,14 +2548,14 @@ if (!class_exists('APCal')) {
                 $xoopsTpl->assign('GMZoom', $event->gmzoom);
                 $xoopsTpl->assign('GMheight', $this->gmheight . 'px');
                 $xoopsTpl->assign('eventNavEnabled', $this->eventNavEnabled);
-                $xoopsTpl->assign('picsWidth', $pictures !== '' ? ($this->picWidth + 10) . 'px' : 0);
-                $xoopsTpl->assign('picsMargin', $pictures !== '' ? ($this->picWidth + 20) . 'px' : 0);
+                $xoopsTpl->assign('picsWidth', '' !== $pictures ? ($this->picWidth + 10) . 'px' : 0);
+                $xoopsTpl->assign('picsMargin', '' !== $pictures ? ($this->picWidth + 20) . 'px' : 0);
                 $xoopsTpl->assign('pictures', $pictures);
             }
 
             $ret = "
     <table border='0' cellpadding='0' cellspacing='2'>";
-            $ret .= ($summary !== '') ? "
+            $ret .= ('' !== $summary) ? "
     <tr>
         <td class='head'>" . _APCAL_TH_SUMMARY . "</td>
         <td class='even'>$summary</td>
@@ -2569,32 +2569,32 @@ if (!class_exists('APCal')) {
         <td class='head'>" . _APCAL_TH_ENDDATETIME . "</td>
         <td class='even'>$end_datetime_str</td>
         </tr>";
-            $ret .= ($location !== '') ? "
+            $ret .= ('' !== $location) ? "
     <tr>
         <td class='head'>" . _APCAL_TH_LOCATION . "</td>
         <td class='even'>$location</td>
     </tr>" : '';
-            $ret .= ($contact !== '') ? "
+            $ret .= ('' !== $contact) ? "
     <tr>
         <td class='head'>" . _APCAL_TH_CONTACT . "</td>
         <td class='even'>$contact</td>
     </tr>" : '';
-            $ret .= ($email !== '') ? "
+            $ret .= ('' !== $email) ? "
     <tr>
         <td class='head'>" . _APCAL_TH_EMAIL . "</td>
         <td class='even'><a href='mailto:$email'>$email</a></td>
     </tr>" : '';
-            $ret .= ($url !== '') ? "
+            $ret .= ('' !== $url) ? "
     <tr>
         <td class='head'>" . _APCAL_TH_URL . "</td>
         <td class='even'><a href='$url' target='_blank'>$url</a></td>
     </tr>" : '';
-            $ret .= ($description !== '' || $otherHours !== '') ? "
+            $ret .= ('' !== $description || '' !== $otherHours) ? "
     <tr>
         <td class='head'>" . _APCAL_TH_DESCRIPTION . "</td>
         <td class='even'>$description<br>$otherHours</td>
     </tr>" : '';
-            $ret .= ($cat_titles4show !== '') ? "
+            $ret .= ('' !== $cat_titles4show) ? "
     <tr>
         <td class='head'>" . _APCAL_TH_CATEGORIES . "</td>
         <td class='even'>$cat_titles4show</td>
@@ -2672,15 +2672,15 @@ if (!class_exists('APCal')) {
                 $description  = $this->textarea_sanitizer_for_edit($event->description);
                 $summary      = $this->text_sanitizer_for_edit($event->summary);
                 $location     = $this->text_sanitizer_for_edit($event->location);
-                $gmlat        = $event->gmlat != 0 ? $event->gmlat : 0;
-                $gmlong       = $event->gmlong != 0 ? $event->gmlong : 0;
+                $gmlat        = 0 != $event->gmlat ? $event->gmlat : 0;
+                $gmlong       = 0 != $event->gmlong ? $event->gmlong : 0;
                 $gmzoom       = $event->gmzoom > 0 ? $event->gmzoom : 0;
                 $contact      = $this->text_sanitizer_for_edit($event->contact);
                 $email        = $this->text_sanitizer_for_edit($event->email);
                 $url          = $this->text_sanitizer_for_edit($event->url);
                 $categories   = $event->categories;
                 $mainCategory = $event->mainCategory;
-                if ($event->class === 'PRIVATE') {
+                if ('PRIVATE' === $event->class) {
                     $class_private           = 'checked';
                     $class_public            = '';
                     $select_private_disabled = '';
@@ -2706,7 +2706,7 @@ if (!class_exists('APCal')) {
                 }
 
                 $regonline_label = _APCAL_RO_ENABLE_ONLINE;
-                $regonline_state = ($event->extkey0 == 1) ? _APCAL_RO_ONLINE_YES : _APCAL_RO_ONLINE_NO;
+                $regonline_state = (1 == $event->extkey0) ? _APCAL_RO_ONLINE_YES : _APCAL_RO_ONLINE_NO;
 
                 $regonline_state .= "
         <form method='post' action='ro_regonlinehandler.php' name='roformactivate1' style='margin:0px;'>
@@ -2717,7 +2717,7 @@ if (!class_exists('APCal')) {
             <input type='hidden' name='eventdate' value='$event->start'>
             <input type='hidden' name='location' value='$event->location'>
             <div align='left'>";
-                if ($event->extkey0 == 1) {
+                if (1 == $event->extkey0) {
                     $regonline_state .= "
                 <input type='submit' name='form_activate' value='" . _APCAL_RO_BTN_RO_EDIT . "'>
                 <input type='submit' name='deactivate_x' value='" . _APCAL_RO_BTN_RO_DEACTIVATE . "'>";
@@ -2740,7 +2740,7 @@ if (!class_exists('APCal')) {
 
                 //$tmpEnd = date('H:i', $event->end) == '00:00' ? $event->end - 300 : $event->end;
                 $diff = date('j', $event->end) - date('j', $event->start);
-                if ($event->otherHours !== '' /*&& $event->allday <= 0*/) {
+                if ('' !== $event->otherHours /*&& $event->allday <= 0*/) {
                     $diffhours_checkbox = 'checked';
                     $otherHours         = explode('-', $event->otherHours);
                     foreach ($otherHours as $h) {
@@ -2770,7 +2770,7 @@ if (!class_exists('APCal')) {
                     $event->start             += $tzoffset_s2e;
                     $event->end               += $tzoffset_s2e;
                     $allday_checkbox          = 'checked';
-                    $allday_select            = $event->allday == 5 ? "disabled='disabled'" : '';
+                    $allday_select            = 5 == $event->allday ? "disabled='disabled'" : '';
                     $allday_bit1              = ($event->allday & 2) ? 'checked' : '';
                     $allday_bit2              = ($event->allday & 4) ? 'checked' : '';
                     $allday_bit3              = ($event->allday & 8) ? 'checked' : '';
@@ -2918,7 +2918,7 @@ if (!class_exists('APCal')) {
 
             // Select for selecting main category
             $category_select = "<select name='mainCategory'>\n";
-            $category_select .= "<option  value='0' " . ($mainCategory == 0 ? 'selected' : '') . '>' . _APCAL_NONE . "</option>\n";
+            $category_select .= "<option  value='0' " . (0 == $mainCategory ? 'selected' : '') . '>' . _APCAL_NONE . "</option>\n";
             foreach ($this->canbemain_cats as $cid => $cat) {
                 $cat_title4show  = $this->text_sanitizer_for_show($cat->cat_title);
                 $category_select .= "<option  value='$cid' " . ($mainCategory == $cid ? 'selected' : '') . '>' . str_repeat('&nbsp;&nbsp;', $cat->cat_depth - 1) . " $cat_title4show</option>\n";
@@ -3289,7 +3289,7 @@ if (!class_exists('APCal')) {
          */
         public function update_schedule($set_sql_append = '', $whr_sql_append = '', $notify_callback = null)
         {
-            if ($_POST['summary'] === '') {
+            if ('' === $_POST['summary']) {
                 $_POST['summary'] = _APCAL_MB_APCALNOSUBJECT;
             }
 
@@ -3352,7 +3352,7 @@ if (!class_exists('APCal')) {
             }
 
             $otherHours = '';
-            if (isset($_POST['allday_bits'][0]) && $_POST['allday_bits'][0] == '8') {
+            if (isset($_POST['allday_bits'][0]) && '8' == $_POST['allday_bits'][0]) {
                 $otherHours = [];
                 foreach ($_POST['StartH'] as $i => $startH) {
                     $otherHours[] = ($i + 1) . ':' . $startH . ':' . $_POST['StartM'][$i] . ':' . $_POST['EndH'][$i] . ':' . $_POST['EndM'][$i];
@@ -3375,7 +3375,7 @@ if (!class_exists('APCal')) {
                 $cid = (int)$cid;
                 while (isset($this->categories[$cid])) {
                     $cid4sql = sprintf('%05d,', $cid);
-                    if (stristr($_POST['categories'], $cid4sql) === false) {
+                    if (false === stristr($_POST['categories'], $cid4sql)) {
                         $_POST['categories'] .= sprintf('%05d,', $cid);
                     }
                     $cid = (int)$this->categories[$cid]->pid;
@@ -3418,7 +3418,7 @@ if (!class_exists('APCal')) {
                 }
 
                 // UPDATE
-                if ($rrule !== '') {
+                if ('' !== $rrule) {
                     $set_str .= ', rrule_pid=id';
                 }
                 $sql = "UPDATE $this->table SET $set_str , rrule='$rrule' , sequence=sequence+1, gmlat='{$_POST['gmlat']}', gmlong='{$_POST['gmlong']}', gmzoom='{$_POST['gmzoom']}' WHERE id='$event_id' $whr_sql_append";
@@ -3427,7 +3427,7 @@ if (!class_exists('APCal')) {
                 }
 
                 // RRULE
-                if ($rrule !== '') {
+                if ('' !== $rrule) {
                     $this->rrule_extract($event_id);
                 }
 
@@ -3457,7 +3457,7 @@ if (!class_exists('APCal')) {
                 $GLOBALS['xoopsDB']->query("UPDATE $this->table SET unique_id='$unique_id',rrule_pid='$rrule_pid' WHERE id='$event_id'");
 
                 // RRULE
-                if ($rrule !== '') {
+                if ('' !== $rrule) {
                     $this->rrule_extract($event_id);
                 }
 
@@ -3482,7 +3482,7 @@ if (!class_exists('APCal')) {
 
                 // added by goffy for registration online automatically redirect to form for set up parameters for online registration, if online registration is selected
                 $ro_redirect = $_POST['ro_activate'];
-                if ($ro_redirect === 'yes') {
+                if ('yes' === $ro_redirect) {
                     if (!empty($_SERVER['HTTPS'])) {
                         $this->redirecturl = 'https://' . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
                     } else {
@@ -3535,7 +3535,7 @@ if (!class_exists('APCal')) {
                         echo $GLOBALS['xoopsDB']->error();
                     }
                     // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½É²Ã½ï¿½ï¿½ï¿½ï¿½evalï¿½Ç¼ï¿½ï¿½ï¿½ï¿½ï¿½ (XOOPSï¿½Ç¤Ï¡ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½È¤Îºï¿½ï¿½ï¿½
-                    if ($GLOBALS['xoopsDB']->getAffectedRows() == 1 && isset($eval_after)) {
+                    if (1 == $GLOBALS['xoopsDB']->getAffectedRows() && isset($eval_after)) {
                         $id = $event_id;
                         eval($eval_after);
                     }
@@ -3688,7 +3688,7 @@ if (!class_exists('APCal')) {
          */
         public function get_timezone_desc($tz)
         {
-            if ($tz == 0) {
+            if (0 == $tz) {
                 $tzoffset = '+0000';
                 $tzid     = 'GMT';
             } elseif ($tz > 0) {
@@ -3861,7 +3861,7 @@ END:VTIMEZONE\r\n";
                 }
 
                 // É¬ï¿½Ü¥Õ¥ï¿½ï¿½ï¿½ï¿½ï¿½É¤Î¥ï¿½ï¿½ï¿½ï¿½Ã¥ï¿½
-                if ($essential && $data === '') {
+                if ($essential && '' === $data) {
                     die(sprintf(_APCAL_ERR_LACKINDISPITEM, $col));
                 }
 
@@ -4293,7 +4293,7 @@ END:VTIMEZONE\r\n";
                     $ids .= "$id,";
                 }
                 $ids = substr($ids, 0, -1);
-                if ((int)$ids == 0) {
+                if (0 == (int)$ids) {
                     $group_section = '';
                 } else {
                     $group_section = "OR groupid IN ($ids)";
@@ -4313,7 +4313,7 @@ END:VTIMEZONE\r\n";
         public function mb_convert_kana($str, $option)
         {
             // convert_kana ï¿½Î½ï¿½ï¿½ï¿½Ï¡ï¿½ï¿½ï¿½ï¿½Ü¸ï¿½Ç¤Î¤ß¹Ô¤ï¿½
-            if ($this->language !== 'japanese' || !function_exists('mb_convert_kana')) {
+            if ('japanese' !== $this->language || !function_exists('mb_convert_kana')) {
                 return $str;
             } else {
                 return mb_convert_kana($str, $option);
@@ -4561,7 +4561,7 @@ METHOD:PUBLISH\r\n";
                         $categories .= $this->categories[$cid]->cat_title . ',';
                     }
                 }
-                if ($categories !== '') {
+                if ('' !== $categories) {
                     $categories = substr($categories, 0, -1);
                 }
 
@@ -4632,7 +4632,7 @@ END:VEVENT\r\n";
             $ical->language = $this->language;
             $ical->timezone = ($this->server_TZ >= 0 ? '+' : '-') . sprintf('%02d%02d', abs($this->server_TZ), abs($this->server_TZ) * 60 % 60);
             list($ret_code, $message, $filename) = explode(':', $ical->parse($uri, $user_uri), 3);
-            if ($ret_code != 0) {
+            if (0 != $ret_code) {
                 // ï¿½Ñ¡ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ô¤Ê¤ï¿½-1ï¿½È¥ï¿½ï¿½é¡¼ï¿½ï¿½Ã¥ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö¤ï¿½
                 return "-1: $message : $filename";
             }
@@ -4665,7 +4665,7 @@ END:VEVENT\r\n";
             $ical->language = $this->language;
             $ical->timezone = ($this->server_TZ >= 0 ? '+' : '-') . sprintf('%02d%02d', abs($this->server_TZ), abs($this->server_TZ) * 60 % 60);
             list($ret_code, $message, $filename) = explode(':', $ical->parse($_FILES[$userfile]['tmp_name'], $_FILES[$userfile]['name']), 3);
-            if ($ret_code != 0) {
+            if (0 != $ret_code) {
                 // ï¿½Ñ¡ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ô¤Ê¤ï¿½-1ï¿½È¥ï¿½ï¿½é¡¼ï¿½ï¿½Ã¥ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö¤ï¿½
                 return "-1: $message : $filename";
             }
@@ -4716,7 +4716,7 @@ END:VEVENT\r\n";
             $GLOBALS['xoopsDB']->query("UPDATE $this->table SET categories='$categories',rrule_pid='$rrule_pid' WHERE id='$event_id'");
 
             // RRULEï¿½ï¿½ï¿½é¡¢ï¿½Ò¥ì¥³ï¿½ï¿½ï¿½É¤ï¿½Å¸ï¿½ï¿½
-            if ($event->rrule !== '') {
+            if ('' !== $event->rrule) {
                 $this->rrule_extract($event_id);
             }
 
@@ -4735,7 +4735,7 @@ END:VEVENT\r\n";
         public function rrule_to_human_language($rrule)
         {
             $rrule = trim($rrule);
-            if ($rrule === '') {
+            if ('' === $rrule) {
                 return '';
             }
 
@@ -4760,7 +4760,7 @@ END:VEVENT\r\n";
             $ret_day  = '';
             switch ($FREQ) {
                 case 'DAILY':
-                    if ($INTERVAL == 1) {
+                    if (1 == $INTERVAL) {
                         $ret_freq = _APCAL_RR_EVERYDAY;
                     } else {
                         $ret_freq = sprintf(_APCAL_RR_PERDAY, $INTERVAL);
@@ -4771,7 +4771,7 @@ END:VEVENT\r\n";
                         break;
                     }    // BYDAY É¬ï¿½ï¿½
                     $ret_day = strtr($BYDAY, $this->byday2langday_w);
-                    if ($INTERVAL == 1) {
+                    if (1 == $INTERVAL) {
                         $ret_freq = _APCAL_RR_EVERYWEEK;
                     } else {
                         $ret_freq = sprintf(_APCAL_RR_PERWEEK, $INTERVAL);
@@ -4790,7 +4790,7 @@ END:VEVENT\r\n";
                     } else {
                         break;        // BYDAY ï¿½Þ¤ï¿½ï¿½ï¿½ BYMONTHDAY É¬ï¿½ï¿½
                     }
-                    if ($INTERVAL == 1) {
+                    if (1 == $INTERVAL) {
                         $ret_freq = _APCAL_RR_EVERYMONTH;
                     } else {
                         $ret_freq = sprintf(_APCAL_RR_PERMONTH, $INTERVAL);
@@ -4808,7 +4808,7 @@ END:VEVENT\r\n";
                     if (isset($BYDAY)) {
                         $ret_day .= ' ' . strtr($BYDAY, $this->byday2langday_m);
                     }
-                    if ($INTERVAL == 1) {
+                    if (1 == $INTERVAL) {
                         $ret_freq = _APCAL_RR_EVERYYEAR;
                     } else {
                         $ret_freq = sprintf(_APCAL_RR_PERYEAR, $INTERVAL);
@@ -4869,7 +4869,7 @@ END:VEVENT\r\n";
             $bymonthday_init       = '';
             $bymonths_checked      = [1 => '', '', '', '', '', '', '', '', '', '', '', ''];
 
-            if (trim($rrule) === '') {
+            if ('' === trim($rrule)) {
                 $norrule_checked = 'checked';
             } else {
 
@@ -4969,7 +4969,7 @@ END:VEVENT\r\n";
             $bymonth_checkbox = "<table border='0' cellpadding='2'><tr>\n";
             foreach ($bymonths_checked as $key => $val) {
                 $bymonth_checkbox .= "<td><input type='checkbox' name='rrule_bymonths[]' value='$key' $val>{$this->month_short_names[$key]}</td>\n";
-                if ($key == 6) {
+                if (6 == $key) {
                     $bymonth_checkbox .= "</tr>\n<tr>\n";
                 }
             }
@@ -5084,7 +5084,7 @@ END:VEVENT\r\n";
         public function rrule_from_post($start, $allday_flag)
         {
             // ï¿½ï¿½ï¿½ï¿½ï¿½Ö¤ï¿½Ìµï¿½ï¿½ï¿½Ê¤é¡¢Ìµï¿½ï¿½ï¿½Ç¶ï¿½Ê¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö¤ï¿½
-            if ($_POST['rrule_freq'] === 'none') {
+            if ('none' === $_POST['rrule_freq']) {
                 return '';
             }
 
@@ -5113,14 +5113,14 @@ END:VEVENT\r\n";
                     break;
                 case 'MONTHLY':
                     $ret_freq = 'FREQ=MONTHLY;INTERVAL=' . abs((int)$_POST['rrule_monthly_interval']);
-                    if ($_POST['rrule_monthly_byday'] !== '') {
+                    if ('' !== $_POST['rrule_monthly_byday']) {
                         // ï¿½ï¿½Nï¿½ï¿½ï¿½ï¿½Ë¤ï¿½ï¿½ï¿½ï¿½ï¿½
                         $byday = substr(trim($_POST['rrule_monthly_byday']), 0, 4);
                         if (preg_match('/[^\w-]+/', $byday)) {
                             die('Some injection was tried');
                         }
                         $ret_freq .= ";BYDAY=$byday";
-                    } elseif ($_POST['rrule_bymonthday'] !== '') {
+                    } elseif ('' !== $_POST['rrule_bymonthday']) {
                         // ï¿½ï¿½ï¿½Õ¤Ë¤ï¿½ï¿½ï¿½ï¿½ï¿½
                         $bymonthday = preg_replace('/[^0-9,]+/', '', $_POST['rrule_bymonthday']);
                         $ret_freq   .= ";BYMONTHDAY=$bymonthday";
@@ -5141,7 +5141,7 @@ END:VEVENT\r\n";
                         }
                         $bymonth = substr($bymonth, 0, -1);
                     }
-                    if ($_POST['rrule_yearly_byday'] !== '') {
+                    if ('' !== $_POST['rrule_yearly_byday']) {
                         // ï¿½ï¿½Nï¿½ï¿½ï¿½ï¿½Ë¤ï¿½ï¿½ï¿½ï¿½ï¿½
                         $byday = substr(trim($_POST['rrule_yearly_byday']), 0, 4);
                         if (preg_match('/[^\w-]+/', $byday)) {
@@ -5203,7 +5203,7 @@ END:VEVENT\r\n";
             }
             $event = $GLOBALS['xoopsDB']->fetchObject($yrs);
 
-            if ($event->rrule === '') {
+            if ('' === $event->rrule) {
                 return;
             }
 
@@ -5333,8 +5333,8 @@ END:VEVENT\r\n";
                     $gmend       = $event->end + date('Z', $event->end);
                     $duration    = $gmend - $gmstart;
                     $wtop_date   = gmdate('j', $gmstart) - gmdate('w', $gmstart);
-                    if ($WKST !== 'SU') {
-                        $wtop_date = $wtop_date == 7 ? 1 : $wtop_date + 1;
+                    if ('SU' !== $WKST) {
+                        $wtop_date = 7 == $wtop_date ? 1 : $wtop_date + 1;
                     }
                     $secondofday = $gmstart % 86400;
                     $month       = gmdate('m', $gmstart);
@@ -5344,7 +5344,7 @@ END:VEVENT\r\n";
                     // ï¿½ï¿½ï¿½Í²ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Îºï¿½ï¿½ï¿½
                     $temp_dates = explode(',', $BYDAY);
                     $wdays      = array_keys($this->byday2langday_w);
-                    if ($WKST !== 'SU') {
+                    if ('SU' !== $WKST) {
                         // rotate wdays for creating array starting with Monday
                         $sun_date = array_shift($wdays);
                         array_push($wdays, $sun_date);

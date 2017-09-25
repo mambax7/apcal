@@ -28,7 +28,7 @@ $moduleDirName = basename(dirname(__DIR__));
 if (!preg_match('/^(\D+)(\d*)$/', $moduleDirName, $regs)) {
     echo('invalid dirname: ' . htmlspecialchars($moduleDirName));
 }
-$mydirnumber = $regs[2] === '' ? '' : (int)$regs[2];
+$mydirnumber = '' === $regs[2] ? '' : (int)$regs[2];
 
 //require_once XOOPS_ROOT_PATH . "/modules/$moduleDirName/include/gtickets.php";
 
@@ -151,7 +151,7 @@ if (isset($_POST['http_import']) && !empty($_POST['import_uri'])) {
 }
 
 // ����ݡ��Ȥ���ľ��Υ쥳���ɿ���$mes��������
-if ($done === 'imported' && isset($_GET['mes'])) {
+if ('imported' === $done && isset($_GET['mes'])) {
     $new_imported = (int)$_GET['mes'];
 } else {
     $new_imported = 0;
@@ -246,7 +246,7 @@ $myts    = MyTextSanitizer::getInstance();
 $oddeven = 'odd';
 $count   = 0;
 while ($event = $GLOBALS['xoopsDB']->fetchObject($rs)) {
-    $oddeven = ($oddeven === 'odd' ? 'even' : 'odd');
+    $oddeven = ('odd' === $oddeven ? 'even' : 'odd');
     if (++$count < $new_imported) {
         $newer_style = "style='background-color:#FFFFCC;'";
     } else {

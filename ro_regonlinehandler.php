@@ -36,7 +36,7 @@ if (isset($_POST['form_activate'])) {
     }
 }
 if (isset($_GET['op'])) {
-    if ($_GET['op'] === 'show_form_activate') {
+    if ('show_form_activate' === $_GET['op']) {
         //called after automatically redirect after add new event
         if (isset($_GET['eventid'])) {
             $eventid = $_GET['eventid'];
@@ -75,7 +75,7 @@ if ($show_form_activate) {
     $res      = $GLOBALS['xoopsDB']->query($query);
     $num_rows = $GLOBALS['xoopsDB']->getRowsNum($res);
 
-    if ($num_rows == 0) {
+    if (0 == $num_rows) {
         //edit new item, make preselection
         $email1    = $xoopsUser->getVar('email');
         $datelimit = $eventdate;
@@ -102,7 +102,7 @@ if ($show_form_activate) {
     $num_rows = $GLOBALS['xoopsDB']->getRowsNum($res);
 
     $i = 0;
-    if ($num_rows == 0) {
+    if (0 == $num_rows) {
         //no data, use email from actual user
     } else {
         while ($ron_result = $GLOBALS['xoopsDB']->fetchObject($res)) {
@@ -193,7 +193,7 @@ if ($show_form_activate) {
             <br><br>
             <div align='center'>";
 
-    if ($typeedit == '0') {
+    if ('0' == $typeedit) {
         $ret .= "<input type='image' src='$roimagesave' name='activate' alt='" . _APCAL_RO_BTN_CONF_SAVE . "' title='" . _APCAL_RO_BTN_CONF_SAVE . "' height='32px'>";
     } else {
         $ret .= "<input type='image' src='$roimagesave' name='activate' alt='" . _APCAL_RO_BTN_CONF_EDIT . "' title='" . _APCAL_RO_BTN_CONF_EDIT . "' height='32px'>";
@@ -225,19 +225,19 @@ if (isset($_POST['activate_x'])) {
         $typeedit  = $_POST['typeedit'];
 
         //default-values
-        if ($datelimit === '') {
+        if ('' === $datelimit) {
             $datelimit = 0;
         }
         if ($datelimit > 0) {
             $datelimit = strtotime($datelimit);
         }
 
-        if ($number === '') {
+        if ('' === $number) {
             $number = '0';
         }
 
         //insert or update data in table apcal_ro_events
-        if ($typeedit == '0') {
+        if ('0' == $typeedit) {
             $query = 'Insert into '
                      . $GLOBALS['xoopsDB']->prefix('apcal_ro_events')
                      . " (roe_submitter, roe_eventid, roe_datelimit, roe_number, roe_date_created) values ($uid, $eventid, $datelimit, $number, "
@@ -271,7 +271,7 @@ if (isset($_POST['activate_x'])) {
         }
 
         //update date in apcal_ro_notify
-        if ($typeedit == '1') {
+        if ('1' == $typeedit) {
             //delete old data in apcal_ro_notify
             $query = 'DELETE '
                      . $GLOBALS['xoopsDB']->prefix('apcal_ro_notify')
@@ -282,7 +282,7 @@ if (isset($_POST['activate_x'])) {
                      . ".ron_eventid)=$eventid)";
             $res   = $GLOBALS['xoopsDB']->query($query);
         }
-        if (!$email1 === '') {
+        if ('' === !$email1) {
             $submitter = $xoopsUser->getVar('uid');
             $query     = 'Insert into ' . $GLOBALS['xoopsDB']->prefix('apcal_ro_notify') . " (ron_eventid, ron_email, ron_submitter) values ($eventid, '$email1', $submitter)";
             $res       = $GLOBALS['xoopsDB']->query($query);
@@ -290,28 +290,28 @@ if (isset($_POST['activate_x'])) {
                 redirect_header($eventurl, 3, _APCAL_RO_ERROR_RO_ACTIVATE);
             }
         }
-        if (!$email2 === '') {
+        if ('' === !$email2) {
             $query = 'Insert into ' . $GLOBALS['xoopsDB']->prefix('apcal_ro_notify') . " (ron_eventid, ron_email, ron_submitter) values ($eventid, '$email2', $submitter)";
             $res   = $GLOBALS['xoopsDB']->query($query);
             if (!$res) {
                 redirect_header($eventurl, 3, _APCAL_RO_ERROR_RO_ACTIVATE);
             }
         }
-        if (!$email3 === '') {
+        if ('' === !$email3) {
             $query = 'Insert into ' . $GLOBALS['xoopsDB']->prefix('apcal_ro_notify') . " (ron_eventid, ron_email, ron_submitter) values ($eventid, '$email3', $submitter)";
             $res   = $GLOBALS['xoopsDB']->query($query);
             if (!$res) {
                 redirect_header($eventurl, 3, _APCAL_RO_ERROR_RO_ACTIVATE);
             }
         }
-        if (!$email4 === '') {
+        if ('' === !$email4) {
             $query = 'Insert into ' . $GLOBALS['xoopsDB']->prefix('apcal_ro_notify') . " (ron_eventid, ron_email, ron_submitter) values ($eventid, '$email4', $submitter)";
             $res   = $GLOBALS['xoopsDB']->query($query);
             if (!$res) {
                 redirect_header($eventurl, 3, _APCAL_RO_ERROR_RO_ACTIVATE);
             }
         }
-        if (!$email5 === '') {
+        if ('' === !$email5) {
             $query = 'Insert into ' . $GLOBALS['xoopsDB']->prefix('apcal_ro_notify') . " (ron_eventid, ron_email, ron_submitter) values ($eventid, '$email5', $submitter)";
             $res   = $GLOBALS['xoopsDB']->query($query);
             if (!$res) {
@@ -555,7 +555,7 @@ if (isset($_REQUEST['form_add'])) {
                 $romextrainfo5 = $member->rom_extrainfo5;
                 $rom_id        = $member->rom_id;
 
-                if ($line == 0) {
+                if (0 == $line) {
                     $classname = 'odd';
                     $line      = 1;
                 } else {
@@ -647,28 +647,28 @@ if (isset($_POST['add_member_x']) || isset($_POST['add_member_more_x'])) {
         $location   = $_POST['location'];
         $sendconf   = $_POST['sendconf'];
 
-        if ($firstname === '') {
+        if ('' === $firstname) {
             $firstname = '-';
         }
-        if ($lastname === '') {
+        if ('' === $lastname) {
             $lastname = '-';
         }
-        if ($email === '') {
+        if ('' === $email) {
             $email = '-';
         }
-        if ($extrainfo1 === '') {
+        if ('' === $extrainfo1) {
             $extrainfo1 = '-';
         }
-        if ($extrainfo2 === '') {
+        if ('' === $extrainfo2) {
             $extrainfo2 = '-';
         }
-        if ($extrainfo3 === '') {
+        if ('' === $extrainfo3) {
             $extrainfo3 = '-';
         }
-        if ($extrainfo4 === '') {
+        if ('' === $extrainfo4) {
             $extrainfo4 = '-';
         }
-        if ($extrainfo5 === '') {
+        if ('' === $extrainfo5) {
             $extrainfo5 = '-';
         }
 
@@ -682,7 +682,7 @@ if (isset($_POST['add_member_x']) || isset($_POST['add_member_more_x'])) {
                     . ".roe_eventid)=$eventid)";
         $res      = $GLOBALS['xoopsDB']->query($query);
         $num_rows = $GLOBALS['xoopsDB']->getRowsNum($res);
-        if ($num_rows == 0) {
+        if (0 == $num_rows) {
             $number_allowed = 0;
         } else {
             while ($ro_result = $GLOBALS['xoopsDB']->fetchObject($res)) {
@@ -709,7 +709,7 @@ if (isset($_POST['add_member_x']) || isset($_POST['add_member_more_x'])) {
                         . ".rom_eventid)=$eventid)";
             $res      = $GLOBALS['xoopsDB']->query($query);
             $num_rows = $GLOBALS['xoopsDB']->getRowsNum($res);
-            if ($num_rows == 0) {
+            if (0 == $num_rows) {
                 $number_total = 0;
             } else {
                 $number_total = $GLOBALS['xoopsDB']->getRowsNum($res);
@@ -722,10 +722,10 @@ if (isset($_POST['add_member_x']) || isset($_POST['add_member_more_x'])) {
 
         $confirmto = $email;
         // check whether email is available and confirmation is selected
-        if ($confirmto === '') {
+        if ('' === $confirmto) {
             $confirmto = '-';
         }
-        if ($sendconf === 'no') {
+        if ('no' === $sendconf) {
             $confirmto = '-';
         }
 
@@ -744,7 +744,7 @@ if (isset($_POST['add_member_x']) || isset($_POST['add_member_more_x'])) {
             $query    .= " WHERE (((ron_eventid)=$eventid))";
             $res      = $GLOBALS['xoopsDB']->query($query);
             $num_rows = $GLOBALS['xoopsDB']->getRowsNum($res);
-            if ($num_rows == 0) {
+            if (0 == $num_rows) {
                 //nothing to do
             } else {
                 while ($member = $GLOBALS['xoopsDB']->fetchObject($res)) {
@@ -784,7 +784,7 @@ if (isset($_POST['add_member_x']) || isset($_POST['add_member_more_x'])) {
             }
 
             //confirmation mail to registered person
-            if ($confirmto == '-') {
+            if ('-' == $confirmto) {
                 //echo "option not selected or no email-address available";
             } else {
                 $xoopsMailer = xoops_getMailer();
@@ -846,7 +846,7 @@ if (isset($_POST['remove_member']) || isset($_POST['remove_member_x'])) {
         $num_members = $_POST['num_members'];
 
         // check whether confirmation mail should be send
-        if ($confirmto === '') {
+        if ('' === $confirmto) {
             $confirmto = '-';
         }
 
@@ -870,7 +870,7 @@ if (isset($_POST['remove_member']) || isset($_POST['remove_member_x'])) {
 
             $res      = $GLOBALS['xoopsDB']->query($query);
             $num_rows = $GLOBALS['xoopsDB']->getRowsNum($res);
-            if ($num_rows == 0) {
+            if (0 == $num_rows) {
                 //nothing to do
             } else {
                 while ($member = $GLOBALS['xoopsDB']->fetchObject($res)) {
@@ -910,7 +910,7 @@ if (isset($_POST['remove_member']) || isset($_POST['remove_member_x'])) {
             }
 
             //confirmation mail to registered person
-            if ($confirmto == '-') {
+            if ('-' == $confirmto) {
                 //echo "option not selected or no email-address available";
             } else {
                 $xoopsMailer = xoops_getMailer();
@@ -944,7 +944,7 @@ if (isset($_POST['remove_member']) || isset($_POST['remove_member_x'])) {
                 $xoopsMailer->send();
                 $xoopsMailer->reset();
             }
-            if ($num_members == 1) {
+            if (1 == $num_members) {
                 redirect_header($eventurl, 3, _APCAL_RO_SUCCESS_REMOVE);
             } else {
                 redirect_header($url, 3, _APCAL_RO_SUCCESS_REMOVE);
@@ -999,7 +999,7 @@ if (isset($_REQUEST['list'])) {
         $res      = $GLOBALS['xoopsDB']->query($query);
         $num_rows = $GLOBALS['xoopsDB']->getRowsNum($res);
 
-        if ($num_rows == 0) {
+        if (0 == $num_rows) {
             $ret = _APCAL_RO_NOMEMBERS;
         } else {
             $ret .= "
@@ -1009,19 +1009,19 @@ if (isset($_REQUEST['list'])) {
                <td width='100px' class='listeheader'>" . _APCAL_RO_FIRSTNAME . "</td>
                <td width='100px' class='listeheader'>" . _APCAL_RO_LASTNAME . "</td>
                <td class='listeheader'>" . _APCAL_RO_EMAIL . '</td>';
-            if (!_APCAL_RO_EXTRAINFO1 === '') {
+            if ('' === !_APCAL_RO_EXTRAINFO1) {
                 $ret .= "<td class='listeheader'>" . _APCAL_RO_EXTRAINFO1 . '</td>';
             }
-            if (!_APCAL_RO_EXTRAINFO2 === '') {
+            if ('' === !_APCAL_RO_EXTRAINFO2) {
                 $ret .= "<td class='listeheader'>" . _APCAL_RO_EXTRAINFO2 . '</td>';
             }
-            if (!_APCAL_RO_EXTRAINFO3 === '') {
+            if ('' === !_APCAL_RO_EXTRAINFO3) {
                 $ret .= "<td class='listeheader'>" . _APCAL_RO_EXTRAINFO3 . '</td>';
             }
-            if (!_APCAL_RO_EXTRAINFO4 === '') {
+            if ('' === !_APCAL_RO_EXTRAINFO4) {
                 $ret .= "<td class='listeheader'>" . _APCAL_RO_EXTRAINFO4 . '</td>';
             }
-            if (!_APCAL_RO_EXTRAINFO5 === '') {
+            if ('' === !_APCAL_RO_EXTRAINFO5) {
                 $ret .= "<td class='listeheader'>" . _APCAL_RO_EXTRAINFO5 . '</td>';
             }
             $ret .= "
@@ -1038,7 +1038,7 @@ if (isset($_REQUEST['list'])) {
                 $extrainfo3 = $member->rom_extrainfo3;
                 $extrainfo4 = $member->rom_extrainfo4;
                 $extrainfo5 = $member->rom_extrainfo5;
-                if ($line == 0) {
+                if (0 == $line) {
                     $classname = 'odd';
                     $line      = 1;
                 } else {
@@ -1050,19 +1050,19 @@ if (isset($_REQUEST['list'])) {
                     <td class='$classname'>$firstname</td>
                     <td class='$classname'>$lastname</td>
                     <td class='$classname'>$email</td>";
-                if (!_APCAL_RO_EXTRAINFO1 === '') {
+                if ('' === !_APCAL_RO_EXTRAINFO1) {
                     $ret .= "<td class='$classname'>$extrainfo1</td>";
                 }
-                if (!_APCAL_RO_EXTRAINFO2 === '') {
+                if ('' === !_APCAL_RO_EXTRAINFO2) {
                     $ret .= "<td class='$classname'>$extrainfo2</td>";
                 }
-                if (!_APCAL_RO_EXTRAINFO3 === '') {
+                if ('' === !_APCAL_RO_EXTRAINFO3) {
                     $ret .= "<td class='$classname'>$extrainfo3</td>";
                 }
-                if (!_APCAL_RO_EXTRAINFO4 === '') {
+                if ('' === !_APCAL_RO_EXTRAINFO4) {
                     $ret .= "<td class='$classname'>$extrainfo4</td>";
                 }
-                if (!_APCAL_RO_EXTRAINFO5 === '') {
+                if ('' === !_APCAL_RO_EXTRAINFO5) {
                     $ret .= "<td class='$classname'>$extrainfo5</td>";
                 }
                 $ret       .= "<td class='$classname'>";
@@ -1105,7 +1105,7 @@ if (isset($_REQUEST['list'])) {
             $res      = $GLOBALS['xoopsDB']->query($query);
             $num_rows = $GLOBALS['xoopsDB']->getRowsNum($res);
 
-            if ($num_rows == 0) {
+            if (0 == $num_rows) {
                 $sender = '';
             } else {
                 while ($member = $GLOBALS['xoopsDB']->fetchObject($res)) {
@@ -1265,28 +1265,28 @@ if (isset($_POST['edit_member']) || isset($_POST['edit_member_x'])) {
         $location   = $_POST['location'];
         $sendconf   = $_POST['sendconf'];
 
-        if ($firstname === '') {
+        if ('' === $firstname) {
             $firstname = '-';
         }
-        if ($lastname === '') {
+        if ('' === $lastname) {
             $lastname = '-';
         }
-        if ($email === '') {
+        if ('' === $email) {
             $email = '-';
         }
-        if ($extrainfo1 === '') {
+        if ('' === $extrainfo1) {
             $extrainfo1 = '-';
         }
-        if ($extrainfo2 === '') {
+        if ('' === $extrainfo2) {
             $extrainfo2 = '-';
         }
-        if ($extrainfo3 === '') {
+        if ('' === $extrainfo3) {
             $extrainfo3 = '-';
         }
-        if ($extrainfo4 === '') {
+        if ('' === $extrainfo4) {
             $extrainfo4 = '-';
         }
-        if ($extrainfo5 === '') {
+        if ('' === $extrainfo5) {
             $extrainfo5 = '-';
         }
 
@@ -1351,7 +1351,7 @@ if (isset($_POST['ro_notify_all']) || isset($_POST['ro_notify_all_x'])) {
         $res      = $GLOBALS['xoopsDB']->query($query);
         $num_rows = $GLOBALS['xoopsDB']->getRowsNum($res);
 
-        if ($num_rows == 0) {
+        if (0 == $num_rows) {
             //no action
         } else {
             while ($member = $GLOBALS['xoopsDB']->fetchObject($res)) {
@@ -1359,7 +1359,7 @@ if (isset($_POST['ro_notify_all']) || isset($_POST['ro_notify_all_x'])) {
                 $firstname = $member->rom_firstname;
                 $lastname  = $member->rom_lastname;
 
-                if ($recipient != '-') {
+                if ('-' != $recipient) {
                     ++$counter;
 
                     $xoopsMailer = xoops_getMailer();

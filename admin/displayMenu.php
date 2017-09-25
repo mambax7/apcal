@@ -14,14 +14,14 @@ if (substr(XOOPS_VERSION, 6) < '2.5.0' && isset($xoopsModule) && $xoopsModule->g
     // Define main tab navigation
     $i = 0;
     foreach ($xoopsModule->adminmenu as $menu) {
-        if (stripos($_SERVER['REQUEST_URI'], $menu['link']) !== false) {
+        if (false !== stripos($_SERVER['REQUEST_URI'], $menu['link'])) {
             $current = $i;
         }
         $menuHandler->addMenuTabs($menu['link'], $menu['title']);
         ++$i;
     }
     if ($xoopsModule->getInfo('help')) {
-        if (stripos($_SERVER['REQUEST_URI'], 'admin/' . $xoopsModule->getInfo('help')) !== false) {
+        if (false !== stripos($_SERVER['REQUEST_URI'], 'admin/' . $xoopsModule->getInfo('help'))) {
             $current = $i;
         }
         $menuHandler->addMenuTabs('../system/help.php?mid=' . $xoopsModule->getVar('mid', 's') . '&amp;page=' . $xoopsModule->getInfo('help'), _AM_APCAL_SYSTEM_HELP);

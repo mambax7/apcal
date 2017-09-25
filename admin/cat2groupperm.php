@@ -28,7 +28,7 @@ $moduleDirName = basename(dirname(__DIR__));
 if (!preg_match('/^(\D+)(\d*)$/', $moduleDirName, $regs)) {
     echo('invalid dirname: ' . htmlspecialchars($moduleDirName));
 }
-$mydirnumber = $regs[2] === '' ? '' : (int)$regs[2];
+$mydirnumber = '' === $regs[2] ? '' : (int)$regs[2];
 
 //require_once XOOPS_ROOT_PATH . "/modules/$moduleDirName/include/gtickets.php";
 

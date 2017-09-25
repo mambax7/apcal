@@ -24,7 +24,7 @@ require_once XOOPS_ROOT_PATH . '/modules/apcal/class/cssParser.php';
 error_reporting(0);
 $xoopsLogger->activated = false;
 
-$useDefault = isset($_GET['default']) && $_GET['default'] == 2;
+$useDefault = isset($_GET['default']) && 2 == $_GET['default'];
 $css        = new CSSParser($_GET['filename']);
 
 $color                          = $css->parseColor('a', 'color');

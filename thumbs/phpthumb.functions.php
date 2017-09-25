@@ -145,7 +145,7 @@ class phpthumb_functions
         $parts_count = max(count($parts1), count($parts2));
         for ($i = 0; $i < $parts_count; $i++) {
             $comparison = phpthumb_functions::version_compare_replacement_sub($version1, $version2, $operator);
-            if ($comparison != 0) {
+            if (0 != $comparison) {
                 return $comparison;
             }
         }
@@ -202,7 +202,7 @@ class phpthumb_functions
             foreach ($phpinfo_array as $line) {
                 $line = trim(strip_tags($line));
                 foreach ($exif_info as $key => $value) {
-                    if (strpos($line, $key) === 0) {
+                    if (0 === strpos($line, $key)) {
                         $newvalue        = trim(str_replace($key, '', $line));
                         $exif_info[$key] = $newvalue;
                     }
@@ -260,7 +260,7 @@ class phpthumb_functions
      */
     public static function TranslateWHbyAngle($width, $height, $angle)
     {
-        if (($angle % 180) == 0) {
+        if (0 == ($angle % 180)) {
             return [$width, $height];
         }
         $newwidth  = (abs(sin(deg2rad($angle))) * $height) + (abs(cos(deg2rad($angle))) * $width);
@@ -303,7 +303,7 @@ class phpthumb_functions
      */
     public static function ImageColorAllocateAlphaSafe(&$gdimg_hexcolorallocate, $R, $G, $B, $alpha = false)
     {
-        if (phpthumb_functions::version_compare_replacement(PHP_VERSION, '4.3.2', '>=') && ($alpha !== false)) {
+        if (phpthumb_functions::version_compare_replacement(PHP_VERSION, '4.3.2', '>=') && (false !== $alpha)) {
             return imagecolorallocatealpha($gdimg_hexcolorallocate, $R, $G, $B, (int)$alpha);
         } else {
             return imagecolorallocate($gdimg_hexcolorallocate, $R, $G, $B);
@@ -601,11 +601,11 @@ class phpthumb_functions
     public static function ProportionalResize($old_width, $old_height, $new_width = false, $new_height = false)
     {
         $old_aspect_ratio = $old_width / $old_height;
-        if (($new_width === false) && ($new_height === false)) {
+        if ((false === $new_width) && (false === $new_height)) {
             return false;
-        } elseif ($new_width === false) {
+        } elseif (false === $new_width) {
             $new_width = $new_height * $old_aspect_ratio;
-        } elseif ($new_height === false) {
+        } elseif (false === $new_height) {
             $new_height = $new_width / $old_aspect_ratio;
         }
         $new_aspect_ratio = $new_width / $new_height;
@@ -701,7 +701,7 @@ class phpthumb_functions
     public static function ApacheLookupURIarray($filename)
     {
         // apache_lookup_uri() only works when PHP is installed as an Apache module.
-        if (php_sapi_name() == 'apache') {
+        if ('apache' == php_sapi_name()) {
             //$property_exists_exists = function_exists('property_exists');
             $keys = [
                 'status',
@@ -747,7 +747,7 @@ class phpthumb_functions
         static $isbundled = null;
         if (is_null($isbundled)) {
             $gd_info   = gd_info();
-            $isbundled = (strpos($gd_info['GD Version'], 'bundled') !== false);
+            $isbundled = (false !== strpos($gd_info['GD Version'], 'bundled'));
         }
 
         return $isbundled;
@@ -936,7 +936,7 @@ class phpthumb_functions
             return false;
         }
         //if ($fp = @fsockopen($host, $port, $errno, $errstr, $timeout)) {
-        if ($fp = @fsockopen((($port == 443) ? 'ssl://' : '') . $host, $port, $errno, $errstr, $timeout)) { // https://github.com/JamesHeinrich/phpThumb/issues/39
+        if ($fp = @fsockopen(((443 == $port) ? 'ssl://' : '') . $host, $port, $errno, $errstr, $timeout)) { // https://github.com/JamesHeinrich/phpThumb/issues/39
             $out = 'GET ' . $file . ' HTTP/1.0' . "\r\n";
             $out .= 'Host: ' . $host . "\r\n";
             $out .= 'Connection: Close' . "\r\n\r\n";
@@ -959,7 +959,7 @@ class phpthumb_functions
                 } elseif (preg_match('#^Location: (.*)$#i', rtrim($line), $matches)) {
                     $header_newlocation = $matches[1];
                 }
-                if ($isHeader && ($line == "\r\n")) {
+                if ($isHeader && ("\r\n" == $line)) {
                     $isHeader = false;
                     if ($successonly) {
                         switch ($errno) {
@@ -1003,7 +1003,7 @@ class phpthumb_functions
             $CleanPathElements[] = strtr($pathelement, $TranslationMatrix);
         }
         foreach ($CleanPathElements as $key => $value) {
-            if ($value === '') {
+            if ('' === $value) {
                 unset($CleanPathElements[$key]);
             }
         }
@@ -1015,7 +1015,7 @@ class phpthumb_functions
             $CleanQueries[] = strtr($param, $TranslationMatrix) . ($value ? '=' . strtr($value, $TranslationMatrix) : '');
         }
         foreach ($CleanQueries as $key => $value) {
-            if ($value === '') {
+            if ('' === $value) {
                 unset($CleanQueries[$key]);
             }
         }
@@ -1023,7 +1023,7 @@ class phpthumb_functions
         $cleaned_url = $parse_url['scheme'] . '://';
         $cleaned_url .= (@$parse_url['username'] ? $parse_url['host'] . (@$parse_url['password'] ? ':' . $parse_url['password'] : '') . '@' : '');
         $cleaned_url .= $parse_url['host'];
-        $cleaned_url .= ((!empty($parse_url['port']) && ($parse_url['port'] != 80)) ? ':' . $parse_url['port'] : '');
+        $cleaned_url .= ((!empty($parse_url['port']) && (80 != $parse_url['port'])) ? ':' . $parse_url['port'] : '');
         $cleaned_url .= '/' . implode('/', $CleanPathElements);
         $cleaned_url .= (@$CleanQueries ? '?' . implode($queryseperator, $CleanQueries) : '');
 
@@ -1087,11 +1087,11 @@ class phpthumb_functions
             }
         }
 
-        if ($rawData === false) {
+        if (false === $rawData) {
             $error .= 'Error opening "' . $url . '":' . "\n\n" . $errstr;
 
             return false;
-        } elseif ($rawData === null) {
+        } elseif (null === $rawData) {
             // fall through
             $error .= 'Error opening "' . $url . '":' . "\n\n" . $errstr;
         } else {
@@ -1198,7 +1198,7 @@ class phpthumb_functions
         $AllFiles = [];
         $dirname  = rtrim(realpath($dirname), '/\\');
         if ($dirhandle = @opendir($dirname)) {
-            while (($file = readdir($dirhandle)) !== false) {
+            while (false !== ($file = readdir($dirhandle))) {
                 $fullfilename = $dirname . DIRECTORY_SEPARATOR . $file;
                 if (is_file($fullfilename)) {
                     $AllFiles[] = $fullfilename;
@@ -1287,7 +1287,7 @@ if (!function_exists('gd_info')) {
                 $line = trim(strip_tags($line));
                 foreach ($gd_info as $key => $value) {
                     //if (strpos($line, $key) !== false) {
-                    if (strpos($line, $key) === 0) {
+                    if (0 === strpos($line, $key)) {
                         $newvalue      = trim(str_replace($key, '', $line));
                         $gd_info[$key] = $newvalue;
                     }

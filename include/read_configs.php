@@ -26,7 +26,7 @@ $moduleDirName = basename(dirname(__DIR__));
 if (!preg_match('/^(\D+)(\d*)$/', $moduleDirName, $regs)) {
     echo('invalid dirname: ' . htmlspecialchars($moduleDirName));
 }
-$mydirnumber       = $regs[2] === '' ? '' : (int)$regs[2];
+$mydirnumber       = '' === $regs[2] ? '' : (int)$regs[2];
 $cal->table        = $GLOBALS['xoopsDB']->prefix("apcal{$mydirnumber}_event");
 $cal->cat_table    = $GLOBALS['xoopsDB']->prefix("apcal{$mydirnumber}_cat");
 $cal->pic_table    = $GLOBALS['xoopsDB']->prefix("apcal{$mydirnumber}_pictures");
@@ -44,7 +44,7 @@ list($mid) = $GLOBALS['xoopsDB']->fetchRow($rs);
 // read from xoops_config
 $rs = $GLOBALS['xoopsDB']->query('SELECT conf_name,conf_value FROM ' . $GLOBALS['xoopsDB']->prefix('config') . " WHERE conf_modid=$mid");
 while (list($key, $val) = $GLOBALS['xoopsDB']->fetchRow($rs)) {
-    if (strncmp($key, 'apcal_', 6) == 0) {
+    if (0 == strncmp($key, 'apcal_', 6)) {
         // 'apcal_' ����Ϥޤ��Τ� APCal���֥������ȤΥץ�ѥƥ�
         $property = substr($key, 6);
         if (isset($cal->$property)) {
@@ -100,7 +100,7 @@ if (is_object($xoopsUser)) {
         $cal->categories = [];
         while ($cat = $GLOBALS['xoopsDB']->fetchObject($rs)) {
             $cal->categories[(int)$cat->cid] = $cat;
-            if ($cat->canbemain == 1) {
+            if (1 == $cat->canbemain) {
                 $cal->canbemain_cats[(int)$cat->cid] = $cat;
             }
         }
@@ -127,7 +127,7 @@ if (is_object($xoopsUser)) {
         $cal->categories = [];
         while ($cat = $GLOBALS['xoopsDB']->fetchObject($rs)) {
             $cal->categories[(int)$cat->cid] = $cat;
-            if ($cat->canbemain == 1) {
+            if (1 == $cat->canbemain) {
                 $cal->canbemain_cats[(int)$cat->cid] = $cat;
             }
         }
@@ -201,7 +201,7 @@ if (is_object($xoopsUser)) {
     $cal->categories = [];
     while ($cat = $GLOBALS['xoopsDB']->fetchObject($rs)) {
         $cal->categories[(int)$cat->cid] = $cat;
-        if ($cat->canbemain == 1) {
+        if (1 == $cat->canbemain) {
             $cal->canbemain_cats[(int)$cat->cid] = $cat;
         }
     }

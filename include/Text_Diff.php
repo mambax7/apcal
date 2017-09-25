@@ -546,7 +546,7 @@ class Text_Diff_Engine_native
     public function _lcsPos($ypos)
     {
         $end = $this->lcs;
-        if ($end == 0 || $ypos > $this->seq[$end]) {
+        if (0 == $end || $ypos > $this->seq[$end]) {
             $this->seq[++$this->lcs] = $ypos;
             $this->in_seq[$ypos]     = 1;
 
@@ -612,7 +612,7 @@ class Text_Diff_Engine_native
             list($lcs, $seps) = $this->_diag($xoff, $xlim, $yoff, $ylim, $nchunks);
         }
 
-        if ($lcs == 0) {
+        if (0 == $lcs) {
             /* X and Y sequences have no common subsequence: mark all
              * changed. */
             while ($yoff < $ylim) {

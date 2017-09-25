@@ -23,7 +23,7 @@ require_once __DIR__ . '/../../mainfile.php';
 require_once __DIR__ . '/header.php';
 $original_level = error_reporting(E_ALL ^ E_NOTICE);
 
-if ((!isset($_GET['action']) || $_GET['action'] === '') && isset($_GET['cid']) && !is_numeric($_GET['cid'])) {
+if ((!isset($_GET['action']) || '' === $_GET['action']) && isset($_GET['cid']) && !is_numeric($_GET['cid'])) {
     $cat_title = addslashes($_GET['cid']);
     $cat       = $GLOBALS['xoopsDB']->queryF("SELECT cid FROM {$GLOBALS['xoopsDB']->prefix('apcal_cat')} WHERE cat_shorttitle LIKE '$cat_title' LIMIT 0,1");
 
@@ -31,7 +31,7 @@ if ((!isset($_GET['action']) || $_GET['action'] === '') && isset($_GET['cid']) &
         $cat         = $GLOBALS['xoopsDB']->fetchObject($cat);
         $_GET['cid'] = $cat->cid;
     }
-} elseif (isset($_GET['action']) && $_GET['action'] === 'View' && !is_numeric($_GET['event_id'])
+} elseif (isset($_GET['action']) && 'View' === $_GET['action'] && !is_numeric($_GET['event_id'])
           && isset($_GET['date'])) {
     $summary = addslashes($_GET['event_id']);
     $date    = isset($_GET['date']) ? strtotime($_GET['date']) : time();
@@ -48,7 +48,7 @@ $moduleDirName = basename(__DIR__);
 if (!preg_match('/^(\D+)(\d*)$/', $moduleDirName, $regs)) {
     echo('invalid dirname: ' . htmlspecialchars($moduleDirName));
 }
-$mydirnumber = $regs[2] === '' ? '' : (int)$regs[2];
+$mydirnumber = '' === $regs[2] ? '' : (int)$regs[2];
 
 //require_once XOOPS_ROOT_PATH . "/modules/$moduleDirName/include/gtickets.php";
 
@@ -149,12 +149,12 @@ if (!empty($_GET['smode'])) {
 }
 
 // XOOP�إå��������ν���
-if ($action === 'View') {
+if ('View' === $action) {
     $GLOBALS['xoopsOption']['template_main'] = "apcal{$mydirnumber}_event_detail.tpl";
 } else {
     // View�ʳ��Ǥϥ����ȶػ�
     $xoopsModuleConfig['com_rule'] = 0;
-    if ($smode === 'List' && $action !== 'Edit') {
+    if ('List' === $smode && 'Edit' !== $action) {
         $GLOBALS['xoopsOption']['template_main'] = "apcal{$mydirnumber}_event_list.tpl";
     }
 }
@@ -175,7 +175,7 @@ $xoopsTpl->assign('xoops_meta_robots', $meta_robots);
 // $apcalstarttime = $sec + $usec ;
 
 // �ڡ���ɽ����Ϣ�ν���ʬ��
-if ($action === 'Edit') {
+if ('Edit' === $action) {
     if (is_dir(XOOPS_ROOT_PATH . '/modules/apcal/assets/js/jscalendar')) {
         // jscalendar in module dir (recommended)
         $jscalurl = XOOPS_URL . '/modules/apcal/assets/js/jscalendar';
@@ -207,7 +207,7 @@ if ($action === 'Edit') {
     }
     $xoopsTpl->assign('xoops_module_header', '<script type="text/javascript" src="' . XOOPS_URL . '/modules/apcal/ajax/pictures.js"></script>' . $xoopsTpl->get_template_vars('xoops_module_header'));
     echo $cal->get_schedule_edit_html();
-} elseif ($action === 'View') {
+} elseif ('View' === $action) {
     // echo $cal->get_schedule_view_html( ) ;
     $xoopsTpl->assign('detail_body', $cal->get_schedule_view_html());
     $xoopsTpl->assign('xoops_pagetitle', $cal->last_summary);
@@ -249,7 +249,7 @@ if ($action === 'Edit') {
 $xoopsTpl->assign('showSocial', $cal->enablesocial);
 $xoopsTpl->assign('showTellaFriend', $cal->enabletellafriend);
 /** @var xos_opal_Theme $xoTheme */
-if ($action === 'View') {
+if ('View' === $action) {
     $event_id   = isset($_GET['event_id']) && $_GET['event_id'] > 0 ? $_GET['event_id'] : 0;
     $event      = $GLOBALS['xoopsDB']->fetchArray($GLOBALS['xoopsDB']->queryF("SELECT summary, description, location, categories, contact, start FROM {$GLOBALS['xoopsDB']->prefix('apcal_event')} WHERE id={$event_id} LIMIT 0,1"));
     $cats       = explode(',', $event['categories']);
@@ -284,12 +284,12 @@ if ($action === 'View') {
     $xoopsTpl->assign('xoops_pagetitle', $title);
 
     $xoopsTpl->assign('showMap', $cal->enableeventmap);
-} elseif ($action === '') {
+} elseif ('' === $action) {
     $cid          = isset($_GET['cid']) && $_GET['cid'] > 0 ? $_GET['cid'] : 0;
     $cat          = $GLOBALS['xoopsDB']->fetchArray($GLOBALS['xoopsDB']->queryF("SELECT cat_title, cat_desc FROM {$GLOBALS['xoopsDB']->prefix('apcal_cat')} WHERE cid={$cid} LIMIT 0,1"));
     $date         = isset($_GET['caldate']) ? $_GET['caldate'] : date('Y-n-j');
     $date         = explode('-', $date);
-    $dateTitle    = (isset($_GET['smode']) && $_GET['smode'] === 'Yearly' ? '' : $cal->month_long_names[$date[1]] . ' ') . $date[0];
+    $dateTitle    = (isset($_GET['smode']) && 'Yearly' === $_GET['smode'] ? '' : $cal->month_long_names[$date[1]] . ' ') . $date[0];
     $catNameTitle = isset($_GET['cid']) && $_GET['cid'] > 0 ? $cat['cat_title'] : $xoopsModule->getVar('name');
 
     $pageTitle = $catNameTitle . ' ' . $dateTitle;
@@ -301,14 +301,14 @@ if ($action === 'View') {
     $xoopsTpl->assign('xoops_pagetitle', $pageTitle);
     $xoTheme->addMeta('meta', 'description', implode(' ', $metaDesc));
 
-    if (isset($cat) && $smode !== 'List' && !empty($catNameTitle) && $cal->displayCatTitle) {
+    if (isset($cat) && 'List' !== $smode && !empty($catNameTitle) && $cal->displayCatTitle) {
         echo '<h1>' . $catNameTitle . '</h1>';
     }
-    if (isset($cat) && $smode !== 'List' && !empty($cat['cat_desc'])) {
+    if (isset($cat) && 'List' !== $smode && !empty($cat['cat_desc'])) {
         echo $cat['cat_desc'] . '<br><br>';
     }
 
-    if ($cal->enablecalmap == 1 && is_array($cal->gmPoints) && !empty($cal->gmPoints)) {
+    if (1 == $cal->enablecalmap && is_array($cal->gmPoints) && !empty($cal->gmPoints)) {
         $tpl = new XoopsTpl();
         $tpl->assign('GMlatitude', $cal->gmlat);
         $tpl->assign('GMlongitude', $cal->gmlng);
@@ -317,13 +317,13 @@ if ($action === 'View') {
         $tpl->assign('GMPoints', $cal->gmPoints);
         $moduleHelper = Xmf\Module\Helper::getHelper($moduleDirName);
         $tpl->assign('api_key', $moduleHelper->getConfig('apcal_mapsapi'));
-        if ($smode === 'List') {
+        if ('List' === $smode) {
             $xoopsTpl->assign('map', $tpl->fetch(XOOPS_ROOT_PATH . '/modules/apcal/templates/apcal_googlemap.tpl'));
         } else {
             $tpl->display(XOOPS_ROOT_PATH . '/modules/apcal/templates/apcal_googlemap.tpl');
         }
     }
-    if ($cal->enablesocial && $smode !== 'List') {
+    if ($cal->enablesocial && 'List' !== $smode) {
         $smode = empty($_GET['smode']) ? $cal->defaultView : preg_replace('/[^a-zA-Z0-9_-]/', '', $_GET['smode']);
         echo '<div class="socialNetworks">
                 <span class="print">
@@ -363,7 +363,7 @@ if ($action === 'View') {
         //<a name="fb_share" type="button" share_url="http://www.example.com/page.html"></a>
         //<script src="http://static.ak.fbcdn.net/connect.php/js/FB.Share" type="text/javascript"></script>
     }
-    if ($cal->enablesharing && $smode !== 'List') {
+    if ($cal->enablesharing && 'List' !== $smode) {
         echo '<div class="share"><a href="' . XOOPS_URL . '/modules/apcal/shareCalendar.php" title="' . _APCAL_SHARECALENDAR . '"><img src="' . XOOPS_URL . '/modules/apcal/assets/images/share.png"><span style="line-height: 32px; margin-bottom: 15px;">' . _APCAL_SHARECALENDAR . '</span></a></div>';
     }
 }

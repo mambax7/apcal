@@ -190,7 +190,7 @@ if (empty($phpThumb->config_disable_pathinfo_parsing) && (empty($_GET) || isset(
     }
     for ($i = 0, $iMax = count($args) - 2; $i < $iMax; $i++) {
         @list($key, $value) = explode('=', @$args[$i]);
-        if (substr($key, -2) == '[]') {
+        if ('[]' == substr($key, -2)) {
             $array_key_name          = substr($key, 0, -2);
             $_GET[$array_key_name][] = $value;
             $phpThumb->DebugMessage('PATH_INFO."' . $array_key_name . '[]" = "' . $value . '"', __FILE__, __LINE__);
@@ -218,7 +218,7 @@ if (!empty($phpThumb->config_high_security_enabled)) {
 ////////////////////////////////////////////////////////////////
 // Debug output, to try and help me diagnose problems
 $phpThumb->DebugTimingMessage('phpThumbDebug[0]', __FILE__, __LINE__);
-if (isset($_GET['phpThumbDebug']) && ($_GET['phpThumbDebug'] == '0')) {
+if (isset($_GET['phpThumbDebug']) && ('0' == $_GET['phpThumbDebug'])) {
     $phpThumb->phpThumbDebug();
 }
 ////////////////////////////////////////////////////////////////
@@ -275,7 +275,7 @@ if (!empty($_GET['src']) && empty($phpThumb->config_allow_local_http_src)
 ////////////////////////////////////////////////////////////////
 // Debug output, to try and help me diagnose problems
 $phpThumb->DebugTimingMessage('phpThumbDebug[1]', __FILE__, __LINE__);
-if (isset($_GET['phpThumbDebug']) && ($_GET['phpThumbDebug'] == '1')) {
+if (isset($_GET['phpThumbDebug']) && ('1' == $_GET['phpThumbDebug'])) {
     $phpThumb->phpThumbDebug();
 }
 ////////////////////////////////////////////////////////////////
@@ -294,7 +294,7 @@ if ($phpThumb->config_nohotlink_enabled
 }
 
 if ($phpThumb->config_mysql_query) {
-    if ($phpThumb->config_mysql_extension == 'mysqli') {
+    if ('mysqli' == $phpThumb->config_mysql_extension) {
         $found_missing_function = false;
         foreach (['mysqli_connect'] as $required_mysqli_function) {
             if (!function_exists($required_mysqli_function)) {
@@ -327,7 +327,7 @@ if ($phpThumb->config_mysql_query) {
             }
             unset($_GET['id']);
         }
-    } elseif ($phpThumb->config_mysql_extension == 'mysql') {
+    } elseif ('mysql' == $phpThumb->config_mysql_extension) {
         $found_missing_function = false;
         //foreach (array('mysql_connect', 'mysql_select_db', 'mysql_query', 'mysql_fetch_array', 'mysql_free_result', '$GLOBALS['xoopsDB']->close', 'mysql_error') as $required_mysql_function) {
         foreach (['mysql_connect'] as $required_mysql_function) {
@@ -373,13 +373,13 @@ if ($phpThumb->config_mysql_query) {
 ////////////////////////////////////////////////////////////////
 // Debug output, to try and help me diagnose problems
 $phpThumb->DebugTimingMessage('phpThumbDebug[2]', __FILE__, __LINE__);
-if (isset($_GET['phpThumbDebug']) && ($_GET['phpThumbDebug'] == '2')) {
+if (isset($_GET['phpThumbDebug']) && ('2' == $_GET['phpThumbDebug'])) {
     $phpThumb->phpThumbDebug();
 }
 ////////////////////////////////////////////////////////////////
 
 $PHPTHUMB_DEFAULTS_DISABLEGETPARAMS = (bool)($phpThumb->config_cache_default_only_suffix
-                                             && (strpos($phpThumb->config_cache_default_only_suffix, '*') !== false));
+                                             && (false !== strpos($phpThumb->config_cache_default_only_suffix, '*')));
 
 // deprecated: 'err', 'file', 'goto',
 $allowedGETparameters = [
@@ -421,7 +421,7 @@ $allowedGETparameters = [
     'nocache'
 ];
 foreach ($_GET as $key => $value) {
-    if (!empty($PHPTHUMB_DEFAULTS_DISABLEGETPARAMS) && ($key != 'src')) {
+    if (!empty($PHPTHUMB_DEFAULTS_DISABLEGETPARAMS) && ('src' != $key)) {
         // disabled, do not set parameter
         $phpThumb->DebugMessage('ignoring $_GET[' . $key . '] because of $PHPTHUMB_DEFAULTS_DISABLEGETPARAMS', __FILE__, __LINE__);
     } elseif (in_array($key, $allowedGETparameters)) {
@@ -448,7 +448,7 @@ if (!empty($PHPTHUMB_DEFAULTS) && is_array($PHPTHUMB_DEFAULTS)) {
 ////////////////////////////////////////////////////////////////
 // Debug output, to try and help me diagnose problems
 $phpThumb->DebugTimingMessage('phpThumbDebug[3]', __FILE__, __LINE__);
-if (isset($_GET['phpThumbDebug']) && ($_GET['phpThumbDebug'] == '3')) {
+if (isset($_GET['phpThumbDebug']) && ('3' == $_GET['phpThumbDebug'])) {
     $phpThumb->phpThumbDebug();
 }
 ////////////////////////////////////////////////////////////////
@@ -515,7 +515,7 @@ if (!empty($UnAllowedGET)) {
 ////////////////////////////////////////////////////////////////
 // Debug output, to try and help me diagnose problems
 $phpThumb->DebugTimingMessage('phpThumbDebug[4]', __FILE__, __LINE__);
-if (isset($_GET['phpThumbDebug']) && ($_GET['phpThumbDebug'] == '4')) {
+if (isset($_GET['phpThumbDebug']) && ('4' == $_GET['phpThumbDebug'])) {
     $phpThumb->phpThumbDebug();
 }
 ////////////////////////////////////////////////////////////////
@@ -609,7 +609,7 @@ while ($CanPassThroughDirectly && $phpThumb->src) {
 ////////////////////////////////////////////////////////////////
 // Debug output, to try and help me diagnose problems
 $phpThumb->DebugTimingMessage('phpThumbDebug[5]', __FILE__, __LINE__);
-if (isset($_GET['phpThumbDebug']) && ($_GET['phpThumbDebug'] == '5')) {
+if (isset($_GET['phpThumbDebug']) && ('5' == $_GET['phpThumbDebug'])) {
     $phpThumb->phpThumbDebug();
 }
 ////////////////////////////////////////////////////////////////
@@ -625,7 +625,7 @@ if (@is_readable($phpThumb->cache_filename)) {
 ////////////////////////////////////////////////////////////////
 // Debug output, to try and help me diagnose problems
 $phpThumb->DebugTimingMessage('phpThumbDebug[6]', __FILE__, __LINE__);
-if (isset($_GET['phpThumbDebug']) && ($_GET['phpThumbDebug'] == '6')) {
+if (isset($_GET['phpThumbDebug']) && ('6' == $_GET['phpThumbDebug'])) {
     $phpThumb->phpThumbDebug();
 }
 ////////////////////////////////////////////////////////////////
@@ -684,7 +684,7 @@ if ($phpThumb->rawImageData) {
 ////////////////////////////////////////////////////////////////
 // Debug output, to try and help me diagnose problems
 $phpThumb->DebugTimingMessage('phpThumbDebug[7]', __FILE__, __LINE__);
-if (isset($_GET['phpThumbDebug']) && ($_GET['phpThumbDebug'] == '7')) {
+if (isset($_GET['phpThumbDebug']) && ('7' == $_GET['phpThumbDebug'])) {
     $phpThumb->phpThumbDebug();
 }
 ////////////////////////////////////////////////////////////////
@@ -694,7 +694,7 @@ $phpThumb->GenerateThumbnail();
 ////////////////////////////////////////////////////////////////
 // Debug output, to try and help me diagnose problems
 $phpThumb->DebugTimingMessage('phpThumbDebug[8]', __FILE__, __LINE__);
-if (isset($_GET['phpThumbDebug']) && ($_GET['phpThumbDebug'] == '8')) {
+if (isset($_GET['phpThumbDebug']) && ('8' == $_GET['phpThumbDebug'])) {
     $phpThumb->phpThumbDebug();
 }
 ////////////////////////////////////////////////////////////////
@@ -722,7 +722,7 @@ if (!empty($phpThumb->config_high_security_enabled) && !empty($_GET['nocache']))
 ////////////////////////////////////////////////////////////////
 // Debug output, to try and help me diagnose problems
 $phpThumb->DebugTimingMessage('phpThumbDebug[9]', __FILE__, __LINE__);
-if (isset($_GET['phpThumbDebug']) && ($_GET['phpThumbDebug'] == '9')) {
+if (isset($_GET['phpThumbDebug']) && ('9' == $_GET['phpThumbDebug'])) {
     $phpThumb->phpThumbDebug();
 }
 ////////////////////////////////////////////////////////////////
@@ -734,7 +734,7 @@ if (!$phpThumb->OutputThumbnail()) {
 ////////////////////////////////////////////////////////////////
 // Debug output, to try and help me diagnose problems
 $phpThumb->DebugTimingMessage('phpThumbDebug[10]', __FILE__, __LINE__);
-if (isset($_GET['phpThumbDebug']) && ($_GET['phpThumbDebug'] == '10')) {
+if (isset($_GET['phpThumbDebug']) && ('10' == $_GET['phpThumbDebug'])) {
     $phpThumb->phpThumbDebug();
 }
 ////////////////////////////////////////////////////////////////

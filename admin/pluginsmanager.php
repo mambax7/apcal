@@ -27,7 +27,7 @@ $moduleDirName = basename(dirname(__DIR__));
 if (!preg_match('/^(\D+)(\d*)$/', $moduleDirName, $regs)) {
     echo('invalid dirname: ' . htmlspecialchars($moduleDirName));
 }
-$mydirnumber = $regs[2] === '' ? '' : (int)$regs[2];
+$mydirnumber = '' === $regs[2] ? '' : (int)$regs[2];
 
 //require_once XOOPS_ROOT_PATH . "/modules/$moduleDirName/include/gtickets.php";
 
@@ -83,7 +83,7 @@ if (!empty($_POST['update'])) {
 
     // new
     if (!empty($_POST['pi_types'][0])) {
-        if ($_POST['pi_types'][0] === 'all') {
+        if ('all' === $_POST['pi_types'][0]) {
             $types = ['monthly', 'weekly', 'daily'];
             foreach ($mcx_blocks as $bid => $title) {
                 $types[] = "mcx{$bid}";
@@ -138,8 +138,8 @@ if (!empty($_POST['update'])) {
 
     // remove cache of APCal minical_ex
     if ($handler = opendir(XOOPS_CACHE_PATH . '/')) {
-        while (($file = readdir($handler)) !== false) {
-            if (substr($file, 0, 16) === 'APCal_minical_ex') {
+        while (false !== ($file = readdir($handler))) {
+            if ('APCal_minical_ex' === substr($file, 0, 16)) {
                 @unlink(XOOPS_CACHE_PATH . '/' . $file);
             }
         }
@@ -184,10 +184,10 @@ $file_options = "<option value=''>----</option>\n";
 $plugins_dir  = $cal->base_path . '/' . $cal->plugins_path_monthly;
 $dir_handle   = opendir($plugins_dir);
 $valid_files  = [];
-while (($file = readdir($dir_handle)) !== false) {
+while (false !== ($file = readdir($dir_handle))) {
     if (is_file("$plugins_dir/$file")) {
         list($node, $ext) = explode('.', $file);
-        if ($ext !== 'php') {
+        if ('php' !== $ext) {
             continue;
         }
         $valid_files[] = $file;
@@ -204,13 +204,13 @@ foreach ($valid_files as $file) {
 $dotgif_options = '';
 $dir_handle     = opendir($cal->images_path);
 $valid_images   = [];
-while (($file = readdir($dir_handle)) !== false) {
+while (false !== ($file = readdir($dir_handle))) {
     if (is_file("$cal->images_path/$file")) {
         list($node, $ext) = explode('.', $file);
-        if ($ext !== 'gif' && $ext !== 'png' && $ext !== 'jpg') {
+        if ('gif' !== $ext && 'png' !== $ext && 'jpg' !== $ext) {
             continue;
         }
-        if (substr($node, 0, 3) !== 'dot') {
+        if ('dot' !== substr($node, 0, 3)) {
             continue;
         }
         $valid_images[] = $file;
@@ -291,7 +291,7 @@ echo "
 // ¥ê¥¹¥È½ÐÎÏÉô
 $oddeven = 'odd';
 while ($plugin = $GLOBALS['xoopsDB']->fetchObject($prs)) {
-    $oddeven = ($oddeven === 'odd' ? 'even' : 'odd');
+    $oddeven = ('odd' === $oddeven ? 'even' : 'odd');
 
     $pi_id           = (int)$plugin->pi_id;
     $enable_checked  = $plugin->pi_enabled ? 'checked' : '';

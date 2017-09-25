@@ -29,7 +29,7 @@ $moduleDirName = basename(dirname(__DIR__));
 if (!preg_match('/^(\D+)(\d*)$/', $moduleDirName, $regs)) {
     echo('invalid dirname: ' . htmlspecialchars($moduleDirName));
 }
-$mydirnumber = $regs[2] === '' ? '' : (int)$regs[2];
+$mydirnumber = '' === $regs[2] ? '' : (int)$regs[2];
 
 //require_once XOOPS_ROOT_PATH . "/modules/$moduleDirName/include/gtickets.php";
 
@@ -223,7 +223,7 @@ if ($cid > 0) {
 }
 
 // �ե꡼��ɸ���
-if ($txt != '') {
+if ('' != $txt) {
     $whr_txt = '';
     if (get_magic_quotes_gpc()) {
         $txt = stripslashes($txt);
@@ -316,7 +316,7 @@ echo '
 $myts    = MyTextSanitizer::getInstance();
 $oddeven = 'odd';
 while ($event = $GLOBALS['xoopsDB']->fetchObject($rs)) {
-    $oddeven = ($oddeven === 'odd' ? 'even' : 'odd');
+    $oddeven = ('odd' === $oddeven ? 'even' : 'odd');
     if ($event->allday) {
         $start_desc = date(_AM_APCAL_DTFMT_LIST_ALLDAY, $event->start) . '<br>(' . _APCAL_MB_APCALALLDAY_EVENT . ')';
         $end_desc   = date(_AM_APCAL_DTFMT_LIST_ALLDAY, $event->end - 300) . '<br>(' . _APCAL_MB_APCALALLDAY_EVENT . ')';

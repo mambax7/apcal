@@ -118,7 +118,7 @@ if (phpthumb_functions::version_compare_replacement(PHP_VERSION, '4.3.2', '>=') 
 // ImageMagick configuration
 $PHPTHUMB_CONFIG['prefer_imagemagick']        = true;  // If true, use ImageMagick to resize thumbnails if possible, since it is usually faster than GD functions; if false only use ImageMagick if PHP memory limit is too low.
 $PHPTHUMB_CONFIG['imagemagick_use_thumbnail'] = true;  // If true, use ImageMagick's "-thumbnail" resizing parameter (if available) which removes extra non-image metadata (profiles, EXIF info, etc) resulting in much smaller filesize; if false, use "-resize" paramter which retains this info
-if (strtoupper(substr(PHP_OS, 0, 3)) === 'WIN') {
+if ('WIN' === strtoupper(substr(PHP_OS, 0, 3))) {
     // Windows: set absolute pathname
     $PHPTHUMB_CONFIG['imagemagick_path'] = 'C:/ImageMagick/convert.exe';
 } else {

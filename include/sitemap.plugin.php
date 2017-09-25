@@ -44,7 +44,7 @@ if (!function_exists('b_sitemap_APCal_base')) {
         if (!preg_match('/^(\D+)(\d*)$/', $moduleDirName, $regs)) {
             echo('invalid dirname: ' . htmlspecialchars($moduleDirName));
         }
-        $mydirnumber = $regs[2] === '' ? '' : (int)$regs[2];
+        $mydirnumber = '' === $regs[2] ? '' : (int)$regs[2];
 
         // setting physical & virtual paths
         $mod_path = XOOPS_ROOT_PATH . "/modules/$moduleDirName";

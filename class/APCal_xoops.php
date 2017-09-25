@@ -105,7 +105,7 @@ if (!class_exists('APCal_xoops')) {
             // day of week starting
             $first_day = $this->week_start ? 1 : 0;
 
-            if ($this->jscalendar === 'xoops') {
+            if ('xoops' === $this->jscalendar) {
                 $jstime = formatTimestamp($this->unixtime, 'F j Y, H:i:s');
 
                 if ($this->week_start) {
@@ -176,15 +176,15 @@ if (!class_exists('APCal_xoops')) {
             $poster = new XoopsUser($uid);
 
             // check if invalid uid
-            if ($poster->uname() === '') {
+            if ('' === $poster->uname()) {
                 return '';
             }
 
-            if ($this->nameoruname === 'uname') {
+            if ('uname' === $this->nameoruname) {
                 $name = $poster->uname();
             } else {
                 $name = trim($poster->name());
-                if ($name === '') {
+                if ('' === $name) {
                     $name = $poster->uname();
                 }
             }
@@ -315,7 +315,7 @@ if (!class_exists('APCal_xoops')) {
             }
 
             // Private events
-            if ($event->class === 'PRIVATE') {
+            if ('PRIVATE' === $event->class) {
                 if ($event->groupid > 0) {
                     $memberHandler = xoops_getHandler('member');
                     $user_list     = $memberHandler->getUsersByGroup($event->groupid);
@@ -481,7 +481,7 @@ if (!class_exists('APCal_xoops')) {
             if ($for_coming) {
                 // �ֺ����ͽ��פΤߡ�����оݤ����ն����ǤϤʤ��������� (thx Chado)
                 $whr_term = "end>'$now'";
-            } elseif ($tzoffset == 0) {
+            } elseif (0 == $tzoffset) {
                 $whr_term = "end>'$now'";
             } else {
                 // ������������ϡ�allday�ˤ�äƾ��ʬ��
@@ -908,7 +908,7 @@ if (!class_exists('APCal_xoops')) {
                 // �Խ���ǽ���ɤ���
                 $editable = ($this->isadmin || $event->uid == $this->user_id && $this->editable);
                 // �Խ���ǽ�Ǥʤ�̤��ǧ�쥳���ɤ�ɽ�����ʤ�
-                if (!$editable && $event->admission == 0) {
+                if (!$editable && 0 == $event->admission) {
                     continue;
                 }
 
@@ -988,7 +988,7 @@ if (!class_exists('APCal_xoops')) {
             $tpl->assign('WEEKLYVIEW', $this->make_cal_link($get_target, 'Weekly', $this->now_cid, $this->caldate));
             $tpl->assign('DAILYVIEW', $this->make_cal_link($get_target, 'Daily', $this->now_cid, $this->caldate));
             $tpl->assign('isAdmin', $this->isadmin);
-            $tpl->assign('showSubmitter', $this->nameoruname !== 'none');
+            $tpl->assign('showSubmitter', 'none' !== $this->nameoruname);
 
             return true;
         }
@@ -1101,11 +1101,11 @@ if (!class_exists('APCal_xoops')) {
             // Loop of weeknames
             $daynames = [];
             for ($wday = $this->week_start; $wday < $wday_end; ++$wday) {
-                if ($wday % 7 == 0) {
+                if (0 == $wday % 7) {
                     //  Sunday
                     $bgcolor = $this->sunday_bgcolor;
                     $color   = $this->sunday_color;
-                } elseif ($wday == 6) {
+                } elseif (6 == $wday) {
                     //  Saturday
                     $bgcolor = $this->saturday_bgcolor;
                     $color   = $this->saturday_color;
@@ -1161,11 +1161,11 @@ if (!class_exists('APCal_xoops')) {
                         // Holiday
                         $bgcolor = $this->holiday_bgcolor;
                         $color   = $this->holiday_color;
-                    } elseif ($wday % 7 == 0) {
+                    } elseif (0 == $wday % 7) {
                         // Sunday
                         $bgcolor = $this->sunday_bgcolor;
                         $color   = $this->sunday_color;
-                    } elseif ($wday == 6) {
+                    } elseif (6 == $wday) {
                         // Saturday
                         $bgcolor = $this->saturday_bgcolor;
                         $color   = $this->saturday_color;

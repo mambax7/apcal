@@ -168,7 +168,7 @@ $moduleDirName = basename(dirname(__DIR__));
 if (!preg_match('/^(\D+)(\d*)$/', $moduleDirName, $regs)) {
     echo('invalid dirname: ' . htmlspecialchars($moduleDirName));
 }
-$mydirnumber = $regs[2] === '' ? '' : (int)$regs[2];
+$mydirnumber = '' === $regs[2] ? '' : (int)$regs[2];
 
 //require_once XOOPS_ROOT_PATH . "/modules/$moduleDirName/include/gtickets.php";
 
@@ -202,7 +202,7 @@ $cattree      = new XoopsTree($cal->cat_table, 'cid', 'pid');
 $gpermHandler = xoops_getHandler('groupperm');
 
 // データベース更新などがからむ処理
-if ($action === 'insert') {
+if ('insert' === $action) {
 
     // Ticket Check
     if (!$GLOBALS['xoopsSecurity']->check()) {
@@ -229,7 +229,7 @@ if ($action === 'insert') {
     $mes = urlencode(_AM_APCAL_MB_CAT_INSERTED);
     $cal->redirect("done=inserted&mes=$mes");
     exit;
-} elseif ($action === 'update' && $_POST['cid'] > 0) {
+} elseif ('update' === $action && $_POST['cid'] > 0) {
 
     // Ticket Check
     if (!$GLOBALS['xoopsSecurity']->check()) {
@@ -331,14 +331,14 @@ if ($action === 'insert') {
 xoops_cp_header();
 $adminObject->displayNavigation(basename(__FILE__));
 // 表示処理の振り分け
-if ($disp === 'edit' && $cid > 0) {
+if ('edit' === $disp && $cid > 0) {
 
     // ����оݥ��ƥ��꡼�ǡ����μ���
     $sql = "SELECT *,UNIX_TIMESTAMP(dtstamp) AS udtstamp FROM $cal->cat_table WHERE cid='$cid'";
     $crs = $GLOBALS['xoopsDB']->query($sql);
     $cat = $GLOBALS['xoopsDB']->fetchObject($crs);
     display_edit_form($cat, _AM_APCAL_MENU_CAT_EDIT, 'update');
-} elseif ($disp === 'new') {
+} elseif ('new' === $disp) {
 
     // ��������Ʊ�����Υ��֥������Ȥ��Ѱ�
 
@@ -390,7 +390,7 @@ if ($disp === 'edit' && $cid > 0) {
     // �ꥹ�Ƚ�����
     $oddeven = 'odd';
     foreach ($cat_tree_array as $cat_node) {
-        $oddeven = ($oddeven === 'odd' ? 'even' : 'odd');
+        $oddeven = ('odd' === $oddeven ? 'even' : 'odd');
         extract($cat_node);
 
         $prefix         = str_replace('.', '&nbsp;--', substr($prefix, 1));
