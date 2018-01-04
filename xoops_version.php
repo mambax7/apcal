@@ -18,6 +18,7 @@
  * @author       Antiques Promotion (http://www.antiquespromotion.ca)
  * @author       GIJ=CHECKMATE (PEAK Corp. http://www.peak.ne.jp/)
  */
+include __DIR__ . '/preloads/autoloader.php';
 
 defined('XOOPS_ROOT_PATH') || exit('Restricted access.');
 $moduleDirName = basename(__DIR__);
@@ -31,7 +32,7 @@ if (isset($_GET['fct']) && 'preferences' === $_GET['fct']) {
     echo '<script type="text/javascript">var xoops_url = \'' . XOOPS_URL . '\';</script>';
     echo '<script src="' . XOOPS_URL . '/modules/' . $moduleDirName . '/assets/images/prefs.js"></script>';
 }
-$localesdir  = scandir(XOOPS_ROOT_PATH . '/modules/' . $moduleDirName . '/locales');
+$localesdir  = scandir(XOOPS_ROOT_PATH . '/modules/' . $moduleDirName . '/locales', SCANDIR_SORT_NONE);
 $locales[''] = '';
 foreach ($localesdir as $locale) {
     if ('.php' === substr($locale, -4, 4)) {

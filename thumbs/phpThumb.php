@@ -378,8 +378,8 @@ if (isset($_GET['phpThumbDebug']) && ('2' == $_GET['phpThumbDebug'])) {
 }
 ////////////////////////////////////////////////////////////////
 
-$PHPTHUMB_DEFAULTS_DISABLEGETPARAMS = (bool)($phpThumb->config_cache_default_only_suffix
-                                             && (false !== strpos($phpThumb->config_cache_default_only_suffix, '*')));
+$PHPTHUMB_DEFAULTS_DISABLEGETPARAMS = ($phpThumb->config_cache_default_only_suffix
+                                       && (false !== strpos($phpThumb->config_cache_default_only_suffix, '*')));
 
 // deprecated: 'err', 'file', 'goto',
 $allowedGETparameters = [

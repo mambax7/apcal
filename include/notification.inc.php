@@ -44,7 +44,7 @@ function apcal' . $mydirnumber . '_notify_iteminfo($not_category, $item_id)
     }
     $mod_url = XOOPS_URL . "/modules/" . $module->getVar("dirname") ;
 
-    $myts = MyTextSanitizer::getInstance();
+    $myts = \MyTextSanitizer::getInstance();
 
     if ($not_category=="global") {
         $item["name"] = "";

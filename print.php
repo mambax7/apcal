@@ -55,20 +55,22 @@ $cal->images_url  = "$mod_url/assets/images/$skin_folder";
 $cal->images_path = "$mod_path/assets/images/$skin_folder";
 
 // Include our module's language file
-if (file_exists(XOOPS_ROOT_PATH . '/modules/' . $xoopsModule->dirname() . '/language/' . $xoopsConfig['language'] . '/main.php')) {
-    require_once XOOPS_ROOT_PATH . '/modules/' . $xoopsModule->dirname() . '/language/' . $xoopsConfig['language'] . '/main.php';
-    require_once XOOPS_ROOT_PATH . '/modules/' . $xoopsModule->dirname() . '/language/' . $xoopsConfig['language'] . '/modinfo.php';
-} else {
-    require_once XOOPS_ROOT_PATH . '/modules/' . $xoopsModule->dirname() . '/language/english/main.php';
-    require_once XOOPS_ROOT_PATH . '/modules/' . $xoopsModule->dirname() . '/language/english/modinfo.php';
-}
+//if (file_exists(XOOPS_ROOT_PATH . '/modules/' . $xoopsModule->dirname() . '/language/' . $xoopsConfig['language'] . '/main.php')) {
+//    require_once XOOPS_ROOT_PATH . '/modules/' . $xoopsModule->dirname() . '/language/' . $xoopsConfig['language'] . '/main.php';
+//    require_once XOOPS_ROOT_PATH . '/modules/' . $xoopsModule->dirname() . '/language/' . $xoopsConfig['language'] . '/modinfo.php';
+//} else {
+//    require_once XOOPS_ROOT_PATH . '/modules/' . $xoopsModule->dirname() . '/language/english/main.php';
+//    require_once XOOPS_ROOT_PATH . '/modules/' . $xoopsModule->dirname() . '/language/english/modinfo.php';
+//}
+xoops_loadLanguage('main', basename(__DIR__));
+xoops_loadLanguage('modinfo', basename(__DIR__));
 
-$myts = MyTextSanitizer::getInstance();
+$myts = \MyTextSanitizer::getInstance();
 
 header('Content-Type:text/html; charset=' . _CHARSET);
 $tpl = new XoopsTpl();
 $tpl->xoops_setTemplateDir(XOOPS_ROOT_PATH . '/themes');
-$tpl->xoops_setCaching(2);
+$tpl->caching=(2);
 $tpl->xoops_setCacheTime(0);
 
 $tpl->assign('for_print', true);

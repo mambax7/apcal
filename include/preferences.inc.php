@@ -51,9 +51,10 @@ if (!is_object($xoopsUser) || !is_object($xoopsModule) || !$xoopsUser->isAdmin($
         /** @var XoopsModuleHandler $moduleHandler */
         $moduleHandler = xoops_getHandler('module');
         $module        = $moduleHandler->get($mod);
-        if (file_exists(XOOPS_ROOT_PATH . '/modules/' . $module->getVar('dirname') . '/language/' . $xoopsConfig['language'] . '/modinfo.php')) {
-            require_once XOOPS_ROOT_PATH . '/modules/' . $module->getVar('dirname') . '/language/' . $xoopsConfig['language'] . '/modinfo.php';
-        }
+//        if (file_exists(XOOPS_ROOT_PATH . '/modules/' . $module->getVar('dirname') . '/language/' . $xoopsConfig['language'] . '/modinfo.php')) {
+//            require_once XOOPS_ROOT_PATH . '/modules/' . $module->getVar('dirname') . '/language/' . $xoopsConfig['language'] . '/modinfo.php';
+//        }
+        xoops_loadLanguage('modinfo', basename(dirname(__DIR__)));
 
         // if has comments feature, need comment lang file
         if (1 == $module->getVar('hascomments')) {
@@ -77,7 +78,7 @@ if (!is_object($xoopsUser) || !is_object($xoopsModule) || !$xoopsUser->isAdmin($
             $title      = ''; // GIJ
             switch ($config[$i]->getVar('conf_formtype')) {
                 case 'textarea':
-                    $myts = MyTextSanitizer::getInstance();
+                    $myts = \MyTextSanitizer::getInstance();
                     if ('array' === $config[$i]->getVar('conf_valuetype')) {
                         // this is exceptional.. only when value type is arrayneed a smarter way for this
                         $ele = ('' !== $config[$i]->getVar('conf_value')) ? new XoopsFormTextArea($title, $config[$i]->getVar('conf_name'), $myts->htmlspecialchars(implode('|', $config[$i]->getConfValueForOutput())), 5, 50) : new XoopsFormTextArea($title, $config[$i]->getVar('conf_name'), '', 5, 50);
@@ -126,16 +127,16 @@ if (!is_object($xoopsUser) || !is_object($xoopsModule) || !$xoopsUser->isAdmin($
                     $ele = new XoopsFormSelectUser($title, $config[$i]->getVar('conf_name'), false, $config[$i]->getConfValueForOutput(), 5, true);
                     break;
                 case 'password':
-                    $myts = MyTextSanitizer::getInstance();
+                    $myts = \MyTextSanitizer::getInstance();
                     $ele  = new XoopsFormPassword($title, $config[$i]->getVar('conf_name'), 50, 255, $myts->htmlspecialchars($config[$i]->getConfValueForOutput()));
                     break;
                 case 'color':
-                    $myts = MyTextSanitizer::getInstance();
+                    $myts = \MyTextSanitizer::getInstance();
                     $ele  = new XoopsFormColorPicker($title, $config[$i]->getVar('conf_name'), $myts->htmlspecialchars($config[$i]->getConfValueForOutput()));
                     break;
                 case 'textbox':
                 default:
-                    $myts = MyTextSanitizer::getInstance();
+                    $myts = \MyTextSanitizer::getInstance();
                     $ele  = new XoopsFormText($title, $config[$i]->getVar('conf_name'), 50, 255, $myts->htmlspecialchars($config[$i]->getConfValueForOutput()));
                     break;
             }

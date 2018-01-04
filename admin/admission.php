@@ -225,7 +225,7 @@ echo '<h4 xmlns="http://www.w3.org/1999/html">' . _AM_APCAL_ADMISSION . "</h4>
 ";
 
 // �ꥹ�Ƚ�����
-$myts    = MyTextSanitizer::getInstance();
+$myts    = \MyTextSanitizer::getInstance();
 $oddeven = 'odd';
 while ($event = $GLOBALS['xoopsDB']->fetchObject($rs)) {
     $oddeven = ('odd' === $oddeven ? 'even' : 'odd');

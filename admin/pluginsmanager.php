@@ -58,7 +58,7 @@ $cal->images_url  = "$mod_url/assets/images/$skin_folder";
 $cal->images_path = "$mod_path/assets/images/$skin_folder";
 
 // XOOPS´ØÏ¢¤Î½é´ü²½
-$myts = MyTextSanitizer::getInstance();
+$myts = \MyTextSanitizer::getInstance();
 
 // get block instances of minicalex
 $mcx_blocks = [];

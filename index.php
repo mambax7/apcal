@@ -315,8 +315,8 @@ if ('View' === $action) {
         $tpl->assign('GMzoom', $cal->gmzoom);
         $tpl->assign('GMheight', $cal->gmheight . 'px');
         $tpl->assign('GMPoints', $cal->gmPoints);
-        $moduleHelper = Xmf\Module\Helper::getHelper($moduleDirName);
-        $tpl->assign('api_key', $moduleHelper->getConfig('apcal_mapsapi'));
+        $helper = Xmf\Module\Helper::getHelper($moduleDirName);
+        $tpl->assign('api_key', $helper->getConfig('apcal_mapsapi'));
         if ('List' === $smode) {
             $xoopsTpl->assign('map', $tpl->fetch(XOOPS_ROOT_PATH . '/modules/apcal/templates/apcal_googlemap.tpl'));
         } else {

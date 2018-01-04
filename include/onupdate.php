@@ -46,22 +46,15 @@ function tableExists($tablename)
  */
 function xoops_module_pre_update_apcal(XoopsModule $module)
 {
+    /** @var Apcal\Helper $helper */
+    /** @var Apcal\Utility $utility */
     $moduleDirName = basename(dirname(__DIR__));
-    $utilityClass  = ucfirst($moduleDirName) . 'Utility';
-    if (!class_exists($utilityClass)) {
-        xoops_load('utility', $moduleDirName);
-    }
-    //check for minimum XOOPS version
-    if (!$utilityClass::checkVerXoops($module)) {
-        return false;
-    }
+    $helper       = Apcal\Helper::getInstance();
+    $utility      = new Apcal\Utility();
 
-    // check for minimum PHP version
-    if (!$utilityClass::checkVerPhp($module)) {
-        return false;
-    }
-
-    return true;
+    $xoopsSuccess = $utility::checkVerXoops($module);
+    $phpSuccess   = $utility::checkVerPhp($module);
+    return $xoopsSuccess && $phpSuccess;
 }
 
 function xoops_module_update_apcal(XoopsModule $module)
@@ -69,6 +62,14 @@ function xoops_module_update_apcal(XoopsModule $module)
     //    global $xoopsDB;
     $moduleDirName = basename(dirname(__DIR__));
     $capsDirName   = strtoupper($moduleDirName);
+
+    /** @var Apcal\Helper $helper */
+    /** @var Apcal\Utility $utility */
+    /** @var Apcal\Configurator $configurator */
+    $helper  = Apcal\Helper::getInstance();
+    $utility = new Apcal\Utility();
+    $configurator = new Apcal\Configurator();
+
 
     if (!$GLOBALS['xoopsDB']->queryF("SELECT shortsummary FROM {$GLOBALS['xoopsDB']->prefix('apcal_event')}")) {
         if ($GLOBALS['xoopsDB']->queryF("ALTER TABLE {$GLOBALS['xoopsDB']->prefix('apcal_event')} ADD shortsummary VARCHAR(255) AFTER groupid")) {

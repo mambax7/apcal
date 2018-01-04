@@ -30,7 +30,7 @@ $xoops_system_path = XOOPS_ROOT_PATH . '/modules/system';
 
 // initials
 $db   = XoopsDatabaseFactory::getDatabaseConnection();
-$myts = MyTextSanitizer::getInstance();
+$myts = \MyTextSanitizer::getInstance();
 
 // determine language
 $language = $xoopsConfig['language'];

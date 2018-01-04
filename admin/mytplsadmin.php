@@ -26,7 +26,7 @@ require_once XOOPS_ROOT_PATH . '/class/template.php';
 // initials
 $xoops_system_path = XOOPS_ROOT_PATH . '/modules/system';
 $db                = XoopsDatabaseFactory::getDatabaseConnection();
-$myts              = MyTextSanitizer::getInstance();
+$myts              = \MyTextSanitizer::getInstance();
 
 // determine language
 $language = $xoopsConfig['language'];

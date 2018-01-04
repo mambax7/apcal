@@ -313,7 +313,7 @@ echo '
 ";
 
 // �ꥹ�Ƚ�����
-$myts    = MyTextSanitizer::getInstance();
+$myts    = \MyTextSanitizer::getInstance();
 $oddeven = 'odd';
 while ($event = $GLOBALS['xoopsDB']->fetchObject($rs)) {
     $oddeven = ('odd' === $oddeven ? 'even' : 'odd');

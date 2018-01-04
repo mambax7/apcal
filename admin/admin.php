@@ -54,11 +54,12 @@ $error = false;
 if (0 != $admintest) {
     if (isset($fct) && '' !== $fct) {
         if (file_exists(XOOPS_ROOT_PATH . '/modules/system/admin/' . $fct . '/xoops_version.php')) {
-            if (file_exists(XOOPS_ROOT_PATH . '/modules/system/language/' . $xoopsConfig['language'] . '/admin.php')) {
-                include XOOPS_ROOT_PATH . '/modules/system/language/' . $xoopsConfig['language'] . '/admin.php';
-            } else {
-                include XOOPS_ROOT_PATH . '/modules/system/language/english/admin.php';
-            }
+//            if (file_exists(XOOPS_ROOT_PATH . '/modules/system/language/' . $xoopsConfig['language'] . '/admin.php')) {
+//                include XOOPS_ROOT_PATH . '/modules/system/language/' . $xoopsConfig['language'] . '/admin.php';
+//            } else {
+//                include XOOPS_ROOT_PATH . '/modules/system/language/english/admin.php';
+//            }
+            xoops_loadLanguage('admin', 'system');
 
             if (file_exists(XOOPS_ROOT_PATH . '/modules/system/language/' . $xoopsConfig['language'] . '/admin/' . $fct . '.php')) {
                 include XOOPS_ROOT_PATH . '/modules/system/language/' . $xoopsConfig['language'] . '/admin/' . $fct . '.php';

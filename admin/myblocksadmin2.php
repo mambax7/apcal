@@ -89,7 +89,7 @@ function list_blockinstances()
 {
     global $query4redirect, $block_arr;
 
-    $myts = MyTextSanitizer::getInstance();
+    $myts = \MyTextSanitizer::getInstance();
 
     // cachetime options
     $cachetimes = [

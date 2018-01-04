@@ -59,10 +59,7 @@ if (!defined('APCAL_BLOCK_MAP_INCLUDED')) {
 
         $cal->get_monthly_html("$mod_url");
 
-        if (false !== ($moduleHelper = Xmf\Module\Helper::getHelper($moduleDirName))) {
-        } else {
-            $moduleHelper = Xmf\Module\Helper::getHelper('system');
-        }
+        $helper = \Xmf\Module\Helper::getHelper($moduleDirName);
 
         $block = [];
         if (is_array($cal->gmPoints) && !empty($cal->gmPoints)) {
@@ -72,7 +69,7 @@ if (!defined('APCAL_BLOCK_MAP_INCLUDED')) {
             $tpl->assign('GMzoom', $cal->gmzoom);
             $tpl->assign('GMheight', $cal->gmheight . 'px');
             $tpl->assign('GMPoints', $cal->gmPoints);
-            $tpl->assign('api_key', $moduleHelper->getConfig('apcal_mapsapi'));
+            $tpl->assign('api_key', $helper->getConfig('apcal_mapsapi'));
             $block['map'] = $tpl->fetch(XOOPS_ROOT_PATH . '/modules/apcal/templates/apcal_googlemap.tpl');
         }
 

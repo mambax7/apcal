@@ -242,7 +242,7 @@ echo '
 ";
 
 // �ꥹ�Ƚ�����
-$myts    = MyTextSanitizer::getInstance();
+$myts    = \MyTextSanitizer::getInstance();
 $oddeven = 'odd';
 $count   = 0;
 while ($event = $GLOBALS['xoopsDB']->fetchObject($rs)) {

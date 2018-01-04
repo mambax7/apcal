@@ -42,16 +42,16 @@
         if (t == 'custom') {
             container.innerHTML =
                     '<textarea style="width: 100%; height: 200px;">'
-                    + '&lt;script type="text/javascript" id="APScript" src="' + src + '"&gt;&lt;/script&gt;' + "\r\n"
-                    + '&lt;script type="text/javascript"&gt;' + "\r\n"
+                    + '&lt;script type="text/javascript" id="APScript" src="' + src + '">&lt;/script>' + "\r\n"
+                    + '&lt;script type="text/javascript">' + "\r\n"
                     + '    var APborder = "' + document.custom.APborder.value + '";' + "\r\n"
                     + '    var APtitle = "' + document.custom.APtitle.value + '";' + "\r\n"
                     + '    var APtext = "' + document.custom.APtext.value + '";' + "\r\n"
                     + '    var APlink = "' + document.custom.APlink.value + '";' + "\r\n"
                     + '    var APeven = "' + document.custom.APeven.value + '";' + "\r\n"
                     + '    var APodd = "' + document.custom.APodd.value + '";' + "\r\n"
-                    + '&lt;/script&gt;' + "\r\n"
-                    + '&lt;div id="APContainer"&gt;&lt;/div&gt;'
+                    + '&lt;/script>' + "\r\n"
+                    + '&lt;div id="APContainer">&lt;/div>'
                     + '</textarea>';
             APborder = document.custom.APborder.value;
             APtitle = document.custom.APtitle.value;
@@ -63,8 +63,8 @@
         else {
             container.innerHTML =
                     '<textarea style="width: 100%; height: 100px;">'
-                    + '&lt;script type="text/javascript" id="APScript" src="' + src + '"&gt;&lt;/script&gt;' + "\r\n"
-                    + '&lt;div id="APContainer"&gt;&lt;/div&gt;'
+                    + '&lt;script type="text/javascript" id="APScript" src="' + src + '">&lt;/script>' + "\r\n"
+                    + '&lt;div id="APContainer">&lt;/div>'
                     + '</textarea>';
         }
         getEvents();

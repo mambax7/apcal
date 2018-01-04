@@ -130,7 +130,7 @@ if (!defined('APCAL_BLOCK_MINICAL_EX')) {
         }
 
         // MyTextSanitizer
-        $myts = MyTextSanitizer::getInstance();
+        $myts = \MyTextSanitizer::getInstance();
 
         // setting physical & virtual paths
         $mod_path = XOOPS_ROOT_PATH . "/modules/$moduleDirName";

@@ -54,7 +54,7 @@ if (!empty($_POST['submit'])) {
 }
 
 // creating Objects of XOOPS
-$myts    = MyTextSanitizer::getInstance();
+$myts    = \MyTextSanitizer::getInstance();
 $cattree = new XoopsTree($cat_table, 'cid', 'pid');
 $form    = new MyXoopsGroupPermForm(_AM_APCAL_MENU_CAT2GROUP, $xoopsModule->mid(), 'apcal_cat', _AM_APCAL_CAT2GROUPDESC);
 

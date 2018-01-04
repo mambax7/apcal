@@ -197,7 +197,7 @@ $cal->images_url  = "$mod_url/assets/images/$skin_folder";
 $cal->images_path = "$mod_path/assets/images/$skin_folder";
 
 // XOOPS関連の初期化
-$myts         = MyTextSanitizer::getInstance();
+$myts         = \MyTextSanitizer::getInstance();
 $cattree      = new XoopsTree($cal->cat_table, 'cid', 'pid');
 $gpermHandler = xoops_getHandler('groupperm');
 
@@ -272,7 +272,7 @@ if ('insert' === $action) {
     // xoops_groupperm_deletebymoditem( $xoopsModule->mid() , 'apcal_cat' , $cid ) ;
     $criteria = new CriteriaCompo(new Criteria('gperm_modid', $xoopsModule->mid()));
     $criteria->add(new Criteria('gperm_name', 'apcal_cat'));
-    $criteria->add(new Criteria('gperm_itemid', (int)$cid));
+    $criteria->add(new Criteria('gperm_itemid', $cid));
     $gpermHandler->deleteAll($criteria);
 
     // Category Notify の削除
@@ -395,7 +395,7 @@ if ('edit' === $disp && $cid > 0) {
 
         $prefix         = str_replace('.', '&nbsp;--', substr($prefix, 1));
         $enable_checked = $enabled ? 'checked' : '';
-        $cid            = (int)$cid;
+        $cid            = $cid;
         $cat_title      = $myts->htmlSpecialChars($cat_title);
         $del_confirm    = 'confirm("' . sprintf(_AM_APCAL_FMT_CATDELCONFIRM, $cat_title) . '")';
         echo "

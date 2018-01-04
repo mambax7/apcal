@@ -1707,7 +1707,7 @@ if (!class_exists('APCal')) {
             $plugin_returns = [];
             if ('apcal_xoops' === strtolower(get_class($this))) {
                 $db       = XoopsDatabaseFactory::getDatabaseConnection();
-                $myts     = MyTextSanitizer::getInstance();
+                $myts     = \MyTextSanitizer::getInstance();
                 $now      = time();
                 $just1gif = 0;
 
@@ -1990,7 +1990,7 @@ if (!class_exists('APCal')) {
             $plugin_returns = [];
             if ('apcal_xoops' === strtolower(get_class($this))) {
                 $db       = XoopsDatabaseFactory::getDatabaseConnection();
-                $myts     = MyTextSanitizer::getInstance();
+                $myts     = \MyTextSanitizer::getInstance();
                 $now      = time();
                 $just1gif = 0;
 

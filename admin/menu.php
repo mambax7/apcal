@@ -19,18 +19,14 @@
  * @author       GIJ=CHECKMATE (PEAK Corp. http://www.peak.ne.jp/)
  */
 
-$moduleDirName = basename(dirname(__DIR__));
+use XoopsModules\Apcal;
 
-if (false !== ($moduleHelper = Xmf\Module\Helper::getHelper($moduleDirName))) {
-} else {
-    $moduleHelper = Xmf\Module\Helper::getHelper('system');
-}
-
+require_once __DIR__ . '/../class/Helper.php';
+//require_once __DIR__ . '/../include/common.php';
+$helper = Apcal\Helper::getInstance();
 
 $pathIcon32 = \Xmf\Module\Admin::menuIconPath('');
-//$pathModIcon32 = $moduleHelper->getModule()->getInfo('modicons32');
-
-$moduleHelper->loadLanguage('modinfo');
+$pathModIcon32 = $helper->getModule()->getInfo('modicons32');
 
 
 $adminmenu[] = [
@@ -102,7 +98,7 @@ $adminmenu[] = [
 
 
 $adminmenu[] = [
-    'title' => _AM_MODULEADMIN_ABOUT,
+    'title' => _MI_APCAL_ABOUT,
     'link'  => 'admin/about.php',
     'icon'  => $pathIcon32 . '/about.png'
 ];

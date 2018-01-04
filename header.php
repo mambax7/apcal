@@ -20,17 +20,13 @@
 include XOOPS_ROOT_PATH . '/header.php';
 
 $moduleDirName = basename((__DIR__));
-
-if (false !== ($moduleHelper = Xmf\Module\Helper::getHelper($moduleDirName))) {
-} else {
-    $moduleHelper = Xmf\Module\Helper::getHelper('system');
-}
+$helper = \Xmf\Module\Helper::getHelper($moduleDirName);
 
 if (!isset($GLOBALS['xoopsTpl']) || !($GLOBALS['xoopsTpl'] instanceof XoopsTpl)) {
     require_once $GLOBALS['xoops']->path('class/template.php');
     $xoopsTpl = new XoopsTpl();
 }
 
-$GLOBALS['xoopsTpl']->assign('api_key', $moduleHelper->getConfig('apcal_mapsapi'));
+$GLOBALS['xoopsTpl']->assign('api_key', $helper->getConfig('apcal_mapsapi'));
 
-$skin_folder = $moduleHelper->getConfig('skin_folder');
+$skin_folder = $helper->getConfig('skin_folder');

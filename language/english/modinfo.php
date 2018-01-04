@@ -197,4 +197,7 @@ if (defined('FOR_XOOPS_LANG_CHECKER') || !defined('_MI_APCAL_APCALLOADED')) {
     //Google Maps API Key
     define('_MI_APCAL_GMAPS_API', 'Paste your Google Maps API key for http://www.yoursite.com/ here.');
     define('_MI_APCAL_GMAPS_API_DESC', 'Get keys from <a href="https://developers.google.com/maps/documentation/javascript/get-api-key/">https://developers.google.com/maps/documentation/javascript/get-api-key/</a>');
+
+    define('_MI_APCAL_HOME', 'Home');
+    define('_MI_APCAL_ABOUT', 'About');
 }

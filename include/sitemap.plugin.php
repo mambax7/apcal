@@ -38,7 +38,7 @@ if (!function_exists('b_sitemap_APCal_base')) {
     function b_sitemap_APCal_base($moduleDirName)
     {
         global $xoopsConfig, $xoopsDB, $xoopsUser;
-        $myts = MyTextSanitizer::getInstance();
+        $myts = \MyTextSanitizer::getInstance();
 
         // get $mydirnumber
         if (!preg_match('/^(\D+)(\d*)$/', $moduleDirName, $regs)) {

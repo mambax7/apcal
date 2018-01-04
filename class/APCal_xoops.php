@@ -32,8 +32,8 @@ if (!class_exists('APCal_xoops')) {
         public function textarea_sanitizer_for_sql($data)
         {
             //  preventing double-addslashes()
-            //  $myts = MyTextSanitizer::getInstance();
-            //  return $myts->makeTareaData4Save($data);
+            //  $myts = \MyTextSanitizer::getInstance();
+            //  return $myts->addSlashes($data);
             return $data;
         }
 
@@ -43,7 +43,7 @@ if (!class_exists('APCal_xoops')) {
          */
         public function textarea_sanitizer_for_show($data)
         {
-            $myts = MyTextSanitizer::getInstance();
+            $myts = \MyTextSanitizer::getInstance();
 
             return $myts->displayTarea($data);
         }
@@ -54,7 +54,7 @@ if (!class_exists('APCal_xoops')) {
          */
         public function textarea_sanitizer_for_edit($data)
         {
-            $myts = MyTextSanitizer::getInstance();
+            $myts = \MyTextSanitizer::getInstance();
 
             return $myts->htmlSpecialChars($data);
         }
@@ -65,7 +65,7 @@ if (!class_exists('APCal_xoops')) {
          */
         public function textarea_sanitizer_for_export_ics($data)
         {
-            $myts = MyTextSanitizer::getInstance();
+            $myts = \MyTextSanitizer::getInstance();
 
             return $myts->displayTarea($data);
         }
@@ -76,7 +76,7 @@ if (!class_exists('APCal_xoops')) {
          */
         public function text_sanitizer_for_show($data)
         {
-            $myts = MyTextSanitizer::getInstance();
+            $myts = \MyTextSanitizer::getInstance();
 
             return $myts->htmlSpecialChars($data);
         }
@@ -87,7 +87,7 @@ if (!class_exists('APCal_xoops')) {
          */
         public function text_sanitizer_for_edit($data)
         {
-            $myts = MyTextSanitizer::getInstance();
+            $myts = \MyTextSanitizer::getInstance();
 
             return $myts->htmlSpecialChars($data);
         }
@@ -256,7 +256,7 @@ if (!class_exists('APCal_xoops')) {
 
             $ret     = [];
             $context = '';
-            $myts    = MyTextSanitizer::getInstance();
+            $myts    = \MyTextSanitizer::getInstance();
             while ($event = $GLOBALS['xoopsDB']->fetchObject($rs)) {
                 if (isset($event->start_date)) {
                     $start_str = $event->start_date;
@@ -1066,7 +1066,7 @@ if (!class_exists('APCal_xoops')) {
         public function get_minical_ex($gifaday = 2, $just1gif = 0, $plugins = [])
         {
             $db   = XoopsDatabaseFactory::getDatabaseConnection();
-            $myts = MyTextSanitizer::getInstance();
+            $myts = \MyTextSanitizer::getInstance();
 
             $tzoffset_s2u = (int)(($this->user_TZ - $this->server_TZ) * 3600);
             $now          = time();
@@ -1212,7 +1212,7 @@ if (!class_exists('APCal_xoops')) {
             global $xoopsDB, $xoopsUser;
 
             // MyTextSanitizer
-            $myts = MyTextSanitizer::getInstance();
+            $myts = \MyTextSanitizer::getInstance();
 
             // allowed modules
             $modulepermHandler = xoops_getHandler('groupperm');

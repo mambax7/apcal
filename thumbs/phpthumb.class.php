@@ -246,7 +246,7 @@ class phpthumb
             $this->config_max_source_pixels = round($this->php_memory_limit * 0.20); // 20% of memory_limit
         }
 
-        $this->iswindows            = (bool)('WIN' == strtoupper(substr(PHP_OS, 0, 3)));
+        $this->iswindows            = ('WIN' == strtoupper(substr(PHP_OS, 0, 3)));
         $this->issafemode           = (bool)preg_match('#(1|ON)#i', ini_get('safe_mode'));
         $this->config_document_root = (!empty($_SERVER['DOCUMENT_ROOT']) ? $_SERVER['DOCUMENT_ROOT'] : $this->config_document_root);
         $this->config_cache_prefix  = (isset($_SERVER['SERVER_NAME']) ? $_SERVER['SERVER_NAME'] . '_' : '');
@@ -2017,7 +2017,7 @@ class phpthumb
                                                  && ((int)$this->h > 0)) ? '!' : '');
                         if ($IMuseExplicitImageOutputDimensions) {
                             // unknown source aspect ratio, just put large number and hope IM figures it out
-                            $commandline .= ' -' . $IMresizeParameter . ' ' . phpthumb_functions::escapeshellarg_replacement(($this->w ?: '9999') . 'x' . ($this->h ? $this->h : '9999') . $exactDimensionsBang);
+                            $commandline .= ' -' . $IMresizeParameter . ' ' . phpthumb_functions::escapeshellarg_replacement(($this->w ?: '9999') . 'x' . ($this->h ?: '9999') . $exactDimensionsBang);
                         } else {
                             $commandline .= ' -' . $IMresizeParameter . ' ' . phpthumb_functions::escapeshellarg_replacement($this->w . 'x' . $this->h . $exactDimensionsBang);
                         }
@@ -2124,7 +2124,7 @@ class phpthumb
                                 @list($amount, $color) = explode('|', $parameter);
                                 $amount = ($amount ?: 80);
                                 if (!$color) {
-                                    $commandline                    .= ' -sepia-tone ' . phpthumb_functions::escapeshellarg_replacement(min(max((int)$amount, 0), 100) . '%');
+                                    $commandline                    .= ' -sepia-tone ' . phpthumb_functions::escapeshellarg_replacement(min(max($amount, 0), 100) . '%');
                                     $successfullyProcessedFilters[] = $filterkey;
                                 }
                             }
@@ -2332,7 +2332,7 @@ class phpthumb
                                             $color = ((!empty($this->bc)
                                                        && phpthumb_functions::IsHexColor($this->bc)) ? $this->bc : '000000');
                                         }
-                                        $commandline .= ' -border ' . phpthumb_functions::escapeshellarg_replacement((int)$width);
+                                        $commandline .= ' -border ' . phpthumb_functions::escapeshellarg_replacement($width);
                                         $commandline .= ' -bordercolor ' . phpthumb_functions::escapeshellarg_replacement('#' . $color);
 
                                         if (preg_match('# \\-crop "([0-9]+)x([0-9]+)\\+0\\+0" #', $commandline, $matches)) {
@@ -3071,7 +3071,7 @@ class phpthumb
 
                     case 'over': // Overlay
                         @list($filename, $underlay, $margin, $opacity) = explode('|', $parameter, 4);
-                        $underlay = (bool)($underlay ?: false);
+                        $underlay = ($underlay ?: false);
                         $margin   = ((strlen($margin) > 0) ? $margin : ($underlay ? 0.1 : 0.0));
                         $opacity  = ((strlen($opacity) > 0) ? $opacity : 100);
                         if (($margin > 0) && ($margin < 1)) {
@@ -3161,8 +3161,8 @@ class phpthumb
                                     $phpthumbFilters->ImprovedImageRotate($img_watermark, $rotate_angle, 'FFFFFF', null, $this);
                                 }
                                 if (preg_match('#^([0-9\\.\\-]*)x([0-9\\.\\-]*)$#i', $alignment, $matches)) {
-                                    $watermark_max_width  = (int)($margin['x'] ?: imagesx($img_watermark));
-                                    $watermark_max_height = (int)($margin['y'] ?: imagesy($img_watermark));
+                                    $watermark_max_width  = ($margin['x'] ?: imagesx($img_watermark));
+                                    $watermark_max_height = ($margin['y'] ?: imagesy($img_watermark));
                                     $scale                = phpthumb_functions::ScaleToFitInBox(imagesx($img_watermark), imagesy($img_watermark), $watermark_max_width, $watermark_max_height, true, true);
                                     $this->DebugMessage('Scaling watermark by a factor of ' . number_format($scale, 4), __FILE__, __LINE__);
                                     if (($scale > 1) || ($scale < 1)) {
@@ -3856,10 +3856,10 @@ class phpthumb
         if ($this->php_memory_limit && function_exists('memory_get_usage')) {
             $available_memory = $this->php_memory_limit - memory_get_usage();
 
-            return (bool)(($width * $height * 5) > $available_memory);
+            return (($width * $height * 5) > $available_memory);
         }
 
-        return (bool)(($width * $height) > $this->config_max_source_pixels);
+        return (($width * $height) > $this->config_max_source_pixels);
     }
 
     /**
