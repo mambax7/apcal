@@ -1,4 +1,5 @@
-<?php
+<?php namespace XoopsModules\Apcal;
+
 /*
  * You may not change or alter any portion of this comment or credits
  * of supporting developers from this source code or any supporting source code
@@ -18,12 +19,12 @@
  * @author       GIJ=CHECKMATE (PEAK Corp. http://www.peak.ne.jp/)
  * @author       Antiques Promotion (http://www.antiquespromotion.ca)
  */
-class cssParser
+class CssParser
 {
     public $_css = '';
 
     /**
-     * cssParser constructor.
+     * CssParser constructor.
      * @param string $filename
      */
     public function __construct($filename = 'style.css')

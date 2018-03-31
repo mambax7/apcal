@@ -1,4 +1,5 @@
-<?php
+<?php namespace XoopsModules\Apcal;
+
 /*
  * You may not change or alter any portion of this comment or credits
  * of supporting developers from this source code or any supporting source code
@@ -173,7 +174,7 @@ if (!class_exists('APCal_xoops')) {
                 return _GUESTS;
             }
 
-            $poster = new XoopsUser($uid);
+            $poster = new \XoopsUser($uid);
 
             // check if invalid uid
             if ('' === $poster->uname()) {
@@ -712,8 +713,8 @@ if (!class_exists('APCal_xoops')) {
          */
         public function assign_event_list(&$tpl, $get_target = '')
         {
-            $pos = isset($_GET['pos']) ? (int)$_GET['pos'] : 0;
-            $num = isset($_GET['num']) ? (int)$_GET['num'] : 20;
+            $pos = \Xmf\Request::getInt('pos', 0, 'GET');
+            $num = \Xmf\Request::getInt('num', 20, 'GET');
 
             $roimage = XOOPS_URL . '/modules/apcal/assets/images/regonline/regonline.png'; // added by goffy: image for online registration
 
@@ -826,7 +827,7 @@ if (!class_exists('APCal_xoops')) {
 
             // �ڡ���ʬ�����
             require_once XOOPS_ROOT_PATH . '/class/pagenav.php';
-            $nav      = new XoopsPageNav($num_rows, $num, $pos, 'pos', "smode=List&amp;cid=$this->now_cid&amp;num=$num&amp;order=$order&amp;op=$op&amp;caldate=$this->caldate");
+            $nav      = new \XoopsPageNav($num_rows, $num, $pos, 'pos', "smode=List&amp;cid=$this->now_cid&amp;num=$num&amp;order=$order&amp;op=$op&amp;caldate=$this->caldate");
             $nav_html = $nav->renderNav(10);
             if ($num_rows <= 0) {
                 $nav_num_info = _NONE;
@@ -1065,7 +1066,7 @@ if (!class_exists('APCal_xoops')) {
          */
         public function get_minical_ex($gifaday = 2, $just1gif = 0, $plugins = [])
         {
-            $db   = XoopsDatabaseFactory::getDatabaseConnection();
+            $db   = \XoopsDatabaseFactory::getDatabaseConnection();
             $myts = \MyTextSanitizer::getInstance();
 
             $tzoffset_s2u = (int)(($this->user_TZ - $this->server_TZ) * 3600);
@@ -1222,7 +1223,7 @@ if (!class_exists('APCal_xoops')) {
             // plugins
             $plugins = [];
             $prs     = $GLOBALS['xoopsDB']->query("SELECT pi_title,pi_dirname AS dirname,pi_file AS file,pi_dotgif AS dotgif,pi_options AS options FROM $this->plugin_table WHERE pi_type='" . addslashes($type) . "' AND pi_enabled ORDER BY pi_weight");
-            while ($plugin = $GLOBALS['xoopsDB']->fetchArray($prs)) {
+            while (false !== ($plugin = $GLOBALS['xoopsDB']->fetchArray($prs))) {
                 $dirname4sql = addslashes($plugin['dirname']);
                 $mrs         = $GLOBALS['xoopsDB']->query('SELECT mid,name FROM ' . $GLOBALS['xoopsDB']->prefix('modules') . " WHERE dirname='$dirname4sql'");
                 if ($mrs && $GLOBALS['xoopsDB']->getRowsNum($mrs)) {

@@ -153,7 +153,7 @@ class Text_Diff_Renderer_inline extends Text_Diff_Renderer
         $diff = new Text_Diff($this->_splitOnWords($text1, $nl), $this->_splitOnWords($text2, $nl));
 
         /* Get the diff in inline format. */
-        $renderer = new Text_Diff_Renderer_inline(array_merge($this->getParams(), ['split_level' => 'words']));
+        $renderer = new self(array_merge($this->getParams(), ['split_level' => 'words']));
 
         /* Run the diff and get the output. */
 
@@ -187,6 +187,6 @@ class Text_Diff_Renderer_inline extends Text_Diff_Renderer
      */
     public function _encode(&$string)
     {
-        $string = htmlspecialchars($string);
+        $string = htmlspecialchars($string, ENT_QUOTES | ENT_HTML5);
     }
 }

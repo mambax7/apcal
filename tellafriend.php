@@ -30,9 +30,9 @@ if ($cal->enabletellafriend) {
         mail($_POST['to'], $_POST['subject'], $_POST['message'], $headers);
         echo '<script type="text/javascript">window.close();</script>';
     } else {
-        $captcha = new XoopsFormCaptcha('', 'xoopscaptcha');
+        $captcha = new \XoopsFormCaptcha('', 'xoopscaptcha');
 
-        $tpl = new XoopsTpl();
+        $tpl = new \XoopsTpl();
 
         $tpl->assign('title', $_GET['title']);
         $tpl->assign('url', $_GET['url']);

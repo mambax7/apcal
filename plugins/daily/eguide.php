@@ -18,7 +18,7 @@
  * @author       A plugin for eguide 1.6 by nobu
  */
 
-defined('XOOPS_ROOT_PATH') || exit('Restricted access.');
+defined('XOOPS_ROOT_PATH') || die('Restricted access');
 
 /*
     $db : db instance
@@ -43,7 +43,7 @@ $range_end_s   = mktime(0, 0, 0, $this->month, $this->date + 2, $this->year);
 // query
 $result = $db->query('SELECT title,eid,edate,summary FROM ' . $db->prefix('eguide') . " WHERE edate >= $range_start_s AND edate < $range_end_s AND expire > '$now'");
 
-while (list($title, $id, $server_time, $description) = $db->fetchRow($result)) {
+while (false !== (list($title, $id, $server_time, $description) = $db->fetchRow($result))) {
     $user_time = $server_time + $tzoffset_s2u;
     if (date('j', $user_time) != $this->date) {
         continue;

@@ -21,7 +21,7 @@ $starttime = array_sum(explode(' ', microtime())); // could be called as microti
 // this script relies on the superglobal arrays, fake it here for old PHP versions
 if (PHP_VERSION < '4.1.0') {
     $_SERVER = $HTTP_SERVER_VARS;
-    $_GET    = $HTTP_GET_VARS;
+    $_GET    = $_GET;
 }
 
 /**
@@ -190,7 +190,7 @@ if (empty($phpThumb->config_disable_pathinfo_parsing) && (empty($_GET) || isset(
     }
     for ($i = 0, $iMax = count($args) - 2; $i < $iMax; $i++) {
         @list($key, $value) = explode('=', @$args[$i]);
-        if ('[]' == substr($key, -2)) {
+        if ('[]' === substr($key, -2)) {
             $array_key_name          = substr($key, 0, -2);
             $_GET[$array_key_name][] = $value;
             $phpThumb->DebugMessage('PATH_INFO."' . $array_key_name . '[]" = "' . $value . '"', __FILE__, __LINE__);
@@ -294,7 +294,7 @@ if ($phpThumb->config_nohotlink_enabled
 }
 
 if ($phpThumb->config_mysql_query) {
-    if ('mysqli' == $phpThumb->config_mysql_extension) {
+    if ('mysqli' === $phpThumb->config_mysql_extension) {
         $found_missing_function = false;
         foreach (['mysqli_connect'] as $required_mysqli_function) {
             if (!function_exists($required_mysqli_function)) {
@@ -327,7 +327,7 @@ if ($phpThumb->config_mysql_query) {
             }
             unset($_GET['id']);
         }
-    } elseif ('mysql' == $phpThumb->config_mysql_extension) {
+    } elseif ('mysql' === $phpThumb->config_mysql_extension) {
         $found_missing_function = false;
         //foreach (array('mysql_connect', 'mysql_select_db', 'mysql_query', 'mysql_fetch_array', 'mysql_free_result', '$GLOBALS['xoopsDB']->close', 'mysql_error') as $required_mysql_function) {
         foreach (['mysql_connect'] as $required_mysql_function) {
@@ -421,7 +421,7 @@ $allowedGETparameters = [
     'nocache'
 ];
 foreach ($_GET as $key => $value) {
-    if (!empty($PHPTHUMB_DEFAULTS_DISABLEGETPARAMS) && ('src' != $key)) {
+    if (!empty($PHPTHUMB_DEFAULTS_DISABLEGETPARAMS) && ('src' !== $key)) {
         // disabled, do not set parameter
         $phpThumb->DebugMessage('ignoring $_GET[' . $key . '] because of $PHPTHUMB_DEFAULTS_DISABLEGETPARAMS', __FILE__, __LINE__);
     } elseif (in_array($key, $allowedGETparameters)) {

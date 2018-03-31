@@ -17,14 +17,16 @@
  * @author       XOOPS Development Team
  */
 
+use XoopsModules\Apcal;
+
 include XOOPS_ROOT_PATH . '/header.php';
 
 $moduleDirName = basename((__DIR__));
-$helper = \Xmf\Module\Helper::getHelper($moduleDirName);
+$helper = Apcal\Helper::getInstance();
 
 if (!isset($GLOBALS['xoopsTpl']) || !($GLOBALS['xoopsTpl'] instanceof XoopsTpl)) {
     require_once $GLOBALS['xoops']->path('class/template.php');
-    $xoopsTpl = new XoopsTpl();
+    $xoopsTpl = new \XoopsTpl();
 }
 
 $GLOBALS['xoopsTpl']->assign('api_key', $helper->getConfig('apcal_mapsapi'));

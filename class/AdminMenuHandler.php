@@ -1,4 +1,5 @@
-<?php
+<?php namespace XoopsModules\Apcal;
+
 /**
  * Class for tab navigation
  *
@@ -18,9 +19,9 @@
 defined('XOOPS_ROOT_PATH') || die();
 
 /**
- * Class APCalAdminMenuHandler
+ * Class AdminMenuHandler
  */
-class APCalAdminMenuHandler
+class AdminMenuHandler
 {
     /**
      *

@@ -18,7 +18,7 @@
  * @author       Antiques Promotion (http://www.antiquespromotion.ca)
  */
 
-defined('XOOPS_ROOT_PATH') || exit('Restricted access.');
+defined('XOOPS_ROOT_PATH') || die('Restricted access');
 
 // referer check
 $ref = xoops_getenv('HTTP_REFERER');

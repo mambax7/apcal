@@ -18,6 +18,8 @@
  * @author       GIJ=CHECKMATE (PEAK Corp. http://www.peak.ne.jp/)
  */
 
+use XoopsModules\Apcal;
+
 require_once __DIR__ . '/../../../include/cp_header.php';
 
 //require_once __DIR__ . '/../include/gtickets.php';
@@ -25,7 +27,7 @@ require_once XOOPS_ROOT_PATH . '/class/template.php';
 
 // initials
 $xoops_system_path = XOOPS_ROOT_PATH . '/modules/system';
-$db                = XoopsDatabaseFactory::getDatabaseConnection();
+$db                = \XoopsDatabaseFactory::getDatabaseConnection();
 $myts              = \MyTextSanitizer::getInstance();
 
 // determine language
@@ -177,7 +179,7 @@ if (is_array(@$_POST['del_do'])) {
                 die("You can't remove 'default' template.");
             }
 
-            $tpl                = new XoopsTpl();
+            $tpl                = new \XoopsTpl();
             $tpl->force_compile = true;
 
             foreach ($_POST["{$tplset_from}_check"] as $tplfile_tmp => $val) {
@@ -186,7 +188,7 @@ if (is_array(@$_POST['del_do'])) {
                 }
                 $tplfile = $myts->stripSlashesGPC($tplfile_tmp);
                 $result  = $db->query('SELECT tpl_id FROM ' . $db->prefix('tplfile') . " WHERE tpl_tplset='" . addslashes($tplset_from) . "' AND tpl_file='" . addslashes($tplfile) . "'");
-                while (list($tpl_id) = $db->fetchRow($result)) {
+                while (false !== (list($tpl_id) = $db->fetchRow($result))) {
                     $tpl_id = (int)$tpl_id;
                     $db->query('DELETE FROM ' . $db->prefix('tplfile') . " WHERE tpl_id=$tpl_id");
                     $db->query('DELETE FROM ' . $db->prefix('tplsource') . " WHERE tpl_id=$tpl_id");
@@ -210,7 +212,7 @@ $srs             = $db->query($sql);
 $tplsets         = [];
 $tplsets_th4disp = '';
 $tplset_options  = "<option value=''>----</option>\n";
-while (list($tplset) = $db->fetchRow($srs)) {
+while (false !== (list($tplset) = $db->fetchRow($srs))) {
     $tplset4disp     = htmlspecialchars($tplset, ENT_QUOTES);
     $tplsets[]       = $tplset;
     $th_style        = $tplset == $xoopsConfig['template_set'] ? "style='color:yellow;'" : '';
@@ -251,7 +253,7 @@ $fingerprint_styles = [
 ];
 
 // template ROWS
-while (list($tpl_file, $tpl_desc, $type, $count) = $db->fetchRow($frs)) {
+while (false !== (list($tpl_file, $tpl_desc, $type, $count) = $db->fetchRow($frs))) {
     $evenodd                 = 'even' === @$evenodd ? 'odd' : 'even';
     $fingerprint_style_count = 0;
 
@@ -377,7 +379,7 @@ function copy_templates_db2db($tplset_from, $tplset_to, $whr_append = '1')
                          . addslashes($tplset_from)
                          . "' AND ($whr_append)");
 
-    while ($row = $db->fetchArray($result)) {
+    while (false !== ($row = $db->fetchArray($result))) {
         $tpl_source = array_pop($row);
 
         $drs = $db->query('SELECT tpl_id FROM ' . $db->prefix('tplfile') . " WHERE tpl_tplset='" . addslashes($tplset_to) . "' AND ($whr_append) AND tpl_file='" . addslashes($row['tpl_file']) . "' AND tpl_refid='" . addslashes($row['tpl_refid']) . "'");
@@ -393,7 +395,7 @@ function copy_templates_db2db($tplset_from, $tplset_to, $whr_append = '1')
             $db->query('INSERT INTO ' . $db->prefix('tplsource') . " SET tpl_id='$tpl_id', tpl_source='" . addslashes($tpl_source) . "'");
             xoops_template_touch($tpl_id);
         } else {
-            while (list($tpl_id) = $db->fetchRow($drs)) {
+            while (false !== (list($tpl_id) = $db->fetchRow($drs))) {
                 // UPDATE mode
                 $db->query('UPDATE '
                            . $db->prefix('tplfile')
@@ -426,7 +428,7 @@ function copy_templates_f2db($tplset_to, $whr_append = '1')
     // get tplsource
     $result = $db->query('SELECT * FROM ' . $db->prefix('tplfile') . "  WHERE tpl_tplset='default' AND ($whr_append)");
 
-    while ($row = $db->fetchArray($result)) {
+    while (false !== ($row = $db->fetchArray($result))) {
         $basefilepath = XOOPS_ROOT_PATH . '/modules/' . $row['tpl_module'] . '/templates/' . ('block' === $row['tpl_type'] ? 'blocks/' : '') . $row['tpl_file'];
 
         $tpl_source   = rtrim(implode('', file($basefilepath)));
@@ -458,7 +460,7 @@ function copy_templates_f2db($tplset_to, $whr_append = '1')
             $db->query('INSERT INTO ' . $db->prefix('tplsource') . " SET tpl_id='$tpl_id', tpl_source='" . addslashes($tpl_source) . "'");
             xoops_template_touch($tpl_id);
         } else {
-            while (list($tpl_id) = $db->fetchRow($drs)) {
+            while (false !== (list($tpl_id) = $db->fetchRow($drs))) {
                 // UPDATE mode
                 $db->query('UPDATE ' . $db->prefix('tplfile') . " SET tpl_lastmodified='" . addslashes($lastmodified) . "' WHERE tpl_id='$tpl_id'");
                 $db->query('UPDATE ' . $db->prefix('tplsource') . " SET tpl_source='" . addslashes($tpl_source) . "' WHERE tpl_id='$tpl_id'");

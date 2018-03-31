@@ -22,7 +22,7 @@ include __DIR__ . '/../../mainfile.php';
 // for "Duplicatable"
 $moduleDirName = basename(__DIR__);
 if (!preg_match('/^(\D+)(\d*)$/', $moduleDirName, $regs)) {
-    echo('invalid dirname: ' . htmlspecialchars($moduleDirName));
+    echo('invalid dirname: ' . htmlspecialchars($moduleDirName, ENT_QUOTES | ENT_HTML5));
 }
 $mydirnumber = '' === $regs[2] ? '' : (int)$regs[2];
 
@@ -59,7 +59,7 @@ if ($event_id > 0) {
     // RRULE events
     if (0 != $rrule_pid) {
         $_GET['com_itemid']          = $rrule_pid;
-        $HTTP_GET_VARS['com_itemid'] = $rrule_pid;
+        $_GET['com_itemid'] = $rrule_pid;
     }
 
     include XOOPS_ROOT_PATH . '/include/comment_new.php';

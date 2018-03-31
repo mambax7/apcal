@@ -19,6 +19,10 @@
  * @author       GIJ=CHECKMATE (PEAK Corp. http://www.peak.ne.jp/)
  */
 
+use XoopsModules\Apcal;
+/** @var Apcal\Helper $helper */
+$helper = Apcal\Helper::getInstance();
+
 require_once __DIR__ . '/../../mainfile.php';
 require_once __DIR__ . '/header.php';
 $original_level = error_reporting(E_ALL ^ E_NOTICE);
@@ -46,7 +50,7 @@ if ((!isset($_GET['action']) || '' === $_GET['action']) && isset($_GET['cid']) &
 // for "Duplicatable"
 $moduleDirName = basename(__DIR__);
 if (!preg_match('/^(\D+)(\d*)$/', $moduleDirName, $regs)) {
-    echo('invalid dirname: ' . htmlspecialchars($moduleDirName));
+    echo('invalid dirname: ' . htmlspecialchars($moduleDirName, ENT_QUOTES | ENT_HTML5));
 }
 $mydirnumber = '' === $regs[2] ? '' : (int)$regs[2];
 
@@ -103,7 +107,7 @@ if (isset($_POST['update'])) {
     if (!$GLOBALS['xoopsSecurity']->check()) {
         redirect_header(XOOPS_URL . '/', 3, $GLOBALS['xoopsSecurity']->getErrors());
     }
-    $cal->update_schedule("$admission_update_sql", $whr_sql_append);
+    $cal->update_schedule((string)$admission_update_sql, $whr_sql_append);
 } elseif (isset($_POST['insert']) || isset($_POST['saveas'])) {
     // saveas �ޤ��� ������Ͽ
     if (!$insertable) {
@@ -213,9 +217,9 @@ if ('Edit' === $action) {
     $xoopsTpl->assign('xoops_pagetitle', $cal->last_summary);
     $xoopsTpl->assign('xoops_default_comment_title', 'Re: ' . $cal->last_summary);
     $xoopsTpl->assign('print_link', "$mod_url/print.php?event_id={$_GET['event_id']}&amp;action=View");
-    $xoopsTpl->assign('skinpath', "$cal->images_url");
+    $xoopsTpl->assign('skinpath', (string)$cal->images_url);
     $xoopsTpl->assign('lang_print', _MD_APCAL_ALT_PRINTTHISEVENT);
-    $HTTP_GET_VARS['event_id'] = $_GET['event_id'] = $cal->original_id;
+    $_GET['event_id'] = $_GET['event_id'] = $cal->original_id;
     include XOOPS_ROOT_PATH . '/include/comment_view.php';
     // patch for commentAny
     $commentany = $xoopsTpl->get_template_vars('commentany');
@@ -250,7 +254,7 @@ $xoopsTpl->assign('showSocial', $cal->enablesocial);
 $xoopsTpl->assign('showTellaFriend', $cal->enabletellafriend);
 /** @var xos_opal_Theme $xoTheme */
 if ('View' === $action) {
-    $event_id   = isset($_GET['event_id']) && $_GET['event_id'] > 0 ? $_GET['event_id'] : 0;
+    $event_id   = \Xmf\Request::getInt('event_id', 0, GET);
     $event      = $GLOBALS['xoopsDB']->fetchArray($GLOBALS['xoopsDB']->queryF("SELECT summary, description, location, categories, contact, start FROM {$GLOBALS['xoopsDB']->prefix('apcal_event')} WHERE id={$event_id} LIMIT 0,1"));
     $cats       = explode(',', $event['categories']);
     $categories = [];
@@ -285,7 +289,7 @@ if ('View' === $action) {
 
     $xoopsTpl->assign('showMap', $cal->enableeventmap);
 } elseif ('' === $action) {
-    $cid          = isset($_GET['cid']) && $_GET['cid'] > 0 ? $_GET['cid'] : 0;
+    $cid          = \Xmf\Request::getInt('cid', 0, GET);
     $cat          = $GLOBALS['xoopsDB']->fetchArray($GLOBALS['xoopsDB']->queryF("SELECT cat_title, cat_desc FROM {$GLOBALS['xoopsDB']->prefix('apcal_cat')} WHERE cid={$cid} LIMIT 0,1"));
     $date         = isset($_GET['caldate']) ? $_GET['caldate'] : date('Y-n-j');
     $date         = explode('-', $date);
@@ -309,7 +313,7 @@ if ('View' === $action) {
     }
 
     if (1 == $cal->enablecalmap && is_array($cal->gmPoints) && !empty($cal->gmPoints)) {
-        $tpl = new XoopsTpl();
+        $tpl = new \XoopsTpl();
         $tpl->assign('GMlatitude', $cal->gmlat);
         $tpl->assign('GMlongitude', $cal->gmlng);
         $tpl->assign('GMzoom', $cal->gmzoom);

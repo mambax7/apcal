@@ -18,6 +18,8 @@
  * @author       GIJ=CHECKMATE (PEAK Corp. http://www.peak.ne.jp/)
  */
 
+use XoopsModules\Apcal;
+
 //header( "Location: admission.php" ) ;
 ///exit ;
 require_once __DIR__ . '/admin_header.php';
@@ -33,7 +35,7 @@ $adminObject->displayNavigation(basename(__FILE__));
 $MODURL  = XOOPS_URL . '/modules/' . $xoopsModule->getVar('dirname');
 $MODPATH = XOOPS_ROOT_PATH . '/modules/' . $xoopsModule->getVar('dirname');
 
-$cal = new APCal();
+$cal = new Apcal\APCal();
 include XOOPS_ROOT_PATH . '/modules/apcal/include/read_configs.php';
 
 $rs = $GLOBALS['xoopsDB']->query("SELECT COUNT(id) FROM {$cal->table} WHERE admission<1 AND (rrule_pid=0 OR rrule_pid=id)");

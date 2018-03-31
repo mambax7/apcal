@@ -19,6 +19,8 @@
  * @author       GIJ=CHECKMATE (PEAK Corp. http://www.peak.ne.jp/)
  */
 
+use XoopsModules\Apcal;
+
 /**
  * @param $cat
  * @param $form_title
@@ -27,20 +29,22 @@
 
 function display_edit_form($cat, $form_title, $action)
 {
-    global $cattree, $xoopsModuleConfig;
+    global $cattree;
+    /** @var Apcal\Helper $helper */
+    $helper = Apcal\Helper::getInstance();
 
     // Beggining of XoopsForm
-    $form = new XoopsThemeForm($form_title, 'MainForm', '');
+    $form = new \XoopsThemeForm($form_title, 'MainForm', '');
 
     // Hidden
-    $form->addElement(new XoopsFormHidden('action', htmlspecialchars($action, ENT_QUOTES)));
-    $form->addElement(new XoopsFormHidden('cid', (int)$cat->cid));
+    $form->addElement(new \XoopsFormHidden('action', htmlspecialchars($action, ENT_QUOTES)));
+    $form->addElement(new \XoopsFormHidden('cid', (int)$cat->cid));
 
     // Subject
-    $form->addElement(new XoopsFormText(_AM_APCAL_CAT_TH_TITLE, 'cat_title', 60, 128, htmlspecialchars($cat->cat_title, ENT_QUOTES)), true);
+    $form->addElement(new \XoopsFormText(_AM_APCAL_CAT_TH_TITLE, 'cat_title', 60, 128, htmlspecialchars($cat->cat_title, ENT_QUOTES)), true);
 
     // Description
-    $tarea_tray = new XoopsFormElementTray(_AM_APCAL_CAT_TH_DESC, '<br>');
+    $tarea_tray = new \XoopsFormElementTray(_AM_APCAL_CAT_TH_DESC, '<br>');
     if (class_exists('XoopsFormEditor')) {
         $configs = [
             'name'   => 'cat_desc',
@@ -51,9 +55,9 @@ function display_edit_form($cat, $form_title, $action)
             'height' => '400px',
             'editor' => 'tinymce'
         ];
-        $tarea_tray->addElement(new XoopsFormEditor('', 'cat_desc', $configs, false, $onfailure = 'textarea'));
+        $tarea_tray->addElement(new \XoopsFormEditor('', 'cat_desc', $configs, false, $onfailure = 'textarea'));
     } else {
-        $tarea_tray->addElement(new XoopsFormDhtmlTextArea('', 'cat_desc', htmlspecialchars($cat->cat_desc, ENT_QUOTES), 15, 60));
+        $tarea_tray->addElement(new \XoopsFormDhtmlTextArea('', 'cat_desc', htmlspecialchars($cat->cat_desc, ENT_QUOTES), 15, 60));
     }
     $form->addElement($tarea_tray);
 
@@ -62,32 +66,32 @@ function display_edit_form($cat, $form_title, $action)
     $cattree->makeMySelBox('cat_title', 'weight', $cat->pid, 1, 'pid');
     $cat_selbox = ob_get_contents();
     ob_end_clean();
-    $form->addElement(new XoopsFormLabel(_AM_APCAL_CAT_TH_PARENT, $cat_selbox));
+    $form->addElement(new \XoopsFormLabel(_AM_APCAL_CAT_TH_PARENT, $cat_selbox));
 
     // Weight
-    $form->addElement(new XoopsFormText(_AM_APCAL_CAT_TH_WEIGHT, 'weight', 6, 6, (int)$cat->weight), true);
+    $form->addElement(new \XoopsFormText(_AM_APCAL_CAT_TH_WEIGHT, 'weight', 6, 6, (int)$cat->weight), true);
 
     // Options
-    $checkbox_tray       = new XoopsFormElementTray(_AM_APCAL_CAT_TH_OPTIONS, '<br>');
-    $ismenuitem_checkbox = new XoopsFormCheckBox('', 'ismenuitem', (int)$cat->ismenuitem);
+    $checkbox_tray       = new \XoopsFormElementTray(_AM_APCAL_CAT_TH_OPTIONS, '<br>');
+    $ismenuitem_checkbox = new \XoopsFormCheckBox('', 'ismenuitem', (int)$cat->ismenuitem);
     $ismenuitem_checkbox->addOption(1, _AM_APCAL_CAT_TH_SUBMENU);
     $checkbox_tray->addElement($ismenuitem_checkbox);
-    $canbemain_checkbox = new XoopsFormCheckBox('', 'canbemain', (int)$cat->canbemain);
+    $canbemain_checkbox = new \XoopsFormCheckBox('', 'canbemain', (int)$cat->canbemain);
     $canbemain_checkbox->addOption(1, _AM_APCAL_CANBEMAIN);
     $checkbox_tray->addElement($canbemain_checkbox);
     $form->addElement($checkbox_tray);
 
     // Color picker
-    $color = isset($cat->color) ? $cat->color : $xoopsModuleConfig['apcal_allcats_color'];
-    $form->addElement(new XoopsFormColorPicker(_AM_APCAL_COLOR, 'color', $color), false);
+    $color = isset($cat->color) ? $cat->color : $helper->getConfig('apcal_allcats_color');
+    $form->addElement(new \XoopsFormColorPicker(_AM_APCAL_COLOR, 'color', $color), false);
 
     // Last Modified
-    $form->addElement(new XoopsFormLabel(_AM_APCAL_CAT_TH_LASTMODIFY, formatTimestamp($cat->udtstamp)));
+    $form->addElement(new \XoopsFormLabel(_AM_APCAL_CAT_TH_LASTMODIFY, formatTimestamp($cat->udtstamp)));
 
     // Buttons
-    $button_tray = new XoopsFormElementTray('', '&nbsp;');
-    $button_tray->addElement(new XoopsFormButton('', 'submit', _SUBMIT, 'submit'));
-    $button_tray->addElement(new XoopsFormButton('', 'reset', _CANCEL, 'reset'));
+    $button_tray = new \XoopsFormElementTray('', '&nbsp;');
+    $button_tray->addElement(new \XoopsFormButton('', 'submit', _SUBMIT, 'submit'));
+    $button_tray->addElement(new \XoopsFormButton('', 'reset', _CANCEL, 'reset'));
     $form->addElement($button_tray);
 
     // Ticket
@@ -156,8 +160,8 @@ function rebuild_cat_tree($cat_table)
 
 require_once __DIR__ . '/admin_header.php';
 //require_once __DIR__ . '/../../../include/cp_header.php';
-require_once __DIR__ . '/../class/APCal.php';
-require_once __DIR__ . '/../class/APCal_xoops.php';
+// require_once __DIR__ . '/../class/APCal.php';
+// require_once __DIR__ . '/../class/APCal_xoops.php';
 
 require_once XOOPS_ROOT_PATH . '/class/xoopsformloader.php';
 require_once XOOPS_ROOT_PATH . '/class/xoopslists.php';
@@ -166,7 +170,7 @@ require_once XOOPS_ROOT_PATH . '/class/xoopstree.php';
 // for "Duplicatable"
 $moduleDirName = basename(dirname(__DIR__));
 if (!preg_match('/^(\D+)(\d*)$/', $moduleDirName, $regs)) {
-    echo('invalid dirname: ' . htmlspecialchars($moduleDirName));
+    echo('invalid dirname: ' . htmlspecialchars($moduleDirName, ENT_QUOTES | ENT_HTML5));
 }
 $mydirnumber = '' === $regs[2] ? '' : (int)$regs[2];
 
@@ -176,7 +180,7 @@ $mydirnumber = '' === $regs[2] ? '' : (int)$regs[2];
 $action = isset($_POST['action']) ? preg_replace('/[^a-zA-Z0-9_-]/', '', $_POST['action']) : '';
 $done   = isset($_GET['done']) ? preg_replace('/[^a-zA-Z0-9_-]/', '', $_GET['done']) : '';
 $disp   = isset($_GET['disp']) ? preg_replace('/[^a-zA-Z0-9_-]/', '', $_GET['disp']) : '';
-$cid    = isset($_GET['cid']) ? (int)$_GET['cid'] : 0;
+$cid    = \Xmf\Request::getInt('cid', 0, 'GET');
 
 // MySQL�ؤ���³
 $conn = $GLOBALS['xoopsDB']->conn;
@@ -186,7 +190,7 @@ $mod_path = XOOPS_ROOT_PATH . "/modules/$moduleDirName";
 $mod_url  = XOOPS_URL . "/modules/$moduleDirName";
 
 // creating an instance of APCal
-$cal = new APCal_xoops('', $xoopsConfig['language'], true);
+$cal = new Apcal\APCal_xoops('', $xoopsConfig['language'], true);
 
 // setting properties of APCal
 $cal->conn = $conn;
@@ -198,7 +202,7 @@ $cal->images_path = "$mod_path/assets/images/$skin_folder";
 
 // XOOPS関連の初期化
 $myts         = \MyTextSanitizer::getInstance();
-$cattree      = new XoopsTree($cal->cat_table, 'cid', 'pid');
+$cattree      = new \XoopsTree($cal->cat_table, 'cid', 'pid');
 $gpermHandler = xoops_getHandler('groupperm');
 
 // データベース更新などがからむ処理
@@ -270,9 +274,9 @@ if ('insert' === $action) {
 
     // Category2Group permission �κ�� (2.0.3 �����Ǥ⤦�ޤ�ư���褦��)
     // xoops_groupperm_deletebymoditem( $xoopsModule->mid() , 'apcal_cat' , $cid ) ;
-    $criteria = new CriteriaCompo(new Criteria('gperm_modid', $xoopsModule->mid()));
-    $criteria->add(new Criteria('gperm_name', 'apcal_cat'));
-    $criteria->add(new Criteria('gperm_itemid', $cid));
+    $criteria = new \CriteriaCompo(new \Criteria('gperm_modid', $xoopsModule->mid()));
+    $criteria->add(new \Criteria('gperm_name', 'apcal_cat'));
+    $criteria->add(new \Criteria('gperm_itemid', $cid));
     $gpermHandler->deleteAll($criteria);
 
     // Category Notify の削除
@@ -286,9 +290,9 @@ if ('insert' === $action) {
         $whr .= "$child,";
         // Category2Group permission の削除 (2.0.3 以前でもうまく動くように)
         // xoops_groupperm_deletebymoditem( $xoopsModule->mid() , 'apcal_cat' , $child ) ;
-        $criteria = new CriteriaCompo(new Criteria('gperm_modid', $xoopsModule->mid()));
-        $criteria->add(new Criteria('gperm_name', 'apcal_cat'));
-        $criteria->add(new Criteria('gperm_itemid', (int)$child));
+        $criteria = new \CriteriaCompo(new \Criteria('gperm_modid', $xoopsModule->mid()));
+        $criteria->add(new \Criteria('gperm_name', 'apcal_cat'));
+        $criteria->add(new \Criteria('gperm_itemid', (int)$child));
         $gpermHandler->deleteAll($criteria);
     }
     $whr .= "$cid)";

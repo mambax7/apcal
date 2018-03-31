@@ -49,7 +49,7 @@ setcookie('lang', $lang);
     <h1>Form submitted</h1>
 
     <?php foreach ($_REQUEST as $key => $val) {
-            echo htmlspecialchars($key) . ' = ' . htmlspecialchars($val) . '<br>';
+            echo htmlspecialchars($key, ENT_QUOTES | ENT_HTML5) . ' = ' . htmlspecialchars($val, ENT_QUOTES | ENT_HTML5) . '<br>';
         } ?>
 
     <?php

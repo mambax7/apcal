@@ -20,6 +20,8 @@
  * @return bool
  */
 
+use XoopsModules\Apcal;
+
 /**
  *
  * Prepares system prior to attempting to install module
@@ -27,7 +29,7 @@
  *
  * @return bool true if ready to install, false if not
  */
-function xoops_module_pre_install_apcal(XoopsModule $module)
+function xoops_module_pre_install_apcal(\XoopsModule $module)
 {
     $moduleDirName = basename(dirname(__DIR__));
     $utilityClass  = ucfirst($moduleDirName) . 'Utility';
@@ -51,13 +53,13 @@ function xoops_module_pre_install_apcal(XoopsModule $module)
 
     return true;
 }
-function xoops_module_install_apcal(XoopsModule $xoopsModule)
+function xoops_module_install_apcal(\XoopsModule $xoopsModule)
 {
     require_once __DIR__ . '/../../../mainfile.php';
     require_once __DIR__ . '/../include/config.php';
 
     $moduleDirName = basename(dirname(__DIR__));
-    $helper = \Xmf\Module\Helper::getHelper($moduleDirName);
+    $helper = Apcal\Helper::getInstance();
 
     // Load language files
     $helper->loadLanguage('admin');
@@ -109,10 +111,10 @@ function xoops_module_install_apcal(XoopsModule $xoopsModule)
     }
 
     //  ---  COPY blank.png FILES ---------------
-    if (count($configurator->blankFiles) > 0) {
+    if (count($configurator->copyBlankFiles) > 0) {
         $file = __DIR__ . '/../assets/images/blank.png';
-        foreach (array_keys($configurator->blankFiles) as $i) {
-            $dest = $configurator->blankFiles[$i] . '/blank.png';
+        foreach (array_keys($configurator->copyBlankFiles) as $i) {
+            $dest = $configurator->copyBlankFiles[$i] . '/blank.png';
             $utilityClass::copyFile($file, $dest);
         }
     }
@@ -126,7 +128,7 @@ function xoops_module_install_apcal(XoopsModule $xoopsModule)
 function makeShortEventAftertransfer()
 {
     $result = $GLOBALS['xoopsDB']->queryF("SELECT id, summary FROM {$GLOBALS['xoopsDB']->prefix('apcal_event')}");
-    while ($row = $GLOBALS['xoopsDB']->fetchArray($result)) {
+    while (false !== ($row = $GLOBALS['xoopsDB']->fetchArray($result))) {
         $shortsummary = makeShort($row['summary']);
         $GLOBALS['xoopsDB']->queryF("UPDATE {$GLOBALS['xoopsDB']->prefix('apcal_event')} SET shortsummary='{$shortsummary}' WHERE id={$row['id']}");
     }
@@ -135,7 +137,7 @@ function makeShortEventAftertransfer()
 function makeShortCatAftertransfer()
 {
     $result = $GLOBALS['xoopsDB']->queryF("SELECT cid, cat_title FROM {$GLOBALS['xoopsDB']->prefix('apcal_cat')}");
-    while ($row = $GLOBALS['xoopsDB']->fetchArray($result)) {
+    while (false !== ($row = $GLOBALS['xoopsDB']->fetchArray($result))) {
         $cat_shorttitle = makeShort($row['cat_title']);
         $GLOBALS['xoopsDB']->queryF("UPDATE {$GLOBALS['xoopsDB']->prefix('apcal_cat')} SET cat_shorttitle='{$cat_shorttitle}' WHERE cid={$row['cid']}");
     }
@@ -149,7 +151,7 @@ function transferTable($tablename)
 {
     $errors = '';
     $result = $GLOBALS['xoopsDB']->queryF("SELECT * FROM {$GLOBALS['xoopsDB']->prefix('pical_'.$tablename)}");
-    while ($row = $GLOBALS['xoopsDB']->fetchArray($result)) {
+    while (false !== ($row = $GLOBALS['xoopsDB']->fetchArray($result))) {
         $fields  = '';
         $values  = '';
         $isFirst = true;
@@ -177,8 +179,8 @@ function setDefaultPerm()
     $gpermHandler = xoops_getHandler('groupperm');
     //$item_ids = array(1, 2, 4, 8, 32);
 
-    $pical_cat    = $gpermHandler->getObjects(new Criteria('gperm_name', 'pical_cat'));
-    $pical_global = $gpermHandler->getObjects(new Criteria('gperm_name', 'pical_global'));
+    $pical_cat    = $gpermHandler->getObjects(new \Criteria('gperm_name', 'pical_cat'));
+    $pical_global = $gpermHandler->getObjects(new \Criteria('gperm_name', 'pical_global'));
 
     foreach ($pical_cat as $cat_perm) {
         $gperm = $gpermHandler->create();

@@ -18,14 +18,16 @@
  * @author       GIJ=CHECKMATE (PEAK Corp. http://www.peak.ne.jp/)
  */
 
+use XoopsModules\Apcal;
+
 require_once __DIR__ . '/../../../include/cp_header.php';
-require_once __DIR__ . '/../class/APCal.php';
-require_once __DIR__ . '/../class/APCal_xoops.php';
+// require_once __DIR__ . '/../class/APCal.php';
+// require_once __DIR__ . '/../class/APCal_xoops.php';
 
 // for "Duplicatable"
 $moduleDirName = basename(dirname(__DIR__));
 if (!preg_match('/^(\D+)(\d*)$/', $moduleDirName, $regs)) {
-    echo('invalid dirname: ' . htmlspecialchars($moduleDirName));
+    echo('invalid dirname: ' . htmlspecialchars($moduleDirName, ENT_QUOTES | ENT_HTML5));
 }
 $mydirnumber = '' === $regs[2] ? '' : (int)$regs[2];
 
@@ -47,7 +49,7 @@ $mod_path = XOOPS_ROOT_PATH . "/modules/$moduleDirName";
 $mod_url  = XOOPS_URL . "/modules/$moduleDirName";
 
 // creating an instance of APCal
-$cal = new APCal_xoops('', $xoopsConfig['language'], true);
+$cal = new \APCal_xoops('', $xoopsConfig['language'], true);
 
 // setting properties of APCal
 $cal->conn = $conn;
@@ -69,7 +71,7 @@ if (substr(XOOPS_VERSION, 6, 3) > 2.0) {
     // newblocks of XOOPS 2.0.x
     $mcx_rs = $GLOBALS['xoopsDB']->query('SELECT bid,title FROM ' . $GLOBALS['xoopsDB']->prefix('newblocks') . " WHERE mid='" . $xoopsModule->getVar('mid') . "' AND show_func='apcal_minical_ex_show'");
 }
-while (list($bid, $title) = $GLOBALS['xoopsDB']->fetchRow($mcx_rs)) {
+while (false !== (list($bid, $title) = $GLOBALS['xoopsDB']->fetchRow($mcx_rs))) {
     $mcx_blocks[$bid] = $title;
 }
 
@@ -175,7 +177,7 @@ $type_options     = "<option value=''>----</option>\n" . $type_options;
 // dirname options
 $dirname_options = "<option value=''>----</option>\n";
 $dn_rs           = $GLOBALS['xoopsDB']->query('SELECT dirname FROM ' . $GLOBALS['xoopsDB']->prefix('modules'));
-while (list($dirname) = $GLOBALS['xoopsDB']->fetchRow($dn_rs)) {
+while (false !== (list($dirname) = $GLOBALS['xoopsDB']->fetchRow($dn_rs))) {
     $dirname_options .= "<option value='$dirname'>$dirname</option>\n";
 }
 

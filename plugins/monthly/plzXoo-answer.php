@@ -18,7 +18,7 @@
  * @author       A plugin for plzXoo by minahito
  */
 
-defined('XOOPS_ROOT_PATH') || exit('Restricted access.');
+defined('XOOPS_ROOT_PATH') || die('Restricted access');
 
 /*
     $db : db instance
@@ -42,7 +42,7 @@ $range_end_s   = mktime(0, 0, 0, $this->month + 1, 1, $this->year);
 // query
 $result = $db->query('SELECT q.subject,q.qid,a.input_date FROM ' . $db->prefix('plzxoo_answer') . ' a LEFT JOIN ' . $db->prefix('plzxoo_question') . " q ON a.qid=q.qid WHERE a.input_date >= $range_start_s AND a.input_date < $range_end_s");
 
-while (list($title, $id, $server_time) = $db->fetchRow($result)) {
+while (false !== (list($title, $id, $server_time) = $db->fetchRow($result))) {
     $user_time = $server_time + $tzoffset_s2u;
     if (date('n', $user_time) != $this->month) {
         continue;

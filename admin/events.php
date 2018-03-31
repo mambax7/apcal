@@ -18,16 +18,18 @@
  * @author       GIJ=CHECKMATE (PEAK Corp. http://www.peak.ne.jp/)
  */
 
+use XoopsModules\Apcal;
+
 require_once __DIR__ . '/admin_header.php';
 //require_once __DIR__ . '/../../../include/cp_header.php';
-require_once __DIR__ . '/../class/APCal.php';
-require_once __DIR__ . '/../class/APCal_xoops.php';
+// require_once __DIR__ . '/../class/APCal.php';
+// require_once __DIR__ . '/../class/APCal_xoops.php';
 require_once XOOPS_ROOT_PATH . '/class/xoopstree.php';
 
 // for "Duplicatable"
 $moduleDirName = basename(dirname(__DIR__));
 if (!preg_match('/^(\D+)(\d*)$/', $moduleDirName, $regs)) {
-    echo('invalid dirname: ' . htmlspecialchars($moduleDirName));
+    echo('invalid dirname: ' . htmlspecialchars($moduleDirName, ENT_QUOTES | ENT_HTML5));
 }
 $mydirnumber = '' === $regs[2] ? '' : (int)$regs[2];
 
@@ -35,11 +37,11 @@ $mydirnumber = '' === $regs[2] ? '' : (int)$regs[2];
 
 // SERVER, GET �ѿ��μ���
 $tz   = isset($_GET['tz']) ? preg_replace('/[^a-zA-Z0-9_-]/', '', $_GET['tz']) : 'y';
-$pos  = isset($_GET['pos']) ? (int)$_GET['pos'] : 0;
-$num  = isset($_GET['num']) ? (int)$_GET['num'] : 20;
-$cid  = isset($_GET['cid']) ? (int)$_GET['cid'] : 0;
+$pos  = \Xmf\Request::getInt('pos', 0, 'GET');
+$num  = \Xmf\Request::getInt('num', 20, 'GET');
+$cid  = \Xmf\Request::getInt('cid', 0, 'GET');
 $txt  = isset($_GET['txt']) ? trim($_GET['txt']) : '';
-$done = isset($_GET['done']) ? $_GET['done'] : '';
+$done = \Xmf\Request::getString('done', '', 'GET');
 
 // MySQL�ؤ���³
 $conn = $GLOBALS['xoopsDB']->conn;
@@ -49,7 +51,7 @@ $mod_path = XOOPS_ROOT_PATH . "/modules/$moduleDirName";
 $mod_url  = XOOPS_URL . "/modules/$moduleDirName";
 
 // creating an instance of APCal
-$cal = new APCal_xoops('', $xoopsConfig['language'], true);
+$cal = new Apcal\APCal_xoops('', $xoopsConfig['language'], true);
 
 // setting properties of APCal
 $cal->conn = $conn;
@@ -84,12 +86,12 @@ switch ($pf) {
 }
 
 // ���ƥ��꡼�����ν���
-$cattree = new XoopsTree($cal->cat_table, 'cid', 'pid');
+$cattree = new \XoopsTree($cal->cat_table, 'cid', 'pid');
 ob_start();
 $cattree->makeMySelBox('cat_title', 'weight', $cid, true, 'cid', '');
 $cat_selbox = ob_get_contents();
 ob_end_clean();
-$cat_selbox4extract = str_replace("<option value='0'>", "<option value='0'>" . _ALL . "</option>\n<option value='-1'" . ($cid == -1 ? 'selected' : '') . '>', $cat_selbox);
+$cat_selbox4extract = str_replace("<option value='0'>", "<option value='0'>" . _ALL . "</option>\n<option value='-1'" . (-1 == $cid ? 'selected' : '') . '>', $cat_selbox);
 
 // Timezone �ν���
 $serverTZ  = $cal->server_TZ;
@@ -216,7 +218,7 @@ if (isset($_POST['delete'])) {
 if ($cid > 0) {
     $cid4sql = sprintf('%05d,', $cid);
     $whr_cid = "categories like '%$cid4sql%'";
-} elseif ($cid == -1) {
+} elseif (-1 == $cid) {
     $whr_cid = "categories=''";
 } else {
     $whr_cid = '1';
@@ -254,7 +256,7 @@ $rs = $GLOBALS['xoopsDB']->query("SELECT * FROM $cal->table WHERE $whr ORDER BY 
 
 // Page Navigation
 include XOOPS_ROOT_PATH . '/class/pagenav.php';
-$nav      = new XoopsPageNav($numrows, $num, $pos, 'pos', "cid=$cid&amp;tz=$tz&amp;num=$num&amp;pf=$pf&amp;txt=" . urlencode($txt));
+$nav      = new \XoopsPageNav($numrows, $num, $pos, 'pos', "cid=$cid&amp;tz=$tz&amp;num=$num&amp;pf=$pf&amp;txt=" . urlencode($txt));
 $nav_html = $nav->renderNav(10);
 if ($numrows <= 0) {
     $nav_num_info = _NONE;

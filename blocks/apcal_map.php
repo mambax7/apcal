@@ -18,6 +18,8 @@
  * @author       Antiques Promotion (http://www.antiquespromotion.ca)
  */
 
+use XoopsModules\Apcal;
+
 if (!defined('APCAL_BLOCK_MAP_INCLUDED')) {
     define('APCAL_BLOCK_MAP_INCLUDED', 1);
 
@@ -57,13 +59,13 @@ if (!defined('APCAL_BLOCK_MAP_INCLUDED')) {
         $cal->images_url  = "$mod_url/assets/images/$skin_folder";
         $cal->images_path = "$mod_path/assets/images/$skin_folder";
 
-        $cal->get_monthly_html("$mod_url");
+        $cal->get_monthly_html($mod_url);
 
-        $helper = \Xmf\Module\Helper::getHelper($moduleDirName);
+        $helper = Apcal\Helper::getInstance();
 
         $block = [];
         if (is_array($cal->gmPoints) && !empty($cal->gmPoints)) {
-            $tpl = new XoopsTpl();
+            $tpl = new \XoopsTpl();
             $tpl->assign('GMlatitude', $cal->gmlat);
             $tpl->assign('GMlongitude', $cal->gmlng);
             $tpl->assign('GMzoom', $cal->gmzoom);

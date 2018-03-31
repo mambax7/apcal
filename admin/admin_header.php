@@ -17,14 +17,16 @@
  * @author      XOOPS Development Team
  */
 
+use XoopsModules\Apcal;
+
 require_once __DIR__ . '/../../../include/cp_header.php';
 //require_once __DIR__ . '/../../../class/xoopsformloader.php';
 
-//require_once __DIR__ . '/../class/util.php';
+// require_once __DIR__ . '/../class/util.php';
 //require_once __DIR__ . '/../include/common.php';
 
 $moduleDirName = basename(dirname(__DIR__));
-$helper = \Xmf\Module\Helper::getHelper($moduleDirName);
+$helper = Apcal\Helper::getInstance();
 $adminObject = \Xmf\Module\Admin::getInstance();
 
 $pathIcon16    = \Xmf\Module\Admin::iconUrl('', 16);
@@ -42,7 +44,7 @@ $myts = \MyTextSanitizer::getInstance();
 
 if (!isset($GLOBALS['xoopsTpl']) || !($GLOBALS['xoopsTpl'] instanceof XoopsTpl)) {
     require_once $GLOBALS['xoops']->path('class/template.php');
-    $xoopsTpl = new XoopsTpl();
+    $xoopsTpl = new \XoopsTpl();
 }
 
 $GLOBALS['xoopsTpl']->assign('api_key', $helper->getConfig('apcal_mapsapi'));

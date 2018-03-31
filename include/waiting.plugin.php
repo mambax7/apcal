@@ -18,7 +18,7 @@
  * @author       GIJ=CHECKMATE (PEAK Corp. http://www.peak.ne.jp/)
  */
 
-defined('XOOPS_ROOT_PATH') || exit('Restricted access.');
+defined('XOOPS_ROOT_PATH') || die('Restricted access');
 
 $moduleDirName = basename(dirname(__DIR__));
 
@@ -37,12 +37,12 @@ if (!function_exists('b_waiting_APCal_base')) {
      */
     function b_waiting_APCal_base($moduleDirName)
     {
-        $xoopsDB = XoopsDatabaseFactory::getDatabaseConnection();
+        $xoopsDB = \XoopsDatabaseFactory::getDatabaseConnection();
         $block   = [];
 
         // get $mydirnumber
         if (!preg_match('/^(\D+)(\d*)$/', $moduleDirName, $regs)) {
-            echo('invalid dirname: ' . htmlspecialchars($moduleDirName));
+            echo('invalid dirname: ' . htmlspecialchars($moduleDirName, ENT_QUOTES | ENT_HTML5));
         }
         $mydirnumber = '' === $regs[2] ? '' : (int)$regs[2];
 

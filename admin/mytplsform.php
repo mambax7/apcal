@@ -18,6 +18,8 @@
  * @author       GIJ=CHECKMATE (PEAK Corp. http://www.peak.ne.jp/)
  */
 
+use XoopsModules\Apcal;
+
 require_once __DIR__ . '/../../../include/cp_header.php';
 //require_once __DIR__ . '/../include/gtickets.php';
 require_once XOOPS_ROOT_PATH . '/class/template.php';
@@ -29,7 +31,7 @@ require_once __DIR__ . '/../include/Text_Diff_Renderer_unified.php';
 $xoops_system_path = XOOPS_ROOT_PATH . '/modules/system';
 
 // initials
-$db   = XoopsDatabaseFactory::getDatabaseConnection();
+$db   = \XoopsDatabaseFactory::getDatabaseConnection();
 $myts = \MyTextSanitizer::getInstance();
 
 // determine language
@@ -82,7 +84,7 @@ if (!empty($_POST['do_modify'])) {
     }
 
     $result = $db->query('SELECT tpl_id FROM ' . $db->prefix('tplfile') . " WHERE tpl_file='$tpl_file4sql' AND tpl_tplset='$tpl_tplset4sql'");
-    while (list($tpl_id) = $db->fetchRow($result)) {
+    while (false !== (list($tpl_id) = $db->fetchRow($result))) {
         $sql = 'UPDATE ' . $db->prefix('tplsource') . " SET tpl_source='" . addslashes($myts->stripSlashesGPC($_POST['tpl_source'])) . "' WHERE tpl_id=$tpl_id";
         if (!$db->query($sql)) {
             die('SQL Error');
@@ -105,8 +107,8 @@ echo "<h3 style='text-align:left;'>" . _MD_APCAL_TPLSETS . ' : ' . htmlspecialch
 $basefilepath        = XOOPS_ROOT_PATH . '/modules/' . $tpl['tpl_module'] . '/templates/' . ('block' === $tpl['tpl_type'] ? 'blocks/' : '') . $tpl['tpl_file'];
 $diff_from_file4disp = '';
 if (file_exists($basefilepath)) {
-    $diff     = new Text_Diff(file($basefilepath), explode("\n", $tpl['tpl_source']));
-    $renderer = new Text_Diff_Renderer_unified();
+    $diff     = new \Text_Diff(file($basefilepath), explode("\n", $tpl['tpl_source']));
+    $renderer = new \Text_Diff_Renderer_unified();
     $diff_str = htmlspecialchars($renderer->render($diff), ENT_QUOTES);
     foreach (explode("\n", $diff_str) as $line) {
         if (0x2d == ord($line)) {
@@ -121,10 +123,10 @@ if (file_exists($basefilepath)) {
 
 // diff from DB-default to selected DB template
 $diff_from_default4disp = '';
-if ('default' != $tpl['tpl_tplset']) {
+if ('default' !== $tpl['tpl_tplset']) {
     list($default_source) = $db->fetchRow($db->query('SELECT tpl_source FROM ' . $db->prefix('tplfile') . ' NATURAL LEFT JOIN ' . $db->prefix('tplsource') . " WHERE tpl_tplset='default' AND tpl_file='" . addslashes($tpl['tpl_file']) . "' AND tpl_module='" . addslashes($tpl['tpl_module']) . "'"));
-    $diff     = new Text_Diff(explode("\n", $default_source), explode("\n", $tpl['tpl_source']));
-    $renderer = new Text_Diff_Renderer_unified();
+    $diff     = new \Text_Diff(explode("\n", $default_source), explode("\n", $tpl['tpl_source']));
+    $renderer = new \Text_Diff_Renderer_unified();
     $diff_str = htmlspecialchars($renderer->render($diff), ENT_QUOTES);
     foreach (explode("\n", $diff_str) as $line) {
         if (0x2d == ord($line)) {

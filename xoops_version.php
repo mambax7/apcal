@@ -20,10 +20,10 @@
  */
 include __DIR__ . '/preloads/autoloader.php';
 
-defined('XOOPS_ROOT_PATH') || exit('Restricted access.');
+defined('XOOPS_ROOT_PATH') || die('Restricted access');
 $moduleDirName = basename(__DIR__);
 if (!preg_match('/^(\D+)(\d*)$/', $moduleDirName, $regs)) {
-    echo('invalid dirname: ' . htmlspecialchars($moduleDirName));
+    echo('invalid dirname: ' . htmlspecialchars($moduleDirName, ENT_QUOTES | ENT_HTML5));
 }
 $mydirnumber = '' === $regs[2] ? '' : (int)$regs[2];
 if (isset($_GET['fct']) && 'preferences' === $_GET['fct']) {
@@ -100,7 +100,7 @@ $modversion['blocks'][$b] = [
     'edit_func'   => 'apcal_mini_calendar_edit',
     //  'template'      => "apcal{$mydirnumber}_mini_calendar.tpl",
     'can_clone'   => true,
-    'options'     => "{$moduleDirName }"
+    'options'     => ($moduleDirName)
 ];
 
 ++$b;
@@ -111,7 +111,7 @@ $modversion['blocks'][$b] = [
     'show_func'   => 'apcal_monthly_calendar_show',
     'edit_func'   => 'apcal_monthly_calendar_edit',
     //  'template'      => "apcal{$mydirnumber}_monthly_calendar.tpl" ,
-    'options'     => "{$moduleDirName }"
+    'options'     => ($moduleDirName)
 ];
 
 ++$b;
@@ -159,7 +159,7 @@ $modversion['blocks'][$b] = [
     'edit_func'   => 'apcal_map_edit',
     'template'    => 'apcal_map.tpl',
     //'can_clone'       => true ,
-    'options'     => "{$moduleDirName }"
+    'options'     => ($moduleDirName)
 ];
 
 // Menu

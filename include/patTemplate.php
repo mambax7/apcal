@@ -1648,7 +1648,7 @@ if (!class_exists('PatTemplate')) {
 
                         echo "               <tr>\n";
                         echo "                   <td class=\"text\" valign=\"top\"><b>Template Data</b></td>\n";
-                        echo '                   <td class="text" valign="top"><pre>' . htmlspecialchars($this->getPlainSubTemplate($name, $condition)) . "</pre></td>\n";
+                        echo '                   <td class="text" valign="top"><pre>' . htmlspecialchars($this->getPlainSubTemplate($name, $condition), ENT_QUOTES | ENT_HTML5) . "</pre></td>\n";
                         echo "               </tr>\n";
 
                         unset($matches);
@@ -1699,7 +1699,7 @@ if (!class_exists('PatTemplate')) {
                     echo "   <tr>\n";
                     echo "       <td class=\"mid\" valign=\"top\"><b>Template Data:</b></td>\n";
                     echo "       <td class=\"text\" valign=\"top\">\n";
-                    echo '           <pre>' . htmlspecialchars($this->getPlainTemplate($name)) . "</pre>\n";
+                    echo '           <pre>' . htmlspecialchars($this->getPlainTemplate($name), ENT_QUOTES | ENT_HTML5) . "</pre>\n";
                     echo "       </td>\n";
                     echo "   </tr>\n";
 

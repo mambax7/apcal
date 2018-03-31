@@ -19,7 +19,7 @@ function convertmycontacts($strcontact)
         //echo "<br>kein leerzeichen";
         $struser = $strcontact;
         $struid  = getuid($struser);
-        if ($struid == -1) {
+        if (-1 == $struid) {
             $strnew = $struser;
         } else {
             $strnew = "<a href='" . XOOPS_URL . '/userinfo.php?uid=' . $struid . "' title='" . $struser . "'>" . $struser . '</a>';
@@ -36,7 +36,7 @@ function convertmycontacts($strcontact)
                 $strseperator = ' ';
             }
             $struid = getuid($struser);
-            if ($struid == -1) {
+            if (-1 == $struid) {
                 $strnew = $strnew . $struser . $strseperator;
             } else {
                 $strnew = $strnew . "<a href='" . XOOPS_URL . '/userinfo.php?uid=' . $struid . "' title='" . $struser . "'>" . $struser . '</a>' . $strseperator;
@@ -49,7 +49,7 @@ function convertmycontacts($strcontact)
             //Rest ab letztem Leerzeichen einlesen
             $struser = substr($strcontact, $pos1);
             $struid  = getuid($struser);
-            if ($struid == -1) {
+            if (-1 == $struid) {
                 $strnew .= $struser;
             } else {
                 $strnew = $strnew . "<a href='" . XOOPS_URL . '/userinfo.php?uid=' . $struid . "' title='" . $struser . "'>" . $struser . '</a>';
@@ -68,7 +68,7 @@ function convertmycontacts($strcontact)
 function getuid($UserName)
 {
     $rc  = -1;
-    $db  = XoopsDatabaseFactory::getDatabaseConnection();
+    $db  = \XoopsDatabaseFactory::getDatabaseConnection();
     $sql = 'SELECT uid FROM ' . $db->prefix('users') . " WHERE uname = '" . $UserName . "' LIMIT 0,1";
 
     $result = $db->query($sql);

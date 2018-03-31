@@ -18,15 +18,17 @@
  * @author       GIJ=CHECKMATE (PEAK Corp. http://www.peak.ne.jp/)
  */
 
+use XoopsModules\Apcal;
+
 require_once __DIR__ . '/admin_header.php';
 //require_once __DIR__ . '/../../../include/cp_header.php';
-require_once __DIR__ . '/../class/APCal.php';
-require_once __DIR__ . '/../class/APCal_xoops.php';
+// require_once __DIR__ . '/../class/APCal.php';
+// require_once __DIR__ . '/../class/APCal_xoops.php';
 
 // for "Duplicatable"
 $moduleDirName = basename(dirname(__DIR__));
 if (!preg_match('/^(\D+)(\d*)$/', $moduleDirName, $regs)) {
-    echo('invalid dirname: ' . htmlspecialchars($moduleDirName));
+    echo('invalid dirname: ' . htmlspecialchars($moduleDirName, ENT_QUOTES | ENT_HTML5));
 }
 $mydirnumber = '' === $regs[2] ? '' : (int)$regs[2];
 
@@ -34,9 +36,9 @@ $mydirnumber = '' === $regs[2] ? '' : (int)$regs[2];
 
 // SERVER, GET �ѿ��μ���
 $tz   = isset($_GET['tz']) ? preg_replace('/[^a-zA-Z0-9_-]/', '', $_GET['tz']) : 'y';
-$pos  = isset($_GET['pos']) ? (int)$_GET['pos'] : 0;
-$num  = isset($_GET['num']) ? (int)$_GET['num'] : 20;
-$done = isset($_GET['done']) ? $_GET['done'] : '';
+$pos  = \Xmf\Request::getInt('pos', 0, 'GET');
+$num  = \Xmf\Request::getInt('num', 20, 'GET');
+$done = \Xmf\Request::getString('done', '', 'GET');
 
 // MySQL�ؤ���³
 $conn = $GLOBALS['xoopsDB']->conn;
@@ -46,7 +48,7 @@ $mod_path = XOOPS_ROOT_PATH . "/modules/$moduleDirName";
 $mod_url  = XOOPS_URL . "/modules/$moduleDirName";
 
 // creating an instance of APCal
-$cal = new APCal_xoops('', $xoopsConfig['language'], true);
+$cal = new Apcal\APCal_xoops('', $xoopsConfig['language'], true);
 
 // setting properties of APCal
 $cal->conn = $conn;
@@ -175,7 +177,7 @@ $rs = $GLOBALS['xoopsDB']->query("SELECT * FROM $cal->table WHERE $whr ORDER BY 
 
 // ページ分割処理
 include XOOPS_ROOT_PATH . '/class/pagenav.php';
-$nav      = new XoopsPageNav($numrows, $num, $pos, 'pos', "tz=$tz&amp;num=$num");
+$nav      = new \XoopsPageNav($numrows, $num, $pos, 'pos', "tz=$tz&amp;num=$num");
 $nav_html = $nav->renderNav(10);
 if ($numrows <= 0) {
     $nav_num_info = _NONE;

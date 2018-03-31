@@ -1,4 +1,4 @@
-<?php
+<?php namespace XoopsModules\Apcal;
 
 /**
  * Class thumb

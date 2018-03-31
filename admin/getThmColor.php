@@ -18,14 +18,16 @@
  * @author       Antiques Promotion (http://www.antiquespromotion.ca)
  */
 
+use XoopsModules\Apcal;
+
 require_once __DIR__ . '/../../../mainfile.php';
-require_once XOOPS_ROOT_PATH . '/modules/apcal/class/cssParser.php';
+require_once XOOPS_ROOT_PATH . '/modules/apcal/class/CssParser.php';
 
 error_reporting(0);
 $xoopsLogger->activated = false;
 
 $useDefault = isset($_GET['default']) && 2 == $_GET['default'];
-$css        = new CSSParser($_GET['filename']);
+$css        = new CssParser($_GET['filename']);
 
 $color                          = $css->parseColor('a', 'color');
 $colors['apcal_saturday_color'] = $color && !$useDefault ? $color : '#666666';

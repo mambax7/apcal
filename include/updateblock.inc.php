@@ -18,7 +18,7 @@
  * @author       GIJ=CHECKMATE (PEAK Corp. http://www.peak.ne.jp/)
  */
 
-defined('XOOPS_ROOT_PATH') || exit('Restricted access.');
+defined('XOOPS_ROOT_PATH') || die('Restricted access');
 
 if (substr(XOOPS_VERSION, 6, 3) < 2.1) {
 
@@ -33,7 +33,7 @@ if (substr(XOOPS_VERSION, 6, 3) < 2.1) {
         /* $sql = "SELECT * FROM ".$xoopsDB->prefix('newblocks')." WHERE mid=".$mid." AND block_type ='D'";
         $fresult = $xoopsDB->query($sql);
         $n_funcnum = $count;
-        while ($fblock = $xoopsDB->fetchArray($fresult)) {
+        while (false !== ($fblock = $xoopsDB->fetchArray($fresult))) {
             $bnum = 0;
             for ($i = 1 ; $i <= $count ; ++$i) {
                 if (($modversion['blocks'][$i]['file'] == $fblock['func_file']) and ($modversion['blocks'][$i]['show_func'] == $fblock['show_func'])) {
@@ -76,7 +76,7 @@ if (substr(XOOPS_VERSION, 6, 3) < 2.1) {
 
         $sql     = 'SELECT * FROM ' . $GLOBALS['xoopsDB']->prefix('newblocks') . ' WHERE mid=' . $mid . " AND block_type <>'D' AND func_num > $count";
         $fresult = $GLOBALS['xoopsDB']->query($sql);
-        while ($fblock = $GLOBALS['xoopsDB']->fetchArray($fresult)) {
+        while (false !== ($fblock = $GLOBALS['xoopsDB']->fetchArray($fresult))) {
             $local_msgs[] = 'Non Defined Block <b>' . $fblock['name'] . '</b> will be deleted';
             $sql          = 'DELETE FROM ' . $GLOBALS['xoopsDB']->prefix('newblocks') . " WHERE bid='" . $fblock['bid'] . "'";
             $iret         = $GLOBALS['xoopsDB']->query($sql);

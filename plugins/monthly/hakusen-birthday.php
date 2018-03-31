@@ -20,7 +20,7 @@
 
 // a plugin for mylinks
 
-defined('XOOPS_ROOT_PATH') || exit('Restricted access.');
+defined('XOOPS_ROOT_PATH') || die('Restricted access');
 
 /*
     $db : db instance
@@ -44,7 +44,7 @@ $range_end_s   = $this->month * 100 + 31;
 // query (added 86400 second margin "begin" & "end")
 $result = $db->query('SELECT u.uname,u.uid,h.birthday FROM ' . $db->prefix('hakusen_users') . ' h LEFT JOIN ' . $db->prefix('users') . " u ON u.uid=h.uid WHERE h.birthday % 10000 >= $range_start_s AND h.birthday % 10000 <= $range_end_s AND `bd_open` AND u.level > 0");
 
-while (list($uname, $uid, $birthday) = $db->fetchRow($result)) {
+while (false !== (list($uname, $uid, $birthday) = $db->fetchRow($result))) {
     $target_date = $birthday % 100;
     $tmp_array   = [
         'dotgif'      => $plugin['dotgif'],

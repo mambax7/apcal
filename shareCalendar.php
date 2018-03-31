@@ -24,45 +24,45 @@ require_once __DIR__ . '/../../mainfile.php';
 include XOOPS_ROOT_PATH . '/header.php';
 require_once XOOPS_ROOT_PATH . '/class/xoopsformloader.php';
 
-$tpl        = new XoopsTpl();
-$form       = new XoopsThemeForm(_APCAL_SHARECALENDARFORM, 'calendar', '', 'post', true);
-$formCustom = new XoopsThemeForm(_APCAL_IFCUSTOM, 'custom', '', 'post', true);
+$tpl        = new \XoopsTpl();
+$form       = new \XoopsThemeForm(_APCAL_SHARECALENDARFORM, 'calendar', '', 'post', true);
+$formCustom = new \XoopsThemeForm(_APCAL_IFCUSTOM, 'custom', '', 'post', true);
 
-$catSelect = new XoopsFormSelect(_APCAL_CATEGORIES, 'c', 0);
+$catSelect = new \XoopsFormSelect(_APCAL_CATEGORIES, 'c', 0);
 $catSelect->addOptionArray(getCategories());
 
-$styleSelect = new XoopsFormRadio(_APCAL_STYLE, 't', 'default');
+$styleSelect = new \XoopsFormRadio(_APCAL_STYLE, 't', 'default');
 $styleSelect->addOption('default', _APCAL_DEFAULT);
 $styleSelect->addOption('theme', _APCAL_THEME);
 $styleSelect->addOption('custom', _APCAL_CUSTOM);
 $styleSelect->setExtra('onclick="showCustomSettings();"');
 
-$unitSelect = new XoopsFormSelect('', 'u', '%');
+$unitSelect = new \XoopsFormSelect('', 'u', '%');
 $unitSelect->addOption('%', '%');
 $unitSelect->addOption('px', 'px');
 $unitSelect->addOption('em', 'em');
 
-$wTray = new XoopsFormElementTray(_APCAL_WIDTH);
-$wTray->addElement(new XoopsFormText('', 'w', 10, 7, '100'), true);
+$wTray = new \XoopsFormElementTray(_APCAL_WIDTH);
+$wTray->addElement(new \XoopsFormText('', 'w', 10, 7, '100'), true);
 $wTray->addElement($unitSelect);
 
-$generateButton = new XoopsFormButton(_APCAL_GENERATEHINT, 'generate', _APCAL_GENERATE, 'submit');
+$generateButton = new \XoopsFormButton(_APCAL_GENERATEHINT, 'generate', _APCAL_GENERATE, 'submit');
 $generateButton->setExtra('onclick="showHTMLCode();return false;"');
 
-$form->addElement(new XoopsFormText(_APCAL_TITLE, 'h', 30, 60, $xoopsModule->getVar('name')), true);
+$form->addElement(new \XoopsFormText(_APCAL_TITLE, 'h', 30, 60, $xoopsModule->getVar('name')), true);
 $form->addElement($catSelect, true);
-$form->addElement(new XoopsFormText(_APCAL_NBEVENTS, 'n', 5, 3, '10'), true);
+$form->addElement(new \XoopsFormText(_APCAL_NBEVENTS, 'n', 5, 3, '10'), true);
 $form->addElement($wTray, true);
 $form->addElement($styleSelect, true);
 //$form->insertBreak('');
 //$form->insertBreak(_APCAL_IFCUSTOM);
 //$form->insertBreak('');
-$formCustom->addElement(new XoopsFormText(_APCAL_BORDER, 'APborder', 60, 255, 'border: 3px double #000000;'), false);
-$formCustom->addElement(new XoopsFormText(_APCAL_TITLE, 'APtitle', 60, 255, 'color: #000000; font-size: 1.3em;'), false);
-$formCustom->addElement(new XoopsFormText(_APCAL_TEXT, 'APtext', 60, 255, 'color: #000000; font-size: 1.0em;'), false);
-$formCustom->addElement(new XoopsFormText(_APCAL_LINK, 'APlink', 60, 255, 'color: #0000FF; text-decoration: none;'), false);
-$formCustom->addElement(new XoopsFormText(_APCAL_EVEN, 'APeven', 60, 255, 'background-color: #F2F2F2;'), false);
-$formCustom->addElement(new XoopsFormText(_APCAL_ODD, 'APodd', 60, 255, 'background-color: #EBEBEB;'), false);
+$formCustom->addElement(new \XoopsFormText(_APCAL_BORDER, 'APborder', 60, 255, 'border: 3px double #000000;'), false);
+$formCustom->addElement(new \XoopsFormText(_APCAL_TITLE, 'APtitle', 60, 255, 'color: #000000; font-size: 1.3em;'), false);
+$formCustom->addElement(new \XoopsFormText(_APCAL_TEXT, 'APtext', 60, 255, 'color: #000000; font-size: 1.0em;'), false);
+$formCustom->addElement(new \XoopsFormText(_APCAL_LINK, 'APlink', 60, 255, 'color: #0000FF; text-decoration: none;'), false);
+$formCustom->addElement(new \XoopsFormText(_APCAL_EVEN, 'APeven', 60, 255, 'background-color: #F2F2F2;'), false);
+$formCustom->addElement(new \XoopsFormText(_APCAL_ODD, 'APodd', 60, 255, 'background-color: #EBEBEB;'), false);
 $form->addElement($generateButton, false);
 
 $form->display();

@@ -19,6 +19,8 @@
  * @param $msg
  */
 
+use XoopsModules\Apcal;
+
 function error_halt($msg)
 {
     global $xoopsLogger;
@@ -33,13 +35,13 @@ function error_halt($msg)
 
 require_once __DIR__ . '/admin_header.php';
 //require_once __DIR__ . '/../../../include/cp_header.php';
-require_once __DIR__ . '/../class/APCal.php';
-require_once __DIR__ . '/../class/APCal_xoops.php';
+// require_once __DIR__ . '/../class/APCal.php';
+// require_once __DIR__ . '/../class/APCal_xoops.php';
 
 // for "Duplicatable"
 $moduleDirName = basename(dirname(__DIR__));
 if (!preg_match('/^(\D+)(\d*)$/', $moduleDirName, $regs)) {
-    echo('invalid dirname: ' . htmlspecialchars($moduleDirName));
+    echo('invalid dirname: ' . htmlspecialchars($moduleDirName, ENT_QUOTES | ENT_HTML5));
 }
 $mydirnumber = '' === $regs[2] ? '' : (int)$regs[2];
 
@@ -55,7 +57,7 @@ $table_cat   = $GLOBALS['xoopsDB']->prefix("apcal{$mydirnumber}_cat");
 $mid         = $xoopsModule->mid();
 
 // creating an instance of APCal
-$cal = new APCal_xoops('', $xoopsConfig['language'], true);
+$cal = new Apcal\APCal_xoops('', $xoopsConfig['language'], true);
 
 // setting properties of APCal
 $conn = $GLOBALS['xoopsDB']->conn;
@@ -110,7 +112,7 @@ if (!empty($_POST['do_04to06'])) {
     // Counting comments
     $sql = 'SELECT com_itemid,count(*) FROM ' . $GLOBALS['xoopsDB']->prefix('xoopscomments') . " WHERE com_modid=$mid GROUP BY com_itemid";
     $rs  = $GLOBALS['xoopsDB']->query($sql);
-    while (list($id, $sum) = $GLOBALS['xoopsDB']->fetchRow($rs)) {
+    while (false !== (list($id, $sum) = $GLOBALS['xoopsDB']->fetchRow($rs))) {
         $GLOBALS['xoopsDB']->query("UPDATE $table_event SET dtstamp=dtstamp,comments=$sum WHERE id=$id");
     }
 
@@ -236,7 +238,7 @@ if (!$is_040) {
             </tr>\n";
 
     $server_tz_wrong = false;
-    while (list($count, $server_tz) = $GLOBALS['xoopsDB']->fetchRow($rs_stz)) {
+    while (false !== (list($count, $server_tz) = $GLOBALS['xoopsDB']->fetchRow($rs_stz))) {
         if ($serverTZ != $server_tz) {
             $server_tz_wrong = true;
         }

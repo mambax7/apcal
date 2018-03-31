@@ -17,10 +17,15 @@
  * @author       XOOPS Development Team,
  * @author       Antiques Promotion (http://www.antiquespromotion.ca)
  */
-
+use XoopsModules\Apcal;
 require_once __DIR__ . '/../../mainfile.php';
 
-$xoopsErrorHandler->activated = false;
+/** @var Apcal\Helper $helper */
+$helper = Apcal\Helper::getInstance();
+
+/** @var \XoopsLogger $logger */
+$logger = \XoopsLogger::getInstance();
+$logger->activated = false;
 error_reporting(E_NONE);
 
 header('Access-Control-Allow-Origin: *');
@@ -30,7 +35,7 @@ $locales = new apcal_locale();
 $array   = [];
 $catcrit = $_GET['c'] > 0 ? 'categories LIKE \'%' . str_pad($_GET['c'], 5, '0', STR_PAD_LEFT) . '%\' AND' : '';
 $result  = $GLOBALS['xoopsDB']->queryF("SELECT id, start, end, summary, shortsummary FROM {$GLOBALS['xoopsDB']->prefix('apcal_event')} WHERE {$catcrit} end>UNIX_TIMESTAMP() ORDER BY start ASC LIMIT 0,{$_GET['n']}");
-while ($row = $GLOBALS['xoopsDB']->fetchArray($result)) {
+while (false !== ($row = $GLOBALS['xoopsDB']->fetchArray($result))) {
     $start  = $row['start'];
     $startD = $locales->date_long_names[(int)gmstrftime('%d', $row['start'] + (date('I', $row['start']) * 3600))];
     $startM = $locales->month_long_names[(int)gmstrftime('%m', $row['start'] + (date('I', $row['start']) * 3600))];
@@ -41,7 +46,7 @@ while ($row = $GLOBALS['xoopsDB']->fetchArray($result)) {
     $row['start']   = $startD . ' ' . htmlentities($startM, ENT_QUOTES, 'UTF-8');
     $row['end']     = $endD . ' ' . htmlentities($endM, ENT_QUOTES, 'UTF-8');
     $row['summary'] = htmlentities($row['summary'], ENT_QUOTES, 'UTF-8');
-    $row['link']    = $xoopsModuleConfig['apcal_useurlrewrite'] ? XOOPS_URL . '/modules/apcal/' . $row['shortsummary'] . '-' . date('j-n-Y', $start) : XOOPS_URL . '/modules/apcal/?event_id=' . $row['id'];
+    $row['link']    = $helper->getConfig('apcal_useurlrewrite') ? XOOPS_URL . '/modules/apcal/' . $row['shortsummary'] . '-' . date('j-n-Y', $start) : XOOPS_URL . '/modules/apcal/?event_id=' . $row['id'];
     $array[]        = $row;
 }
 $c = $_GET['c'] > 0 ? htmlentities($GLOBALS['xoopsDB']->fetchObject($GLOBALS['xoopsDB']->queryF("SELECT cat_title FROM {$GLOBALS['xoopsDB']->prefix('apcal_cat')} WHERE cid={$_GET['c']} LIMIT 0,1"))->cat_title, ENT_QUOTES, 'UTF-8') : '';

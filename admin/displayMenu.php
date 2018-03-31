@@ -1,11 +1,13 @@
 <?php
 
+use XoopsModules\Apcal;
+
 if (substr(XOOPS_VERSION, 6) < '2.5.0' && isset($xoopsModule) && $xoopsModule->getInfo('system_menu')) {
     /** @var xos_opal_Theme $xoTheme */
     $xoTheme->addStylesheet(XOOPS_URL . '/modules/apcal/admin/menu.css');
     $xoopsModule->loadAdminMenu();
     // Get menu tab handler
-    $menuHandler = xoops_getModuleHandler('adminMenu', 'APCal');
+    $menuHandler = Apcal\Helper::getInstance()->getHandler('AdminMenu'); //xoops_getModuleHandler('adminMenu', 'APCal');
     // Define top navigation
     $menuHandler->addMenuTop(XOOPS_URL . '/modules/system/admin.php?fct=preferences&amp;op=showmod&amp;mod=' . $xoopsModule->getVar('mid', 'e'), _AM_APCAL_PREFS);
     $menuHandler->addMenuTop(XOOPS_URL . '/modules/system/admin.php?fct=modulesadmin&amp;op=update&amp;module=' . $xoopsModule->getVar('dirname', 'e'), _AM_APCAL_UPDATE);

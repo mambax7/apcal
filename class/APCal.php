@@ -1,4 +1,5 @@
-<?php
+<?php namespace XoopsModules\Apcal;
+
 /*
  * You may not change or alter any portion of this comment or credits
  * of supporting developers from this source code or any supporting source code
@@ -769,7 +770,7 @@ if (!class_exists('APCal')) {
 
             // ï¿½ï¿½ï¿½ï¿½Ù¥ï¿½È°Ê³ï¿½ï¿½Î½ï¿½ï¿½ï¿½
             $result = $GLOBALS['xoopsDB']->query("SELECT summary,id,start,location,contact,gmlat,gmlong FROM $this->table WHERE admission > 0 AND start >= $range_start_s AND start < $range_end_s AND ($whr_categories) AND ($whr_class) AND allday <= 0");
-            while (list($title, $id, $server_time, $location, $contact, $gmlat, $gmlong) = $GLOBALS['xoopsDB']->fetchRow($result)) {
+            while (false !== (list($title, $id, $server_time, $location, $contact, $gmlat, $gmlong) = $GLOBALS['xoopsDB']->fetchRow($result))) {
                 if ('NO_YEAR' === $mode && ($gmlat > 0 || $gmlong > 0)) {
                     $this->gmPoints[] = [
                         'summary'   => $title,
@@ -791,7 +792,7 @@ if (!class_exists('APCal')) {
             // ï¿½ï¿½ï¿½ï¿½Ù¥ï¿½ï¿½ï¿½ï¿½ï¿½Ñ¤Î½ï¿½ï¿½ï¿½
             $result = $GLOBALS['xoopsDB']->query("SELECT summary,id,start,end,location,contact,gmlat,gmlong FROM $this->table WHERE admission > 0 AND start >= $range_start_s AND start < $range_end_s AND ($whr_categories) AND ($whr_class) AND allday > 0");
 
-            while (list($title, $id, $start_s, $end_s, $location, $contact, $gmlat, $gmlong) = $GLOBALS['xoopsDB']->fetchRow($result)) {
+            while (false !== (list($title, $id, $start_s, $end_s, $location, $contact, $gmlat, $gmlong) = $GLOBALS['xoopsDB']->fetchRow($result))) {
                 if ($start_s < $range_start_s) {
                     $start_s = $range_start_s;
                 }
@@ -841,7 +842,7 @@ if (!class_exists('APCal')) {
 
             require_once "$this->base_path/include/patTemplate.php";
             $tmpl = new PatTemplate();
-            $tmpl->setBasedir("$this->images_path");
+            $tmpl->setBasedir((string)$this->images_path);
 
             // É½ï¿½ï¿½ï¿½â¡¼ï¿½É¤Ë±ï¿½ï¿½ï¿½ï¿½Æ¡ï¿½ï¿½Æ¥ï¿½×¥ì¡¼ï¿½È¥Õ¥ï¿½ï¿½ï¿½ï¿½ï¿½ò¿¶¤ï¿½Ê¬ï¿½ï¿½
             switch ($mode) {
@@ -1420,7 +1421,7 @@ if (!class_exists('APCal')) {
          */
         public function get_monthly_html($get_target = '', $query_string = '', $for_print = false)
         {
-            $tpl = new XoopsTpl();
+            $tpl = new \XoopsTpl();
 
             // Set days width
             $this->widerDays = unserialize($this->widerDays);
@@ -1706,7 +1707,7 @@ if (!class_exists('APCal')) {
             // get the result of plugins
             $plugin_returns = [];
             if ('apcal_xoops' === strtolower(get_class($this))) {
-                $db       = XoopsDatabaseFactory::getDatabaseConnection();
+                $db       = \XoopsDatabaseFactory::getDatabaseConnection();
                 $myts     = \MyTextSanitizer::getInstance();
                 $now      = time();
                 $just1gif = 0;
@@ -1989,7 +1990,7 @@ if (!class_exists('APCal')) {
             // get the result of plugins
             $plugin_returns = [];
             if ('apcal_xoops' === strtolower(get_class($this))) {
-                $db       = XoopsDatabaseFactory::getDatabaseConnection();
+                $db       = \XoopsDatabaseFactory::getDatabaseConnection();
                 $myts     = \MyTextSanitizer::getInstance();
                 $now      = time();
                 $just1gif = 0;
@@ -2169,7 +2170,7 @@ if (!class_exists('APCal')) {
         public function savepictures($event_id)
         {
             xoops_load('xoopsmediauploader');
-            $uploader = new XoopsMediaUploader(XOOPS_UPLOAD_PATH . '/APCal', [
+            $uploader = new \XoopsMediaUploader(XOOPS_UPLOAD_PATH . '/APCal', [
                 'image/gif',
                 'image/jpeg',
                 'image/pjpeg',
@@ -4118,13 +4119,13 @@ END:VTIMEZONE\r\n";
 
             if ($is_start_date) {
                 if ($is_end_date) {
-                    $ret = "$dot {$start_desc}" . _APCAL_MB_APCALTIMESEPARATOR . "{$end_desc}";
+                    $ret = "$dot {$start_desc}" . _APCAL_MB_APCALTIMESEPARATOR . ($end_desc);
                 } else {
-                    $ret = "$dot {$start_desc}" . _APCAL_MB_APCALTIMESEPARATOR . "{$stuffing}";
+                    $ret = "$dot {$start_desc}" . _APCAL_MB_APCALTIMESEPARATOR . ($stuffing);
                 }
             } else {
                 if ($is_end_date) {
-                    $ret = "$dot {$stuffing}" . _APCAL_MB_APCALTIMESEPARATOR . "{$end_desc}";
+                    $ret = "$dot {$stuffing}" . _APCAL_MB_APCALTIMESEPARATOR . ($end_desc);
                 } else {
                     $ret = "$dot " . _APCAL_MB_APCALCONTINUING;
                 }
@@ -4183,13 +4184,13 @@ END:VTIMEZONE\r\n";
 
             if ($event->is_start_date) {
                 if ($event->is_end_date) {
-                    $ret = "$dot {$start_desc}" . _APCAL_MB_APCALTIMESEPARATOR . "{$end_desc}";
+                    $ret = "$dot {$start_desc}" . _APCAL_MB_APCALTIMESEPARATOR . ($end_desc);
                 } else {
-                    $ret = "$dot {$start_desc}" . _APCAL_MB_APCALTIMESEPARATOR . "{$stuffing}";
+                    $ret = "$dot {$start_desc}" . _APCAL_MB_APCALTIMESEPARATOR . ($stuffing);
                 }
             } else {
                 if ($event->is_end_date) {
-                    $ret = "$dot {$stuffing}" . _APCAL_MB_APCALTIMESEPARATOR . "{$end_desc}";
+                    $ret = "$dot {$stuffing}" . _APCAL_MB_APCALTIMESEPARATOR . ($end_desc);
                 } else {
                     $ret = "$dot " . _APCAL_MB_APCALCONTINUING;
                 }
@@ -4627,8 +4628,8 @@ END:VEVENT\r\n";
             }
 
             // iCal parser ï¿½Ë¤ï¿½ï¿½ï¿½ï¿½ï¿½
-            require_once "$this->base_path/class/iCal_parser.php";
-            $ical           = new iCal_parser();
+            require_once "$this->base_path/class/ICalParser.php";
+            $ical           = new ICalParser();
             $ical->language = $this->language;
             $ical->timezone = ($this->server_TZ >= 0 ? '+' : '-') . sprintf('%02d%02d', abs($this->server_TZ), abs($this->server_TZ) * 60 % 60);
             list($ret_code, $message, $filename) = explode(':', $ical->parse($uri, $user_uri), 3);
@@ -4660,8 +4661,8 @@ END:VEVENT\r\n";
         public function import_ics_via_upload($userfile)
         {
             // icsï¿½Õ¥ï¿½ï¿½ï¿½ï¿½ï¿½ò¥¯¥é¥¤ï¿½ï¿½ï¿½ï¿½È¥Þ¥ï¿½ï¿½ó¤«¤é¥¢ï¿½Ã¥×¥?ï¿½É¤ï¿½ï¿½ï¿½ï¿½É¹ï¿½ï¿½ï¿½
-            require_once "$this->base_path/class/iCal_parser.php";
-            $ical           = new iCal_parser();
+            require_once "$this->base_path/class/ICalParser.php";
+            $ical           = new ICalParser();
             $ical->language = $this->language;
             $ical->timezone = ($this->server_TZ >= 0 ? '+' : '-') . sprintf('%02d%02d', abs($this->server_TZ), abs($this->server_TZ) * 60 % 60);
             list($ret_code, $message, $filename) = explode(':', $ical->parse($_FILES[$userfile]['tmp_name'], $_FILES[$userfile]['name']), 3);
@@ -5396,7 +5397,7 @@ END:VEVENT\r\n";
                         $wdays     = array_keys($this->byday2langday_w);
                         $wday      = array_search($regs[2], $wdays);
                         $first_ymw = gmdate('Ym', $gmstart) . (int)((gmdate('j', $gmstart) - 1) / 7);
-                        if ($regs[1] == -1) {
+                        if (-1 == $regs[1]) {
                             // ï¿½Ç½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Î¾ï¿½ï¿½Î¥ë¡¼ï¿½ï¿½
                             $monthday_bottom = gmmktime(0, 0, 0, $month, 0, $year);
                             while (1) {
@@ -5534,7 +5535,7 @@ END:VEVENT\r\n";
                         $first_ym = gmdate('Ym', $gmstart);
                         $year     = gmdate('Y', $gmstart);
                         $c        = 1;
-                        if ($regs[1] == -1) {
+                        if (-1 == $regs[1]) {
                             // ï¿½Ç½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Î¾ï¿½ï¿½Î¥ë¡¼ï¿½ï¿½
                             while (1) {
                                 foreach ($months as $month) {

@@ -20,7 +20,7 @@
 
 // a plugin for news 1.1
 
-defined('XOOPS_ROOT_PATH') || exit('Restricted access.');
+defined('XOOPS_ROOT_PATH') || die('Restricted access');
 
 /*
     $db : db instance
@@ -53,7 +53,7 @@ if (!empty($options[0])) {
 // query (added 86400 second margin "begin" & "end")
 $result = $db->query('SELECT title,storyid,published FROM ' . $db->prefix('stories') . " WHERE ($whr_topic) AND published < UNIX_TIMESTAMP() AND published >= $range_start_s AND published < $range_end_s AND (expired = 0 OR expired > '$now')");
 
-while (list($title, $id, $server_time) = $db->fetchRow($result)) {
+while (false !== (list($title, $id, $server_time) = $db->fetchRow($result))) {
     $user_time = $server_time + $tzoffset_s2u;
     if (date('n', $user_time) != $this->month) {
         continue;

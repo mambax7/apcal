@@ -1,4 +1,5 @@
-<?php
+<?php namespace XoopsModules\Apcal;
+
 /*
  * You may not change or alter any portion of this comment or credits
  * of supporting developers from this source code or any supporting source code
@@ -48,9 +49,9 @@ if (!function_exists('mb_internal_encoding')) {
 }
 
 /**
- * Class iCal_parser
+ * Class ICalParser
  */
-class iCal_parser
+class ICalParser
 {
     public $week_start_day = 'Sunday';
     public $timezone       = '+0900';
@@ -593,7 +594,7 @@ class iCal_parser
         }
         $timestamp      = strtotime($Ymd);
         $num            = date('w', strtotime($this->week_start_day));
-        $start_day_time = strtotime((date('w', $timestamp) == $num ? "$this->week_start_day" : "last $this->week_start_day"), $timestamp);
+        $start_day_time = strtotime((date('w', $timestamp) == $num ? (string)$this->week_start_day : "last $this->week_start_day"), $timestamp);
         $ret_unixtime   = strtotime($day, $start_day_time);
         $ret_unixtime   = strtotime('+12 hours', $ret_unixtime);
         $ret            = date('Ymd', $ret_unixtime);
@@ -771,7 +772,7 @@ class iCal_parser
     // ¥³¥ó¥¹¥È¥é¥¯¥¿
 
     /**
-     * iCal_parser constructor.
+     * ICalParser constructor.
      */
     public function __construct()
     {
@@ -1010,12 +1011,12 @@ class iCal_parser
                     case 'STATUS':
                         // VEVENT: TENTATIVE, CONFIRMED, CANCELLED
                         // VTODO: NEEDS-ACTION, COMPLETED, IN-PROCESS, CANCELLED
-                        $status = "$data";
+                        $status = (string)$data;
                         break;
 
                     case 'CLASS':
                         // VEVENT, VTODO: PUBLIC, PRIVATE, CONFIDENTIAL
-                        $class = "$data";
+                        $class = (string)$data;
                         break;
 
                     case 'CATEGORIES':

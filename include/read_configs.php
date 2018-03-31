@@ -19,12 +19,12 @@
  * @author       Antiques Promotion (http://www.antiquespromotion.ca)
  */
 
-defined('XOOPS_ROOT_PATH') || exit('Restricted access.');
+defined('XOOPS_ROOT_PATH') || die('Restricted access');
 
 // for "Duplicatable"
 $moduleDirName = basename(dirname(__DIR__));
 if (!preg_match('/^(\D+)(\d*)$/', $moduleDirName, $regs)) {
-    echo('invalid dirname: ' . htmlspecialchars($moduleDirName));
+    echo('invalid dirname: ' . htmlspecialchars($moduleDirName, ENT_QUOTES | ENT_HTML5));
 }
 $mydirnumber       = '' === $regs[2] ? '' : (int)$regs[2];
 $cal->table        = $GLOBALS['xoopsDB']->prefix("apcal{$mydirnumber}_event");
@@ -43,7 +43,7 @@ list($mid) = $GLOBALS['xoopsDB']->fetchRow($rs);
 
 // read from xoops_config
 $rs = $GLOBALS['xoopsDB']->query('SELECT conf_name,conf_value FROM ' . $GLOBALS['xoopsDB']->prefix('config') . " WHERE conf_modid=$mid");
-while (list($key, $val) = $GLOBALS['xoopsDB']->fetchRow($rs)) {
+while (false !== (list($key, $val) = $GLOBALS['xoopsDB']->fetchRow($rs))) {
     if (0 == strncmp($key, 'apcal_', 6)) {
         // 'apcal_' ����Ϥޤ��Τ� APCal���֥������ȤΥץ�ѥƥ�
         $property = substr($key, 6);

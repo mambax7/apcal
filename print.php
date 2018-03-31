@@ -18,6 +18,8 @@
  * @author       GIJ=CHECKMATE (PEAK Corp. http://www.peak.ne.jp/)
  */
 
+use XoopsModules\Apcal;
+
 require_once __DIR__ . '/../../mainfile.php';
 require_once XOOPS_ROOT_PATH . '/class/template.php';
 
@@ -27,7 +29,7 @@ $xoopsLogger->activated = false;
 // for "Duplicatable"
 $moduleDirName = basename(__DIR__);
 if (!preg_match('/^(\D+)(\d*)$/', $moduleDirName, $regs)) {
-    echo('invalid dirname: ' . htmlspecialchars($moduleDirName));
+    echo('invalid dirname: ' . htmlspecialchars($moduleDirName, ENT_QUOTES | ENT_HTML5));
 }
 $mydirnumber = '' === $regs[2] ? '' : (int)$regs[2];
 
@@ -55,21 +57,17 @@ $cal->images_url  = "$mod_url/assets/images/$skin_folder";
 $cal->images_path = "$mod_path/assets/images/$skin_folder";
 
 // Include our module's language file
-//if (file_exists(XOOPS_ROOT_PATH . '/modules/' . $xoopsModule->dirname() . '/language/' . $xoopsConfig['language'] . '/main.php')) {
-//    require_once XOOPS_ROOT_PATH . '/modules/' . $xoopsModule->dirname() . '/language/' . $xoopsConfig['language'] . '/main.php';
-//    require_once XOOPS_ROOT_PATH . '/modules/' . $xoopsModule->dirname() . '/language/' . $xoopsConfig['language'] . '/modinfo.php';
-//} else {
-//    require_once XOOPS_ROOT_PATH . '/modules/' . $xoopsModule->dirname() . '/language/english/main.php';
-//    require_once XOOPS_ROOT_PATH . '/modules/' . $xoopsModule->dirname() . '/language/english/modinfo.php';
-//}
-xoops_loadLanguage('main', basename(__DIR__));
-xoops_loadLanguage('modinfo', basename(__DIR__));
+/** @var Apcal\Helper $helper */
+$helper = Apcal\Helper::getInstance();
+$helper->loadLanguage('main');
+$helper->loadLanguage('modinfo');
 
 $myts = \MyTextSanitizer::getInstance();
 
 header('Content-Type:text/html; charset=' . _CHARSET);
-$tpl = new XoopsTpl();
-$tpl->xoops_setTemplateDir(XOOPS_ROOT_PATH . '/themes');
+$tpl = new \XoopsTpl();
+$Tpl->template_dir=XOOPS_ROOT_PATH . '/themes';
+
 $tpl->caching=(2);
 $tpl->xoops_setCacheTime(0);
 

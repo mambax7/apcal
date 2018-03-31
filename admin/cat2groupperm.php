@@ -18,6 +18,8 @@
  * @author       GIJ=CHECKMATE (PEAK Corp. http://www.peak.ne.jp/)
  */
 
+use XoopsModules\Apcal;
+
 require_once __DIR__ . '/admin_header.php';
 //require_once __DIR__ . '/../../../include/cp_header.php';
 require_once __DIR__ . '/mygrouppermform.php';
@@ -26,7 +28,7 @@ require_once XOOPS_ROOT_PATH . '/class/xoopstree.php';
 // for "Duplicatable"
 $moduleDirName = basename(dirname(__DIR__));
 if (!preg_match('/^(\D+)(\d*)$/', $moduleDirName, $regs)) {
-    echo('invalid dirname: ' . htmlspecialchars($moduleDirName));
+    echo('invalid dirname: ' . htmlspecialchars($moduleDirName, ENT_QUOTES | ENT_HTML5));
 }
 $mydirnumber = '' === $regs[2] ? '' : (int)$regs[2];
 
@@ -55,8 +57,8 @@ if (!empty($_POST['submit'])) {
 
 // creating Objects of XOOPS
 $myts    = \MyTextSanitizer::getInstance();
-$cattree = new XoopsTree($cat_table, 'cid', 'pid');
-$form    = new MyXoopsGroupPermForm(_AM_APCAL_MENU_CAT2GROUP, $xoopsModule->mid(), 'apcal_cat', _AM_APCAL_CAT2GROUPDESC);
+$cattree = new \XoopsTree($cat_table, 'cid', 'pid');
+$form    = new \MyXoopsGroupPermForm(_AM_APCAL_MENU_CAT2GROUP, $xoopsModule->mid(), 'apcal_cat', _AM_APCAL_CAT2GROUPDESC);
 
 $cat_tree_array = $cattree->getChildTreeArray(0, 'weight ASC,cat_title');
 

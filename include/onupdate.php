@@ -20,7 +20,7 @@
  * @return bool
  */
 
-if ((!defined('XOOPS_ROOT_PATH')) || !($GLOBALS['xoopsUser'] instanceof XoopsUser)
+if ((!defined('XOOPS_ROOT_PATH')) || !($GLOBALS['xoopsUser'] instanceof \XoopsUser)
     || !$GLOBALS['xoopsUser']->IsAdmin()) {
     exit('Restricted access' . PHP_EOL);
 }
@@ -44,7 +44,7 @@ function tableExists($tablename)
  *
  * @return bool true if ready to install, false if not
  */
-function xoops_module_pre_update_apcal(XoopsModule $module)
+function xoops_module_pre_update_apcal(\XoopsModule $module)
 {
     /** @var Apcal\Helper $helper */
     /** @var Apcal\Utility $utility */
@@ -57,7 +57,7 @@ function xoops_module_pre_update_apcal(XoopsModule $module)
     return $xoopsSuccess && $phpSuccess;
 }
 
-function xoops_module_update_apcal(XoopsModule $module)
+function xoops_module_update_apcal(\XoopsModule $module)
 {
     //    global $xoopsDB;
     $moduleDirName = basename(dirname(__DIR__));
@@ -76,7 +76,7 @@ function xoops_module_update_apcal(XoopsModule $module)
         }
     }
     $result = $GLOBALS['xoopsDB']->queryF("SELECT id, summary FROM {$GLOBALS['xoopsDB']->prefix('apcal_event')}");
-    while ($row = $GLOBALS['xoopsDB']->fetchArray($result)) {
+    while (false !== ($row = $GLOBALS['xoopsDB']->fetchArray($result))) {
         $shortsummary = makeShort($row['summary']);
         $GLOBALS['xoopsDB']->queryF("UPDATE {$GLOBALS['xoopsDB']->prefix('apcal_event')} SET shortsummary='{$shortsummary}' WHERE id={$row['id']}");
     }
@@ -86,7 +86,7 @@ function xoops_module_update_apcal(XoopsModule $module)
         }
     }
     $result = $GLOBALS['xoopsDB']->queryF("SELECT cid, cat_title FROM {$GLOBALS['xoopsDB']->prefix('apcal_cat')}");
-    while ($row = $GLOBALS['xoopsDB']->fetchArray($result)) {
+    while (false !== ($row = $GLOBALS['xoopsDB']->fetchArray($result))) {
         $cat_shorttitle = makeShort($row['cat_title']);
         $GLOBALS['xoopsDB']->queryF("UPDATE {$GLOBALS['xoopsDB']->prefix('apcal_cat')} SET cat_shorttitle='{$cat_shorttitle}' WHERE cid={$row['cid']}");
     }
@@ -183,7 +183,7 @@ function xoops_module_update_apcal(XoopsModule $module)
             if (is_dir($templateFolder)) {
                 $templateList = array_diff(scandir($templateFolder, SCANDIR_SORT_NONE), ['..', '.']);
                 foreach ($templateList as $k => $v) {
-                    $fileInfo = new SplFileInfo($templateFolder . $v);
+                    $fileInfo = new \SplFileInfo($templateFolder . $v);
                     if ('html' === $fileInfo->getExtension() && 'index.html' !== $fileInfo->getFilename()) {
                         if (file_exists($templateFolder . $v)) {
                             unlink($templateFolder . $v);
@@ -226,10 +226,10 @@ function xoops_module_update_apcal(XoopsModule $module)
     }
 
     //  ---  COPY blank.png FILES ---------------
-    if (count($configurator->blankFiles) > 0) {
+    if (count($configurator->copyBlankFiles) > 0) {
         $file = __DIR__ . '/../assets/images/blank.png';
-        foreach (array_keys($configurator->blankFiles) as $i) {
-            $dest = $configurator->blankFiles[$i] . '/blank.png';
+        foreach (array_keys($configurator->copyBlankFiles) as $i) {
+            $dest = $configurator->copyBlankFiles[$i] . '/blank.png';
             $utilityClass::copyFile($file, $dest);
         }
     }

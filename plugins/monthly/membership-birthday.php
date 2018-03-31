@@ -23,7 +23,7 @@
 // a plugin for membership that extracts birthdays
 // based on mylinks plugin
 
-defined('XOOPS_ROOT_PATH') || exit('Restricted access.');
+defined('XOOPS_ROOT_PATH') || die('Restricted access');
 
 /*
     $db : db instance
@@ -54,7 +54,7 @@ $result = $db->query('SELECT lastname,uid,birth_date FROM ' . $db->prefix('membe
 
 //$result = $db->query( "SELECT lastname,uid,birth_date FROM ".$db->prefix("membership_info")." WHERE birth_date >= $range_start_s AND birth_date < $range_end_s" ) ;
 //print_r(var_export($result,TRUE));
-while (list($lastname, $id, $server_time) = $db->fetchRow($result)) {
+while (false !== (list($lastname, $id, $server_time) = $db->fetchRow($result))) {
     //print_r($server_time);
     $server_time = strtotime($server_time);
     $user_time   = $server_time + $tzoffset_s2u;
