@@ -34,13 +34,13 @@ $mod_path = XOOPS_ROOT_PATH . "/modules/$moduleDirName";
 $mod_url  = XOOPS_URL . "/modules/$moduleDirName";
 
 // ¥¯¥é¥¹ÄêµÁ¤ÎÆÉ¤ß¹þ¤ß
-if (!class_exists('APCal_xoops')) {
-    require_once "$mod_path/class/APCal.php";
-    require_once "$mod_path/class/APCal_xoops.php";
-}
+//if (!class_exists('ApcalXoops')) {
+//    require_once "$mod_path/class/APCal.php";
+//    require_once "$mod_path/class/ApcalXoops.php";
+//}
 
 // creating an instance of APCal
-$cal = new APCal_xoops('', $xoopsConfig['language'], true);
+$cal = new ApcalXoops('', $xoopsConfig['language'], true);
 
 // setting properties of APCal
 $cal->conn = $conn;

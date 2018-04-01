@@ -20,6 +20,8 @@
  * @author       Antiques Promotion (http://www.antiquespromotion.ca)
  */
 
+use  XoopsModules\Apcal;
+
 // ORIGINAL: PHP iCalendar  (http://phapcalendar.sourceforge.net/)
 // PROJECT ADMINS
 // --------------

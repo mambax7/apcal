@@ -19,6 +19,8 @@
  * @author       Antiques Promotion (http://www.antiquespromotion.ca)
  */
 
+use  XoopsModules\Apcal;
+
 if (!defined('APCAL_BLOCK_NEW_EVENT_INCLUDED')) {
     define('APCAL_BLOCK_NEW_EVENT_INCLUDED', 1);
 
@@ -39,13 +41,13 @@ if (!defined('APCAL_BLOCK_NEW_EVENT_INCLUDED')) {
         $mod_url  = XOOPS_URL . "/modules/$moduleDirName";
 
         // defining class of APCal
-        if (!class_exists('APCal_xoops')) {
-            require_once "$mod_path/class/APCal.php";
-            require_once "$mod_path/class/APCal_xoops.php";
-        }
+//        if (!class_exists('APCal_xoops')) {
+//            require_once "$mod_path/class/APCal.php";
+//            require_once "$mod_path/class/APCal_xoops.php";
+//        }
 
         // creating an instance of APCal
-        $cal                = new APCal_xoops(date('Y-n-j'), $xoopsConfig['language'], true);
+        $cal                = new Apcal\ApcalXoops(date('Y-n-j'), $xoopsConfig['language'], true);
         $cal->use_server_TZ = true;
 
         // cid ¤Ë¤è¤ë¹Ê¤ê¹þ¤ß
@@ -81,11 +83,11 @@ if (!defined('APCAL_BLOCK_NEW_EVENT_INCLUDED')) {
         $mod_url  = XOOPS_URL . "/modules/$moduleDirName";
 
         // defining class of APCal
-        require_once "$mod_path/class/APCal.php";
-        require_once "$mod_path/class/APCal_xoops.php";
+//        require_once "$mod_path/class/APCal.php";
+//        require_once "$mod_path/class/APCal_xoops.php";
 
         // creating an instance of APCal
-        $cal                = new APCal_xoops(date('Y-n-j'), $xoopsConfig['language'], true);
+        $cal                = new Apcal\ApcalXoops(date('Y-n-j'), $xoopsConfig['language'], true);
         $cal->use_server_TZ = true;
 
         // setting properties of APCal

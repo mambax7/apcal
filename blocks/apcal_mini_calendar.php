@@ -19,6 +19,8 @@
  * @author       GIJ=CHECKMATE (PEAK Corp. http://www.peak.ne.jp/)
  */
 
+use  XoopsModules\Apcal;
+
 if (!defined('APCAL_BLOCK_MINI_CALENDAR_INCLUDED')) {
     define('APCAL_BLOCK_MINI_CALENDAR_INCLUDED', 1);
 
@@ -61,13 +63,13 @@ if (!defined('APCAL_BLOCK_MINI_CALENDAR_INCLUDED')) {
         $mod_url  = XOOPS_URL . "/modules/$moduleDirName";
 
         // defining class of APCal
-        if (!class_exists('APCal_xoops')) {
-            require_once "$mod_path/class/APCal.php";
-            require_once "$mod_path/class/APCal_xoops.php";
-        }
+//        if (!class_exists('APCal_xoops')) {
+//            require_once "$mod_path/class/APCal.php";
+//            require_once "$mod_path/class/APCal_xoops.php";
+//        }
 
         // creating an instance of APCal
-        $cal = new APCal_xoops('', $xoopsConfig['language'], true);
+        $cal = new Apcal\ApcalXoops('', $xoopsConfig['language'], true);
 
         // ignoring cid from GET
         $cal->now_cid = 0;

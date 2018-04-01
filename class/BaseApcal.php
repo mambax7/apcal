@@ -20,17 +20,19 @@
  * @author       Antiques Promotion (http://www.antiquespromotion.ca)
  */
 
-if (!class_exists('APCal')) {
+use  XoopsModules\Apcal;
+
+if (!class_exists(BaseApcal::class)) {
     define('APCAL_EVENT_TABLE', 'apcal_event');
     define('APCAL_CAT_TABLE', 'apcal_cat');
     //    require_once __DIR__ . '/../../../include/cp_header.php';
     require_once XOOPS_ROOT_PATH . '/modules/apcal/include/ro_contacthandler.php'; // added by goffy convert name(s) in field contact in a links to member account
-    require_once XOOPS_ROOT_PATH . '/modules/apcal/class/thumb.php';
+//    require_once XOOPS_ROOT_PATH . '/modules/apcal/class/thumb.php';
 
     /**
-     * Class APCal
+     * Class BaseApcal
      */
-    class APCal
+    class BaseApcal
     {
         // SKELTON (they will be defined in language files)
         public $holidays           = [];
@@ -368,71 +370,71 @@ if (!class_exists('APCal')) {
         public function makeShort($str)
         {
             $replacements = [
-                'Å ' => 'S',
-                'Å¡' => 's',
-                'Å½' => 'Z',
-                'Å¾' => 'z',
-                'Ã€' => 'A',
-                'Ã�' => 'A',
-                'Ã‚' => 'A',
-                'Ãƒ' => 'A',
-                'Ã„' => 'A',
-                'Ã…' => 'A',
-                'Ã†' => 'A',
-                'Ã‡' => 'C',
-                'Ãˆ' => 'E',
-                'Ã‰' => 'E',
-                'ÃŠ' => 'E',
-                'Ã‹' => 'E',
-                'ÃŒ' => 'I',
-                'Ã�' => 'I',
-                'ÃŽ' => 'I',
-                'Ã�' => 'I',
-                'Ã‘' => 'N',
-                'Ã’' => 'O',
-                'Ã“' => 'O',
-                'Ã”' => 'O',
-                'Ã•' => 'O',
-                'Ã–' => 'O',
-                'Ã˜' => 'O',
-                'Ã™' => 'U',
-                'Ãš' => 'U',
-                'Ã›' => 'U',
-                'Ãœ' => 'U',
-                'Ã�' => 'Y',
-                'Ãž' => 'B',
-                'ÃŸ' => 'Ss',
-                'Ã ' => 'a',
-                'Ã¡' => 'a',
-                'Ã¢' => 'a',
-                'Ã£' => 'a',
-                'Ã¤' => 'a',
-                'Ã¥' => 'a',
-                'Ã¦' => 'a',
-                'Ã§' => 'c',
-                'Ã¨' => 'e',
-                'Ã©' => 'e',
-                'Ãª' => 'e',
-                'Ã«' => 'e',
-                'Ã¬' => 'i',
-                'Ã­' => 'i',
-                'Ã®' => 'i',
-                'Ã¯' => 'i',
-                'Ã°' => 'o',
-                'Ã±' => 'n',
-                'Ã²' => 'o',
-                'Ã³' => 'o',
-                'Ã´' => 'o',
-                'Ãµ' => 'o',
-                'Ã¶' => 'o',
-                'Ã¸' => 'o',
-                'Ã¹' => 'u',
-                'Ãº' => 'u',
-                'Ã»' => 'u',
-                'Ã½' => 'y',
-                'Ã½' => 'y',
-                'Ã¾' => 'b',
-                'Ã¿' => 'y'
+                'Š' => 'S',
+                'š' => 's',
+                'Ž' => 'Z',
+                'ž' => 'z',
+                'À' => 'A',
+                'Á' => 'A',
+                'Â' => 'A',
+                'Ã' => 'A',
+                'Ä' => 'A',
+                'Å' => 'A',
+                'Æ' => 'A',
+                'Ç' => 'C',
+                'È' => 'E',
+                'É' => 'E',
+                'Ê' => 'E',
+                'Ë' => 'E',
+                'Ì' => 'I',
+                'Í' => 'I',
+                'Î' => 'I',
+                'Ï' => 'I',
+                'Ñ' => 'N',
+                'Ò' => 'O',
+                'Ó' => 'O',
+                'Ô' => 'O',
+                'Õ' => 'O',
+                'Ö' => 'O',
+                'Ø' => 'O',
+                'Ù' => 'U',
+                'Ú' => 'U',
+                'Û' => 'U',
+                'Ü' => 'U',
+                'Ý' => 'Y',
+                'Þ' => 'B',
+                'ß' => 'ss',
+                'à' => 'a',
+                'á' => 'a',
+                'â' => 'a',
+                'ã' => 'a',
+                'ä' => 'a',
+                'å' => 'a',
+                'æ' => 'a',
+                'ç' => 'c',
+                'è' => 'e',
+                'é' => 'e',
+                'ê' => 'e',
+                'ë' => 'e',
+                'ì' => 'i',
+                'í' => 'i',
+                'î' => 'i',
+                'ï' => 'i',
+                'ð' => 'o',
+                'ñ' => 'n',
+                'ò' => 'o',
+                'ó' => 'o',
+                'ô' => 'o',
+                'õ' => 'o',
+                'ö' => 'o',
+                'ø' => 'o',
+                'ù' => 'u',
+                'ú' => 'u',
+                'û' => 'u',
+                'ý' => 'y',
+                'ý' => 'y',
+                'þ' => 'b',
+                'ÿ' => 'y'
             ];
 
             $str = strtr($str, $replacements);
@@ -840,8 +842,8 @@ if (!class_exists('APCal')) {
             // $PHP_SELF = $_SERVER['SCRIPT_NAME'] ;
             // if( $get_target == '' ) $get_target = $PHP_SELF ;
 
-            require_once "$this->base_path/include/patTemplate.php";
-            $tmpl = new PatTemplate();
+//            require_once "$this->base_path/include/patTemplate.php";
+            $tmpl = new Apcal\patTemplate();
             $tmpl->setBasedir((string)$this->images_path);
 
             // É½ï¿½ï¿½ï¿½â¡¼ï¿½É¤Ë±ï¿½ï¿½ï¿½ï¿½Æ¡ï¿½ï¿½Æ¥ï¿½×¥ì¡¼ï¿½È¥Õ¥ï¿½ï¿½ï¿½ï¿½ï¿½ò¿¶¤ï¿½Ê¬ï¿½ï¿½
@@ -1012,8 +1014,8 @@ if (!class_exists('APCal')) {
             // $PHP_SELF = $_SERVER['SCRIPT_NAME'] ;
             // if( $get_target == '' ) $get_target = $PHP_SELF ;
 
-            require_once "$this->base_path/include/patTemplate.php";
-            $tmpl = new PatTemplate();
+//            require_once "$this->base_path/include/patTemplate.php";
+            $tmpl = new Apcal\patTemplate();
             $tmpl->readTemplatesFromFile("$this->images_path/yearly.tmpl.html");
 
             // setting skin folder
@@ -1099,8 +1101,8 @@ if (!class_exists('APCal')) {
                 $this->caldate = $_POST['startDate'];
             }
 
-            require_once "$this->base_path/include/patTemplate.php";
-            $tmpl = new PatTemplate();
+//            require_once "$this->base_path/include/patTemplate.php";
+            $tmpl = new Apcal\patTemplate();
             $tmpl->readTemplatesFromFile("$this->images_path/monthly.tmpl.html");
 
             // setting skin folder
@@ -1182,8 +1184,8 @@ if (!class_exists('APCal')) {
             // $PHP_SELF = $_SERVER['SCRIPT_NAME'] ;
             // if( $get_target == '' ) $get_target = $PHP_SELF ;
 
-            require_once "$this->base_path/include/patTemplate.php";
-            $tmpl = new PatTemplate();
+//            require_once "$this->base_path/include/patTemplate.php";
+            $tmpl = new Apcal\patTemplate();
             $tmpl->readTemplatesFromFile("$this->images_path/weekly.tmpl.html");
 
             // setting skin folder
@@ -1243,8 +1245,8 @@ if (!class_exists('APCal')) {
             // $PHP_SELF = $_SERVER['SCRIPT_NAME'] ;
             // if( $get_target == '' ) $get_target = $PHP_SELF ;
 
-            require_once "$this->base_path/include/patTemplate.php";
-            $tmpl = new PatTemplate();
+//            require_once "$this->base_path/include/patTemplate.php";
+            $tmpl = new Apcal\patTemplate();
             $tmpl->readTemplatesFromFile("$this->images_path/daily.tmpl.html");
 
             // setting skin folder
@@ -2170,7 +2172,7 @@ if (!class_exists('APCal')) {
         public function savepictures($event_id)
         {
             xoops_load('xoopsmediauploader');
-            $uploader = new \XoopsMediaUploader(XOOPS_UPLOAD_PATH . '/APCal', [
+            $uploader = new \XoopsMediaUploader(XOOPS_UPLOAD_PATH . '/apcal', [
                 'image/gif',
                 'image/jpeg',
                 'image/pjpeg',
@@ -2286,7 +2288,7 @@ if (!class_exists('APCal')) {
                 <input type='hidden' name='last_caldate' value='{$_GET['date']}'>
                 <input type='submit' name='delete' value='" . _APCAL_BTN_DELETE . "' onclick='return confirm(\"" . _APCAL_CNFM_DELETE_YN . "\")'>
                 " . (!empty($is_extracted_record) ? "<input type='submit' name='delete_one' value='" . _APCAL_BTN_DELETE_ONE . "' onclick='return confirm(\"" . _APCAL_CNFM_DELETE_YN . "\")'>" : '') . '
-                ' . $GLOBALS['xoopsGTicket']->getTicketHtml(__LINE__) . "
+                ' . $GLOBALS['xoopsSecurity']->getTokenHTML() . "
             </form>\n";
             } else {
                 $delete_button = '';
@@ -3004,7 +3006,7 @@ if (!class_exists('APCal')) {
                        . "-</small></h2>
 <form action='{$this->make_cal_link('', $smode, 0, $caldate)}' method='post' name='MainForm' enctype='multipart/form-data'>
     "
-                       . $GLOBALS['xoopsGTicket']->getTicketHtml(__LINE__)
+                       . $GLOBALS['xoopsSecurity']->getTokenHTML()
                        . "
     <input type='hidden' name='caldate' value='{$caldate}'>
     <input type='hidden' name='event_id' value='$event_id'>
@@ -4628,8 +4630,8 @@ END:VEVENT\r\n";
             }
 
             // iCal parser ï¿½Ë¤ï¿½ï¿½ï¿½ï¿½ï¿½
-            require_once "$this->base_path/class/ICalParser.php";
-            $ical           = new ICalParser();
+//            require_once "$this->base_path/class/ICalParser.php";
+            $ical           = new Apcal\ICalParser();
             $ical->language = $this->language;
             $ical->timezone = ($this->server_TZ >= 0 ? '+' : '-') . sprintf('%02d%02d', abs($this->server_TZ), abs($this->server_TZ) * 60 % 60);
             list($ret_code, $message, $filename) = explode(':', $ical->parse($uri, $user_uri), 3);
@@ -4661,8 +4663,8 @@ END:VEVENT\r\n";
         public function import_ics_via_upload($userfile)
         {
             // icsï¿½Õ¥ï¿½ï¿½ï¿½ï¿½ï¿½ò¥¯¥é¥¤ï¿½ï¿½ï¿½ï¿½È¥Þ¥ï¿½ï¿½ó¤«¤é¥¢ï¿½Ã¥×¥?ï¿½É¤ï¿½ï¿½ï¿½ï¿½É¹ï¿½ï¿½ï¿½
-            require_once "$this->base_path/class/ICalParser.php";
-            $ical           = new ICalParser();
+//            require_once "$this->base_path/class/ICalParser.php";
+            $ical           = new Apcal\ICalParser();
             $ical->language = $this->language;
             $ical->timezone = ($this->server_TZ >= 0 ? '+' : '-') . sprintf('%02d%02d', abs($this->server_TZ), abs($this->server_TZ) * 60 % 60);
             list($ret_code, $message, $filename) = explode(':', $ical->parse($_FILES[$userfile]['tmp_name'], $_FILES[$userfile]['name']), 3);

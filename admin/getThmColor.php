@@ -27,7 +27,7 @@ error_reporting(0);
 $xoopsLogger->activated = false;
 
 $useDefault = isset($_GET['default']) && 2 == $_GET['default'];
-$css        = new CssParser($_GET['filename']);
+$css        = new Apcal\CssParser($_GET['filename']);
 
 $color                          = $css->parseColor('a', 'color');
 $colors['apcal_saturday_color'] = $color && !$useDefault ? $color : '#666666';

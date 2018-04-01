@@ -20,12 +20,14 @@
  */
 
 use XoopsModules\Apcal;
-/** @var Apcal\Helper $helper */
-$helper = Apcal\Helper::getInstance();
 
 require_once __DIR__ . '/../../mainfile.php';
 require_once __DIR__ . '/header.php';
 $original_level = error_reporting(E_ALL ^ E_NOTICE);
+
+
+/** @var Apcal\Helper $helper */
+$helper = Apcal\Helper::getInstance();
 
 if ((!isset($_GET['action']) || '' === $_GET['action']) && isset($_GET['cid']) && !is_numeric($_GET['cid'])) {
     $cat_title = addslashes($_GET['cid']);
@@ -69,10 +71,10 @@ $mod_path = XOOPS_ROOT_PATH . "/modules/$moduleDirName";
 $mod_url  = XOOPS_URL . "/modules/$moduleDirName";
 
 // ���饹������ɤ߹���
-if (!class_exists('APCal_xoops')) {
-    require_once "$mod_path/class/APCal.php";
-    require_once "$mod_path/class/APCal_xoops.php";
-}
+//if (!class_exists('ApcalXoops')) {
+//    require_once "$mod_path/class/APCal.php";
+//    require_once "$mod_path/class/ApcalXoops.php";
+//}
 
 // GET,POST�ѿ��μ�����������
 if (empty($_GET['action']) && !empty($_GET['event_id'])) {
@@ -86,7 +88,7 @@ if (isset($_GET['action'])) {
 }
 
 // creating an instance of APCal
-$cal = new APCal_xoops('', $xoopsConfig['language'], true);
+$cal = new Apcal\ApcalXoops('', $xoopsConfig['language'], true);
 
 // setting properties of APCal
 $cal->conn = $conn;
@@ -254,7 +256,7 @@ $xoopsTpl->assign('showSocial', $cal->enablesocial);
 $xoopsTpl->assign('showTellaFriend', $cal->enabletellafriend);
 /** @var xos_opal_Theme $xoTheme */
 if ('View' === $action) {
-    $event_id   = \Xmf\Request::getInt('event_id', 0, GET);
+    $event_id   = \Xmf\Request::getInt('event_id', 0, 'GET');
     $event      = $GLOBALS['xoopsDB']->fetchArray($GLOBALS['xoopsDB']->queryF("SELECT summary, description, location, categories, contact, start FROM {$GLOBALS['xoopsDB']->prefix('apcal_event')} WHERE id={$event_id} LIMIT 0,1"));
     $cats       = explode(',', $event['categories']);
     $categories = [];
@@ -289,7 +291,7 @@ if ('View' === $action) {
 
     $xoopsTpl->assign('showMap', $cal->enableeventmap);
 } elseif ('' === $action) {
-    $cid          = \Xmf\Request::getInt('cid', 0, GET);
+    $cid          = \Xmf\Request::getInt('cid', 0, 'GET');
     $cat          = $GLOBALS['xoopsDB']->fetchArray($GLOBALS['xoopsDB']->queryF("SELECT cat_title, cat_desc FROM {$GLOBALS['xoopsDB']->prefix('apcal_cat')} WHERE cid={$cid} LIMIT 0,1"));
     $date         = isset($_GET['caldate']) ? $_GET['caldate'] : date('Y-n-j');
     $date         = explode('-', $date);
@@ -332,7 +334,7 @@ if ('View' === $action) {
         echo '<div class="socialNetworks">
                 <span class="print">
                     <a href="' . $cal->base_url . '/print.php?cid=' . $cal->now_cid . '&smode=' . $smode . '&caldate=' . $cal->caldate . '" target="_blank">
-                        <img src="' . $cal->images_url . '/print.gif" alt="' . _APCAL_BTN_PRINT . '" border="0" ' . PRINT_ATTRIB . '>
+                        <img src="' . $cal->images_url . '/print.gif" alt="' . _APCAL_BTN_PRINT . '" border="0" ' . "{PRINT_ATTRIB}" . '>
                     </a>
                 </span>';
         if ($cal->enabletellafriend) {

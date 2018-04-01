@@ -19,6 +19,8 @@
  */
 defined('XOOPS_ROOT_PATH') || die('Restricted access');
 
+use  XoopsModules\Apcal;
+
 /**
  * Class Helper
  */

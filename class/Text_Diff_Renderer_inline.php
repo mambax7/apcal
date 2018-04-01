@@ -1,4 +1,4 @@
-<?php
+<?php namespace XoopsModules\Apcal;
 
 /**
  * "Inline" diff renderer.
@@ -10,6 +10,9 @@
  * @author  Ciprian Popovici
  * @package Text_Diff
  */
+
+use  XoopsModules\Apcal;
+
 class Text_Diff_Renderer_inline extends Text_Diff_Renderer
 {
     /**
@@ -150,7 +153,7 @@ class Text_Diff_Renderer_inline extends Text_Diff_Renderer
         /* We want to split on word boundaries, but we need to
          * preserve whitespace as well. Therefore we split on words,
          * but include all blocks of whitespace in the wordlist. */
-        $diff = new Text_Diff($this->_splitOnWords($text1, $nl), $this->_splitOnWords($text2, $nl));
+        $diff = new Apcal\Text_Diff($this->_splitOnWords($text1, $nl), $this->_splitOnWords($text2, $nl));
 
         /* Get the diff in inline format. */
         $renderer = new self(array_merge($this->getParams(), ['split_level' => 'words']));

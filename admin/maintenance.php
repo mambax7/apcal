@@ -57,7 +57,7 @@ $table_cat   = $GLOBALS['xoopsDB']->prefix("apcal{$mydirnumber}_cat");
 $mid         = $xoopsModule->mid();
 
 // creating an instance of APCal
-$cal = new Apcal\APCal_xoops('', $xoopsConfig['language'], true);
+$cal = new Apcal\ApcalXoops('', $xoopsConfig['language'], true);
 
 // setting properties of APCal
 $conn = $GLOBALS['xoopsDB']->conn;

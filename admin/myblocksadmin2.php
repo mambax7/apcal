@@ -11,7 +11,7 @@ defined('XOOPS_ROOT_PATH') || die('Restricted access');
 
 require_once __DIR__ . '/../../../include/cp_header.php';
 
-require_once __DIR__ . '/mygrouppermform.php';
+//require_once __DIR__ . '/mygrouppermform.php';
 require_once XOOPS_ROOT_PATH . '/class/xoopsblock.php';
 //require_once __DIR__ . '/../include/gtickets.php';
 
@@ -334,7 +334,7 @@ function list_groups2()
         $item_list[$iid] = $title;
     }
 
-    $form = new MyXoopsGroupPermForm(_AM_APCAL_ADGS, 1, 'block_read', '');
+    $form = new Apcal\MyXoopsGroupPermForm(_AM_APCAL_ADGS, 1, 'block_read', '');
     if ($target_mid > 1) {
         $form->addAppendix('module_admin', $target_mid, $target_mname . ' ' . _AM_APCAL_ACTIVERIGHTS);
         $form->addAppendix('module_read', $target_mid, $target_mname . ' ' . _AM_APCAL_ACCESSRIGHTS);

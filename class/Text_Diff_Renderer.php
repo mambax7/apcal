@@ -1,4 +1,4 @@
-<?php
+<?php namespace XoopsModules\Apcal;
 
 /**
  * A class to render Diffs in different formats.
@@ -10,6 +10,9 @@
  *
  * @package Text_Diff
  */
+
+use  XoopsModules\Apcal;
+
 class Text_Diff_Renderer
 {
     /**
@@ -85,7 +88,7 @@ class Text_Diff_Renderer
                     } else {
                         if ($ntrail) {
                             $context = array_slice($edit->orig, 0, $ntrail);
-                            $block[] = new Text_Diff_Op_copy($context);
+                            $block[] = new Apcal\Text_Diff_Op_copy($context);
                         }
                         $output .= $this->_block($x0, $ntrail + $xi - $x0, $y0, $ntrail + $yi - $y0, $block);
                         $block  = false;
@@ -99,7 +102,7 @@ class Text_Diff_Renderer
                     $y0      = $yi - count($context);
                     $block   = [];
                     if ($context) {
-                        $block[] = new Text_Diff_Op_copy($context);
+                        $block[] = new Apcal\Text_Diff_Op_copy($context);
                     }
                 }
                 $block[] = $edit;

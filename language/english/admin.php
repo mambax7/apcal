@@ -179,4 +179,6 @@ if (defined('FOR_XOOPS_LANG_CHECKER') || !defined('_AM_APCAL_LOADED')) {
     define('_AM_APCAL_SYSTEMCANT', 'System blocks cannot be deleted!');
     define('_AM_APCAL_SYSTEMLEVEL', 'System Level');
     define('_AM_APCAL_TOPPAGE', 'Top Page');
+
+    define('_MI_APCAL_ADMIN_FOOTER', 'is maintainted by the');
 }

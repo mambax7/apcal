@@ -20,11 +20,13 @@
  * @author       Antiques Promotion (http://www.antiquespromotion.ca)
  */
 
-if (!class_exists('APCal_xoops')) {
+use  XoopsModules\Apcal;
+
+if (!class_exists('ApcalXoops')) {
     /**
      * Class APCal_xoops
      */
-    class APCal_xoops extends APCal
+    class ApcalXoops extends Apcal\BaseApcal
     {
         /**
          * @param $data

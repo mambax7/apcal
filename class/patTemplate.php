@@ -1,4 +1,5 @@
-<?php
+<?php namespace XoopsModules\Apcal;
+
 /*
  * You may not change or alter any portion of this comment or credits
  * of supporting developers from this source code or any supporting source code
@@ -17,6 +18,8 @@
  * @author       XOOPS Development Team,
  * @author       GIJ=CHECKMATE (PEAK Corp. http://www.peak.ne.jp/)
  */
+
+use  XoopsModules\Apcal;
 
 if (!class_exists('PatTemplate')) {
 
@@ -65,7 +68,7 @@ if (!class_exists('PatTemplate')) {
      * @access       public
      * @author       Stephan Schmidt <schst@php-tools.de>
      */
-    class PatTemplate
+    class patTemplate
     {
         /**
          * Constructor
@@ -368,8 +371,9 @@ if (!class_exists('PatTemplate')) {
         {
             $template  = strtoupper($template);
             $attribute = strtolower($attribute);
-
-            return $this->attributes[$template][$attribute];
+            if (isset($this->attributes[$template][$attribute])) {
+                return $this->attributes[$template][$attribute];
+            }
         }
 
         /**
@@ -474,16 +478,18 @@ if (!class_exists('PatTemplate')) {
                 $line = fgets($fp, 4096);
 
                 //  check, wether leading and trailing whitepaces should be stripped
-                switch ($this->whitespace[count($this->whitespace) - 1]) {
-                    case    'trim':
-                        $line = trim($line);
-                        break;
-                    case    'ltrim':
-                        $line = ltrim($line);
-                        break;
-                    case    'rtrim':
-                        $line = rtrim($line);
-                        break;
+                if (isset($this->whitespace[(count($this->whitespace)-1)])) {
+                    switch ($this->whitespace[(count($this->whitespace) - 1)]) {
+                        case    'trim':
+                            $line = trim($line);
+                            break;
+                        case    'ltrim':
+                            $line = ltrim($line);
+                            break;
+                        case    'rtrim':
+                            $line = rtrim($line);
+                            break;
+                    }
                 }
 
                 //  ========= [ OPEN TAG ] =========
@@ -494,7 +500,7 @@ if (!class_exists('PatTemplate')) {
                     $tagname    = strtolower($regs[1]);
                     $attributes = $this->parseAttributes($regs[2]);
 
-                    if ($attributes['keep'] > 0) {
+                    if (isset($attributes['keep']) && $attributes['keep'] > 0) {
                         //  create new attribute
                         $newkeep = $attributes['keep'] > 1 ? ' keep="' . ($attributes['keep'] - 1) . '"' : '';
 
@@ -572,11 +578,13 @@ if (!class_exists('PatTemplate')) {
         public function startElementHandler($fname, $tagname, $attributes, $line, $lineno)
         {
             //  check for whitespace attribute
-            if ($attributes[whitespace]) {
-                array_push($this->whitespace, strtolower($attributes[whitespace]));
+            if (isset($attributes['whitespace'])) {
+                array_push($this->whitespace, strtolower($attributes['whitespace']));
             } //  use whitepspace mode from last opened template
             else {
-                array_push($this->whitespace, $this->whitespace[count($this->whitespace) - 1]);
+                if (isset($this->whitespace, $this->whitespace[count($this->whitespace) - 1])) {
+                    array_push($this->whitespace, $this->whitespace[count($this->whitespace) - 1]);
+                }
             }
 
             switch ($tagname) {
@@ -585,11 +593,11 @@ if (!class_exists('PatTemplate')) {
                     //  parse all attributes from a string into an associative array
 
                     //  Check for name of template, which is a necessary attribute
-                    if (!$tmpl_name = strtoupper($attributes[name])) {
+                    if (!$tmpl_name = strtoupper($attributes['name'])) {
                         die("Error in template '" . $fname . "': missing name for template in line " . $lineno);
                     }
 
-                    unset($attributes[name]);
+                    unset($attributes['name']);
 
                     //  Increment Tag Depth
                     $this->depth++;
@@ -601,7 +609,8 @@ if (!class_exists('PatTemplate')) {
                     $this->template_names[$this->depth] = $tmpl_name;
 
                     //  Check, if attribute "type" was found
-                    if ($tmpl_type = strtoupper($attributes['type'])) {
+//                    if ($tmpl_type = strtoupper($attributes['type'])) {
+                        if ($tmpl_type = isset($attributes['type']) ? strtoupper($attributes['type']) :false) {
                         $this->template_types[$this->depth] = $tmpl_type;
                         $attributes['type']                 = $tmpl_type;
                     } //  No type found => this is a boring standard template
@@ -611,12 +620,12 @@ if (!class_exists('PatTemplate')) {
                     }
 
                     //  Check for src attribute => external file
-                    if ($attributes[src]) {
+                    if (isset($attributes['src'])) {
                         //  Store the filename of the external file
-                        $filename = $attributes[src];
+                        $filename = $attributes['src'];
 
                         //  Has the external file to be parsed
-                        if ('on' === $attributes[parse]) {
+                        if ('on' === $attributes['parse']) {
                             $this->createParser($filename);
                         } //  No parsing, just take the whole content of the file
                         else {
@@ -653,7 +662,7 @@ if (!class_exists('PatTemplate')) {
                         //  Template is a condition Tenplate => it needs a condition var
                         case 'CONDITION':
                             //  none found => there is an error
-                            if (!$conditionvar = $attributes[conditionvar]) {
+                            if (!$conditionvar = $attributes['conditionvar']) {
                                 die("Error in template '" . $fname . "': missing conditionvar for template in line " . $lineno);
                             }
 
@@ -664,7 +673,7 @@ if (!class_exists('PatTemplate')) {
                         //  Template is a simple condition Tenplate => it needs required vars
                         case 'SIMPLECONDITION':
                             //  none found => there is an error
-                            if ($requiredvars = $attributes[requiredvars]) {
+                            if ($requiredvars = $attributes['requiredvars']) {
                                 $this->setAttribute($this->template_names[$this->depth], 'requiredvars', explode(',', $requiredvars));
                             } else {
                                 die("Error in template '" . $fname . "': missing requiredvars attribute for simple condition template in line " . $lineno);
@@ -678,7 +687,7 @@ if (!class_exists('PatTemplate')) {
                     //  to be put into the parent template
                     if ($this->depth > 0) {
                         //  Is there a placeholder attribute?
-                        if ($placeholder = strtoupper($attributes['placeholder'])) {
+                        if ($placeholder = isset($attributes['placeholder']) ? strtoupper($attributes['placeholder']) :false) {
                             //  placeholder="none" found => DO NOT PUT A PLACEHOLDER IN THE PARENT TEMPLATE!
                             if ('NONE' !== $placeholder) {
                                 $this->template_data[$this->depth - 1] .= $this->tag_start . $placeholder . $this->tag_end;
@@ -696,7 +705,7 @@ if (!class_exists('PatTemplate')) {
                 //  Found the beginning of a subtemplate
                 case 'sub':
                     //  A subtemplate needs to have a "condition" attribute
-                    $condition = $attributes[condition];
+                    $condition = $attributes['condition'];
 
                     //  None found => error
                     if (0 == isset($condition)) {
@@ -792,7 +801,9 @@ if (!class_exists('PatTemplate')) {
          */
         public function dataHandler($fname, $data)
         {
-            $this->template_data[$this->depth] .= $data;
+            if (isset($this->template_data[$this->depth] )) {
+                $this->template_data[$this->depth] .= $data;
+            }
         }
 
         /**
@@ -1152,7 +1163,10 @@ if (!class_exists('PatTemplate')) {
 
                     //  if the variable is an array, use the index
                     if (is_array($value)) {
-                        $value = $value[$this->iteration[$template]];
+//                        $value = $value[$this->iteration[$template]];
+                        $temp = isset($value[$this->iteration[$template]]) ? $value[$this->iteration[$template]] : '';
+                        $value = $temp;
+
                     }
 
                     $vars[$tag] = $value;
@@ -1244,19 +1258,19 @@ if (!class_exists('PatTemplate')) {
         public function parseDependencies($name, &$temp, $mode = 'w')
         {
             $name = strtoupper($name);
+            if (isset($this->dependencies[$name]) && is_array($this->dependencies[$name])) {
+                for ($i = 0, $iMax = count($this->dependencies[$name]); $i < $iMax; ++$i) {
+                    $type = $this->getAttribute(strtoupper($this->dependencies[$name][$i]), 'type');
 
-            for ($i = 0, $iMax = count($this->dependencies[$name]); $i < $iMax; ++$i) {
-                $type = $this->getAttribute(strtoupper($this->dependencies[$name][$i]), 'type');
+                    //  Templates placeholders have the prefix TMPL:
+                    $tag = $this->tag_start . 'TMPL:' . $this->dependencies[$name][$i] . $this->tag_end;
+                    //  Get the parsed child template and replace it
+                    $temp = str_replace($tag, $this->getParsedTemplate($this->dependencies[$name][$i]), $temp);
 
-                //  Templates placeholders have the prefix TMPL:
-                $tag = $this->tag_start . 'TMPL:' . $this->dependencies[$name][$i] . $this->tag_end;
-                //  Get the parsed child template and replace it
-                $temp = str_replace($tag, $this->getParsedTemplate($this->dependencies[$name][$i]), $temp);
-
-                if ((patTEMPLATE_TYPE_CONDITION == $type || patTEMPLATE_TYPE_SIMPLECONDITION == $type)
-                    && 'w' === $mode
-                ) {
-                    unset($this->parsed_templates[$this->dependencies[$name][$i]]);
+                    if ((patTEMPLATE_TYPE_CONDITION == $type || patTEMPLATE_TYPE_SIMPLECONDITION == $type)
+                        && 'w' === $mode) {
+                        unset($this->parsed_templates[$this->dependencies[$name][$i]]);
+                    }
                 }
             }
         }

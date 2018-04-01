@@ -36,11 +36,11 @@ $mod_path = XOOPS_ROOT_PATH . "/modules/$moduleDirName";
 $mod_url  = XOOPS_URL . "/modules/$moduleDirName";
 
 // defining class of APCal
-require_once "$mod_path/class/APCal.php";
-require_once "$mod_path/class/APCal_xoops.php";
+//require_once "$mod_path/class/BaseApcal.php";
+//require_once "$mod_path/class/ApcalXoops.php";
 
 // creating an instance of APCal
-$cal                = new APCal_xoops(date('Y-n-j'), $xoopsConfig['language'], true);
+$cal                = new ApcalXoops(date('Y-n-j'), $xoopsConfig['language'], true);
 $cal->use_server_TZ = true;
 
 // ignoring cid from GET

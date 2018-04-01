@@ -51,7 +51,7 @@ $mod_path = XOOPS_ROOT_PATH . "/modules/$moduleDirName";
 $mod_url  = XOOPS_URL . "/modules/$moduleDirName";
 
 // creating an instance of APCal
-$cal = new Apcal\APCal_xoops('', $xoopsConfig['language'], true);
+$cal = new Apcal\ApcalXoops('', $xoopsConfig['language'], true);
 
 // setting properties of APCal
 $cal->conn = $conn;

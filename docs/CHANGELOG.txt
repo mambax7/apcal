@@ -1,8 +1,13 @@
 CHANGELOG: APCal
 Module developer : Antiques Promotion <http://xoops.antiquespromotion.ca>
 
+<h5>2.22 RC-1  [NOT RELEASED]</h5>  Dev: Xoops 2.5.9, PHP 7.2.4
+<hr>
+- namespaces, autoloading (mamba)
+- WORK IN PROGRESS
+
 2.22 Beta 2  NOT RELEASED
----------------------------------------
+<hr>
 - XOOPS 2.5.9, PHP 7.1 (mamba)
 - removed @version (mamba)
 - PSR-2 code cosmetics (mamba)
@@ -39,7 +44,7 @@ Module developer : Antiques Promotion <http://xoops.antiquespromotion.ca>
 
 
 2.22 Beta 1  2016-03-30
----------------------------------------
+<hr>
 - XOOPS 2.5.8, PHP 7 (mamba)
 - moved images, js, to /assets (mamba)
 - templates extension to .tpl (mamba)
@@ -51,29 +56,29 @@ Module developer : Antiques Promotion <http://xoops.antiquespromotion.ca>
 
 
 Version 2.2.0
----------------------------------------
+<hr>
 - Fixed   Timezones issue which was adding or removing days to an event.
 - Fixed   All day events set on the first day of a month don't appear on everyday of the previous month.
 - Updated All language files and variables to make the module clonable with SmartClone.
 
 Version 2.1.3
----------------------------------------
+<hr>
 - Fixed   Events which need to be admitted don't create doubles of active events and an error message when clicked..
 - Fixed   All day events set on the first day of a month don't appear on everyday of the previous month.
 
 Version 2.1.2
----------------------------------------
+<hr>
 - Fixed   When inserting a new event, pictures are saved.
 - Fixed   The module now comes with its own datepicker because of some Xoops version bug.
 - Fixed   The map displays correclty when the contact is a user from the website.
 
 Version 2.1.1
----------------------------------------
+<hr>
 - Fixed   When inserting a new event, pictures are saved.
 - Updated Empty fields doesn't show in the event view.
 
 Version 2.1.0
----------------------------------------
+<hr>
 - Added   Online registration feature with option to turn it on/off. (Uers can subscribe to an event and receive notifications for it) (Thanks to Goffy)
 - Updated New way to make thumbs for better support on every servers. (Needs GD library)
 - Updated When you save an event, the redirection is where you were before (Instead of current month)
@@ -82,24 +87,24 @@ Version 2.1.0
 - New features are translated in English, French and German.
 
 Version 2.0.4
----------------------------------------
+<hr>
 - Updated Spanish and German translation.
 - Fixed   The link to add an event from the monthly view.
 
 Version 2.0.3
----------------------------------------
+<hr>
 - Minor bug fix on events insertion.
 - The box in monthly view will not expand more than the screen width and height.
 
 Version 2.0.2
----------------------------------------
+<hr>
 - Fixed Shift for events in the first week of the month.
 - Updated Language of social networks buttons in module language files.
 - Updated Full event summary show in monthly view to take all available space.
 - Updated In event view, event summary as title.
 
 Version 2.0.0
----------------------------------------
+<hr>
 - Updated Monthly view with linear view for one event (instead of repeating over and over)
 - Added   Possibility to Add Pictures to an event including a separate main picture.
 - Added   Thumbnail pictures with viewer in event view.
@@ -116,26 +121,26 @@ Version 2.0.0
 - Some minor bug fixes.
 
 Version 1.0.6
----------------------------------------
+<hr>
 - Added   links to social networks (Facebook, Twitter, Google+)
 
 Version 1.0.5
----------------------------------------
+<hr>
 - Updated Admin menu to fit XOOPS 2.4 and 2.5.
 - Some functions updates to fit php 5.3.
 
 Version 1.0.4
----------------------------------------
+<hr>
 - Updated admin menu.
 - Fixed   the bug caused by the .htaccess file generating an "Internal server error".
 - Some minor bug fixes.
 
 Version 1.0.3
----------------------------------------
+<hr>
 - Some minor bug fixes.
 
 Version 1.0.2
----------------------------------------
+<hr>
 - Updated Google Optimization.
 - Added   onUpdate action to add the new DB fields.
 - Updated onInstall action.
@@ -144,12 +149,12 @@ Version 1.0.2
 - Updated the "share this calendar" example to fit with Internet Explorer (IE7+)
 
 Version 1.0.1
----------------------------------------
+<hr>
 - Updated URLRewriting.
 - Updated Google Optimization.
 
 Version 1.0.0
----------------------------------------
+<hr>
 - Added   a map showing all events location.
 - Added   markers with number representing the date of event with next event first.
 - Added   individual map showing event location.

@@ -19,6 +19,9 @@
  * @author       GIJ=CHECKMATE (PEAK Corp. http://www.peak.ne.jp/)
  * @author       Antiques Promotion (http://www.antiquespromotion.ca)
  */
+
+use  XoopsModules\Apcal;
+
 class CssParser
 {
     public $_css = '';

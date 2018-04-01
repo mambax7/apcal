@@ -22,7 +22,7 @@ use XoopsModules\Apcal;
 
 require_once __DIR__ . '/admin_header.php';
 //require_once __DIR__ . '/../../../include/cp_header.php';
-require_once __DIR__ . '/mygrouppermform.php';
+//require_once __DIR__ . '/mygrouppermform.php';
 require_once XOOPS_ROOT_PATH . '/class/xoopstree.php';
 
 // for "Duplicatable"
@@ -58,7 +58,7 @@ if (!empty($_POST['submit'])) {
 // creating Objects of XOOPS
 $myts    = \MyTextSanitizer::getInstance();
 $cattree = new \XoopsTree($cat_table, 'cid', 'pid');
-$form    = new \MyXoopsGroupPermForm(_AM_APCAL_MENU_CAT2GROUP, $xoopsModule->mid(), 'apcal_cat', _AM_APCAL_CAT2GROUPDESC);
+$form    = new Apcal\MyXoopsGroupPermForm(_AM_APCAL_MENU_CAT2GROUP, $xoopsModule->mid(), 'apcal_cat', _AM_APCAL_CAT2GROUPDESC);
 
 $cat_tree_array = $cattree->getChildTreeArray(0, 'weight ASC,cat_title');
 

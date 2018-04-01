@@ -1,13 +1,15 @@
 <?php
 
+use XoopsModules\Apcal;
+
 require_once __DIR__ . '/../../mainfile.php';
 require_once XOOPS_ROOT_PATH . '/class/xoopsformloader.php';
 
 $mod_path = XOOPS_ROOT_PATH . '/modules/' . basename(__DIR__);
-if (!class_exists('APCal')) {
-    require_once $mod_path . '/class/APCal.php';
-}
-$cal = new APCal('', $xoopsConfig['language'], true);
+//if (!class_exists('BaseApcal')) {
+//    require_once $mod_path . '/class/Apcal\.php';
+//}
+$cal = new Apcal\BaseApcal('', $xoopsConfig['language'], true); //TODO Check in this
 include $mod_path . '/include/read_configs.php';
 
 if ($cal->enabletellafriend) {

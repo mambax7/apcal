@@ -49,7 +49,7 @@ $mod_path = XOOPS_ROOT_PATH . "/modules/$moduleDirName";
 $mod_url  = XOOPS_URL . "/modules/$moduleDirName";
 
 // creating an instance of APCal
-$cal = new \APCal_xoops('', $xoopsConfig['language'], true);
+$cal = new \ApcalXoops('', $xoopsConfig['language'], true);
 
 // setting properties of APCal
 $cal->conn = $conn;
@@ -355,7 +355,7 @@ echo "
         </td>
         <td class='$oddeven' style='background-color:#FFCCCC;'>
           <select name='pi_files[0]'>
-            " . make_selected($file_options, 'APCal.php') . "
+            " . make_selected($file_options, 'BaseApcal.php') . "
           </select>
         </td>
         <td class='$oddeven' style='background-color:#FFCCCC;'>

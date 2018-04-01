@@ -65,7 +65,7 @@ function xoops_module_install_apcal(\XoopsModule $xoopsModule)
     $helper->loadLanguage('admin');
     $helper->loadLanguage('modinfo');
 
-    $configurator = new ApcalConfigurator();
+    $configurator = new Apcal\ApcalConfigurator();
     /** @var ApcalUtility $utilityClass */
     $utilityClass = ucfirst($moduleDirName) . 'Utility';
     if (!class_exists($utilityClass)) {
@@ -174,7 +174,7 @@ function transferTable($tablename)
 function setDefaultPerm()
 {
     $moduleHnd    = xoops_getHandler('module');
-    $module       = $moduleHnd->getByDirname('APCal');
+    $module       = $moduleHnd->getByDirname('apcal');
     $modid        = $module->getVar('mid');
     $gpermHandler = xoops_getHandler('groupperm');
     //$item_ids = array(1, 2, 4, 8, 32);

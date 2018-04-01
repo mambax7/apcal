@@ -1,4 +1,4 @@
-<?php
+<?php namespace XoopsModules\Apcal;
 
 /**
  * Text_Diff
@@ -14,6 +14,9 @@
  * @package Text_Diff
  * @author  Geoffrey T. Dairiki <dairiki@dairiki.org>
  */
+
+use  XoopsModules\Apcal;
+
 class Text_Diff
 {
     /**

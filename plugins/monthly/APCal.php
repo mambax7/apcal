@@ -47,7 +47,7 @@ if ($this->base_url == XOOPS_URL . '/modules/' . $plugin['dirname']) {
     $cal = $this;
 } else {
     // create a targeting instance of APCal
-    $cal = new APCal_xoops('', $this->language, true);
+    $cal = new Apcal\ApcalXoops('', $this->language, true);
 
     // this should not be affected by $_GET['cid']
     $cal->now_cid = '';

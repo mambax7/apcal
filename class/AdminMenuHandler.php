@@ -16,6 +16,8 @@
  * @author      Andricq Nicolas (AKA MusS)
  */
 
+use  XoopsModules\Apcal;
+
 defined('XOOPS_ROOT_PATH') || die();
 
 /**
