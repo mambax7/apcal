@@ -633,7 +633,7 @@ if (!class_exists('PatTemplate')) {
                             $external = '' !== $this->basedir ? $this->basedir . '/' . $filename : $filename;
 
                             //  Open the file and read all the content
-                            if (!$tmp = @implode('', @file($external))) {
+                            if (!$tmp = @file_get_contents($external)) {
                                 die("Couldn't open file '" . $external . "' for reading in template " . $fname . ' line ' . $lineno);
                             }
 
@@ -979,11 +979,11 @@ if (!class_exists('PatTemplate')) {
             //  prepend basedirname, if it exists
             $fname = '' !== $this->basedir ? $this->basedir . '/' . $this->source[$name][filename] : $this->source[$name][filename];
 
-            if (stristr($fname, '[part')) {
+            if (false !== stripos($fname, '[part')) {
                 return true;
             }
 
-            if (!$this->plain_templates[$name] = @implode('', @file($fname))) {
+            if (!$this->plain_templates[$name] = @file_get_contents($fname)) {
                 die("Couldn't open template '" . $name . "' (file: '" . $fname . "') for reading.");
             }
 
@@ -1466,7 +1466,7 @@ if (!class_exists('PatTemplate')) {
         {
             //  Check for trailing slash, if tag was an empty XML Tag
             if ('/' === substr($string, -1)) {
-                $string = substr($string, 0, strlen($string) - 1);
+                $string = substr($string, 0, -1);
             }
 
             $pairs = explode(' ', $string);
@@ -1561,7 +1561,7 @@ if (!class_exists('PatTemplate')) {
         public function getVar($template, $var)
         {
             //  should the var from a different template be used
-            if (stristr($var, '.')) {
+            if (false !== stripos($var, '.')) {
                 list($template, $var) = explode('.', $var);
             }
 

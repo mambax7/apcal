@@ -136,26 +136,26 @@ if (is_object($xoopsUser)) {
         if ($users_authority & 256) {
 
             // groupperm �ǡ��ġ��Υ��롼�פ��Ȥ�����
-            $gpermHandler = xoops_getHandler('groupperm');
+            $grouppermHandler = xoops_getHandler('groupperm');
 
             // ��Ͽ����
-            $insertable = $gpermHandler->checkRight('apcal_global', 1, $my_group_ids, $mid);
-            if ($insertable && $gpermHandler->checkRight('apcal_global', 2, $my_group_ids, $mid)) {
+            $insertable = $grouppermHandler->checkRight('apcal_global', 1, $my_group_ids, $mid);
+            if ($insertable && $grouppermHandler->checkRight('apcal_global', 2, $my_group_ids, $mid)) {
                 $admission_insert_sql = ',admission=1';
             } else {
                 $admission_insert_sql = ',admission=0';
             }
 
             // �Խ�����
-            $editable = $gpermHandler->checkRight('apcal_global', 4, $my_group_ids, $mid);
-            if ($editable && $gpermHandler->checkRight('apcal_global', 8, $my_group_ids, $mid)) {
+            $editable = $grouppermHandler->checkRight('apcal_global', 4, $my_group_ids, $mid);
+            if ($editable && $grouppermHandler->checkRight('apcal_global', 8, $my_group_ids, $mid)) {
                 $admission_update_sql = ',admission=1';
             } else {
                 $admission_update_sql = ',admission=0';
             }
 
             // ���¡ʺ��ǧ�λ��Ȥ��ޤ��ʤΤǡ�̵�����Τߡ�
-            $deletable = $gpermHandler->checkRight('apcal_global', 32, $my_group_ids, $mid);
+            $deletable = $grouppermHandler->checkRight('apcal_global', 32, $my_group_ids, $mid);
 
             // �Ȥꤢ������¾�ͤΥ쥳���ɤϤ����餻�ʤ�
             $whr_sql_append = "AND uid=$user_id ";

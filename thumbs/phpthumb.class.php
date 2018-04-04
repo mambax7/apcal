@@ -260,7 +260,7 @@ class phpthumb
 
         if (!$this->config_disable_debug) {
             // if debug mode is enabled, force phpThumbDebug output, do not allow normal thumbnails to be generated
-            $this->phpThumbDebug = (is_null($this->phpThumbDebug) ? 9 : max(1, (int)$this->phpThumbDebug));
+            $this->phpThumbDebug = (null === $this->phpThumbDebug ? 9 : max(1, (int)$this->phpThumbDebug));
         }
     }
 
@@ -299,7 +299,7 @@ class phpthumb
         //$this->rawImageData   = null;
         $this->sourceFilename = $sourceFilename;
         $this->src            = $sourceFilename;
-        if (is_null($this->config_output_format)) {
+        if (null === $this->config_output_format) {
             $sourceFileExtension = strtolower(substr(strrchr($sourceFilename, '.'), 1));
             if (preg_match('#^[a-z]{3,4}$#', $sourceFileExtension)) {
                 $this->config_output_format = $sourceFileExtension;
@@ -793,11 +793,11 @@ class phpthumb
     public function CleanUpCacheDirectory()
     {
         $this->DebugMessage('CleanUpCacheDirectory() set to purge ('
-                            . (is_null($this->config_cache_maxage) ? 'NULL' : number_format($this->config_cache_maxage / 86400, 1))
+                            . (null === $this->config_cache_maxage ? 'NULL' : number_format($this->config_cache_maxage / 86400, 1))
                             . ' days; '
-                            . (is_null($this->config_cache_maxsize) ? 'NULL' : number_format($this->config_cache_maxsize / 1048576, 2))
+                            . (null === $this->config_cache_maxsize ? 'NULL' : number_format($this->config_cache_maxsize / 1048576, 2))
                             . ' MB; '
-                            . (is_null($this->config_cache_maxfiles) ? 'NULL' : number_format($this->config_cache_maxfiles))
+                            . (null === $this->config_cache_maxfiles ? 'NULL' : number_format($this->config_cache_maxfiles))
                             . ' files)', __FILE__, __LINE__);
 
         if (!is_writable($this->config_cache_directory)) {
@@ -1185,11 +1185,11 @@ class phpthumb
         }
         if ('' == $segment) {
             $test = array_pop($segments);
-            if (is_null($test)) {
+            if (null === $test) {
                 $segments[] = $segment; // keep the first empty block
             } elseif ('' == $test) {
                 $test = array_pop($segments);
-                if (is_null($test)) {
+                if (null === $test) {
                     $segments[] = $test;
                     $segments[] = $segment; // keep the second one too
                 } else { // put both back and ignore segment
@@ -1202,7 +1202,7 @@ class phpthumb
         } else {
             if ('..' === $segment) {
                 $test = array_pop($segments);
-                if (is_null($test)) {
+                if (null === $test) {
                     $segments[] = $segment;
                 } elseif ('..' === $test) {
                     $segments[] = $test;
@@ -1263,7 +1263,7 @@ class phpthumb
     public function isInOpenBasedir($path)
     {
         static $open_basedirs = null;
-        if (is_null($open_basedirs)) {
+        if (null === $open_basedirs) {
             $ini_text = ini_get('open_basedir');
             $this->DebugMessage('open_basedir: "' . $ini_text . '"', __FILE__, __LINE__);
             $open_basedirs = [];
@@ -1517,7 +1517,7 @@ class phpthumb
         static $open_basedirs = null;
         static $file_exists_cache = [];
         if (!$cached || !isset($file_exists_cache[$filename])) {
-            if (is_null($open_basedirs)) {
+            if (null === $open_basedirs) {
                 $open_basedirs = preg_split('#[;:]#', ini_get('open_basedir'));
             }
             if (empty($open_basedirs) || in_array(dirname($filename), $open_basedirs)) {
@@ -1540,7 +1540,7 @@ class phpthumb
     public function ImageMagickWhichConvert()
     {
         static $WhichConvert = null;
-        if (is_null($WhichConvert)) {
+        if (null === $WhichConvert) {
             if ($this->iswindows) {
                 $WhichConvert = false;
             } else {
@@ -1563,7 +1563,7 @@ class phpthumb
     public function ImageMagickCommandlineBase()
     {
         static $commandline = null;
-        if (is_null($commandline)) {
+        if (null === $commandline) {
             if ($this->issafemode) {
                 $commandline = '';
 
@@ -1575,7 +1575,7 @@ class phpthumb
                 return $commandline;
             }
 
-            $commandline = (!is_null($this->config_imagemagick_path) ? $this->config_imagemagick_path : '');
+            $commandline = (null !== $this->config_imagemagick_path ? $this->config_imagemagick_path : '');
 
             if ($this->config_imagemagick_path
                 && ($this->config_imagemagick_path != $this->realPathSafe($this->config_imagemagick_path))) {
@@ -1636,7 +1636,7 @@ class phpthumb
     public function ImageMagickVersion($returnRAW = false)
     {
         static $versionstring = null;
-        if (is_null($versionstring)) {
+        if (null === $versionstring) {
             $versionstring = [0 => false, 1 => false];
 
             $IMversionCacheFilename = $this->config_cache_directory . DIRECTORY_SEPARATOR . 'phpThumbCacheIMversion.txt';
@@ -1646,7 +1646,7 @@ class phpthumb
                 $versionstring[1] = ($versionstring[1] ?: false); // "false" is stored as an empty string in the cache file
             } else {
                 $commandline = $this->ImageMagickCommandlineBase();
-                $commandline = (!is_null($commandline) ? $commandline : '');
+                $commandline = (null !== $commandline ? $commandline : '');
                 if ($commandline) {
                     $commandline .= ' --version';
                     $this->DebugMessage('ImageMagick version checked with "' . $commandline . '"', __FILE__, __LINE__);
@@ -1674,10 +1674,10 @@ class phpthumb
     public function ImageMagickSwitchAvailable($switchname)
     {
         static $IMoptions = null;
-        if (is_null($IMoptions)) {
+        if (null === $IMoptions) {
             $IMoptions   = [];
             $commandline = $this->ImageMagickCommandlineBase();
-            if (!is_null($commandline)) {
+            if (null !== $commandline) {
                 $commandline  .= ' -help';
                 $IMhelp_lines = explode("\n", phpthumb_functions::SafeExec($commandline));
                 foreach ($IMhelp_lines as $line) {
@@ -1710,10 +1710,10 @@ class phpthumb
     public function ImageMagickFormatsList()
     {
         static $IMformatsList = null;
-        if (is_null($IMformatsList)) {
+        if (null === $IMformatsList) {
             $IMformatsList = '';
             $commandline   = $this->ImageMagickCommandlineBase();
-            if (!is_null($commandline)) {
+            if (null !== $commandline) {
                 $commandline   = dirname($commandline) . DIRECTORY_SEPARATOR . str_replace('convert', 'identify', basename($commandline));
                 $commandline   .= ' -list format';
                 $IMformatsList = phpthumb_functions::SafeExec($commandline);
@@ -1858,7 +1858,7 @@ class phpthumb
                     }
                 }
 
-                if (!is_null($this->dpi) && $this->ImageMagickSwitchAvailable('density')) {
+                if (null !== $this->dpi && $this->ImageMagickSwitchAvailable('density')) {
                     // for raster source formats only (WMF, PDF, etc)
                     $commandline .= ' -density ' . phpthumb_functions::escapeshellarg_replacement($this->dpi);
                 }
@@ -3354,20 +3354,20 @@ class phpthumb
                         for ($i = 8; $i >= 1; $i--) {
                             $tempIMG = imagecreatetruecolor(imagesx($this->gdimg_output), imagesy($this->gdimg_output));
                             imagecopy($tempIMG, $this->gdimg_output, 0, 0, 0, 0, imagesx($this->gdimg_output), imagesy($this->gdimg_output));
-                            imagetruecolortopalette($tempIMG, true, pow(2, $i));
+                            imagetruecolortopalette($tempIMG, true, 2 ** $i);
                             ob_start();
                             $imgRenderFunction($tempIMG);
                             $imgdata = ob_get_contents();
                             ob_end_clean();
 
                             if (strlen($imgdata) <= $this->maxb) {
-                                imagetruecolortopalette($this->gdimg_output, true, pow(2, $i));
+                                imagetruecolortopalette($this->gdimg_output, true, 2 ** $i);
                                 break;
                             }
                         }
                     }
                     if (strlen($imgdata) > $this->maxb) {
-                        imagetruecolortopalette($this->gdimg_output, true, pow(2, $i));
+                        imagetruecolortopalette($this->gdimg_output, true, 2 ** $i);
 
                         return false;
                     }
@@ -3570,7 +3570,7 @@ class phpthumb
         if (preg_match('#^http:#i', $this->src) && !$this->sourceFilename && $this->rawImageData) {
             !$this->SourceDataToTempFile();
         }
-        if (is_null($this->getimagesizeinfo)) {
+        if (null === $this->getimagesizeinfo) {
             if ($this->sourceFilename) {
                 $this->getimagesizeinfo = @getimagesize($this->sourceFilename);
                 $this->source_width     = $this->getimagesizeinfo[0];
@@ -3598,7 +3598,7 @@ class phpthumb
             }
         }
 
-        if (is_null($this->getimagesizeinfo)) {
+        if (null === $this->getimagesizeinfo) {
             $this->getimagesizeinfo = @getimagesize($this->sourceFilename);
         }
 
@@ -3722,12 +3722,12 @@ class phpthumb
      */
     public function SetCacheFilename()
     {
-        if (!is_null($this->cache_filename)) {
+        if (null !== $this->cache_filename) {
             $this->DebugMessage('$this->cache_filename already set, skipping SetCacheFilename()', __FILE__, __LINE__);
 
             return true;
         }
-        if (is_null($this->config_cache_directory)) {
+        if (null === $this->config_cache_directory) {
             $this->setCacheDirectory();
             if (!$this->config_cache_directory) {
                 $this->DebugMessage('SetCacheFilename() failed because $this->config_cache_directory is empty', __FILE__, __LINE__);
@@ -4266,7 +4266,7 @@ class phpthumb
      */
     public function phpThumbDebugVarDump($var)
     {
-        if (is_null($var)) {
+        if (null === $var) {
             return 'NULL';
         } elseif (is_bool($var)) {
             return ($var ? 'TRUE' : 'FALSE');
@@ -4546,7 +4546,7 @@ class phpthumb
      */
     public function FatalError($text)
     {
-        if (is_null($this->fatalerror)) {
+        if (null === $this->fatalerror) {
             $this->fatalerror = $text;
         }
 

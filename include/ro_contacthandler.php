@@ -30,7 +30,7 @@ function convertmycontacts($strcontact)
             //alle wörter zwischen Leerzeichen ermitteln
             $struser = substr($strcontact, $pos1, $pos2 - $pos1);
             if (',' === substr($struser, -1)) {
-                $struser      = substr($struser, 0, strlen($struser) - 1);
+                $struser      = substr($struser, 0, -1);
                 $strseperator = ', ';
             } else {
                 $strseperator = ' ';

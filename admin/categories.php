@@ -203,7 +203,7 @@ $cal->images_path = "$mod_path/assets/images/$skin_folder";
 // XOOPS関連の初期化
 $myts         = \MyTextSanitizer::getInstance();
 $cattree      = new \XoopsTree($cal->cat_table, 'cid', 'pid');
-$gpermHandler = xoops_getHandler('groupperm');
+$grouppermHandler = xoops_getHandler('groupperm');
 
 // データベース更新などがからむ処理
 if ('insert' === $action) {
@@ -277,7 +277,7 @@ if ('insert' === $action) {
     $criteria = new \CriteriaCompo(new \Criteria('gperm_modid', $xoopsModule->mid()));
     $criteria->add(new \Criteria('gperm_name', 'apcal_cat'));
     $criteria->add(new \Criteria('gperm_itemid', $cid));
-    $gpermHandler->deleteAll($criteria);
+    $grouppermHandler->deleteAll($criteria);
 
     // Category Notify の削除
     // (必要であれば該当イベント削除の機能も)
@@ -293,7 +293,7 @@ if ('insert' === $action) {
         $criteria = new \CriteriaCompo(new \Criteria('gperm_modid', $xoopsModule->mid()));
         $criteria->add(new \Criteria('gperm_name', 'apcal_cat'));
         $criteria->add(new \Criteria('gperm_itemid', (int)$child));
-        $gpermHandler->deleteAll($criteria);
+        $grouppermHandler->deleteAll($criteria);
     }
     $whr .= "$cid)";
 

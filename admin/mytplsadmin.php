@@ -431,7 +431,7 @@ function copy_templates_f2db($tplset_to, $whr_append = '1')
     while (false !== ($row = $db->fetchArray($result))) {
         $basefilepath = XOOPS_ROOT_PATH . '/modules/' . $row['tpl_module'] . '/templates/' . ('block' === $row['tpl_type'] ? 'blocks/' : '') . $row['tpl_file'];
 
-        $tpl_source   = rtrim(implode('', file($basefilepath)));
+        $tpl_source   = rtrim(file_get_contents($basefilepath));
         $lastmodified = filemtime($basefilepath);
 
         $drs = $db->query('SELECT tpl_id FROM ' . $db->prefix('tplfile') . " WHERE tpl_tplset='" . addslashes($tplset_to) . "' AND ($whr_append) AND tpl_file='" . addslashes($row['tpl_file']) . "' AND tpl_refid='" . addslashes($row['tpl_refid']) . "'");

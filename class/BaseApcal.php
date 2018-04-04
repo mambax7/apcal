@@ -2915,7 +2915,7 @@ if (!class_exists(BaseApcal::class)) {
                 if ($cat->cat_depth < 2) {
                     $category_checkboxes .= "<div style='float:left; margin:2px;'>\n";
                 }
-                $category_checkboxes .= str_repeat('-', $cat->cat_depth - 1) . "<input type='checkbox' name='cids[]' value='$cid' " . (strstr($categories, $cid4sql) ? 'checked' : '') . ">$cat_title4show<br>\n";
+                $category_checkboxes .= str_repeat('-', $cat->cat_depth - 1) . "<input type='checkbox' name='cids[]' value='$cid' " . (false !== strpos($categories, $cid4sql) ? 'checked' : '') . ">$cat_title4show<br>\n";
             }
             $category_checkboxes = substr(str_replace('<div', '</div><div', $category_checkboxes), 6) . "</div>\n";
 
@@ -3305,7 +3305,7 @@ if (!class_exists(BaseApcal::class)) {
                 if (is_array($bits)) {
                     foreach ($bits as $bit) {
                         if ($bit > 0 && $bit < 8) {
-                            $allday += pow(2, (int)$bit);
+                            $allday += 2 ** (int)$bit;
                         }
                     }
                 }
@@ -3378,7 +3378,7 @@ if (!class_exists(BaseApcal::class)) {
                 $cid = (int)$cid;
                 while (isset($this->categories[$cid])) {
                     $cid4sql = sprintf('%05d,', $cid);
-                    if (false === stristr($_POST['categories'], $cid4sql)) {
+                    if (false === stripos($_POST['categories'], $cid4sql)) {
                         $_POST['categories'] .= sprintf('%05d,', $cid);
                     }
                     $cid = (int)$this->categories[$cid]->pid;
@@ -3595,7 +3595,7 @@ if (!class_exists(BaseApcal::class)) {
         public function redirect($query)
         {
             // character white list and black list against 'javascript'
-            if (!preg_match('/^[a-z0-9=&_-]*$/i', $query) || stristr($query, 'javascript')) {
+            if (!preg_match('/^[a-z0-9=&_-]*$/i', $query) || false !== stripos($query, 'javascript')) {
                 header(strtr("Location: $this->connection://{$_SERVER['HTTP_HOST']}{$_SERVER['PHP_SELF']}", "\r\n\0", '   '));
                 exit;
             }
@@ -4224,7 +4224,7 @@ END:VTIMEZONE\r\n";
             if (!is_readable($css_filename)) {
                 return '';
             } else {
-                return strip_tags(implode('', file($css_filename)));
+                return strip_tags(file_get_contents($css_filename));
             }
         }
 

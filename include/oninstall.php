@@ -32,17 +32,17 @@ use XoopsModules\Apcal;
 function xoops_module_pre_install_apcal(\XoopsModule $module)
 {
     $moduleDirName = basename(dirname(__DIR__));
-    $utilityClass  = ucfirst($moduleDirName) . 'Utility';
-    if (!class_exists($utilityClass)) {
+    $utility  = ucfirst($moduleDirName) . 'Utility';
+    if (!class_exists($utility)) {
         xoops_load('utility', $moduleDirName);
     }
     //check for minimum XOOPS version
-    if (!$utilityClass::checkVerXoops($module)) {
+    if (!$utility::checkVerXoops($module)) {
         return false;
     }
 
     // check for minimum PHP version
-    if (!$utilityClass::checkVerPhp($module)) {
+    if (!$utility::checkVerPhp($module)) {
         return false;
     }
 
@@ -65,12 +65,10 @@ function xoops_module_install_apcal(\XoopsModule $xoopsModule)
     $helper->loadLanguage('admin');
     $helper->loadLanguage('modinfo');
 
-    $configurator = new Apcal\ApcalConfigurator();
-    /** @var ApcalUtility $utilityClass */
-    $utilityClass = ucfirst($moduleDirName) . 'Utility';
-    if (!class_exists($utilityClass)) {
-        xoops_load('utility', $moduleDirName);
-    }
+    $configurator = new Apcal\Common\Configurator();
+    /** @var Apcal\Utility $utility */
+    $utility = Apcal\Utility();
+
     //------------------------------------
     $ret    = true;
     $errors = transferTable('event');
@@ -106,7 +104,7 @@ function xoops_module_install_apcal(\XoopsModule $xoopsModule)
     if (count($configurator->uploadFolders) > 0) {
         //    foreach (array_keys($GLOBALS['uploadFolders']) as $i) {
         foreach (array_keys($configurator->uploadFolders) as $i) {
-            $utilityClass::createFolder($configurator->uploadFolders[$i]);
+            $utility::createFolder($configurator->uploadFolders[$i]);
         }
     }
 
@@ -115,7 +113,7 @@ function xoops_module_install_apcal(\XoopsModule $xoopsModule)
         $file = __DIR__ . '/../assets/images/blank.png';
         foreach (array_keys($configurator->copyBlankFiles) as $i) {
             $dest = $configurator->copyBlankFiles[$i] . '/blank.png';
-            $utilityClass::copyFile($file, $dest);
+            $utility::copyFile($file, $dest);
         }
     }
     //delete .html entries from the tpl table
@@ -176,39 +174,39 @@ function setDefaultPerm()
     $moduleHnd    = xoops_getHandler('module');
     $module       = $moduleHnd->getByDirname('apcal');
     $modid        = $module->getVar('mid');
-    $gpermHandler = xoops_getHandler('groupperm');
+    $grouppermHandler = xoops_getHandler('groupperm');
     //$item_ids = array(1, 2, 4, 8, 32);
 
-    $pical_cat    = $gpermHandler->getObjects(new \Criteria('gperm_name', 'pical_cat'));
-    $pical_global = $gpermHandler->getObjects(new \Criteria('gperm_name', 'pical_global'));
+    $pical_cat    = $grouppermHandler->getObjects(new \Criteria('gperm_name', 'pical_cat'));
+    $pical_global = $grouppermHandler->getObjects(new \Criteria('gperm_name', 'pical_global'));
 
     foreach ($pical_cat as $cat_perm) {
-        $gperm = $gpermHandler->create();
+        $gperm = $grouppermHandler->create();
         $gperm->setVar('gperm_groupid', $cat_perm->getVar('gperm_groupid'));
         $gperm->setVar('gperm_name', 'apcal_cat');
         $gperm->setVar('gperm_modid', $modid);
         $gperm->setVar('gperm_itemid', $cat_perm->getVar('gperm_itemid'));
-        $gpermHandler->insert($gperm);
+        $grouppermHandler->insert($gperm);
         unset($gperm);
     }
 
     foreach ($pical_global as $global_perm) {
-        $gperm = $gpermHandler->create();
+        $gperm = $grouppermHandler->create();
         $gperm->setVar('gperm_groupid', $global_perm->getVar('gperm_groupid'));
         $gperm->setVar('gperm_name', 'apcal_global');
         $gperm->setVar('gperm_modid', $modid);
         $gperm->setVar('gperm_itemid', $global_perm->getVar('gperm_itemid'));
-        $gpermHandler->insert($gperm);
+        $grouppermHandler->insert($gperm);
         unset($gperm);
     }
 
     /*foreach ($item_ids as $item_id) {
-        $gperm = $gpermHandler->create();
+        $gperm = $grouppermHandler->create();
         $gperm->setVar('gperm_groupid', 1);
         $gperm->setVar('gperm_name', 'apcal_global');
         $gperm->setVar('gperm_modid', $modid);
         $gperm->setVar('gperm_itemid', $item_id);
-        $gpermHandler->insert($gperm);
+        $grouppermHandler->insert($gperm);
         unset($gperm);
     }*/
 }

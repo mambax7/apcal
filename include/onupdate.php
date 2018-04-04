@@ -20,6 +20,8 @@
  * @return bool
  */
 
+use XoopsModules\Apcal;
+
 if ((!defined('XOOPS_ROOT_PATH')) || !($GLOBALS['xoopsUser'] instanceof \XoopsUser)
     || !$GLOBALS['xoopsUser']->IsAdmin()) {
     exit('Restricted access' . PHP_EOL);
@@ -65,10 +67,10 @@ function xoops_module_update_apcal(\XoopsModule $module)
 
     /** @var Apcal\Helper $helper */
     /** @var Apcal\Utility $utility */
-    /** @var Apcal\Configurator $configurator */
+    /** @var Apcal\Common\Configurator $configurator */
     $helper  = Apcal\Helper::getInstance();
     $utility = new Apcal\Utility();
-    $configurator = new Apcal\Configurator();
+    $configurator = new Apcal\Common\Configurator();
 
 
     if (!$GLOBALS['xoopsDB']->queryF("SELECT shortsummary FROM {$GLOBALS['xoopsDB']->prefix('apcal_event')}")) {
@@ -170,9 +172,9 @@ function xoops_module_update_apcal(\XoopsModule $module)
 
     require_once __DIR__ . '/config.php';
     $configurator = new ApcalConfigurator();
-    /** @var ApcalUtility $utilityClass */
-    $utilityClass = ucfirst($moduleDirName) . 'Utility';
-    if (!class_exists($utilityClass)) {
+    /** @var ApcalUtility $utility */
+    $utility = ucfirst($moduleDirName) . 'Utility';
+    if (!class_exists($utility)) {
         xoops_load('utility', $moduleDirName);
     }
 
@@ -221,7 +223,7 @@ function xoops_module_update_apcal(\XoopsModule $module)
     if (count($configurator->uploadFolders) > 0) {
         //    foreach (array_keys($GLOBALS['uploadFolders']) as $i) {
         foreach (array_keys($configurator->uploadFolders) as $i) {
-            $utilityClass::createFolder($configurator->uploadFolders[$i]);
+            $utility::createFolder($configurator->uploadFolders[$i]);
         }
     }
 
@@ -230,7 +232,7 @@ function xoops_module_update_apcal(\XoopsModule $module)
         $file = __DIR__ . '/../assets/images/blank.png';
         foreach (array_keys($configurator->copyBlankFiles) as $i) {
             $dest = $configurator->copyBlankFiles[$i] . '/blank.png';
-            $utilityClass::copyFile($file, $dest);
+            $utility::copyFile($file, $dest);
         }
     }
 
@@ -238,10 +240,10 @@ function xoops_module_update_apcal(\XoopsModule $module)
     $sql = 'DELETE FROM ' . $GLOBALS['xoopsDB']->prefix('tplfile') . " WHERE `tpl_module` = '" . $module->getVar('dirname', 'n') . '\' AND `tpl_file` LIKE \'%.html%\'';
     $GLOBALS['xoopsDB']->queryF($sql);
 
-    /** @var XoopsGroupPermHandler $gpermHandler */
-    $gpermHandler = xoops_getHandler('groupperm');
+    /** @var XoopsGroupPermHandler $grouppermHandler */
+    $grouppermHandler = xoops_getHandler('groupperm');
 
-    return $gpermHandler->deleteByModule($module->getVar('mid'), 'item_read');
+    return $grouppermHandler->deleteByModule($module->getVar('mid'), 'item_read');
 
     return true;
 }

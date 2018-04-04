@@ -18,6 +18,8 @@
  * @author       Antiques Promotion (http://www.antiquespromotion.ca)
  */
 
+use XoopsModules\Apcal;
+
 defined('XOOPS_ROOT_PATH') || die('Restricted access');
 
 // referer check
