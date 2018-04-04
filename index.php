@@ -334,7 +334,7 @@ if ('View' === $action) {
         echo '<div class="socialNetworks">
                 <span class="print">
                     <a href="' . $cal->base_url . '/print.php?cid=' . $cal->now_cid . '&smode=' . $smode . '&caldate=' . $cal->caldate . '" target="_blank">
-                        <img src="' . $cal->images_url . '/print.gif" alt="' . _APCAL_BTN_PRINT . '" border="0" ' . "{PRINT_ATTRIB}" . '>
+                        <img src="' . $cal->images_url . '/print.gif" alt="' . _APCAL_BTN_PRINT . '" border="0" ' . '{PRINT_ATTRIB}' . '>
                     </a>
                 </span>';
         if ($cal->enabletellafriend) {
