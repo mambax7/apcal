@@ -44,7 +44,9 @@ if (is_object($xoopsUser)) {
     if (!$xoopsUser->isAdmin($xoopsModule->mid())) {
         redirect_header(XOOPS_URL . '/user.php', 3, _NOPERM);
     }
-    $_GET['mod'] = empty($_GET['mod']) ? XoopsModule::getByDirname('apcal')->mid() : $_GET['mod'];
+    if (!\Xmf\Request::hasVar('mod', 'GET')){
+        $_GET['mod'] = XoopsModule::getByDirname('apcal')->mid();
+    }
     $admintest   = 1;
 } else {
     redirect_header(XOOPS_URL . '/user.php', 3, _NOPERM);

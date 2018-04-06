@@ -241,7 +241,7 @@ if ('insert' === $action) {
     }
 
     // ����
-    $cid  = (int)$_POST['cid'];
+    $cid  = \Xmf\Request::getInt('cid', 0, 'POST');
     $sql  = "UPDATE $cal->cat_table SET ";
     $cols = [
         'weight'     => 'I:N:0',
@@ -270,7 +270,7 @@ if ('insert' === $action) {
     }
 
     // Delete
-    $cid = (int)$_POST['delcat'];
+    $cid = \Xmf\Request::getInt('delcat', 0, 'POST');
 
     // Category2Group permission �κ�� (2.0.3 �����Ǥ⤦�ޤ�ư���褦��)
     // xoops_groupperm_deletebymoditem( $xoopsModule->mid() , 'apcal_cat' , $cid ) ;

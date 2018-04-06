@@ -154,7 +154,7 @@ if (isset($_POST['http_import']) && !empty($_POST['import_uri'])) {
 
 // ����ݡ��Ȥ���ľ��Υ쥳���ɿ���$mes��������
 if ('imported' === $done && isset($_GET['mes'])) {
-    $new_imported = (int)$_GET['mes'];
+    $new_imported = \Xmf\Request::getInt('mes', 0, 'GET');
 } else {
     $new_imported = 0;
 }

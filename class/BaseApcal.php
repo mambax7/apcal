@@ -195,14 +195,14 @@ if (!class_exists(BaseApcal::class)) {
                     $date  = 1;
                 } elseif (empty($_POST['apcal_date'])) {
                     // Ç¯ï¿½ï¿½ï¿½î¤¬POSTï¿½ï¿½ï¿½ì¤¿ï¿½ï¿½ï¿½
-                    $month = (int)$_POST['apcal_month'];
+                    $month = \Xmf\Request::getInt('apcal_month', 0, 'POST');
                     $date  = 1;
                 } else {
                     // Ç¯ï¿½ï¿½ï¿½î¡¦ï¿½ï¿½POSTï¿½ï¿½ï¿½ì¤¿ï¿½ï¿½ï¿½
-                    $month = (int)$_POST['apcal_month'];
-                    $date  = (int)$_POST['apcal_date'];
+                    $month = \Xmf\Request::getInt('apcal_month', 0, 'POST');
+                    $date  = \Xmf\Request::getInt('apcal_date', 0, 'POST');
                 }
-                $year = (int)$_POST['apcal_year'];
+                $year = \Xmf\Request::getInt('apcal_year', 0, 'POST');
                 $this->set_date("$year-$month-$date");
                 $caldate_posted = true;
             } else {
@@ -220,7 +220,7 @@ if (!class_exists(BaseApcal::class)) {
             }
 
             // ï¿½ï¿½ï¿½Æ¥ï¿½ï¿½ê¡¼ï¿½ï¿½ï¿½ï¿½Î¼ï¿½ï¿½ï¿½
-            $this->now_cid = !empty($_GET['cid']) ? (int)$_GET['cid'] : 0;
+            $this->now_cid = \Xmf\Request::getInt('cid', 0, 'GET');
 
             // POSTï¿½Ç¥Ð¥ï¿½Ð¥ï¿½ï¿½ï¿½ï¿½ï¿½Õ¤ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ì¤¿ï¿½ï¿½ç¡¢ï¿½ï¿½ï¿½ê¤¬ï¿½ï¿½ï¿½ï¿½Ð¥ï¿½?ï¿½É¤ï¿½Ô¤ï¿½
             if (!empty($caldate_posted) && $reload && !headers_sent()) {
@@ -1351,17 +1351,17 @@ if (!class_exists(BaseApcal::class)) {
             if (empty($_POST['apcal_year'])) {
                 $year = $this->year;
             } else {
-                $year = (int)$_POST['apcal_year'];
+                $year = \Xmf\Request::getInt('apcal_year', 0, 'POST');
             }
             if (empty($_POST['apcal_month'])) {
                 $month = $this->month;
             } else {
-                $month = (int)$_POST['apcal_month'];
+                $month = \Xmf\Request::getInt('apcal_month', 0, 'POST');
             }
             if (empty($_POST['apcal_date'])) {
                 $date = $this->date;
             } else {
-                $date = (int)$_POST['apcal_date'];
+                $date = \Xmf\Request::getInt('apcal_date', 0, 'POST');
             }
 
             // Ç¯ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½(2001ï¿½ï¿½2020 ï¿½È¤ï¿½ï¿½ï¿½)
@@ -2227,7 +2227,7 @@ if (!class_exists(BaseApcal::class)) {
             if (empty($_GET['event_id'])) {
                 die(_APCAL_ERR_INVALID_EVENT_ID);
             }
-            $this->original_id = $event_id = (int)$_GET['event_id'];
+            $this->original_id = $event_id = \Xmf\Request::getInt('event_id', 0, 'GET');
             $yrs               = $GLOBALS['xoopsDB']->query("SELECT *,UNIX_TIMESTAMP(dtstamp) AS udtstamp FROM $this->table WHERE id='$event_id' AND ($whr_categories) AND ($whr_class)");
             if ($GLOBALS['xoopsDB']->getRowsNum($yrs) < 1) {
                 die(_APCAL_ERR_INVALID_EVENT_ID);
@@ -2660,7 +2660,7 @@ if (!class_exists(BaseApcal::class)) {
                     die('Not allowed');
                 }
 
-                $event_id = (int)$_GET['event_id'];
+                $event_id = \Xmf\Request::getInt('event_id', 0, 'GET');
                 $yrs      = $GLOBALS['xoopsDB']->query("SELECT * FROM $this->table WHERE id='$event_id'");
                 if ($GLOBALS['xoopsDB']->getRowsNum($yrs) < 1) {
                     die(_APCAL_ERR_INVALID_EVENT_ID);
@@ -3408,7 +3408,7 @@ if (!class_exists(BaseApcal::class)) {
             $set_str .= ",otherHours='" . $otherHours . "'";
 
             // Check update or insert
-            $event_id = (int)$_POST['event_id'];
+            $event_id = \Xmf\Request::getInt('event_id', 0, 'POST');
             if ($event_id > 0) {
                 $rs = $GLOBALS['xoopsDB']->query("SELECT rrule_pid FROM $this->table WHERE id='$event_id' $whr_sql_append");
                 if (!($event = $GLOBALS['xoopsDB']->fetchObject($rs))) {
@@ -3517,7 +3517,7 @@ if (!class_exists(BaseApcal::class)) {
         public function delete_schedule($whr_sql_append = '', $eval_after = null)
         {
             if (!empty($_POST['event_id'])) {
-                $event_id = (int)$_POST['event_id'];
+                $event_id = \Xmf\Request::getInt('event_id', 0, 'POST');
 
                 $this->delete_regonline($event_id); // added one line by goffy
                 $rs = $GLOBALS['xoopsDB']->query("SELECT rrule_pid FROM $this->table WHERE id='$event_id' $whr_sql_append");
@@ -3557,7 +3557,7 @@ if (!class_exists(BaseApcal::class)) {
         public function delete_schedule_one($whr_sql_append = '')
         {
             if (!empty($_POST['subevent_id'])) {
-                $event_id = (int)$_POST['subevent_id'];
+                $event_id = \Xmf\Request::getInt('subevent_id', 0, 'POST');
                 $this->delete_regonline($event_id); // added one line by goffy
 
                 if (!$GLOBALS['xoopsDB']->query("DELETE FROM $this->table WHERE id='$event_id' AND rrule_pid <> id $whr_sql_append")) {
@@ -4430,7 +4430,7 @@ END:VTIMEZONE\r\n";
             }
             if (isset($_GET['event_id'])) {
                 // $_GET[ 'event_id' ] ï¿½Ë¤ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Î»ï¿½ï¿½ï¿½Î¾ï¿½ï¿½
-                $event_id  = (int)$_GET['event_id'];
+                $event_id  = \Xmf\Request::getInt('event_id', 0, 'GET');
                 $event_ids = [$event_id];
                 //                $rs        = $xoopsDB->query("SELECT summary AS udtstmp FROM $this->table WHERE id='$event_id'");
                 $rs = $GLOBALS['xoopsDB']->query("SELECT summary AS udtstmp FROM $this->table WHERE id='$event_id'");
@@ -5094,10 +5094,10 @@ END:VEVENT\r\n";
             // ï¿½ï¿½ï¿½Ù¾ï¿½ï¿½
             switch (strtoupper($_POST['rrule_freq'])) {
                 case 'DAILY':
-                    $ret_freq = 'FREQ=DAILY;INTERVAL=' . abs((int)$_POST['rrule_daily_interval']);
+                    $ret_freq = 'FREQ=DAILY;INTERVAL=' . abs(\Xmf\Request::getInt('rrule_daily_interval', 0, 'POST'));
                     break;
                 case 'WEEKLY':
-                    $ret_freq = 'FREQ=WEEKLY;INTERVAL=' . abs((int)$_POST['rrule_weekly_interval']);
+                    $ret_freq = 'FREQ=WEEKLY;INTERVAL=' . abs(\Xmf\Request::getInt('rrule_weekly_interval', 0, 'POST'));
                     if (empty($_POST['rrule_weekly_bydays'])) {
                         // ï¿½ï¿½ï¿½ï¿½Î»ï¿½ï¿½ê¤¬ï¿½ï¿½Ä¤ï¿½Ê¤ï¿½ï¿½ï¿½Ð¡ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ë¤ï¿½ï¿½ï¿½
                         $bydays = array_keys($this->byday2langday_w);
@@ -5115,7 +5115,7 @@ END:VEVENT\r\n";
                     $ret_freq .= ";BYDAY=$byday";
                     break;
                 case 'MONTHLY':
-                    $ret_freq = 'FREQ=MONTHLY;INTERVAL=' . abs((int)$_POST['rrule_monthly_interval']);
+                    $ret_freq = 'FREQ=MONTHLY;INTERVAL=' . abs(\Xmf\Request::getInt('rrule_monthly_interval', 0, 'POST'));
                     if ('' !== $_POST['rrule_monthly_byday']) {
                         // ï¿½ï¿½Nï¿½ï¿½ï¿½ï¿½Ë¤ï¿½ï¿½ï¿½ï¿½ï¿½
                         $byday = substr(trim($_POST['rrule_monthly_byday']), 0, 4);
@@ -5133,7 +5133,7 @@ END:VEVENT\r\n";
                     }
                     break;
                 case 'YEARLY':
-                    $ret_freq = 'FREQ=YEARLY;INTERVAL=' . abs((int)$_POST['rrule_yearly_interval']);
+                    $ret_freq = 'FREQ=YEARLY;INTERVAL=' . abs(\Xmf\Request::getInt('rrule_yearly_interval', 0, 'POST'));
                     if (empty($_POST['rrule_bymonths'])) {
                         // ï¿½ï¿½Î»ï¿½ï¿½ê¤¬ï¿½ï¿½Ä¤ï¿½Ê¤ï¿½ï¿½ï¿½Ð¡ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ±ï¿½ï¿½ï¿½ï¿½Ë¤ï¿½ï¿½ï¿½
                         $bymonth = date('n', $start);
@@ -5164,7 +5164,7 @@ END:VEVENT\r\n";
             }
             switch (strtoupper($_POST['rrule_terminator'])) {
                 case 'COUNT':
-                    $ret_term = ';COUNT=' . abs((int)$_POST['rrule_count']);
+                    $ret_term = ';COUNT=' . abs(\Xmf\Request::getInt('rrule_count', 0, 'POST'));
                     break;
                 case 'UNTIL':
                     // UNTILï¿½ï¿½Unixtimeï¿½ï¿½

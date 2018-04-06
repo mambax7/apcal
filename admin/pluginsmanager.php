@@ -95,7 +95,7 @@ if (!empty($_POST['update'])) {
         }
 
         $pi_options4sql = addslashes($_POST['pi_options'][0]);
-        $pi_weight4sql  = (int)$_POST['pi_weight'][0];
+        $pi_weight4sql  = \Xmf\Request::getInt('pi_weight', 0, 'POST')[0];
         $pi_title4sql   = addslashes($_POST['pi_titles'][0]);
         $pi_dirname4sql = addslashes($_POST['pi_dirnames'][0]);
         $pi_file4sql    = addslashes($_POST['pi_files'][0]);
@@ -121,7 +121,7 @@ if (!empty($_POST['update'])) {
         } else {
             $pi_type4sql    = addslashes($_POST['pi_types'][$pi_id]);
             $pi_options4sql = addslashes($_POST['pi_options'][$pi_id]);
-            $pi_weight4sql  = (int)$_POST['pi_weight'][$pi_id];
+            $pi_weight4sql  = \Xmf\Request::getInt('pi_weight', 0, 'POST')[$pi_id];
             $pi_title4sql   = addslashes($_POST['pi_titles'][$pi_id]);
             $pi_title4sql   = addslashes($_POST['pi_titles'][$pi_id]);
             $pi_dirname4sql = addslashes($_POST['pi_dirnames'][$pi_id]);

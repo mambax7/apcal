@@ -156,7 +156,7 @@ if (isset($_POST['delete'])) {
     }
 
     // ���ƥ��꡼�ؤΥ���ɲ�
-    $cid     = (int)$_POST['cid'];
+    $cid     = \Xmf\Request::getInt('cid', 0, 'POST');
     $cid4sql = sprintf('%05d,', $cid);
     $whr     = '';
     foreach ($_POST['ids'] as $id) {
@@ -179,9 +179,9 @@ if (isset($_POST['delete'])) {
     }
 
     // ���ƥ��꡼�ؤΥ�󥯰�ư�ޤ��Ϻ��
-    $cid         = (int)$_POST['cid'];
+    $cid         = \Xmf\Request::getInt('cid', 0, 'POST');
     $cid4sql     = $cid > 0 ? sprintf('%05d,', $cid) : '';
-    $old_cid     = (int)$_POST['old_cid'];
+    $old_cid     = \Xmf\Request::getInt('old_cid', 0, 'POST');
     $old_cid4sql = sprintf('%05d,', $old_cid);
     $whr         = '';
     foreach ($_POST['ids'] as $id) {

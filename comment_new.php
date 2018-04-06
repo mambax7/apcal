@@ -50,7 +50,7 @@ $cal->base_path   = $mod_path;
 $cal->images_url  = "$mod_url/assets/images/$skin_folder";
 $cal->images_path = "$mod_path/assets/images/$skin_folder";
 
-$event_id = empty($_GET['com_itemid']) ? 0 : (int)$_GET['com_itemid'];
+$event_id = \Xmf\Request::getInt('com_itemid', 0, 'GET');
 if ($event_id > 0) {
     $rs = $GLOBALS['xoopsDB']->query("SELECT summary,rrule_pid FROM $cal->table WHERE id=$event_id");
     list($title, $rrule_pid) = $GLOBALS['xoopsDB']->fetchRow($rs);
