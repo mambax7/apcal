@@ -260,7 +260,7 @@ if (!empty($_GET['src']) && isset($_GET['md5s']) && empty($_GET['md5s'])) {
             $phpThumb->ErrorImage('ERROR: "' . $SourceFilename . '" cannot be read');
         }
     }
-    if (!empty($_SERVER['HTTP_REFERER'])) {
+   if (\Xmf\Request::hasVar('HTTP_REFERER', 'SERVER')) {
         $phpThumb->ErrorImage('&md5s=' . $md5s);
     } else {
         die('&md5s=' . $md5s);

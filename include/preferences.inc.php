@@ -168,7 +168,7 @@ if (!is_object($xoopsUser) || !is_object($xoopsModule) || !$xoopsUser->isAdmin($
         $xoopsTpl->clear_all_cache();
         // regenerate admin menu file
         xoops_module_write_admin_menu(xoops_module_get_admin_menu());
-        if (!empty($_POST['conf_ids'])) {
+       if (\Xmf\Request::hasVar('conf_ids', 'POST')) {
             $conf_ids = $_POST['conf_ids'];
         }
         $count            = count($conf_ids);
@@ -272,7 +272,7 @@ if (!is_object($xoopsUser) || !is_object($xoopsModule) || !$xoopsUser->isAdmin($
         /* if (!empty($_POST['use_mysession']) && $xoopsConfig['use_mysession'] == 0 && $_POST['session_name'] != '') {
             setcookie($_POST['session_name'], session_id(), time()+(60*(int)($_POST['session_expire'])), '/',  '', 0);
         } */
-        if (!empty($_POST['redirect'])) {
+       if (\Xmf\Request::hasVar('redirect', 'POST')) {
             redirect_header($_POST['redirect'], 2, _MD_APCAL_DBUPDATED);
         } else {
             redirect_header('admin.php?fct=preferences', 2, _MD_APCAL_DBUPDATED);

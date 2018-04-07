@@ -2458,7 +2458,7 @@ if (!class_exists(BaseApcal::class)) {
                         }
                     }
 
-                    if (!empty($_SERVER['HTTPS'])) {
+                   if (\Xmf\Request::hasVar('HTTPS', 'SERVER')) {
                         $this->redirecturl = 'https://' . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
                     } else {
                         $this->redirecturl = 'http://' . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
@@ -2655,7 +2655,7 @@ if (!class_exists(BaseApcal::class)) {
             $deletable = $this->deletable;
             $smode     = empty($_GET['smode']) ? 'Monthly' : preg_replace('/[^a-zA-Z0-9_-]/', '', $_GET['smode']);
 
-            if (!empty($_GET['event_id'])) {
+           if (\Xmf\Request::hasVar('event_id', 'GET')) {
                 if (!$this->editable) {
                     die('Not allowed');
                 }
@@ -2702,7 +2702,7 @@ if (!class_exists(BaseApcal::class)) {
                 $poster_tz        = $event->poster_tz;
 
                 // added by goffy for online registration
-                if (!empty($_SERVER['HTTPS'])) {
+               if (\Xmf\Request::hasVar('HTTPS', 'SERVER')) {
                     $this->redirecturl = 'https://' . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
                 } else {
                     $this->redirecturl = 'http://' . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
@@ -3486,7 +3486,7 @@ if (!class_exists(BaseApcal::class)) {
                 // added by goffy for registration online automatically redirect to form for set up parameters for online registration, if online registration is selected
                 $ro_redirect = $_POST['ro_activate'];
                 if ('yes' === $ro_redirect) {
-                    if (!empty($_SERVER['HTTPS'])) {
+                   if (\Xmf\Request::hasVar('HTTPS', 'SERVER')) {
                         $this->redirecturl = 'https://' . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
                     } else {
                         $this->redirecturl = 'http://' . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
@@ -3516,7 +3516,7 @@ if (!class_exists(BaseApcal::class)) {
          */
         public function delete_schedule($whr_sql_append = '', $eval_after = null)
         {
-            if (!empty($_POST['event_id'])) {
+           if (\Xmf\Request::hasVar('event_id', 'POST')) {
                 $event_id = \Xmf\Request::getInt('event_id', 0, 'POST');
 
                 $this->delete_regonline($event_id); // added one line by goffy
@@ -3556,7 +3556,7 @@ if (!class_exists(BaseApcal::class)) {
          */
         public function delete_schedule_one($whr_sql_append = '')
         {
-            if (!empty($_POST['subevent_id'])) {
+           if (\Xmf\Request::hasVar('subevent_id', 'POST')) {
                 $event_id = \Xmf\Request::getInt('subevent_id', 0, 'POST');
                 $this->delete_regonline($event_id); // added one line by goffy
 

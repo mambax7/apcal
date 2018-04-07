@@ -368,7 +368,7 @@ if ('edit' === $disp && $cid > 0) {
 } else {
     echo '<h4>' . _AM_APCAL_MENU_CATEGORIES . "</h4>\n";
 
-    if (!empty($_GET['mes'])) {
+   if (\Xmf\Request::hasVar('mes', 'GET')) {
         echo "<p><style='color: blue; '>" . htmlspecialchars($_GET['mes'], ENT_QUOTES) . '</style></p>';
     }
 

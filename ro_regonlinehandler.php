@@ -23,7 +23,7 @@ $roimagesend     = XOOPS_URL . '/modules/apcal/assets/images/regonline/sendmail.
 
 $show_form_activate = false;
 if (isset($_POST['form_activate'])) {
-    if (!empty($_POST['eventid'])) {
+   if (\Xmf\Request::hasVar('eventid', 'POST')) {
         //called from edit an event (activate or edit regonline)
         $eventid   = Request::getInt('eventid', 0, 'POST');
         $url       = Request::getString('url', '', 'POST');
@@ -211,7 +211,7 @@ if ($show_form_activate) {
 }
 
 if (isset($_POST['activate_x'])) {
-    if (!empty($_POST['eventid'])) {
+   if (\Xmf\Request::hasVar('eventid', 'POST')) {
         $uid       = $_POST['uid'];
         $eventid   = $_POST['eventid'];
         $eventurl  = $_POST['eventurl'];
@@ -323,7 +323,7 @@ if (isset($_POST['activate_x'])) {
 }
 
 if (isset($_POST['deactivate_x'])) {
-    if (!empty($_POST['eventid'])) {
+   if (\Xmf\Request::hasVar('eventid', 'POST')) {
         $eventid = $_POST['eventid'];
         $url     = $_POST['eventurl'];
 
@@ -382,7 +382,7 @@ if (isset($_POST['deactivate_x'])) {
 }
 
 if (isset($_REQUEST['form_add'])) {
-    if (!empty($_REQUEST['eventid'])) {
+   if (\Xmf\Request::hasVar('eventid', 'REQUEST')) {
         $eventid   = $_REQUEST['eventid'];
         $eventurl  = $_REQUEST['eventurl'];
         $summary   = $_REQUEST['summary'];
@@ -395,7 +395,7 @@ if (isset($_REQUEST['form_add'])) {
 
         $title = $summary . ' (' . $date . ' ' . $location . ')';
 
-        if (!empty($_SERVER['HTTPS'])) {
+       if (\Xmf\Request::hasVar('HTTPS', 'SERVER')) {
             $url = 'https://' . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
         } else {
             $url = 'http://' . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
@@ -628,7 +628,7 @@ if (isset($_REQUEST['form_add'])) {
 }
 
 if (isset($_POST['add_member_x']) || isset($_POST['add_member_more_x'])) {
-    if (!empty($_POST['eventid'])) {
+   if (\Xmf\Request::hasVar('eventid', 'POST')) {
         $uid        = $_POST['uid'];
         $url        = $_POST['url'];
         $eventurl   = $_POST['eventurl'];
@@ -829,7 +829,7 @@ if (isset($_POST['add_member_x']) || isset($_POST['add_member_more_x'])) {
 }
 
 if (isset($_POST['remove_member']) || isset($_POST['remove_member_x'])) {
-    if (!empty($_POST['rom_id'])) {
+   if (\Xmf\Request::hasVar('rom_id', 'POST')) {
         $rom_id      = $_POST['rom_id'];
         $url         = $_POST['url'];
         $eventurl    = $_POST['eventurl'];
@@ -954,7 +954,7 @@ if (isset($_POST['remove_member']) || isset($_POST['remove_member_x'])) {
 }
 
 if (isset($_REQUEST['list'])) {
-    if (!empty($_REQUEST['eventid'])) {
+   if (\Xmf\Request::hasVar('eventid', 'REQUEST')) {
         $uid       = $_REQUEST['uid'];
         $eventid   = $_REQUEST['eventid'];
         $summary   = $_REQUEST['summary'];
@@ -963,7 +963,7 @@ if (isset($_REQUEST['list'])) {
         $eventurl  = $_REQUEST['eventurl'];
         $classname = '';
 
-        if (!empty($_SERVER['HTTPS'])) {
+       if (\Xmf\Request::hasVar('HTTPS', 'SERVER')) {
             $url = 'https://' . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
         } else {
             $url = 'http://' . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
@@ -1148,7 +1148,7 @@ if (isset($_REQUEST['list'])) {
 }
 
 if (isset($_POST['form_edit']) || isset($_POST['form_edit_x'])) {
-    if (!empty($_POST['rom_id'])) {
+   if (\Xmf\Request::hasVar('rom_id', 'POST')) {
         $rom_id     = $_POST['rom_id'];
         $uid        = $_POST['uid'];
         $url        = $_POST['url'];
@@ -1245,7 +1245,7 @@ if (isset($_POST['form_edit']) || isset($_POST['form_edit_x'])) {
 }
 
 if (isset($_POST['edit_member']) || isset($_POST['edit_member_x'])) {
-    if (!empty($_POST['rom_id'])) {
+   if (\Xmf\Request::hasVar('rom_id', 'POST')) {
         $rom_id     = $_POST['rom_id'];
         $uid        = $_POST['uid'];
         $url        = $_POST['url'];
@@ -1311,24 +1311,24 @@ if (isset($_POST['edit_member']) || isset($_POST['edit_member_x'])) {
 }
 
 if (isset($_POST['cancel']) || isset($_POST['cancel_x'])) {
-    if (!empty($_POST['eventurl'])) {
+   if (\Xmf\Request::hasVar('eventurl', 'POST')) {
         $url = $_POST['eventurl'];
         redirect_header($url, 1, _APCAL_RO_CANCEL);
     }
-    if (!empty($_POST['url'])) {
+   if (\Xmf\Request::hasVar('url', 'POST')) {
         $url = $_POST['url'];
         redirect_header($url, 1, _APCAL_RO_CANCEL);
     }
 }
 if (isset($_POST['goback']) || isset($_POST['goback_x'])) {
-    if (!empty($_POST['eventurl'])) {
+   if (\Xmf\Request::hasVar('eventurl', 'POST')) {
         $url = $_POST['eventurl'];
         redirect_header($url, 0, _APCAL_RO_BACK);
     }
 }
 
 if (isset($_POST['ro_notify_all']) || isset($_POST['ro_notify_all_x'])) {
-    if (!empty($_POST['url'])) {
+   if (\Xmf\Request::hasVar('url', 'POST')) {
         $url      = $_POST['url'];
         $eventurl = $_POST['eventurl'];
         $eventid  = $_POST['eventid'];
