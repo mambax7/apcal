@@ -53,17 +53,12 @@ $modversion['official']            = 0; //1 indicates supported by XOOPS Dev Tea
 $modversion['help']                = 'page=help';
 $modversion['module_website_url']  = 'http://xoops.antiquespromotion.ca';
 $modversion['module_website_name'] = 'Antiques Promotion';
-//$modversion['module_status']       = $modversion['status_version'];
 $modversion['author_website_url']  = 'http://www.antiquespromotion.ca';
 $modversion['author_website_name'] = 'Antiques Promotion';
 $modversion['min_php']             = '5.5';
 $modversion['min_xoops']           = '2.5.9';
-
-//$modversion['dirmoduleadmin']      = 'Frameworks/moduleclasses/moduleadmin';
-//$modversion['sysicons16']          = 'Frameworks/moduleclasses/icons/16';
-//$modversion['sysicons32']          = 'Frameworks/moduleclasses/icons/32';
-$modversion['modicons16'] = 'assets/images/icons/16';
-$modversion['modicons32'] = 'assets/images/icons/32';
+$modversion['modicons16']          = 'assets/images/icons/16';
+$modversion['modicons32']          = 'assets/images/icons/32';
 // mysql
 $modversion['sqlfile']['mysql'] = 'sql/apcal.sql';
 $modversion['tables'][0]        = 'apcal_event';
@@ -947,7 +942,6 @@ $modversion['onUpdate']  = 'include/onupdate.php';
 // Keep the values of block's options when module is updated (by nobunobu)
 if (!empty($_POST['fct']) && !empty($_POST['op']) && !empty($_POST['diranme']) && 'modulesadmin' === $_POST['fct']
     && 'update_ok' === $_POST['op']
-    && $_POST['dirname'] == $modversion['dirname']
-) {
+    && $_POST['dirname'] == $modversion['dirname']) {
     include __DIR__ . '/include/onupdate.inc.php';
 }

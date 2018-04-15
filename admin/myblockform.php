@@ -26,7 +26,7 @@ $usespaw = empty($_GET['usespaw']) ? 0 : 1;
 
 require_once XOOPS_ROOT_PATH . '/class/xoopsformloader.php';
 //$form = new \XoopsThemeForm($block['form_title'], 'blockform', XOOPS_URL."/modules/blocksadmin/admin/admin.php" ) ;
-$form = new \XoopsThemeForm($block['form_title'], 'blockform', 'admin.php');
+$form = new \XoopsThemeForm($block['form_title'], 'blockform', 'admin.php', 'post', true);
 if (isset($block['name'])) {
     $form->addElement(new \XoopsFormLabel(_AM_NAME, $block['name']));
 }

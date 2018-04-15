@@ -20,7 +20,7 @@
 
 use XoopsModules\Apcal;
 
-require_once __DIR__ . '/../../mainfile.php';
+require_once  dirname(dirname(__DIR__)) . '/mainfile.php';
 require_once XOOPS_ROOT_PATH . '/class/template.php';
 
 error_reporting(0);

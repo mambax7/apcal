@@ -18,12 +18,12 @@
  * @author       GIJ=CHECKMATE (PEAK Corp. http://www.peak.ne.jp/)
  */
 
+use Xmf\Request;
 use XoopsModules\Apcal;
 
 require_once __DIR__ . '/admin_header.php';
-//require_once __DIR__ . '/../../../include/cp_header.php';
+//require_once  dirname(dirname(dirname(__DIR__))) . '/include/cp_header.php';
 //require_once __DIR__ . '/mygrouppermform.php';
-require_once XOOPS_ROOT_PATH . '/class/xoopstree.php';
 
 // for "Duplicatable"
 $moduleDirName = basename(dirname(__DIR__));
@@ -38,16 +38,21 @@ $mydirnumber = '' === $regs[2] ? '' : (int)$regs[2];
 $cat_table = $GLOBALS['xoopsDB']->prefix("apcal{$mydirnumber}_cat");
 
 // language files
-$language = $xoopsConfig['language'];
-if (!file_exists(XOOPS_ROOT_PATH . "/modules/system/language/$language/admin/blocksadmin.php")) {
-    $language = 'english';
-}
-require_once XOOPS_ROOT_PATH . "/modules/system/language/$language/admin.php";
 
-if (!empty($_POST['submit'])) {
+xoops_loadLanguage('admin', 'system');
+
+//if (!file_exists(XOOPS_ROOT_PATH . "/modules/system/language/$language/admin/blocksadmin.php")) {
+//    $language = 'english';
+//}
+//require_once XOOPS_ROOT_PATH . "/modules/system/language/$language/admin.php";
+$language = $xoopsConfig['language'];
+
+if (Request::hasVar('submit', 'POST')) {
 
     // Ticket Check
-    if (!$GLOBALS['xoopsSecurity']->check(true, $_REQUEST['myblocksadmin'])) {
+//    if (!$GLOBALS['xoopsSecurity']->check(true, false, 'myblocksadmin')) {
+//if (!$GLOBALS['xoopsSecurity']->check(true, REQUEST['myblocksadmin'])) {
+    if (!$GLOBALS['xoopsSecurity']->check()) {
         redirect_header(XOOPS_URL . '/', 3, $GLOBALS['xoopsSecurity']->getErrors());
     }
 
@@ -57,8 +62,8 @@ if (!empty($_POST['submit'])) {
 
 // creating Objects of XOOPS
 $myts    = \MyTextSanitizer::getInstance();
-$cattree = new \XoopsTree($cat_table, 'cid', 'pid');
-$form    = new Apcal\MyXoopsGroupPermForm(_AM_APCAL_MENU_CAT2GROUP, $xoopsModule->mid(), 'apcal_cat', _AM_APCAL_CAT2GROUPDESC);
+$cattree = new \XoopsModules\Apcal\Tree($cat_table, 'cid', 'pid');
+$form    = new \XoopsModules\Apcal\GroupPermForm(_AM_APCAL_MENU_CAT2GROUP, $xoopsModule->mid(), 'apcal_cat', _AM_APCAL_CAT2GROUPDESC);
 
 $cat_tree_array = $cattree->getChildTreeArray(0, 'weight ASC,cat_title');
 

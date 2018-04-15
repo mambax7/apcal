@@ -43,7 +43,7 @@ setcookie('lang', $lang);
 
 <body>
 
-<?php if ($_REQUEST['submitted']) {
+<?php if (\Xmf\Request::hasVar('submitted')) {
         ?>
 
     <h1>Form submitted</h1>

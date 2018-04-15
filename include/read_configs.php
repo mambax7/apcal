@@ -98,7 +98,7 @@ if (is_object($xoopsUser)) {
         $sql             = "SELECT cid,pid,cat_shorttitle,cat_title,cat_desc,color,ismenuitem,cat_depth,canbemain FROM $cal->cat_table ORDER BY weight";
         $rs              = $GLOBALS['xoopsDB']->query($sql);
         $cal->categories = [];
-        while ($cat = $GLOBALS['xoopsDB']->fetchObject($rs)) {
+        while (false !== ($cat = $GLOBALS['xoopsDB']->fetchObject($rs))) {
             $cal->categories[(int)$cat->cid] = $cat;
             if (1 == $cat->canbemain) {
                 $cal->canbemain_cats[(int)$cat->cid] = $cat;
@@ -125,7 +125,7 @@ if (is_object($xoopsUser)) {
                            . " ON cid=gperm_itemid WHERE gperm_name='apcal_cat' AND gperm_modid='$mid' AND enabled AND gperm_groupid IN $ids4sql ORDER BY weight";
         $rs              = $GLOBALS['xoopsDB']->query($sql);
         $cal->categories = [];
-        while ($cat = $GLOBALS['xoopsDB']->fetchObject($rs)) {
+        while (false !== ($cat = $GLOBALS['xoopsDB']->fetchObject($rs))) {
             $cal->categories[(int)$cat->cid] = $cat;
             if (1 == $cat->canbemain) {
                 $cal->canbemain_cats[(int)$cat->cid] = $cat;
@@ -199,7 +199,7 @@ if (is_object($xoopsUser)) {
                        . "' ORDER BY weight";
     $rs              = $GLOBALS['xoopsDB']->query($sql);
     $cal->categories = [];
-    while ($cat = $GLOBALS['xoopsDB']->fetchObject($rs)) {
+    while (false !== ($cat = $GLOBALS['xoopsDB']->fetchObject($rs))) {
         $cal->categories[(int)$cat->cid] = $cat;
         if (1 == $cat->canbemain) {
             $cal->canbemain_cats[(int)$cat->cid] = $cat;

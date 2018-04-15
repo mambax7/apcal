@@ -15,11 +15,11 @@
  * @license      GNU GPL 2 or later (http://www.gnu.org/licenses/gpl-2.0.html)
  * @package
  * @since
- * @author     XOOPS Development Team
+ * @author       XOOPS Development Team
  */
 defined('XOOPS_ROOT_PATH') || die('Restricted access');
 
-use  XoopsModules\Apcal;
+//use  XoopsModules\Apcal;
 
 /**
  * Class Helper
@@ -29,20 +29,19 @@ class Helper extends \Xmf\Module\Helper
     public $debug;
 
     /**
-     * 
+     * @internal param $debug
      * @param bool $debug
      */
-    public function __construct($debug = false)
+    protected function __construct($debug = false)
     {
         $this->debug   = $debug;
-        $moduleDirName = basename(dirname(__DIR__));
-        parent::__construct($moduleDirName);
+        $this->dirname = basename(dirname(__DIR__));
     }
 
     /**
      * @param bool $debug
      *
-     * @return \Xmf\Module\Helper
+     * @return \XoopsModules\Apcal\Helper
      */
     public static function getInstance($debug = false)
     {
@@ -78,3 +77,4 @@ class Helper extends \Xmf\Module\Helper
         return $ret;
     }
 }
+

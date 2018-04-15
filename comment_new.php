@@ -17,7 +17,7 @@
  * @author       XOOPS Development Team, GIJ=CHECKMATE (PEAK Corp. http://www.peak.ne.jp/)
  */
 
-include __DIR__ . '/../../mainfile.php';
+include  dirname(dirname(__DIR__)) . '/mainfile.php';
 
 // for "Duplicatable"
 $moduleDirName = basename(__DIR__);

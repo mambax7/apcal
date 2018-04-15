@@ -18,5 +18,5 @@
  * @author       GIJ=CHECKMATE (PEAK Corp. http://www.peak.ne.jp/)
  */
 
-include __DIR__ . '/../../mainfile.php';
+include  dirname(dirname(__DIR__)) . '/mainfile.php';
 include XOOPS_ROOT_PATH . '/include/notification_update.php';

@@ -31,43 +31,39 @@ use XoopsModules\Apcal;
  */
 function xoops_module_pre_install_apcal(\XoopsModule $module)
 {
-    $moduleDirName = basename(dirname(__DIR__));
-    $utility  = ucfirst($moduleDirName) . 'Utility';
-    if (!class_exists($utility)) {
-        xoops_load('utility', $moduleDirName);
-    }
+    include __DIR__ . '/common.php';
+    /** @var \XoopsModules\Apcal\Utility $utility */
+    $utility = new \XoopsModules\Apcal\Utility();
     //check for minimum XOOPS version
-    if (!$utility::checkVerXoops($module)) {
-        return false;
-    }
+    $xoopsSuccess = $utility::checkVerXoops($module);
 
     // check for minimum PHP version
-    if (!$utility::checkVerPhp($module)) {
-        return false;
+    $phpSuccess   = $utility::checkVerPhp($module);
+
+    if (false !== $xoopsSuccess && false !==  $phpSuccess) {
+        $moduleTables =& $module->getInfo('tables');
+        foreach ($moduleTables as $table) {
+            $GLOBALS['xoopsDB']->queryF('DROP TABLE IF EXISTS ' . $GLOBALS['xoopsDB']->prefix($table) . ';');
+        }
     }
 
-    $mod_tables = $module->getInfo('tables');
-    foreach ($mod_tables as $table) {
-        $GLOBALS['xoopsDB']->queryF('DROP TABLE IF EXISTS ' . $GLOBALS['xoopsDB']->prefix($table) . ';');
-    }
-
-    return true;
+    return $xoopsSuccess && $phpSuccess;
 }
 function xoops_module_install_apcal(\XoopsModule $xoopsModule)
 {
-    require_once __DIR__ . '/../../../mainfile.php';
-    require_once __DIR__ . '/../include/config.php';
+    require_once  dirname(dirname(dirname(__DIR__))) . '/mainfile.php';
+    require_once  dirname(__DIR__) . '/include/config.php';
 
     $moduleDirName = basename(dirname(__DIR__));
-    $helper = Apcal\Helper::getInstance();
+    $helper = \XoopsModules\Apcal\Helper::getInstance();
 
     // Load language files
     $helper->loadLanguage('admin');
     $helper->loadLanguage('modinfo');
 
     $configurator = new Apcal\Common\Configurator();
-    /** @var Apcal\Utility $utility */
-    $utility = Apcal\Utility();
+    /** @var \XoopsModules\Apcal\Utility $utility */
+    $utility = new \XoopsModules\Apcal\Utility();
 
     //------------------------------------
     $ret    = true;
@@ -110,7 +106,7 @@ function xoops_module_install_apcal(\XoopsModule $xoopsModule)
 
     //  ---  COPY blank.png FILES ---------------
     if (count($configurator->copyBlankFiles) > 0) {
-        $file = __DIR__ . '/../assets/images/blank.png';
+        $file =  dirname(__DIR__) . '/assets/images/blank.png';
         foreach (array_keys($configurator->copyBlankFiles) as $i) {
             $dest = $configurator->copyBlankFiles[$i] . '/blank.png';
             $utility::copyFile($file, $dest);

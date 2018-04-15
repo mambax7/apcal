@@ -25,7 +25,7 @@ use  XoopsModules\Apcal;
 if (!class_exists(BaseApcal::class)) {
     define('APCAL_EVENT_TABLE', 'apcal_event');
     define('APCAL_CAT_TABLE', 'apcal_cat');
-    //    require_once __DIR__ . '/../../../include/cp_header.php';
+    //    require_once  dirname(dirname(dirname(__DIR__))) . '/include/cp_header.php';
     require_once XOOPS_ROOT_PATH . '/modules/apcal/include/ro_contacthandler.php'; // added by goffy convert name(s) in field contact in a links to member account
 //    require_once XOOPS_ROOT_PATH . '/modules/apcal/class/thumb.php';
 

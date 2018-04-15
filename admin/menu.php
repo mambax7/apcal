@@ -21,9 +21,12 @@
 
 use XoopsModules\Apcal;
 
-// require_once __DIR__ . '/../class/Helper.php';
-//require_once __DIR__ . '/../include/common.php';
-$helper = Apcal\Helper::getInstance();
+include dirname(__DIR__) . '/preloads/autoloader.php';
+
+// require_once  dirname(__DIR__) . '/class/Helper.php';
+//require_once  dirname(__DIR__) . '/include/common.php';
+/** @var \XoopsModules\Apcal\Helper $helper */
+$helper = \XoopsModules\Apcal\Helper::getInstance();
 
 $pathIcon32 = \Xmf\Module\Admin::menuIconPath('');
 $pathModIcon32 = $helper->getModule()->getInfo('modicons32');

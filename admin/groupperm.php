@@ -22,7 +22,7 @@ use XoopsModules\Apcal;
 
 $moduleDirName = basename(dirname(__DIR__));
 require_once __DIR__ . '/admin_header.php';
-//require_once __DIR__ . '/../../../include/cp_header.php';
+//require_once  dirname(dirname(dirname(__DIR__))) . '/include/cp_header.php';
 //require_once __DIR__ . '/mygrouppermform.php';
 
 // for "Duplicatable"
@@ -45,7 +45,7 @@ xoops_loadLanguage('main', $moduleDirName);
 if (!empty($_POST['submit'])) {
 
     // Ticket Check
-    if (!$GLOBALS['xoopsSecurity']->check(true, $_REQUEST['myblocksadmin'])) {
+    if (!$GLOBALS['xoopsSecurity']->check(true, \Xmf\Request::hasVar('myblocksadmin'))) {
         redirect_header(XOOPS_URL . '/', 3, $GLOBALS['xoopsSecurity']->getErrors());
     }
 
@@ -62,7 +62,7 @@ $item_list = [
     '32' => _AM_APCAL_GPERM_G_SUPERDELETE//  '64' => _AM_APCAL_GPERM_G_TOUCHOTHERS
 ];
 
-$form = new Apcal\MyXoopsGroupPermForm(_AM_APCAL_GROUPPERM, $xoopsModule->mid(), 'apcal_global', _AM_APCAL_GROUPPERMDESC);
+$form = new Apcal\GroupPermForm(_AM_APCAL_GROUPPERM, $xoopsModule->mid(), 'apcal_global', _AM_APCAL_GROUPPERMDESC);
 foreach ($item_list as $item_id => $item_name) {
     $form->addItem($item_id, $item_name);
 }

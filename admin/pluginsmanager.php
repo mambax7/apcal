@@ -20,9 +20,9 @@
 
 use XoopsModules\Apcal;
 
-require_once __DIR__ . '/../../../include/cp_header.php';
-// require_once __DIR__ . '/../class/APCal.php';
-// require_once __DIR__ . '/../class/APCal_xoops.php';
+require_once  dirname(dirname(dirname(__DIR__))) . '/include/cp_header.php';
+// require_once  dirname(__DIR__) . '/class/APCal.php';
+// require_once  dirname(__DIR__) . '/class/APCal_xoops.php';
 
 // for "Duplicatable"
 $moduleDirName = basename(dirname(__DIR__));
@@ -53,7 +53,7 @@ $cal = new \ApcalXoops('', $xoopsConfig['language'], true);
 
 // setting properties of APCal
 $cal->conn = $conn;
-include __DIR__ . '/../include/read_configs.php';
+include  dirname(__DIR__) . '/include/read_configs.php';
 $cal->base_url    = $mod_url;
 $cal->base_path   = $mod_path;
 $cal->images_url  = "$mod_url/assets/images/$skin_folder";

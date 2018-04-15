@@ -42,7 +42,7 @@ if (!is_object($xoopsUser) || !is_object($xoopsModule) || !$xoopsUser->isAdmin($
             redirect_header('admin.php?fct=preferences', 1);
         }
         require_once XOOPS_ROOT_PATH . '/class/xoopsformloader.php';
-        $form = new \XoopsThemeForm(_MD_APCAL_MODCONFIG, 'pref_form', 'admin.php?fct=preferences');
+        $form = new \XoopsThemeForm(_MD_APCAL_MODCONFIG, 'pref_form', 'admin.php?fct=preferences', 'post', true);
         /** @var XoopsModuleHandler $moduleHandler */
         $moduleHandler = xoops_getHandler('module');
         $module        = $moduleHandler->get($mod);
@@ -160,7 +160,7 @@ if (!is_object($xoopsUser) || !is_object($xoopsModule) || !$xoopsUser->isAdmin($
         //  exit('Invalid referer');
         //}
         //        if (!$xoopsGTicket->check(true, 'mymenu')) {
-        if (!$GLOBALS['xoopsSecurity']->check(true, $_REQUEST['mymenu'])) {
+        if (!$GLOBALS['xoopsSecurity']->check(true, \Xmf\Request::hasVar('mymenu'))) {
             redirect_header(XOOPS_URL . '/', 3, $GLOBALS['xoopsSecurity']->getErrors());
         }
         require_once XOOPS_ROOT_PATH . '/class/template.php';
@@ -251,13 +251,13 @@ if (!is_object($xoopsUser) || !is_object($xoopsModule) || !$xoopsUser->isAdmin($
                     ) {
                         $memberHandler     = xoops_getHandler('member');
                         $groups            = $memberHandler->getGroupList();
-                        $modulepermHandler = xoops_getHandler('groupperm');
+                        $grouppermHandler = xoops_getHandler('groupperm');
                         /** @var XoopsModuleHandler $moduleHandler */
                         $moduleHandler = xoops_getHandler('module');
                         $module        = $moduleHandler->getByDirname($new_value);
                         foreach ($groups as $groupid => $groupname) {
-                            if (!$modulepermHandler->checkRight('module_read', $module->getVar('mid'), $groupid)) {
-                                $modulepermHandler->addRight('module_read', $module->getVar('mid'), $groupid);
+                            if (!$grouppermHandler->checkRight('module_read', $module->getVar('mid'), $groupid)) {
+                                $grouppermHandler->addRight('module_read', $module->getVar('mid'), $groupid);
                             }
                         }
                         $startmod_updated = true;

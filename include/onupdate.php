@@ -172,11 +172,9 @@ function xoops_module_update_apcal(\XoopsModule $module)
 
     require_once __DIR__ . '/config.php';
     $configurator = new ApcalConfigurator();
-    /** @var ApcalUtility $utility */
-    $utility = ucfirst($moduleDirName) . 'Utility';
-    if (!class_exists($utility)) {
-        xoops_load('utility', $moduleDirName);
-    }
+    /** @var Apcal\Utility $utility */
+        $utility = new \XoopsModules\Apcal\Utility();
+
 
     //delete old HTML templates
     if (count($configurator->templateFolders) > 0) {
@@ -229,7 +227,7 @@ function xoops_module_update_apcal(\XoopsModule $module)
 
     //  ---  COPY blank.png FILES ---------------
     if (count($configurator->copyBlankFiles) > 0) {
-        $file = __DIR__ . '/../assets/images/blank.png';
+        $file =  dirname(__DIR__) . '/assets/images/blank.png';
         foreach (array_keys($configurator->copyBlankFiles) as $i) {
             $dest = $configurator->copyBlankFiles[$i] . '/blank.png';
             $utility::copyFile($file, $dest);

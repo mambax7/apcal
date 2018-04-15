@@ -20,7 +20,7 @@
 
 use XoopsModules\Apcal;
 
-require_once __DIR__ . '/../../../include/cp_header.php';
+require_once  dirname(dirname(dirname(__DIR__))) . '/include/cp_header.php';
 
 if (substr(XOOPS_VERSION, 6, 3) > 2.0) {
     include __DIR__ . '/myblocksadmin2.php';
@@ -29,7 +29,7 @@ if (substr(XOOPS_VERSION, 6, 3) > 2.0) {
 
 //require_once __DIR__ . '/mygrouppermform.php';
 require_once XOOPS_ROOT_PATH . '/class/xoopsblock.php';
-//require_once __DIR__ . '/../include/gtickets.php';// GIJ
+//require_once  dirname(__DIR__) . '/include/gtickets.php';// GIJ
 
 $xoops_system_path = XOOPS_ROOT_PATH . '/modules/system';
 
@@ -299,7 +299,7 @@ function list_blocks()
                 <input type='hidden' name='query4redirect' value='$query4redirect'>
                 <input type='hidden' name='fct' value='blocksadmin'>
                 <input type='hidden' name='op' value='order'>
-                " . $GLOBALS['xoopsSecurity']->getTokenHTML('myblocksadmin') . "
+                " . $GLOBALS['xoopsSecurity']->getTokenHTML() . "
                 <input type='submit' name='submit' value='" . _SUBMIT . "'>
             </td>
         </tr>
@@ -314,9 +314,9 @@ function get_block_configs()
 {
     $error_reporting_level = error_reporting(0);
     if (preg_match('/^[.0-9a-zA-Z_-]+$/', @$_GET['dirname'])) {
-        include __DIR__ . '/../../' . $_GET['dirname'] . '/xoops_version.php';
+        include  dirname(dirname(__DIR__)) . '/' . $_GET['dirname'] . '/xoops_version.php';
     } else {
-        include __DIR__ . '/../xoops_version.php';
+        include  dirname(__DIR__) . '/xoops_version.php';
     }
     error_reporting($error_reporting_level);
     if (empty($modversion['blocks'])) {
@@ -335,7 +335,7 @@ function list_groups()
         $item_list[$block_arr[$i]->getVar('bid')] = $block_arr[$i]->getVar('title');
     }
 
-    $form = new Apcal\MyXoopsGroupPermForm(_AM_APCAL_ADGS, 1, 'block_read', '');
+    $form = new Apcal\GroupPermForm(_AM_APCAL_ADGS, 1, 'block_read', '');
     if ($target_mid > 1) {
         $form->addAppendix('module_admin', $target_mid, $target_mname . ' ' . _AM_APCAL_ACTIVERIGHTS);
         $form->addAppendix('module_read', $target_mid, $target_mname . ' ' . _AM_APCAL_ACCESSRIGHTS);
@@ -347,7 +347,7 @@ function list_groups()
 }
 
 if (!empty($_POST['submit'])) {
-    if (!$GLOBALS['xoopsSecurity']->check(true, $_REQUEST['myblocksadmin'])) {
+    if (!$GLOBALS['xoopsSecurity']->check(true, \Xmf\Request::hasVar('myblocksadmin'))) {
         redirect_header(XOOPS_URL . '/', 3, $GLOBALS['xoopsSecurity']->getErrors());
     }
 

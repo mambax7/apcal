@@ -19,14 +19,13 @@
 
 use XoopsModules\Apcal;
 
-require_once __DIR__ . '/../../../include/cp_header.php';
-//require_once __DIR__ . '/../../../class/xoopsformloader.php';
-
-// require_once __DIR__ . '/../class/util.php';
-//require_once __DIR__ . '/../include/common.php';
+require_once  dirname(dirname(dirname(__DIR__))) . '/include/cp_header.php';
+//require_once  dirname(dirname(dirname(__DIR__))) . '/class/xoopsformloader.php';
+require_once  dirname(__DIR__) . '/include/common.php';
 
 $moduleDirName = basename(dirname(__DIR__));
-$helper = Apcal\Helper::getInstance();
+/** @var \XoopsModules\Apcal\Helper $helper */
+$helper = \XoopsModules\Apcal\Helper::getInstance();
 $adminObject = \Xmf\Module\Admin::getInstance();
 
 $pathIcon16    = \Xmf\Module\Admin::iconUrl('', 16);

@@ -34,7 +34,7 @@ function display_edit_form($cat, $form_title, $action)
     $helper = Apcal\Helper::getInstance();
 
     // Beggining of XoopsForm
-    $form = new \XoopsThemeForm($form_title, 'MainForm', '');
+    $form = new \XoopsThemeForm($form_title, 'MainForm', '', 'post', true);
 
     // Hidden
     $form->addElement(new \XoopsFormHidden('action', htmlspecialchars($action, ENT_QUOTES)));
@@ -159,13 +159,12 @@ function rebuild_cat_tree($cat_table)
 }
 
 require_once __DIR__ . '/admin_header.php';
-//require_once __DIR__ . '/../../../include/cp_header.php';
-// require_once __DIR__ . '/../class/APCal.php';
-// require_once __DIR__ . '/../class/APCal_xoops.php';
+//require_once  dirname(dirname(dirname(__DIR__))) . '/include/cp_header.php';
+// require_once  dirname(__DIR__) . '/class/APCal.php';
+// require_once  dirname(__DIR__) . '/class/APCal_xoops.php';
 
 require_once XOOPS_ROOT_PATH . '/class/xoopsformloader.php';
 require_once XOOPS_ROOT_PATH . '/class/xoopslists.php';
-require_once XOOPS_ROOT_PATH . '/class/xoopstree.php';
 
 // for "Duplicatable"
 $moduleDirName = basename(dirname(__DIR__));
@@ -194,7 +193,7 @@ $cal = new Apcal\ApcalXoops('', $xoopsConfig['language'], true);
 
 // setting properties of APCal
 $cal->conn = $conn;
-include __DIR__ . '/../include/read_configs.php';
+include  dirname(__DIR__) . '/include/read_configs.php';
 $cal->base_url    = $mod_url;
 $cal->base_path   = $mod_path;
 $cal->images_url  = "$mod_url/assets/images/$skin_folder";
@@ -202,7 +201,7 @@ $cal->images_path = "$mod_path/assets/images/$skin_folder";
 
 // XOOPS関連の初期化
 $myts         = \MyTextSanitizer::getInstance();
-$cattree      = new \XoopsTree($cal->cat_table, 'cid', 'pid');
+$cattree      = new Apcal\Tree($cal->cat_table, 'cid', 'pid');
 $grouppermHandler = xoops_getHandler('groupperm');
 
 // データベース更新などがからむ処理
@@ -406,7 +405,7 @@ if ('edit' === $disp && $cid > 0) {
       <tr>
         <td class='$oddeven' width='100%'><a href='?disp=edit&amp;cid=$cid'>$prefix&nbsp;$cat_title</a></td>
         <td class='$oddeven' align='center' nowrap='nowrap'>
-          <a href='$mod_url/index.php?action=Edit&amp;cid=$cid' target='_blank'><img src='$cal->images_url/addevent.gif' border='0' width='14' height='12'></a>
+          <a href='$mod_url/index.php?action=Edit&amp;cid=$cid' target='_blank'><img src='$cal->images_url/addevent.gif'   alt='" . _AM_APCAL_CAT_ADD_EVENT . "' title='" . _AM_APCAL_CAT_ADD_EVENT .    "' border='0' width='14' height='12'></a>
           &nbsp;
           <a href='?disp=edit&amp;cid=$cid'><img src='../assets/images/cat_edit.gif' width='18' height='15' alt='" . _AM_APCAL_MENU_CAT_EDIT . "' title='" . _AM_APCAL_MENU_CAT_EDIT . "'></a>
           &nbsp;

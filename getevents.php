@@ -18,7 +18,7 @@
  * @author       Antiques Promotion (http://www.antiquespromotion.ca)
  */
 use XoopsModules\Apcal;
-require_once __DIR__ . '/../../mainfile.php';
+require_once  dirname(dirname(__DIR__)) . '/mainfile.php';
 
 /** @var Apcal\Helper $helper */
 $helper = Apcal\Helper::getInstance();

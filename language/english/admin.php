@@ -181,4 +181,6 @@ if (defined('FOR_XOOPS_LANG_CHECKER') || !defined('_AM_APCAL_LOADED')) {
     define('_AM_APCAL_TOPPAGE', 'Top Page');
 
     define('_MI_APCAL_ADMIN_FOOTER', 'is maintainted by the');
+
+    define('_AM_APCAL_CAT_ADD_EVENT', 'Add new event in this category');
 }

@@ -21,10 +21,9 @@
 use XoopsModules\Apcal;
 
 require_once __DIR__ . '/admin_header.php';
-//require_once __DIR__ . '/../../../include/cp_header.php';
-// require_once __DIR__ . '/../class/APCal.php';
-// require_once __DIR__ . '/../class/APCal_xoops.php';
-require_once XOOPS_ROOT_PATH . '/class/xoopstree.php';
+//require_once  dirname(dirname(dirname(__DIR__))) . '/include/cp_header.php';
+// require_once  dirname(__DIR__) . '/class/APCal.php';
+// require_once  dirname(__DIR__) . '/class/APCal_xoops.php';
 
 // for "Duplicatable"
 $moduleDirName = basename(dirname(__DIR__));
@@ -55,7 +54,7 @@ $cal = new Apcal\ApcalXoops('', $xoopsConfig['language'], true);
 
 // setting properties of APCal
 $cal->conn = $conn;
-include __DIR__ . '/../include/read_configs.php';
+include  dirname(__DIR__) . '/include/read_configs.php';
 $cal->base_url    = $mod_url;
 $cal->base_path   = $mod_path;
 $cal->images_url  = "$mod_url/assets/images/$skin_folder";
@@ -86,7 +85,7 @@ switch ($pf) {
 }
 
 // ���ƥ��꡼�����ν���
-$cattree = new \XoopsTree($cal->cat_table, 'cid', 'pid');
+$cattree = new Apcal\Tree($cal->cat_table, 'cid', 'pid');
 ob_start();
 $cattree->makeMySelBox('cat_title', 'weight', $cid, true, 'cid', '');
 $cat_selbox = ob_get_contents();
@@ -329,7 +328,7 @@ while ($event = $GLOBALS['xoopsDB']->fetchObject($rs)) {
     $summary4disp = $myts->htmlSpecialChars($event->summary);
     echo "
   <tr>
-    <td class='$oddeven'>" . XoopsUser::getUnameFromId($event->uid) . "</td>
+    <td class='$oddeven'>" . \XoopsUser::getUnameFromId($event->uid) . "</td>
     <td class='$oddeven' nowrap='nowrap'>$start_desc</td>
     <td class='$oddeven' nowrap='nowrap'>$end_desc</td>
     <td class='$oddeven'><a href='$mod_url/index.php?action=View&amp;event_id=$event->id'>$summary4disp</a></td>

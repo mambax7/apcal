@@ -38,7 +38,7 @@ require_once XOOPS_ROOT_PATH . '/class/xoopsform/form.php';
  * @package     kernel
  * @subpackage  form
  */
-class MyXoopsGroupFormCheckBox extends \XoopsFormElement
+class GroupFormCheckBox extends \XoopsFormElement
 {
     /**
      * Pre-selected value(s)

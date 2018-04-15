@@ -328,7 +328,7 @@ if (!class_exists('ApcalXoops')) {
             } else {
                 $user_list = [];
             }
-
+            /** @var \XoopsNotificationHandler $notificationHandler */
             $notificationHandler = xoops_getHandler('notification');
 
             // �����٥�Ȥ���Ͽ�������ƥ��꡼�ˤΥȥꥬ��
@@ -1218,9 +1218,9 @@ if (!class_exists('ApcalXoops')) {
             $myts = \MyTextSanitizer::getInstance();
 
             // allowed modules
-            $modulepermHandler = xoops_getHandler('groupperm');
+            $grouppermHandler = xoops_getHandler('groupperm');
             $groups            = is_object($xoopsUser) ? $xoopsUser->getGroups() : XOOPS_GROUP_ANONYMOUS;
-            $allowed_mids      = $modulepermHandler->getItemIds('module_read', $groups);
+            $allowed_mids      = $grouppermHandler->getItemIds('module_read', $groups);
 
             // plugins
             $plugins = [];

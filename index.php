@@ -21,7 +21,7 @@
 
 use XoopsModules\Apcal;
 
-require_once __DIR__ . '/../../mainfile.php';
+require_once  dirname(dirname(__DIR__)) . '/mainfile.php';
 require_once __DIR__ . '/header.php';
 $original_level = error_reporting(E_ALL ^ E_NOTICE);
 
@@ -321,7 +321,7 @@ if ('View' === $action) {
         $tpl->assign('GMzoom', $cal->gmzoom);
         $tpl->assign('GMheight', $cal->gmheight . 'px');
         $tpl->assign('GMPoints', $cal->gmPoints);
-        $helper = Xmf\Module\Helper::getHelper($moduleDirName);
+        $helper = \XoopsModules\Apcal\Helper::getInstance();
         $tpl->assign('api_key', $helper->getConfig('apcal_mapsapi'));
         if ('List' === $smode) {
             $xoopsTpl->assign('map', $tpl->fetch(XOOPS_ROOT_PATH . '/modules/apcal/templates/apcal_googlemap.tpl'));

@@ -37,7 +37,7 @@ require_once XOOPS_ROOT_PATH . '/class/xoopsform/form.php';
  * @package     kernel
  * @subpackage  form
  */
-class MyXoopsGroupPermForm extends \XoopsForm
+class GroupPermForm extends \XoopsForm
 {
     /**
      * Module ID
@@ -75,7 +75,7 @@ class MyXoopsGroupPermForm extends \XoopsForm
     public function __construct($title, $modid, $permname, $permdesc)
     {
         //      $this->XoopsForm($title, 'groupperm_form', XOOPS_URL.'/modules/system/admin/groupperm.php', 'post'); GIJ
-        parent::__construct($title, 'groupperm_form', '', 'post');
+        parent::__construct($title, 'groupperm_form', '', 'post' );
         $this->_modid    = (int)$modid;
         $this->_permName = $permname;
         $this->_permDesc = $permdesc;
@@ -160,7 +160,7 @@ class MyXoopsGroupPermForm extends \XoopsForm
         foreach (array_keys($glist) as $i) {
             // get selected item id(s) for each group
             $selected = $grouppermHandler->getItemIds($this->_permName, $i, $this->_modid);
-            $ele      = new Apcal\MyXoopsGroupFormCheckBox($glist[$i], 'perms[' . $this->_permName . ']', $i, $selected);
+            $ele      = new Apcal\GroupFormCheckBox($glist[$i], 'perms[' . $this->_permName . ']', $i, $selected);
             $ele->setOptionTree($this->_itemTree);
 
             foreach ($this->_appendix as $key => $append) {
@@ -203,7 +203,8 @@ class MyXoopsGroupPermForm extends \XoopsForm
                 $ret .= $elements[$i]->render();
             }
         }
-        $ret .= '</table>' . $GLOBALS['xoopsSecurity']->getTokenHTML('myblocksadmin') . '</form>';
+//mb        $ret .= '</table>' . $GLOBALS['xoopsSecurity']->getTokenHTML('myblocksadmin') . '</form>';
+        $ret .= '</table>' . $GLOBALS['xoopsSecurity']->getTokenHTML() . '</form>';
 
         return $ret;
     }

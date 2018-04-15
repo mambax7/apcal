@@ -20,13 +20,13 @@
 
 use XoopsModules\Apcal;
 
-require_once __DIR__ . '/../../../include/cp_header.php';
-//require_once __DIR__ . '/../include/gtickets.php';
+require_once  dirname(dirname(dirname(__DIR__))) . '/include/cp_header.php';
+//require_once  dirname(__DIR__) . '/include/gtickets.php';
 require_once XOOPS_ROOT_PATH . '/class/template.php';
 
-require_once __DIR__ . '/../include/Text_Diff.php';
-require_once __DIR__ . '/../include/Text_Diff_Renderer.php';
-require_once __DIR__ . '/../include/Text_Diff_Renderer_unified.php';
+require_once  dirname(__DIR__) . '/include/Text_Diff.php';
+require_once  dirname(__DIR__) . '/include/Text_Diff_Renderer.php';
+require_once  dirname(__DIR__) . '/include/Text_Diff_Renderer_unified.php';
 
 $xoops_system_path = XOOPS_ROOT_PATH . '/modules/system';
 

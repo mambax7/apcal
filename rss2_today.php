@@ -18,7 +18,7 @@
  * @author       GIJ=CHECKMATE (PEAK Corp. http://www.peak.ne.jp/)
  */
 
-include __DIR__ . '/../../mainfile.php';
+include  dirname(dirname(__DIR__)) . '/mainfile.php';
 if (function_exists('mb_http_output')) {
     mb_http_output('pass');
 }

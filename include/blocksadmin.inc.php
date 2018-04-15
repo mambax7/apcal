@@ -43,7 +43,7 @@ if (isset($_POST['previewblock'])) {
     //if ( !admin_refcheck("/modules/$admin_mydirname/admin/") ) {
     //  exit('Invalid Referer');
     //}
-    if (!$GLOBALS['xoopsSecurity']->check(true, $_REQUEST['myblocksadmin'])) {
+    if (!$GLOBALS['xoopsSecurity']->check(true, \Xmf\Request::hasVar('myblocksadmin'))) {
         redirect_header(XOOPS_URL . '/', 3, $GLOBALS['xoopsSecurity']->getErrors());
     }
 
@@ -101,7 +101,7 @@ if (isset($_POST['previewblock'])) {
     $block['is_custom'] = true;
     $block['cachetime'] = $bcachetime;
     echo '<a href="myblocksadmin.php">' . _AM_APCAL_BADMIN . '</a>&nbsp;<span style="font-weight:bold;">&raquo;&raquo;</span>&nbsp;' . $block['form_title'] . '<br><br>';
-    include __DIR__ . '/../admin/myblockform.php'; //GIJ
+    include  dirname(__DIR__) . '/admin/myblockform.php'; //GIJ
     //echo '<a href="admin.php?fct=blocksadmin">'. _AM_APCAL_BADMIN .'</a>&nbsp;<span style="font-weight:bold;">&raquo;&raquo;</span>&nbsp;'.$block['form_title'].'<br><br>';
     //include XOOPS_ROOT_PATH.'/modules/system/admin/blocksadmin/blockform.php';
     //    $xoopsGTicket->addTicketXoopsFormElement($form, __LINE__, 1800, 'myblocksadmin'); //GIJ
@@ -148,7 +148,7 @@ if ('order' === $op) {
     //if ( !admin_refcheck("/modules/$admin_mydirname/admin/") ) {
     //  exit('Invalid Referer');
     //}
-    if (!$GLOBALS['xoopsSecurity']->check(true, $_REQUEST['myblocksadmin'])) {
+    if (!$GLOBALS['xoopsSecurity']->check(true, \Xmf\Request::hasVar('myblocksadmin'))) {
         redirect_header(XOOPS_URL . '/', 3, $GLOBALS['xoopsSecurity']->getErrors());
     }
    if (\Xmf\Request::hasVar('side', 'POST')) {
@@ -189,7 +189,7 @@ if ('order' === $op) {
 }
 
 if ('order2' === $op) {
-    if (!$GLOBALS['xoopsSecurity']->check(true, $_REQUEST['myblocksadmin'])) {
+    if (!$GLOBALS['xoopsSecurity']->check(true, \Xmf\Request::hasVar('myblocksadmin'))) {
         redirect_header(XOOPS_URL . '/', 3, $GLOBALS['xoopsSecurity']->getErrors());
     }
 
@@ -257,7 +257,7 @@ if ('update' === $op) {
     //if ( !admin_refcheck("/modules/$admin_mydirname/admin/") ) {
     //  exit('Invalid Referer');
     //}
-    if (!$GLOBALS['xoopsSecurity']->check(true, $_REQUEST['myblocksadmin'])) {
+    if (!$GLOBALS['xoopsSecurity']->check(true, \Xmf\Request::hasVar('myblocksadmin'))) {
         redirect_header(XOOPS_URL . '/', 3, $GLOBALS['xoopsSecurity']->getErrors());
     }
     /*  if ( !empty($_POST['bside']) ) { $bside = (int)($_POST['bside']); } else { $bside = 0; }
@@ -284,7 +284,7 @@ if ('delete_ok' === $op) {
     //if ( !admin_refcheck("/modules/$admin_mydirname/admin/") ) {
     //  exit('Invalid Referer');
     //}
-    if (!$GLOBALS['xoopsSecurity']->check(true, $_REQUEST['myblocksadmin'])) {
+    if (!$GLOBALS['xoopsSecurity']->check(true, \Xmf\Request::hasVar('myblocksadmin'))) {
         redirect_header(XOOPS_URL . '/', 3, $GLOBALS['xoopsSecurity']->getErrors());
     }
     // delete_block_ok($bid); GIJ imported from blocksadmin.php
@@ -357,7 +357,7 @@ if ('edit' === $op) {
     ];
 
     echo '<a href="myblocksadmin.php">' . _AM_APCAL_BADMIN . '</a>&nbsp;<span style="font-weight:bold;">&raquo;&raquo;</span>&nbsp;' . _AM_APCAL_EDITBLOCK . '<br><br>';
-    include __DIR__ . '/../admin/myblockform.php'; //GIJ
+    include  dirname(__DIR__) . '/admin/myblockform.php'; //GIJ
     //    $xoopsGTicket->addTicketXoopsFormElement($form, __LINE__, 1800, 'myblocksadmin'); //GIJ
     $form->display();
     // end of edit_block() GIJ
@@ -397,7 +397,7 @@ if ('clone' === $op) {
         'submit_button' => _CLONE
     ];
     echo '<a href="myblocksadmin.php">' . _AM_APCAL_BADMIN . '</a>&nbsp;<span style="font-weight:bold;">&raquo;&raquo;</span>&nbsp;' . _AM_CLONEBLOCK . '<br><br>';
-    include __DIR__ . '/../admin/myblockform.php';
+    include  dirname(__DIR__) . '/admin/myblockform.php';
     //    $xoopsGTicket->addTicketXoopsFormElement($form, __LINE__, 1800, 'myblocksadmin'); //GIJ
     $form->display();
     xoops_cp_footer();
@@ -405,8 +405,8 @@ if ('clone' === $op) {
 }
 
 if ('clone_ok' === $op) {
-    // Ticket Check
-    if (!$GLOBALS['xoopsSecurity']->check(true, $_REQUEST['myblocksadmin'])) {
+    // Security Token Check
+    if (!$GLOBALS['xoopsSecurity']->check(true, \Xmf\Request::hasVar('myblocksadmin'))) {
         redirect_header(XOOPS_URL . '/', 3, $GLOBALS['xoopsSecurity']->getErrors());
     }
 

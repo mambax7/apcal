@@ -2,7 +2,7 @@
 
 use Xmf\Request;
 
-require_once __DIR__ . '/../../mainfile.php';
+require_once  dirname(dirname(__DIR__)) . '/mainfile.php';
 require_once XOOPS_ROOT_PATH . '/header.php';
 //XoopsMailer
 require_once XOOPS_ROOT_PATH . '/class/xoopsmailer.php';
@@ -381,8 +381,8 @@ if (isset($_POST['deactivate_x'])) {
     }
 }
 
-if (isset($_REQUEST['form_add'])) {
-   if (\Xmf\Request::hasVar('eventid', 'REQUEST')) {
+if (\Xmf\Request::hasVar('form_add')) {
+   if (\Xmf\Request::hasVar('eventid')) {
         $eventid   = $_REQUEST['eventid'];
         $eventurl  = $_REQUEST['eventurl'];
         $summary   = $_REQUEST['summary'];
@@ -953,7 +953,7 @@ if (isset($_POST['remove_member']) || isset($_POST['remove_member_x'])) {
     }
 }
 
-if (isset($_REQUEST['list'])) {
+if (\Xmf\Request::hasVar('list')) {
    if (\Xmf\Request::hasVar('eventid', 'REQUEST')) {
         $uid       = $_REQUEST['uid'];
         $eventid   = $_REQUEST['eventid'];

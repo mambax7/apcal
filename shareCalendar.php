@@ -19,7 +19,7 @@
  * @author       GIJ=CHECKMATE (PEAK Corp. http://www.peak.ne.jp/)
  */
 
-require_once __DIR__ . '/../../mainfile.php';
+require_once  dirname(dirname(__DIR__)) . '/mainfile.php';
 
 include XOOPS_ROOT_PATH . '/header.php';
 require_once XOOPS_ROOT_PATH . '/class/xoopsformloader.php';
