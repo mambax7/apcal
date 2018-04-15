@@ -51,8 +51,8 @@ function xoops_module_pre_update_apcal(\XoopsModule $module)
     /** @var Apcal\Helper $helper */
     /** @var Apcal\Utility $utility */
     $moduleDirName = basename(dirname(__DIR__));
-    $helper       = Apcal\Helper::getInstance();
-    $utility      = new Apcal\Utility();
+    $helper        = Apcal\Helper::getInstance();
+    $utility       = new Apcal\Utility();
 
     $xoopsSuccess = $utility::checkVerXoops($module);
     $phpSuccess   = $utility::checkVerPhp($module);
@@ -68,10 +68,9 @@ function xoops_module_update_apcal(\XoopsModule $module)
     /** @var Apcal\Helper $helper */
     /** @var Apcal\Utility $utility */
     /** @var Apcal\Common\Configurator $configurator */
-    $helper  = Apcal\Helper::getInstance();
-    $utility = new Apcal\Utility();
+    $helper       = Apcal\Helper::getInstance();
+    $utility      = new Apcal\Utility();
     $configurator = new Apcal\Common\Configurator();
-
 
     if (!$GLOBALS['xoopsDB']->queryF("SELECT shortsummary FROM {$GLOBALS['xoopsDB']->prefix('apcal_event')}")) {
         if ($GLOBALS['xoopsDB']->queryF("ALTER TABLE {$GLOBALS['xoopsDB']->prefix('apcal_event')} ADD shortsummary VARCHAR(255) AFTER groupid")) {
@@ -170,11 +169,9 @@ function xoops_module_update_apcal(\XoopsModule $module)
     //        mkdir(XOOPS_UPLOAD_PATH . '/apcal/thumbs/', 0755);
     //    }
 
-    require_once __DIR__ . '/config.php';
-    $configurator = new ApcalConfigurator();
+    $configurator = new \XoopsModules\Apcal\Common\Configurator();
     /** @var Apcal\Utility $utility */
-        $utility = new \XoopsModules\Apcal\Utility();
-
+    $utility = new \XoopsModules\Apcal\Utility();
 
     //delete old HTML templates
     if (count($configurator->templateFolders) > 0) {
@@ -227,7 +224,7 @@ function xoops_module_update_apcal(\XoopsModule $module)
 
     //  ---  COPY blank.png FILES ---------------
     if (count($configurator->copyBlankFiles) > 0) {
-        $file =  dirname(__DIR__) . '/assets/images/blank.png';
+        $file = dirname(__DIR__) . '/assets/images/blank.png';
         foreach (array_keys($configurator->copyBlankFiles) as $i) {
             $dest = $configurator->copyBlankFiles[$i] . '/blank.png';
             $utility::copyFile($file, $dest);
