@@ -39,9 +39,9 @@ foreach ($localesdir as $locale) {
         $locales[substr($locale, 0, -4)] = substr($locale, 0, -4);
     }
 }
-$modversion['version']             = 2.22;
-$modversion['module_status']       = 'RC 1';
-$modversion['release_date']        = '2018/03/30'; //NOT RELEASED!!!!  Work in progress
+$modversion['version']             = 2.23;
+$modversion['module_status']       = 'Beta 1';
+$modversion['release_date']        = '2018/04/14'; //NOT RELEASED!!!!  Work in progress
 $modversion['name']                = _MI_APCAL_NAME . $mydirnumber;
 $modversion['dirname']             = basename(__DIR__);
 $modversion['image']               = 'assets/images/logoModule.png';
