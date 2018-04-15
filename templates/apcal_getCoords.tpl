@@ -1,4 +1,4 @@
-<!-- author: Antiques Promotion (http://www.antiquespromotion.ca) -->
+ <{*author: Antiques Promotion (http://www.antiquespromotion.ca) *}>
 
 <script async defer src="https://maps.googleapis.com/maps/api/js?key=<{$api_key}>&callback=initMap" type="text/javascript"></script>
 

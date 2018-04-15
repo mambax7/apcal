@@ -99,15 +99,16 @@ if (defined('FOR_XOOPS_LANG_CHECKER') || !defined('_MI_APCAL_APCALLOADED')) {
     define('_MI_APCAL_ICSNEWCAL', 'Create a new calendar for ical exportation');
     define('_MI_APCAL_ENABLEREGISTRATION', 'Enable online registration');
 
-    define('_MI_APCAL_USERS', 'Users');
-    define('_MI_APCAL_COLORS', 'Colors');
-    define('_MI_APCAL_SETTINGS', 'General Settings');
-    define('_MI_APCAL_CALSETTINGS', 'Calendar Settings');
-    define('_MI_APCAL_CALDISPLAY', 'Calendar Display');
-    define('_MI_APCAL_EVENTS', 'Events');
-    define('_MI_APCAL_PICTURES', 'Pictures');
-    define('_MI_APCAL_MAP', 'Google Map');
-    define('_MI_APCAL_COMMENTSNOT', 'Comments & Notifications');
+    //Preferences Categories
+    define('_MI_APCAL_USERS', '<span style="color: #FF0000; font-size: Small;  font-weight: bold;">---Users---</span> ');
+    define('_MI_APCAL_COLORS', '<span style="color: #FF0000; font-size: Small;  font-weight: bold;">---Colors---</span> ');
+    define('_MI_APCAL_SETTINGS', '<span style="color: #FF0000; font-size: Small;  font-weight: bold;">---General Settings---</span> ');
+    define('_MI_APCAL_CALSETTINGS', '<span style="color: #FF0000; font-size: Small;  font-weight: bold;">---Calendar Settings---</span> ');
+    define('_MI_APCAL_CALDISPLAY', '<span style="color: #FF0000; font-size: Small;  font-weight: bold;">---Calendar Display---</span> ');
+    define('_MI_APCAL_EVENTS', '<span style="color: #FF0000; font-size: Small;  font-weight: bold;">---Events---</span> ');
+    define('_MI_APCAL_PICTURES', '<span style="color: #FF0000; font-size: Small;  font-weight: bold;">---Pictures---</span> ');
+    define('_MI_APCAL_MAP', '<span style="color: #FF0000; font-size: Small;  font-weight: bold;">---Google Map---</span> ');
+    define('_MI_APCAL_COMMENTSNOT', '<span style="color: #FF0000; font-size: Small;  font-weight: bold;">---Comments & Notifications---</span> ');
 
     // Description of each config items
     define('_MI_APCAL_EDITBYGUESTDSC', 'Permission of adding events by Guest');

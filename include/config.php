@@ -34,13 +34,13 @@ function getConfig()
         'uploadFolders'  => [
             constant($moduleDirNameUpper . '_UPLOAD_PATH'),
             constant($moduleDirNameUpper . '_UPLOAD_PATH') . '/category',
-            constant($moduleDirNameUpper . '_UPLOAD_PATH') . '/screenshots',
+            constant($moduleDirNameUpper . '_UPLOAD_PATH') . '/thumbs',
             //XOOPS_UPLOAD_PATH . '/flags'
         ],
         'copyBlankFiles' => [
             constant($moduleDirNameUpper . '_UPLOAD_PATH'),
             constant($moduleDirNameUpper . '_UPLOAD_PATH') . '/category',
-            constant($moduleDirNameUpper . '_UPLOAD_PATH') . '/screenshots',
+            constant($moduleDirNameUpper . '_UPLOAD_PATH') . '/thumbs',
             //XOOPS_UPLOAD_PATH . '/flags'
         ],
 
@@ -63,8 +63,8 @@ function getConfig()
             '/class/registry.php',
             '/class/utilities.php',
             '/class/util.php',
-            '/include/constants.php',
-            '/include/functions.php',
+//            '/include/constants.php',
+//            '/include/functions.php',
             '/ajaxrating.txt',
         ],
         'oldFolders'      => [
