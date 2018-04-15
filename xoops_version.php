@@ -191,7 +191,7 @@ if (substr(XOOPS_VERSION, 6) >= '2.5.0') {
         'description' => '',
         'formtype'    => 'line_break',
         'valuetype'   => 'textbox',
-        'default'     => 'head'
+        'default'     => 'odd'
     ];
 }
 ++$c;
@@ -267,7 +267,7 @@ if (substr(XOOPS_VERSION, 6) >= '2.5.0') {
         'description' => '',
         'formtype'    => 'line_break',
         'valuetype'   => 'textbox',
-        'default'     => 'head'
+        'default'     => 'odd'
     ];
 }
 ++$c;
@@ -460,7 +460,7 @@ if (substr(XOOPS_VERSION, 6) >= '2.5.0') {
         'description' => '',
         'formtype'    => 'line_break',
         'valuetype'   => 'textbox',
-        'default'     => 'head'
+        'default'     => 'odd'
     ];
 }
 ++$c;
@@ -523,7 +523,7 @@ if (substr(XOOPS_VERSION, 6) >= '2.5.0') {
         'description' => '',
         'formtype'    => 'line_break',
         'valuetype'   => 'textbox',
-        'default'     => 'head'
+        'default'     => 'odd'
     ];
 }
 ++$c;
@@ -598,7 +598,7 @@ if (substr(XOOPS_VERSION, 6) >= '2.5.0') {
         'description' => '',
         'formtype'    => 'line_break',
         'valuetype'   => 'textbox',
-        'default'     => 'head'
+        'default'     => 'odd'
     ];
 }
 ++$c;
@@ -690,7 +690,7 @@ if (substr(XOOPS_VERSION, 6) >= '2.5.0') {
         'description' => '',
         'formtype'    => 'line_break',
         'valuetype'   => 'textbox',
-        'default'     => 'head'
+        'default'     => 'odd'
     ];
 }
 ++$c;
@@ -723,7 +723,7 @@ if (substr(XOOPS_VERSION, 6) >= '2.5.0') {
         'description' => '',
         'formtype'    => 'line_break',
         'valuetype'   => 'textbox',
-        'default'     => 'head'
+        'default'     => 'odd'
     ];
 }
 ++$c;
@@ -806,7 +806,7 @@ if (substr(XOOPS_VERSION, 6) >= '2.5.0') {
         'description' => '',
         'formtype'    => 'line_break',
         'valuetype'   => 'textbox',
-        'default'     => 'head'
+        'default'     => 'odd'
     ];
 }
 ++$c;
@@ -858,7 +858,7 @@ if (substr(XOOPS_VERSION, 6) >= '2.5.0') {
         'description' => '',
         'formtype'    => 'line_break',
         'valuetype'   => 'textbox',
-        'default'     => 'head'
+        'default'     => 'odd'
     ];
 }
 
