@@ -851,7 +851,7 @@ if (!class_exists(BaseApcal::class)) {
             // if( $get_target == '' ) $get_target = $PHP_SELF ;
 
             //            require_once "$this->base_path/include/patTemplate.php";
-            $tmpl = new Apcal\patTemplate();
+            $tmpl = new Apcal\PatTemplate();
             $tmpl->setBasedir((string)$this->images_path);
 
             // É½ï¿½ï¿½ï¿½â¡¼ï¿½É¤Ë±ï¿½ï¿½ï¿½ï¿½Æ¡ï¿½ï¿½Æ¥ï¿½×¥ì¡¼ï¿½È¥Õ¥ï¿½ï¿½ï¿½ï¿½ï¿½ò¿¶¤ï¿½Ê¬ï¿½ï¿½
@@ -1024,7 +1024,7 @@ if (!class_exists(BaseApcal::class)) {
             // if( $get_target == '' ) $get_target = $PHP_SELF ;
 
             //            require_once "$this->base_path/include/patTemplate.php";
-            $tmpl = new Apcal\patTemplate();
+            $tmpl = new Apcal\PatTemplate();
             $tmpl->readTemplatesFromFile("$this->images_path/yearly.tmpl.html");
 
             // setting skin folder
@@ -1111,7 +1111,7 @@ if (!class_exists(BaseApcal::class)) {
             }
 
             //            require_once "$this->base_path/include/patTemplate.php";
-            $tmpl = new Apcal\patTemplate();
+            $tmpl = new Apcal\PatTemplate();
             $tmpl->readTemplatesFromFile("$this->images_path/monthly.tmpl.html");
 
             // setting skin folder
@@ -1194,7 +1194,7 @@ if (!class_exists(BaseApcal::class)) {
             // if( $get_target == '' ) $get_target = $PHP_SELF ;
 
             //            require_once "$this->base_path/include/patTemplate.php";
-            $tmpl = new Apcal\patTemplate();
+            $tmpl = new Apcal\PatTemplate();
             $tmpl->readTemplatesFromFile("$this->images_path/weekly.tmpl.html");
 
             // setting skin folder
@@ -1255,7 +1255,7 @@ if (!class_exists(BaseApcal::class)) {
             // if( $get_target == '' ) $get_target = $PHP_SELF ;
 
             //            require_once "$this->base_path/include/patTemplate.php";
-            $tmpl = new Apcal\patTemplate();
+            $tmpl = new Apcal\PatTemplate();
             $tmpl->readTemplatesFromFile("$this->images_path/daily.tmpl.html");
 
             // setting skin folder

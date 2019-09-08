@@ -21,7 +21,6 @@
 use XoopsModules\Apcal;
 
 require_once dirname(dirname(dirname(__DIR__))) . '/mainfile.php';
-require_once XOOPS_ROOT_PATH . '/modules/apcal/class/CssParser.php';
 
 error_reporting(0);
 $xoopsLogger->activated = false;

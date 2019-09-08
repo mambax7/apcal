@@ -61,7 +61,7 @@ if (!defined('APCAL_BLOCK_MONTHLY_CALENDAR_INCLUDED')) {
         $original_level = error_reporting(E_ALL ^ E_NOTICE);
 
         //        require_once "$mod_path/include/patTemplate.php";
-        $tmpl = new Apcal\patTemplate();
+        $tmpl = new Apcal\PatTemplate();
         $tmpl->readTemplatesFromFile("$cal->images_path/block_monthly.tmpl.html");
 
         // setting skin folder

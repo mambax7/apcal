@@ -66,7 +66,7 @@ if (!class_exists('PatTemplate')) {
      * @access       public
      * @author       Stephan Schmidt <schst@php-tools.de>
      */
-    class patTemplate
+    class PatTemplate
     {
         /**
          * Constructor
