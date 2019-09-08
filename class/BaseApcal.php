@@ -2004,7 +2004,7 @@ if (!class_exists(BaseApcal::class)) {
                 $tzoffset_s2u = (($this->user_TZ - $this->server_TZ) * 3600);
                 $plugins      = $this->get_plugins('daily');
                 foreach ($plugins as $plugin) {
-                    $include_ret = @require_ $this->base_path . '/' . $this->plugins_path_daily . '/' . $plugin['file'];
+                    $include_ret = @require $this->base_path . '/' . $this->plugins_path_daily . '/' . $plugin['file'];
                     if (false === $include_ret) {
                         // daily emulator by monthly plugin
                         @require $this->base_path . '/' . $this->plugins_path_monthly . '/' . $plugin['file'];
