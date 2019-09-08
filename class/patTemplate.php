@@ -14,7 +14,7 @@ namespace XoopsModules\Apcal;
 
 /**
  * @copyright    {@link https://xoops.org/ XOOPS Project}
- * @license      {@link http://www.fsf.org/copyleft/gpl.html GNU public license}
+ * @license     {@link http://www.fsf.org/copyleft/gpl.html GNU public license}
  * @package
  * @since
  * @author       XOOPS Development Team,
@@ -107,9 +107,12 @@ if (!class_exists('PatTemplate')) {
             $this->globals   = [];
 
             $this->attributes = [];
+            $this->whitespace = [];
 
             //  Does one of the templates contain other templates
             $this->uses_dependencies = false;
+
+            $this->dependencies = [];
 
             // Set template tags
             $this->setType($type);
@@ -343,7 +346,7 @@ if (!class_exists('PatTemplate')) {
 
             $template = mb_strtoupper($template);
 
-            //            while (list($attribute, $value) = each($attributes)) {
+//            while (list($attribute, $value) = each($attributes)) {
             foreach ($attributes as $attribute => $value) {
                 $attribute                               = mb_strtolower($attribute);
                 $this->attributes[$template][$attribute] = $value;
@@ -368,8 +371,8 @@ if (!class_exists('PatTemplate')) {
             $template  = mb_strtoupper($template);
             $attribute = mb_strtolower($attribute);
             if (isset($this->attributes[$template][$attribute])) {
-                return $this->attributes[$template][$attribute];
-            }
+            return $this->attributes[$template][$attribute];
+        }
         }
 
         /**
@@ -475,17 +478,17 @@ if (!class_exists('PatTemplate')) {
 
                 //  check, wether leading and trailing whitepaces should be stripped
                 if (isset($this->whitespace[count($this->whitespace) - 1])) {
-                    switch ($this->whitespace[count($this->whitespace) - 1]) {
-                        case    'trim':
-                            $line = trim($line);
-                            break;
-                        case    'ltrim':
-                            $line = ltrim($line);
-                            break;
-                        case    'rtrim':
-                            $line = rtrim($line);
-                            break;
-                    }
+                switch ($this->whitespace[count($this->whitespace) - 1]) {
+                    case    'trim':
+                        $line = trim($line);
+                        break;
+                    case    'ltrim':
+                        $line = ltrim($line);
+                        break;
+                    case    'rtrim':
+                        $line = rtrim($line);
+                        break;
+                }
                 }
 
                 //  ========= [ OPEN TAG ] =========
@@ -565,10 +568,10 @@ if (!class_exists('PatTemplate')) {
          *   handle a <patTemplate:...> start tag in template parser
          *
          * @access private
-         * @param string $fname      name of the file where the tag was found (kind of parser id)
-         * @param string $tagname    name of the start tag that was found
-         * @param array  $attributes all attributes that were found
-         * @param string $line       the complete line containing the tag
+         * @param string  $fname      name of the file where the tag was found (kind of parser id)
+         * @param string  $tagname    name of the start tag that was found
+         * @param array   $attributes all attributes that were found
+         * @param string  $line       the complete line containing the tag
          * @param int    $lineno     lineno in the parse file (can be used for error messages
          */
         public function startElementHandler($fname, $tagname, $attributes, $line, $lineno)
@@ -579,8 +582,8 @@ if (!class_exists('PatTemplate')) {
             } //  use whitepspace mode from last opened template
             else {
                 if (isset($this->whitespace, $this->whitespace[count($this->whitespace) - 1])) {
-                    array_push($this->whitespace, $this->whitespace[count($this->whitespace) - 1]);
-                }
+                array_push($this->whitespace, $this->whitespace[count($this->whitespace) - 1]);
+            }
             }
 
             switch ($tagname) {
@@ -608,10 +611,10 @@ if (!class_exists('PatTemplate')) {
                     //                    if ($tmpl_type = strtoupper($attributes['type'])) {
                     if ($tmpl_type = isset($attributes['type']) ? mb_strtoupper($attributes['type']) : false) {
                         $this->template_types[$this->depth] = $tmpl_type;
-                        $attributes['type']                 = $tmpl_type;
+                        $attributes['type']                   = $tmpl_type;
                     } //  No type found => this is a boring standard template
                     else {
-                        $attributes['type']                 = 'STANDARD';
+                        $attributes['type']                   = 'STANDARD';
                         $this->template_types[$this->depth] = 'STANDARD';
                     }
 
@@ -637,7 +640,7 @@ if (!class_exists('PatTemplate')) {
                         }
 
                         //  Delete the src attribute, it hasn't to be stored
-                        unset($attributes[src]);
+                        unset($attributes['src']);
                     } //  No external file => the template is part of teh current file
                     else {
                         $filename = '[part of ' . $fname . ']';
@@ -712,7 +715,7 @@ if (!class_exists('PatTemplate')) {
                     break;
                 //  Found a link template
                 case 'link':
-                    $src = mb_strtoupper($attributes[src]);
+                    $src = mb_strtoupper($attributes['src']);
 
                     if (!$src) {
                         die("Error in template '" . $fname . "': missing src attribute for link in line " . $lineno);
@@ -788,8 +791,8 @@ if (!class_exists('PatTemplate')) {
         public function dataHandler($fname, $data)
         {
             if (isset($this->template_data[$this->depth])) {
-                $this->template_data[$this->depth] .= $data;
-            }
+            $this->template_data[$this->depth] .= $data;
+        }
         }
 
         /**
@@ -845,7 +848,7 @@ if (!class_exists('PatTemplate')) {
             }
 
             //  Add all vars
-            //            while (list($name, $value) = each($variables)) {
+//            while (list($name, $value) = each($variables)) {
             foreach ($variables as $name => $value) {
                 if (!is_int($name)) {
                     $this->addVar($template, $prefix . $name, $value);
@@ -881,7 +884,7 @@ if (!class_exists('PatTemplate')) {
                 for ($i = 0; $i < $cnt_rows; ++$i) {
                     if (is_array($rows[$i])) {
                         //  Get key and value
-                        //                        while (list($key, $value) = each($rows[$i])) {
+//                        while (list($key, $value) = each($rows[$i])) {
                         foreach ($rows[$i] as $key => $value) {
                             //  check if the array key is an int value => skip it
                             if (!is_int($key)) {
@@ -1049,7 +1052,7 @@ if (!class_exists('PatTemplate')) {
 
             $vars                                                    = $this->getVars($name);
             $vars[$this->tag_start . 'PAT_ROW_VAR' . $this->tag_end] = 1;
-            //            while (list($tag, $value) = each($vars)) {
+//            while (list($tag, $value) = each($vars)) {
             foreach ($vars as $tag => $value) {
                 if (is_array($value)) {
                     $value = $value[0];
@@ -1102,7 +1105,7 @@ if (!class_exists('PatTemplate')) {
                 $current = $this->getTemplateContent($name);
 
                 $vars = $this->getVars($name);
-                //                while (list($tag, $value) = each($vars)) {
+//                while (list($tag, $value) = each($vars)) {
                 foreach ($vars as $tag => $value) {
                     $current = str_replace($tag, $value, $current);
                 }
@@ -1143,7 +1146,7 @@ if (!class_exists('PatTemplate')) {
                 //  Pointer im Array auf 0 setzen
                 reset($this->variables[$template]);
 
-                //                while (list($variable, $value) = each($this->variables[$template])) {
+//                while (list($variable, $value) = each($this->variables[$template])) {
                 foreach ($this->variables[$template] as $variable => $value) {
                     $tag = $this->tag_start . $variable . $this->tag_end;
 
@@ -1161,7 +1164,7 @@ if (!class_exists('PatTemplate')) {
             if ($scope = mb_strtoupper($this->getAttribute($template, 'varscope'))) {
                 $parentVars = $this->getVars($scope);
                 reset($parentVars);
-                //                while (list($var, $value) = each($parentVars)) {
+//                while (list($var, $value) = each($parentVars)) {
                 foreach ($parentVars as $var => $value) {
                     if (!$vars[$var]) {
                         $vars[$var] = $value;
@@ -1178,7 +1181,7 @@ if (!class_exists('PatTemplate')) {
          *
          * global variables are valid in all templates
          *
-         * @param string  $name name of the template
+         * @param string $name  name of the template
          * @param string &$temp content of the parsed Template
          * @access   private
          * @see      parseTemplate(), addGlobalVar(), addGlobalVars()
@@ -1191,7 +1194,7 @@ if (!class_exists('PatTemplate')) {
             if (is_array($this->globals)) {
                 reset($this->globals);
 
-                //                while (list($variable, $value) = each($this->globals)) {
+//                while (list($variable, $value) = each($this->globals)) {
                 foreach ($this->globals as $variable => $value) {
                     $tag  = $this->tag_start . $variable . $this->tag_end;
                     $temp = str_replace($tag, $value, $temp);
@@ -1204,7 +1207,7 @@ if (!class_exists('PatTemplate')) {
          *
          * either strips, comments, replaces or ignores them, depending on the unusedvars attribute
          *
-         * @param string  $name     name of the template
+         * @param string $name      name of the template
          * @param string &$template content of the parsed Template
          * @access   private
          * @see      setAttribute()
@@ -1234,9 +1237,9 @@ if (!class_exists('PatTemplate')) {
          *
          * parses child templates of a template and inserts their content
          *
-         * @param string  $name name of the template
+         * @param string $name  name of the template
          * @param string &$temp content of the parsed Template
-         * @param string  $mode
+         * @param string $mode
          * @access   private
          * @see      addDependency()
          */
@@ -1244,21 +1247,22 @@ if (!class_exists('PatTemplate')) {
         {
             $name = mb_strtoupper($name);
             if (isset($this->dependencies[$name]) && is_array($this->dependencies[$name])) {
-                for ($i = 0, $iMax = count($this->dependencies[$name]); $i < $iMax; ++$i) {
+            for ($i = 0, $iMax = count($this->dependencies[$name]); $i < $iMax; ++$i) {
                     $type = $this->getAttribute(mb_strtoupper($this->dependencies[$name][$i]), 'type');
 
-                    //  Templates placeholders have the prefix TMPL:
-                    $tag = $this->tag_start . 'TMPL:' . $this->dependencies[$name][$i] . $this->tag_end;
-                    //  Get the parsed child template and replace it
-                    $temp = str_replace($tag, $this->getParsedTemplate($this->dependencies[$name][$i]), $temp);
+                //  Templates placeholders have the prefix TMPL:
+                $tag = $this->tag_start . 'TMPL:' . $this->dependencies[$name][$i] . $this->tag_end;
+                //  Get the parsed child template and replace it
+                $temp = str_replace($tag, $this->getParsedTemplate($this->dependencies[$name][$i]), $temp);
 
                     if ((patTEMPLATE_TYPE_CONDITION == $type || patTEMPLATE_TYPE_SIMPLECONDITION == $type)
                         && 'w' === $mode) {
-                        unset($this->parsed_templates[$this->dependencies[$name][$i]]);
+                    unset($this->parsed_templates[$this->dependencies[$name][$i]]);
                     }
                 }
             }
         }
+
 
         /**
          * returns a parsed Template
@@ -1299,20 +1303,20 @@ if (!class_exists('PatTemplate')) {
                 return $this->parsed_templates[$name];
             } //  No name given
 
-            //  The template uses dependencies, then start with the root template
-            if ($this->uses_dependencies) {
-                return $this->getParsedTemplate($this->templates[0]);
-            } //  Only one template => parse and return it
+                //  The template uses dependencies, then start with the root template
+                if ($this->uses_dependencies) {
+                    return $this->getParsedTemplate($this->templates[0]);
+                } //  Only one template => parse and return it
             elseif (1 == $this->cnt_templates) {
-                return $this->getParsedTemplate($this->templates[0]);
-            } //  No dependencies, but more than one => return all parsed templates in an array
+                    return $this->getParsedTemplate($this->templates[0]);
+                } //  No dependencies, but more than one => return all parsed templates in an array
 
-            for ($i = 0; $i < $this->cnt_templates; ++$i) {
-                $arr[$this->templates[$i]] = $this->getParsedTemplate($this->templates[$i]);
-            }
+                    for ($i = 0; $i < $this->cnt_templates; ++$i) {
+                        $arr[$this->templates[$i]] = $this->getParsedTemplate($this->templates[$i]);
+                    }
 
-            return $arr;
-        }
+                    return $arr;
+                }
 
         /**
          * displays a parsed Template
@@ -1608,7 +1612,7 @@ if (!class_exists('PatTemplate')) {
                 echo "           <table border=\"0\" cellpadding=\"0\" cellspacing=\"1\">\n";
 
                 //  Display all Attributes in table
-                //                while (list($key, $value) = each($this->attributes[$name])) {
+//                while (list($key, $value) = each($this->attributes[$name])) {
                 foreach ($this->attributes[$name] as $key => $value) {
                     echo "               <tr>\n";
                     echo '                   <td class="text"><b>' . $key . "</b></td>\n";
@@ -1747,7 +1751,7 @@ if (!class_exists('PatTemplate')) {
                     echo "           <table border=\"0\" cellpadding=\"0\" cellspacing=\"1\">\n";
 
                     //  Display all Variables in table
-                    //                    while (list($key, $value) = each($this->variables[$name])) {
+//                    while (list($key, $value) = each($this->variables[$name])) {
                     foreach ($this->variables[$name] as $key => $value) {
                         if (is_array($value)) {
                             $value = implode(', ', $value);

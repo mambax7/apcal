@@ -29,7 +29,7 @@
         }
     }
 </script>
-<form name="tellafriend" action="<{$xoops_url}>/modules/apcal/tellafriend.php" method="post">
+<form class='apcalForm' name="tellafriend" action="<{$xoops_url}>/modules/apcal/tellafriend.php" method="post">
     <{securityToken}><{*//mb*}>
     <table>
         <tr>

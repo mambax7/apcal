@@ -11,7 +11,7 @@
 
 /**
  * @copyright    {@link https://xoops.org/ XOOPS Project}
- * @license      {@link http://www.fsf.org/copyleft/gpl.html GNU public license}
+ * @license     {@link http://www.fsf.org/copyleft/gpl.html GNU public license}
  * @package
  * @since
  * @author       XOOPS Development Team,
@@ -119,8 +119,8 @@ function rebuild_cat_tree($cat_table)
 
     $loop_check_for_key = 1024;
     for ($key = 1; $key < $sizeofcats; ++$key) {
-        $cat    = &$cats[$key];
-        $target = &$cats[0];
+        $cat    =& $cats[$key];
+        $target =& $cats[0];
         if (--$loop_check_for_key < 0) {
             $loop_check = -1;
         } else {
@@ -146,13 +146,13 @@ function rebuild_cat_tree($cat_table)
                 --$key;
                 break;
             }
-            $target = &$cats[$target['next_key']];
+            $target =& $cats[$target['next_key']];
         }
     }
 
-    $cat = &$cats[0];
+    $cat =& $cats[0];
     for ($weight = 1; $weight < $sizeofcats; ++$weight) {
-        $cat = &$cats[$cat['next_key']];
+        $cat =& $cats[$cat['next_key']];
         $GLOBALS['xoopsDB']->query("UPDATE $cat_table SET weight=" . ($weight * 10) . ",cat_depth={$cat['depth']} WHERE cid={$cat['cid']}");
     }
 }
@@ -371,7 +371,7 @@ if ('edit' === $disp && $cid > 0) {
 
     // TH Part
     echo "
-    <form name='MainForm' action='' method='post' style='margin:10px;'>
+    <form class='apcalForm' id='MainForm' name='MainForm' action='' method='post' style='margin:10px;'>
     " . $GLOBALS['xoopsSecurity']->getTokenHTML() . "
     <input type='hidden' name='delcat' value=''>
     <table width='75%' class='outer' cellpadding='4' cellspacing='1'>

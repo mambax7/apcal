@@ -11,7 +11,7 @@
 
 /**
  * @copyright    {@link https://xoops.org/ XOOPS Project}
- * @license      {@link http://www.fsf.org/copyleft/gpl.html GNU public license}
+ * @license     {@link http://www.fsf.org/copyleft/gpl.html GNU public license}
  * @package
  * @since
  * @author       XOOPS Development Team,
@@ -137,7 +137,7 @@ if ('default' !== $tpl['tpl_tplset']) {
 }
 
 echo "
-    <form name='diff_form' id='diff_form' action='' method='get'>
+    <form class='apcalForm' name='diff_form' id='diff_form' action='' method='get'>
     <input type='checkbox' name='display_diff2file' value='1' onClick=\"if (this.checked) {document.getElementById('diff2file').style.display='block'} else {document.getElementById('diff2file').style.display='none'};\" id='display_diff2file' checked>&nbsp;<label for='display_diff2file'>diff from file</label>
     <pre id='diff2file' style='display:block;border:1px solid black;'>$diff_from_file4disp</pre>
     <input type='checkbox' name='display_diff2default' value='1' onClick=\"if (this.checked) {document.getElementById('diff2default').style.display='block'} else {document.getElementById('diff2default').style.display='none'};\" id='display_diff2default'>&nbsp;<label for='display_diff2default'>diff from default</label>
@@ -145,7 +145,7 @@ echo "
     </form>\n";
 
 echo "
-<form name='MainForm' action='?tpl_file=" . htmlspecialchars($tpl['tpl_file'], ENT_QUOTES) . '&amp;tpl_tplset=' . htmlspecialchars($tpl['tpl_tplset'], ENT_QUOTES) . "' method='post'>
+<form class='apcalForm' id='MainForm' name='MainForm' action='?tpl_file=" . htmlspecialchars($tpl['tpl_file'], ENT_QUOTES) . '&amp;tpl_tplset=' . htmlspecialchars($tpl['tpl_tplset'], ENT_QUOTES) . "' method='post'>
     " . $GLOBALS['xoopsSecurity']->getTokenHTML() . "
     <textarea name='tpl_source' wrap='off' style='width:600px;height:400px;'>" . htmlspecialchars($tpl['tpl_source'], ENT_QUOTES) . "</textarea>
     <br>

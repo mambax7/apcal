@@ -44,37 +44,37 @@ setcookie('lang', $lang);
 <body>
 
 <?php if (\Xmf\Request::hasVar('submitted')) {
-    ?>
+        ?>
 
     <h1>Form submitted</h1>
 
     <?php foreach ($_REQUEST as $key => $val) {
         echo htmlspecialchars($key, ENT_QUOTES | ENT_HTML5) . ' = ' . htmlspecialchars($val, ENT_QUOTES | ENT_HTML5) . '<br>';
-    } ?>
+        } ?>
 
     <?php
-} else {
-    ?>
+    } else {
+        ?>
 
     <h1>Calendar.php test</h1>
 
-    <form action="test.php" method="get">
+    <form class='apcalForm' action="test.php" method="get">
         Select language: <select name="lang" onchange="this.form.submit()">
             <?php
             $cwd = getcwd();
-            chdir('lang');
-            foreach (glob('*.js') as $filename) {
-                $l        = preg_replace('/(^calendar-|.js$)/', '', $filename);
-                $selected = '';
-                if ($l == $lang) {
-                    $selected = 'selected ';
-                }
-                $display = $l;
+        chdir('lang');
+        foreach (glob('*.js') as $filename) {
+            $l        = preg_replace('/(^calendar-|.js$)/', '', $filename);
+            $selected = '';
+            if ($l == $lang) {
+                $selected = 'selected ';
+            }
+            $display = $l;
                 if ('en' === $l) {
-                    $display = 'EN';
-                }
-                echo '<option ' . $selected . 'value="' . $l . '">' . $display . '</option>';
-            } ?>
+                $display = 'EN';
+            }
+            echo '<option ' . $selected . 'value="' . $l . '">' . $display . '</option>';
+        } ?>
         </select>
         <blockquote style="font-size: 90%;">
             <span style="font-weight: bold;">NOTE</span>: as of this release, 0.9.6, only "EN" and "RO", which I
@@ -85,7 +85,7 @@ setcookie('lang', $lang);
         </blockquote>
     </form>
 
-    <form action="test.php" method="get">
+    <form class='apcalForm' action="test.php" method="get">
         <input type="hidden" name="submitted" value="1">
 
         <table>
@@ -117,7 +117,7 @@ setcookie('lang', $lang);
     </form>
 
     <?php
-} ?>
+    } ?>
 
 </body>
 </html>

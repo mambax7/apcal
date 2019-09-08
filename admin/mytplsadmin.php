@@ -11,7 +11,7 @@
 
 /**
  * @copyright    {@link https://xoops.org/ XOOPS Project}
- * @license      {@link http://www.fsf.org/copyleft/gpl.html GNU public license}
+ * @license     {@link http://www.fsf.org/copyleft/gpl.html GNU public license}
  * @package
  * @since
  * @author       XOOPS Development Team,
@@ -227,7 +227,7 @@ echo "<h3 style='text-align:left;'>" . _MD_APCAL_TPLSETS . " : $target_mname</h3
 
 // beggining of table & form
 echo "
-    <form name='MainForm' action='?dirname=" . htmlspecialchars($target_dirname, ENT_QUOTES) . "' method='post'>
+    <form class='apcalForm' id='MainForm' name='MainForm' action='?dirname=" . htmlspecialchars($target_dirname, ENT_QUOTES) . "' method='post'>
     " . $GLOBALS['xoopsSecurity']->getTokenHTML() . "
     <table class='outer'>
         <tr>
