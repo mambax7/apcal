@@ -1,4 +1,6 @@
-<?php namespace XoopsModules\Apcal;
+<?php
+
+namespace XoopsModules\Apcal;
 
 /**
  * A class to render Diffs in different formats.
@@ -54,8 +56,8 @@ class Text_Diff_Renderer
     {
         $params = [];
         foreach (get_object_vars($this) as $k => $v) {
-            if ('_' === $k{0}) {
-                $params[substr($k, 1)] = $v;
+            if ('_' === $k[0]) {
+                $params[mb_substr($k, 1)] = $v;
             }
         }
 
@@ -136,19 +138,16 @@ class Text_Diff_Renderer
         $output = $this->_startBlock($this->_blockHeader($xbeg, $xlen, $ybeg, $ylen));
 
         foreach ($edits as $edit) {
-            switch (strtolower(get_class($edit))) {
+            switch (mb_strtolower(get_class($edit))) {
                 case 'text_diff_op_copy':
                     $output .= $this->_context($edit->orig);
                     break;
-
                 case 'text_diff_op_add':
                     $output .= $this->_added($edit->final);
                     break;
-
                 case 'text_diff_op_delete':
                     $output .= $this->_deleted($edit->orig);
                     break;
-
                 case 'text_diff_op_change':
                     $output .= $this->_changed($edit->orig, $edit->final);
                     break;

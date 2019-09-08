@@ -2,7 +2,7 @@
 
 use XoopsModules\Apcal;
 
-require_once  dirname(dirname(__DIR__)) . '/mainfile.php';
+require_once dirname(dirname(__DIR__)) . '/mainfile.php';
 require_once XOOPS_ROOT_PATH . '/class/xoopsformloader.php';
 
 $mod_path = XOOPS_ROOT_PATH . '/modules/' . basename(__DIR__);
@@ -10,13 +10,13 @@ $mod_path = XOOPS_ROOT_PATH . '/modules/' . basename(__DIR__);
 //    require_once $mod_path . '/class/Apcal\.php';
 //}
 $cal = new Apcal\BaseApcal('', $xoopsConfig['language'], true); //TODO Check in this
-include $mod_path . '/include/read_configs.php';
+require $mod_path . '/include/read_configs.php';
 
 if ($cal->enabletellafriend) {
     require_once XOOPS_ROOT_PATH . '/header.php';
 
     $verify = false;
-    if (isset($_POST['to'])) {
+    if (\Xmf\Request::hasVar('to', 'POST')) {
         xoops_load('captcha');
         $xoopsCaptcha = XoopsCaptcha::getInstance();
         if ($xoopsCaptcha->verify() && ($xoopsUser || isset($_POST['xoopscaptcha']))) {
@@ -26,7 +26,7 @@ if ($cal->enabletellafriend) {
         $verify = true;
     }
 
-    if (isset($_POST['to']) && $verify) {
+    if (\Xmf\Request::hasVar('to', 'POST') && $verify) {
         $headers = 'From: ' . $_POST['from'] . "\r\n";
 
         mail($_POST['to'], $_POST['subject'], $_POST['message'], $headers);

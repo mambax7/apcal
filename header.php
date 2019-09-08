@@ -16,13 +16,11 @@
  * @since
  * @author       XOOPS Development Team
  */
+require XOOPS_ROOT_PATH . '/header.php';
 
-use XoopsModules\Apcal;
-
-include XOOPS_ROOT_PATH . '/header.php';
-
-$moduleDirName = basename((__DIR__));
-$helper = Apcal\Helper::getInstance();
+$moduleDirName = basename(__DIR__);
+/** @var \XoopsModules\Apcal\Helper $helper */
+$helper = \XoopsModules\Apcal\Helper::getInstance();
 
 if (!isset($GLOBALS['xoopsTpl']) || !($GLOBALS['xoopsTpl'] instanceof XoopsTpl)) {
     require_once $GLOBALS['xoops']->path('class/template.php');

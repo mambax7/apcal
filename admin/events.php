@@ -54,7 +54,7 @@ $cal = new Apcal\ApcalXoops('', $xoopsConfig['language'], true);
 
 // setting properties of APCal
 $cal->conn = $conn;
-include  dirname(__DIR__) . '/include/read_configs.php';
+require dirname(__DIR__) . '/include/read_configs.php';
 $cal->base_url    = $mod_url;
 $cal->base_path   = $mod_path;
 $cal->images_url  = "$mod_url/assets/images/$skin_folder";
@@ -77,7 +77,7 @@ switch ($pf) {
         break;
     default:
         $pf = 'future';
-        // no break
+    // no break
     case 'future':
         $pf_options = str_replace("'future'>", "'future' selected>", $pf_options);
         $whr_pf     = "end>'" . time() . "'";
@@ -119,15 +119,14 @@ switch ($tz) {
 }
 
 // �ǡ����١��������ʤɤ���������
-if (isset($_POST['delete'])) {
-
+if (\Xmf\Request::hasVar('delete', 'POST')) {
     // Ticket Check
     if (!$GLOBALS['xoopsSecurity']->check()) {
         redirect_header(XOOPS_URL . '/', 3, $GLOBALS['xoopsSecurity']->getErrors());
     }
 
     // �쥳���ɤκ��
-    if (isset($_POST['ids']) && is_array($_POST['ids'])) {
+    if (\Xmf\Request::hasVar('ids', 'POST') && is_array($_POST['ids'])) {
         $whr = '';
         foreach ($_POST['ids'] as $id) {
             $whr .= "id=$id OR rrule_pid=$id OR ";
@@ -147,8 +146,7 @@ if (isset($_POST['delete'])) {
     }
     $cal->redirect("cid=$cid&num=$num&tz=$tz&done=deleted&mes=$mes");
     exit;
-} elseif (isset($_POST['addlink']) && isset($_POST['ids']) && is_array($_POST['ids']) && $_POST['cid'] > 0) {
-
+} elseif (\Xmf\Request::hasVar('addlink', 'POST') && isset($_POST['ids']) && is_array($_POST['ids']) && $_POST['cid'] > 0) {
     // Ticket Check
     if (!$GLOBALS['xoopsSecurity']->check()) {
         redirect_header(XOOPS_URL . '/', 3, $GLOBALS['xoopsSecurity']->getErrors());
@@ -169,9 +167,8 @@ if (isset($_POST['delete'])) {
     $mes     = urlencode("$records " . _AM_APCAL_MES_EVENTLINKTOCAT);
     $cal->redirect("cid=$cid&num=$num&tz=$tz&done=copied&mes=$mes");
     exit;
-} elseif (isset($_POST['movelink']) && isset($_POST['ids']) && is_array($_POST['ids']) && isset($_POST['cid'])
+} elseif (\Xmf\Request::hasVar('movelink', 'POST') && isset($_POST['ids']) && is_array($_POST['ids']) && isset($_POST['cid'])
           && $_POST['old_cid'] > 0) {
-
     // Ticket Check
     if (!$GLOBALS['xoopsSecurity']->check()) {
         redirect_header(XOOPS_URL . '/', 3, $GLOBALS['xoopsSecurity']->getErrors());
@@ -198,8 +195,7 @@ if (isset($_POST['delete'])) {
     }
     $cal->redirect("cid=$old_cid&num=$num&tz=$tz&done=moved&mes=$mes");
     exit;
-} elseif (isset($_POST['output_ics_confirm']) && !empty($_POST['ids']) && is_array($_POST['ids'])) {
-
+} elseif (\Xmf\Request::hasVar('output_ics_confirm', 'POST') && !empty($_POST['ids']) && is_array($_POST['ids'])) {
     // Ticket Check
     if (!$GLOBALS['xoopsSecurity']->check()) {
         redirect_header(XOOPS_URL . '/', 3, $GLOBALS['xoopsSecurity']->getErrors());
@@ -233,7 +229,7 @@ if ('' != $txt) {
     foreach ($keywords as $keyword) {
         $whr_txt .= "(CONCAT( summary , description , location , contact ) LIKE '%" . addslashes($keyword) . "%') AND ";
     }
-    $whr_txt = substr($whr_txt, 0, -4);
+    $whr_txt = mb_substr($whr_txt, 0, -4);
 } else {
     $whr_txt = '1';
 }
@@ -254,7 +250,7 @@ if (false !== $resultRow && isset($resultRow[0])) {
 $rs = $GLOBALS['xoopsDB']->query("SELECT * FROM $cal->table WHERE $whr ORDER BY start,end LIMIT $pos,$num");
 
 // Page Navigation
-include XOOPS_ROOT_PATH . '/class/pagenav.php';
+require XOOPS_ROOT_PATH . '/class/pagenav.php';
 $nav      = new \XoopsPageNav($numrows, $num, $pos, 'pos', "cid=$cid&amp;tz=$tz&amp;num=$num&amp;pf=$pf&amp;txt=" . urlencode($txt));
 $nav_html = $nav->renderNav(10);
 if ($numrows <= 0) {

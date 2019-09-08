@@ -2,7 +2,7 @@
 
 use Xmf\Request;
 
-require_once  dirname(dirname(__DIR__)) . '/mainfile.php';
+require_once dirname(dirname(__DIR__)) . '/mainfile.php';
 require_once XOOPS_ROOT_PATH . '/header.php';
 //XoopsMailer
 require_once XOOPS_ROOT_PATH . '/class/xoopsmailer.php';
@@ -22,8 +22,8 @@ $roimagecancel   = XOOPS_URL . '/modules/apcal/assets/images/regonline/cancel.pn
 $roimagesend     = XOOPS_URL . '/modules/apcal/assets/images/regonline/sendmail.png';
 
 $show_form_activate = false;
-if (isset($_POST['form_activate'])) {
-   if (\Xmf\Request::hasVar('eventid', 'POST')) {
+if (\Xmf\Request::hasVar('form_activate', 'POST')) {
+    if (\Xmf\Request::hasVar('eventid', 'POST')) {
         //called from edit an event (activate or edit regonline)
         $eventid   = Request::getInt('eventid', 0, 'POST');
         $url       = Request::getString('url', '', 'POST');
@@ -35,19 +35,19 @@ if (isset($_POST['form_activate'])) {
         $show_form_activate = true;
     }
 }
-if (isset($_GET['op'])) {
+if (\Xmf\Request::hasVar('op', 'GET')) {
     if ('show_form_activate' === $_GET['op']) {
         //called after automatically redirect after add new event
-        if (isset($_GET['eventid'])) {
+        if (\Xmf\Request::hasVar('eventid', 'GET')) {
             $eventid = $_GET['eventid'];
         }
-        if (isset($_GET['eventurl'])) {
+        if (\Xmf\Request::hasVar('eventurl', 'GET')) {
             $eventurl = $_GET['eventurl'] . '?smode=' . $_GET['smode'] . '&caldate=' . $_GET['caldate'];
         }
-        if (isset($_GET['title'])) {
+        if (\Xmf\Request::hasVar('title', 'GET')) {
             $event = $_GET['title'];
         }
-        if (isset($_GET['eventdate'])) {
+        if (\Xmf\Request::hasVar('eventdate', 'GET')) {
             $eventdate = $_GET['eventdate'];
         }
 
@@ -65,13 +65,7 @@ if ($show_form_activate) {
     $email5 = '';
 
     //read data from apcal_ro_events
-    $query    = 'SELECT '
-                . $GLOBALS['xoopsDB']->prefix('apcal_ro_events')
-                . '.* FROM '
-                . $GLOBALS['xoopsDB']->prefix('apcal_ro_events')
-                . ' WHERE (('
-                . $GLOBALS['xoopsDB']->prefix('apcal_ro_events')
-                . ".roe_eventid)=$eventid)";
+    $query    = 'SELECT ' . $GLOBALS['xoopsDB']->prefix('apcal_ro_events') . '.* FROM ' . $GLOBALS['xoopsDB']->prefix('apcal_ro_events') . ' WHERE ((' . $GLOBALS['xoopsDB']->prefix('apcal_ro_events') . ".roe_eventid)=$eventid)";
     $res      = $GLOBALS['xoopsDB']->query($query);
     $num_rows = $GLOBALS['xoopsDB']->getRowsNum($res);
 
@@ -91,13 +85,7 @@ if ($show_form_activate) {
     }
 
     //read data from apcal_ro_notify
-    $query    = 'SELECT '
-                . $GLOBALS['xoopsDB']->prefix('apcal_ro_notify')
-                . '.* FROM '
-                . $GLOBALS['xoopsDB']->prefix('apcal_ro_notify')
-                . ' WHERE (('
-                . $GLOBALS['xoopsDB']->prefix('apcal_ro_notify')
-                . ".ron_eventid)=$eventid)";
+    $query    = 'SELECT ' . $GLOBALS['xoopsDB']->prefix('apcal_ro_notify') . '.* FROM ' . $GLOBALS['xoopsDB']->prefix('apcal_ro_notify') . ' WHERE ((' . $GLOBALS['xoopsDB']->prefix('apcal_ro_notify') . ".ron_eventid)=$eventid)";
     $res      = $GLOBALS['xoopsDB']->query($query);
     $num_rows = $GLOBALS['xoopsDB']->getRowsNum($res);
 
@@ -210,8 +198,8 @@ if ($show_form_activate) {
     echo $ret;
 }
 
-if (isset($_POST['activate_x'])) {
-   if (\Xmf\Request::hasVar('eventid', 'POST')) {
+if (\Xmf\Request::hasVar('activate_x', 'POST')) {
+    if (\Xmf\Request::hasVar('eventid', 'POST')) {
         $uid       = $_POST['uid'];
         $eventid   = $_POST['eventid'];
         $eventurl  = $_POST['eventurl'];
@@ -238,11 +226,7 @@ if (isset($_POST['activate_x'])) {
 
         //insert or update data in table apcal_ro_events
         if ('0' == $typeedit) {
-            $query = 'Insert into '
-                     . $GLOBALS['xoopsDB']->prefix('apcal_ro_events')
-                     . " (roe_submitter, roe_eventid, roe_datelimit, roe_number, roe_date_created) values ($uid, $eventid, $datelimit, $number, "
-                     . time()
-                     . ')';
+            $query = 'Insert into ' . $GLOBALS['xoopsDB']->prefix('apcal_ro_events') . " (roe_submitter, roe_eventid, roe_datelimit, roe_number, roe_date_created) values ($uid, $eventid, $datelimit, $number, " . time() . ')';
         } else {
             $query = 'UPDATE ' . $GLOBALS['xoopsDB']->prefix('apcal_ro_events') . ' SET ';
             $query .= $GLOBALS['xoopsDB']->prefix('apcal_ro_events') . ".roe_submitter = $uid, ";
@@ -257,13 +241,7 @@ if (isset($_POST['activate_x'])) {
         }
 
         //update data in table apcal_events
-        $query = 'UPDATE '
-                 . $GLOBALS['xoopsDB']->prefix('apcal_event')
-                 . ' SET '
-                 . $GLOBALS['xoopsDB']->prefix('apcal_event')
-                 . '.extkey0 = 1 WHERE ((('
-                 . $GLOBALS['xoopsDB']->prefix('apcal_event')
-                 . ".id)=$eventid))";
+        $query = 'UPDATE ' . $GLOBALS['xoopsDB']->prefix('apcal_event') . ' SET ' . $GLOBALS['xoopsDB']->prefix('apcal_event') . '.extkey0 = 1 WHERE (((' . $GLOBALS['xoopsDB']->prefix('apcal_event') . ".id)=$eventid))";
         $res   = $GLOBALS['xoopsDB']->query($query);
         if (!$res) {
             //echo $query;
@@ -273,13 +251,7 @@ if (isset($_POST['activate_x'])) {
         //update date in apcal_ro_notify
         if ('1' == $typeedit) {
             //delete old data in apcal_ro_notify
-            $query = 'DELETE '
-                     . $GLOBALS['xoopsDB']->prefix('apcal_ro_notify')
-                     . '.* FROM '
-                     . $GLOBALS['xoopsDB']->prefix('apcal_ro_notify')
-                     . ' WHERE (('
-                     . $GLOBALS['xoopsDB']->prefix('apcal_ro_notify')
-                     . ".ron_eventid)=$eventid)";
+            $query = 'DELETE ' . $GLOBALS['xoopsDB']->prefix('apcal_ro_notify') . '.* FROM ' . $GLOBALS['xoopsDB']->prefix('apcal_ro_notify') . ' WHERE ((' . $GLOBALS['xoopsDB']->prefix('apcal_ro_notify') . ".ron_eventid)=$eventid)";
             $res   = $GLOBALS['xoopsDB']->query($query);
         }
         if ('' === !$email1) {
@@ -322,55 +294,31 @@ if (isset($_POST['activate_x'])) {
     }
 }
 
-if (isset($_POST['deactivate_x'])) {
-   if (\Xmf\Request::hasVar('eventid', 'POST')) {
+if (\Xmf\Request::hasVar('deactivate_x', 'POST')) {
+    if (\Xmf\Request::hasVar('eventid', 'POST')) {
         $eventid = $_POST['eventid'];
         $url     = $_POST['eventurl'];
 
         //delete data in table apcal_ro_members
-        $query = 'DELETE '
-                 . $GLOBALS['xoopsDB']->prefix('apcal_ro_members')
-                 . '.* FROM '
-                 . $GLOBALS['xoopsDB']->prefix('apcal_ro_members')
-                 . ' WHERE (('
-                 . $GLOBALS['xoopsDB']->prefix('apcal_ro_members')
-                 . ".rom_eventid)=$eventid)";
+        $query = 'DELETE ' . $GLOBALS['xoopsDB']->prefix('apcal_ro_members') . '.* FROM ' . $GLOBALS['xoopsDB']->prefix('apcal_ro_members') . ' WHERE ((' . $GLOBALS['xoopsDB']->prefix('apcal_ro_members') . ".rom_eventid)=$eventid)";
         $res   = $GLOBALS['xoopsDB']->query($query);
         if (!$res) {
             redirect_header($url, 3, _APCAL_RO_ERROR_RO_DEACTIVATE);
         }
 
         //delete data in table apcal_ro_notify
-        $query = 'DELETE '
-                 . $GLOBALS['xoopsDB']->prefix('apcal_ro_notify')
-                 . '.* FROM '
-                 . $GLOBALS['xoopsDB']->prefix('apcal_ro_notify')
-                 . ' WHERE (('
-                 . $GLOBALS['xoopsDB']->prefix('apcal_ro_notify')
-                 . ".ron_eventid)=$eventid)";
+        $query = 'DELETE ' . $GLOBALS['xoopsDB']->prefix('apcal_ro_notify') . '.* FROM ' . $GLOBALS['xoopsDB']->prefix('apcal_ro_notify') . ' WHERE ((' . $GLOBALS['xoopsDB']->prefix('apcal_ro_notify') . ".ron_eventid)=$eventid)";
         $res   = $GLOBALS['xoopsDB']->query($query);
 
         //delete data in table apcal_ro_events
-        $query = 'DELETE '
-                 . $GLOBALS['xoopsDB']->prefix('apcal_ro_events')
-                 . '.* FROM '
-                 . $GLOBALS['xoopsDB']->prefix('apcal_ro_events')
-                 . ' WHERE (('
-                 . $GLOBALS['xoopsDB']->prefix('apcal_ro_events')
-                 . ".roe_eventid)=$eventid)";
+        $query = 'DELETE ' . $GLOBALS['xoopsDB']->prefix('apcal_ro_events') . '.* FROM ' . $GLOBALS['xoopsDB']->prefix('apcal_ro_events') . ' WHERE ((' . $GLOBALS['xoopsDB']->prefix('apcal_ro_events') . ".roe_eventid)=$eventid)";
         $res   = $GLOBALS['xoopsDB']->query($query);
         if (!$res) {
             redirect_header($url, 3, _APCAL_RO_ERROR_RO_DEACTIVATE);
         }
 
         //update data in table apcal_event
-        $query = 'UPDATE '
-                 . $GLOBALS['xoopsDB']->prefix('apcal_event')
-                 . ' SET '
-                 . $GLOBALS['xoopsDB']->prefix('apcal_event')
-                 . '.extkey0 = 0 WHERE ((('
-                 . $GLOBALS['xoopsDB']->prefix('apcal_event')
-                 . ".id)=$eventid))";
+        $query = 'UPDATE ' . $GLOBALS['xoopsDB']->prefix('apcal_event') . ' SET ' . $GLOBALS['xoopsDB']->prefix('apcal_event') . '.extkey0 = 0 WHERE (((' . $GLOBALS['xoopsDB']->prefix('apcal_event') . ".id)=$eventid))";
         $res   = $GLOBALS['xoopsDB']->query($query);
         if (!$res) {
             redirect_header($url, 3, _APCAL_RO_ERROR_RO_DEACTIVATE);
@@ -382,7 +330,7 @@ if (isset($_POST['deactivate_x'])) {
 }
 
 if (\Xmf\Request::hasVar('form_add')) {
-   if (\Xmf\Request::hasVar('eventid')) {
+    if (\Xmf\Request::hasVar('eventid')) {
         $eventid   = $_REQUEST['eventid'];
         $eventurl  = $_REQUEST['eventurl'];
         $summary   = $_REQUEST['summary'];
@@ -395,7 +343,7 @@ if (\Xmf\Request::hasVar('form_add')) {
 
         $title = $summary . ' (' . $date . ' ' . $location . ')';
 
-       if (\Xmf\Request::hasVar('HTTPS', 'SERVER')) {
+        if (\Xmf\Request::hasVar('HTTPS', 'SERVER')) {
             $url = 'https://' . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
         } else {
             $url = 'http://' . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
@@ -627,8 +575,8 @@ if (\Xmf\Request::hasVar('form_add')) {
     }
 }
 
-if (isset($_POST['add_member_x']) || isset($_POST['add_member_more_x'])) {
-   if (\Xmf\Request::hasVar('eventid', 'POST')) {
+if (\Xmf\Request::hasVar('add_member_x', 'POST') || isset($_POST['add_member_more_x'])) {
+    if (\Xmf\Request::hasVar('eventid', 'POST')) {
         $uid        = $_POST['uid'];
         $url        = $_POST['url'];
         $eventurl   = $_POST['eventurl'];
@@ -673,13 +621,7 @@ if (isset($_POST['add_member_x']) || isset($_POST['add_member_more_x'])) {
         }
 
         //read data from apcal_ro_events
-        $query    = 'SELECT '
-                    . $GLOBALS['xoopsDB']->prefix('apcal_ro_events')
-                    . '.roe_number, roe_datelimit FROM '
-                    . $GLOBALS['xoopsDB']->prefix('apcal_ro_events')
-                    . ' WHERE (('
-                    . $GLOBALS['xoopsDB']->prefix('apcal_ro_events')
-                    . ".roe_eventid)=$eventid)";
+        $query    = 'SELECT ' . $GLOBALS['xoopsDB']->prefix('apcal_ro_events') . '.roe_number, roe_datelimit FROM ' . $GLOBALS['xoopsDB']->prefix('apcal_ro_events') . ' WHERE ((' . $GLOBALS['xoopsDB']->prefix('apcal_ro_events') . ".roe_eventid)=$eventid)";
         $res      = $GLOBALS['xoopsDB']->query($query);
         $num_rows = $GLOBALS['xoopsDB']->getRowsNum($res);
         if (0 == $num_rows) {
@@ -700,13 +642,7 @@ if (isset($_POST['add_member_x']) || isset($_POST['add_member_more_x'])) {
         //check limit number registrations
         if ($number_allowed > 0) {
             //get existing registrations
-            $query    = 'SELECT '
-                        . $GLOBALS['xoopsDB']->prefix('apcal_ro_members')
-                        . '.rom_id FROM '
-                        . $GLOBALS['xoopsDB']->prefix('apcal_ro_members')
-                        . ' WHERE (('
-                        . $GLOBALS['xoopsDB']->prefix('apcal_ro_members')
-                        . ".rom_eventid)=$eventid)";
+            $query    = 'SELECT ' . $GLOBALS['xoopsDB']->prefix('apcal_ro_members') . '.rom_id FROM ' . $GLOBALS['xoopsDB']->prefix('apcal_ro_members') . ' WHERE ((' . $GLOBALS['xoopsDB']->prefix('apcal_ro_members') . ".rom_eventid)=$eventid)";
             $res      = $GLOBALS['xoopsDB']->query($query);
             $num_rows = $GLOBALS['xoopsDB']->getRowsNum($res);
             if (0 == $num_rows) {
@@ -819,7 +755,7 @@ if (isset($_POST['add_member_x']) || isset($_POST['add_member_more_x'])) {
                 $xoopsMailer->reset();
             }
 
-            if (isset($_POST['add_member_more_x'])) {
+            if (\Xmf\Request::hasVar('add_member_more_x', 'POST')) {
                 redirect_header($url, 3, _APCAL_RO_SUCCESS_ADD);
             } else {
                 redirect_header($eventurl, 3, _APCAL_RO_SUCCESS_ADD);
@@ -828,8 +764,8 @@ if (isset($_POST['add_member_x']) || isset($_POST['add_member_more_x'])) {
     }
 }
 
-if (isset($_POST['remove_member']) || isset($_POST['remove_member_x'])) {
-   if (\Xmf\Request::hasVar('rom_id', 'POST')) {
+if (\Xmf\Request::hasVar('remove_member', 'POST') || isset($_POST['remove_member_x'])) {
+    if (\Xmf\Request::hasVar('rom_id', 'POST')) {
         $rom_id      = $_POST['rom_id'];
         $url         = $_POST['url'];
         $eventurl    = $_POST['eventurl'];
@@ -850,13 +786,7 @@ if (isset($_POST['remove_member']) || isset($_POST['remove_member_x'])) {
             $confirmto = '-';
         }
 
-        $query = 'DELETE '
-                 . $GLOBALS['xoopsDB']->prefix('apcal_ro_members')
-                 . '.* FROM '
-                 . $GLOBALS['xoopsDB']->prefix('apcal_ro_members')
-                 . ' WHERE (('
-                 . $GLOBALS['xoopsDB']->prefix('apcal_ro_members')
-                 . ".rom_id)=$rom_id)";
+        $query = 'DELETE ' . $GLOBALS['xoopsDB']->prefix('apcal_ro_members') . '.* FROM ' . $GLOBALS['xoopsDB']->prefix('apcal_ro_members') . ' WHERE ((' . $GLOBALS['xoopsDB']->prefix('apcal_ro_members') . ".rom_id)=$rom_id)";
 
         $res = $GLOBALS['xoopsDB']->query($query);
         if (!$res) {
@@ -954,7 +884,7 @@ if (isset($_POST['remove_member']) || isset($_POST['remove_member_x'])) {
 }
 
 if (\Xmf\Request::hasVar('list')) {
-   if (\Xmf\Request::hasVar('eventid', 'REQUEST')) {
+    if (\Xmf\Request::hasVar('eventid', 'REQUEST')) {
         $uid       = $_REQUEST['uid'];
         $eventid   = $_REQUEST['eventid'];
         $summary   = $_REQUEST['summary'];
@@ -963,7 +893,7 @@ if (\Xmf\Request::hasVar('list')) {
         $eventurl  = $_REQUEST['eventurl'];
         $classname = '';
 
-       if (\Xmf\Request::hasVar('HTTPS', 'SERVER')) {
+        if (\Xmf\Request::hasVar('HTTPS', 'SERVER')) {
             $url = 'https://' . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
         } else {
             $url = 'http://' . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
@@ -1147,8 +1077,8 @@ if (\Xmf\Request::hasVar('list')) {
     }
 }
 
-if (isset($_POST['form_edit']) || isset($_POST['form_edit_x'])) {
-   if (\Xmf\Request::hasVar('rom_id', 'POST')) {
+if (\Xmf\Request::hasVar('form_edit', 'POST') || isset($_POST['form_edit_x'])) {
+    if (\Xmf\Request::hasVar('rom_id', 'POST')) {
         $rom_id     = $_POST['rom_id'];
         $uid        = $_POST['uid'];
         $url        = $_POST['url'];
@@ -1244,8 +1174,8 @@ if (isset($_POST['form_edit']) || isset($_POST['form_edit_x'])) {
     }
 }
 
-if (isset($_POST['edit_member']) || isset($_POST['edit_member_x'])) {
-   if (\Xmf\Request::hasVar('rom_id', 'POST')) {
+if (\Xmf\Request::hasVar('edit_member', 'POST') || isset($_POST['edit_member_x'])) {
+    if (\Xmf\Request::hasVar('rom_id', 'POST')) {
         $rom_id     = $_POST['rom_id'];
         $uid        = $_POST['uid'];
         $url        = $_POST['url'];
@@ -1310,25 +1240,25 @@ if (isset($_POST['edit_member']) || isset($_POST['edit_member_x'])) {
     }
 }
 
-if (isset($_POST['cancel']) || isset($_POST['cancel_x'])) {
-   if (\Xmf\Request::hasVar('eventurl', 'POST')) {
+if (\Xmf\Request::hasVar('cancel', 'POST') || isset($_POST['cancel_x'])) {
+    if (\Xmf\Request::hasVar('eventurl', 'POST')) {
         $url = $_POST['eventurl'];
         redirect_header($url, 1, _APCAL_RO_CANCEL);
     }
-   if (\Xmf\Request::hasVar('url', 'POST')) {
+    if (\Xmf\Request::hasVar('url', 'POST')) {
         $url = $_POST['url'];
         redirect_header($url, 1, _APCAL_RO_CANCEL);
     }
 }
-if (isset($_POST['goback']) || isset($_POST['goback_x'])) {
-   if (\Xmf\Request::hasVar('eventurl', 'POST')) {
+if (\Xmf\Request::hasVar('goback', 'POST') || isset($_POST['goback_x'])) {
+    if (\Xmf\Request::hasVar('eventurl', 'POST')) {
         $url = $_POST['eventurl'];
         redirect_header($url, 0, _APCAL_RO_BACK);
     }
 }
 
-if (isset($_POST['ro_notify_all']) || isset($_POST['ro_notify_all_x'])) {
-   if (\Xmf\Request::hasVar('url', 'POST')) {
+if (\Xmf\Request::hasVar('ro_notify_all', 'POST') || isset($_POST['ro_notify_all_x'])) {
+    if (\Xmf\Request::hasVar('url', 'POST')) {
         $url      = $_POST['url'];
         $eventurl = $_POST['eventurl'];
         $eventid  = $_POST['eventid'];
@@ -1340,13 +1270,7 @@ if (isset($_POST['ro_notify_all']) || isset($_POST['ro_notify_all_x'])) {
         //$subject = utf8_encode($subject);
         //$mailtext = utf8_encode($mailtext);
 
-        $query = 'SELECT '
-                 . $GLOBALS['xoopsDB']->prefix('apcal_ro_members')
-                 . '.rom_email, rom_firstname, rom_lastname FROM '
-                 . $GLOBALS['xoopsDB']->prefix('apcal_ro_members')
-                 . ' WHERE ((('
-                 . $GLOBALS['xoopsDB']->prefix('apcal_ro_members')
-                 . ".rom_eventid)=$eventid) AND not(rom_email is null))";
+        $query = 'SELECT ' . $GLOBALS['xoopsDB']->prefix('apcal_ro_members') . '.rom_email, rom_firstname, rom_lastname FROM ' . $GLOBALS['xoopsDB']->prefix('apcal_ro_members') . ' WHERE (((' . $GLOBALS['xoopsDB']->prefix('apcal_ro_members') . ".rom_eventid)=$eventid) AND not(rom_email is null))";
 
         $res      = $GLOBALS['xoopsDB']->query($query);
         $num_rows = $GLOBALS['xoopsDB']->getRowsNum($res);

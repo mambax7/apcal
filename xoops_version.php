@@ -18,7 +18,7 @@
  * @author       Antiques Promotion (http://www.antiquespromotion.ca)
  * @author       GIJ=CHECKMATE (PEAK Corp. http://www.peak.ne.jp/)
  */
-include __DIR__ . '/preloads/autoloader.php';
+require __DIR__ . '/preloads/autoloader.php';
 
 defined('XOOPS_ROOT_PATH') || die('Restricted access');
 $moduleDirName = basename(__DIR__);
@@ -26,17 +26,17 @@ if (!preg_match('/^(\D+)(\d*)$/', $moduleDirName, $regs)) {
     echo('invalid dirname: ' . htmlspecialchars($moduleDirName, ENT_QUOTES | ENT_HTML5));
 }
 $mydirnumber = '' === $regs[2] ? '' : (int)$regs[2];
-if (isset($_GET['fct']) && 'preferences' === $_GET['fct']) {
-    echo '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">' . "\r\n";
-    echo '<html xmlns="http://www.w3.org/1999/xhtml" xmlns:v="urn:schemas-microsoft-com:vml" xml:lang="en" lang="en"><head>' . "\r\n";
+if (\Xmf\Request::hasVar('fct', 'GET') && 'preferences' === $_GET['fct']) {
+    echo '<!DOCTYPE html>' . "\r\n";
+    echo '<html xml:lang="en" lang="en"><head>' . "\r\n";
     echo '<script type="text/javascript">var xoops_url = \'' . XOOPS_URL . '\';</script>';
     echo '<script src="' . XOOPS_URL . '/modules/' . $moduleDirName . '/assets/images/prefs.js"></script>';
 }
 $localesdir  = scandir(XOOPS_ROOT_PATH . '/modules/' . $moduleDirName . '/locales', SCANDIR_SORT_NONE);
 $locales[''] = '';
 foreach ($localesdir as $locale) {
-    if ('.php' === substr($locale, -4, 4)) {
-        $locales[substr($locale, 0, -4)] = substr($locale, 0, -4);
+    if ('.php' === mb_substr($locale, -4, 4)) {
+        $locales[mb_substr($locale, 0, -4)] = mb_substr($locale, 0, -4);
     }
 }
 $modversion['version']             = 2.23;
@@ -56,7 +56,7 @@ $modversion['module_website_name'] = 'Antiques Promotion';
 $modversion['author_website_url']  = 'http://www.antiquespromotion.ca';
 $modversion['author_website_name'] = 'Antiques Promotion';
 $modversion['min_php']             = '5.5';
-$modversion['min_xoops']           = '2.5.9';
+$modversion['min_xoops']           = '2.5.10';
 $modversion['modicons16']          = 'assets/images/icons/16';
 $modversion['modicons32']          = 'assets/images/icons/32';
 // mysql
@@ -95,7 +95,7 @@ $modversion['blocks'][$b] = [
     'edit_func'   => 'apcal_mini_calendar_edit',
     //  'template'      => "apcal{$mydirnumber}_mini_calendar.tpl",
     'can_clone'   => true,
-    'options'     => ($moduleDirName)
+    'options'     => $moduleDirName,
 ];
 
 ++$b;
@@ -106,7 +106,7 @@ $modversion['blocks'][$b] = [
     'show_func'   => 'apcal_monthly_calendar_show',
     'edit_func'   => 'apcal_monthly_calendar_edit',
     //  'template'      => "apcal{$mydirnumber}_monthly_calendar.tpl" ,
-    'options'     => ($moduleDirName)
+    'options'     => $moduleDirName,
 ];
 
 ++$b;
@@ -118,7 +118,7 @@ $modversion['blocks'][$b] = [
     'edit_func'   => 'apcal_todays_schedule_edit',
     'template'    => "apcal{$mydirnumber}_todays_schedule.tpl",
     'can_clone'   => true,
-    'options'     => "{$moduleDirName }|0"
+    'options'     => "{$moduleDirName }|0",
 ];
 
 ++$b;
@@ -130,7 +130,7 @@ $modversion['blocks'][$b] = [
     'edit_func'   => 'apcal_coming_schedule_edit',
     'template'    => "apcal{$mydirnumber}_coming_schedule.tpl",
     'can_clone'   => true,
-    'options'     => "{$moduleDirName }|5|0|1|0"
+    'options'     => "{$moduleDirName }|5|0|1|0",
 ];
 
 ++$b;
@@ -142,7 +142,7 @@ $modversion['blocks'][$b] = [
     'edit_func'   => 'apcal_new_event_edit',
     'template'    => "apcal{$mydirnumber}_new_event.tpl",
     'can_clone'   => true,
-    'options'     => "{$moduleDirName }|5|0"
+    'options'     => "{$moduleDirName }|5|0",
 ];
 
 ++$b;
@@ -154,7 +154,7 @@ $modversion['blocks'][$b] = [
     'edit_func'   => 'apcal_map_edit',
     'template'    => 'apcal_map.tpl',
     //'can_clone'       => true ,
-    'options'     => ($moduleDirName)
+    'options'     => $moduleDirName,
 ];
 
 // Menu
@@ -162,7 +162,7 @@ $modversion['hasMain'] = 1;
 
 $subcount = 1;
 global $cal;
-if (isset($cal) && 'apcal_xoops' === strtolower(get_class($cal))) {
+if (isset($cal) && 'apcal_xoops' === mb_strtolower(get_class($cal))) {
     if ($cal->insertable) {
         $modversion['sub'][$subcount]['name']  = _MI_APCAL_SM_SUBMIT;
         $modversion['sub'][$subcount++]['url'] = "index.php?action=Edit&amp;caldate=$cal->caldate";
@@ -170,10 +170,10 @@ if (isset($cal) && 'apcal_xoops' === strtolower(get_class($cal))) {
     foreach ($cal->categories as $cid => $cat) {
         if ($cat->ismenuitem) {
             $link                                  = $cal->make_cal_link('', $cal->default_view, $cid);
-            $pos                                   = strpos($link, XOOPS_URL . '/modules/' . $moduleDirName . '/');
-            $pos                                   = strlen(XOOPS_URL . '/modules/' . $moduleDirName . '/');
+            $pos                                   = mb_strpos($link, XOOPS_URL . '/modules/' . $moduleDirName . '/');
+            $pos                                   = mb_strlen(XOOPS_URL . '/modules/' . $moduleDirName . '/');
             $modversion['sub'][$subcount]['name']  = $cal->text_sanitizer_for_show($cat->cat_title);
-            $modversion['sub'][$subcount++]['url'] = substr($link, $pos);/*"index.php?cid=$cid"*/
+            $modversion['sub'][$subcount++]['url'] = mb_substr($link, $pos); /*"index.php?cid=$cid"*/
         }
     }
 }
@@ -183,7 +183,7 @@ $modversion['hasconfig'] = 1;
 $c                       = 0;
 
 // USERS
-if (substr(XOOPS_VERSION, 6) >= '2.5.0') {
+if (mb_substr(XOOPS_VERSION, 6) >= '2.5.0') {
     ++$c;
     $modversion['config'][$c] = [
         'name'        => 'break' . $c,
@@ -191,7 +191,7 @@ if (substr(XOOPS_VERSION, 6) >= '2.5.0') {
         'description' => '',
         'formtype'    => 'line_break',
         'valuetype'   => 'textbox',
-        'default'     => 'odd'
+        'default'     => 'odd',
     ];
 }
 ++$c;
@@ -206,8 +206,8 @@ $modversion['config'][$c] = [
         '_MI_APCAL_OPT_AUTH_NONE'    => 0,
         '_MI_APCAL_OPT_AUTH_WAIT'    => 1,
         '_MI_APCAL_OPT_AUTH_POST'    => 3,
-        '_MI_APCAL_OPT_AUTH_BYGROUP' => 256
-    ]
+        '_MI_APCAL_OPT_AUTH_BYGROUP' => 256,
+    ],
 ];
 ++$c;
 $modversion['config'][$c] = [
@@ -220,8 +220,8 @@ $modversion['config'][$c] = [
     'options'     => [
         '_MI_APCAL_OPT_AUTH_NONE' => 0,
         '_MI_APCAL_OPT_AUTH_WAIT' => 1,
-        '_MI_APCAL_OPT_AUTH_POST' => 3
-    ]
+        '_MI_APCAL_OPT_AUTH_POST' => 3,
+    ],
 ];
 ++$c;
 $modversion['config'][$c] = [
@@ -231,7 +231,7 @@ $modversion['config'][$c] = [
     'formtype'    => 'select',
     'valuetype'   => 'int',
     'default'     => '1',
-    'options'     => ['_MI_APCAL_OPT_CANNOTOUTPUTICS' => 0, '_MI_APCAL_OPT_CANOUTPUTICS' => 1]
+    'options'     => ['_MI_APCAL_OPT_CANNOTOUTPUTICS' => 0, '_MI_APCAL_OPT_CANOUTPUTICS' => 1],
 ];
 ++$c;
 $modversion['config'][$c] = [
@@ -241,7 +241,7 @@ $modversion['config'][$c] = [
     'formtype'    => 'yesno',
     'valuetype'   => 'int',
     'default'     => '1',
-    'options'     => []
+    'options'     => [],
 ];
 ++$c;
 $modversion['config'][$c] = [
@@ -254,12 +254,12 @@ $modversion['config'][$c] = [
     'options'     => [
         '_MI_APCAL_OPT_USENAME'  => 'name',
         '_MI_APCAL_OPT_USEUNAME' => 'uname',
-        '_MI_APCAL_OPT_NONE'     => 'none'
-    ]
+        '_MI_APCAL_OPT_NONE'     => 'none',
+    ],
 ];
 
 // COLORS
-if (substr(XOOPS_VERSION, 6) >= '2.5.0') {
+if (mb_substr(XOOPS_VERSION, 6) >= '2.5.0') {
     ++$c;
     $modversion['config'][$c] = [
         'name'        => 'break' . $c,
@@ -267,7 +267,7 @@ if (substr(XOOPS_VERSION, 6) >= '2.5.0') {
         'description' => '',
         'formtype'    => 'line_break',
         'valuetype'   => 'textbox',
-        'default'     => 'odd'
+        'default'     => 'odd',
     ];
 }
 ++$c;
@@ -278,7 +278,7 @@ $modversion['config'][$c] = [
     'formtype'    => 'textbox',
     'valuetype'   => 'text',
     'default'     => 'default',
-    'options'     => []
+    'options'     => [],
 ];
 ++$c;
 $modversion['config'][$c] = [
@@ -288,7 +288,7 @@ $modversion['config'][$c] = [
     'formtype'    => 'select',
     'valuetype'   => 'int',
     'default'     => '0',
-    'options'     => ['_MI_APCAL_OPT_DEFAULT' => 2, '_MI_APCAL_OPT_THM' => 1, '_MI_APCAL_OPT_CUSTOM' => 0]
+    'options'     => ['_MI_APCAL_OPT_DEFAULT' => 2, '_MI_APCAL_OPT_THM' => 1, '_MI_APCAL_OPT_CUSTOM' => 0],
 ];
 ++$c;
 $modversion['config'][$c] = [
@@ -298,7 +298,7 @@ $modversion['config'][$c] = [
     'formtype'    => 'textbox',
     'valuetype'   => 'text',
     'default'     => 'style.css',
-    'options'     => []
+    'options'     => [],
 ];
 ++$c;
 $modversion['config'][$c] = [
@@ -308,7 +308,7 @@ $modversion['config'][$c] = [
     'formtype'    => 'color',
     'valuetype'   => 'text',
     'default'     => '#CC0000',
-    'options'     => []
+    'options'     => [],
 ];
 ++$c;
 $modversion['config'][$c] = [
@@ -318,7 +318,7 @@ $modversion['config'][$c] = [
     'formtype'    => 'color',
     'valuetype'   => 'text',
     'default'     => '#FFEEEE',
-    'options'     => []
+    'options'     => [],
 ];
 ++$c;
 $modversion['config'][$c] = [
@@ -328,7 +328,7 @@ $modversion['config'][$c] = [
     'formtype'    => 'color',
     'valuetype'   => 'text',
     'default'     => '#000066',
-    'options'     => []
+    'options'     => [],
 ];
 ++$c;
 $modversion['config'][$c] = [
@@ -338,7 +338,7 @@ $modversion['config'][$c] = [
     'formtype'    => 'color',
     'valuetype'   => 'text',
     'default'     => '#FFFFFF',
-    'options'     => []
+    'options'     => [],
 ];
 ++$c;
 $modversion['config'][$c] = [
@@ -348,7 +348,7 @@ $modversion['config'][$c] = [
     'formtype'    => 'color',
     'valuetype'   => 'text',
     'default'     => '#0000FF',
-    'options'     => []
+    'options'     => [],
 ];
 ++$c;
 $modversion['config'][$c] = [
@@ -358,7 +358,7 @@ $modversion['config'][$c] = [
     'formtype'    => 'color',
     'valuetype'   => 'text',
     'default'     => '#EEF7FF',
-    'options'     => []
+    'options'     => [],
 ];
 ++$c;
 $modversion['config'][$c] = [
@@ -368,7 +368,7 @@ $modversion['config'][$c] = [
     'formtype'    => 'color',
     'valuetype'   => 'text',
     'default'     => '#CC0000',
-    'options'     => []
+    'options'     => [],
 ];
 ++$c;
 $modversion['config'][$c] = [
@@ -378,7 +378,7 @@ $modversion['config'][$c] = [
     'formtype'    => 'color',
     'valuetype'   => 'text',
     'default'     => '#FFEEEE',
-    'options'     => []
+    'options'     => [],
 ];
 ++$c;
 $modversion['config'][$c] = [
@@ -388,7 +388,7 @@ $modversion['config'][$c] = [
     'formtype'    => 'color',
     'valuetype'   => 'text',
     'default'     => '#CCFF99',
-    'options'     => []
+    'options'     => [],
 ];
 ++$c;
 $modversion['config'][$c] = [
@@ -398,7 +398,7 @@ $modversion['config'][$c] = [
     'formtype'    => 'color',
     'valuetype'   => 'text',
     'default'     => '#009900',
-    'options'     => []
+    'options'     => [],
 ];
 ++$c;
 $modversion['config'][$c] = [
@@ -408,7 +408,7 @@ $modversion['config'][$c] = [
     'formtype'    => 'color',
     'valuetype'   => 'text',
     'default'     => '#CCFFCC',
-    'options'     => []
+    'options'     => [],
 ];
 ++$c;
 $modversion['config'][$c] = [
@@ -418,7 +418,7 @@ $modversion['config'][$c] = [
     'formtype'    => 'color',
     'valuetype'   => 'text',
     'default'     => '#000000',
-    'options'     => []
+    'options'     => [],
 ];
 ++$c;
 $modversion['config'][$c] = [
@@ -428,7 +428,7 @@ $modversion['config'][$c] = [
     'formtype'    => 'color',
     'valuetype'   => 'text',
     'default'     => '#EEEEEE',
-    'options'     => []
+    'options'     => [],
 ];
 ++$c;
 $modversion['config'][$c] = [
@@ -438,7 +438,7 @@ $modversion['config'][$c] = [
     'formtype'    => 'color',
     'valuetype'   => 'text',
     'default'     => '#000000',
-    'options'     => []
+    'options'     => [],
 ];
 ++$c;
 $modversion['config'][$c] = [
@@ -448,11 +448,11 @@ $modversion['config'][$c] = [
     'formtype'    => 'color',
     'valuetype'   => 'text',
     'default'     => '#5555AA',
-    'options'     => []
+    'options'     => [],
 ];
 
 // GENERAL SETTINGS
-if (substr(XOOPS_VERSION, 6) >= '2.5.0') {
+if (mb_substr(XOOPS_VERSION, 6) >= '2.5.0') {
     ++$c;
     $modversion['config'][$c] = [
         'name'        => 'break' . $c,
@@ -460,7 +460,7 @@ if (substr(XOOPS_VERSION, 6) >= '2.5.0') {
         'description' => '',
         'formtype'    => 'line_break',
         'valuetype'   => 'textbox',
-        'default'     => 'odd'
+        'default'     => 'odd',
     ];
 }
 ++$c;
@@ -471,7 +471,7 @@ $modversion['config'][$c] = [
     'formtype'    => 'yesno',
     'valuetype'   => 'int',
     'default'     => '1',
-    'options'     => []
+    'options'     => [],
 ];
 ++$c;
 $modversion['config'][$c] = [
@@ -481,7 +481,7 @@ $modversion['config'][$c] = [
     'formtype'    => 'yesno',
     'valuetype'   => 'int',
     'default'     => '1',
-    'options'     => []
+    'options'     => [],
 ];
 ++$c;
 $modversion['config'][$c] = [
@@ -491,7 +491,7 @@ $modversion['config'][$c] = [
     'formtype'    => 'yesno',
     'valuetype'   => 'int',
     'default'     => '0',
-    'options'     => []
+    'options'     => [],
 ];
 ++$c;
 $modversion['config'][$c] = [
@@ -501,7 +501,7 @@ $modversion['config'][$c] = [
     'formtype'    => 'yesno',
     'valuetype'   => 'int',
     'default'     => '1',
-    'options'     => []
+    'options'     => [],
 ];
 ++$c;
 $modversion['config'][$c] = [
@@ -511,11 +511,11 @@ $modversion['config'][$c] = [
     'formtype'    => 'yesno',
     'valuetype'   => 'int',
     'default'     => '1',
-    'options'     => []
+    'options'     => [],
 ];
 
 // CALENDAR SETTINGS
-if (substr(XOOPS_VERSION, 6) >= '2.5.0') {
+if (mb_substr(XOOPS_VERSION, 6) >= '2.5.0') {
     ++$c;
     $modversion['config'][$c] = [
         'name'        => 'break' . $c,
@@ -523,7 +523,7 @@ if (substr(XOOPS_VERSION, 6) >= '2.5.0') {
         'description' => '',
         'formtype'    => 'line_break',
         'valuetype'   => 'textbox',
-        'default'     => 'odd'
+        'default'     => 'odd',
     ];
 }
 ++$c;
@@ -534,7 +534,7 @@ $modversion['config'][$c] = [
     'formtype'    => 'select',
     'valuetype'   => 'int',
     'default'     => '0',
-    'options'     => ['_MI_APCAL_OPT_STARTFROMSUN' => 0, '_MI_APCAL_OPT_STARTFROMMON' => 1]
+    'options'     => ['_MI_APCAL_OPT_STARTFROMSUN' => 0, '_MI_APCAL_OPT_STARTFROMMON' => 1],
 ];
 ++$c;
 $modversion['config'][$c] = [
@@ -544,7 +544,7 @@ $modversion['config'][$c] = [
     'formtype'    => 'select',
     'valuetype'   => 'int',
     'default'     => '0',
-    'options'     => ['_MI_APCAL_OPT_WEEKNOEACHMONTH' => 0, '_MI_APCAL_OPT_WEEKNOWHOLEYEAR' => 1]
+    'options'     => ['_MI_APCAL_OPT_WEEKNOEACHMONTH' => 0, '_MI_APCAL_OPT_WEEKNOWHOLEYEAR' => 1],
 ];
 ++$c;
 $modversion['config'][$c] = [
@@ -561,8 +561,8 @@ $modversion['config'][$c] = [
         '3:00' => 10800,
         '4:00' => 14400,
         '5:00' => 18000,
-        '6:00' => 21600
-    ]
+        '6:00' => 21600,
+    ],
 ];
 ++$c;
 $modversion['config'][$c] = [
@@ -572,7 +572,7 @@ $modversion['config'][$c] = [
     'formtype'    => 'yesno',
     'valuetype'   => 'int',
     'default'     => '1',
-    'options'     => []
+    'options'     => [],
 ];
 ++$c;
 $modversion['config'][$c] = [
@@ -585,12 +585,12 @@ $modversion['config'][$c] = [
     'options'     => [
         '_MI_APCAL_OPT_TZ_USEXOOPS'  => 'xoops',
         '_MI_APCAL_OPT_TZ_USEWINTER' => 'winter',
-        '_MI_APCAL_OPT_TZ_USESUMMER' => 'summer'
-    ]
+        '_MI_APCAL_OPT_TZ_USESUMMER' => 'summer',
+    ],
 ];
 
 // CALENDAR DISPLAY
-if (substr(XOOPS_VERSION, 6) >= '2.5.0') {
+if (mb_substr(XOOPS_VERSION, 6) >= '2.5.0') {
     ++$c;
     $modversion['config'][$c] = [
         'name'        => 'break' . $c,
@@ -598,7 +598,7 @@ if (substr(XOOPS_VERSION, 6) >= '2.5.0') {
         'description' => '',
         'formtype'    => 'line_break',
         'valuetype'   => 'textbox',
-        'default'     => 'odd'
+        'default'     => 'odd',
     ];
 }
 ++$c;
@@ -609,7 +609,7 @@ $modversion['config'][$c] = [
     'formtype'    => 'select',
     'valuetype'   => 'text',
     'default'     => _MI_APCAL_DEFAULTLOCALE,
-    'options'     => $locales
+    'options'     => $locales,
 ];
 ++$c;
 $modversion['config'][$c] = [
@@ -623,8 +623,8 @@ $modversion['config'][$c] = [
         '_MI_APCAL_OPT_MINI_MONTHLY' => 'Monthly',
         '_MI_APCAL_OPT_MINI_WEEKLY'  => 'Weekly',
         '_MI_APCAL_OPT_MINI_DAILY'   => 'Daily',
-        '_MI_APCAL_OPT_MINI_LIST'    => 'List'
-    ]
+        '_MI_APCAL_OPT_MINI_LIST'    => 'List',
+    ],
 ];
 ++$c;
 $modversion['config'][$c] = [
@@ -639,8 +639,8 @@ $modversion['config'][$c] = [
         '_MI_APCAL_OPT_MINI_MONTHLY' => 'MONTHLY',
         '_MI_APCAL_OPT_MINI_WEEKLY'  => 'WEEKLY',
         '_MI_APCAL_OPT_MINI_DAILY'   => 'DAILY',
-        '_MI_APCAL_OPT_MINI_LIST'    => 'LIST'
-    ]
+        '_MI_APCAL_OPT_MINI_LIST'    => 'LIST',
+    ],
 ];
 ++$c;
 $modversion['config'][$c] = [
@@ -657,8 +657,8 @@ $modversion['config'][$c] = [
         '_MI_APCAL_THURSDAY'  => 'Thursday',
         '_MI_APCAL_FRIDAY'    => 'Friday',
         '_MI_APCAL_SATURDAY'  => 'Saturday',
-        '_MI_APCAL_SUNDAY'    => 'Sunday'
-    ]
+        '_MI_APCAL_SUNDAY'    => 'Sunday',
+    ],
 ];
 ++$c;
 $modversion['config'][$c] = [
@@ -668,7 +668,7 @@ $modversion['config'][$c] = [
     'formtype'    => 'yesno',
     'valuetype'   => 'int',
     'default'     => '1',
-    'options'     => []
+    'options'     => [],
 ];
 ++$c;
 $modversion['config'][$c] = [
@@ -678,11 +678,11 @@ $modversion['config'][$c] = [
     'formtype'    => 'yesno',
     'valuetype'   => 'int',
     'default'     => '0',
-    'options'     => []
+    'options'     => [],
 ];
 
 // EVENTS
-if (substr(XOOPS_VERSION, 6) >= '2.5.0') {
+if (mb_substr(XOOPS_VERSION, 6) >= '2.5.0') {
     ++$c;
     $modversion['config'][$c] = [
         'name'        => 'break' . $c,
@@ -690,7 +690,7 @@ if (substr(XOOPS_VERSION, 6) >= '2.5.0') {
         'description' => '',
         'formtype'    => 'line_break',
         'valuetype'   => 'textbox',
-        'default'     => 'odd'
+        'default'     => 'odd',
     ];
 }
 ++$c;
@@ -701,7 +701,7 @@ $modversion['config'][$c] = [
     'formtype'    => 'textbox',
     'valuetype'   => 'int',
     'default'     => '100',
-    'options'     => []
+    'options'     => [],
 ];
 ++$c;
 $modversion['config'][$c] = [
@@ -711,11 +711,11 @@ $modversion['config'][$c] = [
     'formtype'    => 'yesno',
     'valuetype'   => 'int',
     'default'     => '1',
-    'options'     => []
+    'options'     => [],
 ];
 
 // PICTURES
-if (substr(XOOPS_VERSION, 6) >= '2.5.0') {
+if (mb_substr(XOOPS_VERSION, 6) >= '2.5.0') {
     ++$c;
     $modversion['config'][$c] = [
         'name'        => 'break' . $c,
@@ -723,7 +723,7 @@ if (substr(XOOPS_VERSION, 6) >= '2.5.0') {
         'description' => '',
         'formtype'    => 'line_break',
         'valuetype'   => 'textbox',
-        'default'     => 'odd'
+        'default'     => 'odd',
     ];
 }
 ++$c;
@@ -734,7 +734,7 @@ $modversion['config'][$c] = [
     'formtype'    => 'textbox',
     'valuetype'   => 'int',
     'default'     => '5',
-    'options'     => []
+    'options'     => [],
 ];
 ++$c;
 $modversion['config'][$c] = [
@@ -744,7 +744,7 @@ $modversion['config'][$c] = [
     'formtype'    => 'textbox',
     'valuetype'   => 'int',
     'default'     => '150',
-    'options'     => []
+    'options'     => [],
 ];
 ++$c;
 $modversion['config'][$c] = [
@@ -754,7 +754,7 @@ $modversion['config'][$c] = [
     'formtype'    => 'textbox',
     'valuetype'   => 'int',
     'default'     => '150',
-    'options'     => []
+    'options'     => [],
 ];
 ++$c;
 $modversion['config'][$c] = [
@@ -764,7 +764,7 @@ $modversion['config'][$c] = [
     'formtype'    => 'yesno',
     'valuetype'   => 'int',
     'default'     => '1',
-    'options'     => []
+    'options'     => [],
 ];
 ++$c;
 $modversion['config'][$c] = [
@@ -774,7 +774,7 @@ $modversion['config'][$c] = [
     'formtype'    => 'yesno',
     'valuetype'   => 'int',
     'default'     => '1',
-    'options'     => []
+    'options'     => [],
 ];
 ++$c;
 $modversion['config'][$c] = [
@@ -784,7 +784,7 @@ $modversion['config'][$c] = [
     'formtype'    => 'yesno',
     'valuetype'   => 'int',
     'default'     => '1',
-    'options'     => []
+    'options'     => [],
 ];
 ++$c;
 $modversion['config'][$c] = [
@@ -794,11 +794,11 @@ $modversion['config'][$c] = [
     'formtype'    => 'yesno',
     'valuetype'   => 'int',
     'default'     => '1',
-    'options'     => []
+    'options'     => [],
 ];
 
 // GOOGLE MAP
-if (substr(XOOPS_VERSION, 6) >= '2.5.0') {
+if (mb_substr(XOOPS_VERSION, 6) >= '2.5.0') {
     ++$c;
     $modversion['config'][$c] = [
         'name'        => 'break' . $c,
@@ -806,7 +806,7 @@ if (substr(XOOPS_VERSION, 6) >= '2.5.0') {
         'description' => '',
         'formtype'    => 'line_break',
         'valuetype'   => 'textbox',
-        'default'     => 'odd'
+        'default'     => 'odd',
     ];
 }
 ++$c;
@@ -816,7 +816,7 @@ $modversion['config'][$c] = [
     'description' => '_MI_APCAL_GMAPS_API_DESC',
     'formtype'    => 'textbox',
     'valuetype'   => 'text',
-    'default'     => 'no key'
+    'default'     => 'no key',
 ];
 ++$c;
 $modversion['config'][$c] = [
@@ -826,7 +826,7 @@ $modversion['config'][$c] = [
     'formtype'    => 'yesno',
     'valuetype'   => 'int',
     'default'     => '1',
-    'options'     => []
+    'options'     => [],
 ];
 ++$c;
 $modversion['config'][$c] = [
@@ -836,7 +836,7 @@ $modversion['config'][$c] = [
     'formtype'    => 'yesno',
     'valuetype'   => 'int',
     'default'     => '1',
-    'options'     => []
+    'options'     => [],
 ];
 ++$c;
 $modversion['config'][$c] = [
@@ -846,11 +846,11 @@ $modversion['config'][$c] = [
     'formtype'    => 'textbox',
     'valuetype'   => 'int',
     'default'     => '350',
-    'options'     => []
+    'options'     => [],
 ];
 
 // COMMETS AND NOTIFICATIONS
-if (substr(XOOPS_VERSION, 6) >= '2.5.0') {
+if (mb_substr(XOOPS_VERSION, 6) >= '2.5.0') {
     ++$c;
     $modversion['config'][$c] = [
         'name'        => 'break' . $c,
@@ -858,7 +858,7 @@ if (substr(XOOPS_VERSION, 6) >= '2.5.0') {
         'description' => '',
         'formtype'    => 'line_break',
         'valuetype'   => 'textbox',
-        'default'     => 'odd'
+        'default'     => 'odd',
     ];
 }
 
@@ -885,7 +885,7 @@ $modversion['templates'] = [
     ['file' => "apcal{$mydirnumber}_event_list.tpl", 'description' => ''],
 
     ['file' => "apcal{$mydirnumber}_getCoords.tpl", 'description' => ''],
-    ['file' => 'apcal_getCoords.tpl', 'description' => '']
+    ['file' => 'apcal_getCoords.tpl', 'description' => ''],
     //    ['file' => "apcal{$mydirnumber}_shareCalendar.tpl", 'description' => ''],
     //    ['file' => "apcal{$mydirnumber}_googlemap.tpl", 'description' => '']
 ];
@@ -943,5 +943,5 @@ $modversion['onUpdate']  = 'include/onupdate.php';
 if (!empty($_POST['fct']) && !empty($_POST['op']) && !empty($_POST['diranme']) && 'modulesadmin' === $_POST['fct']
     && 'update_ok' === $_POST['op']
     && $_POST['dirname'] == $modversion['dirname']) {
-    include __DIR__ . '/include/onupdate.inc.php';
+    require __DIR__ . '/include/onupdate.inc.php';
 }

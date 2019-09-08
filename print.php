@@ -20,7 +20,7 @@
 
 use XoopsModules\Apcal;
 
-require_once  dirname(dirname(__DIR__)) . '/mainfile.php';
+require_once dirname(dirname(__DIR__)) . '/mainfile.php';
 require_once XOOPS_ROOT_PATH . '/class/template.php';
 
 error_reporting(0);
@@ -57,18 +57,18 @@ $cal->images_url  = "$mod_url/assets/images/$skin_folder";
 $cal->images_path = "$mod_path/assets/images/$skin_folder";
 
 // Include our module's language file
-/** @var Apcal\Helper $helper */
-$helper = Apcal\Helper::getInstance();
+/** @var \XoopsModules\Apcal\Helper $helper */
+$helper = \XoopsModules\Apcal\Helper::getInstance();
 $helper->loadLanguage('main');
 $helper->loadLanguage('modinfo');
 
 $myts = \MyTextSanitizer::getInstance();
 
 header('Content-Type:text/html; charset=' . _CHARSET);
-$tpl = new \XoopsTpl();
-$Tpl->template_dir=XOOPS_ROOT_PATH . '/themes';
+$tpl               = new \XoopsTpl();
+$Tpl->template_dir = XOOPS_ROOT_PATH . '/themes';
 
-$tpl->caching=(2);
+$tpl->caching = 2;
 $tpl->xoops_setCacheTime(0);
 
 $tpl->assign('for_print', true);

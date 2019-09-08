@@ -16,8 +16,7 @@
  * @since
  * @author       XOOPS Development Team, GIJ=CHECKMATE (PEAK Corp. http://www.peak.ne.jp/)
  */
-
-include  dirname(dirname(__DIR__)) . '/mainfile.php';
+require dirname(dirname(__DIR__)) . '/mainfile.php';
 
 // for "Duplicatable"
 $moduleDirName = basename(__DIR__);
@@ -58,9 +57,9 @@ if ($event_id > 0) {
 
     // RRULE events
     if (0 != $rrule_pid) {
-        $_GET['com_itemid']          = $rrule_pid;
+        $_GET['com_itemid'] = $rrule_pid;
         $_GET['com_itemid'] = $rrule_pid;
     }
 
-    include XOOPS_ROOT_PATH . '/include/comment_new.php';
+    require XOOPS_ROOT_PATH . '/include/comment_new.php';
 }

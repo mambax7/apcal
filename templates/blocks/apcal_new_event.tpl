@@ -46,7 +46,7 @@
     </table>
 <{/if}>
 
-<{if $block.insertable <> false}>
+<{if $block.insertable !== false}>
     <dl>
         <dt>
             &nbsp; <span style='font-size: x-small; '><a

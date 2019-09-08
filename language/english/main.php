@@ -87,7 +87,7 @@ if (defined('FOR_XOOPS_LANG_CHECKER') || !defined('APCAL_MB_APCALLOADED')) {
     //    define('_MD_APCAL_ERR_NOPERMTOINSERT', 'en_US');
 
     define('_MD_APCAL_MODCONFIG', 'Module Config Options');
-    define('_MD_APCAL_TPLSETS', 'Templates'); //
+    define('_MD_APCAL_TPLSETS', 'Templates');
     define('_MD_APCAL_FILENAME', 'File Name');
     define('_MD_APCAL_GENERATE', 'Generate');
 

@@ -13,7 +13,7 @@ function convertmycontacts($strcontact)
     $strseperator = '';
 
     $pos1 = 0;
-    $pos2 = strpos($strcontact, $strsearch, $pos1);
+    $pos2 = mb_strpos($strcontact, $strsearch, $pos1);
 
     if (false === $pos2) {
         //echo "<br>kein leerzeichen";
@@ -28,9 +28,9 @@ function convertmycontacts($strcontact)
         //Leerzeichen vorhanden
         while (false !== $pos2) {
             //alle wörter zwischen Leerzeichen ermitteln
-            $struser = substr($strcontact, $pos1, $pos2 - $pos1);
-            if (',' === substr($struser, -1)) {
-                $struser      = substr($struser, 0, -1);
+            $struser = mb_substr($strcontact, $pos1, $pos2 - $pos1);
+            if (',' === mb_substr($struser, -1)) {
+                $struser      = mb_substr($struser, 0, -1);
                 $strseperator = ', ';
             } else {
                 $strseperator = ' ';
@@ -42,19 +42,18 @@ function convertmycontacts($strcontact)
                 $strnew = $strnew . "<a href='" . XOOPS_URL . '/userinfo.php?uid=' . $struid . "' title='" . $struser . "'>" . $struser . '</a>' . $strseperator;
             }
             $pos1 = $pos2 + 1;
-            $pos2 = strpos($strcontact, $strsearch, $pos1);
+            $pos2 = mb_strpos($strcontact, $strsearch, $pos1);
         }
 
         if (0 == $pos2) {
             //Rest ab letztem Leerzeichen einlesen
-            $struser = substr($strcontact, $pos1);
+            $struser = mb_substr($strcontact, $pos1);
             $struid  = getuid($struser);
             if (-1 == $struid) {
                 $strnew .= $struser;
             } else {
                 $strnew = $strnew . "<a href='" . XOOPS_URL . '/userinfo.php?uid=' . $struid . "' title='" . $struser . "'>" . $struser . '</a>';
             }
-        } else {
         }
     }
 

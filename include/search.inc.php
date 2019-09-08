@@ -57,10 +57,10 @@ if (!function_exists('apcal_search_base')) {
         $mod_url  = XOOPS_URL . "/modules/$moduleDirName";
 
         // defining class of APCal
-//        if (!class_exists('APCal_xoops')) {
-//            require_once "$mod_path/class/APCal.php";
-//            require_once "$mod_path/class/APCal_xoops.php";
-//        }
+        //        if (!class_exists('APCal_xoops')) {
+        //            require_once "$mod_path/class/APCal.php";
+        //            require_once "$mod_path/class/APCal_xoops.php";
+        //        }
 
         // creating an instance of APCal
         $cal                = new Apcal\ApcalXoops('', $xoopsConfig['language'], true);

@@ -50,7 +50,7 @@ $range_end_s   = mktime(0, 0, 0, $this->month + 1, 1, $this->year);
 // query (added 86400 second margin "begin" & "end")
 $result = $db->query('SELECT cid,min(`date`) FROM ' . $db->prefix("myalbum{$mydirnumber}_photos") . " WHERE `date` >= $range_start_s AND `date` < $range_end_s AND `status` > 0 GROUP BY cid");
 
-while (false !== (list($cid, $server_time) = $db->fetchRow($result))) {
+while (list($cid, $server_time) = $db->fetchRow($result)) {
     $user_time = $server_time + $tzoffset_s2u;
     if (date('n', $user_time) != $this->month) {
         continue;
@@ -68,7 +68,7 @@ while (false !== (list($cid, $server_time) = $db->fetchRow($result))) {
         'server_time' => $server_time,
         'user_time'   => $user_time,
         'name'        => 'cid',
-        'title'       => $myts->htmlSpecialChars($title)
+        'title'       => $myts->htmlSpecialChars($title),
     ];
     if ($just1gif) {
         // just 1 gif per a plugin & per a day

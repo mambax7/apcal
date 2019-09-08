@@ -1,4 +1,6 @@
-<?php namespace XoopsModules\Apcal;
+<?php
+
+namespace XoopsModules\Apcal;
 
 /*
  * You may not change or alter any portion of this comment or credits
@@ -19,9 +21,6 @@
  * @author       GIJ=CHECKMATE (PEAK Corp. http://www.peak.ne.jp/)
  * @author       Antiques Promotion (http://www.antiquespromotion.ca)
  */
-
-use  XoopsModules\Apcal;
-
 class CssParser
 {
     public $_css = '';
@@ -50,7 +49,7 @@ class CssParser
             preg_match('/[^-]*' . $style . '([^;]*):([^;]*)#([a-zA-Z0-9]+)/', $match[2], $match);
         }
         if (is_array($match) && array_key_exists(3, $match)) {
-            return '#' . (3 == strlen($match[3]) ? $match[3][0] . $match[3][0] . $match[3][1] . $match[3][1] . $match[3][2] . $match[3][2] : $match[3]);
+            return '#' . (3 == mb_strlen($match[3]) ? $match[3][0] . $match[3][0] . $match[3][1] . $match[3][1] . $match[3][2] . $match[3][2] : $match[3]);
         }
 
         return false;

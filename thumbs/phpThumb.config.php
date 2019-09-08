@@ -13,7 +13,7 @@
 ob_start();
 if (!file_exists(__DIR__ . '/phpthumb.functions.php') || !require_once __DIR__ . '/phpthumb.functions.php') {
     ob_end_flush();
-    die('failed to include_once(phpthumb.functions.php) - realpath="' . realpath(__DIR__ . '/phpthumb.functions.php') . '"');
+    die('failed to require_once(phpthumb.functions.php) - realpath="' . realpath(__DIR__ . '/phpthumb.functions.php') . '"');
 }
 ob_end_clean();
 
@@ -118,7 +118,7 @@ if (phpthumb_functions::version_compare_replacement(PHP_VERSION, '4.3.2', '>=') 
 // ImageMagick configuration
 $PHPTHUMB_CONFIG['prefer_imagemagick']        = true;  // If true, use ImageMagick to resize thumbnails if possible, since it is usually faster than GD functions; if false only use ImageMagick if PHP memory limit is too low.
 $PHPTHUMB_CONFIG['imagemagick_use_thumbnail'] = true;  // If true, use ImageMagick's "-thumbnail" resizing parameter (if available) which removes extra non-image metadata (profiles, EXIF info, etc) resulting in much smaller filesize; if false, use "-resize" paramter which retains this info
-if ('WIN' === strtoupper(substr(PHP_OS, 0, 3))) {
+if ('WIN' === mb_strtoupper(mb_substr(PHP_OS, 0, 3))) {
     // Windows: set absolute pathname
     $PHPTHUMB_CONFIG['imagemagick_path'] = 'C:/ImageMagick/convert.exe';
 } else {
@@ -226,7 +226,7 @@ $PHPTHUMB_DEFAULTS_DISABLEGETPARAMS  = false; // if true, GETstring parameters w
 ///////////////////////////////////////////////////////////////////////////////
 // Function for generating hashed calls to phpThumb if 'high_security_enabled'
 // example:
-//   require_once($_SERVER['DOCUMENT_ROOT'].'/phpThumb/phpThumb.config.php');
+//   require($_SERVER['DOCUMENT_ROOT'].'/phpThumb/phpThumb.config.php');
 //   echo '<img src="'.phpThumbURL('src=/images/pic.jpg&w=50').'">';
 
 /**

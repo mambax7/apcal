@@ -17,7 +17,6 @@
  * @author       XOOPS Development Team,
  * @author       GIJ=CHECKMATE (PEAK Corp. http://www.peak.ne.jp/)
  */
-
 $this->holidays = [
     '2005-3-7'   => 'Labour Day',
     '2005-3-25'  => 'Good Friday',
@@ -36,7 +35,7 @@ $this->holidays = [
     '2007-4-6'   => 'Good Friday',
     '2007-4-9'   => 'Easter Monday',
     '2007-6-4'   => 'Foundation Day',
-    '2007-10-1'  => 'Queens Birthday'
+    '2007-10-1'  => 'Queens Birthday',
 ];
 
 for ($y = 2001; $y < 2020; ++$y) {

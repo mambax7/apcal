@@ -17,7 +17,6 @@
  * @author       XOOPS Development Team,
  * @author       GIJ=CHECKMATE (PEAK Corp. http://www.peak.ne.jp/)
  */
-
 for ($y = 2001; $y < 2020; ++$y) {
     $this->holidays["$y-1-1"]  = 'Новый Год';
     $this->holidays["$y-1-7"]  = 'Рождество';

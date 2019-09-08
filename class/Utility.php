@@ -1,8 +1,6 @@
-<?php namespace XoopsModules\Apcal;
+<?php
 
-use Xmf\Request;
-use XoopsModules\Apcal;
-use XoopsModules\Apcal\Common;
+namespace XoopsModules\Apcal;
 
 /**
  * Class Utility

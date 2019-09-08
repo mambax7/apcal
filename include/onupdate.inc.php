@@ -24,7 +24,7 @@ defined('XOOPS_ROOT_PATH') || die('Restricted access');
 
 // referer check
 $ref = xoops_getenv('HTTP_REFERER');
-if ('' === $ref || 0 === strpos($ref, XOOPS_URL . '/modules/system/admin.php')) {
+if ('' === $ref || 0 === mb_strpos($ref, XOOPS_URL . '/modules/system/admin.php')) {
     /* module specific part */
     global $xoopsDB;
 
@@ -32,7 +32,7 @@ if ('' === $ref || 0 === strpos($ref, XOOPS_URL . '/modules/system/admin.php')) 
     $result = $GLOBALS['xoopsDB']->query('SELECT event_tz FROM ' . $GLOBALS['xoopsDB']->prefix("apcal{$mydirnumber}_event") . ' LIMIT 1');
     if ($result) {
         list($event_tz) = $GLOBALS['xoopsDB']->fetchRow($result);
-        if (false === strpos($event_tz, '.')) {
+        if (false === mb_strpos($event_tz, '.')) {
             $GLOBALS['xoopsDB']->queryF('ALTER TABLE '
                                         . $GLOBALS['xoopsDB']->prefix("apcal{$mydirnumber}_event")
                                         . ' MODIFY event_tz FLOAT(2,1) NOT NULL DEFAULT 0.0, MODIFY server_tz FLOAT(2,1) NOT NULL DEFAULT 0.0, MODIFY poster_tz FLOAT(2,1) NOT NULL DEFAULT 0.0, ADD KEY (admission), ADD KEY (allday), ADD KEY (START), ADD KEY (END), ADD KEY (start_date), ADD KEY (end_date), ADD KEY (dtstamp), ADD KEY (unique_id), ADD KEY (cid), ADD KEY (event_tz), ADD KEY (server_tz), ADD KEY (poster_tz), ADD KEY (uid), ADD KEY (groupid), ADD KEY (class), ADD KEY (rrule_pid), ADD KEY (categories)');
@@ -77,5 +77,5 @@ if ('' === $ref || 0 === strpos($ref, XOOPS_URL . '/modules/system/admin.php')) 
     /* General part */
 
     // Keep the values of block's options when module is updated (by nobunobu)
-    include __DIR__ . '/updateblock.inc.php';
+    require __DIR__ . '/updateblock.inc.php';
 }

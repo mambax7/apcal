@@ -17,14 +17,16 @@
  * @author       XOOPS Development Team,
  * @author       Antiques Promotion (http://www.antiquespromotion.ca)
  */
-use XoopsModules\Apcal;
-require_once  dirname(dirname(__DIR__)) . '/mainfile.php';
 
-/** @var Apcal\Helper $helper */
-$helper = Apcal\Helper::getInstance();
+use XoopsModules\Apcal;
+
+require_once dirname(dirname(__DIR__)) . '/mainfile.php';
+
+/** @var \XoopsModules\Apcal\Helper $helper */
+$helper = \XoopsModules\Apcal\Helper::getInstance();
 
 /** @var \XoopsLogger $logger */
-$logger = \XoopsLogger::getInstance();
+$logger            = \XoopsLogger::getInstance();
 $logger->activated = false;
 error_reporting(E_NONE);
 
@@ -96,7 +98,7 @@ class apcal_locale
      */
     public function __construct()
     {
-        include XOOPS_ROOT_PATH . '/modules/apcal/language/' . $GLOBALS['xoopsConfig']['language'] . '/apcal_vars.phtml';
+        require XOOPS_ROOT_PATH . '/modules/apcal/language/' . $GLOBALS['xoopsConfig']['language'] . '/apcal_vars.phtml';
     }
 }
 

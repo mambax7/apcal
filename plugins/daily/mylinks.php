@@ -45,7 +45,7 @@ $range_end_s   = mktime(0, 0, 0, $this->month, $this->date + 2, $this->year);
 // query (added 86400 second margin "begin" & "end")
 $result = $db->query('SELECT title,lid,`date`,cid FROM ' . $db->prefix('mylinks_links') . " WHERE `date` >= $range_start_s AND `date` < $range_end_s AND `status` > 0");
 
-while (false !== (list($title, $id, $server_time, $cid) = $db->fetchRow($result))) {
+while (list($title, $id, $server_time, $cid) = $db->fetchRow($result)) {
     $user_time = $server_time + $tzoffset_s2u;
     if (date('j', $user_time) != $this->date) {
         continue;
@@ -60,7 +60,7 @@ while (false !== (list($title, $id, $server_time, $cid) = $db->fetchRow($result)
         'user_time'   => $user_time,
         'name'        => 'lid',
         'title'       => $myts->htmlSpecialChars($title),
-        'description' => ''
+        'description' => '',
     ];
 
     // multiple gifs allowed per a plugin & per a day

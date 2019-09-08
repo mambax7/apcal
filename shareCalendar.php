@@ -18,10 +18,9 @@
  * @author       Antiques Promotion (http://www.antiquespromotion.ca)
  * @author       GIJ=CHECKMATE (PEAK Corp. http://www.peak.ne.jp/)
  */
+require_once dirname(dirname(__DIR__)) . '/mainfile.php';
 
-require_once  dirname(dirname(__DIR__)) . '/mainfile.php';
-
-include XOOPS_ROOT_PATH . '/header.php';
+require XOOPS_ROOT_PATH . '/header.php';
 require_once XOOPS_ROOT_PATH . '/class/xoopsformloader.php';
 
 $tpl        = new \XoopsTpl();
@@ -73,7 +72,7 @@ echo '<br>' . _APCAL_SHAREINFO . '<br>';
 echo '<div id="htmlCode"></div>';
 echo $tpl->fetch(XOOPS_ROOT_PATH . '/modules/apcal/templates/shareCalendar.tpl');
 
-include XOOPS_ROOT_PATH . '/footer.php';
+require XOOPS_ROOT_PATH . '/footer.php';
 
 /**
  * @return array

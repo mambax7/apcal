@@ -17,7 +17,6 @@
  * @author       XOOPS Development Team,
  * @author       GIJ=CHECKMATE (PEAK Corp. http://www.peak.ne.jp/)
  */
-
 $this->holidays = [
     '2005-1-3'   => 'New Years Bank Holiday',
     '2005-3-25'  => 'Good Friday',
@@ -44,8 +43,7 @@ $this->holidays = [
     '2008-3-24' => 'Easter Monday',
     '2008-5-5'  => 'Early May Bank Holiday',
     '2008-5-26' => 'Spring Bank Holiday',
-    '2008-8-25' => 'Summer Bank Holiday'
-
+    '2008-8-25' => 'Summer Bank Holiday',
 ];
 
 for ($y = 2001; $y < 2020; ++$y) {

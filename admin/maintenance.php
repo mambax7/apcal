@@ -61,7 +61,7 @@ $cal = new Apcal\ApcalXoops('', $xoopsConfig['language'], true);
 
 // setting properties of APCal
 $conn = $GLOBALS['xoopsDB']->conn;
-include  dirname(__DIR__) . '/include/read_configs.php';
+require dirname(__DIR__) . '/include/read_configs.php';
 $cal->base_url    = $mod_url;
 $cal->base_path   = $mod_path;
 $cal->images_url  = "$mod_url/assets/images/$skin_folder";
@@ -73,7 +73,6 @@ $default_TZ = $xoopsConfig['default_TZ'];
 
 // updating phase
 if (!empty($_POST['do_04to06'])) {
-
     // Ticket Check
     if (!$GLOBALS['xoopsSecurity']->check()) {
         redirect_header(XOOPS_URL . '/', 3, $GLOBALS['xoopsSecurity']->getErrors());
@@ -112,7 +111,7 @@ if (!empty($_POST['do_04to06'])) {
     // Counting comments
     $sql = 'SELECT com_itemid,count(*) FROM ' . $GLOBALS['xoopsDB']->prefix('xoopscomments') . " WHERE com_modid=$mid GROUP BY com_itemid";
     $rs  = $GLOBALS['xoopsDB']->query($sql);
-    while (false !== (list($id, $sum) = $GLOBALS['xoopsDB']->fetchRow($rs))) {
+    while (list($id, $sum) = $GLOBALS['xoopsDB']->fetchRow($rs)) {
         $GLOBALS['xoopsDB']->query("UPDATE $table_event SET dtstamp=dtstamp,comments=$sum WHERE id=$id");
     }
 
@@ -120,7 +119,6 @@ if (!empty($_POST['do_04to06'])) {
     echo $xoopsLogger->dumpQueries();
     redirect_header($php_self, 5, _AM_APCAL_MB_SUCCESSUPDATETABLE);
 } elseif (!empty($_POST['create_cat'])) {
-
     // Ticket Check
     if (!$GLOBALS['xoopsSecurity']->check()) {
         redirect_header(XOOPS_URL . '/', 3, $GLOBALS['xoopsSecurity']->getErrors());
@@ -151,7 +149,6 @@ if (!empty($_POST['do_04to06'])) {
     echo $xoopsLogger->dumpQueries();
     redirect_header($php_self, 5, _AM_APCAL_MB_SUCCESSUPDATETABLE);
 } elseif (!empty($_POST['repair_stz'])) {
-
     // Ticket Check
     if (!$GLOBALS['xoopsSecurity']->check()) {
         redirect_header(XOOPS_URL . '/', 3, $GLOBALS['xoopsSecurity']->getErrors());
@@ -162,11 +159,11 @@ if (!empty($_POST['do_04to06'])) {
         if ('' === trim($to_stz)) {
             continue;
         }
-        $to_stz_sec = (int)($to_stz * 3600);
+        $to_stz_sec = ($to_stz * 3600);
         if ($to_stz_sec < -50400 || $to_stz_sec > 50400) {
             continue;
         }
-        $from_stz_sec = (int)($from_stz * 3600);
+        $from_stz_sec = ($from_stz * 3600);
         if ($from_stz_sec < -50400 || $from_stz_sec > 50400) {
             continue;
         }
@@ -217,7 +214,6 @@ if (!$is_040) {
         </form>\n";
     CloseTable();
 } else {
-
     // Timezone checking
     $rs_stz = $GLOBALS['xoopsDB']->query("SELECT COUNT(*),server_tz FROM $table_event GROUP BY server_tz");
     OpenTable();
@@ -238,7 +234,7 @@ if (!$is_040) {
             </tr>\n";
 
     $server_tz_wrong = false;
-    while (false !== (list($count, $server_tz) = $GLOBALS['xoopsDB']->fetchRow($rs_stz))) {
+    while (list($count, $server_tz) = $GLOBALS['xoopsDB']->fetchRow($rs_stz)) {
         if ($serverTZ != $server_tz) {
             $server_tz_wrong = true;
         }

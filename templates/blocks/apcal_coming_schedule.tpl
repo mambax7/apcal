@@ -96,7 +96,7 @@
     </table>
 <{/if}>
 
-<{if $block.insertable <> false}>
+<{if $block.insertable !== false}>
     <table border='0' cellspacing='0' cellpadding='0' width='100%'>
         <tr>
             <td align='left'>

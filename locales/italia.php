@@ -17,7 +17,6 @@
  * @author       XOOPS Development Team,
  * @author       GIJ=CHECKMATE (PEAK Corp. http://www.peak.ne.jp/)
  */
-
 $this->holidays = [
     '2004-12-25' => 1,
 
@@ -29,5 +28,5 @@ $this->holidays = [
     '2005-8-15'  => 1,
     '2005-11-1'  => 1,
     '2005-12-8'  => 1,
-    '2005-12-26' => 1
+    '2005-12-26' => 1,
 ];

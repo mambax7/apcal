@@ -17,7 +17,6 @@
  * @author       XOOPS Development Team,
  * @author       Antiques Promotion (http://www.antiquespromotion.ca)
  */
-
 if (!function_exists('easter')) {
     /**
      * @param $y

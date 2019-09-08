@@ -9,7 +9,6 @@
  *  allows you to easily include all the calendar files and setup the
  *  calendar by instantiating and calling a PHP object.
  */
-
 define('NEWLINE', "\n");
 
 /**
@@ -36,8 +35,8 @@ class DHTML_Calendar
         $calendar_lib_path = '/calendar/',
         $lang = 'en',
         $theme = 'calendar-win2k-1',
-        $stripped = true
-    ) {
+        $stripped = true)
+    {
         if ($stripped) {
             $this->calendar_file       = 'calendar_stripped.js';
             $this->calendar_setup_file = 'calendar-setup_stripped.js';
@@ -50,7 +49,7 @@ class DHTML_Calendar
         $this->calendar_lib_path   = preg_replace('/\/+$/', '/', $calendar_lib_path);
         $this->calendar_options    = [
             'ifFormat' => '%Y/%m/%d',
-            'daFormat' => '%Y/%m/%d'
+            'daFormat' => '%Y/%m/%d',
         ];
     }
 
@@ -102,14 +101,14 @@ class DHTML_Calendar
         $id      = $this->_gen_id();
         $attrstr = $this->_make_html_attr(array_merge($field_attributes, [
             'id'   => $this->_field_id($id),
-            'type' => 'text'
+            'type' => 'text',
         ]));
         echo '<input ' . $attrstr . '>';
         echo '<a href="#" id="' . $this->_trigger_id($id) . '">' . '<img align="middle" border="0" src="' . $this->calendar_lib_path . 'img.gif" alt=""></a>';
 
         $options = array_merge($cal_options, [
             'inputField' => $this->_field_id($id),
-            'button'     => $this->_trigger_id($id)
+            'button'     => $this->_trigger_id($id),
         ]);
         echo $this->_make_calendar($options);
     }

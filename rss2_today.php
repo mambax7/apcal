@@ -17,8 +17,7 @@
  * @author       XOOPS Development Team,
  * @author       GIJ=CHECKMATE (PEAK Corp. http://www.peak.ne.jp/)
  */
-
-include  dirname(dirname(__DIR__)) . '/mainfile.php';
+require dirname(dirname(__DIR__)) . '/mainfile.php';
 if (function_exists('mb_http_output')) {
     mb_http_output('pass');
 }
@@ -74,7 +73,6 @@ echo '<?xml version="1.0" encoding="UTF-8" ?>
     <language>' . _LANGCODE . "</language>\n";
 
 foreach ($block['events'] as $event) {
-
     // start
     $start = date('n/j G:i', $event['start']);
 

@@ -25,7 +25,7 @@ if (!defined('APCAL_BLOCK_MINICAL_EX')) {
     define('APCAL_BLOCK_MINICAL_EX', 1);
 
     // XOOPS 2.1/2.2
-    if (substr(XOOPS_VERSION, 6, 3) > 2.0) {
+    if (mb_substr(XOOPS_VERSION, 6, 3) > 2.0) {
         $GLOBALS['apcal_blockinstance_id'] = $this->getVar('instanceid');
     }
 
@@ -43,7 +43,7 @@ if (!defined('APCAL_BLOCK_MINICAL_EX')) {
         //echo ((float) $sec + (float) $usec) - $GIJ_common_time ;
 
         // get bid
-        if (substr(XOOPS_VERSION, 6, 3) > 2.0) {
+        if (mb_substr(XOOPS_VERSION, 6, 3) > 2.0) {
             // XOOPS 2.1/2.2
             // instanceid as bid from block_instance
             $bid = @$GLOBALS['apcal_blockinstance_id'];
@@ -75,18 +75,17 @@ if (!defined('APCAL_BLOCK_MINICAL_EX')) {
                 if ((int)$g_val != $g_val) {
                     $additional_get = '';
                     break;
-                } else {
-                    $additional_get .= '&amp;' . urlencode($g_key) . '=' . (int)$g_val;
                 }
+                $additional_get .= '&amp;' . urlencode($g_key) . '=' . (int)$g_val;
             }
         }
 
         // cache enable or not
         if (empty($_POST['apcal_jumpcaldate'])
             && (empty($_GET['caldate'])
-                || in_array(substr($_GET['caldate'], 0, 4), [date('Y'), date('Y') - 1]))) {
+                || in_array(mb_substr($_GET['caldate'], 0, 4), [date('Y'), date('Y') - 1]))) {
             $enable_cache = true;
-        //      $enable_cache = false ;
+            //      $enable_cache = false ;
         } else {
             $enable_cache = false;
         }
@@ -103,7 +102,7 @@ if (!defined('APCAL_BLOCK_MINICAL_EX')) {
                     $Ym = sprintf('%04d%02d', $Y, $m);
                 }
             }
-            $bid_hash   = substr(md5($bid . XOOPS_DB_PREFIX), -6);
+            $bid_hash   = mb_substr(md5($bid . XOOPS_DB_PREFIX), -6);
             $uid        = is_object($xoopsUser) ? $xoopsUser->getVar('uid') : 0;
             $cache_file = XOOPS_CACHE_PATH . "/{$moduleDirName }_minical_ex_{$bid_hash}_{$xoopsConfig['language']}_";
             if (file_exists($cache_file . $Ym)) {
@@ -139,10 +138,10 @@ if (!defined('APCAL_BLOCK_MINICAL_EX')) {
         $mod_url  = XOOPS_URL . "/modules/$moduleDirName";
 
         // defining class of APCal
-//        if (!class_exists('APCal_xoops')) {
-//            require_once "$mod_path/class/APCal.php";
-//            require_once "$mod_path/class/APCal_xoops.php";
-//        }
+        //        if (!class_exists('APCal_xoops')) {
+        //            require_once "$mod_path/class/APCal.php";
+        //            require_once "$mod_path/class/APCal_xoops.php";
+        //        }
 
         // creating an instance of APCal
         $cal = new Apcal\ApcalXoops('', $xoopsConfig['language'], true);
@@ -204,8 +203,8 @@ if (!defined('APCAL_BLOCK_MINICAL_EX')) {
         $mod_url  = XOOPS_URL . "/modules/$moduleDirName";
 
         // defining class of APCal
-//        require_once "$mod_path/class/APCal.php";
-//        require_once "$mod_path/class/APCal_xoops.php";
+        //        require_once "$mod_path/class/APCal.php";
+        //        require_once "$mod_path/class/APCal_xoops.php";
 
         // creating an instance of APCal
         $cal                = new ApcalXoops(date('Y-n-j'), $xoopsConfig['language'], true);

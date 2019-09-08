@@ -17,7 +17,6 @@
  * @author       XOOPS Development Team,
  * @author       GIJ=CHECKMATE (PEAK Corp. http://www.peak.ne.jp/)
  */
-
 $this->holidays = [
     '2001-2-26' => 1,
     '2001-2-27' => 1,
@@ -58,7 +57,7 @@ $this->holidays = [
     '2010-2-15' => 1,
     '2010-2-16' => 1,
     '2010-4-2'  => 1,
-    '2010-6-3'  => 1
+    '2010-6-3'  => 1,
 ];
 
 for ($y = 2001; $y <= 2010; ++$y) {

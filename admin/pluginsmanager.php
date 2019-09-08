@@ -20,7 +20,7 @@
 
 use XoopsModules\Apcal;
 
-require_once  dirname(dirname(dirname(__DIR__))) . '/include/cp_header.php';
+require_once dirname(dirname(dirname(__DIR__))) . '/include/cp_header.php';
 // require_once  dirname(__DIR__) . '/class/APCal.php';
 // require_once  dirname(__DIR__) . '/class/APCal_xoops.php';
 
@@ -53,7 +53,7 @@ $cal = new \ApcalXoops('', $xoopsConfig['language'], true);
 
 // setting properties of APCal
 $cal->conn = $conn;
-include  dirname(__DIR__) . '/include/read_configs.php';
+require dirname(__DIR__) . '/include/read_configs.php';
 $cal->base_url    = $mod_url;
 $cal->base_path   = $mod_path;
 $cal->images_url  = "$mod_url/assets/images/$skin_folder";
@@ -64,20 +64,19 @@ $myts = \MyTextSanitizer::getInstance();
 
 // get block instances of minicalex
 $mcx_blocks = [];
-if (substr(XOOPS_VERSION, 6, 3) > 2.0) {
+if (mb_substr(XOOPS_VERSION, 6, 3) > 2.0) {
     // block instance of XOOPS 2.1/2.2
     $mcx_rs = $GLOBALS['xoopsDB']->query('SELECT i.instanceid,i.title FROM ' . $GLOBALS['xoopsDB']->prefix('block_instance') . ' i LEFT JOIN ' . $GLOBALS['xoopsDB']->prefix('newblocks') . " b ON i.bid=b.bid WHERE b.mid='" . $xoopsModule->getVar('mid') . "' AND b.show_func='apcal_minical_ex_show'");
 } else {
     // newblocks of XOOPS 2.0.x
     $mcx_rs = $GLOBALS['xoopsDB']->query('SELECT bid,title FROM ' . $GLOBALS['xoopsDB']->prefix('newblocks') . " WHERE mid='" . $xoopsModule->getVar('mid') . "' AND show_func='apcal_minical_ex_show'");
 }
-while (false !== (list($bid, $title) = $GLOBALS['xoopsDB']->fetchRow($mcx_rs))) {
+while (list($bid, $title) = $GLOBALS['xoopsDB']->fetchRow($mcx_rs)) {
     $mcx_blocks[$bid] = $title;
 }
 
 // ¥Ç¡¼¥¿¥Ù¡¼¥¹¹¹¿·¤Ê¤É¤¬¤«¤é¤à½èÍý
 if (!empty($_POST['update'])) {
-
     // Ticket Check
     if (!$GLOBALS['xoopsSecurity']->check()) {
         redirect_header(XOOPS_URL . '/', 3, $GLOBALS['xoopsSecurity']->getErrors());
@@ -129,10 +128,8 @@ if (!empty($_POST['update'])) {
             $pi_dotgif4sql  = addslashes($_POST['pi_dotgifs'][$pi_id]);
             $pi_enabled4sql = !empty($_POST['pi_enableds'][$pi_id]) ? 1 : 0;
 
-            if (!$GLOBALS['xoopsDB']->query(
-                "UPDATE $cal->plugin_table SET pi_type='$pi_type4sql', pi_options='$pi_options4sql', pi_weight='$pi_weight4sql', pi_title='$pi_title4sql', pi_dirname='$pi_dirname4sql', pi_file='$pi_file4sql', pi_dotgif='$pi_dotgif4sql', pi_enabled='$pi_enabled4sql' WHERE pi_id=$pi_id",
-                                            $conn
-            )) {
+            if (!$GLOBALS['xoopsDB']->query("UPDATE $cal->plugin_table SET pi_type='$pi_type4sql', pi_options='$pi_options4sql', pi_weight='$pi_weight4sql', pi_title='$pi_title4sql', pi_dirname='$pi_dirname4sql', pi_file='$pi_file4sql', pi_dotgif='$pi_dotgif4sql', pi_enabled='$pi_enabled4sql' WHERE pi_id=$pi_id",
+                                            $conn)) {
                 die($GLOBALS['xoopsDB']->error());
             }
         }
@@ -141,7 +138,7 @@ if (!empty($_POST['update'])) {
     // remove cache of APCal minical_ex
     if ($handler = opendir(XOOPS_CACHE_PATH . '/')) {
         while (false !== ($file = readdir($handler))) {
-            if ('APCal_minical_ex' === substr($file, 0, 16)) {
+            if ('APCal_minical_ex' === mb_substr($file, 0, 16)) {
                 @unlink(XOOPS_CACHE_PATH . '/' . $file);
             }
         }
@@ -177,7 +174,7 @@ $type_options     = "<option value=''>----</option>\n" . $type_options;
 // dirname options
 $dirname_options = "<option value=''>----</option>\n";
 $dn_rs           = $GLOBALS['xoopsDB']->query('SELECT dirname FROM ' . $GLOBALS['xoopsDB']->prefix('modules'));
-while (false !== (list($dirname) = $GLOBALS['xoopsDB']->fetchRow($dn_rs))) {
+while (list($dirname) = $GLOBALS['xoopsDB']->fetchRow($dn_rs)) {
     $dirname_options .= "<option value='$dirname'>$dirname</option>\n";
 }
 
@@ -212,7 +209,7 @@ while (false !== ($file = readdir($dir_handle))) {
         if ('gif' !== $ext && 'png' !== $ext && 'jpg' !== $ext) {
             continue;
         }
-        if ('dot' !== substr($node, 0, 3)) {
+        if ('dot' !== mb_substr($node, 0, 3)) {
             continue;
         }
         $valid_images[] = $file;
@@ -235,7 +232,7 @@ $columns = [
     'pi_dotgif',
     'pi_options',
     'pi_enabled',
-    'pi_weight'
+    'pi_weight',
 ];
 $order   = in_array(@$_GET['order'], $columns) ? $_GET['order'] : 'pi_type';
 // type limitation

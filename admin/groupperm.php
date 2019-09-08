@@ -43,13 +43,12 @@ require_once XOOPS_ROOT_PATH . "/modules/system/language/$language/admin.php";
 xoops_loadLanguage('main', $moduleDirName);
 
 if (!empty($_POST['submit'])) {
-
     // Ticket Check
     if (!$GLOBALS['xoopsSecurity']->check(true, \Xmf\Request::hasVar('myblocksadmin'))) {
         redirect_header(XOOPS_URL . '/', 3, $GLOBALS['xoopsSecurity']->getErrors());
     }
 
-    include __DIR__ . '/mygroupperm.php';
+    require __DIR__ . '/mygroupperm.php';
     redirect_header(XOOPS_URL . "/modules/$moduleDirName/admin/groupperm.php", 1, _AM_APCALAM_APCALDBUPDATED);
 }
 
@@ -59,7 +58,7 @@ $item_list = [
     '4'  => _AM_APCAL_GPERM_G_EDITABLE,
     '8'  => _AM_APCAL_GPERM_G_SUPEREDIT,
     //  '16' => _AM_APCAL_GPERM_G_DELETABLE ,
-    '32' => _AM_APCAL_GPERM_G_SUPERDELETE//  '64' => _AM_APCAL_GPERM_G_TOUCHOTHERS
+    '32' => _AM_APCAL_GPERM_G_SUPERDELETE, //  '64' => _AM_APCAL_GPERM_G_TOUCHOTHERS
 ];
 
 $form = new Apcal\GroupPermForm(_AM_APCAL_GROUPPERM, $xoopsModule->mid(), 'apcal_global', _AM_APCAL_GROUPPERMDESC);

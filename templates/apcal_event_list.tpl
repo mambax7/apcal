@@ -151,7 +151,7 @@
                 <{if $num_rows > 1}>
                     <div>
 
-                        <{if $for_print <> true}>
+                        <{if $for_print !== true}>
 
                             <{$lang_sortby}>&nbsp;&nbsp;
                             <{$lang_startdatetime}> (
@@ -276,7 +276,7 @@
                             <td width='10'><img src='<{$images_url}>/spacer.gif' alt='' width='10' height='10'></td>
                             <td width='100%' align='right'><{$apcal_copyright}></td>
                         </tr>
-                        <{if $for_print <> true}>
+                        <{if $for_print !== true}>
                             <tr>
                                 <td width='10'><img src='<{$images_url}>/spacer.gif' alt='' width='10' height='10'>
                                 </td>

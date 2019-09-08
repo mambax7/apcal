@@ -16,7 +16,6 @@
  * @since
  * @author       XOOPS Development Team, GIJ=CHECKMATE (PEAK Corp. http://www.peak.ne.jp/)
  */
-
-include  dirname(dirname(__DIR__)) . '/mainfile.php';
-include __DIR__ . '/include/read_configs.php';
-include XOOPS_ROOT_PATH . '/include/comment_edit.php';
+require dirname(dirname(__DIR__)) . '/mainfile.php';
+require __DIR__ . '/include/read_configs.php';
+require XOOPS_ROOT_PATH . '/include/comment_edit.php';

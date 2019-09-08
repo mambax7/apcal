@@ -20,12 +20,12 @@
 
 use XoopsModules\Apcal;
 
-require_once  dirname(dirname(dirname(__DIR__))) . '/include/cp_header.php';
+require_once dirname(dirname(dirname(__DIR__))) . '/include/cp_header.php';
 
-if (substr(XOOPS_VERSION, 6, 3) > 2.0) {
-    include __DIR__ . '/myblocksadmin2.php';
-    exit;
-}
+//if (substr(XOOPS_VERSION, 6, 3) > 2.0) {
+//    require __DIR__   . '/myblocksadmin2.php';
+//    exit;
+//}
 
 //require_once __DIR__ . '/mygrouppermform.php';
 require_once XOOPS_ROOT_PATH . '/class/xoopsblock.php';
@@ -48,7 +48,7 @@ error_reporting($error_reporting_level);
 
 $group_defs = file("$xoops_system_path/language/$language/admin/groups.php");
 foreach ($group_defs as $def) {
-    if (true === strpos($def, '_AM_APCAL_ACCESSRIGHTS') || true === strpos($def, '_AM_APCAL_ACTIVERIGHTS')) {
+    if (true === mb_strpos($def, '_AM_APCAL_ACCESSRIGHTS') || true === mb_strpos($def, '_AM_APCAL_ACTIVERIGHTS')) {
         eval($def);
     }
 }
@@ -59,7 +59,7 @@ if (!is_object($xoopsModule)) {
 }
 
 // set target_module if specified by $_GET['dirname']
-/** @var XoopsModuleHandler $moduleHandler */
+/** @var \XoopsModuleHandler $moduleHandler */
 $moduleHandler = xoops_getHandler('module');
 if (!empty($_GET['dirname'])) {
     $target_module = $moduleHandler->getByDirname($_GET['dirname']);
@@ -72,7 +72,7 @@ if (!empty($target_module) && is_object($target_module)) {
     $target_mid     = $target_module->getVar('mid');
     $target_mname   = $target_module->getVar('name') . '&nbsp;' . sprintf('(%2.2f)', $target_module->getVar('version') / 100.0);
     $query4redirect = '?dirname=' . urlencode(strip_tags($_GET['dirname']));
-} elseif (isset($_GET['mid']) && 0 == $_GET['mid'] || 'blocksadmin' === $xoopsModule->getVar('dirname')) {
+} elseif (\Xmf\Request::hasVar('mid', 'GET') && 0 == $_GET['mid'] || 'blocksadmin' === $xoopsModule->getVar('dirname')) {
     $target_mid     = 0;
     $target_mname   = '';
     $query4redirect = '?mid=0';
@@ -83,8 +83,8 @@ if (!empty($target_module) && is_object($target_module)) {
 }
 
 // check access right (needs system_admin of BLOCK)
-$syspermHandler = xoops_getHandler('groupperm');
-if (!$syspermHandler->checkRight('system_admin', XOOPS_SYSTEM_BLOCK, $xoopsUser->getGroups())) {
+$grouppermHandler = xoops_getHandler('groupperm');
+if (!$grouppermHandler->checkRight('system_admin', XOOPS_SYSTEM_BLOCK, $xoopsUser->getGroups())) {
     redirect_header(XOOPS_URL . '/user.php', 1, _NOPERM);
 }
 
@@ -114,7 +114,7 @@ function list_blocks()
         '86400'   => _DAY,
         '259200'  => sprintf(_DAYS, 3),
         '604800'  => _WEEK,
-        '2592000' => _MONTH
+        '2592000' => _MONTH,
     ];
 
     // displaying TH
@@ -134,8 +134,8 @@ function list_blocks()
     $class         = 'even';
     $block_configs = get_block_configs();
     foreach (array_keys($block_arr) as $i) {
-        $sseln = $ssel0 = $ssel1 = $ssel2 = $ssel3 = $ssel4 = '';
-        $scoln = $scol0 = $scol1 = $scol2 = $scol3 = $scol4 = '#FFFFFF';
+        $sseln = $ssel0 = $ssel1 = $ssel2 = $ssel3 = $ssel4 = $ssel5 = $ssel6 = $ssel7 = '';
+        $scoln = $scol0 = $scol1 = $scol2 = $scol3 = $scol4 = $ssel5 = $ssel6 = $ssel7 = '';
 
         $weight     = $block_arr[$i]->getVar('weight');
         $title      = $block_arr[$i]->getVar('title');
@@ -170,6 +170,18 @@ function list_blocks()
                     $ssel3 = ' checked';
                     $scol3 = '#00FF00';
                     break;
+                case XOOPS_CENTERBLOCK_BOTTOMLEFT:
+                    $ssel5 = ' checked';
+                    $scol5 = '#00FF00';
+                    break;
+                case XOOPS_CENTERBLOCK_BOTTOMRIGHT:
+                    $ssel6 = ' checked';
+                    $scol6 = '#00FF00';
+                    break;
+                case XOOPS_CENTERBLOCK_BOTTOM:
+                    $ssel7 = ' checked';
+                    $scol7 = '#00FF00';
+                    break;
             }
         }
 
@@ -187,10 +199,10 @@ function list_blocks()
         $db            = \XoopsDatabaseFactory::getDatabaseConnection();
         $result        = $db->query('SELECT module_id FROM ' . $db->prefix('block_module_link') . " WHERE block_id='$bid'");
         $selected_mids = [];
-        while (false !== (list($selected_mid) = $db->fetchRow($result))) {
+        while (list($selected_mid) = $db->fetchRow($result)) {
             $selected_mids[] = (int)$selected_mid;
         }
-        /** @var XoopsModuleHandler $moduleHandler */
+        /** @var \XoopsModuleHandler $moduleHandler */
         $moduleHandler = xoops_getHandler('module');
         $criteria      = new \CriteriaCompo(new \Criteria('hasmain', 1));
         $criteria->add(new \Criteria('isactive', 1));
@@ -223,8 +235,7 @@ function list_blocks()
             foreach ($block_configs as $bconf) {
                 if ($block_arr[$i]->getVar('show_func') == $bconf['show_func']
                     && $block_arr[$i]->getVar('func_file') == $bconf['file']
-                    && (empty($bconf['template']) || $block_arr[$i]->getVar('template') == $bconf['template'])
-                ) {
+                    && (empty($bconf['template']) || $block_arr[$i]->getVar('template') == $bconf['template'])) {
                     if (!empty($bconf['can_clone'])) {
                         $can_clone = true;
                     }
@@ -314,16 +325,16 @@ function get_block_configs()
 {
     $error_reporting_level = error_reporting(0);
     if (preg_match('/^[.0-9a-zA-Z_-]+$/', @$_GET['dirname'])) {
-        include  dirname(dirname(__DIR__)) . '/' . $_GET['dirname'] . '/xoops_version.php';
+        require dirname(dirname(__DIR__)) . '/' . $_GET['dirname'] . '/xoops_version.php';
     } else {
-        include  dirname(__DIR__) . '/xoops_version.php';
+        require dirname(__DIR__) . '/xoops_version.php';
     }
     error_reporting($error_reporting_level);
     if (empty($modversion['blocks'])) {
         return [];
-    } else {
-        return $modversion['blocks'];
     }
+
+    return $modversion['blocks'];
 }
 
 function list_groups()
@@ -351,7 +362,7 @@ if (!empty($_POST['submit'])) {
         redirect_header(XOOPS_URL . '/', 3, $GLOBALS['xoopsSecurity']->getErrors());
     }
 
-    include __DIR__ . '/mygroupperm.php';
+    require __DIR__ . '/mygroupperm.php';
     redirect_header(XOOPS_URL . '/modules/' . $xoopsModule->dirname() . "/admin/myblocksadmin.php$query4redirect", 1, _AM_APCALAM_APCALDBUPDATED);
 }
 

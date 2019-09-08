@@ -1,4 +1,6 @@
-<?php namespace XoopsModules\Apcal;
+<?php
+
+namespace XoopsModules\Apcal;
 
 /**
  * "Unified" diff renderer.
@@ -9,9 +11,6 @@
  *
  * @package Text_Diff
  */
-
-use  XoopsModules\Apcal;
-
 class Text_Diff_Renderer_unified extends Text_Diff_Renderer
 {
     /**

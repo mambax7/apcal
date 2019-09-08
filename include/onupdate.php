@@ -40,30 +40,30 @@ function tableExists($tablename)
 }
 
 /**
- *
  * Prepares system prior to attempting to install module
- * @param XoopsModule $module {@link XoopsModule}
+ * @param \XoopsModule $module {@link XoopsModule}
  *
  * @return bool true if ready to install, false if not
  */
 function xoops_module_pre_update_apcal(\XoopsModule $module)
 {
-    /** @var Apcal\Helper $helper */
+    /** @var \XoopsModules\Apcal\Helper $helper */
     /** @var Apcal\Utility $utility */
     $moduleDirName = basename(dirname(__DIR__));
-    $helper        = Apcal\Helper::getInstance();
+    $helper        = \XoopsModules\Apcal\Helper::getInstance();
     $utility       = new Apcal\Utility();
 
     $xoopsSuccess = $utility::checkVerXoops($module);
     $phpSuccess   = $utility::checkVerPhp($module);
+
     return $xoopsSuccess && $phpSuccess;
 }
 
 function xoops_module_update_apcal(\XoopsModule $module)
 {
     //    global $xoopsDB;
-    $moduleDirName = basename(dirname(__DIR__));
-    $capsDirName   = strtoupper($moduleDirName);
+    $moduleDirName      = basename(dirname(__DIR__));
+    $moduleDirNameUpper = mb_strtoupper($moduleDirName);
 
     /** @var Apcal\Helper $helper */
     /** @var Apcal\Utility $utility */
@@ -235,7 +235,7 @@ function xoops_module_update_apcal(\XoopsModule $module)
     $sql = 'DELETE FROM ' . $GLOBALS['xoopsDB']->prefix('tplfile') . " WHERE `tpl_module` = '" . $module->getVar('dirname', 'n') . '\' AND `tpl_file` LIKE \'%.html%\'';
     $GLOBALS['xoopsDB']->queryF($sql);
 
-    /** @var XoopsGroupPermHandler $grouppermHandler */
+    /** @var \XoopsGroupPermHandler $grouppermHandler */
     $grouppermHandler = xoops_getHandler('groupperm');
 
     return $grouppermHandler->deleteByModule($module->getVar('mid'), 'item_read');
@@ -314,11 +314,11 @@ function makeShort($str)
         'ý' => 'y',
         'ý' => 'y',
         'þ' => 'b',
-        'ÿ' => 'y'
+        'ÿ' => 'y',
     ];
 
     $str = strip_tags($str);
     $str = strtr($str, $replacements);
 
-    return str_replace([' ', '-', '/', "\\", "'", '"', "\r", "\n", '&', '?', '!', '%', ',', '.'], '', $str);
+    return str_replace([' ', '-', '/', '\\', "'", '"', "\r", "\n", '&', '?', '!', '%', ',', '.'], '', $str);
 }

@@ -53,10 +53,10 @@ if (!function_exists('b_sitemap_APCal_base')) {
         $mod_url  = XOOPS_URL . "/modules/$moduleDirName";
 
         // defining class of APCal
-//        if (!class_exists('APCal_xoops')) {
-//            require_once "$mod_path/class/APCal.php";
-//            require_once "$mod_path/class/APCal_xoops.php";
-//        }
+        //        if (!class_exists('APCal_xoops')) {
+        //            require_once "$mod_path/class/APCal.php";
+        //            require_once "$mod_path/class/APCal_xoops.php";
+        //        }
 
         // creating an instance of APCal
         $cal                = new Apcal\ApcalXoops('', $xoopsConfig['language'], true);
@@ -69,7 +69,6 @@ if (!function_exists('b_sitemap_APCal_base')) {
 
         $ret = [];
         foreach ($cal->categories as $cat) {
-
             // only Top category is shown
             if ($cat->cat_depth > 1) {
                 continue;
@@ -78,7 +77,7 @@ if (!function_exists('b_sitemap_APCal_base')) {
             $ret['parent'][] = [
                 'id'    => $cat->cid,
                 'title' => $myts->htmlSpecialChars($cat->cat_title),
-                'url'   => "index.php?cid=$cat->cid"
+                'url'   => "index.php?cid=$cat->cid",
             ];
         }
 

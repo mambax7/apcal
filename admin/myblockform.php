@@ -17,9 +17,6 @@
  * @author       XOOPS Development Team,
  * @author       GIJ=CHECKMATE (PEAK Corp. http://www.peak.ne.jp/)
  */
-
-use XoopsModules\Apcal;
-
 defined('XOOPS_ROOT_PATH') || die('Restricted access');
 
 $usespaw = empty($_GET['usespaw']) ? 0 : 1;
@@ -36,13 +33,13 @@ $side_select->addOptionArray([
                                  1 => _AM_SBRIGHT,
                                  3 => _AM_CBLEFT,
                                  4 => _AM_CBRIGHT,
-                                 5 => _AM_CBCENTER
+                                 5 => _AM_CBCENTER,
                              ]);
 $form->addElement($side_select);
 $form->addElement(new \XoopsFormText(_AM_WEIGHT, 'bweight', 2, 5, $block['weight']));
 $form->addElement(new \XoopsFormRadioYN(_AM_VISIBLE, 'bvisible', $block['visible']));
 $mod_select = new \XoopsFormSelect(_AM_VISIBLEIN, 'bmodule', $block['modules'], 5, true);
-/** @var XoopsModuleHandler $moduleHandler */
+/** @var \XoopsModuleHandler $moduleHandler */
 $moduleHandler = xoops_getHandler('module');
 $criteria      = new \CriteriaCompo(new \Criteria('hasmain', 1));
 $criteria->add(new \Criteria('isactive', 1));
@@ -55,7 +52,6 @@ $form->addElement($mod_select);
 $form->addElement(new \XoopsFormText(_AM_TITLE, 'btitle', 50, 255, $block['title']), false);
 
 if ($block['is_custom']) {
-
     // Custom Block's textarea
     $notice_for_tags = '<span style="font-size:x-small;font-weight:bold;">' . _AM_USEFULTAGS . '</span><br><span style="font-size:x-small;font-weight:normal;">' . sprintf(_AM_BLOCKTAG1, '{X_SITEURL}', XOOPS_URL . '/') . '</span>';
     $current_op      = 'clone' === @$_GET['op'] ? 'clone' : 'edit';
@@ -64,7 +60,7 @@ if ($block['is_custom']) {
     $can_use_spaw = true;
     if ($usespaw && $can_use_spaw) {
         // SPAW Config
-        include XOOPS_ROOT_PATH . '/common/spaw/spaw_control.class.php';
+        require XOOPS_ROOT_PATH . '/common/spaw/spaw_control.class.php';
         ob_start();
         $sw = new SPAW_Wysiwyg('bcontent', $block['content']);
         $sw->show();
@@ -114,7 +110,7 @@ $cache_select->addOptionArray([
                                   '86400'   => _DAY,
                                   '259200'  => sprintf(_DAYS, 3),
                                   '604800'  => _WEEK,
-                                  '2592000' => _MONTH
+                                  '2592000' => _MONTH,
                               ]);
 $form->addElement($cache_select);
 if (isset($block['bid'])) {
@@ -123,12 +119,12 @@ if (isset($block['bid'])) {
 // $form->addElement(new \XoopsFormHidden('options', $block['options']));
 $form->addElement(new \XoopsFormHidden('op', $block['op']));
 $form->addElement(new \XoopsFormHidden('fct', 'blocksadmin'));
-$button_tray = new \XoopsFormElementTray('', '&nbsp;');
+$buttonTray = new \XoopsFormElementTray('', '&nbsp;');
 if ($block['is_custom']) {
-    $button_tray->addElement(new \XoopsFormButton('', 'previewblock', _PREVIEW, 'submit'));
+    $buttonTray->addElement(new \XoopsFormButton('', 'previewblock', _PREVIEW, 'submit'));
 }
-$button_tray->addElement(new \XoopsFormButton('', 'submitblock', $block['submit_button'], 'submit'));
-$form->addElement($button_tray);
+$buttonTray->addElement(new \XoopsFormButton('', 'submitblock', $block['submit_button'], 'submit'));
+$form->addElement($buttonTray);
 
 // checks browser compatibility with the control
 /**

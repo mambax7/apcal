@@ -55,7 +55,7 @@ if ($this->base_url == XOOPS_URL . '/modules/' . $plugin['dirname']) {
     // setting properties of APCal
     global $xoopsDB;
     $cal->conn = $GLOBALS['xoopsDB']->conn;
-    include XOOPS_ROOT_PATH . "/modules/{$plugin['dirname']}/include/read_configs.php";
+    require_once XOOPS_ROOT_PATH . "/modules/{$plugin['dirname']}/include/read_configs.php";
     $cal->base_url    = XOOPS_URL . '/modules/' . $plugin['dirname'];
     $cal->base_path   = XOOPS_ROOT_PATH . '/modules/' . $plugin['dirname'];
     $cal->images_url  = "$cal->base_url/assets/images/$skin_folder";
@@ -88,7 +88,7 @@ $range_end_s   = mktime(0, 0, 0, $this->month + 1, 1, $this->year);
 // Á´Æü¥¤¥Ù¥ó¥È°Ê³°¤Î½èÍý
 $result = $GLOBALS['xoopsDB']->query("SELECT summary,id,start FROM $cal->table WHERE admission > 0 AND start >= $range_start_s AND start < $range_end_s AND ($whr_categories) AND ($whr_class) AND ($whr_cid_limit) AND allday <= 0");
 
-while (false !== (list($title, $id, $server_time) = $db->fetchRow($result))) {
+while (list($title, $id, $server_time) = $db->fetchRow($result)) {
     $user_time = $server_time + $tzoffset_s2u;
     if (date('n', $user_time) != $this->month) {
         continue;
@@ -102,7 +102,7 @@ while (false !== (list($title, $id, $server_time) = $db->fetchRow($result))) {
         'server_time' => $server_time,
         'user_time'   => $user_time,
         'name'        => 'id',
-        'title'       => $this->text_sanitizer_for_show($title)
+        'title'       => $this->text_sanitizer_for_show($title),
     ];
     if ($just1gif) {
         // just 1 gif per a plugin & per a day
@@ -116,7 +116,7 @@ while (false !== (list($title, $id, $server_time) = $db->fetchRow($result))) {
 // Á´Æü¥¤¥Ù¥ó¥ÈÀìÍÑ¤Î½èÍý
 $result = $GLOBALS['xoopsDB']->query("SELECT summary,id,start,end FROM $cal->table WHERE admission > 0 AND start >= $range_start_s AND start < $range_end_s AND ($whr_categories) AND ($whr_class) AND ($whr_cid_limit) AND allday > 0");
 
-while (false !== (list($title, $id, $start_s, $end_s) = $db->fetchRow($result))) {
+while (list($title, $id, $start_s, $end_s) = $db->fetchRow($result)) {
     if ($start_s < $range_start_s) {
         $start_s = $range_start_s;
     }
@@ -136,7 +136,7 @@ while (false !== (list($title, $id, $start_s, $end_s) = $db->fetchRow($result)))
                 'server_time' => $server_time,
                 'user_time'   => $user_time,
                 'name'        => 'id',
-                'title'       => $this->text_sanitizer_for_show($title)
+                'title'       => $this->text_sanitizer_for_show($title),
             ];
             if ($just1gif) {
                 // just 1 gif per a plugin & per a day

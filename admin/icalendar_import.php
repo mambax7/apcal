@@ -52,7 +52,7 @@ $cal = new Apcal\ApcalXoops('', $xoopsConfig['language'], true);
 
 // setting properties of APCal
 $cal->conn = $conn;
-include  dirname(__DIR__) . '/include/read_configs.php';
+require dirname(__DIR__) . '/include/read_configs.php';
 $cal->base_url    = $mod_url;
 $cal->base_path   = $mod_path;
 $cal->images_url  = "$mod_url/assets/images/$skin_folder";
@@ -85,8 +85,7 @@ switch ($tz) {
 }
 
 // �ǡ����١��������ʤɤ���������
-if (isset($_POST['http_import']) && !empty($_POST['import_uri'])) {
-
+if (\Xmf\Request::hasVar('http_import', 'POST') && !empty($_POST['import_uri'])) {
     // Ticket Check
     if (!$GLOBALS['xoopsSecurity']->check()) {
         redirect_header(XOOPS_URL . '/', 3, $GLOBALS['xoopsSecurity']->getErrors());
@@ -98,14 +97,12 @@ if (isset($_POST['http_import']) && !empty($_POST['import_uri'])) {
         $mes = urlencode("$calname : $tmpname");
         $cal->redirect("done=error&mes=$mes");
         exit;
-    } else {
-        $mes = urlencode(sprintf("$records " . _AM_APCAL_FMT_IMPORTED, $calname));
-        $cal->redirect("done=imported&mes=$mes");
-        exit;
     }
-} elseif (isset($_POST['local_import']) && isset($_FILES['user_ics']['tmp_name'])
+    $mes = urlencode(sprintf("$records " . _AM_APCAL_FMT_IMPORTED, $calname));
+    $cal->redirect("done=imported&mes=$mes");
+    exit;
+} elseif (\Xmf\Request::hasVar('local_import', 'POST') && isset($_FILES['user_ics']['tmp_name'])
           && is_readable($_FILES['user_ics']['tmp_name'])) {
-
     // Ticket Check
     if (!$GLOBALS['xoopsSecurity']->check()) {
         redirect_header(XOOPS_URL . '/', 3, $GLOBALS['xoopsSecurity']->getErrors());
@@ -117,20 +114,18 @@ if (isset($_POST['http_import']) && !empty($_POST['import_uri'])) {
         $mes = urlencode("$calname : " . $_FILES['user_ics']['name']);
         $cal->redirect("done=error&mes=$mes");
         exit;
-    } else {
-        $mes = urlencode(sprintf("$records " . _AM_APCAL_FMT_IMPORTED, $calname));
-        $cal->redirect("done=imported&mes=$mes");
-        exit;
     }
-} elseif (isset($_POST['delete'])) {
-
+    $mes = urlencode(sprintf("$records " . _AM_APCAL_FMT_IMPORTED, $calname));
+    $cal->redirect("done=imported&mes=$mes");
+    exit;
+} elseif (\Xmf\Request::hasVar('delete', 'POST')) {
     // Ticket Check
     if (!$GLOBALS['xoopsSecurity']->check()) {
         redirect_header(XOOPS_URL . '/', 3, $GLOBALS['xoopsSecurity']->getErrors());
     }
 
     // �쥳���ɤκ��
-    if (isset($_POST['ids']) && is_array($_POST['ids'])) {
+    if (\Xmf\Request::hasVar('ids', 'POST') && is_array($_POST['ids'])) {
         $whr = '';
         foreach ($_POST['ids'] as $id) {
             $whr .= "id=$id OR rrule_pid=$id OR ";
@@ -176,7 +171,7 @@ if (false !== $resultRow && isset($resultRow[0])) {
 $rs = $GLOBALS['xoopsDB']->query("SELECT * FROM $cal->table WHERE $whr ORDER BY  dtstamp DESC LIMIT $pos,$num");
 
 // ページ分割処理
-include XOOPS_ROOT_PATH . '/class/pagenav.php';
+require XOOPS_ROOT_PATH . '/class/pagenav.php';
 $nav      = new \XoopsPageNav($numrows, $num, $pos, 'pos', "tz=$tz&amp;num=$num");
 $nav_html = $nav->renderNav(10);
 if ($numrows <= 0) {

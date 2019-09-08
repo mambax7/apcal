@@ -1,4 +1,6 @@
-<?php namespace XoopsModules\Apcal;
+<?php
+
+namespace XoopsModules\Apcal;
 
 /**
  * XOOPS tree handler
@@ -16,7 +18,6 @@
  * @since               2.0.0
  * @author              Kazumi Ono (AKA onokazu) http://www.myweb.ne.jp/, http://jp.xoops.org/
  */
-
 defined('XOOPS_ROOT_PATH') || exit('Restricted access');
 
 /**
@@ -40,6 +41,7 @@ class Tree
 
     //constructor of class Tree
     //sets the names of table, unique id, and parend id
+
     /**
      * @param $table_name
      * @param $id_name
@@ -47,14 +49,15 @@ class Tree
      */
     public function __construct($table_name, $id_name, $pid_name)
     {
-//        $GLOBALS['xoopsLogger']->addDeprecated("Class '" . __CLASS__ . "' is deprecated, check 'XoopsObjectTree' in tree.php");
-        $this->db = \XoopsDatabaseFactory::getDatabaseConnection();
+        //        $GLOBALS['xoopsLogger']->addDeprecated("Class '" . __CLASS__ . "' is deprecated, check 'XoopsObjectTree' in tree.php");
+        $this->db    = \XoopsDatabaseFactory::getDatabaseConnection();
         $this->table = $table_name;
         $this->id    = $id_name;
         $this->pid   = $pid_name;
     }
 
     // returns an array of first child objects for a given id($sel_id)
+
     /**
      * @param        $sel_id
      * @param string $order
@@ -64,14 +67,14 @@ class Tree
     public function getFirstChild($sel_id, $order = '')
     {
         $sel_id = (int)$sel_id;
-        $arr    = array();
+        $arr    = [];
         $sql    = 'SELECT * FROM ' . $this->table . ' WHERE ' . $this->pid . '=' . $sel_id . '';
-        if ($order != '') {
+        if ('' != $order) {
             $sql .= " ORDER BY $order";
         }
         $result = $this->db->query($sql);
         $count  = $this->db->getRowsNum($result);
-        if ($count == 0) {
+        if (0 == $count) {
             return $arr;
         }
         while (false !== ($myrow = $this->db->fetchArray($result))) {
@@ -82,6 +85,7 @@ class Tree
     }
 
     // returns an array of all FIRST child ids of a given id($sel_id)
+
     /**
      * @param $sel_id
      *
@@ -90,13 +94,13 @@ class Tree
     public function getFirstChildId($sel_id)
     {
         $sel_id  = (int)$sel_id;
-        $idarray = array();
+        $idarray = [];
         $result  = $this->db->query('SELECT ' . $this->id . ' FROM ' . $this->table . ' WHERE ' . $this->pid . '=' . $sel_id . '');
         $count   = $this->db->getRowsNum($result);
-        if ($count == 0) {
+        if (0 == $count) {
             return $idarray;
         }
-        while (false !== (list($id) = $this->db->fetchRow($result))) {
+        while (list($id) = $this->db->fetchRow($result)) {
             $idarray[] = $id;
         }
 
@@ -104,6 +108,7 @@ class Tree
     }
 
     //returns an array of ALL child ids for a given id($sel_id)
+
     /**
      * @param        $sel_id
      * @param string $order
@@ -111,19 +116,19 @@ class Tree
      *
      * @return array
      */
-    public function getAllChildId($sel_id, $order = '', $idarray = array())
+    public function getAllChildId($sel_id, $order = '', $idarray = [])
     {
         $sel_id = (int)$sel_id;
         $sql    = 'SELECT ' . $this->id . ' FROM ' . $this->table . ' WHERE ' . $this->pid . '=' . $sel_id . '';
-        if ($order != '') {
+        if ('' != $order) {
             $sql .= " ORDER BY $order";
         }
         $result = $this->db->query($sql);
         $count  = $this->db->getRowsNum($result);
-        if ($count == 0) {
+        if (0 == $count) {
             return $idarray;
         }
-        while (false !== (list($r_id) = $this->db->fetchRow($result))) {
+        while (list($r_id) = $this->db->fetchRow($result)) {
             $idarray[] = $r_id;
             $idarray   = $this->getAllChildId($r_id, $order, $idarray);
         }
@@ -132,6 +137,7 @@ class Tree
     }
 
     //returns an array of ALL parent ids for a given id($sel_id)
+
     /**
      * @param        $sel_id
      * @param string $order
@@ -139,16 +145,16 @@ class Tree
      *
      * @return array
      */
-    public function getAllParentId($sel_id, $order = '', $idarray = array())
+    public function getAllParentId($sel_id, $order = '', $idarray = [])
     {
         $sel_id = (int)$sel_id;
         $sql    = 'SELECT ' . $this->pid . ' FROM ' . $this->table . ' WHERE ' . $this->id . '=' . $sel_id . '';
-        if ($order != '') {
+        if ('' != $order) {
             $sql .= " ORDER BY $order";
         }
         $result = $this->db->query($sql);
         list($r_id) = $this->db->fetchRow($result);
-        if ($r_id == 0) {
+        if (0 == $r_id) {
             return $idarray;
         }
         $idarray[] = $r_id;
@@ -159,6 +165,7 @@ class Tree
 
     //generates path from the root id to a given id($sel_id)
     // the path is delimetered with "/"
+
     /**
      * @param        $sel_id
      * @param        $title
@@ -170,14 +177,14 @@ class Tree
     {
         $sel_id = (int)$sel_id;
         $result = $this->db->query('SELECT ' . $this->pid . ', ' . $title . ' FROM ' . $this->table . ' WHERE ' . $this->id . "=$sel_id");
-        if ($this->db->getRowsNum($result) == 0) {
+        if (0 == $this->db->getRowsNum($result)) {
             return $path;
         }
         list($parentid, $name) = $this->db->fetchRow($result);
         $myts = \MyTextSanitizer::getInstance();
-        $name = $myts->htmlspecialchars($name);
+        $name = $myts->htmlSpecialChars($name);
         $path = '/' . $name . $path . '';
-        if ($parentid == 0) {
+        if (0 == $parentid) {
             return $path;
         }
         $path = $this->getPathFromId($parentid, $title, $path);
@@ -188,6 +195,7 @@ class Tree
     //makes a nicely ordered selection box
     //$preset_id is used to specify a preselected item
     //set $none to 1 to add a option with value 0
+
     /**
      * @param        $title
      * @param string $order
@@ -198,36 +206,36 @@ class Tree
      */
     public function makeMySelBox($title, $order = '', $preset_id = 0, $none = 0, $sel_name = '', $onchange = '')
     {
-        if ($sel_name == '') {
+        if ('' == $sel_name) {
             $sel_name = $this->id;
         }
         $myts = \MyTextSanitizer::getInstance();
         echo "<select name='" . $sel_name . "'";
-        if ($onchange != '') {
+        if ('' != $onchange) {
             echo " onchange='" . $onchange . "'";
         }
         echo ">\n";
         $sql = 'SELECT ' . $this->id . ', ' . $title . ' FROM ' . $this->table . ' WHERE ' . $this->pid . '=0';
-        if ($order != '') {
+        if ('' != $order) {
             $sql .= " ORDER BY $order";
         }
         $result = $this->db->query($sql);
         if ($none) {
             echo "<option value='0'>----</option>\n";
         }
-        while (false !== (list($catid, $name) = $this->db->fetchRow($result))) {
+        while (list($catid, $name) = $this->db->fetchRow($result)) {
             $sel = '';
             if ($catid == $preset_id) {
-                $sel = " selected";
+                $sel = ' selected';
             }
             echo "<option value='$catid'$sel>$name</option>\n";
             $sel = '';
             $arr = $this->getChildTreeArray($catid, $order);
             foreach ($arr as $option) {
                 $option['prefix'] = str_replace('.', '--', $option['prefix']);
-                $catpath          = $option['prefix'] . '&nbsp;' . $myts->htmlspecialchars($option[$title]);
+                $catpath          = $option['prefix'] . '&nbsp;' . $myts->htmlSpecialChars($option[$title]);
                 if ($option[$this->id] == $preset_id) {
-                    $sel = " selected";
+                    $sel = ' selected';
                 }
                 echo "<option value='" . $option[$this->id] . "'$sel>$catpath</option>\n";
                 $sel = '';
@@ -237,6 +245,7 @@ class Tree
     }
 
     //generates nicely formatted linked path from the root id to a given id
+
     /**
      * @param        $sel_id
      * @param        $title
@@ -251,14 +260,14 @@ class Tree
         $sel_id = (int)$sel_id;
         $sql    = 'SELECT ' . $this->pid . ', ' . $title . ' FROM ' . $this->table . ' WHERE ' . $this->id . "=$sel_id";
         $result = $this->db->query($sql);
-        if ($this->db->getRowsNum($result) == 0) {
+        if (0 == $this->db->getRowsNum($result)) {
             return $path;
         }
         list($parentid, $name) = $this->db->fetchRow($result);
         $myts = \MyTextSanitizer::getInstance();
-        $name = $myts->htmlspecialchars($name);
+        $name = $myts->htmlSpecialChars($name);
         $path = "<a href='" . $funcURL . '&amp;' . $this->id . '=' . $sel_id . "'>" . $name . '</a>' . $path . '';
-        if ($parentid == 0) {
+        if (0 == $parentid) {
             return $path;
         }
         $path = $this->getNicePathFromId($parentid, $title, $funcURL, $path);
@@ -268,6 +277,7 @@ class Tree
 
     //generates id path from the root id to a given id
     // the path is delimetered with "/"
+
     /**
      * @param        $sel_id
      * @param string $path
@@ -278,12 +288,12 @@ class Tree
     {
         $sel_id = (int)$sel_id;
         $result = $this->db->query('SELECT ' . $this->pid . ' FROM ' . $this->table . ' WHERE ' . $this->id . "=$sel_id");
-        if ($this->db->getRowsNum($result) == 0) {
+        if (0 == $this->db->getRowsNum($result)) {
             return $path;
         }
         list($parentid) = $this->db->fetchRow($result);
         $path = '/' . $sel_id . $path . '';
-        if ($parentid == 0) {
+        if (0 == $parentid) {
             return $path;
         }
         $path = $this->getIdPathFromId($parentid, $path);
@@ -300,16 +310,16 @@ class Tree
      *
      * @return mixed
      */
-    public function getAllChild($sel_id = 0, $order = '', $parray = array())
+    public function getAllChild($sel_id = 0, $order = '', $parray = [])
     {
         $sel_id = (int)$sel_id;
         $sql    = 'SELECT * FROM ' . $this->table . ' WHERE ' . $this->pid . '=' . $sel_id . '';
-        if ($order != '') {
+        if ('' != $order) {
             $sql .= " ORDER BY $order";
         }
         $result = $this->db->query($sql);
         $count  = $this->db->getRowsNum($result);
-        if ($count == 0) {
+        if (0 == $count) {
             return $parray;
         }
         while (false !== ($row = $this->db->fetchArray($result))) {
@@ -329,16 +339,16 @@ class Tree
      * @param  string|mixed $r_prefix
      * @return mixed
      */
-    public function getChildTreeArray($sel_id = 0, $order = '', $parray = array(), $r_prefix = '')
+    public function getChildTreeArray($sel_id = 0, $order = '', $parray = [], $r_prefix = '')
     {
         $sel_id = (int)$sel_id;
         $sql    = 'SELECT * FROM ' . $this->table . ' WHERE ' . $this->pid . '=' . $sel_id . '';
-        if ($order != '') {
+        if ('' != $order) {
             $sql .= " ORDER BY $order";
         }
         $result = $this->db->query($sql);
         $count  = $this->db->getRowsNum($result);
-        if ($count == 0) {
+        if (0 == $count) {
             return $parray;
         }
         while (false !== ($row = $this->db->fetchArray($result))) {

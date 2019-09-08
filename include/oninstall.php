@@ -23,25 +23,24 @@
 use XoopsModules\Apcal;
 
 /**
- *
  * Prepares system prior to attempting to install module
- * @param XoopsModule $module {@link XoopsModule}
+ * @param \XoopsModule $module {@link XoopsModule}
  *
  * @return bool true if ready to install, false if not
  */
 function xoops_module_pre_install_apcal(\XoopsModule $module)
 {
-    include __DIR__ . '/common.php';
+    require __DIR__ . '/common.php';
     /** @var \XoopsModules\Apcal\Utility $utility */
     $utility = new \XoopsModules\Apcal\Utility();
     //check for minimum XOOPS version
     $xoopsSuccess = $utility::checkVerXoops($module);
 
     // check for minimum PHP version
-    $phpSuccess   = $utility::checkVerPhp($module);
+    $phpSuccess = $utility::checkVerPhp($module);
 
-    if (false !== $xoopsSuccess && false !==  $phpSuccess) {
-        $moduleTables =& $module->getInfo('tables');
+    if (false !== $xoopsSuccess && false !== $phpSuccess) {
+        $moduleTables = &$module->getInfo('tables');
         foreach ($moduleTables as $table) {
             $GLOBALS['xoopsDB']->queryF('DROP TABLE IF EXISTS ' . $GLOBALS['xoopsDB']->prefix($table) . ';');
         }
@@ -49,12 +48,14 @@ function xoops_module_pre_install_apcal(\XoopsModule $module)
 
     return $xoopsSuccess && $phpSuccess;
 }
+
 function xoops_module_install_apcal(\XoopsModule $xoopsModule)
 {
-    require_once  dirname(dirname(dirname(__DIR__))) . '/mainfile.php';
-    require_once  dirname(__DIR__) . '/include/config.php';
+    require_once dirname(dirname(dirname(__DIR__))) . '/mainfile.php';
+    require_once dirname(__DIR__) . '/include/config.php';
 
     $moduleDirName = basename(dirname(__DIR__));
+    /** @var \XoopsModules\Apcal\Helper $helper */
     $helper = \XoopsModules\Apcal\Helper::getInstance();
 
     // Load language files
@@ -106,7 +107,7 @@ function xoops_module_install_apcal(\XoopsModule $xoopsModule)
 
     //  ---  COPY blank.png FILES ---------------
     if (count($configurator->copyBlankFiles) > 0) {
-        $file =  dirname(__DIR__) . '/assets/images/blank.png';
+        $file = dirname(__DIR__) . '/assets/images/blank.png';
         foreach (array_keys($configurator->copyBlankFiles) as $i) {
             $dest = $configurator->copyBlankFiles[$i] . '/blank.png';
             $utility::copyFile($file, $dest);
@@ -144,7 +145,7 @@ function makeShortCatAftertransfer()
 function transferTable($tablename)
 {
     $errors = '';
-    $result = $GLOBALS['xoopsDB']->queryF("SELECT * FROM {$GLOBALS['xoopsDB']->prefix('pical_'.$tablename)}");
+    $result = $GLOBALS['xoopsDB']->queryF("SELECT * FROM {$GLOBALS['xoopsDB']->prefix('pical_' . $tablename)}");
     while (false !== ($row = $GLOBALS['xoopsDB']->fetchArray($result))) {
         $fields  = '';
         $values  = '';
@@ -157,7 +158,7 @@ function transferTable($tablename)
             }
         }
 
-        if (!$GLOBALS['xoopsDB']->queryF("INSERT INTO {$GLOBALS['xoopsDB']->prefix('apcal_'.$tablename)}($fields) VALUES ({$values})")) {
+        if (!$GLOBALS['xoopsDB']->queryF("INSERT INTO {$GLOBALS['xoopsDB']->prefix('apcal_' . $tablename)}($fields) VALUES ({$values})")) {
             $errors .= '&nbsp;&nbsp;' . $row['id'] . ' => ' . $GLOBALS['xoopsDB']->error() . '<br>';
         }
     }
@@ -167,9 +168,9 @@ function transferTable($tablename)
 
 function setDefaultPerm()
 {
-    $moduleHnd    = xoops_getHandler('module');
-    $module       = $moduleHnd->getByDirname('apcal');
-    $modid        = $module->getVar('mid');
+    $moduleHnd        = xoops_getHandler('module');
+    $module           = $moduleHnd->getByDirname('apcal');
+    $modid            = $module->getVar('mid');
     $grouppermHandler = xoops_getHandler('groupperm');
     //$item_ids = array(1, 2, 4, 8, 32);
 
@@ -278,11 +279,11 @@ function makeShort($str)
         'ý' => 'y',
         'ý' => 'y',
         'þ' => 'b',
-        'ÿ' => 'y'
+        'ÿ' => 'y',
     ];
 
     $str = strip_tags($str);
     $str = strtr($str, $replacements);
 
-    return str_replace([' ', '-', '/', "\\", "'", '"', "\r", "\n", '&', '?', '!', '%', ',', '.'], '', $str);
+    return str_replace([' ', '-', '/', '\\', "'", '"', "\r", "\n", '&', '?', '!', '%', ',', '.'], '', $str);
 }

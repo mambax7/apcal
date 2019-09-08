@@ -19,7 +19,6 @@
  */
 
 use Xmf\Request;
-use XoopsModules\Apcal;
 
 require_once __DIR__ . '/admin_header.php';
 //require_once  dirname(dirname(dirname(__DIR__))) . '/include/cp_header.php';
@@ -48,15 +47,14 @@ xoops_loadLanguage('admin', 'system');
 $language = $xoopsConfig['language'];
 
 if (Request::hasVar('submit', 'POST')) {
-
     // Ticket Check
-//    if (!$GLOBALS['xoopsSecurity']->check(true, false, 'myblocksadmin')) {
-//if (!$GLOBALS['xoopsSecurity']->check(true, REQUEST['myblocksadmin'])) {
+    //    if (!$GLOBALS['xoopsSecurity']->check(true, false, 'myblocksadmin')) {
+    //if (!$GLOBALS['xoopsSecurity']->check(true, REQUEST['myblocksadmin'])) {
     if (!$GLOBALS['xoopsSecurity']->check()) {
         redirect_header(XOOPS_URL . '/', 3, $GLOBALS['xoopsSecurity']->getErrors());
     }
 
-    include __DIR__ . '/mygroupperm.php';
+    require __DIR__ . '/mygroupperm.php';
     redirect_header(XOOPS_URL . "/modules/$moduleDirName/admin/cat2groupperm.php", 1, _AM_APCALAM_APCALDBUPDATED);
 }
 

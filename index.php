@@ -21,10 +21,9 @@
 
 use XoopsModules\Apcal;
 
-require_once  dirname(dirname(__DIR__)) . '/mainfile.php';
+require_once dirname(dirname(__DIR__)) . '/mainfile.php';
 require_once __DIR__ . '/header.php';
 $original_level = error_reporting(E_ALL ^ E_NOTICE);
-
 
 /** @var Apcal\Helper $helper */
 $helper = Apcal\Helper::getInstance();
@@ -37,7 +36,7 @@ if ((!isset($_GET['action']) || '' === $_GET['action']) && isset($_GET['cid']) &
         $cat         = $GLOBALS['xoopsDB']->fetchObject($cat);
         $_GET['cid'] = $cat->cid;
     }
-} elseif (isset($_GET['action']) && 'View' === $_GET['action'] && !is_numeric($_GET['event_id'])
+} elseif (\Xmf\Request::hasVar('action', 'GET') && 'View' === $_GET['action'] && !is_numeric($_GET['event_id'])
           && isset($_GET['date'])) {
     $summary = addslashes($_GET['event_id']);
     $date    = isset($_GET['date']) ? strtotime($_GET['date']) : time();
@@ -81,7 +80,7 @@ if (empty($_GET['action']) && !empty($_GET['event_id'])) {
     $_GET['action'] = 'View';
 }
 
-if (isset($_GET['action'])) {
+if (\Xmf\Request::hasVar('action', 'GET')) {
     $action = $_GET['action'];
 } else {
     $action = '';
@@ -100,7 +99,7 @@ $cal->images_path = "$mod_path/assets/images/$skin_folder";
 $cal->frame_css   = 'border-color: ' . $cal->frame_css . ';';
 
 // �ǡ����١��������ط��ν���ʤ�����⡢Location�����Ф���
-if (isset($_POST['update'])) {
+if (\Xmf\Request::hasVar('update', 'POST')) {
     // ����
     if (!$editable) {
         die(_MB_APCAL_ERR_NOPERMTOUPDATE);
@@ -110,7 +109,7 @@ if (isset($_POST['update'])) {
         redirect_header(XOOPS_URL . '/', 3, $GLOBALS['xoopsSecurity']->getErrors());
     }
     $cal->update_schedule((string)$admission_update_sql, $whr_sql_append);
-} elseif (isset($_POST['insert']) || isset($_POST['saveas'])) {
+} elseif (\Xmf\Request::hasVar('insert', 'POST') || isset($_POST['saveas'])) {
     // saveas �ޤ��� ������Ͽ
     if (!$insertable) {
         die(_MD_APCAL_ERR_NOPERMTOINSERT);
@@ -166,7 +165,7 @@ if ('View' === $action) {
 }
 
 // XOOPS�إå�����
-include XOOPS_ROOT_PATH . '/header.php';
+require XOOPS_ROOT_PATH . '/header.php';
 $xoopsTpl->assign('xoops_module_header', '<link rel="stylesheet" type="text/css" href="' . XOOPS_URL . '/modules/apcal/assets/css/apcal.css">' . $xoopsTpl->get_template_vars('xoops_module_header'));
 
 // embed style sheet �ν��� (thx Ryuji)
@@ -194,7 +193,7 @@ if ('Edit' === $action) {
         $cal->jscalendar = 'jscalendar';
     } elseif (is_file(XOOPS_ROOT_PATH . '/include/calendarjs.php')) {
         // older jscalendar in XOOPS 2.0.x core
-        include XOOPS_ROOT_PATH . '/include/calendarjs.php';
+        require XOOPS_ROOT_PATH . '/include/calendarjs.php';
         $cal->jscalendar = 'xoops';
     } elseif (is_dir(XOOPS_ROOT_PATH . '/class/calendar')) {
         // jscalendar in XOOPS 2.2 core
@@ -208,7 +207,7 @@ if ('Edit' === $action) {
         $cal->jscalendar = 'jscalendar';
     } else {
         // older jscalendar in XOOPS 2.0.x core
-        include XOOPS_ROOT_PATH . '/include/calendarjs.php';
+        require XOOPS_ROOT_PATH . '/include/calendarjs.php';
         $cal->jscalendar = 'xoops';
     }
     $xoopsTpl->assign('xoops_module_header', '<script type="text/javascript" src="' . XOOPS_URL . '/modules/apcal/ajax/pictures.js"></script>' . $xoopsTpl->get_template_vars('xoops_module_header'));
@@ -222,14 +221,14 @@ if ('Edit' === $action) {
     $xoopsTpl->assign('skinpath', (string)$cal->images_url);
     $xoopsTpl->assign('lang_print', _MD_APCAL_ALT_PRINTTHISEVENT);
     $_GET['event_id'] = $_GET['event_id'] = $cal->original_id;
-    include XOOPS_ROOT_PATH . '/include/comment_view.php';
+    require XOOPS_ROOT_PATH . '/include/comment_view.php';
     // patch for commentAny
     $commentany = $xoopsTpl->get_template_vars('commentany');
     if (!empty($commentany['com_itemid'])) {
         $commentany['com_itemid'] = $cal->original_id;
         $xoopsTpl->assign('commentany', $commentany);
     }
-} elseif (isset($_POST['output_ics_confirm']) && !empty($_POST['ids']) && is_array($_POST['ids'])) {
+} elseif (\Xmf\Request::hasVar('output_ics_confirm', 'POST') && !empty($_POST['ids']) && is_array($_POST['ids'])) {
     echo $cal->output_ics_confirm("$mod_url/");
 } else {
     switch ($smode) {
@@ -286,7 +285,7 @@ if ('View' === $action) {
     $title = $event['summary'];
     $title .= !empty($categories) ? ' - ' . implode(' ', $categories) : '';
     $title .= !empty($event['location']) ? ' - ' . $event['location'] : '';
-    $title = strlen($title) > 60 ? substr($title, 0, 59) : $title;
+    $title = mb_strlen($title) > 60 ? mb_substr($title, 0, 59) : $title;
     $xoopsTpl->assign('xoops_pagetitle', $title);
 
     $xoopsTpl->assign('showMap', $cal->enableeventmap);
@@ -299,7 +298,7 @@ if ('View' === $action) {
     $catNameTitle = isset($_GET['cid']) && $_GET['cid'] > 0 ? $cat['cat_title'] : $xoopsModule->getVar('name');
 
     $pageTitle = $catNameTitle . ' ' . $dateTitle;
-    $pageTitle = strlen($pageTitle) > 60 ? substr($pageTitle, 0, 59) : $pageTitle;
+    $pageTitle = mb_strlen($pageTitle) > 60 ? mb_substr($pageTitle, 0, 59) : $pageTitle;
 
     $metaDesc = explode(' ', $catNameTitle . ' ' . $dateTitle . ' - ' . strip_tags($cat['cat_desc']));
     $metaDesc = array_slice($metaDesc, 0, 20);
@@ -321,6 +320,7 @@ if ('View' === $action) {
         $tpl->assign('GMzoom', $cal->gmzoom);
         $tpl->assign('GMheight', $cal->gmheight . 'px');
         $tpl->assign('GMPoints', $cal->gmPoints);
+        /** @var \XoopsModules\Apcal\Helper $helper */
         $helper = \XoopsModules\Apcal\Helper::getInstance();
         $tpl->assign('api_key', $helper->getConfig('apcal_mapsapi'));
         if ('List' === $smode) {
@@ -381,4 +381,4 @@ if (isset($calDisplay)) {
 error_reporting($original_level);
 
 // XOOPS footer
-include XOOPS_ROOT_PATH . '/footer.php';
+require XOOPS_ROOT_PATH . '/footer.php';

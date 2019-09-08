@@ -14,7 +14,6 @@
  */
 class phpthumb_functions
 {
-
     /**
      * @param $functionname
      * @return bool
@@ -27,7 +26,7 @@ class phpthumb_functions
                 $get_defined_functions = get_defined_functions();
             }
 
-            return in_array(strtolower($functionname), $get_defined_functions['user']);
+            return in_array(mb_strtolower($functionname), $get_defined_functions['user']);
         }
 
         return function_exists($functionname);
@@ -45,7 +44,7 @@ class phpthumb_functions
                 $get_defined_functions = get_defined_functions();
             }
 
-            return in_array(strtolower($functionname), $get_defined_functions['internal']);
+            return in_array(mb_strtolower($functionname), $get_defined_functions['internal']);
         }
 
         return function_exists($functionname);
@@ -196,13 +195,13 @@ class phpthumb_functions
                 'EXIF Support'           => '',
                 'EXIF Version'           => '',
                 'Supported EXIF Version' => '',
-                'Supported filetypes'    => ''
+                'Supported filetypes'    => '',
             ];
             $phpinfo_array = self::phpinfo_array();
             foreach ($phpinfo_array as $line) {
                 $line = trim(strip_tags($line));
                 foreach ($exif_info as $key => $value) {
-                    if (0 === strpos($line, $key)) {
+                    if (0 === mb_strpos($line, $key)) {
                         $newvalue        = trim(str_replace($key, '', $line));
                         $exif_info[$key] = $newvalue;
                     }
@@ -246,7 +245,7 @@ class phpthumb_functions
             'jpeg' => 'image/jpeg',                // IMAGETYPE_JPEG
             'png'  => 'image/png',                 // IMAGETYPE_PNG
             'bmp'  => 'image/bmp',                 // IMAGETYPE_BMP
-            'ico'  => 'image/x-icon'
+            'ico'  => 'image/x-icon',
         ];
 
         return (isset($image_type_to_mime_type[$imagetype]) ? $image_type_to_mime_type[$imagetype] : false);
@@ -275,10 +274,10 @@ class phpthumb_functions
      */
     public static function HexCharDisplay($string)
     {
-        $len    = strlen($string);
+        $len    = mb_strlen($string);
         $output = '';
         for ($i = 0; $i < $len; $i++) {
-            $output .= ' 0x' . str_pad(dechex(ord($string{$i})), 2, '0', STR_PAD_LEFT);
+            $output .= ' 0x' . str_pad(dechex(ord($string[$i])), 2, '0', STR_PAD_LEFT);
         }
 
         return $output;
@@ -305,9 +304,9 @@ class phpthumb_functions
     {
         if (self::version_compare_replacement(PHP_VERSION, '4.3.2', '>=') && (false !== $alpha)) {
             return imagecolorallocatealpha($gdimg_hexcolorallocate, $R, $G, $B, (int)$alpha);
-        } else {
-            return imagecolorallocate($gdimg_hexcolorallocate, $R, $G, $B);
         }
+
+        return imagecolorallocate($gdimg_hexcolorallocate, $R, $G, $B);
     }
 
     /**
@@ -321,15 +320,15 @@ class phpthumb_functions
         &$gdimg_hexcolorallocate,
         $HexColorString,
         $dieOnInvalid = false,
-        $alpha = false
-    ) {
+        $alpha = false)
+    {
         if (!is_resource($gdimg_hexcolorallocate)) {
             die('$gdimg_hexcolorallocate is not a GD resource in ImageHexColorAllocate()');
         }
         if (self::IsHexColor($HexColorString)) {
-            $R = hexdec(substr($HexColorString, 0, 2));
-            $G = hexdec(substr($HexColorString, 2, 2));
-            $B = hexdec(substr($HexColorString, 4, 2));
+            $R = hexdec(mb_substr($HexColorString, 0, 2));
+            $G = hexdec(mb_substr($HexColorString, 2, 2));
+            $B = hexdec(mb_substr($HexColorString, 4, 2));
 
             return self::ImageColorAllocateAlphaSafe($gdimg_hexcolorallocate, $R, $G, $B, $alpha);
         }
@@ -346,7 +345,7 @@ class phpthumb_functions
      */
     public static function HexColorXOR($hexcolor)
     {
-        return strtoupper(str_pad(dechex(~hexdec($hexcolor) & 0xFFFFFF), 6, '0', STR_PAD_LEFT));
+        return mb_strtoupper(str_pad(dechex(~hexdec($hexcolor) & 0xFFFFFF), 6, '0', STR_PAD_LEFT));
     }
 
     /**
@@ -429,8 +428,8 @@ class phpthumb_functions
         $maxwidth = null,
         $maxheight = null,
         $allow_enlarge = true,
-        $allow_reduce = true
-    ) {
+        $allow_reduce = true)
+    {
         $maxwidth  = (null === $maxwidth ? $width : $maxwidth);
         $maxheight = (null === $maxheight ? $height : $maxheight);
         $scale_x   = 1;
@@ -475,8 +474,8 @@ class phpthumb_functions
         $dst_w,
         $dst_h,
         $src_w,
-        $src_h
-    ) {
+        $src_h)
+    {
         // ron at korving dot demon dot nl
         // http://www.php.net/imagecopyresampled
 
@@ -566,8 +565,8 @@ class phpthumb_functions
         $src_y,
         $src_w,
         $src_h,
-        $opacity_pct = 100
-    ) {
+        $opacity_pct = 100)
+    {
         $opacipct = $opacity_pct / 100;
         for ($x = $src_x; $x < $src_w; $x++) {
             for ($y = $src_y; $y < $src_h; $y++) {
@@ -576,13 +575,9 @@ class phpthumb_functions
                 $alphapct     = $OverlayPixel['alpha'] / 127;
                 $overlaypct   = (1 - $alphapct) * $opacipct;
 
-                $newcolor = self::ImageColorAllocateAlphaSafe(
-                    $dst_im,
-                    round($RealPixel['red'] * (1 - $overlaypct)) + ($OverlayPixel['red'] * $overlaypct),
-                    round($RealPixel['green'] * (1 - $overlaypct)) + ($OverlayPixel['green'] * $overlaypct),
-                                                                            round($RealPixel['blue'] * (1 - $overlaypct)) + ($OverlayPixel['blue'] * $overlaypct), //$RealPixel['alpha']);
-                                                                            0
-                );
+                $newcolor = self::ImageColorAllocateAlphaSafe($dst_im, round($RealPixel['red'] * (1 - $overlaypct)) + ($OverlayPixel['red'] * $overlaypct), round($RealPixel['green'] * (1 - $overlaypct)) + ($OverlayPixel['green'] * $overlaypct),
+                                                              round($RealPixel['blue'] * (1 - $overlaypct)) + ($OverlayPixel['blue'] * $overlaypct), //$RealPixel['alpha']);
+                                                              0);
 
                 imagesetpixel($dst_im, $dst_x + $x, $dst_y + $y, $newcolor);
             }
@@ -630,8 +625,8 @@ class phpthumb_functions
     {
         static $DisabledFunctions = null;
         if (null === $DisabledFunctions) {
-            $disable_functions_local  = explode(',', strtolower(@ini_get('disable_functions')));
-            $disable_functions_global = explode(',', strtolower(@get_cfg_var('disable_functions')));
+            $disable_functions_local  = explode(',', mb_strtolower(@ini_get('disable_functions')));
+            $disable_functions_global = explode(',', mb_strtolower(@get_cfg_var('disable_functions')));
             foreach ($disable_functions_local as $key => $value) {
                 $DisabledFunctions[trim($value)] = 'local';
             }
@@ -644,7 +639,7 @@ class phpthumb_functions
             }
         }
 
-        return isset($DisabledFunctions[strtolower($function)]);
+        return isset($DisabledFunctions[mb_strtolower($function)]);
     }
 
     /**
@@ -674,13 +669,11 @@ class phpthumb_functions
                     $returnvalue = ob_get_contents();
                     ob_end_clean();
                     break;
-
                 case 'exec':
                     $output      = [];
                     $lastline    = $execfunction($command, $output);
                     $returnvalue = implode("\n", $output);
                     break;
-
                 case 'shell_exec':
                     ob_start();
                     $returnvalue = $execfunction($command);
@@ -724,7 +717,7 @@ class phpthumb_functions
                 'clength',
                 'unparsed_uri',
                 'mtime',
-                'request_time'
+                'request_time',
             ];
             if ($apacheLookupURIobject = @apache_lookup_uri($filename)) {
                 $apacheLookupURIarray = [];
@@ -747,7 +740,7 @@ class phpthumb_functions
         static $isbundled = null;
         if (null === $isbundled) {
             $gd_info   = gd_info();
-            $isbundled = (false !== strpos($gd_info['GD Version'], 'bundled'));
+            $isbundled = (false !== mb_strpos($gd_info['GD Version'], 'bundled'));
         }
 
         return $isbundled;
@@ -767,7 +760,7 @@ class phpthumb_functions
                 $cache_gd_version[0] = (float)$matches[1];     // e.g. "2.0" (not "bundled (2.0.15 compatible)")
             } else {
                 $cache_gd_version[1] = $gd_info['GD Version'];                       // e.g. "1.6.2 or higher"
-                $cache_gd_version[0] = (float)substr($gd_info['GD Version'], 0, 3); // e.g. "1.6" (not "1.6.2 or higher")
+                $cache_gd_version[0] = (float)mb_substr($gd_info['GD Version'], 0, 3); // e.g. "1.6" (not "1.6.2 or higher")
             }
         }
 
@@ -843,7 +836,7 @@ class phpthumb_functions
             do {
                 $buffer  = fread($fp, 8192);
                 $rawData .= $buffer;
-            } while (strlen($buffer) > 0);
+            } while (mb_strlen($buffer) > 0);
             fclose($fp);
 
             return md5($rawData);
@@ -907,11 +900,11 @@ class phpthumb_functions
      */
     public static function CaseInsensitiveInArray($needle, $haystack)
     {
-        $needle = strtolower($needle);
+        $needle = mb_strtolower($needle);
         foreach ($haystack as $key => $value) {
             if (is_array($value)) {
                 // skip?
-            } elseif ($needle == strtolower($value)) {
+            } elseif ($needle == mb_strtolower($value)) {
                 return true;
             }
         }
@@ -966,7 +959,6 @@ class phpthumb_functions
                             case 200:
                                 // great, continue
                                 break;
-
                             default:
                                 $errstr = $errno . ' ' . $errstr . ($header_newlocation ? '; Location: ' . $header_newlocation : '');
                                 fclose($fp);
@@ -1038,7 +1030,7 @@ class phpthumb_functions
     {
         $parsedURL = @parse_url($url);
         if (!@$parsedURL['port']) {
-            switch (strtolower(@$parsedURL['scheme'])) {
+            switch (mb_strtolower(@$parsedURL['scheme'])) {
                 case 'ftp':
                     $parsedURL['port'] = 21;
                     break;
@@ -1109,8 +1101,8 @@ class phpthumb_functions
             curl_setopt($ch, CURLOPT_TIMEOUT, $timeout);
             $rawData = curl_exec($ch);
             curl_close($ch);
-            if (strlen($rawData) > 0) {
-                $error .= 'CURL succeeded (' . strlen($rawData) . ' bytes); ';
+            if (mb_strlen($rawData) > 0) {
+                $error .= 'CURL succeeded (' . mb_strlen($rawData) . ' bytes); ';
 
                 return $rawData;
             }
@@ -1130,7 +1122,7 @@ class phpthumb_functions
                 do {
                     $buffer  = fread($fp, 8192);
                     $rawData .= $buffer;
-                } while (strlen($buffer) > 0);
+                } while (mb_strlen($buffer) > 0);
                 fclose($fp);
             } else {
                 $error_fopen .= trim(strip_tags(ob_get_contents()));
@@ -1138,7 +1130,7 @@ class phpthumb_functions
             ob_end_clean();
             $error .= $error_fopen;
             if (!$error_fopen) {
-                $error .= '; "allow_url_fopen" succeeded (' . strlen($rawData) . ' bytes); ';
+                $error .= '; "allow_url_fopen" succeeded (' . mb_strlen($rawData) . ' bytes); ';
 
                 return $rawData;
             }
@@ -1161,8 +1153,8 @@ class phpthumb_functions
         $open_basedirs      = preg_split('#[;:]#', ini_get('open_basedir'));
         foreach ($open_basedirs as $key => $open_basedir) {
             if (preg_match('#^' . preg_quote($open_basedir) . '#', $dirname)
-                && (strlen($dirname) > strlen($open_basedir))) {
-                $startoffset = substr_count($open_basedir, DIRECTORY_SEPARATOR) + 1;
+                && (mb_strlen($dirname) > mb_strlen($open_basedir))) {
+                $startoffset = mb_substr_count($open_basedir, DIRECTORY_SEPARATOR) + 1;
                 break;
             }
         }
@@ -1207,7 +1199,6 @@ class phpthumb_functions
                         case '.':
                         case '..':
                             break;
-
                         default:
                             $AllFiles[] = $fullfilename;
                             $subfiles   = self::GetAllFilesInSubfolders($fullfilename);
@@ -1216,9 +1207,8 @@ class phpthumb_functions
                             }
                             break;
                     }
-                } else {
-                    // ignore?
                 }
+                // ignore?
             }
             closedir($dirhandle);
         }
@@ -1248,10 +1238,10 @@ class phpthumb_functions
     public static function PasswordStrength($password)
     {
         $strength = 0;
-        $strength += strlen(preg_replace('#[^a-z]#', '', $password)) * 0.5; // lowercase characters are weak
-        $strength += strlen(preg_replace('#[^A-Z]#', '', $password)) * 0.8; // uppercase characters are somewhat better
-        $strength += strlen(preg_replace('#[^0-9]#', '', $password)) * 1.0; // numbers are somewhat better
-        $strength += strlen(preg_replace('#[a-zA-Z0-9]#', '', $password)) * 2.0; // other non-alphanumeric characters are best
+        $strength += mb_strlen(preg_replace('#[^a-z]#', '', $password)) * 0.5; // lowercase characters are weak
+        $strength += mb_strlen(preg_replace('#[^A-Z]#', '', $password)) * 0.8; // uppercase characters are somewhat better
+        $strength += mb_strlen(preg_replace('#[^0-9]#', '', $password)) * 1.0; // numbers are somewhat better
+        $strength += mb_strlen(preg_replace('#[a-zA-Z0-9]#', '', $password)) * 2.0; // other non-alphanumeric characters are best
 
         return $strength;
     }
@@ -1280,14 +1270,14 @@ if (!function_exists('gd_info')) {
                 'JPG Support'        => false,
                 'PNG Support'        => false,
                 'WBMP Support'       => false,
-                'XBM Support'        => false
+                'XBM Support'        => false,
             ];
             $phpinfo_array = phpthumb_functions::phpinfo_array();
             foreach ($phpinfo_array as $line) {
                 $line = trim(strip_tags($line));
                 foreach ($gd_info as $key => $value) {
                     //if (strpos($line, $key) !== false) {
-                    if (0 === strpos($line, $key)) {
+                    if (0 === mb_strpos($line, $key)) {
                         $newvalue      = trim(str_replace($key, '', $line));
                         $gd_info[$key] = $newvalue;
                     }
@@ -1314,7 +1304,7 @@ if (!function_exists('gd_info')) {
                 if (function_exists('ImageCreateFromGIF')) {
                     if ($tempfilename = phpthumb::phpThumb_tempnam()) {
                         if ($fp_tempfile = @fopen($tempfilename, 'wb')) {
-                            fwrite($fp_tempfile, base64_decode('R0lGODlhAQABAIAAAH//AP///ywAAAAAAQABAAACAUQAOw==')); // very simple 1px GIF file base64-encoded as string
+                            fwrite($fp_tempfile, base64_decode('R0lGODlhAQABAIAAAH//AP///ywAAAAAAQABAAACAUQAOw==', true)); // very simple 1px GIF file base64-encoded as string
                             fclose($fp_tempfile);
 
                             // if we can convert the GIF file to a GD image then GIF create support must be enabled, otherwise it's not
@@ -1360,8 +1350,8 @@ if (!function_exists('preg_quote')) {
         static $preg_quote_array = [];
         if (empty($preg_quote_array)) {
             $escapeables = '.\\+*?[^]$(){}=!<>|:';
-            for ($i = 0, $iMax = strlen($escapeables); $i < $iMax; $i++) {
-                $strtr_preg_quote[$escapeables{$i}] = $delimiter . $escapeables{$i};
+            for ($i = 0, $iMax = mb_strlen($escapeables); $i < $iMax; $i++) {
+                $strtr_preg_quote[$escapeables[$i]] = $delimiter . $escapeables[$i];
             }
         }
 
@@ -1385,7 +1375,7 @@ if (!function_exists('file_get_contents')) {
             do {
                 $buffer  = fread($fp, 8192);
                 $rawData .= $buffer;
-            } while (strlen($buffer) > 0);
+            } while (mb_strlen($buffer) > 0);
             fclose($fp);
 
             return $rawData;

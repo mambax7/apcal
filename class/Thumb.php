@@ -1,6 +1,6 @@
-<?php namespace XoopsModules\Apcal;
+<?php
 
-use  XoopsModules\Apcal;
+namespace XoopsModules\Apcal;
 
 /**
  * Class thumb

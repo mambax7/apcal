@@ -4,6 +4,7 @@ Module developer : Antiques Promotion <http://xoops.antiquespromotion.ca>
 <h5>2.23 Beta 1  [NOT RELEASED]</h5>  Dev: Xoops 2.5.9, PHP 7.2.4
 <hr>
 - namespaces, autoloading (mamba)
+- blocks admin (mamba)
 - WORK IN PROGRESS
 
 2.22 Beta 2  NOT RELEASED

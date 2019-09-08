@@ -17,16 +17,13 @@
  * @author       XOOPS Development Team,
  * @author       GIJ=CHECKMATE (PEAK Corp. http://www.peak.ne.jp/)
  */
-
-use XoopsModules\Apcal;
-
-require_once  dirname(dirname(dirname(__DIR__))) . '/include/cp_header.php';
+require_once __DIR__ . '/admin_header.php';
 //require_once  dirname(__DIR__) . '/include/gtickets.php';
 require_once XOOPS_ROOT_PATH . '/class/template.php';
 
-require_once  dirname(__DIR__) . '/include/Text_Diff.php';
-require_once  dirname(__DIR__) . '/include/Text_Diff_Renderer.php';
-require_once  dirname(__DIR__) . '/include/Text_Diff_Renderer_unified.php';
+require_once dirname(__DIR__) . '/include/Text_Diff.php';
+require_once dirname(__DIR__) . '/include/Text_Diff_Renderer.php';
+require_once dirname(__DIR__) . '/include/Text_Diff_Renderer_unified.php';
 
 $xoops_system_path = XOOPS_ROOT_PATH . '/modules/system';
 
@@ -54,8 +51,8 @@ if (!is_object($xoopsModule)) {
 }
 
 // check access right (needs system_admin of tplset)
-$syspermHandler = xoops_getHandler('groupperm');
-if (!$syspermHandler->checkRight('system_admin', XOOPS_SYSTEM_TPLSET, $xoopsUser->getGroups())) {
+$grouppermHandler = xoops_getHandler('groupperm');
+if (!$grouppermHandler->checkRight('system_admin', XOOPS_SYSTEM_TPLSET, $xoopsUser->getGroups())) {
     redirect_header(XOOPS_URL . '/user.php', 1, _NOPERM);
 }
 
@@ -84,7 +81,7 @@ if (!empty($_POST['do_modify'])) {
     }
 
     $result = $db->query('SELECT tpl_id FROM ' . $db->prefix('tplfile') . " WHERE tpl_file='$tpl_file4sql' AND tpl_tplset='$tpl_tplset4sql'");
-    while (false !== (list($tpl_id) = $db->fetchRow($result))) {
+    while (list($tpl_id) = $db->fetchRow($result)) {
         $sql = 'UPDATE ' . $db->prefix('tplsource') . " SET tpl_source='" . addslashes($myts->stripSlashesGPC($_POST['tpl_source'])) . "' WHERE tpl_id=$tpl_id";
         if (!$db->query($sql)) {
             die('SQL Error');
@@ -98,7 +95,7 @@ if (!empty($_POST['do_modify'])) {
 xoops_cp_header();
 $mymenu_fake_uri = "/admin/mytplsadmin.php?dirname={$tpl['tpl_module']}";
 if (file_exists('./mymenu.php')) {
-    include __DIR__ . '/mymenu.php';
+    require __DIR__ . '/mymenu.php';
 }
 
 echo "<h3 style='text-align:left;'>" . _MD_APCAL_TPLSETS . ' : ' . htmlspecialchars($tpl['tpl_type'], ENT_QUOTES) . ' : ' . htmlspecialchars($tpl['tpl_file'], ENT_QUOTES) . ' (' . htmlspecialchars($tpl['tpl_tplset'], ENT_QUOTES) . ")</h3>\n";

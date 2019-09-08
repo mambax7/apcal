@@ -26,7 +26,6 @@ use XoopsModules\Apcal;
  * @param $form_title
  * @param $action
  */
-
 function display_edit_form($cat, $form_title, $action)
 {
     global $cattree;
@@ -53,7 +52,7 @@ function display_edit_form($cat, $form_title, $action)
             'cols'   => 60,
             'width'  => '100%',
             'height' => '400px',
-            'editor' => 'tinymce'
+            'editor' => 'tinymce',
         ];
         $tarea_tray->addElement(new \XoopsFormEditor('', 'cat_desc', $configs, false, $onfailure = 'textarea'));
     } else {
@@ -89,10 +88,10 @@ function display_edit_form($cat, $form_title, $action)
     $form->addElement(new \XoopsFormLabel(_AM_APCAL_CAT_TH_LASTMODIFY, formatTimestamp($cat->udtstamp)));
 
     // Buttons
-    $button_tray = new \XoopsFormElementTray('', '&nbsp;');
-    $button_tray->addElement(new \XoopsFormButton('', 'submit', _SUBMIT, 'submit'));
-    $button_tray->addElement(new \XoopsFormButton('', 'reset', _CANCEL, 'reset'));
-    $form->addElement($button_tray);
+    $buttonTray = new \XoopsFormElementTray('', '&nbsp;');
+    $buttonTray->addElement(new \XoopsFormButton('', 'submit', _SUBMIT, 'submit'));
+    $buttonTray->addElement(new \XoopsFormButton('', 'reset', _CANCEL, 'reset'));
+    $form->addElement($buttonTray);
 
     // Ticket
     //    $GLOBALS['xoopsGTicket']->addTicketXoopsFormElement($form, __LINE__);
@@ -120,8 +119,8 @@ function rebuild_cat_tree($cat_table)
 
     $loop_check_for_key = 1024;
     for ($key = 1; $key < $sizeofcats; ++$key) {
-        $cat    =& $cats[$key];
-        $target =& $cats[0];
+        $cat    = &$cats[$key];
+        $target = &$cats[0];
         if (--$loop_check_for_key < 0) {
             $loop_check = -1;
         } else {
@@ -147,13 +146,13 @@ function rebuild_cat_tree($cat_table)
                 --$key;
                 break;
             }
-            $target =& $cats[$target['next_key']];
+            $target = &$cats[$target['next_key']];
         }
     }
 
-    $cat =& $cats[0];
+    $cat = &$cats[0];
     for ($weight = 1; $weight < $sizeofcats; ++$weight) {
-        $cat =& $cats[$cat['next_key']];
+        $cat = &$cats[$cat['next_key']];
         $GLOBALS['xoopsDB']->query("UPDATE $cat_table SET weight=" . ($weight * 10) . ",cat_depth={$cat['depth']} WHERE cid={$cat['cid']}");
     }
 }
@@ -193,20 +192,19 @@ $cal = new Apcal\ApcalXoops('', $xoopsConfig['language'], true);
 
 // setting properties of APCal
 $cal->conn = $conn;
-include  dirname(__DIR__) . '/include/read_configs.php';
+require dirname(__DIR__) . '/include/read_configs.php';
 $cal->base_url    = $mod_url;
 $cal->base_path   = $mod_path;
 $cal->images_url  = "$mod_url/assets/images/$skin_folder";
 $cal->images_path = "$mod_path/assets/images/$skin_folder";
 
 // XOOPS関連の初期化
-$myts         = \MyTextSanitizer::getInstance();
-$cattree      = new Apcal\Tree($cal->cat_table, 'cid', 'pid');
+$myts             = \MyTextSanitizer::getInstance();
+$cattree          = new Apcal\Tree($cal->cat_table, 'cid', 'pid');
 $grouppermHandler = xoops_getHandler('groupperm');
 
 // データベース更新などがからむ処理
 if ('insert' === $action) {
-
     // Ticket Check
     if (!$GLOBALS['xoopsSecurity']->check()) {
         redirect_header(XOOPS_URL . '/', 3, $GLOBALS['xoopsSecurity']->getErrors());
@@ -220,7 +218,7 @@ if ('insert' === $action) {
         'canbemain'  => 'I:N:0',
         'cat_title'  => '255:J:1',
         'cat_desc'   => 'A:J:0',
-        'pid'        => 'I:N:0'
+        'pid'        => 'I:N:0',
     ];
     $sql  .= $cal->get_sql_set($cols);
     $sql  .= ",cat_shorttitle='" . $cal->makeShort(utf8_decode($_POST['cat_title'])) . "'";
@@ -233,7 +231,6 @@ if ('insert' === $action) {
     $cal->redirect("done=inserted&mes=$mes");
     exit;
 } elseif ('update' === $action && $_POST['cid'] > 0) {
-
     // Ticket Check
     if (!$GLOBALS['xoopsSecurity']->check()) {
         redirect_header(XOOPS_URL . '/', 3, $GLOBALS['xoopsSecurity']->getErrors());
@@ -248,7 +245,7 @@ if ('insert' === $action) {
         'canbemain'  => 'I:N:0',
         'cat_title'  => '255:J:1',
         'cat_desc'   => 'A:J:0',
-        'pid'        => 'I:N:0'
+        'pid'        => 'I:N:0',
     ];
     $sql  .= $cal->get_sql_set($cols);
     $sql  .= ",cat_shorttitle='" . $cal->makeShort(utf8_decode($_POST['cat_title'])) . "'";
@@ -262,7 +259,6 @@ if ('insert' === $action) {
     $cal->redirect("done=updated&mes=$mes");
     exit;
 } elseif (!empty($_POST['delcat'])) {
-
     // Ticket Check
     if (!$GLOBALS['xoopsSecurity']->check()) {
         redirect_header(XOOPS_URL . '/', 3, $GLOBALS['xoopsSecurity']->getErrors());
@@ -305,7 +301,6 @@ if ('insert' === $action) {
     $cal->redirect("done=deleted&mes=$mes");
     exit;
 } elseif (!empty($_POST['batch_update'])) {
-
     // Ticket Check
     if (!$GLOBALS['xoopsSecurity']->check()) {
         redirect_header(XOOPS_URL . '/', 3, $GLOBALS['xoopsSecurity']->getErrors());
@@ -335,14 +330,12 @@ xoops_cp_header();
 $adminObject->displayNavigation(basename(__FILE__));
 // 表示処理の振り分け
 if ('edit' === $disp && $cid > 0) {
-
     // ����оݥ��ƥ��꡼�ǡ����μ���
     $sql = "SELECT *,UNIX_TIMESTAMP(dtstamp) AS udtstamp FROM $cal->cat_table WHERE cid='$cid'";
     $crs = $GLOBALS['xoopsDB']->query($sql);
     $cat = $GLOBALS['xoopsDB']->fetchObject($crs);
     display_edit_form($cat, _AM_APCAL_MENU_CAT_EDIT, 'update');
 } elseif ('new' === $disp) {
-
     // ��������Ʊ�����Υ��֥������Ȥ��Ѱ�
 
     /**
@@ -367,7 +360,7 @@ if ('edit' === $disp && $cid > 0) {
 } else {
     echo '<h4>' . _AM_APCAL_MENU_CATEGORIES . "</h4>\n";
 
-   if (\Xmf\Request::hasVar('mes', 'GET')) {
+    if (\Xmf\Request::hasVar('mes', 'GET')) {
         echo "<p><style='color: blue; '>" . htmlspecialchars($_GET['mes'], ENT_QUOTES) . '</style></p>';
     }
 
@@ -396,7 +389,7 @@ if ('edit' === $disp && $cid > 0) {
         $oddeven = ('odd' === $oddeven ? 'even' : 'odd');
         extract($cat_node);
 
-        $prefix         = str_replace('.', '&nbsp;--', substr($prefix, 1));
+        $prefix         = str_replace('.', '&nbsp;--', mb_substr($prefix, 1));
         $enable_checked = $enabled ? 'checked' : '';
         $cid            = $cid;
         $cat_title      = $myts->htmlSpecialChars($cat_title);
@@ -405,7 +398,7 @@ if ('edit' === $disp && $cid > 0) {
       <tr>
         <td class='$oddeven' width='100%'><a href='?disp=edit&amp;cid=$cid'>$prefix&nbsp;$cat_title</a></td>
         <td class='$oddeven' align='center' nowrap='nowrap'>
-          <a href='$mod_url/index.php?action=Edit&amp;cid=$cid' target='_blank'><img src='$cal->images_url/addevent.gif'   alt='" . _AM_APCAL_CAT_ADD_EVENT . "' title='" . _AM_APCAL_CAT_ADD_EVENT .    "' border='0' width='14' height='12'></a>
+          <a href='$mod_url/index.php?action=Edit&amp;cid=$cid' target='_blank'><img src='$cal->images_url/addevent.gif'   alt='" . _AM_APCAL_CAT_ADD_EVENT . "' title='" . _AM_APCAL_CAT_ADD_EVENT . "' border='0' width='14' height='12'></a>
           &nbsp;
           <a href='?disp=edit&amp;cid=$cid'><img src='../assets/images/cat_edit.gif' width='18' height='15' alt='" . _AM_APCAL_MENU_CAT_EDIT . "' title='" . _AM_APCAL_MENU_CAT_EDIT . "'></a>
           &nbsp;

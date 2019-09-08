@@ -46,7 +46,6 @@ and the roundoff errors in the Gaussian blur process, are welcome.
  */
 class phpUnsharpMask
 {
-
     /**
      * @param $img
      * @param $amount
@@ -56,7 +55,6 @@ class phpUnsharpMask
      */
     public static function applyUnsharpMask(&$img, $amount, $radius, $threshold)
     {
-
         // $img is an image that is already created within php using
         // imgcreatetruecolor. No url! $img must be a truecolor image.
 
@@ -84,12 +82,11 @@ class phpUnsharpMask
             $matrix = [
                 [1, 2, 1],
                 [2, 4, 2],
-                [1, 2, 1]
+                [1, 2, 1],
             ];
             imagecopy($imgBlur, $img, 0, 0, 0, 0, $w, $h);
             imageconvolution($imgBlur, $matrix, 16, 0);
         } else {
-
             // Move copies of the image around one pixel at the time and merge them with weight
             // according to the matrix. The same matrix is simply repeated for higher radii.
             for ($i = 0; $i < $radius; $i++) {
@@ -107,7 +104,6 @@ class phpUnsharpMask
             // and set the pixels
             for ($x = 0; $x < $w - 1; $x++) { // each row
                 for ($y = 0; $y < $h; $y++) { // each pixel
-
                     $rgbOrig = imagecolorat($img, $x, $y);
                     $rOrig   = (($rgbOrig >> 16) & 0xFF);
                     $gOrig   = (($rgbOrig >> 8) & 0xFF);

@@ -1,4 +1,6 @@
-<?php namespace XoopsModules\Apcal;
+<?php
+
+namespace XoopsModules\Apcal;
 
 /*
  * You may not change or alter any portion of this comment or credits
@@ -19,8 +21,6 @@
  * @author       GIJ=CHECKMATE (PEAK Corp. http://www.peak.ne.jp/)
  * @author       Antiques Promotion (http://www.antiquespromotion.ca)
  */
-
-use  XoopsModules\Apcal;
 
 // ORIGINAL: PHP iCalendar  (http://phapcalendar.sourceforge.net/)
 // PROJECT ADMINS
@@ -549,7 +549,7 @@ class ICalParser
         'US/Pacific'                   => ['-0800', '-0700'],
         'US/Samoa'                     => ['-1100', '-1100'],
         'W-SU'                         => ['+0300', '+0400'],
-        'WET'                          => ['+0000', '+0100']
+        'WET'                          => ['+0000', '+0100'],
     ];
 
     // From date_functions.php
@@ -557,6 +557,7 @@ class ICalParser
     // takes iCalendar 2 day format and makes it into 3 characters
     // if $txt is true, it returns the 3 letters, otherwise it returns the
     // integer of that day; 0=Sun, 1=Mon, etc.
+
     /**
      * @param         $day
      * @param  bool   $txt
@@ -584,6 +585,7 @@ class ICalParser
 
     // dateOfWeek() takes a date in Ymd and a day of week in 3 letters or more
     // and returns the date of that day. (ie: "sun" or "sunday" would be acceptable values of $day but not "su")
+
     /**
      * @param $Ymd
      * @param $day
@@ -606,6 +608,7 @@ class ICalParser
 
     // function to compare to dates in Ymd and return the number of weeks
     // that differ between them. requires dateOfWeek()
+
     /**
      * @param $now
      * @param $then
@@ -628,6 +631,7 @@ class ICalParser
 
     // function to compare to dates in Ymd and return the number of days
     // that differ between them.
+
     /**
      * @param $now
      * @param $then
@@ -647,6 +651,7 @@ class ICalParser
 
     // function to compare to dates in Ymd and return the number of months
     // that differ between them.
+
     /**
      * @param $now
      * @param $then
@@ -702,15 +707,16 @@ class ICalParser
 
     }*/
     // calcOffset takes an offset (ie, -0500) and returns it in the number of seconds
+
     /**
      * @param $offset_str
      * @return int
      */
     public function calcOffset($offset_str)
     {
-        $sign  = substr($offset_str, 0, 1);
-        $hours = substr($offset_str, 1, 2);
-        $mins  = substr($offset_str, 3, 2);
+        $sign  = mb_substr($offset_str, 0, 1);
+        $hours = mb_substr($offset_str, 1, 2);
+        $mins  = mb_substr($offset_str, 3, 2);
         $secs  = ((int)$hours * 3600) + ((int)$mins * 60);
         if ('-' == $sign) {
             $secs = 0 - $secs;
@@ -723,6 +729,7 @@ class ICalParser
     // $have is the current offset (ie, '-0500')
     // $want is the wanted offset (ie, '-0700')
     // $time is the unixtime relative to $have
+
     /**
      * @param $have
      * @param $want
@@ -818,8 +825,8 @@ class ICalParser
             $line     = $nextline;
             $nextline = fgets($ifile, 1024);
             $nextline = preg_replace("/[\r\n]/", '', $nextline);
-            while (' ' === substr($nextline, 0, 1)) {
-                $line     .= substr($nextline, 1);
+            while (' ' === mb_substr($nextline, 0, 1)) {
+                $line     .= mb_substr($nextline, 1);
                 $nextline = fgets($ifile, 1024);
                 $nextline = preg_replace("/[\r\n]/", '', $nextline);
             }
@@ -904,14 +911,13 @@ class ICalParser
                 $data  = $line[2];
 
                 $property = $field;
-                $prop_pos = strpos($property, ';');
+                $prop_pos = mb_strpos($property, ';');
                 if (false !== $prop_pos) {
-                    $property = substr($property, 0, $prop_pos);
+                    $property = mb_substr($property, 0, $prop_pos);
                 }
-                $property = strtoupper($property);
+                $property = mb_strtoupper($property);
 
                 switch ($property) {
-
                     // Start VTODO Parsing
                     //
                     /*              case 'DUE':
@@ -1015,12 +1021,10 @@ class ICalParser
                         // VTODO: NEEDS-ACTION, COMPLETED, IN-PROCESS, CANCELLED
                         $status = (string)$data;
                         break;
-
                     case 'CLASS':
                         // VEVENT, VTODO: PUBLIC, PRIVATE, CONFIDENTIAL
                         $class = (string)$data;
                         break;
-
                     case 'CATEGORIES':
                         $categories = mb_convert_encoding($data, mb_internal_encoding(), 'UTF-8');
                         break;
@@ -1029,7 +1033,7 @@ class ICalParser
 
                     case 'DTSTART':
                         $zulu_time = false;
-                        if ('Z' === substr($data, -1)) {
+                        if ('Z' === mb_substr($data, -1)) {
                             $zulu_time = true;
                         }
                         $data  = preg_replace('/T/', '', $data);
@@ -1077,10 +1081,9 @@ class ICalParser
                             unset($server_offset_tmp);
                         }
                         break;
-
                     case 'DTEND':
                         $zulu_time = false;
-                        if ('Z' === substr($data, -1)) {
+                        if ('Z' === mb_substr($data, -1)) {
                             $zulu_time = true;
                         }
                         $data  = preg_replace('/T/', '', $data);
@@ -1121,7 +1124,6 @@ class ICalParser
                             unset($server_offset_tmp);
                         }
                         break;
-
                     /*              case 'EXDATE':
                                         $data = explode(",", $data);
                                         foreach ($data as $exdata) {
@@ -1136,44 +1138,35 @@ class ICalParser
                     case 'SUMMARY':
                         $summary = mb_convert_encoding($data, mb_internal_encoding(), 'UTF-8');
                         break;
-
                     case 'DESCRIPTION':
                         $description = mb_convert_encoding($data, mb_internal_encoding(), 'UTF-8');
                         break;
-
                     case 'CONTACT':
                         // RFC2445 4.8.4.2  GIJ added
                         $contact = mb_convert_encoding($data, mb_internal_encoding(), 'UTF-8');
                         break;
-
                     case 'LOCATION':
                         // RFC2445 4.8.1.7  GIJ added
                         $location = mb_convert_encoding($data, mb_internal_encoding(), 'UTF-8');
                         break;
-
                     case 'DTSTAMP':
                         // RFC2445 4.8.7.2  GIJ added
                         $data    = str_replace('T', '', $data);
                         $dtstamp = str_replace('Z', '', $data);
                         break;
-
                     case 'SEQUENCE':
                         // RFC2445 4.8.7.4  GIJ added
                         $sequence = (int)$data;
                         break;
-
                     case 'UID':
                         $uid = $data;
                         break;
-
                     case 'X-WR-CALNAME':
                         $calendar_name = mb_convert_encoding($data, mb_internal_encoding(), 'UTF-8');
                         break;
-
                     case 'X-WR-TIMEZONE':
                         $calendar_tz = $data;
                         break;
-
                     /*              case 'DURATION':
                                         if (($first_duration === true) && (!stristr($field, '=DURATION'))) {
                                             preg_match('/^P([0-9]{1,2})?([W,D]{0,1}[T])?([0-9]{1,2}[H])?([0-9]{1,2}[M])?([0-9]{1,2}[S])?/', $data, $duration);
@@ -1195,9 +1188,8 @@ class ICalParser
                                         break;
                     */
                     case 'RRULE':
-                        $rrule = strtoupper($data);
+                        $rrule = mb_strtoupper($data);
                         break;
-
                     /*              case 'ATTENDEE':
                                         $attendee = $data;
                                         break;
@@ -1287,7 +1279,7 @@ class ICalParser
                 'categories'  => '255:J:0',
                 'rrule'       => '255:E:0', /* "dtstamp" => "14:E:0" ,*/
                 'sequence'    => 'I:N:0',
-                'description' => 'A:J:0'
+                'description' => 'A:J:0',
             ];
             $ret  .= $this->get_sql_set($event, $cols);
 
@@ -1349,7 +1341,7 @@ class ICalParser
         }
 
         // ºÇ¸å¤Î , ¤òºï½ü
-        $ret = substr($ret, 0, -1);
+        $ret = mb_substr($ret, 0, -1);
 
         return $ret;
     }
@@ -1366,9 +1358,9 @@ class ICalParser
         // convert_kana ¤Î½èÍý¤Ï¡¢ÆüËÜ¸ì¤Ç¤Î¤ß¹Ô¤¦
         if ('japanese' !== $this->language || !function_exists('mb_convert_kana')) {
             return $str;
-        } else {
-            return mb_convert_kana($str, $option);
         }
+
+        return mb_convert_kana($str, $option);
     }
 
     // ¥µ¥Ë¥¿¥¤¥º´ØÏ¢¤Î´Ø¿ô (¥µ¥Ö¥¯¥é¥¹¤òºîÀ®¤¹¤ë»þ¤ÎOverrideÂÐ¾Ý)
@@ -1386,19 +1378,18 @@ class ICalParser
             // XOOPS¤Î¥µ¥Ë¥¿¥¤¥¶¥¯¥é¥¹¤¬¤¢¤ì¤Ð¡¢¸ÄÊÌ¤Ëbb code¥¿¥°¤Ø¤ÎÊÑ´¹¤ò¤·¤Æ¤ß¤ë
             $search  = [
                 "/mailto:(\S+)(\s)/i",
-                "/http:\/\/(\S+)(\s)/i"
+                "/http:\/\/(\S+)(\s)/i",
             ];
             $replace = [
-                "[email]\\1[/email]\\2",
-                "[url=\\1]\\1[/url]\\2"
+                '[email]\\1[/email]\\2',
+                '[url=\\1]\\1[/url]\\2',
             ];
             $data    = preg_replace($search, $replace, $data);
 
             return strip_tags($data);
-        } else {
-            // ¤Ê¤±¤ì¤Ð¡¢Ã±¤ËÁ´¥¿¥°¤òÌµ¸ú¤È¤¹¤ë
-            return strip_tags($data);
         }
+        // ¤Ê¤±¤ì¤Ð¡¢Ã±¤ËÁ´¥¿¥°¤òÌµ¸ú¤È¤¹¤ë
+        return strip_tags($data);
     }
 
     /**

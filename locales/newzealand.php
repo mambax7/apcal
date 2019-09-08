@@ -17,7 +17,6 @@
  * @author       XOOPS Development Team,
  * @author       zANavAShi
  */
-
 $this->holidays = [
     '2001-1-2'   => 'Public Holiday',
     '2001-4-13'  => 'Good Friday',
@@ -75,7 +74,7 @@ $this->holidays = [
     '2010-6-7'   => 'Queens Birthday',
     '2010-10-25' => 'Labour Day',
     '2010-12-27' => 'Public Holiday',
-    '2010-12-28' => 'Public Holiday'
+    '2010-12-28' => 'Public Holiday',
 ];
 
 for ($y = 2001; $y < 2020; ++$y) {

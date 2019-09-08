@@ -53,7 +53,7 @@ $cal = new Apcal\ApcalXoops('', $xoopsConfig['language'], true);
 
 // setting properties of APCal
 $cal->conn = $conn;
-include  dirname(__DIR__) . '/include/read_configs.php';
+require dirname(__DIR__) . '/include/read_configs.php';
 $cal->base_url    = $mod_url;
 $cal->base_path   = $mod_path;
 $cal->images_url  = "$mod_url/assets/images/$skin_folder";
@@ -92,8 +92,7 @@ switch ($tz) {
         break;
 }
 
-if (isset($_POST['admit']) && isset($_POST['ids']) && is_array($_POST['ids'])) {
-
+if (\Xmf\Request::hasVar('admit', 'POST') && isset($_POST['ids']) && is_array($_POST['ids'])) {
     // Ticket Check
     if (!$GLOBALS['xoopsSecurity']->check()) {
         redirect_header(XOOPS_URL . '/', 3, $GLOBALS['xoopsSecurity']->getErrors());
@@ -114,14 +113,13 @@ if (isset($_POST['admit']) && isset($_POST['ids']) && is_array($_POST['ids'])) {
     }
     $cal->redirect("cid=$cid&num=$num&tz=$tz&done=admitted&mes=$mes");
     exit;
-} elseif (isset($_POST['delete'])) {
-
+} elseif (\Xmf\Request::hasVar('delete', 'POST')) {
     // Ticket Check
     if (!$GLOBALS['xoopsSecurity']->check()) {
         redirect_header(XOOPS_URL . '/', 3, $GLOBALS['xoopsSecurity']->getErrors());
     }
 
-    if (isset($_POST['ids']) && is_array($_POST['ids'])) {
+    if (\Xmf\Request::hasVar('ids', 'POST') && is_array($_POST['ids'])) {
         $whr = '';
         foreach ($_POST['ids'] as $id) {
             $whr .= "id=$id OR rrule_pid=$id OR ";
@@ -173,7 +171,7 @@ if (false !== $resultRow && isset($resultRow[0])) {
 $rs = $GLOBALS['xoopsDB']->query("SELECT * FROM $cal->table WHERE $whr ORDER BY start,end LIMIT $pos,$num");
 
 // ページ分割処理
-include XOOPS_ROOT_PATH . '/class/pagenav.php';
+require XOOPS_ROOT_PATH . '/class/pagenav.php';
 $nav      = new \XoopsPageNav($numrows, $num, $pos, 'pos', "cid=$cid&amp;tz=$tz&amp;num=$num&amp;txt=" . urlencode($txt));
 $nav_html = $nav->renderNav(10);
 if ($numrows <= 0) {

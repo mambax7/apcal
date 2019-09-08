@@ -2,7 +2,7 @@
 
 use XoopsModules\Apcal;
 
-if (substr(XOOPS_VERSION, 6) < '2.5.0' && isset($xoopsModule) && $xoopsModule->getInfo('system_menu')) {
+if (mb_substr(XOOPS_VERSION, 6) < '2.5.0' && isset($xoopsModule) && $xoopsModule->getInfo('system_menu')) {
     /** @var xos_opal_Theme $xoTheme */
     $xoTheme->addStylesheet(XOOPS_URL . '/modules/apcal/admin/menu.css');
     $xoopsModule->loadAdminMenu();
@@ -16,14 +16,14 @@ if (substr(XOOPS_VERSION, 6) < '2.5.0' && isset($xoopsModule) && $xoopsModule->g
     // Define main tab navigation
     $i = 0;
     foreach ($xoopsModule->adminmenu as $menu) {
-        if (false !== stripos($_SERVER['REQUEST_URI'], $menu['link'])) {
+        if (false !== mb_stripos($_SERVER['REQUEST_URI'], $menu['link'])) {
             $current = $i;
         }
         $menuHandler->addMenuTabs($menu['link'], $menu['title']);
         ++$i;
     }
     if ($xoopsModule->getInfo('help')) {
-        if (false !== stripos($_SERVER['REQUEST_URI'], 'admin/' . $xoopsModule->getInfo('help'))) {
+        if (false !== mb_stripos($_SERVER['REQUEST_URI'], 'admin/' . $xoopsModule->getInfo('help'))) {
             $current = $i;
         }
         $menuHandler->addMenuTabs('../system/help.php?mid=' . $xoopsModule->getVar('mid', 's') . '&amp;page=' . $xoopsModule->getInfo('help'), _AM_APCAL_SYSTEM_HELP);

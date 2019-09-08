@@ -17,7 +17,6 @@
  * @author       XOOPS Development Team,
  * @author       GIJ=CHECKMATE (PEAK Corp. http://www.peak.ne.jp/)
  */
-
 if (!defined('APCAL_COMMENT_FUNCTIONS_INCLUDED')) {
     define('APCAL_COMMENT_FUNCTIONS_INCLUDED', 1);
 

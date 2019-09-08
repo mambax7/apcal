@@ -25,7 +25,7 @@ if (!defined('APCAL_BLOCK_AFTER_SCHEDULE_INCLUDED')) {
     define('APCAL_BLOCK_AFTER_SCHEDULE_INCLUDED', 1);
 
     // XOOPS 2.1/2.2
-    if (substr(XOOPS_VERSION, 6, 3) > 2.0) {
+    if (mb_substr(XOOPS_VERSION, 6, 3) > 2.0) {
         $GLOBALS['apcal_blockinstance_object'] = $this;
     }
 
@@ -47,10 +47,10 @@ if (!defined('APCAL_BLOCK_AFTER_SCHEDULE_INCLUDED')) {
         $mod_url  = XOOPS_URL . "/modules/$moduleDirName";
 
         // defining class of APCal
-//        if (!class_exists('APCal_xoops')) {
-//            require_once "$mod_path/class/APCal.php";
-//            require_once "$mod_path/class/APCal_xoops.php";
-//        }
+        //        if (!class_exists('APCal_xoops')) {
+        //            require_once "$mod_path/class/APCal.php";
+        //            require_once "$mod_path/class/APCal_xoops.php";
+        //        }
 
         // creating an instance of APCal
         $cal = new ApcalXoops('', $xoopsConfig['language'], true);
@@ -67,7 +67,7 @@ if (!defined('APCAL_BLOCK_AFTER_SCHEDULE_INCLUDED')) {
         $cal->images_path = "$mod_path/assets/images/$skin_folder";
 
         // ¥Ö¥í¥Ã¥¯ÇÛÎó¤Î¼«Ê¬¼«¿È¤ò½ñ¤­´¹¤¨¤ë title ¤Ë %s ¤ò´Þ¤á¤ë¤³¤È
-        if (substr(XOOPS_VERSION, 6, 3) > 2.0) {
+        if (mb_substr(XOOPS_VERSION, 6, 3) > 2.0) {
             $title_fmt = $GLOBALS['apcal_blockinstance_object']->getVar('title');
             $GLOBALS['apcal_blockinstance_object']->setVar('title', sprintf($title_fmt, sprintf(_APCAL_FMT_MD, $cal->month_short_names[date('n', $cal->unixtime)], $cal->date_short_names[date('j', $cal->unixtime)])));
         } else {
@@ -102,8 +102,8 @@ if (!defined('APCAL_BLOCK_AFTER_SCHEDULE_INCLUDED')) {
         $mod_url  = XOOPS_URL . "/modules/$moduleDirName";
 
         // defining class of APCal
-//        require_once "$mod_path/class/APCal.php";
-//        require_once "$mod_path/class/APCal_xoops.php";
+        //        require_once "$mod_path/class/APCal.php";
+        //        require_once "$mod_path/class/APCal_xoops.php";
 
         // creating an instance of APCal
         $cal                = new Apcal\ApcalXoops(date('Y-n-j'), $xoopsConfig['language'], true);

@@ -17,10 +17,7 @@
  * @author       XOOPS Development Team,
  * @author       GIJ=CHECKMATE (PEAK Corp. http://www.peak.ne.jp/)
  */
-
-use XoopsModules\Apcal;
-
-require_once  dirname(dirname(dirname(__DIR__))) . '/include/cp_header.php';
+require_once dirname(dirname(dirname(__DIR__))) . '/include/cp_header.php';
 
 //require_once  dirname(__DIR__) . '/include/gtickets.php';
 require_once XOOPS_ROOT_PATH . '/class/template.php';
@@ -50,7 +47,7 @@ if (!is_object($xoopsModule)) {
 }
 
 // set target_module if specified by $_GET['dirname']
-/** @var XoopsModuleHandler $moduleHandler */
+/** @var \XoopsModuleHandler $moduleHandler */
 $moduleHandler = xoops_getHandler('module');
 if (!empty($_GET['dirname'])) {
     $target_module = $moduleHandler->getByDirname($_GET['dirname']);
@@ -73,8 +70,8 @@ if (!empty($target_module) && is_object($target_module)) {
 }
 
 // check access right (needs system_admin of tplset)
-$syspermHandler = xoops_getHandler('groupperm');
-if (!$syspermHandler->checkRight('system_admin', XOOPS_SYSTEM_TPLSET, $xoopsUser->getGroups())) {
+$grouppermHandler = xoops_getHandler('groupperm');
+if (!$grouppermHandler->checkRight('system_admin', XOOPS_SYSTEM_TPLSET, $xoopsUser->getGroups())) {
     redirect_header(XOOPS_URL . '/user.php', 1, _NOPERM);
 }
 
@@ -188,7 +185,7 @@ if (is_array(@$_POST['del_do'])) {
                 }
                 $tplfile = $myts->stripSlashesGPC($tplfile_tmp);
                 $result  = $db->query('SELECT tpl_id FROM ' . $db->prefix('tplfile') . " WHERE tpl_tplset='" . addslashes($tplset_from) . "' AND tpl_file='" . addslashes($tplfile) . "'");
-                while (false !== (list($tpl_id) = $db->fetchRow($result))) {
+                while (list($tpl_id) = $db->fetchRow($result)) {
                     $tpl_id = (int)$tpl_id;
                     $db->query('DELETE FROM ' . $db->prefix('tplfile') . " WHERE tpl_id=$tpl_id");
                     $db->query('DELETE FROM ' . $db->prefix('tplsource') . " WHERE tpl_id=$tpl_id");
@@ -212,7 +209,7 @@ $srs             = $db->query($sql);
 $tplsets         = [];
 $tplsets_th4disp = '';
 $tplset_options  = "<option value=''>----</option>\n";
-while (false !== (list($tplset) = $db->fetchRow($srs))) {
+while (list($tplset) = $db->fetchRow($srs)) {
     $tplset4disp     = htmlspecialchars($tplset, ENT_QUOTES);
     $tplsets[]       = $tplset;
     $th_style        = $tplset == $xoopsConfig['template_set'] ? "style='color:yellow;'" : '';
@@ -249,11 +246,11 @@ $fingerprint_styles = [
     'background-color:#0088FF',
     'background-color:#FF8800',
     'background-color:#0000FF',
-    'background-color:#FFFFFF'
+    'background-color:#FFFFFF',
 ];
 
 // template ROWS
-while (false !== (list($tpl_file, $tpl_desc, $type, $count) = $db->fetchRow($frs))) {
+while (list($tpl_file, $tpl_desc, $type, $count) = $db->fetchRow($frs)) {
     $evenodd                 = 'even' === @$evenodd ? 'odd' : 'even';
     $fingerprint_style_count = 0;
 
@@ -273,7 +270,7 @@ while (false !== (list($tpl_file, $tpl_desc, $type, $count) = $db->fetchRow($frs
     if (file_exists($basefilepath)) {
         $fingerprint                = get_fingerprint(file($basefilepath));
         $fingerprints[$fingerprint] = 1;
-        echo "<td class='$evenodd'>" . formatTimestamp(filemtime($basefilepath), 'm') . '<br>' . substr($fingerprint, 0, 16) . "<br><input type='checkbox' name='basecheck[$tpl_file]' value='1'></td>\n";
+        echo "<td class='$evenodd'>" . formatTimestamp(filemtime($basefilepath), 'm') . '<br>' . mb_substr($fingerprint, 0, 16) . "<br><input type='checkbox' name='basecheck[$tpl_file]' value='1'></td>\n";
     } else {
         echo "<td class='$evenodd'><br></td>";
     }
@@ -300,7 +297,7 @@ while (false !== (list($tpl_file, $tpl_desc, $type, $count) = $db->fetchRow($frs
             echo "<td class='$evenodd' style='$style;'>"
                  . formatTimestamp($tpl['tpl_lastmodified'], 'm')
                  . '<br>'
-                 . substr($fingerprint, 0, 16)
+                 . mb_substr($fingerprint, 0, 16)
                  . "<br><input type='checkbox' name='{$tplset4disp}_check[{$tpl_file}]' value='1'> &nbsp; <a href='mytplsform.php?tpl_file="
                  . htmlspecialchars($tpl['tpl_file'], ENT_QUOTES)
                  . '&amp;tpl_tplset='
@@ -390,12 +387,12 @@ function copy_templates_db2db($tplset_from, $tplset_to, $whr_append = '1')
             foreach ($row as $colval) {
                 $sql .= "'" . addslashes($colval) . "',";
             }
-            $db->query(substr($sql, 0, -1) . ')');
+            $db->query(mb_substr($sql, 0, -1) . ')');
             $tpl_id = $db->getInsertId();
             $db->query('INSERT INTO ' . $db->prefix('tplsource') . " SET tpl_id='$tpl_id', tpl_source='" . addslashes($tpl_source) . "'");
             xoops_template_touch($tpl_id);
         } else {
-            while (false !== (list($tpl_id) = $db->fetchRow($drs))) {
+            while (list($tpl_id) = $db->fetchRow($drs)) {
                 // UPDATE mode
                 $db->query('UPDATE '
                            . $db->prefix('tplfile')
@@ -460,7 +457,7 @@ function copy_templates_f2db($tplset_to, $whr_append = '1')
             $db->query('INSERT INTO ' . $db->prefix('tplsource') . " SET tpl_id='$tpl_id', tpl_source='" . addslashes($tpl_source) . "'");
             xoops_template_touch($tpl_id);
         } else {
-            while (false !== (list($tpl_id) = $db->fetchRow($drs))) {
+            while (list($tpl_id) = $db->fetchRow($drs)) {
                 // UPDATE mode
                 $db->query('UPDATE ' . $db->prefix('tplfile') . " SET tpl_lastmodified='" . addslashes($lastmodified) . "' WHERE tpl_id='$tpl_id'");
                 $db->query('UPDATE ' . $db->prefix('tplsource') . " SET tpl_source='" . addslashes($tpl_source) . "' WHERE tpl_id='$tpl_id'");

@@ -36,7 +36,7 @@ $MODURL  = XOOPS_URL . '/modules/' . $xoopsModule->getVar('dirname');
 $MODPATH = XOOPS_ROOT_PATH . '/modules/' . $xoopsModule->getVar('dirname');
 
 $cal = new Apcal\BaseApcal();
-include XOOPS_ROOT_PATH . '/modules/apcal/include/read_configs.php';
+require XOOPS_ROOT_PATH . '/modules/apcal/include/read_configs.php';
 
 $rs = $GLOBALS['xoopsDB']->query("SELECT COUNT(id) FROM {$cal->table} WHERE admission<1 AND (rrule_pid=0 OR rrule_pid=id)");
 //$nbWaitingEvents = mysql_result($rs, 0, 0);
@@ -89,7 +89,7 @@ $xoopsTpl->assign('imgURL', $MODURL . '/assets/images/admin/');
 $xoopsTpl->assign('minphp', $xoopsModule->getInfo('min_php'));
 $xoopsTpl->assign('minxoops', $xoopsModule->getInfo('min_xoops'));
 $xoopsTpl->assign('phpversion', PHP_VERSION);
-$xoopsTpl->assign('xoopsversion', substr(XOOPS_VERSION, 6));
+$xoopsTpl->assign('xoopsversion', mb_substr(XOOPS_VERSION, 6));
 
 $xoopsTpl->assign('adminmenu', $xoopsModule->adminmenu);
 $xoopsTpl->assign('moduleID', $xoopsModule->getVar('mid', 's'));

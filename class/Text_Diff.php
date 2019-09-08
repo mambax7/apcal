@@ -1,4 +1,6 @@
-<?php namespace XoopsModules\Apcal;
+<?php
+
+namespace XoopsModules\Apcal;
 
 /**
  * Text_Diff
@@ -14,9 +16,6 @@
  * @package Text_Diff
  * @author  Geoffrey T. Dairiki <dairiki@dairiki.org>
  */
-
-use  XoopsModules\Apcal;
-
 class Text_Diff
 {
     /**
@@ -87,7 +86,7 @@ class Text_Diff
     /**
      * Checks for an empty diff.
      *
-     * @return boolean True if two sequences were identical.
+     * @return bool True if two sequences were identical.
      */
     public function isEmpty()
     {
@@ -105,7 +104,7 @@ class Text_Diff
      *
      * This is mostly for diagnostic purposes.
      *
-     * @return integer The length of the LCS.
+     * @return int The length of the LCS.
      */
     public function lcs()
     {
@@ -161,8 +160,8 @@ class Text_Diff
      * Removes trailing newlines from a line of text. This is meant to be used
      * with array_walk().
      *
-     * @param string  $line The line to trim.
-     * @param integer $key  The index of the line in the array. Not used.
+     * @param string $line The line to trim.
+     * @param int    $key  The index of the line in the array. Not used.
      */
     public function _trimNewlines(&$line, $key)
     {
@@ -239,13 +238,13 @@ class Text_MappedDiff extends Text_Diff
 
         $xi = $yi = 0;
         for ($i = 0, $iMax = count($this->_edits); $i < $iMax; ++$i) {
-            $orig =& $this->_edits[$i]->orig;
+            $orig = &$this->_edits[$i]->orig;
             if (is_array($orig)) {
                 $orig = array_slice($from_lines, $xi, count($orig));
                 $xi   += count($orig);
             }
 
-            $final =& $this->_edits[$i]->final;
+            $final = &$this->_edits[$i]->final;
             if (is_array($final)) {
                 $final = array_slice($to_lines, $yi, count($final));
                 $yi    += count($final);
@@ -293,15 +292,13 @@ class Text_Diff_Engine_xdiff
         foreach ($diff as $line) {
             switch ($line[0]) {
                 case ' ':
-                    $edits[] = new Text_Diff_Op_copy([substr($line, 1)]);
+                    $edits[] = new Text_Diff_Op_copy([mb_substr($line, 1)]);
                     break;
-
                 case '+':
-                    $edits[] = new Text_Diff_Op_add([substr($line, 1)]);
+                    $edits[] = new Text_Diff_Op_add([mb_substr($line, 1)]);
                     break;
-
                 case '-':
-                    $edits[] = new Text_Diff_Op_delete([substr($line, 1)]);
+                    $edits[] = new Text_Diff_Op_delete([mb_substr($line, 1)]);
                     break;
             }
         }
@@ -820,7 +817,7 @@ class Text_Diff_Op_copy extends Text_Diff_Op
      */
     public function &reverse()
     {
-        return $reverse = new Text_Diff_Op_copy($this->final, $this->orig);
+        return $reverse = new self($this->final, $this->orig);
     }
 }
 
@@ -902,6 +899,6 @@ class Text_Diff_Op_change extends Text_Diff_Op
      */
     public function &reverse()
     {
-        return $reverse = new Text_Diff_Op_change($this->final, $this->orig);
+        return $reverse = new self($this->final, $this->orig);
     }
 }

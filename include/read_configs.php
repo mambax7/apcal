@@ -18,7 +18,6 @@
  * @author       GIJ=CHECKMATE (PEAK Corp. http://www.peak.ne.jp/)
  * @author       Antiques Promotion (http://www.antiquespromotion.ca)
  */
-
 defined('XOOPS_ROOT_PATH') || die('Restricted access');
 
 // for "Duplicatable"
@@ -43,10 +42,10 @@ list($mid) = $GLOBALS['xoopsDB']->fetchRow($rs);
 
 // read from xoops_config
 $rs = $GLOBALS['xoopsDB']->query('SELECT conf_name,conf_value FROM ' . $GLOBALS['xoopsDB']->prefix('config') . " WHERE conf_modid=$mid");
-while (false !== (list($key, $val) = $GLOBALS['xoopsDB']->fetchRow($rs))) {
+while (list($key, $val) = $GLOBALS['xoopsDB']->fetchRow($rs)) {
     if (0 == strncmp($key, 'apcal_', 6)) {
         // 'apcal_' ����Ϥޤ��Τ� APCal���֥������ȤΥץ�ѥƥ�
-        $property = substr($key, 6);
+        $property = mb_substr($key, 6);
         if (isset($cal->$property)) {
             $cal->$property = $val;
         }
@@ -85,7 +84,6 @@ if (is_object($xoopsUser)) {
     $system_groups = $memberHandler->getGroupList();
 
     if ($isadmin) {
-
         // ����Ԥθ��¡ʴ���Ԥ��ѹ������鼫ưŪ�˾�ǧ�Ȥ����
         $insertable           = true;
         $editable             = true;
@@ -106,9 +104,8 @@ if (is_object($xoopsUser)) {
         }
 
         // ����Ԥ������롼�פ�����ǽ
-        $cal->groups =& $system_groups;
+        $cal->groups = &$system_groups;
     } else {
-
         // ���̥桼���ϼ�ʬ�ν�°���륰�롼�פΤ�
         $my_group_ids = $memberHandler->getGroupsByUser($user_id);
         $cal->groups  = [];
@@ -134,7 +131,6 @@ if (is_object($xoopsUser)) {
 
         // ���̥桼���Υ��?�Х븢��
         if ($users_authority & 256) {
-
             // groupperm �ǡ��ġ��Υ��롼�פ��Ȥ�����
             $grouppermHandler = xoops_getHandler('groupperm');
 
@@ -245,9 +241,9 @@ if (!function_exists('mb_strcut')) {
         // 1�Х��ȴĶ��ʤ���ľ��substr
         if (XOOPS_USE_MULTIBYTES) {
             return $str;
-        } else {
-            return substr($str, $start, $len);
         }
+
+        return mb_substr($str, $start, $len);
     }
 }
 // mb_convert_encoding�Υ��ߥ�졼�ȡʲ��⤷�ʤ���

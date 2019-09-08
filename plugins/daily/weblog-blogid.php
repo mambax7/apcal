@@ -67,7 +67,7 @@ if (function_exists('weblog_create_permissionsql')) {
 // query (added 86400 second margin "begin" & "end")
 $weblog_minical_sql = 'SELECT title,blog_id,`created` FROM ' . $db->prefix('weblog' . $mydirnumber) . " as bl WHERE `created` >= $range_start_s AND `created` < $range_end_s and private!='Y' " . $add_whr . $group_by;
 $result             = $db->query($weblog_minical_sql);
-while (false !== (list($title, $blog_id, $server_time) = $db->fetchRow($result))) {
+while (list($title, $blog_id, $server_time) = $db->fetchRow($result)) {
     $user_time = $server_time + $tzoffset_s2u;
     //        if( date( 'n' , $user_time ) != $this->month ) continue ;
     $target_date = date('j', $user_time);
@@ -79,7 +79,7 @@ while (false !== (list($title, $blog_id, $server_time) = $db->fetchRow($result))
         'server_time' => $server_time,
         'user_time'   => $user_time,
         'name'        => 'blog_id',
-        'title'       => $myts->htmlSpecialChars($title)
+        'title'       => $myts->htmlSpecialChars($title),
     ];
     if ($just1gif) {
         // just 1 gif per a plugin & per a day

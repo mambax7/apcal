@@ -17,11 +17,9 @@
  * @author       XOOPS Development Team,
  * @author       GIJ=CHECKMATE (PEAK Corp. http://www.peak.ne.jp/)
  */
-
 defined('XOOPS_ROOT_PATH') || die('Restricted access');
 
-if (substr(XOOPS_VERSION, 6, 3) < 2.1) {
-
+if (mb_substr(XOOPS_VERSION, 6, 3) < 2.1) {
     // Keep Block option values when update (by nobunobu)
     global $xoopsDB;
     $query  = 'SELECT mid FROM ' . $GLOBALS['xoopsDB']->prefix('modules') . " WHERE dirname='" . $modversion['dirname'] . "' ";
