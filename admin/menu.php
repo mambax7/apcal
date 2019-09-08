@@ -70,6 +70,7 @@ $adminmenu[] = [
 $adminmenu[] = [
     'title' => _MI_APCAL_ADMENU_MYBLOCKSADMIN,
     'link'  => 'admin/myblocksadmin.php',
+    'icon' => $pathIcon32 . '/block.png',
 ];
 
 $adminmenu[] = [

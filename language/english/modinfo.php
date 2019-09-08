@@ -162,7 +162,7 @@ if (defined('FOR_XOOPS_LANG_CHECKER') || !defined('_MI_APCAL_APCALLOADED')) {
     define('_MI_APCAL_ADMENU_PLUGINS', 'Plugins Manager');
     define('_MI_APCAL_ADMENU_ICAL', 'Importing iCalendar');
     define('_MI_APCAL_ADMENU_MYTPLSADMIN', 'Templates');
-    define('_MI_APCAL_ADMENU_MYBLOCKSADMIN', 'Blocks & Groups Admin');
+    define('_MI_APCAL_ADMENU_MYBLOCKSADMIN', 'Blocks & Groups');
 
     // Text for notifications
     define('_MI_APCAL_GLOBAL_NOTIFY', 'Global');
