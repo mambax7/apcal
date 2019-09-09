@@ -259,7 +259,7 @@ while ($event = $GLOBALS['xoopsDB']->fetchObject($rs)) {
     $summary4disp = $myts->htmlSpecialChars($event->summary);
     echo "
   <tr>
-    <td class='$oddeven' $newer_style>" . $xoopsUser->getUnameFromId($event->uid) . "</td>
+    <td class='$oddeven' $newer_style>" . $xoopsUser::getUnameFromId($event->uid) . "</td>
     <td class='$oddeven' nowrap='nowrap' $newer_style>$start_desc</td>
     <td class='$oddeven' nowrap='nowrap' $newer_style>$end_desc</td>
     <td class='$oddeven' $newer_style><a href='$mod_url/index.php?action=View&amp;event_id=$event->id'>$summary4disp</a></td>
