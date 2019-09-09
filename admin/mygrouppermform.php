@@ -46,7 +46,7 @@ class MyXoopsGroupPermForm extends XoopsForm
      * Tree structure of items
      * @var array
      */
-    public $_itemTree = array();
+    public $_itemTree = [];
     /**
      * Name of permission
      * @var string
@@ -61,7 +61,7 @@ class MyXoopsGroupPermForm extends XoopsForm
      * Appendix
      * @var array ('permname'=>,'itemid'=>,'itemname'=>,'selected'=>)
      */
-    public $_appendix = array();
+    public $_appendix = [];
 
     /**
      * Constructor
@@ -106,12 +106,12 @@ class MyXoopsGroupPermForm extends XoopsForm
      */
     public function addAppendix($permName, $itemId, $itemName)
     {
-        $this->_appendix[] = array(
+        $this->_appendix[] = [
             'permname' => $permName,
             'itemid'   => $itemId,
             'itemname' => $itemName,
             'selected' => false
-        );
+        ];
     }
 
     /**
@@ -149,7 +149,7 @@ class MyXoopsGroupPermForm extends XoopsForm
 
         // load all child ids for javascript codes
         foreach (array_keys($this->_itemTree) as $item_id) {
-            $this->_itemTree[$item_id]['allchild'] = array();
+            $this->_itemTree[$item_id]['allchild'] = [];
             $this->_loadAllChildItemIds($item_id, $this->_itemTree[$item_id]['allchild']);
         }
         $gpermHandler  = xoops_getHandler('groupperm');
@@ -247,7 +247,7 @@ class MyXoopsGroupFormCheckBox extends XoopsFormElement
      * Appendix
      * @var array ('permname'=>,'itemid'=>,'itemname'=>,'selected'=>)
      */
-    public $_appendix = array();
+    public $_appendix = [];
 
     /**
      * Constructor
@@ -362,7 +362,7 @@ class MyXoopsGroupFormCheckBox extends XoopsFormElement
      * @param array  $parentIds
      * @access private
      */
-    public function _renderOptionTree(&$tree, $option, $prefix, $parentIds = array())
+    public function _renderOptionTree(&$tree, $option, $prefix, $parentIds = [])
     {
         $tree .= $prefix
                  . '<input type="checkbox" name="'
