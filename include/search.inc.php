@@ -18,7 +18,6 @@
  * @author       GIJ=CHECKMATE (PEAK Corp. http://www.peak.ne.jp/)
  * @author       Antiques Promotion (http://www.antiquespromotion.ca)
  */
-
 use XoopsModules\Apcal;
 
 defined('XOOPS_ROOT_PATH') || die('Restricted access');
@@ -54,7 +53,7 @@ if (!function_exists('apcal_search_base')) {
 
         // setting physical & virtual paths
         $mod_path = XOOPS_ROOT_PATH . "/modules/$moduleDirName";
-        $mod_url  = XOOPS_URL . "/modules/$moduleDirName";
+        $mod_url = XOOPS_URL . "/modules/$moduleDirName";
 
         // defining class of APCal
         //        if (!class_exists('APCal_xoops')) {
@@ -63,13 +62,13 @@ if (!function_exists('apcal_search_base')) {
         //        }
 
         // creating an instance of APCal
-        $cal                = new Apcal\ApcalXoops('', $xoopsConfig['language'], true);
+        $cal = new Apcal\ApcalXoops('', $xoopsConfig['language'], true);
         $cal->use_server_TZ = true;
 
         // setting properties of APCal
         $cal->conn = $GLOBALS['xoopsDB']->conn;
         include "$mod_path/include/read_configs.php";
-        $cal->images_url  = "$mod_url/assets/images/$skin_folder";
+        $cal->images_url = "$mod_url/assets/images/$skin_folder";
         $cal->images_path = "$mod_path/assets/images/$skin_folder";
 
         $ret = $cal->get_xoops_search_result($keywords, $andor, $limit, $offset, $uid);

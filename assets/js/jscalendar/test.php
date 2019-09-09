@@ -49,7 +49,7 @@ setcookie('lang', $lang);
     <h1>Form submitted</h1>
 
     <?php foreach ($_REQUEST as $key => $val) {
-        echo htmlspecialchars($key, ENT_QUOTES | ENT_HTML5) . ' = ' . htmlspecialchars($val, ENT_QUOTES | ENT_HTML5) . '<br>';
+            echo htmlspecialchars($key, ENT_QUOTES | ENT_HTML5) . ' = ' . htmlspecialchars($val, ENT_QUOTES | ENT_HTML5) . '<br>';
         } ?>
 
     <?php
@@ -64,13 +64,13 @@ setcookie('lang', $lang);
             $cwd = getcwd();
         chdir('lang');
         foreach (glob('*.js') as $filename) {
-            $l        = preg_replace('/(^calendar-|.js$)/', '', $filename);
+            $l = preg_replace('/(^calendar-|.js$)/', '', $filename);
             $selected = '';
             if ($l == $lang) {
                 $selected = 'selected ';
             }
             $display = $l;
-                if ('en' === $l) {
+            if ('en' === $l) {
                 $display = 'EN';
             }
             echo '<option ' . $selected . 'value="' . $l . '">' . $display . '</option>';
@@ -96,17 +96,18 @@ setcookie('lang', $lang);
                 <td>
                     <?php $calendar->make_input_field(// calendar options go here; see the documentation and/or calendar-setup.js
                         [
-                            'firstDay'   => 1, // show Monday first
-                            'showsTime'  => true,
+                            'firstDay' => 1, // show Monday first
+                            'showsTime' => true,
                             'showOthers' => true,
-                            'ifFormat'   => '%Y-%m-%d %I:%M %P',
+                            'ifFormat' => '%Y-%m-%d %I:%M %P',
                             'timeFormat' => '12',
                         ], // field attributes go here
                         [
                             'style' => 'width: 15em; color: #840; background-color: #ff8; border: 1px solid #000; text-align: center',
-                            'name'  => 'date1',
+                            'name' => 'date1',
                             'value' => strftime('%Y-%m-%d %I:%M %P', time()),
-                        ]); ?>
+                    ]
+        ); ?>
                 </td>
             </tr>
         </table>

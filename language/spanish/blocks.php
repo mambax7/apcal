@@ -1,46 +1,39 @@
 <?php
 
-if( defined( 'FOR_XOOPS_LANG_CHECKER' ) || ! defined( 'APCAL_BL_LOADED' ) ) {
+if (defined('FOR_XOOPS_LANG_CHECKER') || !defined('APCAL_BL_LOADED')) {
+    // Appended by Xoops Language Checker -GIJOE- in 2005-04-22 12:02:00
+    define('_MB_APCAL_MAXGIFSADAY', 'Puntos máximos por día');
+    define('_MB_APCAL_JUSTONCEADAYAPLUGIN', 'Mostrar solamente un punto por día o por plugin');
+    define('_MB_APCAL_PLUGINS', 'Plugins Activos');
+    define('_MB_APCAL_PLUGINS_DESC', 'Lista de plugins separados por, (comas)');
+    define('_MB_APCAL_PLUGINS_VALID', 'Plugins Válidos');
 
+    // Appended by Xoops Language Checker -GIJOE- in 2005-01-08 04:36:48
+    define('_MB_APCAL_MAXITEMS', 'Mostrar');
+    define('_MB_APCAL_CATSEL', 'Categoría');
+    define('_MB_APCAL_CATSELSUB', 'Mostrar tambien subcategorías');
+    define('_MB_APCAL_UNTILDAYS', 'Durante %s los días (0 implica siempre)');
 
+    define('APCAL_BL_LOADED', 1);
 
-// Appended by Xoops Language Checker -GIJOE- in 2005-04-22 12:02:00
-define('_MB_APCAL_MAXGIFSADAY','Puntos máximos por día');
-define('_MB_APCAL_JUSTONCEADAYAPLUGIN','Mostrar solamente un punto por día o por plugin');
-define('_MB_APCAL_PLUGINS','Plugins Activos');
-define('_MB_APCAL_PLUGINS_DESC','Lista de plugins separados por, (comas)');
-define('_MB_APCAL_PLUGINS_VALID','Plugins Válidos');
+    // Xoops Mexican & Spanish Support (http://www.neoideas.net/xoops/)
+    // $Id: blocks.php, v 0.5 2003/11/07 20:00:09$
+    //%%%%%%	Admin Module Name  APCal 	%%%%%
+    // for monthly calendar block
+    define('_MB_APCAL_PREV_MONTH', 'Anterior');
+    define('_MB_APCAL_NEXT_MONTH', 'Siguiente');
+    define('_MB_APCAL_YEAR', '');
+    define('_MB_APCAL_MONTH', '');
+    define('_MB_APCAL_JUMP', 'Saltar');
 
-// Appended by Xoops Language Checker -GIJOE- in 2005-01-08 04:36:48
-define('_MB_APCAL_MAXITEMS','Mostrar');
-define('_MB_APCAL_CATSEL','Categoría');
-define('_MB_APCAL_CATSELSUB','Mostrar tambien subcategorías');
-define('_MB_APCAL_UNTILDAYS','Durante %s los días (0 implica siempre)');
+    // for after the day's events block
+    // %s means the indicated day
+    define('_MB_APCAL_EVENTS_AFTER', 'Eventos después %s');
 
-define( 'APCAL_BL_LOADED' , 1 ) ;
+    // for the day's events block
+    // %s means the indicated day
+    define('_MB_APCAL_EVENTS_THEDAY', 'Eventos en %s');
 
-// Xoops Mexican & Spanish Support (http://www.neoideas.net/xoops/)
-// $Id: blocks.php, v 0.5 2003/11/07 20:00:09$
-//%%%%%%	Admin Module Name  APCal 	%%%%%
-// for monthly calendar block
-define('_MB_APCAL_PREV_MONTH','Anterior');
-define('_MB_APCAL_NEXT_MONTH','Siguiente');
-define('_MB_APCAL_YEAR','');
-define('_MB_APCAL_MONTH','');
-define('_MB_APCAL_JUMP','Saltar');
-
-// for after the day's events block
-// %s means the indicated day
-define('_MB_APCAL_EVENTS_AFTER','Eventos después %s');
-
-// for the day's events block
-// %s means the indicated day
-define('_MB_APCAL_EVENTS_THEDAY','Eventos en %s');
-
-
-
-// Appended by Xoops Language Checker -GIJOE- in 2004-01-14 18:31:00
-define('_MB_APCAL_MAXNEWITEMS','Mostrar');
-
+    // Appended by Xoops Language Checker -GIJOE- in 2004-01-14 18:31:00
+    define('_MB_APCAL_MAXNEWITEMS', 'Mostrar');
 }
-

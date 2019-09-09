@@ -53,16 +53,16 @@ if (!empty($_GET['dirname'])) {
 
 if (!empty($target_module) && is_object($target_module)) {
     // specified by dirname
-    $target_mid     = $target_module->getVar('mid');
-    $target_mname   = $target_module->getVar('name') . '&nbsp;' . sprintf('(%2.2f)', $target_module->getVar('version') / 100.0);
+    $target_mid = $target_module->getVar('mid');
+    $target_mname = $target_module->getVar('name') . '&nbsp;' . sprintf('(%2.2f)', $target_module->getVar('version') / 100.0);
     $query4redirect = '?dirname=' . urlencode(strip_tags($_GET['dirname']));
 } elseif (\Xmf\Request::hasVar('mid', 'GET') && 0 == $_GET['mid'] || 'blocksadmin' === $xoopsModule->getVar('dirname')) {
-    $target_mid     = 0;
-    $target_mname   = '';
+    $target_mid = 0;
+    $target_mname = '';
     $query4redirect = '?mid=0';
 } else {
-    $target_mid     = $xoopsModule->getVar('mid');
-    $target_mname   = $xoopsModule->getVar('name');
+    $target_mid = $xoopsModule->getVar('mid');
+    $target_mname = $xoopsModule->getVar('name');
     $query4redirect = '';
 }
 
@@ -73,16 +73,16 @@ if (!$grouppermHandler->checkRight('system_admin', XOOPS_SYSTEM_BLOCK, $xoopsUse
 }
 
 // get blocks owned by the module (Imported from xoopsblock.php then modified)
-$db        = \XoopsDatabaseFactory::getDatabaseConnection();
-$sql       = 'SELECT bid,name,show_func,func_file,template FROM ' . $db->prefix('newblocks') . " WHERE mid='$target_mid'";
-$result    = $db->query($sql);
+$db = \XoopsDatabaseFactory::getDatabaseConnection();
+$sql = 'SELECT bid,name,show_func,func_file,template FROM ' . $db->prefix('newblocks') . " WHERE mid='$target_mid'";
+$result = $db->query($sql);
 $block_arr = [];
 while (list($bid, $bname, $show_func, $func_file, $template) = $db->fetchRow($result)) {
     $block_arr[$bid] = [
-        'name'      => $bname,
+        'name' => $bname,
         'show_func' => $show_func,
         'func_file' => $func_file,
-        'template'  => $template,
+        'template' => $template,
     ];
 }
 
@@ -95,16 +95,16 @@ function list_blockinstances()
 
     // cachetime options
     $cachetimes = [
-        '0'       => _NOCACHE,
-        '30'      => sprintf(_SECONDS, 30),
-        '60'      => _MINUTE,
-        '300'     => sprintf(_MINUTES, 5),
-        '1800'    => sprintf(_MINUTES, 30),
-        '3600'    => _HOUR,
-        '18000'   => sprintf(_HOURS, 5),
-        '86400'   => _DAY,
-        '259200'  => sprintf(_DAYS, 3),
-        '604800'  => _WEEK,
+        '0' => _NOCACHE,
+        '30' => sprintf(_SECONDS, 30),
+        '60' => _MINUTE,
+        '300' => sprintf(_MINUTES, 5),
+        '1800' => sprintf(_MINUTES, 30),
+        '3600' => _HOUR,
+        '18000' => sprintf(_HOURS, 5),
+        '86400' => _DAY,
+        '259200' => sprintf(_DAYS, 3),
+        '604800' => _WEEK,
         '2592000' => _MONTH,
     ];
 
@@ -122,25 +122,25 @@ function list_blockinstances()
         </tr>\n";
 
     // get block instances
-    $crit     = new \Criteria('bid', '(' . implode(',', array_keys($block_arr)) . ')', 'IN');
+    $crit = new \Criteria('bid', '(' . implode(',', array_keys($block_arr)) . ')', 'IN');
     $criteria = new \CriteriaCompo($crit);
     $criteria->setSort('visible DESC, side ASC, weight');
     $instanceHandler = xoops_getHandler('blockinstance');
-    $instances       = $instanceHandler->getObjects($criteria, true, true);
+    $instances = $instanceHandler->getObjects($criteria, true, true);
 
     //Get modules and pages for visible in
     $module_list[_AM_APCAL_SYSTEMLEVEL]['0-2'] = _AM_APCAL_ADMINBLOCK;
     $module_list[_AM_APCAL_SYSTEMLEVEL]['0-1'] = _AM_APCAL_TOPPAGE;
     $module_list[_AM_APCAL_SYSTEMLEVEL]['0-0'] = _AM_APCAL_ALLPAGES;
-    $criteria                                  = new \CriteriaCompo(new \Criteria('hasmain', 1));
+    $criteria = new \CriteriaCompo(new \Criteria('hasmain', 1));
     $criteria->add(new \Criteria('isactive', 1));
     /** @var \XoopsModuleHandler $moduleHandler */
     $moduleHandler = xoops_getHandler('module');
-    $module_main   = $moduleHandler->getObjects($criteria, true);
+    $module_main = $moduleHandler->getObjects($criteria, true);
     if (count($module_main) > 0) {
         foreach (array_keys($module_main) as $mid) {
             $module_list[$module_main[$mid]->getVar('name')][$mid . '-0'] = _AM_APCAL_ALLMODULEPAGES;
-            $pages                                                        = $module_main[$mid]->getInfo('pages');
+            $pages = $module_main[$mid]->getInfo('pages');
             if (false === $pages) {
                 $pages = $module_main[$mid]->getInfo('sub');
             }
@@ -153,17 +153,17 @@ function list_blockinstances()
     }
 
     // blocks displaying loop
-    $class         = 'even';
+    $class = 'even';
     $block_configs = get_block_configs();
     foreach (array_keys($block_arr) as $i) {
         $sseln = $ssel0 = $ssel1 = $ssel2 = $ssel3 = $ssel4 = $ssel5 = $ssel6 = $ssel7 = '';
         $scoln = $scol0 = $scol1 = $scol2 = $scol3 = $scol4 = $ssel5 = $ssel6 = $ssel7 = '';
 
-        $weight     = $instances[$i]->getVar('weight');
-        $title      = $instances[$i]->getVar('title');
+        $weight = $instances[$i]->getVar('weight');
+        $title = $instances[$i]->getVar('title');
         $bcachetime = $instances[$i]->getVar('bcachetime');
-        $bid        = $instances[$i]->getVar('bid');
-        $name       = $myts->htmlSpecialChars($block_arr[$bid]['name']);
+        $bid = $instances[$i]->getVar('bid');
+        $name = $myts->htmlSpecialChars($block_arr[$bid]['name']);
 
         $visiblein = $instances[$i]->getVisibleIn();
 

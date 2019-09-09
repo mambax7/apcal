@@ -18,7 +18,6 @@
  * @author       GIJ=CHECKMATE (PEAK Corp. http://www.peak.ne.jp/)
  * @author       Antiques Promotion (http://www.antiquespromotion.ca)
  */
-
 use  XoopsModules\Apcal;
 
 if (!defined('APCAL_BLOCK_TODAYS_SCHEDULE_INCLUDED')) {
@@ -33,11 +32,11 @@ if (!defined('APCAL_BLOCK_TODAYS_SCHEDULE_INCLUDED')) {
         global $xoopsConfig, $xoopsDB;
 
         $moduleDirName = empty($options[0]) ? basename(dirname(__DIR__)) : $options[0];
-        $now_cid       = empty($options[1]) ? 0 : (int)$options[1];
+        $now_cid = empty($options[1]) ? 0 : (int)$options[1];
 
         // setting physical & virtual paths
         $mod_path = XOOPS_ROOT_PATH . "/modules/$moduleDirName";
-        $mod_url  = XOOPS_URL . "/modules/$moduleDirName";
+        $mod_url = XOOPS_URL . "/modules/$moduleDirName";
 
         // defining class of APCal
         //        if (!class_exists('APCal_xoops')) {
@@ -46,7 +45,7 @@ if (!defined('APCAL_BLOCK_TODAYS_SCHEDULE_INCLUDED')) {
         //        }
 
         // creating an instance of APCal
-        $cal                = new Apcal\ApcalXoops(date('Y-n-j'), $xoopsConfig['language'], true);
+        $cal = new Apcal\ApcalXoops(date('Y-n-j'), $xoopsConfig['language'], true);
         $cal->use_server_TZ = true;
 
         // cid ¤Ë¤è¤ë¹Ê¤ê¹þ¤ß
@@ -55,9 +54,9 @@ if (!defined('APCAL_BLOCK_TODAYS_SCHEDULE_INCLUDED')) {
         // setting properties of APCal
         $cal->conn = $GLOBALS['xoopsDB']->conn;
         include "$mod_path/include/read_configs.php";
-        $cal->base_url    = $mod_url;
-        $cal->base_path   = $mod_path;
-        $cal->images_url  = "$mod_url/assets/images/$skin_folder";
+        $cal->base_url = $mod_url;
+        $cal->base_path = $mod_path;
+        $cal->images_url = "$mod_url/assets/images/$skin_folder";
         $cal->images_path = "$mod_path/assets/images/$skin_folder";
 
         $block = $cal->get_blockarray_date_event("$mod_url/index.php");
@@ -74,26 +73,26 @@ if (!defined('APCAL_BLOCK_TODAYS_SCHEDULE_INCLUDED')) {
         global $xoopsDB, $xoopsConfig;
 
         $moduleDirName = empty($options[0]) ? basename(dirname(__DIR__)) : $options[0];
-        $now_cid       = empty($options[1]) ? 0 : (int)$options[1];
+        $now_cid = empty($options[1]) ? 0 : (int)$options[1];
 
         // setting physical & virtual paths
         $mod_path = XOOPS_ROOT_PATH . "/modules/$moduleDirName";
-        $mod_url  = XOOPS_URL . "/modules/$moduleDirName";
+        $mod_url = XOOPS_URL . "/modules/$moduleDirName";
 
         // defining class of APCal
         //        require_once "$mod_path/class/APCal.php";
         //        require_once "$mod_path/class/APCal_xoops.php";
 
         // creating an instance of APCal
-        $cal                = new Apcal\ApcalXoops(date('Y-n-j'), $xoopsConfig['language'], true);
+        $cal = new Apcal\ApcalXoops(date('Y-n-j'), $xoopsConfig['language'], true);
         $cal->use_server_TZ = true;
 
         // setting properties of APCal
         $cal->conn = $GLOBALS['xoopsDB']->conn;
         include "$mod_path/include/read_configs.php";
-        $cal->base_url    = $mod_url;
-        $cal->base_path   = $mod_path;
-        $cal->images_url  = "$mod_url/assets/images/$skin_folder";
+        $cal->base_url = $mod_url;
+        $cal->base_path = $mod_path;
+        $cal->images_url = "$mod_url/assets/images/$skin_folder";
         $cal->images_path = "$mod_path/assets/images/$skin_folder";
 
         $ret = "<input type='hidden' name='options[0]' value='$moduleDirName'>\n";
@@ -102,10 +101,10 @@ if (!defined('APCAL_BLOCK_TODAYS_SCHEDULE_INCLUDED')) {
         $ret .= _MB_APCAL_CATSEL . ':';
         $ret .= "<select name='options[1]'>\n<option value='0'>" . _ALL . "</option>\n";
         foreach ($cal->categories as $cid => $cat) {
-            $selected       = $now_cid == $cid ? 'selected' : '';
-            $depth_desc     = str_repeat('-', (int)$cat->cat_depth);
+            $selected = $now_cid == $cid ? 'selected' : '';
+            $depth_desc = str_repeat('-', (int)$cat->cat_depth);
             $cat_title4show = $cal->text_sanitizer_for_show($cat->cat_title);
-            $ret            .= "\t<option value='$cid' $selected>$depth_desc $cat_title4show</option>\n";
+            $ret .= "\t<option value='$cid' $selected>$depth_desc $cat_title4show</option>\n";
         }
         $ret .= "</select>\n";
 

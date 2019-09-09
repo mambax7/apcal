@@ -42,11 +42,11 @@ if (!preg_match('/^(\D+)(\d*)$/', $plugin['dirname'], $regs)) {
 $mydirnumber = '' === $regs[2] ? '' : (int)$regs[2];
 
 // set range (added 86400 second margin "begin" & "end")
-$wtop_date     = $this->date - ($this->day - $this->week_start + 7) % 7;
+$wtop_date = $this->date - ($this->day - $this->week_start + 7) % 7;
 $range_start_s = mktime(0, 0, 0, $this->month, $wtop_date - 1, $this->year);
-$range_end_s   = mktime(0, 0, 0, $this->month, $wtop_date + 8, $this->year);
+$range_end_s = mktime(0, 0, 0, $this->month, $wtop_date + 8, $this->year);
 
-$add_whr  = '';
+$add_whr = '';
 $group_by = '';  // show by each entry
 //    $group_by = " group by left(from_unixtime(created)+0,8) " ;  // show by daily
 
@@ -55,10 +55,10 @@ if (!defined('_WEBLOG_COMMON_FUNCTIONS')) {
 }
 if (function_exists('weblog_create_permissionsql')) {
     // get weblog config values
-    $moduleHandler              = xoops_getHandler('module');
+    $moduleHandler = xoops_getHandler('module');
     $weblogmodule_configHandler = xoops_getHandler('config');
-    $mod_weblog                 = $moduleHandler->getByDirname($plugin['dirname']);
-    $weblog_config              = $weblogmodule_configHandler->getConfigList($mod_weblog->mid());
+    $mod_weblog = $moduleHandler->getByDirname($plugin['dirname']);
+    $weblog_config = $weblogmodule_configHandler->getConfigList($mod_weblog->mid());
     list($bl_contents_field, $add_whr) = weblog_create_permissionsql($weblog_config);
 } else {
     $add_whr = '';
@@ -66,20 +66,20 @@ if (function_exists('weblog_create_permissionsql')) {
 
 // query (added 86400 second margin "begin" & "end")
 $weblog_minical_sql = 'SELECT title,blog_id,`created` FROM ' . $db->prefix('weblog' . $mydirnumber) . " as bl WHERE `created` >= $range_start_s AND `created` < $range_end_s and private!='Y' " . $add_whr . $group_by;
-$result             = $db->query($weblog_minical_sql);
+$result = $db->query($weblog_minical_sql);
 while (list($title, $blog_id, $server_time) = $db->fetchRow($result)) {
     $user_time = $server_time + $tzoffset_s2u;
     //        if( date( 'n' , $user_time ) != $this->month ) continue ;
     $target_date = date('j', $user_time);
-    $tmp_array   = [
-        'dotgif'      => $plugin['dotgif'],
-        'dirname'     => $plugin['dirname'],
-        'link'        => XOOPS_URL . '/modules/' . $plugin['dirname'] . '/details.php?blog_id=' . $blog_id,
-        'id'          => $blog_id . $server_time,
+    $tmp_array = [
+        'dotgif' => $plugin['dotgif'],
+        'dirname' => $plugin['dirname'],
+        'link' => XOOPS_URL . '/modules/' . $plugin['dirname'] . '/details.php?blog_id=' . $blog_id,
+        'id' => $blog_id . $server_time,
         'server_time' => $server_time,
-        'user_time'   => $user_time,
-        'name'        => 'blog_id',
-        'title'       => $myts->htmlSpecialChars($title),
+        'user_time' => $user_time,
+        'name' => 'blog_id',
+        'title' => $myts->htmlSpecialChars($title),
     ];
     if ($just1gif) {
         // just 1 gif per a plugin & per a day

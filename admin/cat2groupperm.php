@@ -17,7 +17,6 @@
  * @author       XOOPS Development Team,
  * @author       GIJ=CHECKMATE (PEAK Corp. http://www.peak.ne.jp/)
  */
-
 use Xmf\Request;
 
 require_once __DIR__ . '/admin_header.php';
@@ -59,9 +58,9 @@ if (Request::hasVar('submit', 'POST')) {
 }
 
 // creating Objects of XOOPS
-$myts    = \MyTextSanitizer::getInstance();
+$myts = \MyTextSanitizer::getInstance();
 $cattree = new \XoopsModules\Apcal\Tree($cat_table, 'cid', 'pid');
-$form    = new \XoopsModules\Apcal\GroupPermForm(_AM_APCAL_MENU_CAT2GROUP, $xoopsModule->mid(), 'apcal_cat', _AM_APCAL_CAT2GROUPDESC);
+$form = new \XoopsModules\Apcal\GroupPermForm(_AM_APCAL_MENU_CAT2GROUP, $xoopsModule->mid(), 'apcal_cat', _AM_APCAL_CAT2GROUPDESC);
 
 $cat_tree_array = $cattree->getChildTreeArray(0, 'weight ASC,cat_title');
 

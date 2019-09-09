@@ -30,7 +30,7 @@ $conn = $GLOBALS['xoopsDB']->conn;
 
 // setting physical & virtual paths
 $mod_path = XOOPS_ROOT_PATH . "/modules/$moduleDirName";
-$mod_url  = XOOPS_URL . "/modules/$moduleDirName";
+$mod_url = XOOPS_URL . "/modules/$moduleDirName";
 
 // ¥¯¥é¥¹ÄêµÁ¤ÎÆÉ¤ß¹þ¤ß
 //if (!class_exists('ApcalXoops')) {
@@ -44,9 +44,9 @@ $cal = new ApcalXoops('', $xoopsConfig['language'], true);
 // setting properties of APCal
 $cal->conn = $conn;
 include "$mod_path/include/read_configs.php";
-$cal->base_url    = $mod_url;
-$cal->base_path   = $mod_path;
-$cal->images_url  = "$mod_url/assets/images/$skin_folder";
+$cal->base_url = $mod_url;
+$cal->base_path = $mod_path;
+$cal->images_url = "$mod_url/assets/images/$skin_folder";
 $cal->images_path = "$mod_path/assets/images/$skin_folder";
 
 $event_id = \Xmf\Request::getInt('com_itemid', 0, 'GET');

@@ -1,7 +1,6 @@
 <?php
 
 if (defined('FOR_XOOPS_LANG_CHECKER') || !defined('APCAL_MB_LOADED')) {
-
     define('APCAL_MB_LOADED', 1);
 
     // index.php
@@ -15,7 +14,4 @@ if (defined('FOR_XOOPS_LANG_CHECKER') || !defined('APCAL_MB_LOADED')) {
 
     // print.php
     define('_MB_APCAL_COMESFROM', 'この予定は %s にて作成されました');
-
 }
-
-

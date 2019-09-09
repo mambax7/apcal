@@ -1,7 +1,7 @@
 <?php
 
-if( defined('FOR_XOOPS_LANG_CHECKER') || !defined('_MI_APCAL_APCALLOADED' ) ) {
-    define('_MI_APCAL_APCALLOADED' , 1 ) ;
+if (defined('FOR_XOOPS_LANG_CHECKER') || !defined('_MI_APCAL_APCALLOADED')) {
+    define('_MI_APCAL_APCALLOADED', 1);
 
     // Module Info
 
@@ -12,13 +12,13 @@ if( defined('FOR_XOOPS_LANG_CHECKER') || !defined('_MI_APCAL_APCALLOADED' ) ) {
     define('_MI_APCAL_DESC', 'Kalendermodul mit Terminplaner');
 
     // Default Locale
-    define('_MI_APCAL_DEFAULTLOCALE','austria');
+    define('_MI_APCAL_DEFAULTLOCALE', 'austria');
 
     // Names of blocks for this module (Not all module has blocks)
     define('_MI_APCAL_BNAME_MINICAL', 'Minikalender');
     define('_MI_APCAL_BNAME_MINICAL_DESC', 'Minikalender-Block anzeigen');
-    define('_MI_APCAL_BNAME_MINICALEX','MiniCalendarEx');
-    define('_MI_APCAL_BNAME_MINICALEX_DESC','Erweiterbarer Minikalender mit Plugin-System');
+    define('_MI_APCAL_BNAME_MINICALEX', 'MiniCalendarEx');
+    define('_MI_APCAL_BNAME_MINICALEX_DESC', 'Erweiterbarer Minikalender mit Plugin-System');
     define('_MI_APCAL_BNAME_MONTHCAL', 'Monatskalender');
     define('_MI_APCAL_BNAME_MONTHCAL_DESC', 'Monatskalender in voller Größe anzeigen');
     define('_MI_APCAL_BNAME_TODAYS', 'Heutige Termine');
@@ -64,17 +64,17 @@ if( defined('FOR_XOOPS_LANG_CHECKER') || !defined('_MI_APCAL_APCALLOADED' ) ) {
     define('_MI_APCAL_MAXRRULEEXTRACT', 'max. Anzahl an Terminen, die durch die Regeln für wiederkehrende Termine erzeugt werden');
     define('_MI_APCAL_WEEKSTARTFROM', 'Die Woche beginnt mit');
     define('_MI_APCAL_WEEKNUMBERING', 'Wochennummerierung');
-    define('_MI_APCAL_DAYSTARTFROM','Zeitpunkt des Tagesbeginns');
-    define('_MI_APCAL_TIMEZONE_USING','Zeitzone des Servers');
-    define('_MI_APCAL_USE24HOUR','24 Stunden-System (Nein heißt, 12 Stunden-System)');
-    define('_MI_APCAL_NAMEORUNAME',"Welcher 'Name' des Autors soll angezeigt werden?");
+    define('_MI_APCAL_DAYSTARTFROM', 'Zeitpunkt des Tagesbeginns');
+    define('_MI_APCAL_TIMEZONE_USING', 'Zeitzone des Servers');
+    define('_MI_APCAL_USE24HOUR', '24 Stunden-System (Nein heißt, 12 Stunden-System)');
+    define('_MI_APCAL_NAMEORUNAME', "Welcher 'Name' des Autors soll angezeigt werden?");
 
-    define('_MI_APCAL_GMLAT' , '"Google Map" Standard-Latitude' ) ;
-    define('_MI_APCAL_GMLNG' , '"Google Map" Standard-Longitude' ) ;
-    define('_MI_APCAL_GMZOOM' , '"Google Map" Standard-Zoom-Level' ) ;
-    define('_MI_APCAL_GMHEIGHT' , '"Google Map" Höhe (in Pixel)' ) ;
-    define('_MI_APCAL_USEURLREWRITE' , 'URL rewriting verwenden' ) ;
-    define('_MI_APCAL_WIDERWEEKEND' , 'Breitere Spalten in der Monatsansicht für:' ) ;
+    define('_MI_APCAL_GMLAT', '"Google Map" Standard-Latitude');
+    define('_MI_APCAL_GMLNG', '"Google Map" Standard-Longitude');
+    define('_MI_APCAL_GMZOOM', '"Google Map" Standard-Zoom-Level');
+    define('_MI_APCAL_GMHEIGHT', '"Google Map" Höhe (in Pixel)');
+    define('_MI_APCAL_USEURLREWRITE', 'URL rewriting verwenden');
+    define('_MI_APCAL_WIDERWEEKEND', 'Breitere Spalten in der Monatsansicht für:');
     define('_MI_APCAL_GETTHMCOLOR', 'Haupt-CSS-Datei im Theme-Verzeichnis');
     define('_MI_APCAL_THMORDEFAULT', 'Farben von:');
     define('_MI_APCAL_ENABLECALMAP', 'Google Map in der Kalenderansicht anzeigen');
@@ -102,10 +102,10 @@ if( defined('FOR_XOOPS_LANG_CHECKER') || !defined('_MI_APCAL_APCALLOADED' ) ) {
     //added by goffy2
     define('_MI_APCAL_RO_SETTINGS', 'Einstellungen Onlineanmeldung');
     define('_MI_APCAL_RO_ENABLE', 'Onlineanmeldung zulassen');
-    define('_MI_APCAL_RO_MAIL_SENDER','Absender bei Bestätigungsmail');
-    define('_MI_APCAL_RO_MAIL_SENDERNAME','Absendername bei Bestätigungsmail');
-    define('_MI_APCAL_RO_MAIL_SIGNATURE','Signatur bei Bestätigungsmail');
-    define('_MI_APCAL_RO_SHOW_TIP','Unterhalb des Kalenders Hinweis auf Onlineregistrierung anzeigen');
+    define('_MI_APCAL_RO_MAIL_SENDER', 'Absender bei Bestätigungsmail');
+    define('_MI_APCAL_RO_MAIL_SENDERNAME', 'Absendername bei Bestätigungsmail');
+    define('_MI_APCAL_RO_MAIL_SIGNATURE', 'Signatur bei Bestätigungsmail');
+    define('_MI_APCAL_RO_SHOW_TIP', 'Unterhalb des Kalenders Hinweis auf Onlineregistrierung anzeigen');
 
     define('_MI_APCAL_ROC_SETTINGS', 'Einstellungen Umwandlung Kontaktinfos');
     define('_MI_APCAL_ROC_ENABLE', 'Namen im Feld Kontakt in einen Link auf das Benutzerkonto umwandeln, wenn ein entsprechender Benutzername gefunden wird');
@@ -124,9 +124,9 @@ if( defined('FOR_XOOPS_LANG_CHECKER') || !defined('_MI_APCAL_APCALLOADED' ) ) {
     // Description of each config items
     define('_MI_APCAL_EDITBYGUESTDSC', 'Berechtigungen für Gäste, um Termine hinzuzufügen');
     define('_MI_APCAL_LOCALEDESC', 'Die Feiertage sind standardmäßig nur für USA, Canada, Canada-fr und Frankreich verfügbar. Bei anderen Ländern bitte überprüfen und erforderlichenfalls selbst erstellen.');
-    define('_MI_APCAL_DESCNAMEORUNAME' , 'Auswahl, welcher Name angezeigt wird' );
-    define('_MI_APCAL_DESCUSEURLREWRITE' , '<b>Damit Url-Rewriting richtig funktioniert, kopieren sie bitte /modules/APCal/doc/.htaccess in das Verzeichnis /modules/APCal/.</b><br /><br />Url-Rewriting funktioniert nur, wenn \'mod_rewrite\' auf dem Server installiert ist. Für Details kontaktieren Sie bitte Ihren System-Administrator.' ) ;
-    define('_MI_APCAL_WIDERWEEKENDDESC' , 'Für Mehrfachauswahl bitte die \'Strg\'-Taste gedrückt halten.' );
+    define('_MI_APCAL_DESCNAMEORUNAME', 'Auswahl, welcher Name angezeigt wird');
+    define('_MI_APCAL_DESCUSEURLREWRITE', '<b>Damit Url-Rewriting richtig funktioniert, kopieren sie bitte /modules/APCal/doc/.htaccess in das Verzeichnis /modules/APCal/.</b><br /><br />Url-Rewriting funktioniert nur, wenn \'mod_rewrite\' auf dem Server installiert ist. Für Details kontaktieren Sie bitte Ihren System-Administrator.');
+    define('_MI_APCAL_WIDERWEEKENDDESC', 'Für Mehrfachauswahl bitte die \'Strg\'-Taste gedrückt halten.');
     define('_MI_APCAL_THMORDEFAULTDESC', 'Theme verwenden: Hier den Namen der CSS-Datei angeben (die Verwendung einer CSS wird empfohlen)<br />Individuell anpassen: Bitte die nächsten 13 Felder ausfüllen.<br />Standard: Verwendung der Standardfarben.');
 
     // Options of each config items
@@ -145,11 +145,11 @@ if( defined('FOR_XOOPS_LANG_CHECKER') || !defined('_MI_APCAL_APCALLOADED' ) ) {
     define('_MI_APCAL_OPT_STARTFROMMON', 'Montag');
     define('_MI_APCAL_OPT_WEEKNOEACHMONTH', 'jeweils für einen Monat');
     define('_MI_APCAL_OPT_WEEKNOWHOLEYEAR', 'durchgehend für das ganze Jahr');
-    define('_MI_APCAL_OPT_USENAME','Name');
-    define('_MI_APCAL_OPT_USEUNAME','Login Name');
-    define('_MI_APCAL_OPT_TZ_USEXOOPS','Wähle die XOOPS-Konfiguration');
-    define('_MI_APCAL_OPT_TZ_USEWINTER','Wähle die Zeit des Servers als Winterzeit (empfohlen)');
-    define('_MI_APCAL_OPT_TZ_USESUMMER','Wähle die Zeit des Servers als Sommerzeit');
+    define('_MI_APCAL_OPT_USENAME', 'Name');
+    define('_MI_APCAL_OPT_USEUNAME', 'Login Name');
+    define('_MI_APCAL_OPT_TZ_USEXOOPS', 'Wähle die XOOPS-Konfiguration');
+    define('_MI_APCAL_OPT_TZ_USEWINTER', 'Wähle die Zeit des Servers als Winterzeit (empfohlen)');
+    define('_MI_APCAL_OPT_TZ_USESUMMER', 'Wähle die Zeit des Servers als Sommerzeit');
     define('_MI_APCAL_OPT_THM', 'Theme verwenden');
     define('_MI_APCAL_OPT_CUSTOM', 'Individuell anpassen');
     define('_MI_APCAL_OPT_DEFAULT', 'Standard');
@@ -172,7 +172,7 @@ if( defined('FOR_XOOPS_LANG_CHECKER') || !defined('_MI_APCAL_APCALLOADED' ) ) {
     define('_MI_APCAL_ADMENU_TM', 'Tabellen-Wartung');
     define('_MI_APCAL_ADMENU_PLUGINS', 'Plugins Manager');
     define('_MI_APCAL_ADMENU_ICAL', 'iCalendar Import');
-    define('_MI_APCAL_ADMENU_MYTPLSADMIN','Templates');
+    define('_MI_APCAL_ADMENU_MYTPLSADMIN', 'Templates');
     define('_MI_APCAL_ADMENU_MYBLOCKSADMIN', 'Block- & Gruppen-Admininistration');
 
     // Text for notifications
@@ -195,7 +195,7 @@ if( defined('FOR_XOOPS_LANG_CHECKER') || !defined('_MI_APCAL_APCALLOADED' ) ) {
 
     //Help
     define('_MI_APCAL_DIRNAME', basename(dirname(dirname(__DIR__))));
-    define('_MI_APCAL_HELP_HEADER', __DIR__.'/help/helpheader.html');
+    define('_MI_APCAL_HELP_HEADER', __DIR__ . '/help/helpheader.html');
     define('_MI_APCAL_BACK_2_ADMIN', 'Zurück zur Verwaltung von ');
     define('_MI_APCAL_OVERVIEW', 'Übersicht');
 
@@ -210,5 +210,4 @@ if( defined('FOR_XOOPS_LANG_CHECKER') || !defined('_MI_APCAL_APCALLOADED' ) ) {
     define('_MI_APCAL_GMAPS_API', 'Fügen Sie Ihren Google Maps API Schlüssel für http://www.yoursite.com/ hier ein.');
     define('_MI_APCAL_GMAPS_API_DESC', 'Ihren Schlüssel erhalten Sie von <a href="https://developers.google.com/maps/documentation/javascript/get-api-key/">https://developers.google.com/maps/documentation/javascript/get-api-key/</a>
                                        <br>necessary APIs: Geocoding API, Maps JavaScript API, Places API');
-    
 }

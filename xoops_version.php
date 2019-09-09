@@ -32,48 +32,48 @@ if (\Xmf\Request::hasVar('fct', 'GET') && 'preferences' === $_GET['fct']) {
     echo '<script type="text/javascript">var xoops_url = \'' . XOOPS_URL . '\';</script>';
     echo '<script src="' . XOOPS_URL . '/modules/' . $moduleDirName . '/assets/images/prefs.js"></script>';
 }
-$localesdir  = scandir(XOOPS_ROOT_PATH . '/modules/' . $moduleDirName . '/locales', SCANDIR_SORT_NONE);
+$localesdir = scandir(XOOPS_ROOT_PATH . '/modules/' . $moduleDirName . '/locales', SCANDIR_SORT_NONE);
 $locales[''] = '';
 foreach ($localesdir as $locale) {
     if ('.php' === mb_substr($locale, -4, 4)) {
         $locales[mb_substr($locale, 0, -4)] = mb_substr($locale, 0, -4);
     }
 }
-$modversion['version']             = 2.23;
-$modversion['module_status']       = 'Beta 1';
-$modversion['release_date']        = '2018/04/14'; //NOT RELEASED!!!!  Work in progress
-$modversion['name']                = _MI_APCAL_NAME . $mydirnumber;
-$modversion['dirname']             = basename(__DIR__);
-$modversion['image']               = 'assets/images/logoModule.png';
-$modversion['description']         = _MI_APCAL_DESC;
-$modversion['author']              = 'Antiques Promotion';
-$modversion['license']             = 'GNU GPL 2.0';
-$modversion['license_url']         = 'www.gnu.org/licenses/gpl-2.0.html';
-$modversion['official']            = 0; //1 indicates supported by XOOPS Dev Team, 0 means 3rd party supported
-$modversion['help']                = 'page=help';
-$modversion['module_website_url']  = 'http://xoops.antiquespromotion.ca';
+$modversion['version'] = 2.23;
+$modversion['module_status'] = 'Beta 1';
+$modversion['release_date'] = '2018/04/14'; //NOT RELEASED!!!!  Work in progress
+$modversion['name'] = _MI_APCAL_NAME . $mydirnumber;
+$modversion['dirname'] = basename(__DIR__);
+$modversion['image'] = 'assets/images/logoModule.png';
+$modversion['description'] = _MI_APCAL_DESC;
+$modversion['author'] = 'Antiques Promotion';
+$modversion['license'] = 'GNU GPL 2.0';
+$modversion['license_url'] = 'www.gnu.org/licenses/gpl-2.0.html';
+$modversion['official'] = 0; //1 indicates supported by XOOPS Dev Team, 0 means 3rd party supported
+$modversion['help'] = 'page=help';
+$modversion['module_website_url'] = 'http://xoops.antiquespromotion.ca';
 $modversion['module_website_name'] = 'Antiques Promotion';
-$modversion['author_website_url']  = 'http://www.antiquespromotion.ca';
+$modversion['author_website_url'] = 'http://www.antiquespromotion.ca';
 $modversion['author_website_name'] = 'Antiques Promotion';
-$modversion['min_php']             = '5.5';
-$modversion['min_xoops']           = '2.5.10';
-$modversion['modicons16']          = 'assets/images/icons/16';
-$modversion['modicons32']          = 'assets/images/icons/32';
+$modversion['min_php'] = '5.5';
+$modversion['min_xoops'] = '2.5.10';
+$modversion['modicons16'] = 'assets/images/icons/16';
+$modversion['modicons32'] = 'assets/images/icons/32';
 // mysql
 $modversion['sqlfile']['mysql'] = 'sql/apcal.sql';
-$modversion['tables'][0]        = 'apcal_event';
-$modversion['tables'][1]        = 'apcal_cat';
-$modversion['tables'][2]        = 'apcal_plugins';
-$modversion['tables'][3]        = 'apcal_pictures';
-$modversion['tables'][4]        = 'apcal_ro_events';
-$modversion['tables'][5]        = 'apcal_ro_members';
-$modversion['tables'][6]        = 'apcal_ro_notify';
+$modversion['tables'][0] = 'apcal_event';
+$modversion['tables'][1] = 'apcal_cat';
+$modversion['tables'][2] = 'apcal_plugins';
+$modversion['tables'][3] = 'apcal_pictures';
+$modversion['tables'][4] = 'apcal_ro_events';
+$modversion['tables'][5] = 'apcal_ro_members';
+$modversion['tables'][6] = 'apcal_ro_notify';
 
 // Admin things
 $modversion['system_menu'] = 1;
-$modversion['hasAdmin']    = 1;
-$modversion['adminindex']  = 'admin/index.php';
-$modversion['adminmenu']   = 'admin/menu.php';
+$modversion['hasAdmin'] = 1;
+$modversion['adminindex'] = 'admin/index.php';
+$modversion['adminmenu'] = 'admin/menu.php';
 
 // ------------------- Help files ------------------- //
 $modversion['helpsection'] = [
@@ -88,73 +88,73 @@ $b = 0;
 
 ++$b;
 $modversion['blocks'][$b] = [
-    'file'        => 'apcal_mini_calendar.php',
-    'name'        => _MI_APCAL_BNAME_MINICAL,
+    'file' => 'apcal_mini_calendar.php',
+    'name' => _MI_APCAL_BNAME_MINICAL,
     'description' => _MI_APCAL_BNAME_MINICAL_DESC,
-    'show_func'   => 'apcal_mini_calendar_show',
-    'edit_func'   => 'apcal_mini_calendar_edit',
+    'show_func' => 'apcal_mini_calendar_show',
+    'edit_func' => 'apcal_mini_calendar_edit',
     //  'template'      => "apcal{$mydirnumber}_mini_calendar.tpl",
-    'can_clone'   => true,
-    'options'     => $moduleDirName,
+    'can_clone' => true,
+    'options' => $moduleDirName,
 ];
 
 ++$b;
 $modversion['blocks'][$b] = [
-    'file'        => 'apcal_monthly_calendar.php',
-    'name'        => _MI_APCAL_BNAME_MONTHCAL,
+    'file' => 'apcal_monthly_calendar.php',
+    'name' => _MI_APCAL_BNAME_MONTHCAL,
     'description' => _MI_APCAL_BNAME_MONTHCAL_DESC,
-    'show_func'   => 'apcal_monthly_calendar_show',
-    'edit_func'   => 'apcal_monthly_calendar_edit',
+    'show_func' => 'apcal_monthly_calendar_show',
+    'edit_func' => 'apcal_monthly_calendar_edit',
     //  'template'      => "apcal{$mydirnumber}_monthly_calendar.tpl" ,
-    'options'     => $moduleDirName,
+    'options' => $moduleDirName,
 ];
 
 ++$b;
 $modversion['blocks'][$b] = [
-    'file'        => 'apcal_todays_schedule.php',
-    'name'        => _MI_APCAL_BNAME_TODAYS,
+    'file' => 'apcal_todays_schedule.php',
+    'name' => _MI_APCAL_BNAME_TODAYS,
     'description' => _MI_APCAL_BNAME_TODAYS_DESC,
-    'show_func'   => 'apcal_todays_schedule_show_tpl',
-    'edit_func'   => 'apcal_todays_schedule_edit',
-    'template'    => "apcal{$mydirnumber}_todays_schedule.tpl",
-    'can_clone'   => true,
-    'options'     => "{$moduleDirName }|0",
+    'show_func' => 'apcal_todays_schedule_show_tpl',
+    'edit_func' => 'apcal_todays_schedule_edit',
+    'template' => "apcal{$mydirnumber}_todays_schedule.tpl",
+    'can_clone' => true,
+    'options' => "{$moduleDirName }|0",
 ];
 
 ++$b;
 $modversion['blocks'][$b] = [
-    'file'        => 'apcal_coming_schedule.php',
-    'name'        => _MI_APCAL_BNAME_COMING,
+    'file' => 'apcal_coming_schedule.php',
+    'name' => _MI_APCAL_BNAME_COMING,
     'description' => _MI_APCAL_BNAME_COMING_DESC,
-    'show_func'   => 'apcal_coming_schedule_show_tpl',
-    'edit_func'   => 'apcal_coming_schedule_edit',
-    'template'    => "apcal{$mydirnumber}_coming_schedule.tpl",
-    'can_clone'   => true,
-    'options'     => "{$moduleDirName }|5|0|1|0",
+    'show_func' => 'apcal_coming_schedule_show_tpl',
+    'edit_func' => 'apcal_coming_schedule_edit',
+    'template' => "apcal{$mydirnumber}_coming_schedule.tpl",
+    'can_clone' => true,
+    'options' => "{$moduleDirName }|5|0|1|0",
 ];
 
 ++$b;
 $modversion['blocks'][$b] = [
-    'file'        => 'apcal_new_event.php',
-    'name'        => _MI_APCAL_BNAME_NEW,
+    'file' => 'apcal_new_event.php',
+    'name' => _MI_APCAL_BNAME_NEW,
     'description' => _MI_APCAL_BNAME_NEW_DESC,
-    'show_func'   => 'apcal_new_event_show_tpl',
-    'edit_func'   => 'apcal_new_event_edit',
-    'template'    => "apcal{$mydirnumber}_new_event.tpl",
-    'can_clone'   => true,
-    'options'     => "{$moduleDirName }|5|0",
+    'show_func' => 'apcal_new_event_show_tpl',
+    'edit_func' => 'apcal_new_event_edit',
+    'template' => "apcal{$mydirnumber}_new_event.tpl",
+    'can_clone' => true,
+    'options' => "{$moduleDirName }|5|0",
 ];
 
 ++$b;
 $modversion['blocks'][$b] = [
-    'file'        => 'apcal_map.php',
-    'name'        => _MI_APCAL_BNAME_MAP,
+    'file' => 'apcal_map.php',
+    'name' => _MI_APCAL_BNAME_MAP,
     'description' => _MI_APCAL_BNAME_MAP_DESC,
-    'show_func'   => 'apcal_map_show',
-    'edit_func'   => 'apcal_map_edit',
-    'template'    => 'apcal_map.tpl',
+    'show_func' => 'apcal_map_show',
+    'edit_func' => 'apcal_map_edit',
+    'template' => 'apcal_map.tpl',
     //'can_clone'       => true ,
-    'options'     => $moduleDirName,
+    'options' => $moduleDirName,
 ];
 
 // Menu
@@ -164,15 +164,15 @@ $subcount = 1;
 global $cal;
 if (isset($cal) && 'apcal_xoops' === mb_strtolower(get_class($cal))) {
     if ($cal->insertable) {
-        $modversion['sub'][$subcount]['name']  = _MI_APCAL_SM_SUBMIT;
+        $modversion['sub'][$subcount]['name'] = _MI_APCAL_SM_SUBMIT;
         $modversion['sub'][$subcount++]['url'] = "index.php?action=Edit&amp;caldate=$cal->caldate";
     }
     foreach ($cal->categories as $cid => $cat) {
         if ($cat->ismenuitem) {
-            $link                                  = $cal->make_cal_link('', $cal->default_view, $cid);
-            $pos                                   = mb_strpos($link, XOOPS_URL . '/modules/' . $moduleDirName . '/');
-            $pos                                   = mb_strlen(XOOPS_URL . '/modules/' . $moduleDirName . '/');
-            $modversion['sub'][$subcount]['name']  = $cal->text_sanitizer_for_show($cat->cat_title);
+            $link = $cal->make_cal_link('', $cal->default_view, $cid);
+            $pos = mb_strpos($link, XOOPS_URL . '/modules/' . $moduleDirName . '/');
+            $pos = mb_strlen(XOOPS_URL . '/modules/' . $moduleDirName . '/');
+            $modversion['sub'][$subcount]['name'] = $cal->text_sanitizer_for_show($cat->cat_title);
             $modversion['sub'][$subcount++]['url'] = mb_substr($link, $pos); /*"index.php?cid=$cid"*/
         }
     }
@@ -180,44 +180,44 @@ if (isset($cal) && 'apcal_xoops' === mb_strtolower(get_class($cal))) {
 
 // Config Settings
 $modversion['hasconfig'] = 1;
-$c                       = 0;
+$c = 0;
 
 // USERS
 if (mb_substr(XOOPS_VERSION, 6) >= '2.5.0') {
     ++$c;
     $modversion['config'][$c] = [
-        'name'        => 'break' . $c,
-        'title'       => '_MI_APCAL_USERS',
+        'name' => 'break' . $c,
+        'title' => '_MI_APCAL_USERS',
         'description' => '',
-        'formtype'    => 'line_break',
-        'valuetype'   => 'textbox',
-        'default'     => 'odd',
+        'formtype' => 'line_break',
+        'valuetype' => 'textbox',
+        'default' => 'odd',
     ];
 }
 ++$c;
 $modversion['config'][$c] = [
-    'name'        => 'users_authority',
-    'title'       => '_MI_APCAL_USERS_AUTHORITY',
+    'name' => 'users_authority',
+    'title' => '_MI_APCAL_USERS_AUTHORITY',
     'description' => '',
-    'formtype'    => 'select',
-    'valuetype'   => 'int',
-    'default'     => '1',
-    'options'     => [
-        '_MI_APCAL_OPT_AUTH_NONE'    => 0,
-        '_MI_APCAL_OPT_AUTH_WAIT'    => 1,
-        '_MI_APCAL_OPT_AUTH_POST'    => 3,
+    'formtype' => 'select',
+    'valuetype' => 'int',
+    'default' => '1',
+    'options' => [
+        '_MI_APCAL_OPT_AUTH_NONE' => 0,
+        '_MI_APCAL_OPT_AUTH_WAIT' => 1,
+        '_MI_APCAL_OPT_AUTH_POST' => 3,
         '_MI_APCAL_OPT_AUTH_BYGROUP' => 256,
     ],
 ];
 ++$c;
 $modversion['config'][$c] = [
-    'name'        => 'guests_authority',
-    'title'       => '_MI_APCAL_GUESTS_AUTHORITY',
+    'name' => 'guests_authority',
+    'title' => '_MI_APCAL_GUESTS_AUTHORITY',
     'description' => '',
-    'formtype'    => 'select',
-    'valuetype'   => 'int',
-    'default'     => '0',
-    'options'     => [
+    'formtype' => 'select',
+    'valuetype' => 'int',
+    'default' => '0',
+    'options' => [
         '_MI_APCAL_OPT_AUTH_NONE' => 0,
         '_MI_APCAL_OPT_AUTH_WAIT' => 1,
         '_MI_APCAL_OPT_AUTH_POST' => 3,
@@ -225,36 +225,36 @@ $modversion['config'][$c] = [
 ];
 ++$c;
 $modversion['config'][$c] = [
-    'name'        => 'apcal_can_output_ics',
-    'title'       => '_MI_APCAL_CANOUTPUTICS',
+    'name' => 'apcal_can_output_ics',
+    'title' => '_MI_APCAL_CANOUTPUTICS',
     'description' => '',
-    'formtype'    => 'select',
-    'valuetype'   => 'int',
-    'default'     => '1',
-    'options'     => ['_MI_APCAL_OPT_CANNOTOUTPUTICS' => 0, '_MI_APCAL_OPT_CANOUTPUTICS' => 1],
+    'formtype' => 'select',
+    'valuetype' => 'int',
+    'default' => '1',
+    'options' => ['_MI_APCAL_OPT_CANNOTOUTPUTICS' => 0, '_MI_APCAL_OPT_CANOUTPUTICS' => 1],
 ];
 ++$c;
 $modversion['config'][$c] = [
-    'name'        => 'apcal_ics_new_cal',
-    'title'       => '_MI_APCAL_ICSNEWCAL',
+    'name' => 'apcal_ics_new_cal',
+    'title' => '_MI_APCAL_ICSNEWCAL',
     'description' => '',
-    'formtype'    => 'yesno',
-    'valuetype'   => 'int',
-    'default'     => '1',
-    'options'     => [],
+    'formtype' => 'yesno',
+    'valuetype' => 'int',
+    'default' => '1',
+    'options' => [],
 ];
 ++$c;
 $modversion['config'][$c] = [
-    'name'        => 'apcal_nameoruname',
-    'title'       => '_MI_APCAL_NAMEORUNAME',
+    'name' => 'apcal_nameoruname',
+    'title' => '_MI_APCAL_NAMEORUNAME',
     'description' => '_MI_APCAL_DESCNAMEORUNAME',
-    'formtype'    => 'select',
-    'valuetype'   => 'text',
-    'default'     => 'uname',
-    'options'     => [
-        '_MI_APCAL_OPT_USENAME'  => 'name',
+    'formtype' => 'select',
+    'valuetype' => 'text',
+    'default' => 'uname',
+    'options' => [
+        '_MI_APCAL_OPT_USENAME' => 'name',
         '_MI_APCAL_OPT_USEUNAME' => 'uname',
-        '_MI_APCAL_OPT_NONE'     => 'none',
+        '_MI_APCAL_OPT_NONE' => 'none',
     ],
 ];
 
@@ -262,299 +262,299 @@ $modversion['config'][$c] = [
 if (mb_substr(XOOPS_VERSION, 6) >= '2.5.0') {
     ++$c;
     $modversion['config'][$c] = [
-        'name'        => 'break' . $c,
-        'title'       => '_MI_APCAL_COLORS',
+        'name' => 'break' . $c,
+        'title' => '_MI_APCAL_COLORS',
         'description' => '',
-        'formtype'    => 'line_break',
-        'valuetype'   => 'textbox',
-        'default'     => 'odd',
+        'formtype' => 'line_break',
+        'valuetype' => 'textbox',
+        'default' => 'odd',
     ];
 }
 ++$c;
 $modversion['config'][$c] = [
-    'name'        => 'skin_folder',
-    'title'       => '_MI_APCAL_SKINFOLDER',
+    'name' => 'skin_folder',
+    'title' => '_MI_APCAL_SKINFOLDER',
     'description' => '',
-    'formtype'    => 'textbox',
-    'valuetype'   => 'text',
-    'default'     => 'default',
-    'options'     => [],
+    'formtype' => 'textbox',
+    'valuetype' => 'text',
+    'default' => 'default',
+    'options' => [],
 ];
 ++$c;
 $modversion['config'][$c] = [
-    'name'        => 'apcal_thmORdefault',
-    'title'       => '_MI_APCAL_THMORDEFAULT',
+    'name' => 'apcal_thmORdefault',
+    'title' => '_MI_APCAL_THMORDEFAULT',
     'description' => '_MI_APCAL_THMORDEFAULTDESC',
-    'formtype'    => 'select',
-    'valuetype'   => 'int',
-    'default'     => '0',
-    'options'     => ['_MI_APCAL_OPT_DEFAULT' => 2, '_MI_APCAL_OPT_THM' => 1, '_MI_APCAL_OPT_CUSTOM' => 0],
+    'formtype' => 'select',
+    'valuetype' => 'int',
+    'default' => '0',
+    'options' => ['_MI_APCAL_OPT_DEFAULT' => 2, '_MI_APCAL_OPT_THM' => 1, '_MI_APCAL_OPT_CUSTOM' => 0],
 ];
 ++$c;
 $modversion['config'][$c] = [
-    'name'        => 'apcal_thmCSS',
-    'title'       => '_MI_APCAL_GETTHMCOLOR',
+    'name' => 'apcal_thmCSS',
+    'title' => '_MI_APCAL_GETTHMCOLOR',
     'description' => '',
-    'formtype'    => 'textbox',
-    'valuetype'   => 'text',
-    'default'     => 'style.css',
-    'options'     => [],
+    'formtype' => 'textbox',
+    'valuetype' => 'text',
+    'default' => 'style.css',
+    'options' => [],
 ];
 ++$c;
 $modversion['config'][$c] = [
-    'name'        => 'apcal_sunday_color',
-    'title'       => '_MI_APCAL_SUNDAYCOLOR',
+    'name' => 'apcal_sunday_color',
+    'title' => '_MI_APCAL_SUNDAYCOLOR',
     'description' => '',
-    'formtype'    => 'color',
-    'valuetype'   => 'text',
-    'default'     => '#CC0000',
-    'options'     => [],
+    'formtype' => 'color',
+    'valuetype' => 'text',
+    'default' => '#CC0000',
+    'options' => [],
 ];
 ++$c;
 $modversion['config'][$c] = [
-    'name'        => 'apcal_sunday_bgcolor',
-    'title'       => '_MI_APCAL_SUNDAYBGCOLOR',
+    'name' => 'apcal_sunday_bgcolor',
+    'title' => '_MI_APCAL_SUNDAYBGCOLOR',
     'description' => '',
-    'formtype'    => 'color',
-    'valuetype'   => 'text',
-    'default'     => '#FFEEEE',
-    'options'     => [],
+    'formtype' => 'color',
+    'valuetype' => 'text',
+    'default' => '#FFEEEE',
+    'options' => [],
 ];
 ++$c;
 $modversion['config'][$c] = [
-    'name'        => 'apcal_weekday_color',
-    'title'       => '_MI_APCAL_WEEKDAYCOLOR',
+    'name' => 'apcal_weekday_color',
+    'title' => '_MI_APCAL_WEEKDAYCOLOR',
     'description' => '',
-    'formtype'    => 'color',
-    'valuetype'   => 'text',
-    'default'     => '#000066',
-    'options'     => [],
+    'formtype' => 'color',
+    'valuetype' => 'text',
+    'default' => '#000066',
+    'options' => [],
 ];
 ++$c;
 $modversion['config'][$c] = [
-    'name'        => 'apcal_weekday_bgcolor',
-    'title'       => '_MI_APCAL_WEEKDAYBGCOLOR',
+    'name' => 'apcal_weekday_bgcolor',
+    'title' => '_MI_APCAL_WEEKDAYBGCOLOR',
     'description' => '',
-    'formtype'    => 'color',
-    'valuetype'   => 'text',
-    'default'     => '#FFFFFF',
-    'options'     => [],
+    'formtype' => 'color',
+    'valuetype' => 'text',
+    'default' => '#FFFFFF',
+    'options' => [],
 ];
 ++$c;
 $modversion['config'][$c] = [
-    'name'        => 'apcal_saturday_color',
-    'title'       => '_MI_APCAL_SATURDAYCOLOR',
+    'name' => 'apcal_saturday_color',
+    'title' => '_MI_APCAL_SATURDAYCOLOR',
     'description' => '',
-    'formtype'    => 'color',
-    'valuetype'   => 'text',
-    'default'     => '#0000FF',
-    'options'     => [],
+    'formtype' => 'color',
+    'valuetype' => 'text',
+    'default' => '#0000FF',
+    'options' => [],
 ];
 ++$c;
 $modversion['config'][$c] = [
-    'name'        => 'apcal_saturday_bgcolor',
-    'title'       => '_MI_APCAL_SATURDAYBGCOLOR',
+    'name' => 'apcal_saturday_bgcolor',
+    'title' => '_MI_APCAL_SATURDAYBGCOLOR',
     'description' => '',
-    'formtype'    => 'color',
-    'valuetype'   => 'text',
-    'default'     => '#EEF7FF',
-    'options'     => [],
+    'formtype' => 'color',
+    'valuetype' => 'text',
+    'default' => '#EEF7FF',
+    'options' => [],
 ];
 ++$c;
 $modversion['config'][$c] = [
-    'name'        => 'apcal_holiday_color',
-    'title'       => '_MI_APCAL_HOLIDAYCOLOR',
+    'name' => 'apcal_holiday_color',
+    'title' => '_MI_APCAL_HOLIDAYCOLOR',
     'description' => '',
-    'formtype'    => 'color',
-    'valuetype'   => 'text',
-    'default'     => '#CC0000',
-    'options'     => [],
+    'formtype' => 'color',
+    'valuetype' => 'text',
+    'default' => '#CC0000',
+    'options' => [],
 ];
 ++$c;
 $modversion['config'][$c] = [
-    'name'        => 'apcal_holiday_bgcolor',
-    'title'       => '_MI_APCAL_HOLIDAYBGCOLOR',
+    'name' => 'apcal_holiday_bgcolor',
+    'title' => '_MI_APCAL_HOLIDAYBGCOLOR',
     'description' => '',
-    'formtype'    => 'color',
-    'valuetype'   => 'text',
-    'default'     => '#FFEEEE',
-    'options'     => [],
+    'formtype' => 'color',
+    'valuetype' => 'text',
+    'default' => '#FFEEEE',
+    'options' => [],
 ];
 ++$c;
 $modversion['config'][$c] = [
-    'name'        => 'apcal_targetday_bgcolor',
-    'title'       => '_MI_APCAL_TARGETDAYBGCOLOR',
+    'name' => 'apcal_targetday_bgcolor',
+    'title' => '_MI_APCAL_TARGETDAYBGCOLOR',
     'description' => '',
-    'formtype'    => 'color',
-    'valuetype'   => 'text',
-    'default'     => '#CCFF99',
-    'options'     => [],
+    'formtype' => 'color',
+    'valuetype' => 'text',
+    'default' => '#CCFF99',
+    'options' => [],
 ];
 ++$c;
 $modversion['config'][$c] = [
-    'name'        => 'apcal_calhead_color',
-    'title'       => '_MI_APCAL_CALHEADCOLOR',
+    'name' => 'apcal_calhead_color',
+    'title' => '_MI_APCAL_CALHEADCOLOR',
     'description' => '',
-    'formtype'    => 'color',
-    'valuetype'   => 'text',
-    'default'     => '#009900',
-    'options'     => [],
+    'formtype' => 'color',
+    'valuetype' => 'text',
+    'default' => '#009900',
+    'options' => [],
 ];
 ++$c;
 $modversion['config'][$c] = [
-    'name'        => 'apcal_calhead_bgcolor',
-    'title'       => '_MI_APCAL_CALHEADBGCOLOR',
+    'name' => 'apcal_calhead_bgcolor',
+    'title' => '_MI_APCAL_CALHEADBGCOLOR',
     'description' => '',
-    'formtype'    => 'color',
-    'valuetype'   => 'text',
-    'default'     => '#CCFFCC',
-    'options'     => [],
+    'formtype' => 'color',
+    'valuetype' => 'text',
+    'default' => '#CCFFCC',
+    'options' => [],
 ];
 ++$c;
 $modversion['config'][$c] = [
-    'name'        => 'apcal_frame_css',
-    'title'       => '_MI_APCAL_CALFRAMECSS',
+    'name' => 'apcal_frame_css',
+    'title' => '_MI_APCAL_CALFRAMECSS',
     'description' => '',
-    'formtype'    => 'color',
-    'valuetype'   => 'text',
-    'default'     => '#000000',
-    'options'     => [],
+    'formtype' => 'color',
+    'valuetype' => 'text',
+    'default' => '#000000',
+    'options' => [],
 ];
 ++$c;
 $modversion['config'][$c] = [
-    'name'        => 'apcal_event_bgcolor',
-    'title'       => '_MI_APCAL_EVENTBGCOLOR',
+    'name' => 'apcal_event_bgcolor',
+    'title' => '_MI_APCAL_EVENTBGCOLOR',
     'description' => '',
-    'formtype'    => 'color',
-    'valuetype'   => 'text',
-    'default'     => '#EEEEEE',
-    'options'     => [],
+    'formtype' => 'color',
+    'valuetype' => 'text',
+    'default' => '#EEEEEE',
+    'options' => [],
 ];
 ++$c;
 $modversion['config'][$c] = [
-    'name'        => 'apcal_event_color',
-    'title'       => '_MI_APCAL_EVENTCOLOR',
+    'name' => 'apcal_event_color',
+    'title' => '_MI_APCAL_EVENTCOLOR',
     'description' => '',
-    'formtype'    => 'color',
-    'valuetype'   => 'text',
-    'default'     => '#000000',
-    'options'     => [],
+    'formtype' => 'color',
+    'valuetype' => 'text',
+    'default' => '#000000',
+    'options' => [],
 ];
 ++$c;
 $modversion['config'][$c] = [
-    'name'        => 'apcal_allcats_color',
-    'title'       => '_MI_APCAL_ALLCATSCOLOR',
+    'name' => 'apcal_allcats_color',
+    'title' => '_MI_APCAL_ALLCATSCOLOR',
     'description' => '',
-    'formtype'    => 'color',
-    'valuetype'   => 'text',
-    'default'     => '#5555AA',
-    'options'     => [],
+    'formtype' => 'color',
+    'valuetype' => 'text',
+    'default' => '#5555AA',
+    'options' => [],
 ];
 
 // GENERAL SETTINGS
 if (mb_substr(XOOPS_VERSION, 6) >= '2.5.0') {
     ++$c;
     $modversion['config'][$c] = [
-        'name'        => 'break' . $c,
-        'title'       => '_MI_APCAL_SETTINGS',
+        'name' => 'break' . $c,
+        'title' => '_MI_APCAL_SETTINGS',
         'description' => '',
-        'formtype'    => 'line_break',
-        'valuetype'   => 'textbox',
-        'default'     => 'odd',
+        'formtype' => 'line_break',
+        'valuetype' => 'textbox',
+        'default' => 'odd',
     ];
 }
 ++$c;
 $modversion['config'][$c] = [
-    'name'        => 'apcal_enablesocial',
-    'title'       => '_MI_APCAL_ENABLESOCIAL',
+    'name' => 'apcal_enablesocial',
+    'title' => '_MI_APCAL_ENABLESOCIAL',
     'description' => '',
-    'formtype'    => 'yesno',
-    'valuetype'   => 'int',
-    'default'     => '1',
-    'options'     => [],
+    'formtype' => 'yesno',
+    'valuetype' => 'int',
+    'default' => '1',
+    'options' => [],
 ];
 ++$c;
 $modversion['config'][$c] = [
-    'name'        => 'apcal_enabletellafriend',
-    'title'       => '_MI_APCAL_ENABLETELLAFRIEND',
+    'name' => 'apcal_enabletellafriend',
+    'title' => '_MI_APCAL_ENABLETELLAFRIEND',
     'description' => '_MI_APCAL_ENABLETELLAFRIEND_DESC',
-    'formtype'    => 'yesno',
-    'valuetype'   => 'int',
-    'default'     => '1',
-    'options'     => [],
+    'formtype' => 'yesno',
+    'valuetype' => 'int',
+    'default' => '1',
+    'options' => [],
 ];
 ++$c;
 $modversion['config'][$c] = [
-    'name'        => 'apcal_useurlrewrite',
-    'title'       => '_MI_APCAL_USEURLREWRITE',
+    'name' => 'apcal_useurlrewrite',
+    'title' => '_MI_APCAL_USEURLREWRITE',
     'description' => '_MI_APCAL_DESCUSEURLREWRITE',
-    'formtype'    => 'yesno',
-    'valuetype'   => 'int',
-    'default'     => '0',
-    'options'     => [],
+    'formtype' => 'yesno',
+    'valuetype' => 'int',
+    'default' => '0',
+    'options' => [],
 ];
 ++$c;
 $modversion['config'][$c] = [
-    'name'        => 'apcal_enablesharing',
-    'title'       => '_MI_APCAL_ENABLESHARING',
+    'name' => 'apcal_enablesharing',
+    'title' => '_MI_APCAL_ENABLESHARING',
     'description' => '',
-    'formtype'    => 'yesno',
-    'valuetype'   => 'int',
-    'default'     => '1',
-    'options'     => [],
+    'formtype' => 'yesno',
+    'valuetype' => 'int',
+    'default' => '1',
+    'options' => [],
 ];
 ++$c;
 $modversion['config'][$c] = [
-    'name'        => 'apcal_enableregistration',
-    'title'       => '_MI_APCAL_ENABLEREGISTRATION',
+    'name' => 'apcal_enableregistration',
+    'title' => '_MI_APCAL_ENABLEREGISTRATION',
     'description' => '',
-    'formtype'    => 'yesno',
-    'valuetype'   => 'int',
-    'default'     => '1',
-    'options'     => [],
+    'formtype' => 'yesno',
+    'valuetype' => 'int',
+    'default' => '1',
+    'options' => [],
 ];
 
 // CALENDAR SETTINGS
 if (mb_substr(XOOPS_VERSION, 6) >= '2.5.0') {
     ++$c;
     $modversion['config'][$c] = [
-        'name'        => 'break' . $c,
-        'title'       => '_MI_APCAL_CALSETTINGS',
+        'name' => 'break' . $c,
+        'title' => '_MI_APCAL_CALSETTINGS',
         'description' => '',
-        'formtype'    => 'line_break',
-        'valuetype'   => 'textbox',
-        'default'     => 'odd',
+        'formtype' => 'line_break',
+        'valuetype' => 'textbox',
+        'default' => 'odd',
     ];
 }
 ++$c;
 $modversion['config'][$c] = [
-    'name'        => 'apcal_week_start',
-    'title'       => '_MI_APCAL_WEEKSTARTFROM',
+    'name' => 'apcal_week_start',
+    'title' => '_MI_APCAL_WEEKSTARTFROM',
     'description' => '',
-    'formtype'    => 'select',
-    'valuetype'   => 'int',
-    'default'     => '0',
-    'options'     => ['_MI_APCAL_OPT_STARTFROMSUN' => 0, '_MI_APCAL_OPT_STARTFROMMON' => 1],
+    'formtype' => 'select',
+    'valuetype' => 'int',
+    'default' => '0',
+    'options' => ['_MI_APCAL_OPT_STARTFROMSUN' => 0, '_MI_APCAL_OPT_STARTFROMMON' => 1],
 ];
 ++$c;
 $modversion['config'][$c] = [
-    'name'        => 'apcal_week_numbering',
-    'title'       => '_MI_APCAL_WEEKNUMBERING',
+    'name' => 'apcal_week_numbering',
+    'title' => '_MI_APCAL_WEEKNUMBERING',
     'description' => '',
-    'formtype'    => 'select',
-    'valuetype'   => 'int',
-    'default'     => '0',
-    'options'     => ['_MI_APCAL_OPT_WEEKNOEACHMONTH' => 0, '_MI_APCAL_OPT_WEEKNOWHOLEYEAR' => 1],
+    'formtype' => 'select',
+    'valuetype' => 'int',
+    'default' => '0',
+    'options' => ['_MI_APCAL_OPT_WEEKNOEACHMONTH' => 0, '_MI_APCAL_OPT_WEEKNOWHOLEYEAR' => 1],
 ];
 ++$c;
 $modversion['config'][$c] = [
-    'name'        => 'apcal_day_start',
-    'title'       => '_MI_APCAL_DAYSTARTFROM',
+    'name' => 'apcal_day_start',
+    'title' => '_MI_APCAL_DAYSTARTFROM',
     'description' => '',
-    'formtype'    => 'select',
-    'valuetype'   => 'int',
-    'default'     => '0',
-    'options'     => [
+    'formtype' => 'select',
+    'valuetype' => 'int',
+    'default' => '0',
+    'options' => [
         '0:00' => 0,
         '1:00' => 3600,
         '2:00' => 7200,
@@ -566,24 +566,24 @@ $modversion['config'][$c] = [
 ];
 ++$c;
 $modversion['config'][$c] = [
-    'name'        => 'apcal_use24',
-    'title'       => '_MI_APCAL_USE24HOUR',
+    'name' => 'apcal_use24',
+    'title' => '_MI_APCAL_USE24HOUR',
     'description' => '',
-    'formtype'    => 'yesno',
-    'valuetype'   => 'int',
-    'default'     => '1',
-    'options'     => [],
+    'formtype' => 'yesno',
+    'valuetype' => 'int',
+    'default' => '1',
+    'options' => [],
 ];
 ++$c;
 $modversion['config'][$c] = [
-    'name'        => 'timezone_using',
-    'title'       => '_MI_APCAL_TIMEZONE_USING',
+    'name' => 'timezone_using',
+    'title' => '_MI_APCAL_TIMEZONE_USING',
     'description' => '',
-    'formtype'    => 'select',
-    'valuetype'   => 'text',
-    'default'     => 'winter',
-    'options'     => [
-        '_MI_APCAL_OPT_TZ_USEXOOPS'  => 'xoops',
+    'formtype' => 'select',
+    'valuetype' => 'text',
+    'default' => 'winter',
+    'options' => [
+        '_MI_APCAL_OPT_TZ_USEXOOPS' => 'xoops',
         '_MI_APCAL_OPT_TZ_USEWINTER' => 'winter',
         '_MI_APCAL_OPT_TZ_USESUMMER' => 'summer',
     ],
@@ -593,288 +593,288 @@ $modversion['config'][$c] = [
 if (mb_substr(XOOPS_VERSION, 6) >= '2.5.0') {
     ++$c;
     $modversion['config'][$c] = [
-        'name'        => 'break' . $c,
-        'title'       => '_MI_APCAL_CALDISPLAY',
+        'name' => 'break' . $c,
+        'title' => '_MI_APCAL_CALDISPLAY',
         'description' => '',
-        'formtype'    => 'line_break',
-        'valuetype'   => 'textbox',
-        'default'     => 'odd',
+        'formtype' => 'line_break',
+        'valuetype' => 'textbox',
+        'default' => 'odd',
     ];
 }
 ++$c;
 $modversion['config'][$c] = [
-    'name'        => 'apcal_locale',
-    'title'       => '_MI_APCAL_LOCALE',
+    'name' => 'apcal_locale',
+    'title' => '_MI_APCAL_LOCALE',
     'description' => '_MI_APCAL_LOCALEDESC',
-    'formtype'    => 'select',
-    'valuetype'   => 'text',
-    'default'     => _MI_APCAL_DEFAULTLOCALE,
-    'options'     => $locales,
+    'formtype' => 'select',
+    'valuetype' => 'text',
+    'default' => _MI_APCAL_DEFAULTLOCALE,
+    'options' => $locales,
 ];
 ++$c;
 $modversion['config'][$c] = [
-    'name'        => 'default_view',
-    'title'       => '_MI_APCAL_DEFAULT_VIEW',
+    'name' => 'default_view',
+    'title' => '_MI_APCAL_DEFAULT_VIEW',
     'description' => '',
-    'formtype'    => 'select',
-    'valuetype'   => 'text',
-    'default'     => 'Monthly',
-    'options'     => [
+    'formtype' => 'select',
+    'valuetype' => 'text',
+    'default' => 'Monthly',
+    'options' => [
         '_MI_APCAL_OPT_MINI_MONTHLY' => 'Monthly',
-        '_MI_APCAL_OPT_MINI_WEEKLY'  => 'Weekly',
-        '_MI_APCAL_OPT_MINI_DAILY'   => 'Daily',
-        '_MI_APCAL_OPT_MINI_LIST'    => 'List',
+        '_MI_APCAL_OPT_MINI_WEEKLY' => 'Weekly',
+        '_MI_APCAL_OPT_MINI_DAILY' => 'Daily',
+        '_MI_APCAL_OPT_MINI_LIST' => 'List',
     ],
 ];
 ++$c;
 $modversion['config'][$c] = [
-    'name'        => 'mini_calendar_target',
-    'title'       => '_MI_APCAL_MINICAL_TARGET',
+    'name' => 'mini_calendar_target',
+    'title' => '_MI_APCAL_MINICAL_TARGET',
     'description' => '',
-    'formtype'    => 'select',
-    'valuetype'   => 'text',
-    'default'     => 'MONTHLY',
-    'options'     => [
+    'formtype' => 'select',
+    'valuetype' => 'text',
+    'default' => 'MONTHLY',
+    'options' => [
         '_MI_APCAL_OPT_MINI_PHPSELF' => 'PHP_SELF',
         '_MI_APCAL_OPT_MINI_MONTHLY' => 'MONTHLY',
-        '_MI_APCAL_OPT_MINI_WEEKLY'  => 'WEEKLY',
-        '_MI_APCAL_OPT_MINI_DAILY'   => 'DAILY',
-        '_MI_APCAL_OPT_MINI_LIST'    => 'LIST',
+        '_MI_APCAL_OPT_MINI_WEEKLY' => 'WEEKLY',
+        '_MI_APCAL_OPT_MINI_DAILY' => 'DAILY',
+        '_MI_APCAL_OPT_MINI_LIST' => 'LIST',
     ],
 ];
 ++$c;
 $modversion['config'][$c] = [
-    'name'        => 'apcal_widerDays',
-    'title'       => '_MI_APCAL_WIDERWEEKEND',
+    'name' => 'apcal_widerDays',
+    'title' => '_MI_APCAL_WIDERWEEKEND',
     'description' => '_MI_APCAL_WIDERWEEKENDDESC',
-    'formtype'    => 'select_multi',
-    'valuetype'   => 'array',
-    'default'     => ['Saturday', 'Sunday'],
-    'options'     => [
-        '_MI_APCAL_MONDAY'    => 'Monday',
-        '_MI_APCAL_TUESDAY'   => 'Tuesday',
+    'formtype' => 'select_multi',
+    'valuetype' => 'array',
+    'default' => ['Saturday', 'Sunday'],
+    'options' => [
+        '_MI_APCAL_MONDAY' => 'Monday',
+        '_MI_APCAL_TUESDAY' => 'Tuesday',
         '_MI_APCAL_WEDNESDAY' => 'Wednesday',
-        '_MI_APCAL_THURSDAY'  => 'Thursday',
-        '_MI_APCAL_FRIDAY'    => 'Friday',
-        '_MI_APCAL_SATURDAY'  => 'Saturday',
-        '_MI_APCAL_SUNDAY'    => 'Sunday',
+        '_MI_APCAL_THURSDAY' => 'Thursday',
+        '_MI_APCAL_FRIDAY' => 'Friday',
+        '_MI_APCAL_SATURDAY' => 'Saturday',
+        '_MI_APCAL_SUNDAY' => 'Sunday',
     ],
 ];
 ++$c;
 $modversion['config'][$c] = [
-    'name'        => 'apcal_displayCatTitle',
-    'title'       => '_MI_APCAL_DISPLAYCATTITLE',
+    'name' => 'apcal_displayCatTitle',
+    'title' => '_MI_APCAL_DISPLAYCATTITLE',
     'description' => '',
-    'formtype'    => 'yesno',
-    'valuetype'   => 'int',
-    'default'     => '1',
-    'options'     => [],
+    'formtype' => 'yesno',
+    'valuetype' => 'int',
+    'default' => '1',
+    'options' => [],
 ];
 ++$c;
 $modversion['config'][$c] = [
-    'name'        => 'apcal_displayTimezone',
-    'title'       => '_MI_APCAL_DISPLAYTIMEZONE',
+    'name' => 'apcal_displayTimezone',
+    'title' => '_MI_APCAL_DISPLAYTIMEZONE',
     'description' => '',
-    'formtype'    => 'yesno',
-    'valuetype'   => 'int',
-    'default'     => '0',
-    'options'     => [],
+    'formtype' => 'yesno',
+    'valuetype' => 'int',
+    'default' => '0',
+    'options' => [],
 ];
 
 // EVENTS
 if (mb_substr(XOOPS_VERSION, 6) >= '2.5.0') {
     ++$c;
     $modversion['config'][$c] = [
-        'name'        => 'break' . $c,
-        'title'       => '_MI_APCAL_EVENTS',
+        'name' => 'break' . $c,
+        'title' => '_MI_APCAL_EVENTS',
         'description' => '',
-        'formtype'    => 'line_break',
-        'valuetype'   => 'textbox',
-        'default'     => 'odd',
+        'formtype' => 'line_break',
+        'valuetype' => 'textbox',
+        'default' => 'odd',
     ];
 }
 ++$c;
 $modversion['config'][$c] = [
-    'name'        => 'apcal_max_rrule_extract',
-    'title'       => '_MI_APCAL_MAXRRULEEXTRACT',
+    'name' => 'apcal_max_rrule_extract',
+    'title' => '_MI_APCAL_MAXRRULEEXTRACT',
     'description' => '',
-    'formtype'    => 'textbox',
-    'valuetype'   => 'int',
-    'default'     => '100',
-    'options'     => [],
+    'formtype' => 'textbox',
+    'valuetype' => 'int',
+    'default' => '100',
+    'options' => [],
 ];
 ++$c;
 $modversion['config'][$c] = [
-    'name'        => 'apcal_eventNavEnabled',
-    'title'       => '_MI_APCAL_EVENTNAVENABLED',
+    'name' => 'apcal_eventNavEnabled',
+    'title' => '_MI_APCAL_EVENTNAVENABLED',
     'description' => '',
-    'formtype'    => 'yesno',
-    'valuetype'   => 'int',
-    'default'     => '1',
-    'options'     => [],
+    'formtype' => 'yesno',
+    'valuetype' => 'int',
+    'default' => '1',
+    'options' => [],
 ];
 
 // PICTURES
 if (mb_substr(XOOPS_VERSION, 6) >= '2.5.0') {
     ++$c;
     $modversion['config'][$c] = [
-        'name'        => 'break' . $c,
-        'title'       => '_MI_APCAL_PICTURES',
+        'name' => 'break' . $c,
+        'title' => '_MI_APCAL_PICTURES',
         'description' => '',
-        'formtype'    => 'line_break',
-        'valuetype'   => 'textbox',
-        'default'     => 'odd',
+        'formtype' => 'line_break',
+        'valuetype' => 'textbox',
+        'default' => 'odd',
     ];
 }
 ++$c;
 $modversion['config'][$c] = [
-    'name'        => 'apcal_nbPictures',
-    'title'       => '_MI_APCAL_NBPICS',
+    'name' => 'apcal_nbPictures',
+    'title' => '_MI_APCAL_NBPICS',
     'description' => '',
-    'formtype'    => 'textbox',
-    'valuetype'   => 'int',
-    'default'     => '5',
-    'options'     => [],
+    'formtype' => 'textbox',
+    'valuetype' => 'int',
+    'default' => '5',
+    'options' => [],
 ];
 ++$c;
 $modversion['config'][$c] = [
-    'name'        => 'apcal_picWidth',
-    'title'       => '_MI_APCAL_PICSWIDTH',
+    'name' => 'apcal_picWidth',
+    'title' => '_MI_APCAL_PICSWIDTH',
     'description' => '',
-    'formtype'    => 'textbox',
-    'valuetype'   => 'int',
-    'default'     => '150',
-    'options'     => [],
+    'formtype' => 'textbox',
+    'valuetype' => 'int',
+    'default' => '150',
+    'options' => [],
 ];
 ++$c;
 $modversion['config'][$c] = [
-    'name'        => 'apcal_picHeight',
-    'title'       => '_MI_APCAL_PICSHEIGHT',
+    'name' => 'apcal_picHeight',
+    'title' => '_MI_APCAL_PICSHEIGHT',
     'description' => '',
-    'formtype'    => 'textbox',
-    'valuetype'   => 'int',
-    'default'     => '150',
-    'options'     => [],
+    'formtype' => 'textbox',
+    'valuetype' => 'int',
+    'default' => '150',
+    'options' => [],
 ];
 ++$c;
 $modversion['config'][$c] = [
-    'name'        => 'apcal_showPicMonthly',
-    'title'       => '_MI_APCAL_SHOWPICMONTHLY',
+    'name' => 'apcal_showPicMonthly',
+    'title' => '_MI_APCAL_SHOWPICMONTHLY',
     'description' => '',
-    'formtype'    => 'yesno',
-    'valuetype'   => 'int',
-    'default'     => '1',
-    'options'     => [],
+    'formtype' => 'yesno',
+    'valuetype' => 'int',
+    'default' => '1',
+    'options' => [],
 ];
 ++$c;
 $modversion['config'][$c] = [
-    'name'        => 'apcal_showPicWeekly',
-    'title'       => '_MI_APCAL_SHOWPICWEEKLY',
+    'name' => 'apcal_showPicWeekly',
+    'title' => '_MI_APCAL_SHOWPICWEEKLY',
     'description' => '',
-    'formtype'    => 'yesno',
-    'valuetype'   => 'int',
-    'default'     => '1',
-    'options'     => [],
+    'formtype' => 'yesno',
+    'valuetype' => 'int',
+    'default' => '1',
+    'options' => [],
 ];
 ++$c;
 $modversion['config'][$c] = [
-    'name'        => 'apcal_showPicDaily',
-    'title'       => '_MI_APCAL_SHOWPICDAILY',
+    'name' => 'apcal_showPicDaily',
+    'title' => '_MI_APCAL_SHOWPICDAILY',
     'description' => '',
-    'formtype'    => 'yesno',
-    'valuetype'   => 'int',
-    'default'     => '1',
-    'options'     => [],
+    'formtype' => 'yesno',
+    'valuetype' => 'int',
+    'default' => '1',
+    'options' => [],
 ];
 ++$c;
 $modversion['config'][$c] = [
-    'name'        => 'apcal_showPicList',
-    'title'       => '_MI_APCAL_SHOWPICLIST',
+    'name' => 'apcal_showPicList',
+    'title' => '_MI_APCAL_SHOWPICLIST',
     'description' => '',
-    'formtype'    => 'yesno',
-    'valuetype'   => 'int',
-    'default'     => '1',
-    'options'     => [],
+    'formtype' => 'yesno',
+    'valuetype' => 'int',
+    'default' => '1',
+    'options' => [],
 ];
 
 // GOOGLE MAP
 if (mb_substr(XOOPS_VERSION, 6) >= '2.5.0') {
     ++$c;
     $modversion['config'][$c] = [
-        'name'        => 'break' . $c,
-        'title'       => '_MI_APCAL_MAP',
+        'name' => 'break' . $c,
+        'title' => '_MI_APCAL_MAP',
         'description' => '',
-        'formtype'    => 'line_break',
-        'valuetype'   => 'textbox',
-        'default'     => 'odd',
+        'formtype' => 'line_break',
+        'valuetype' => 'textbox',
+        'default' => 'odd',
     ];
 }
 ++$c;
 $modversion['config'][$c] = [
-    'name'        => 'apcal_mapsapi',
-    'title'       => '_MI_APCAL_GMAPS_API',
+    'name' => 'apcal_mapsapi',
+    'title' => '_MI_APCAL_GMAPS_API',
     'description' => '_MI_APCAL_GMAPS_API_DESC',
-    'formtype'    => 'textbox',
-    'valuetype'   => 'text',
-    'default'     => 'no key',
+    'formtype' => 'textbox',
+    'valuetype' => 'text',
+    'default' => 'no key',
 ];
 ++$c;
 $modversion['config'][$c] = [
-    'name'        => 'apcal_enablecalmap',
-    'title'       => '_MI_APCAL_ENABLECALMAP',
+    'name' => 'apcal_enablecalmap',
+    'title' => '_MI_APCAL_ENABLECALMAP',
     'description' => '',
-    'formtype'    => 'yesno',
-    'valuetype'   => 'int',
-    'default'     => '1',
-    'options'     => [],
+    'formtype' => 'yesno',
+    'valuetype' => 'int',
+    'default' => '1',
+    'options' => [],
 ];
 ++$c;
 $modversion['config'][$c] = [
-    'name'        => 'apcal_enableeventmap',
-    'title'       => '_MI_APCAL_ENABLEEVENTMAP',
+    'name' => 'apcal_enableeventmap',
+    'title' => '_MI_APCAL_ENABLEEVENTMAP',
     'description' => '',
-    'formtype'    => 'yesno',
-    'valuetype'   => 'int',
-    'default'     => '1',
-    'options'     => [],
+    'formtype' => 'yesno',
+    'valuetype' => 'int',
+    'default' => '1',
+    'options' => [],
 ];
 ++$c;
 $modversion['config'][$c] = [
-    'name'        => 'apcal_gmheight',
-    'title'       => '_MI_APCAL_GMHEIGHT',
+    'name' => 'apcal_gmheight',
+    'title' => '_MI_APCAL_GMHEIGHT',
     'description' => '',
-    'formtype'    => 'textbox',
-    'valuetype'   => 'int',
-    'default'     => '350',
-    'options'     => [],
+    'formtype' => 'textbox',
+    'valuetype' => 'int',
+    'default' => '350',
+    'options' => [],
 ];
 
 // COMMETS AND NOTIFICATIONS
 if (mb_substr(XOOPS_VERSION, 6) >= '2.5.0') {
     ++$c;
     $modversion['config'][$c] = [
-        'name'        => 'break' . $c,
-        'title'       => '_MI_APCAL_COMMENTSNOT',
+        'name' => 'break' . $c,
+        'title' => '_MI_APCAL_COMMENTSNOT',
         'description' => '',
-        'formtype'    => 'line_break',
-        'valuetype'   => 'textbox',
-        'default'     => 'odd',
+        'formtype' => 'line_break',
+        'valuetype' => 'textbox',
+        'default' => 'odd',
     ];
 }
 
 // Search
-$modversion['hasSearch']      = 1;
+$modversion['hasSearch'] = 1;
 $modversion['search']['file'] = 'include/search.inc.php';
 $modversion['search']['func'] = "apcal{$mydirnumber}_search";
 
 // Comments
-$modversion['hasComments']          = 1;
+$modversion['hasComments'] = 1;
 $modversion['comments']['itemName'] = 'event_id';
 $modversion['comments']['pageName'] = 'index.php';
 // Comment callback functions
-$modversion['comments']['callbackFile']        = 'include/comment_functions.php';
+$modversion['comments']['callbackFile'] = 'include/comment_functions.php';
 $modversion['comments']['callback']['approve'] = 'apcal_comments_approve';
-$modversion['comments']['callback']['update']  = 'apcal_comments_update';
+$modversion['comments']['callback']['update'] = 'apcal_comments_update';
 
 // ------------------- Templates ------------------- //
 
@@ -898,46 +898,46 @@ $modversion['templates'] = [
 //$modversion['templates'][3]['description'] = '';
 
 // Notification
-$modversion['hasNotification']             = 1;
+$modversion['hasNotification'] = 1;
 $modversion['notification']['lookup_file'] = 'include/notification.inc.php';
 $modversion['notification']['lookup_func'] = "apcal{$mydirnumber}_notify_iteminfo";
 
-$modversion['notification']['category'][1]['name']           = 'global';
-$modversion['notification']['category'][1]['title']          = _MI_APCAL_GLOBAL_NOTIFY;
-$modversion['notification']['category'][1]['description']    = _MI_APCAL_GLOBAL_NOTIFYDSC;
+$modversion['notification']['category'][1]['name'] = 'global';
+$modversion['notification']['category'][1]['title'] = _MI_APCAL_GLOBAL_NOTIFY;
+$modversion['notification']['category'][1]['description'] = _MI_APCAL_GLOBAL_NOTIFYDSC;
 $modversion['notification']['category'][1]['subscribe_from'] = ['index.php'];
-$modversion['notification']['category'][2]['name']           = 'category';
-$modversion['notification']['category'][2]['title']          = _MI_APCAL_CATEGORY_NOTIFY;
-$modversion['notification']['category'][2]['description']    = _MI_APCAL_CATEGORY_NOTIFYDSC;
+$modversion['notification']['category'][2]['name'] = 'category';
+$modversion['notification']['category'][2]['title'] = _MI_APCAL_CATEGORY_NOTIFY;
+$modversion['notification']['category'][2]['description'] = _MI_APCAL_CATEGORY_NOTIFYDSC;
 $modversion['notification']['category'][2]['subscribe_from'] = ['index.php'];
-$modversion['notification']['category'][2]['item_name']      = 'cid';
+$modversion['notification']['category'][2]['item_name'] = 'cid';
 $modversion['notification']['category'][2]['allow_bookmark'] = 1;
 
-$modversion['notification']['category'][3]['name']           = 'event';
-$modversion['notification']['category'][3]['title']          = _MI_APCAL_EVENT_NOTIFY;
-$modversion['notification']['category'][3]['description']    = _MI_APCAL_EVENT_NOTIFYDSC;
+$modversion['notification']['category'][3]['name'] = 'event';
+$modversion['notification']['category'][3]['title'] = _MI_APCAL_EVENT_NOTIFY;
+$modversion['notification']['category'][3]['description'] = _MI_APCAL_EVENT_NOTIFYDSC;
 $modversion['notification']['category'][3]['subscribe_from'] = ['index.php'];
-$modversion['notification']['category'][3]['item_name']      = 'event_id';
+$modversion['notification']['category'][3]['item_name'] = 'event_id';
 $modversion['notification']['category'][3]['allow_bookmark'] = 1;
 
-$modversion['notification']['event'][1]['name']          = 'new_event';
-$modversion['notification']['event'][1]['category']      = 'global';
-$modversion['notification']['event'][1]['title']         = _MI_APCAL_GLOBAL_NEWEVENT_NOTIFY;
-$modversion['notification']['event'][1]['caption']       = _MI_APCAL_GLOBAL_NEWEVENT_NOTIFYCAP;
-$modversion['notification']['event'][1]['description']   = _MI_APCAL_GLOBAL_NEWEVENT_NOTIFYDSC;
+$modversion['notification']['event'][1]['name'] = 'new_event';
+$modversion['notification']['event'][1]['category'] = 'global';
+$modversion['notification']['event'][1]['title'] = _MI_APCAL_GLOBAL_NEWEVENT_NOTIFY;
+$modversion['notification']['event'][1]['caption'] = _MI_APCAL_GLOBAL_NEWEVENT_NOTIFYCAP;
+$modversion['notification']['event'][1]['description'] = _MI_APCAL_GLOBAL_NEWEVENT_NOTIFYDSC;
 $modversion['notification']['event'][1]['mail_template'] = 'global_newevent_notify';
-$modversion['notification']['event'][1]['mail_subject']  = _MI_APCAL_GLOBAL_NEWEVENT_NOTIFYSBJ;
+$modversion['notification']['event'][1]['mail_subject'] = _MI_APCAL_GLOBAL_NEWEVENT_NOTIFYSBJ;
 
-$modversion['notification']['event'][2]['name']          = 'new_event';
-$modversion['notification']['event'][2]['category']      = 'category';
-$modversion['notification']['event'][2]['title']         = _MI_APCAL_CATEGORY_NEWEVENT_NOTIFY;
-$modversion['notification']['event'][2]['caption']       = _MI_APCAL_CATEGORY_NEWEVENT_NOTIFYCAP;
-$modversion['notification']['event'][2]['description']   = _MI_APCAL_CATEGORY_NEWEVENT_NOTIFYDSC;
+$modversion['notification']['event'][2]['name'] = 'new_event';
+$modversion['notification']['event'][2]['category'] = 'category';
+$modversion['notification']['event'][2]['title'] = _MI_APCAL_CATEGORY_NEWEVENT_NOTIFY;
+$modversion['notification']['event'][2]['caption'] = _MI_APCAL_CATEGORY_NEWEVENT_NOTIFYCAP;
+$modversion['notification']['event'][2]['description'] = _MI_APCAL_CATEGORY_NEWEVENT_NOTIFYDSC;
 $modversion['notification']['event'][2]['mail_template'] = 'category_newevent_notify';
-$modversion['notification']['event'][2]['mail_subject']  = _MI_APCAL_CATEGORY_NEWEVENT_NOTIFYSBJ;
+$modversion['notification']['event'][2]['mail_subject'] = _MI_APCAL_CATEGORY_NEWEVENT_NOTIFYSBJ;
 
 $modversion['onInstall'] = 'include/oninstall.php';
-$modversion['onUpdate']  = 'include/onupdate.php';
+$modversion['onUpdate'] = 'include/onupdate.php';
 
 // Keep the values of block's options when module is updated (by nobunobu)
 if (!empty($_POST['fct']) && !empty($_POST['op']) && !empty($_POST['diranme']) && 'modulesadmin' === $_POST['fct']

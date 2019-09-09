@@ -22,11 +22,11 @@ require_once dirname(__DIR__) . '/include/common.php';
 
 $moduleDirName = basename(dirname(__DIR__));
 /** @var \XoopsModules\Apcal\Helper $helper */
-$helper      = \XoopsModules\Apcal\Helper::getInstance();
+$helper = \XoopsModules\Apcal\Helper::getInstance();
 $adminObject = \Xmf\Module\Admin::getInstance();
 
-$pathIcon16    = \Xmf\Module\Admin::iconUrl('', 16);
-$pathIcon32    = \Xmf\Module\Admin::iconUrl('', 32);
+$pathIcon16 = \Xmf\Module\Admin::iconUrl('', 16);
+$pathIcon32 = \Xmf\Module\Admin::iconUrl('', 32);
 $pathModIcon32 = $helper->getModule()->getInfo('modicons32');
 
 // Load language files

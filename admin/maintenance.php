@@ -18,7 +18,6 @@
  * @author       GIJ=CHECKMATE (PEAK Corp. http://www.peak.ne.jp/)
  * @param $msg
  */
-
 use XoopsModules\Apcal;
 
 function error_halt($msg)
@@ -49,12 +48,12 @@ $mydirnumber = '' === $regs[2] ? '' : (int)$regs[2];
 
 // setting physical & virtual paths
 $mod_path = XOOPS_ROOT_PATH . "/modules/$moduleDirName";
-$mod_url  = XOOPS_URL . "/modules/$moduleDirName";
+$mod_url = XOOPS_URL . "/modules/$moduleDirName";
 $php_self = "$mod_url/admin/maintenance.php";
 
 $table_event = $GLOBALS['xoopsDB']->prefix("apcal{$mydirnumber}_event");
-$table_cat   = $GLOBALS['xoopsDB']->prefix("apcal{$mydirnumber}_cat");
-$mid         = $xoopsModule->mid();
+$table_cat = $GLOBALS['xoopsDB']->prefix("apcal{$mydirnumber}_cat");
+$mid = $xoopsModule->mid();
 
 // creating an instance of APCal
 $cal = new Apcal\ApcalXoops('', $xoopsConfig['language'], true);
@@ -62,13 +61,13 @@ $cal = new Apcal\ApcalXoops('', $xoopsConfig['language'], true);
 // setting properties of APCal
 $conn = $GLOBALS['xoopsDB']->conn;
 require dirname(__DIR__) . '/include/read_configs.php';
-$cal->base_url    = $mod_url;
-$cal->base_path   = $mod_path;
-$cal->images_url  = "$mod_url/assets/images/$skin_folder";
+$cal->base_url = $mod_url;
+$cal->base_path = $mod_path;
+$cal->images_url = "$mod_url/assets/images/$skin_folder";
 $cal->images_path = "$mod_path/assets/images/$skin_folder";
 
 // get TimeZones
-$serverTZ   = $cal->server_TZ;
+$serverTZ = $cal->server_TZ;
 $default_TZ = $xoopsConfig['default_TZ'];
 
 // updating phase
@@ -110,7 +109,7 @@ if (!empty($_POST['do_04to06'])) {
 
     // Counting comments
     $sql = 'SELECT com_itemid,count(*) FROM ' . $GLOBALS['xoopsDB']->prefix('xoopscomments') . " WHERE com_modid=$mid GROUP BY com_itemid";
-    $rs  = $GLOBALS['xoopsDB']->query($sql);
+    $rs = $GLOBALS['xoopsDB']->query($sql);
     while (list($id, $sum) = $GLOBALS['xoopsDB']->fetchRow($rs)) {
         $GLOBALS['xoopsDB']->query("UPDATE $table_event SET dtstamp=dtstamp,comments=$sum WHERE id=$id");
     }
@@ -143,7 +142,7 @@ if (!empty($_POST['do_04to06'])) {
   KEY (cat_extkey0),
   PRIMARY KEY (cid)
 ) ENGINE=MyISAM";
-    $rs  = $GLOBALS['xoopsDB']->query($sql);
+    $rs = $GLOBALS['xoopsDB']->query($sql);
 
     xoops_cp_header();
     echo $xoopsLogger->dumpQueries();
@@ -170,7 +169,7 @@ if (!empty($_POST['do_04to06'])) {
         $stz_diff = $from_stz_sec - $to_stz_sec;
 
         $sql = "UPDATE $table_event SET dtstamp=dtstamp,start=start+($stz_diff),end=end+($stz_diff),server_tz='" . addslashes($to_stz) . "' WHERE server_tz='" . addslashes($from_stz) . "'";
-        $rs  = $GLOBALS['xoopsDB']->query($sql);
+        $rs = $GLOBALS['xoopsDB']->query($sql);
     }
 
     xoops_cp_header();
@@ -182,9 +181,9 @@ if (!empty($_POST['do_04to06'])) {
 $sql4check_040 = "SELECT rrule_pid FROM $table_event LIMIT 1";
 $sql4check_060 = "SELECT event_tz FROM $table_event  LIMIT 1";
 $sql4check_cat = "SELECT cid FROM $table_cat  LIMIT 1";
-$is_040        = $GLOBALS['xoopsDB']->query($sql4check_040);
-$is_060        = $GLOBALS['xoopsDB']->query($sql4check_060);
-$has_cat       = $GLOBALS['xoopsDB']->query($sql4check_cat);
+$is_040 = $GLOBALS['xoopsDB']->query($sql4check_040);
+$is_060 = $GLOBALS['xoopsDB']->query($sql4check_060);
+$has_cat = $GLOBALS['xoopsDB']->query($sql4check_cat);
 
 // displaying phase
 xoops_cp_header();

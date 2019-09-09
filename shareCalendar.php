@@ -23,8 +23,8 @@ require_once dirname(dirname(__DIR__)) . '/mainfile.php';
 require XOOPS_ROOT_PATH . '/header.php';
 require_once XOOPS_ROOT_PATH . '/class/xoopsformloader.php';
 
-$tpl        = new \XoopsTpl();
-$form       = new \XoopsThemeForm(_APCAL_SHARECALENDARFORM, 'calendar', '', 'post', true);
+$tpl = new \XoopsTpl();
+$form = new \XoopsThemeForm(_APCAL_SHARECALENDARFORM, 'calendar', '', 'post', true);
 $formCustom = new \XoopsThemeForm(_APCAL_IFCUSTOM, 'custom', '', 'post', true);
 
 $catSelect = new \XoopsFormSelect(_APCAL_CATEGORIES, 'c', 0);
@@ -81,12 +81,12 @@ function getCategories()
 {
     global $xoopsDB;
 
-    $cats   = [0 => _APCAL_SHOWALLCAT];
+    $cats = [0 => _APCAL_SHOWALLCAT];
     $result = $GLOBALS['xoopsDB']->queryF("SELECT cid, cat_title, cat_depth FROM {$GLOBALS['xoopsDB']->prefix('apcal_cat')} ORDER BY weight");
 
     while ($cat = $GLOBALS['xoopsDB']->fetchObject($result)) {
-        $depth_desc      = str_repeat('-', (int)$cat->cat_depth);
-        $title           = htmlspecialchars($cat->cat_title, ENT_QUOTES);
+        $depth_desc = str_repeat('-', (int)$cat->cat_depth);
+        $title = htmlspecialchars($cat->cat_title, ENT_QUOTES);
         $cats[$cat->cid] = "$depth_desc $title";
     }
 

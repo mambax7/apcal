@@ -19,7 +19,6 @@
  * @author       Antiques Promotion (http://www.antiquespromotion.ca)
  * @return bool
  */
-
 use XoopsModules\Apcal;
 
 if ((!defined('XOOPS_ROOT_PATH')) || !($GLOBALS['xoopsUser'] instanceof \XoopsUser)
@@ -50,11 +49,11 @@ function xoops_module_pre_update_apcal(\XoopsModule $module)
     /** @var \XoopsModules\Apcal\Helper $helper */
     /** @var Apcal\Utility $utility */
     $moduleDirName = basename(dirname(__DIR__));
-    $helper        = \XoopsModules\Apcal\Helper::getInstance();
-    $utility       = new Apcal\Utility();
+    $helper = \XoopsModules\Apcal\Helper::getInstance();
+    $utility = new Apcal\Utility();
 
     $xoopsSuccess = $utility::checkVerXoops($module);
-    $phpSuccess   = $utility::checkVerPhp($module);
+    $phpSuccess = $utility::checkVerPhp($module);
 
     return $xoopsSuccess && $phpSuccess;
 }
@@ -62,14 +61,14 @@ function xoops_module_pre_update_apcal(\XoopsModule $module)
 function xoops_module_update_apcal(\XoopsModule $module)
 {
     //    global $xoopsDB;
-    $moduleDirName      = basename(dirname(__DIR__));
+    $moduleDirName = basename(dirname(__DIR__));
     $moduleDirNameUpper = mb_strtoupper($moduleDirName);
 
     /** @var Apcal\Helper $helper */
     /** @var Apcal\Utility $utility */
     /** @var Apcal\Common\Configurator $configurator */
-    $helper       = Apcal\Helper::getInstance();
-    $utility      = new Apcal\Utility();
+    $helper = Apcal\Helper::getInstance();
+    $utility = new Apcal\Utility();
     $configurator = new Apcal\Common\Configurator();
 
     if (!$GLOBALS['xoopsDB']->queryF("SELECT shortsummary FROM {$GLOBALS['xoopsDB']->prefix('apcal_event')}")) {

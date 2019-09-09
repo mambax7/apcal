@@ -26,7 +26,7 @@ if (!function_exists('easter')) {
     {
         $e = 21 + easter_days($y);
         if ($e > 31) {
-            $e  -= 31;
+            $e -= 31;
             $em = 4;
         } else {
             $em = 3;
@@ -36,12 +36,12 @@ if (!function_exists('easter')) {
         if ($f > 0) {
             $holidays["$y-$em-$f"] = 'Good Friday';
         } else {
-            $f                   = 31 - $f;
+            $f = 31 - $f;
             $holidays["$y-3-$f"] = 'Good Friday';
         }
         $holidays["$y-$em-$e"] = 'Easter';
         if ($m > 31) {
-            $m                   -= 31;
+            $m -= 31;
             $holidays["$y-4-$m"] = 'Easter Monday';
         } else {
             $holidays["$y-$em-$m"] = 'Easter Monday';
@@ -50,8 +50,8 @@ if (!function_exists('easter')) {
 }
 
 $this->holidays = [];
-$start          = (int)date('Y') - 10;
-$end            = $start + 30;
+$start = (int)date('Y') - 10;
+$end = $start + 30;
 
 for ($y = $start; $y < $end; ++$y) {
     easter($y, $this->holidays);
@@ -62,16 +62,16 @@ for ($y = $start; $y < $end; ++$y) {
     $l = date('j', strtotime('+1 Monday', strtotime("$y-9-1")));
     $t = date('j', strtotime('+2 Monday', strtotime("$y-10-1")));
 
-    $this->holidays["$y-1-1"]   = 'New Years Day';
-    $this->holidays["$y-2-14"]  = 'Valentine\'s Day';
-    $this->holidays["$y-3-17"]  = 'St. Patrick\'s Day';
-    $this->holidays["$y-4-22"]  = 'Earth Day';
-    $this->holidays["$y-5-$m"]  = 'Mother\'s Day';
-    $this->holidays["$y-5-$v"]  = 'Victoria Day';
-    $this->holidays["$y-6-$f"]  = 'Father\'s Day';
-    $this->holidays["$y-7-1"]   = 'Canada Day';
-    $this->holidays["$y-8-$c"]  = 'Civic Holiday';
-    $this->holidays["$y-9-$l"]  = 'Labour Day';
+    $this->holidays["$y-1-1"] = 'New Years Day';
+    $this->holidays["$y-2-14"] = 'Valentine\'s Day';
+    $this->holidays["$y-3-17"] = 'St. Patrick\'s Day';
+    $this->holidays["$y-4-22"] = 'Earth Day';
+    $this->holidays["$y-5-$m"] = 'Mother\'s Day';
+    $this->holidays["$y-5-$v"] = 'Victoria Day';
+    $this->holidays["$y-6-$f"] = 'Father\'s Day';
+    $this->holidays["$y-7-1"] = 'Canada Day';
+    $this->holidays["$y-8-$c"] = 'Civic Holiday';
+    $this->holidays["$y-9-$l"] = 'Labour Day';
     $this->holidays["$y-10-$t"] = 'Thanksgiving';
     $this->holidays["$y-10-31"] = 'Halloween';
     $this->holidays["$y-11-11"] = 'Rememberance Day';

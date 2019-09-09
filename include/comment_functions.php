@@ -40,7 +40,7 @@ if (!defined('APCAL_COMMENT_FUNCTIONS_INCLUDED')) {
                 echo('invalid dirname: ' . htmlspecialchars($moduleDirName, ENT_QUOTES | ENT_HTML5));
             }
             $mydirnumber = '' === $regs[2] ? '' : (int)$regs[2];
-            $tablename   = $GLOBALS['xoopsDB']->prefix("apcal{$mydirnumber}_event");
+            $tablename = $GLOBALS['xoopsDB']->prefix("apcal{$mydirnumber}_event");
         }
 
         $ret = $GLOBALS['xoopsDB']->query("UPDATE $tablename SET comments=$total_num WHERE id=$event_id");

@@ -18,7 +18,6 @@
  * @author       Antiques Promotion (http://www.antiquespromotion.ca)
  * @author       GIJ=CHECKMATE (PEAK Corp. http://www.peak.ne.jp/)
  */
-
 use XoopsModules\Apcal;
 
 /**
@@ -46,11 +45,11 @@ function display_edit_form($cat, $form_title, $action)
     $tarea_tray = new \XoopsFormElementTray(_AM_APCAL_CAT_TH_DESC, '<br>');
     if (class_exists('XoopsFormEditor')) {
         $configs = [
-            'name'   => 'cat_desc',
-            'value'  => htmlspecialchars($cat->cat_desc, ENT_QUOTES),
-            'rows'   => 15,
-            'cols'   => 60,
-            'width'  => '100%',
+            'name' => 'cat_desc',
+            'value' => htmlspecialchars($cat->cat_desc, ENT_QUOTES),
+            'rows' => 15,
+            'cols' => 60,
+            'width' => '100%',
             'height' => '400px',
             'editor' => 'tinymce',
         ];
@@ -71,7 +70,7 @@ function display_edit_form($cat, $form_title, $action)
     $form->addElement(new \XoopsFormText(_AM_APCAL_CAT_TH_WEIGHT, 'weight', 6, 6, (int)$cat->weight), true);
 
     // Options
-    $checkbox_tray       = new \XoopsFormElementTray(_AM_APCAL_CAT_TH_OPTIONS, '<br>');
+    $checkbox_tray = new \XoopsFormElementTray(_AM_APCAL_CAT_TH_OPTIONS, '<br>');
     $ismenuitem_checkbox = new \XoopsFormCheckBox('', 'ismenuitem', (int)$cat->ismenuitem);
     $ismenuitem_checkbox->addOption(1, _AM_APCAL_CAT_TH_SUBMENU);
     $checkbox_tray->addElement($ismenuitem_checkbox);
@@ -108,9 +107,9 @@ function rebuild_cat_tree($cat_table)
 {
     global $conn, $xoopsDB;
 
-    $rs      = $GLOBALS['xoopsDB']->query("SELECT cid,pid FROM $cat_table ORDER BY pid ASC,weight DESC");
+    $rs = $GLOBALS['xoopsDB']->query("SELECT cid,pid FROM $cat_table ORDER BY pid ASC,weight DESC");
     $cats[0] = ['cid' => 0, 'pid' => -1, 'next_key' => -1, 'depth' => 0];
-    $key     = 1;
+    $key = 1;
     while ($cat = $GLOBALS['xoopsDB']->fetchObject($rs)) {
         $cats[$key] = ['cid' => (int)$cat->cid, 'pid' => (int)$cat->pid, 'next_key' => $key + 1, 'depth' => 0];
         ++$key;
@@ -119,8 +118,8 @@ function rebuild_cat_tree($cat_table)
 
     $loop_check_for_key = 1024;
     for ($key = 1; $key < $sizeofcats; ++$key) {
-        $cat    =& $cats[$key];
-        $target =& $cats[0];
+        $cat = &$cats[$key];
+        $target = &$cats[0];
         if (--$loop_check_for_key < 0) {
             $loop_check = -1;
         } else {
@@ -129,14 +128,14 @@ function rebuild_cat_tree($cat_table)
 
         while (1) {
             if ($cat['pid'] == $target['cid']) {
-                $cat['depth']       = $target['depth'] + 1;
-                $cat['next_key']    = $target['next_key'];
+                $cat['depth'] = $target['depth'] + 1;
+                $cat['next_key'] = $target['next_key'];
                 $target['next_key'] = $key;
                 break;
             } elseif (--$loop_check < 0) {
                 $GLOBALS['xoopsDB']->query("UPDATE $cat_table SET pid='0' WHERE cid={$cat['cid']}");
-                $cat['depth']       = 1;
-                $cat['next_key']    = $target['next_key'];
+                $cat['depth'] = 1;
+                $cat['next_key'] = $target['next_key'];
                 $target['next_key'] = $key;
                 break;
             } elseif ($target['next_key'] < 0) {
@@ -146,13 +145,13 @@ function rebuild_cat_tree($cat_table)
                 --$key;
                 break;
             }
-            $target =& $cats[$target['next_key']];
+            $target = &$cats[$target['next_key']];
         }
     }
 
-    $cat =& $cats[0];
+    $cat = &$cats[0];
     for ($weight = 1; $weight < $sizeofcats; ++$weight) {
-        $cat =& $cats[$cat['next_key']];
+        $cat = &$cats[$cat['next_key']];
         $GLOBALS['xoopsDB']->query("UPDATE $cat_table SET weight=" . ($weight * 10) . ",cat_depth={$cat['depth']} WHERE cid={$cat['cid']}");
     }
 }
@@ -176,16 +175,16 @@ $mydirnumber = '' === $regs[2] ? '' : (int)$regs[2];
 
 // SERVER, GET �ѿ��μ���
 $action = isset($_POST['action']) ? preg_replace('/[^a-zA-Z0-9_-]/', '', $_POST['action']) : '';
-$done   = isset($_GET['done']) ? preg_replace('/[^a-zA-Z0-9_-]/', '', $_GET['done']) : '';
-$disp   = isset($_GET['disp']) ? preg_replace('/[^a-zA-Z0-9_-]/', '', $_GET['disp']) : '';
-$cid    = \Xmf\Request::getInt('cid', 0, 'GET');
+$done = isset($_GET['done']) ? preg_replace('/[^a-zA-Z0-9_-]/', '', $_GET['done']) : '';
+$disp = isset($_GET['disp']) ? preg_replace('/[^a-zA-Z0-9_-]/', '', $_GET['disp']) : '';
+$cid = \Xmf\Request::getInt('cid', 0, 'GET');
 
 // MySQL�ؤ���³
 $conn = $GLOBALS['xoopsDB']->conn;
 
 // setting physical & virtual paths
 $mod_path = XOOPS_ROOT_PATH . "/modules/$moduleDirName";
-$mod_url  = XOOPS_URL . "/modules/$moduleDirName";
+$mod_url = XOOPS_URL . "/modules/$moduleDirName";
 
 // creating an instance of APCal
 $cal = new Apcal\ApcalXoops('', $xoopsConfig['language'], true);
@@ -193,14 +192,14 @@ $cal = new Apcal\ApcalXoops('', $xoopsConfig['language'], true);
 // setting properties of APCal
 $cal->conn = $conn;
 require dirname(__DIR__) . '/include/read_configs.php';
-$cal->base_url    = $mod_url;
-$cal->base_path   = $mod_path;
-$cal->images_url  = "$mod_url/assets/images/$skin_folder";
+$cal->base_url = $mod_url;
+$cal->base_path = $mod_path;
+$cal->images_url = "$mod_url/assets/images/$skin_folder";
 $cal->images_path = "$mod_path/assets/images/$skin_folder";
 
 // XOOPS関連の初期化
-$myts             = \MyTextSanitizer::getInstance();
-$cattree          = new Apcal\Tree($cal->cat_table, 'cid', 'pid');
+$myts = \MyTextSanitizer::getInstance();
+$cattree = new Apcal\Tree($cal->cat_table, 'cid', 'pid');
 $grouppermHandler = xoops_getHandler('groupperm');
 
 // データベース更新などがからむ処理
@@ -211,18 +210,18 @@ if ('insert' === $action) {
     }
 
     // 新規登録
-    $sql  = "INSERT INTO $cal->cat_table SET ";
+    $sql = "INSERT INTO $cal->cat_table SET ";
     $cols = [
-        'weight'     => 'I:N:0',
+        'weight' => 'I:N:0',
         'ismenuitem' => 'I:N:0',
-        'canbemain'  => 'I:N:0',
-        'cat_title'  => '255:J:1',
-        'cat_desc'   => 'A:J:0',
-        'pid'        => 'I:N:0',
+        'canbemain' => 'I:N:0',
+        'cat_title' => '255:J:1',
+        'cat_desc' => 'A:J:0',
+        'pid' => 'I:N:0',
     ];
-    $sql  .= $cal->get_sql_set($cols);
-    $sql  .= ",cat_shorttitle='" . $cal->makeShort(utf8_decode($_POST['cat_title'])) . "'";
-    $sql  .= ",color='" . $_POST['color'] . '\'';
+    $sql .= $cal->get_sql_set($cols);
+    $sql .= ",cat_shorttitle='" . $cal->makeShort(utf8_decode($_POST['cat_title'])) . "'";
+    $sql .= ",color='" . $_POST['color'] . '\'';
     if (!$GLOBALS['xoopsDB']->query($sql)) {
         die($GLOBALS['xoopsDB']->error());
     }
@@ -237,20 +236,20 @@ if ('insert' === $action) {
     }
 
     // ����
-    $cid  = \Xmf\Request::getInt('cid', 0, 'POST');
-    $sql  = "UPDATE $cal->cat_table SET ";
+    $cid = \Xmf\Request::getInt('cid', 0, 'POST');
+    $sql = "UPDATE $cal->cat_table SET ";
     $cols = [
-        'weight'     => 'I:N:0',
+        'weight' => 'I:N:0',
         'ismenuitem' => 'I:N:0',
-        'canbemain'  => 'I:N:0',
-        'cat_title'  => '255:J:1',
-        'cat_desc'   => 'A:J:0',
-        'pid'        => 'I:N:0',
+        'canbemain' => 'I:N:0',
+        'cat_title' => '255:J:1',
+        'cat_desc' => 'A:J:0',
+        'pid' => 'I:N:0',
     ];
-    $sql  .= $cal->get_sql_set($cols);
-    $sql  .= ",cat_shorttitle='" . $cal->makeShort(utf8_decode($_POST['cat_title'])) . "'";
-    $sql  .= ",color='" . $_POST['color'] . '\'';
-    $sql  .= "WHERE cid='$cid'";
+    $sql .= $cal->get_sql_set($cols);
+    $sql .= ",cat_shorttitle='" . $cal->makeShort(utf8_decode($_POST['cat_title'])) . "'";
+    $sql .= ",color='" . $_POST['color'] . '\'';
+    $sql .= "WHERE cid='$cid'";
     if (!$GLOBALS['xoopsDB']->query($sql)) {
         die($GLOBALS['xoopsDB']->error());
     }
@@ -279,7 +278,7 @@ if ('insert' === $action) {
 
     // 対象カテゴリーの子供をWHERE節に追加し、Cat2Group Permissionを削除
     $children = $cattree->getAllChildId($cid);
-    $whr      = 'cid IN (';
+    $whr = 'cid IN (';
     foreach ($children as $child) {
         // WHERE��ؤ��ɲ�
         $whr .= "$child,";
@@ -309,8 +308,8 @@ if ('insert' === $action) {
     // バッチアップデート
     $affected = 0;
     foreach ($_POST['weights'] as $cid => $weight) {
-        $weight  = (int)$weight;
-        $cid     = (int)$cid;
+        $weight = (int)$weight;
+        $cid = (int)$cid;
         $enabled = !empty($_POST['enabled'][$cid]) ? 1 : 0;
         if (!$GLOBALS['xoopsDB']->query("UPDATE $cal->cat_table SET weight='$weight', enabled='$enabled' WHERE cid=$cid")) {
             die($GLOBALS['xoopsDB']->error());
@@ -343,18 +342,18 @@ if ('edit' === $disp && $cid > 0) {
      */
     class Dummy
     {
-        public $cid        = 0;
-        public $pid        = 0;
-        public $cat_title  = '';
-        public $cat_desc   = '';
-        public $weight     = 0;
+        public $cid = 0;
+        public $pid = 0;
+        public $cat_title = '';
+        public $cat_desc = '';
+        public $weight = 0;
         public $ismenuitem = 0;
-        public $canbemain  = 1;
-        public $udtstamp   = 0;
+        public $canbemain = 1;
+        public $udtstamp = 0;
     }
 
-    $cat           = new Dummy();
-    $cat->pid      = $cid;
+    $cat = new Dummy();
+    $cat->pid = $cid;
     $cat->udtstamp = time();
     display_edit_form($cat, _AM_APCAL_MENU_CAT_NEW, 'insert');
 } else {
@@ -389,11 +388,11 @@ if ('edit' === $disp && $cid > 0) {
         $oddeven = ('odd' === $oddeven ? 'even' : 'odd');
         extract($cat_node);
 
-        $prefix         = str_replace('.', '&nbsp;--', mb_substr($prefix, 1));
+        $prefix = str_replace('.', '&nbsp;--', mb_substr($prefix, 1));
         $enable_checked = $enabled ? 'checked' : '';
-        $cid            = $cid;
-        $cat_title      = $myts->htmlSpecialChars($cat_title);
-        $del_confirm    = 'confirm("' . sprintf(_AM_APCAL_FMT_CATDELCONFIRM, $cat_title) . '")';
+        $cid = $cid;
+        $cat_title = $myts->htmlSpecialChars($cat_title);
+        $del_confirm = 'confirm("' . sprintf(_AM_APCAL_FMT_CATDELCONFIRM, $cat_title) . '")';
         echo "
       <tr>
         <td class='$oddeven' width='100%'><a href='?disp=edit&amp;cid=$cid'>$prefix&nbsp;$cat_title</a></td>

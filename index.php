@@ -18,7 +18,6 @@
  * @author       Antiques Promotion (http://www.antiquespromotion.ca)
  * @author       GIJ=CHECKMATE (PEAK Corp. http://www.peak.ne.jp/)
  */
-
 use XoopsModules\Apcal;
 
 require_once dirname(dirname(__DIR__)) . '/mainfile.php';
@@ -30,20 +29,20 @@ $helper = Apcal\Helper::getInstance();
 
 if ((!isset($_GET['action']) || '' === $_GET['action']) && isset($_GET['cid']) && !is_numeric($_GET['cid'])) {
     $cat_title = addslashes($_GET['cid']);
-    $cat       = $GLOBALS['xoopsDB']->queryF("SELECT cid FROM {$GLOBALS['xoopsDB']->prefix('apcal_cat')} WHERE cat_shorttitle LIKE '$cat_title' LIMIT 0,1");
+    $cat = $GLOBALS['xoopsDB']->queryF("SELECT cid FROM {$GLOBALS['xoopsDB']->prefix('apcal_cat')} WHERE cat_shorttitle LIKE '$cat_title' LIMIT 0,1");
 
     if ($cat && $GLOBALS['xoopsDB']->getRowsNum($cat)) {
-        $cat         = $GLOBALS['xoopsDB']->fetchObject($cat);
+        $cat = $GLOBALS['xoopsDB']->fetchObject($cat);
         $_GET['cid'] = $cat->cid;
     }
 } elseif (\Xmf\Request::hasVar('action', 'GET') && 'View' === $_GET['action'] && !is_numeric($_GET['event_id'])
           && isset($_GET['date'])) {
     $summary = addslashes($_GET['event_id']);
-    $date    = isset($_GET['date']) ? strtotime($_GET['date']) : time();
-    $event   = $GLOBALS['xoopsDB']->queryF("SELECT id FROM {$GLOBALS['xoopsDB']->prefix('apcal_event')} WHERE shortsummary='$summary' AND UNIX_TIMESTAMP(DATE(FROM_UNIXTIME(start)))=$date LIMIT 0,1");
+    $date = isset($_GET['date']) ? strtotime($_GET['date']) : time();
+    $event = $GLOBALS['xoopsDB']->queryF("SELECT id FROM {$GLOBALS['xoopsDB']->prefix('apcal_event')} WHERE shortsummary='$summary' AND UNIX_TIMESTAMP(DATE(FROM_UNIXTIME(start)))=$date LIMIT 0,1");
 
     if ($event && $GLOBALS['xoopsDB']->getRowsNum($event)) {
-        $event            = $GLOBALS['xoopsDB']->fetchObject($event);
+        $event = $GLOBALS['xoopsDB']->fetchObject($event);
         $_GET['event_id'] = $event->id;
     }
 }
@@ -67,7 +66,7 @@ $conn = $GLOBALS['xoopsDB']->conn;
 
 // setting physical & virtual paths
 $mod_path = XOOPS_ROOT_PATH . "/modules/$moduleDirName";
-$mod_url  = XOOPS_URL . "/modules/$moduleDirName";
+$mod_url = XOOPS_URL . "/modules/$moduleDirName";
 
 // ���饹������ɤ߹���
 //if (!class_exists('ApcalXoops')) {
@@ -92,11 +91,11 @@ $cal = new Apcal\ApcalXoops('', $xoopsConfig['language'], true);
 // setting properties of APCal
 $cal->conn = $conn;
 include "$mod_path/include/read_configs.php";
-$cal->base_url    = $mod_url;
-$cal->base_path   = $mod_path;
-$cal->images_url  = "$mod_url/assets/images/$skin_folder";
+$cal->base_url = $mod_url;
+$cal->base_path = $mod_path;
+$cal->images_url = "$mod_url/assets/images/$skin_folder";
 $cal->images_path = "$mod_path/assets/images/$skin_folder";
-$cal->frame_css   = 'border-color: ' . $cal->frame_css . ';';
+$cal->frame_css = 'border-color: ' . $cal->frame_css . ';';
 
 // �ǡ����١��������ط��ν���ʤ�����⡢Location�����Ф���
 if (\Xmf\Request::hasVar('update', 'POST')) {
@@ -115,7 +114,7 @@ if (\Xmf\Request::hasVar('update', 'POST')) {
         die(_MD_APCAL_ERR_NOPERMTOINSERT);
     }
     $_POST['event_oldid'] = $_POST['event_id'];
-    $_POST['event_id']    = '';
+    $_POST['event_id'] = '';
     // Ticket Check
     if (!$GLOBALS['xoopsSecurity']->check()) {
         redirect_header(XOOPS_URL . '/', 3, $GLOBALS['xoopsSecurity']->getErrors());
@@ -255,9 +254,9 @@ $xoopsTpl->assign('showSocial', $cal->enablesocial);
 $xoopsTpl->assign('showTellaFriend', $cal->enabletellafriend);
 /** @var xos_opal_Theme $xoTheme */
 if ('View' === $action) {
-    $event_id   = \Xmf\Request::getInt('event_id', 0, 'GET');
-    $event      = $GLOBALS['xoopsDB']->fetchArray($GLOBALS['xoopsDB']->queryF("SELECT summary, description, location, categories, contact, start FROM {$GLOBALS['xoopsDB']->prefix('apcal_event')} WHERE id={$event_id} LIMIT 0,1"));
-    $cats       = explode(',', $event['categories']);
+    $event_id = \Xmf\Request::getInt('event_id', 0, 'GET');
+    $event = $GLOBALS['xoopsDB']->fetchArray($GLOBALS['xoopsDB']->queryF("SELECT summary, description, location, categories, contact, start FROM {$GLOBALS['xoopsDB']->prefix('apcal_event')} WHERE id={$event_id} LIMIT 0,1"));
+    $cats = explode(',', $event['categories']);
     $categories = [];
     foreach ($cats as $cat) {
         if ('' !== $cat) {
@@ -272,11 +271,11 @@ if ('View' === $action) {
         $metaDesc = array_slice($metaDesc, 0, 20);
         $xoTheme->addMeta('meta', 'description', implode(' ', $metaDesc));
     } else {
-        $desc     = $event['summary'];
-        $desc     .= !empty($categories) ? ' - ' . implode(' ', $categories) : '';
-        $desc     .= !empty($event['location']) ? ' - ' . $event['location'] : '';
-        $desc     .= !empty($event['start']) ? ' - ' . $cal->get_long_ymdn($event['start']) : '';
-        $desc     .= !empty($event['contact']) ? ' - ' . $event['contact'] : '';
+        $desc = $event['summary'];
+        $desc .= !empty($categories) ? ' - ' . implode(' ', $categories) : '';
+        $desc .= !empty($event['location']) ? ' - ' . $event['location'] : '';
+        $desc .= !empty($event['start']) ? ' - ' . $cal->get_long_ymdn($event['start']) : '';
+        $desc .= !empty($event['contact']) ? ' - ' . $event['contact'] : '';
         $metaDesc = explode(' ', $desc);
         $metaDesc = array_slice($metaDesc, 0, 20);
         $xoTheme->addMeta('meta', 'description', implode(' ', $metaDesc));
@@ -290,11 +289,11 @@ if ('View' === $action) {
 
     $xoopsTpl->assign('showMap', $cal->enableeventmap);
 } elseif ('' === $action) {
-    $cid          = \Xmf\Request::getInt('cid', 0, 'GET');
-    $cat          = $GLOBALS['xoopsDB']->fetchArray($GLOBALS['xoopsDB']->queryF("SELECT cat_title, cat_desc FROM {$GLOBALS['xoopsDB']->prefix('apcal_cat')} WHERE cid={$cid} LIMIT 0,1"));
-    $date         = isset($_GET['caldate']) ? $_GET['caldate'] : date('Y-n-j');
-    $date         = explode('-', $date);
-    $dateTitle    = (isset($_GET['smode']) && 'Yearly' === $_GET['smode'] ? '' : $cal->month_long_names[$date[1]] . ' ') . $date[0];
+    $cid = \Xmf\Request::getInt('cid', 0, 'GET');
+    $cat = $GLOBALS['xoopsDB']->fetchArray($GLOBALS['xoopsDB']->queryF("SELECT cat_title, cat_desc FROM {$GLOBALS['xoopsDB']->prefix('apcal_cat')} WHERE cid={$cid} LIMIT 0,1"));
+    $date = isset($_GET['caldate']) ? $_GET['caldate'] : date('Y-n-j');
+    $date = explode('-', $date);
+    $dateTitle = (isset($_GET['smode']) && 'Yearly' === $_GET['smode'] ? '' : $cal->month_long_names[$date[1]] . ' ') . $date[0];
     $catNameTitle = isset($_GET['cid']) && $_GET['cid'] > 0 ? $cat['cat_title'] : $xoopsModule->getVar('name');
 
     $pageTitle = $catNameTitle . ' ' . $dateTitle;

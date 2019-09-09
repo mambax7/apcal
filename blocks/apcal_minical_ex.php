@@ -18,7 +18,6 @@
  * @author       Antiques Promotion (http://www.antiquespromotion.ca)
  * @author       GIJ=CHECKMATE (PEAK Corp. http://www.peak.ne.jp/)
  */
-
 use  XoopsModules\Apcal;
 
 if (!defined('APCAL_BLOCK_MINICAL_EX')) {
@@ -58,8 +57,8 @@ if (!defined('APCAL_BLOCK_MINICAL_EX')) {
         }
 
         $moduleDirName = empty($options[0]) ? basename(dirname(__DIR__)) : $options[0];
-        $gifaday       = empty($options[1]) ? 2 : (int)$options[1];
-        $just1gif      = empty($options[2]) ? 0 : 1;
+        $gifaday = empty($options[1]) ? 2 : (int)$options[1];
+        $just1gif = empty($options[2]) ? 0 : 1;
         //  $plugins_tmp = empty( $options[3] ) ? array() : explode( ',' , $options[3] ) ;
         // robots mode (arrows in minicalex will point not a current page but APCal)
         $robots_mode = preg_match('/(msnbot|Googlebot|Yahoo! Slurp)/i', $_SERVER['HTTP_USER_AGENT']);
@@ -85,7 +84,7 @@ if (!defined('APCAL_BLOCK_MINICAL_EX')) {
             && (empty($_GET['caldate'])
                 || in_array(mb_substr($_GET['caldate'], 0, 4), [date('Y'), date('Y') - 1]))) {
             $enable_cache = true;
-            //      $enable_cache = false ;
+        //      $enable_cache = false ;
         } else {
             $enable_cache = false;
         }
@@ -102,13 +101,13 @@ if (!defined('APCAL_BLOCK_MINICAL_EX')) {
                     $Ym = sprintf('%04d%02d', $Y, $m);
                 }
             }
-            $bid_hash   = mb_substr(md5($bid . XOOPS_DB_PREFIX), -6);
-            $uid        = is_object($xoopsUser) ? $xoopsUser->getVar('uid') : 0;
+            $bid_hash = mb_substr(md5($bid . XOOPS_DB_PREFIX), -6);
+            $uid = is_object($xoopsUser) ? $xoopsUser->getVar('uid') : 0;
             $cache_file = XOOPS_CACHE_PATH . "/{$moduleDirName }_minical_ex_{$bid_hash}_{$xoopsConfig['language']}_";
             if (file_exists($cache_file . $Ym)) {
                 $cache_bodies = file($cache_file . $Ym);
                 if (3 == count($cache_bodies)) {
-                    $expire   = (int)$cache_bodies[0];
+                    $expire = (int)$cache_bodies[0];
                     $prev_uid = (int)$cache_bodies[1];
                     if ($expire > time() && $prev_uid == $uid) {
                         $block = unserialize($cache_bodies[2]);
@@ -135,7 +134,7 @@ if (!defined('APCAL_BLOCK_MINICAL_EX')) {
 
         // setting physical & virtual paths
         $mod_path = XOOPS_ROOT_PATH . "/modules/$moduleDirName";
-        $mod_url  = XOOPS_URL . "/modules/$moduleDirName";
+        $mod_url = XOOPS_URL . "/modules/$moduleDirName";
 
         // defining class of APCal
         //        if (!class_exists('APCal_xoops')) {
@@ -152,9 +151,9 @@ if (!defined('APCAL_BLOCK_MINICAL_EX')) {
         // setting properties of APCal
         $cal->conn = $GLOBALS['xoopsDB']->conn;
         include "$mod_path/include/read_configs.php";
-        $cal->base_url    = $mod_url;
-        $cal->base_path   = $mod_path;
-        $cal->images_url  = "$mod_url/assets/images/$skin_folder";
+        $cal->base_url = $mod_url;
+        $cal->base_path = $mod_path;
+        $cal->images_url = "$mod_url/assets/images/$skin_folder";
         $cal->images_path = "$mod_path/assets/images/$skin_folder";
 
         $block = $cal->get_minical_ex($gifaday, $just1gif, $cal->get_plugins("mcx{$bid}"));
@@ -165,7 +164,7 @@ if (!defined('APCAL_BLOCK_MINICAL_EX')) {
         // echo ((float) $sec + (float) $usec) - $GIJ_common_time ;
 
         if ($enable_cache) {
-            $fp = fopen($cache_file . sprintf('%04d%02d', $cal->year, $cal->month), 'w');
+            $fp = fopen($cache_file . sprintf('%04d%02d', $cal->year, $cal->month), 'wb');
             fwrite($fp, (time() + 300) . "\n"); // 5 mininutes (hard coded)
             fwrite($fp, (int)$uid . "\n");
             fwrite($fp, serialize($block));
@@ -177,7 +176,7 @@ if (!defined('APCAL_BLOCK_MINICAL_EX')) {
             // $block['php_self'] = '/' ;
             $block['additional_get'] = '';
         } else {
-            $block['root_url']       = '';
+            $block['root_url'] = '';
             $block['additional_get'] = $additional_get;
         }
 
@@ -192,30 +191,30 @@ if (!defined('APCAL_BLOCK_MINICAL_EX')) {
     {
         global $xoopsDB, $xoopsConfig;
 
-        $moduleDirName      = empty($options[0]) ? basename(dirname(__DIR__)) : $options[0];
-        $gifaday            = empty($options[1]) ? 2 : (int)$options[1];
+        $moduleDirName = empty($options[0]) ? basename(dirname(__DIR__)) : $options[0];
+        $gifaday = empty($options[1]) ? 2 : (int)$options[1];
         $just1gif_radio_yes = empty($options[2]) ? '' : 'checked';
-        $just1gif_radio_no  = empty($options[2]) ? 'checked' : '';
+        $just1gif_radio_no = empty($options[2]) ? 'checked' : '';
         //$plugins4disp = empty( $options[3] ) ? '' : htmlspecialchars( str_replace( array( ' ' , "\t" , "\0" ) , '' ,  $options[3] ) , ENT_QUOTES ) ;
 
         // setting physical & virtual paths
         $mod_path = XOOPS_ROOT_PATH . "/modules/$moduleDirName";
-        $mod_url  = XOOPS_URL . "/modules/$moduleDirName";
+        $mod_url = XOOPS_URL . "/modules/$moduleDirName";
 
         // defining class of APCal
         //        require_once "$mod_path/class/APCal.php";
         //        require_once "$mod_path/class/APCal_xoops.php";
 
         // creating an instance of APCal
-        $cal                = new ApcalXoops(date('Y-n-j'), $xoopsConfig['language'], true);
+        $cal = new ApcalXoops(date('Y-n-j'), $xoopsConfig['language'], true);
         $cal->use_server_TZ = true;
 
         // setting properties of APCal
         $cal->conn = $GLOBALS['xoopsDB']->conn;
         include "$mod_path/include/read_configs.php";
-        $cal->base_url    = $mod_url;
-        $cal->base_path   = $mod_path;
-        $cal->images_url  = "$mod_url/assets/images/$skin_folder";
+        $cal->base_url = $mod_url;
+        $cal->base_path = $mod_path;
+        $cal->images_url = "$mod_url/assets/images/$skin_folder";
         $cal->images_path = "$mod_path/assets/images/$skin_folder";
 
         $ret = "<input type='hidden' name='options[0]' value='$moduleDirName'>\n";

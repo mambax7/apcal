@@ -12,7 +12,6 @@ namespace XoopsModules\Apcal;
  * @author  Ciprian Popovici
  * @package Text_Diff
  */
-
 use  XoopsModules\Apcal;
 
 class Text_Diff_Renderer_inline extends Text_Diff_Renderer
@@ -105,7 +104,7 @@ class Text_Diff_Renderer_inline extends Text_Diff_Renderer
     public function _added($lines)
     {
         array_walk($lines, [&$this, '_encode']);
-        $lines[0]                 = $this->_ins_prefix . $lines[0];
+        $lines[0] = $this->_ins_prefix . $lines[0];
         $lines[count($lines) - 1] .= $this->_ins_suffix;
 
         return $this->_lines($lines, ' ', false);
@@ -119,7 +118,7 @@ class Text_Diff_Renderer_inline extends Text_Diff_Renderer
     public function _deleted($lines, $words = false)
     {
         array_walk($lines, [&$this, '_encode']);
-        $lines[0]                 = $this->_del_prefix . $lines[0];
+        $lines[0] = $this->_del_prefix . $lines[0];
         $lines[count($lines) - 1] .= $this->_del_suffix;
 
         return $this->_lines($lines, ' ', false);
@@ -138,8 +137,8 @@ class Text_Diff_Renderer_inline extends Text_Diff_Renderer
             $prefix = '';
             while (false !== $orig[0] && false !== $final[0] && ' ' === mb_substr($orig[0], 0, 1)
                    && ' ' === mb_substr($final[0], 0, 1)) {
-                $prefix   .= mb_substr($orig[0], 0, 1);
-                $orig[0]  = mb_substr($orig[0], 1);
+                $prefix .= mb_substr($orig[0], 0, 1);
+                $orig[0] = mb_substr($orig[0], 1);
                 $final[0] = mb_substr($final[0], 1);
             }
 
@@ -172,16 +171,16 @@ class Text_Diff_Renderer_inline extends Text_Diff_Renderer
      */
     public function _splitOnWords($string, $newlineEscape = "\n")
     {
-        $words  = [];
+        $words = [];
         $length = mb_strlen($string);
-        $pos    = 0;
+        $pos = 0;
 
         while ($pos < $length) {
             // Eat a word with any preceding whitespace.
-            $spaces  = strspn(mb_substr($string, $pos), " \n");
+            $spaces = strspn(mb_substr($string, $pos), " \n");
             $nextpos = strcspn(mb_substr($string, $pos + $spaces), " \n");
             $words[] = str_replace("\n", $newlineEscape, mb_substr($string, $pos, $spaces + $nextpos));
-            $pos     += $spaces + $nextpos;
+            $pos += $spaces + $nextpos;
         }
 
         return $words;

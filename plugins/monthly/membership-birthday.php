@@ -46,7 +46,7 @@ defined('XOOPS_ROOT_PATH') || die('Restricted access');
 
 // setting absurd range allows all member's birthdays to show in every year
 $range_start_s = '1904-01-01';
-$range_end_s   = '2030-01-01';
+$range_end_s = '2030-01-01';
 //print_r($range_start_s . "<br>");
 //print_r($range_end_s);
 // query (added 86400 second margin "begin" & "end")
@@ -57,21 +57,21 @@ $result = $db->query('SELECT lastname,uid,birth_date FROM ' . $db->prefix('membe
 while (list($lastname, $id, $server_time) = $db->fetchRow($result)) {
     //print_r($server_time);
     $server_time = strtotime($server_time);
-    $user_time   = $server_time + $tzoffset_s2u;
+    $user_time = $server_time + $tzoffset_s2u;
 
     if (date('n', $user_time) != $this->month) {
         continue;
     }
     $target_date = date('j', $user_time);
-    $tmp_array   = [
-        'dotgif'      => $plugin['dotgif'],
-        'dirname'     => $plugin['dirname'],
-        'link'        => XOOPS_URL . "/modules/{$plugin['dirname']}/memb_user.php?uid=$id",
-        'id'          => $id,
+    $tmp_array = [
+        'dotgif' => $plugin['dotgif'],
+        'dirname' => $plugin['dirname'],
+        'link' => XOOPS_URL . "/modules/{$plugin['dirname']}/memb_user.php?uid=$id",
+        'id' => $id,
         'server_time' => $server_time,
-        'user_time'   => $user_time,
-        'name'        => 'lastname',
-        'title'       => $myts->htmlSpecialChars($lastname),
+        'user_time' => $user_time,
+        'name' => 'lastname',
+        'title' => $myts->htmlSpecialChars($lastname),
     ];
     if ($just1gif) {
         // just 1 gif per a plugin & per a day

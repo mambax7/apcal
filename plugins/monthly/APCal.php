@@ -56,9 +56,9 @@ if ($this->base_url == XOOPS_URL . '/modules/' . $plugin['dirname']) {
     global $xoopsDB;
     $cal->conn = $GLOBALS['xoopsDB']->conn;
     require_once XOOPS_ROOT_PATH . "/modules/{$plugin['dirname']}/include/read_configs.php";
-    $cal->base_url    = XOOPS_URL . '/modules/' . $plugin['dirname'];
-    $cal->base_path   = XOOPS_ROOT_PATH . '/modules/' . $plugin['dirname'];
-    $cal->images_url  = "$cal->base_url/assets/images/$skin_folder";
+    $cal->base_url = XOOPS_URL . '/modules/' . $plugin['dirname'];
+    $cal->base_path = XOOPS_ROOT_PATH . '/modules/' . $plugin['dirname'];
+    $cal->images_url = "$cal->base_url/assets/images/$skin_folder";
     $cal->images_path = "$cal->base_path/assets/images/$skin_folder";
 }
 
@@ -66,7 +66,7 @@ if ($this->base_url == XOOPS_URL . '/modules/' . $plugin['dirname']) {
 $options = explode('|', $plugin['options']);
 // options[0] : category extract
 if (!empty($options[0])) {
-    $cids          = explode(',', $options[0]);
+    $cids = explode(',', $options[0]);
     $whr_cid_limit = '0';
     foreach ($cids as $cid) {
         $whr_cid_limit .= " OR categories LIKE '%" . sprintf('%05d,', (int)$cid) . "%'";
@@ -83,7 +83,7 @@ $whr_class = $cal->get_where_about_class();
 
 // ÈÏ°Ï¤Î¼èÆÀ
 $range_start_s = mktime(0, 0, 0, $this->month, 0, $this->year);
-$range_end_s   = mktime(0, 0, 0, $this->month + 1, 1, $this->year);
+$range_end_s = mktime(0, 0, 0, $this->month + 1, 1, $this->year);
 
 // Á´Æü¥¤¥Ù¥ó¥È°Ê³°¤Î½èÍý
 $result = $GLOBALS['xoopsDB']->query("SELECT summary,id,start FROM $cal->table WHERE admission > 0 AND start >= $range_start_s AND start < $range_end_s AND ($whr_categories) AND ($whr_class) AND ($whr_cid_limit) AND allday <= 0");
@@ -94,15 +94,15 @@ while (list($title, $id, $server_time) = $db->fetchRow($result)) {
         continue;
     }
     $target_date = date('j', $user_time);
-    $tmp_array   = [
-        'dotgif'      => $plugin['dotgif'],
-        'dirname'     => $plugin['dirname'],
-        'link'        => XOOPS_URL . "/modules/{$plugin['dirname']}/index.php?smode=Daily&amp;caldate={$this->year}-{$this->month}-{$target_date}",
-        'id'          => $id,
+    $tmp_array = [
+        'dotgif' => $plugin['dotgif'],
+        'dirname' => $plugin['dirname'],
+        'link' => XOOPS_URL . "/modules/{$plugin['dirname']}/index.php?smode=Daily&amp;caldate={$this->year}-{$this->month}-{$target_date}",
+        'id' => $id,
         'server_time' => $server_time,
-        'user_time'   => $user_time,
-        'name'        => 'id',
-        'title'       => $this->text_sanitizer_for_show($title),
+        'user_time' => $user_time,
+        'name' => 'id',
+        'title' => $this->text_sanitizer_for_show($title),
     ];
     if ($just1gif) {
         // just 1 gif per a plugin & per a day
@@ -128,15 +128,15 @@ while (list($title, $id, $start_s, $end_s) = $db->fetchRow($result)) {
         $user_time = $start_s + $tzoffset_s2u;
         if (date('n', $user_time) == $this->month) {
             $target_date = date('j', $user_time);
-            $tmp_array   = [
-                'dotgif'      => $plugin['dotgif'],
-                'dirname'     => $plugin['dirname'],
-                'link'        => XOOPS_URL . "/modules/{$plugin['dirname']}/index.php?smode=Daily&amp;caldate={$this->year}-{$this->month}-{$target_date}",
-                'id'          => $id,
+            $tmp_array = [
+                'dotgif' => $plugin['dotgif'],
+                'dirname' => $plugin['dirname'],
+                'link' => XOOPS_URL . "/modules/{$plugin['dirname']}/index.php?smode=Daily&amp;caldate={$this->year}-{$this->month}-{$target_date}",
+                'id' => $id,
                 'server_time' => $server_time,
-                'user_time'   => $user_time,
-                'name'        => 'id',
-                'title'       => $this->text_sanitizer_for_show($title),
+                'user_time' => $user_time,
+                'name' => 'id',
+                'title' => $this->text_sanitizer_for_show($title),
             ];
             if ($just1gif) {
                 // just 1 gif per a plugin & per a day

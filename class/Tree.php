@@ -50,10 +50,10 @@ class Tree
     public function __construct($table_name, $id_name, $pid_name)
     {
         //        $GLOBALS['xoopsLogger']->addDeprecated("Class '" . __CLASS__ . "' is deprecated, check 'XoopsObjectTree' in tree.php");
-        $this->db    = \XoopsDatabaseFactory::getDatabaseConnection();
+        $this->db = \XoopsDatabaseFactory::getDatabaseConnection();
         $this->table = $table_name;
-        $this->id    = $id_name;
-        $this->pid   = $pid_name;
+        $this->id = $id_name;
+        $this->pid = $pid_name;
     }
 
     // returns an array of first child objects for a given id($sel_id)
@@ -67,13 +67,13 @@ class Tree
     public function getFirstChild($sel_id, $order = '')
     {
         $sel_id = (int)$sel_id;
-        $arr    = [];
-        $sql    = 'SELECT * FROM ' . $this->table . ' WHERE ' . $this->pid . '=' . $sel_id . '';
+        $arr = [];
+        $sql = 'SELECT * FROM ' . $this->table . ' WHERE ' . $this->pid . '=' . $sel_id . '';
         if ('' != $order) {
             $sql .= " ORDER BY $order";
         }
         $result = $this->db->query($sql);
-        $count  = $this->db->getRowsNum($result);
+        $count = $this->db->getRowsNum($result);
         if (0 == $count) {
             return $arr;
         }
@@ -93,10 +93,10 @@ class Tree
      */
     public function getFirstChildId($sel_id)
     {
-        $sel_id  = (int)$sel_id;
+        $sel_id = (int)$sel_id;
         $idarray = [];
-        $result  = $this->db->query('SELECT ' . $this->id . ' FROM ' . $this->table . ' WHERE ' . $this->pid . '=' . $sel_id . '');
-        $count   = $this->db->getRowsNum($result);
+        $result = $this->db->query('SELECT ' . $this->id . ' FROM ' . $this->table . ' WHERE ' . $this->pid . '=' . $sel_id . '');
+        $count = $this->db->getRowsNum($result);
         if (0 == $count) {
             return $idarray;
         }
@@ -119,18 +119,18 @@ class Tree
     public function getAllChildId($sel_id, $order = '', $idarray = [])
     {
         $sel_id = (int)$sel_id;
-        $sql    = 'SELECT ' . $this->id . ' FROM ' . $this->table . ' WHERE ' . $this->pid . '=' . $sel_id . '';
+        $sql = 'SELECT ' . $this->id . ' FROM ' . $this->table . ' WHERE ' . $this->pid . '=' . $sel_id . '';
         if ('' != $order) {
             $sql .= " ORDER BY $order";
         }
         $result = $this->db->query($sql);
-        $count  = $this->db->getRowsNum($result);
+        $count = $this->db->getRowsNum($result);
         if (0 == $count) {
             return $idarray;
         }
         while (list($r_id) = $this->db->fetchRow($result)) {
             $idarray[] = $r_id;
-            $idarray   = $this->getAllChildId($r_id, $order, $idarray);
+            $idarray = $this->getAllChildId($r_id, $order, $idarray);
         }
 
         return $idarray;
@@ -148,7 +148,7 @@ class Tree
     public function getAllParentId($sel_id, $order = '', $idarray = [])
     {
         $sel_id = (int)$sel_id;
-        $sql    = 'SELECT ' . $this->pid . ' FROM ' . $this->table . ' WHERE ' . $this->id . '=' . $sel_id . '';
+        $sql = 'SELECT ' . $this->pid . ' FROM ' . $this->table . ' WHERE ' . $this->id . '=' . $sel_id . '';
         if ('' != $order) {
             $sql .= " ORDER BY $order";
         }
@@ -158,7 +158,7 @@ class Tree
             return $idarray;
         }
         $idarray[] = $r_id;
-        $idarray   = $this->getAllParentId($r_id, $order, $idarray);
+        $idarray = $this->getAllParentId($r_id, $order, $idarray);
 
         return $idarray;
     }
@@ -233,7 +233,7 @@ class Tree
             $arr = $this->getChildTreeArray($catid, $order);
             foreach ($arr as $option) {
                 $option['prefix'] = str_replace('.', '--', $option['prefix']);
-                $catpath          = $option['prefix'] . '&nbsp;' . $myts->htmlSpecialChars($option[$title]);
+                $catpath = $option['prefix'] . '&nbsp;' . $myts->htmlSpecialChars($option[$title]);
                 if ($option[$this->id] == $preset_id) {
                     $sel = ' selected';
                 }
@@ -256,9 +256,9 @@ class Tree
      */
     public function getNicePathFromId($sel_id, $title, $funcURL, $path = '')
     {
-        $path   = !empty($path) ? '&nbsp;:&nbsp;' . $path : $path;
+        $path = !empty($path) ? '&nbsp;:&nbsp;' . $path : $path;
         $sel_id = (int)$sel_id;
-        $sql    = 'SELECT ' . $this->pid . ', ' . $title . ' FROM ' . $this->table . ' WHERE ' . $this->id . "=$sel_id";
+        $sql = 'SELECT ' . $this->pid . ', ' . $title . ' FROM ' . $this->table . ' WHERE ' . $this->id . "=$sel_id";
         $result = $this->db->query($sql);
         if (0 == $this->db->getRowsNum($result)) {
             return $path;
@@ -313,18 +313,18 @@ class Tree
     public function getAllChild($sel_id = 0, $order = '', $parray = [])
     {
         $sel_id = (int)$sel_id;
-        $sql    = 'SELECT * FROM ' . $this->table . ' WHERE ' . $this->pid . '=' . $sel_id . '';
+        $sql = 'SELECT * FROM ' . $this->table . ' WHERE ' . $this->pid . '=' . $sel_id . '';
         if ('' != $order) {
             $sql .= " ORDER BY $order";
         }
         $result = $this->db->query($sql);
-        $count  = $this->db->getRowsNum($result);
+        $count = $this->db->getRowsNum($result);
         if (0 == $count) {
             return $parray;
         }
         while (false !== ($row = $this->db->fetchArray($result))) {
             $parray[] = $row;
-            $parray   = $this->getAllChild($row[$this->id], $order, $parray);
+            $parray = $this->getAllChild($row[$this->id], $order, $parray);
         }
 
         return $parray;
@@ -342,19 +342,19 @@ class Tree
     public function getChildTreeArray($sel_id = 0, $order = '', $parray = [], $r_prefix = '')
     {
         $sel_id = (int)$sel_id;
-        $sql    = 'SELECT * FROM ' . $this->table . ' WHERE ' . $this->pid . '=' . $sel_id . '';
+        $sql = 'SELECT * FROM ' . $this->table . ' WHERE ' . $this->pid . '=' . $sel_id . '';
         if ('' != $order) {
             $sql .= " ORDER BY $order";
         }
         $result = $this->db->query($sql);
-        $count  = $this->db->getRowsNum($result);
+        $count = $this->db->getRowsNum($result);
         if (0 == $count) {
             return $parray;
         }
         while (false !== ($row = $this->db->fetchArray($result))) {
             $row['prefix'] = $r_prefix . '.';
-            $parray[]      = $row;
-            $parray        = $this->getChildTreeArray($row[$this->id], $order, $parray, $row['prefix']);
+            $parray[] = $row;
+            $parray = $this->getChildTreeArray($row[$this->id], $order, $parray, $row['prefix']);
         }
 
         return $parray;

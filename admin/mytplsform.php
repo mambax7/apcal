@@ -28,7 +28,7 @@ require_once dirname(__DIR__) . '/include/Text_Diff_Renderer_unified.php';
 $xoops_system_path = XOOPS_ROOT_PATH . '/modules/system';
 
 // initials
-$db   = \XoopsDatabaseFactory::getDatabaseConnection();
+$db = \XoopsDatabaseFactory::getDatabaseConnection();
 $myts = \MyTextSanitizer::getInstance();
 
 // determine language
@@ -57,11 +57,11 @@ if (!$grouppermHandler->checkRight('system_admin', XOOPS_SYSTEM_TPLSET, $xoopsUs
 }
 
 // tpl_file from $_GET
-$tpl_file     = $myts->stripSlashesGPC(@$_GET['tpl_file']);
+$tpl_file = $myts->stripSlashesGPC(@$_GET['tpl_file']);
 $tpl_file4sql = addslashes($tpl_file);
 
 // tpl_file from $_GET
-$tpl_tplset     = $myts->stripSlashesGPC(@$_GET['tpl_tplset']);
+$tpl_tplset = $myts->stripSlashesGPC(@$_GET['tpl_tplset']);
 $tpl_tplset4sql = addslashes($tpl_tplset);
 
 // get information from tplfile table
@@ -101,10 +101,10 @@ if (file_exists('./mymenu.php')) {
 echo "<h3 style='text-align:left;'>" . _MD_APCAL_TPLSETS . ' : ' . htmlspecialchars($tpl['tpl_type'], ENT_QUOTES) . ' : ' . htmlspecialchars($tpl['tpl_file'], ENT_QUOTES) . ' (' . htmlspecialchars($tpl['tpl_tplset'], ENT_QUOTES) . ")</h3>\n";
 
 // diff from file to selected DB template
-$basefilepath        = XOOPS_ROOT_PATH . '/modules/' . $tpl['tpl_module'] . '/templates/' . ('block' === $tpl['tpl_type'] ? 'blocks/' : '') . $tpl['tpl_file'];
+$basefilepath = XOOPS_ROOT_PATH . '/modules/' . $tpl['tpl_module'] . '/templates/' . ('block' === $tpl['tpl_type'] ? 'blocks/' : '') . $tpl['tpl_file'];
 $diff_from_file4disp = '';
 if (file_exists($basefilepath)) {
-    $diff     = new \Text_Diff(file($basefilepath), explode("\n", $tpl['tpl_source']));
+    $diff = new \Text_Diff(file($basefilepath), explode("\n", $tpl['tpl_source']));
     $renderer = new \Text_Diff_Renderer_unified();
     $diff_str = htmlspecialchars($renderer->render($diff), ENT_QUOTES);
     foreach (explode("\n", $diff_str) as $line) {
@@ -122,7 +122,7 @@ if (file_exists($basefilepath)) {
 $diff_from_default4disp = '';
 if ('default' !== $tpl['tpl_tplset']) {
     list($default_source) = $db->fetchRow($db->query('SELECT tpl_source FROM ' . $db->prefix('tplfile') . ' NATURAL LEFT JOIN ' . $db->prefix('tplsource') . " WHERE tpl_tplset='default' AND tpl_file='" . addslashes($tpl['tpl_file']) . "' AND tpl_module='" . addslashes($tpl['tpl_module']) . "'"));
-    $diff     = new \Text_Diff(explode("\n", $default_source), explode("\n", $tpl['tpl_source']));
+    $diff = new \Text_Diff(explode("\n", $default_source), explode("\n", $tpl['tpl_source']));
     $renderer = new \Text_Diff_Renderer_unified();
     $diff_str = htmlspecialchars($renderer->render($diff), ENT_QUOTES);
     foreach (explode("\n", $diff_str) as $line) {

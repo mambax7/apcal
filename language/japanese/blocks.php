@@ -1,7 +1,6 @@
 <?php
 
 if (defined('FOR_XOOPS_LANG_CHECKER') || !defined('APCAL_BL_LOADED')) {
-
     define('APCAL_BL_LOADED', 1);
 
     // for monthly calendar block
@@ -25,7 +24,4 @@ if (defined('FOR_XOOPS_LANG_CHECKER') || !defined('APCAL_BL_LOADED')) {
     define('_MB_APCAL_UNTILDAYS', '最大 %s 日後までの予定を表示する（0なら制限なし）');
     define('_MB_APCAL_MAXGIFSADAY', '１日あたりのGIFリンク表示件数');
     define('_MB_APCAL_JUSTONCEADAYAPLUGIN', '１プラグインあたり１日１件しか表示しない');
-
 }
-
-

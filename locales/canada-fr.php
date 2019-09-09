@@ -26,7 +26,7 @@ if (!function_exists('easter')) {
     {
         $e = 21 + easter_days($y);
         if ($e > 31) {
-            $e  -= 31;
+            $e -= 31;
             $em = 4;
         } else {
             $em = 3;
@@ -36,12 +36,12 @@ if (!function_exists('easter')) {
         if ($f > 0) {
             $holidays["$y-$em-$f"] = 'Vendredi Saint';
         } else {
-            $f                   = 31 - $f;
+            $f = 31 - $f;
             $holidays["$y-3-$f"] = 'Vendredi Saint';
         }
         $holidays["$y-$em-$e"] = 'P&acirc;ques';
         if ($m > 31) {
-            $m                   -= 31;
+            $m -= 31;
             $holidays["$y-4-$m"] = 'Lundi de P&acirc;ques';
         } else {
             $holidays["$y-$em-$m"] = 'Lundi de P&acirc;ques';
@@ -50,8 +50,8 @@ if (!function_exists('easter')) {
 }
 
 $this->holidays = [];
-$start          = (int)date('Y') - 10;
-$end            = $start + 30;
+$start = (int)date('Y') - 10;
+$end = $start + 30;
 
 for ($y = $start; $y < $end; ++$y) {
     easter($y, $this->holidays);
@@ -62,17 +62,17 @@ for ($y = $start; $y < $end; ++$y) {
     $l = date('j', strtotime('+1 Monday', strtotime("$y-9-1")));
     $t = date('j', strtotime('+2 Monday', strtotime("$y-10-1")));
 
-    $this->holidays["$y-1-1"]   = 'Jour de l\'an';
-    $this->holidays["$y-2-14"]  = 'St-Valentin';
-    $this->holidays["$y-3-17"]  = 'St-Patrick';
-    $this->holidays["$y-4-22"]  = 'Jour de la terre';
-    $this->holidays["$y-5-$m"]  = 'F&ecirc;te des m&egrave;re';
-    $this->holidays["$y-5-$v"]  = 'F&ecirc;te de la reine';
-    $this->holidays["$y-6-$f"]  = 'F&ecirc;te des p&egrave;re';
-    $this->holidays["$y-6-24"]  = 'St-Jean-Baptiste';
-    $this->holidays["$y-7-1"]   = 'F&ecirc;te du Canada';
-    $this->holidays["$y-8-$c"]  = 'Cong&eacute; provincial';
-    $this->holidays["$y-9-$l"]  = 'F&ecirc;te du travail';
+    $this->holidays["$y-1-1"] = 'Jour de l\'an';
+    $this->holidays["$y-2-14"] = 'St-Valentin';
+    $this->holidays["$y-3-17"] = 'St-Patrick';
+    $this->holidays["$y-4-22"] = 'Jour de la terre';
+    $this->holidays["$y-5-$m"] = 'F&ecirc;te des m&egrave;re';
+    $this->holidays["$y-5-$v"] = 'F&ecirc;te de la reine';
+    $this->holidays["$y-6-$f"] = 'F&ecirc;te des p&egrave;re';
+    $this->holidays["$y-6-24"] = 'St-Jean-Baptiste';
+    $this->holidays["$y-7-1"] = 'F&ecirc;te du Canada';
+    $this->holidays["$y-8-$c"] = 'Cong&eacute; provincial';
+    $this->holidays["$y-9-$l"] = 'F&ecirc;te du travail';
     $this->holidays["$y-10-$t"] = 'Action de gr&acirc;ce';
     $this->holidays["$y-10-31"] = 'Halloween';
     $this->holidays["$y-11-11"] = 'Jour du souvenir';
