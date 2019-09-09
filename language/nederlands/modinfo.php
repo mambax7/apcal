@@ -37,24 +37,24 @@ define( 'APCAL_MI_LOADED' , 1 ) ;
 // Appended by Xoops Language Checker -GIJOE- in 2004-06-22 18:39:03
 define('_MI_APCAL_ADMENU_MYBLOCKSADMIN','Blocks&Groups Admin');
 
-define("_MI_APCAL_NAME","APCal");
+define('_MI_APCAL_NAME', 'APCal');
 
 // A brief description of this module
-define("_MI_APCAL_DESC","Kalendermodule met activiteitsplanner");
+define('_MI_APCAL_DESC', 'Kalendermodule met activiteitsplanner');
 
 // Names of blocks for this module (Not all module has blocks)
-define("_MI_APCAL_BNAME_MINICAL","Mini-Kalender");
-define("_MI_APCAL_BNAME_MINICAL_DESC","Mini-Kalender-Blok tonen");
-define("_MI_APCAL_BNAME_MONTHCAL","Maandkalender");
-define("_MI_APCAL_BNAME_MONTHCAL_DESC","Maandkalender in volle grootte tonen");
-define("_MI_APCAL_BNAME_TODAYS","Huidige activiteiten");
-define("_MI_APCAL_BNAME_TODAYS_DESC","Huidige activiteiten tonen");
-define("_MI_APCAL_BNAME_THEDAYS","Activiteiten per %s");
-define("_MI_APCAL_BNAME_THEDAYS_DESC","Termine des Tages markiert anzeigen");
-define("_MI_APCAL_BNAME_COMING","Eerstvolgende activiteiten");
-define("_MI_APCAL_BNAME_COMING_DESC","Eerstvolgende activiteiten tonen");
-define("_MI_APCAL_BNAME_AFTER","Activiteiten na %s");
-define("_MI_APCAL_BNAME_AFTER_DESC","Activiteiten na deze dag tonen");
+define('_MI_APCAL_BNAME_MINICAL', 'Mini-Kalender');
+define('_MI_APCAL_BNAME_MINICAL_DESC', 'Mini-Kalender-Blok tonen');
+define('_MI_APCAL_BNAME_MONTHCAL', 'Maandkalender');
+define('_MI_APCAL_BNAME_MONTHCAL_DESC', 'Maandkalender in volle grootte tonen');
+define('_MI_APCAL_BNAME_TODAYS', 'Huidige activiteiten');
+define('_MI_APCAL_BNAME_TODAYS_DESC', 'Huidige activiteiten tonen');
+define('_MI_APCAL_BNAME_THEDAYS', 'Activiteiten per %s');
+define('_MI_APCAL_BNAME_THEDAYS_DESC', 'Termine des Tages markiert anzeigen');
+define('_MI_APCAL_BNAME_COMING', 'Eerstvolgende activiteiten');
+define('_MI_APCAL_BNAME_COMING_DESC', 'Eerstvolgende activiteiten tonen');
+define('_MI_APCAL_BNAME_AFTER', 'Activiteiten na %s');
+define('_MI_APCAL_BNAME_AFTER_DESC', 'Activiteiten na deze dag tonen');
 
 // Names of submenu
 // define("_MI_APCAL_SMNAME1","");
@@ -62,50 +62,50 @@ define("_MI_APCAL_BNAME_AFTER_DESC","Activiteiten na deze dag tonen");
 //define("_MI_APCAL_ADMENU1","");
 
 // Title of config items
-define("_MI_USERS_AUTHORITY", "Rechten voor gebruikers");
-define("_MI_GUESTS_AUTHORITY", "Rechten voor gasten");
-define("_MI_MINICAL_TARGET", "Kalendervoorstelling die wordt getoond wanneer op een datum in de Mini-Kalender wordt geklikt");
-define("_MI_COMING_NUMROWS", "Aantal getoonde activiteiten in het 'Eerstvolgende activiteiten'-blok'");
-define("_MI_SKINFOLDER", "Skin");
-define("_MI_SUNDAYCOLOR", "Tekstkleur voor zondagen");
-define("_MI_WEEKDAYCOLOR", "Tekstkleur voor weekdagen");
-define("_MI_SATURDAYCOLOR", "Tekstkleur voor zaterdagen");
-define("_MI_HOLIDAYCOLOR", "Tekstkleur voor vrijdagen");
-define("_MI_TARGETDAYCOLOR", "Tekstkleur voor dagen met activiteiten");
-define("_MI_SUNDAYBGCOLOR", "Achtergrondkleur voor zondagen");
-define("_MI_WEEKDAYBGCOLOR", "Achtergrondkleur voor weekdagen");
-define("_MI_SATURDAYBGCOLOR", "Achtergrondkleur voor zaterdagen");
-define("_MI_HOLIDAYBGCOLOR", "Achtergrondkleur voor feestdag");
-define("_MI_TARGETDAYBGCOLOR", "Achtergrondkleur voor dagen met activiteiten");
-define("_MI_CALHEADCOLOR", "Kleur van de kalenderkop");
-define("_MI_CALHEADBGCOLOR", "Achtergrondkleur van de kalenderkop");
-define("_MI_CALFRAMECSS", "CSS-stijl van het kalenderraam");
-define("_MI_CANOUTPUTICS", "iCalendar-Data (.ics) export mogelijk maken?");
-define("_MI_MAXRRULEEXTRACT", "max. aantal activiteiten die door het Terugkeerpatroon kunnen gegenereerd worden");
-define("_MI_WEEKSTARTFROM", "De week begint op");
+define('_MI_USERS_AUTHORITY', 'Rechten voor gebruikers');
+define('_MI_GUESTS_AUTHORITY', 'Rechten voor gasten');
+define('_MI_MINICAL_TARGET', 'Kalendervoorstelling die wordt getoond wanneer op een datum in de Mini-Kalender wordt geklikt');
+define('_MI_COMING_NUMROWS', "Aantal getoonde activiteiten in het 'Eerstvolgende activiteiten'-blok'");
+define('_MI_SKINFOLDER', 'Skin');
+define('_MI_SUNDAYCOLOR', 'Tekstkleur voor zondagen');
+define('_MI_WEEKDAYCOLOR', 'Tekstkleur voor weekdagen');
+define('_MI_SATURDAYCOLOR', 'Tekstkleur voor zaterdagen');
+define('_MI_HOLIDAYCOLOR', 'Tekstkleur voor vrijdagen');
+define('_MI_TARGETDAYCOLOR', 'Tekstkleur voor dagen met activiteiten');
+define('_MI_SUNDAYBGCOLOR', 'Achtergrondkleur voor zondagen');
+define('_MI_WEEKDAYBGCOLOR', 'Achtergrondkleur voor weekdagen');
+define('_MI_SATURDAYBGCOLOR', 'Achtergrondkleur voor zaterdagen');
+define('_MI_HOLIDAYBGCOLOR', 'Achtergrondkleur voor feestdag');
+define('_MI_TARGETDAYBGCOLOR', 'Achtergrondkleur voor dagen met activiteiten');
+define('_MI_CALHEADCOLOR', 'Kleur van de kalenderkop');
+define('_MI_CALHEADBGCOLOR', 'Achtergrondkleur van de kalenderkop');
+define('_MI_CALFRAMECSS', 'CSS-stijl van het kalenderraam');
+define('_MI_CANOUTPUTICS', 'iCalendar-Data (.ics) export mogelijk maken?');
+define('_MI_MAXRRULEEXTRACT', 'max. aantal activiteiten die door het Terugkeerpatroon kunnen gegenereerd worden');
+define('_MI_WEEKSTARTFROM', 'De week begint op');
 
 // Description of each config items
-define("_MI_EDITBYGUESTDSC", "Rechten voor gasten om activiteiten toe te voegen");
+define('_MI_EDITBYGUESTDSC', 'Rechten voor gasten om activiteiten toe te voegen');
 
 // Options of each config items
-define("_MI_OPT_AUTH_NONE", "mogen niet toevoegen");
-define("_MI_OPT_AUTH_WAIT", "mogen toevoegen maar hebben goedkeuring nodig");
-define("_MI_OPT_AUTH_POST", "mogen direct zonder goedkeuring toevoegen");
-define("_MI_OPT_AUTH_BYGROUP", "Vastgelegd door groepsrechten");
-define("_MI_OPT_MINI_PHPSELF", "Startpagina");
-define("_MI_OPT_MINI_MONTHLY", "Maandkalender");
-define("_MI_OPT_MINI_WEEKLY", "Weekkalender");
-define("_MI_OPT_MINI_DAILY", "Dagkalender");
-define("_MI_OPT_CANNOTOUTPUTICS", "ICS output activeren");
-define("_MI_OPT_CANOUTPUTICS", "ICS output deactiveren");
-define("_MI_OPT_STARTFROMSUN", "Zondag");
-define("_MI_OPT_STARTFROMMON", "Maandag");
+define('_MI_OPT_AUTH_NONE', 'mogen niet toevoegen');
+define('_MI_OPT_AUTH_WAIT', 'mogen toevoegen maar hebben goedkeuring nodig');
+define('_MI_OPT_AUTH_POST', 'mogen direct zonder goedkeuring toevoegen');
+define('_MI_OPT_AUTH_BYGROUP', 'Vastgelegd door groepsrechten');
+define('_MI_OPT_MINI_PHPSELF', 'Startpagina');
+define('_MI_OPT_MINI_MONTHLY', 'Maandkalender');
+define('_MI_OPT_MINI_WEEKLY', 'Weekkalender');
+define('_MI_OPT_MINI_DAILY', 'Dagkalender');
+define('_MI_OPT_CANNOTOUTPUTICS', 'ICS output activeren');
+define('_MI_OPT_CANOUTPUTICS', 'ICS output deactiveren');
+define('_MI_OPT_STARTFROMSUN', 'Zondag');
+define('_MI_OPT_STARTFROMMON', 'Maandag');
 
 
 // Admin Menus
-define("_MI_APCAL_ADMENU0","Activiteit goedkeuren");
-define("_MI_APCAL_ADMENU1","iCalendar I/O");
-define("_MI_APCAL_ADMENU2","Groepsrechten");
+define('_MI_APCAL_ADMENU0', 'Activiteit goedkeuren');
+define('_MI_APCAL_ADMENU1', 'iCalendar I/O');
+define('_MI_APCAL_ADMENU2', 'Groepsrechten');
 
 
 // Appended by Xoops Language Checker -GIJOE- in 2003-12-05 14:18:43
@@ -147,4 +147,4 @@ define('_MI_APCAL_CATEGORY_NEWEVENT_NOTIFYSBJ','[{X_SITENAME}] {X_MODULE} auto-n
 
 }
 
-?>
+

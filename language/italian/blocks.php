@@ -36,8 +36,8 @@ define('_MB_APCAL_EVENTS_THEDAY','Eventi il %s');
 
 
 // for new events block
-define("_MB_APCAL_MAXNEWITEMS","Mostra");
+define('_MB_APCAL_MAXNEWITEMS', 'Mostra');
 
 }
 
-?>
+

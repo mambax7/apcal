@@ -28,7 +28,7 @@ define('_MB_APCAL_JUMP','Pular');
 
 // for after the day's events block
 // %s means the indicated day
-define('_MB_APCAL_EVENTS_AFTER','Eventos ap…Ô %s');
+define('_MB_APCAL_EVENTS_AFTER','Eventos apÃ³s %s');
 
 // for the day's events block
 // %s means the indicated day
@@ -36,10 +36,10 @@ define('_MB_APCAL_EVENTS_THEDAY','Eventos de %s');
 
 
 // for new events block
-define("_MB_APCAL_MAXNEWITEMS","NŽº de eventos a mostrar");
+    define('_MB_APCAL_MAXNEWITEMS', 'NÂº de eventos a mostrar');
 
 
 
 }
 
-?>
+

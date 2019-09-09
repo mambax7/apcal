@@ -1,4 +1,4 @@
-Olá  {X_UNAME},
+OlÃ¡  {X_UNAME},
 
 Um novo evento "{EVENT_SUMMARY}" foi criado em {X_SITENAME}.
 
@@ -7,12 +7,12 @@ Clique neste link para ver o evento:
 
 -----------
 
-Você esta recebendo esta mensagem pois selecionou a opcåĞ para ser notificado quando novos eventos såĞ adicionados no site.
+VocÃª esta recebendo esta mensagem pois selecionou a opÃ§Ã£o para ser notificado quando novos eventos sÃ£o adicionados no site.
 
-Caso você nåĞ queira mais receber futuras notificaî÷es por favor atualize suas opî÷es visitando o link abaixo:
+Caso vocÃª nÃ£o queira mais receber futuras notificaÃ§Ãµes por favor atualize suas opÃ§Ãµes visitando o link abaixo:
 {X_UNSUBSCRIBE_URL}
 
-Por favor nåĞ responda a esta mensagem.
+Por favor nÃ£o responda Ã  esta mensagem.
 
 -----------
 

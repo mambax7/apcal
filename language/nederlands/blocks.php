@@ -41,4 +41,3 @@ define('_MB_APCAL_MAXNEWITEMS','Display');
 
 }
 
-?>

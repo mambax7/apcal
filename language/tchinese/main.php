@@ -5,17 +5,17 @@ if( defined( 'FOR_XOOPS_LANG_CHECKER' ) || ! defined( 'APCAL_MB_LOADED' ) ) {
 define( 'APCAL_MB_LOADED' , 1 ) ;
 
 // index.php
-define('_MB_APCAL_ERR_NOPERMTOUPDATE',"±z¨S¦³½s¿èªºÅv­­¡I");
+define('_MB_APCAL_ERR_NOPERMTOUPDATE', 'ï¿½zï¿½Sï¿½ï¿½ï¿½sï¿½èªºï¿½vï¿½ï¿½ï¿½I');
 define('_APCAL_APURL', 'http://xoops.antiquespromotion.ca');
 define('_APCAL_APURL2', 'http://www.antiquespromotion.ca');
 define('APCAL_COPYRIGHT' , '<a href="http://xoops.antiquespromotion.ca" title="Calendar for Xoops" target="_blank">APCal</a> by <a href="http://www.antiquespromotion.ca" title="Antiques Promotion Canada" target="_blank">AP</a>');
-define('_MB_APCAL_ERR_NOPERMTOINSERT',"±z¨S¦³µoªíªºÅv­­¡I");
-define('_MB_APCAL_ERR_NOPERMTODELETE',"±z¨S¦³§R°£ªºÅv­­¡I");
-define('_MB_APCAL_ALT_PRINTTHISEVENT',"¦C¦L¼Ò¦¡");
+define('_MB_APCAL_ERR_NOPERMTOINSERT', 'ï¿½zï¿½Sï¿½ï¿½ï¿½oï¿½ï¿½ï¿½vï¿½ï¿½ï¿½I');
+define('_MB_APCAL_ERR_NOPERMTODELETE', 'ï¿½zï¿½Sï¿½ï¿½ï¿½Rï¿½ï¿½ï¿½ï¿½ï¿½vï¿½ï¿½ï¿½I');
+define('_MB_APCAL_ALT_PRINTTHISEVENT', 'ï¿½Cï¿½Lï¿½Ò¦ï¿½');
 
 // print.php
-define('_MB_APCAL_COMESFROM',"³o­Ó¨Æ¥ó¬O¥Ñ %s ©Òµoªíªº¨Æ¥ó¡C");
+define('_MB_APCAL_COMESFROM', 'ï¿½oï¿½Ó¨Æ¥ï¿½Oï¿½ï¿½ %s ï¿½Òµoï¿½ï¿½ï¿½Æ¥ï¿½C');
 
 }
 
-?>
+

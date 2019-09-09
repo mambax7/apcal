@@ -5,27 +5,26 @@ if( defined( 'FOR_XOOPS_LANG_CHECKER' ) || ! defined( 'APCAL_BL_LOADED' ) ) {
 define( 'APCAL_BL_LOADED' , 1 ) ;
 
 // for monthly calendar block
-define('_MB_APCAL_PREV_MONTH','¤W­Ó¤ë');
-define('_MB_APCAL_NEXT_MONTH','¤U­Ó¤ë');
-define('_MB_APCAL_YEAR','¦~');
-define('_MB_APCAL_MONTH','¤ë');
-define('_MB_APCAL_JUMP','¤Á´«');
+define('_MB_APCAL_PREV_MONTH','ï¿½Wï¿½Ó¤ï¿½');
+define('_MB_APCAL_NEXT_MONTH','ï¿½Uï¿½Ó¤ï¿½');
+define('_MB_APCAL_YEAR','ï¿½~');
+define('_MB_APCAL_MONTH','ï¿½ï¿½');
+define('_MB_APCAL_JUMP','ï¿½ï¿½ï¿½ï¿½');
 
 // for after the day's events block
 // %s means the indicated day
-define('_MB_APCAL_EVENTS_AFTER','%s ¥H«áªº¨Æ¥ó');
+define('_MB_APCAL_EVENTS_AFTER','%s ï¿½Hï¿½áªºï¿½Æ¥ï¿½');
 
 // for the day's events block
 // %s means the indicated day
-define('_MB_APCAL_EVENTS_THEDAY','%s ªº¨Æ¥ó');
+define('_MB_APCAL_EVENTS_THEDAY','%s ï¿½ï¿½ï¿½Æ¥ï¿½');
 
-define('_MB_APCAL_MAXITEMS','Åã¥Ü¥ó¼Æ');
-define('_MB_APCAL_CATSEL','Ãþ§OÂê©w');
-define('_MB_APCAL_CATSELSUB','¤lÃþ§O¤]Åã¥Ü');
-define('_MB_APCAL_UNTILDAYS','³Ì¦hÅã¥Ü %s ¤Ñªº¨Æ¥ó (0 ¬°µL­­¨î)');
-define('_MB_APCAL_MAXGIFSADAY','³]©w¨C¤éÅã¥Ü³Ì¦h´X­Ó¨Æ¥ó');
-define('_MB_APCAL_JUSTONCEADAYAPLUGIN','¨C­Ó plugin ¨C¤Ñ¶È¯àÅã¥Ü¤@­Ó¨Æ¥ó');
+define('_MB_APCAL_MAXITEMS','ï¿½ï¿½Ü¥ï¿½ï¿½');
+define('_MB_APCAL_CATSEL','ï¿½ï¿½ï¿½Oï¿½ï¿½w');
+define('_MB_APCAL_CATSELSUB','ï¿½lï¿½ï¿½ï¿½Oï¿½]ï¿½ï¿½ï¿½');
+define('_MB_APCAL_UNTILDAYS','ï¿½Ì¦hï¿½ï¿½ï¿½ %s ï¿½Ñªï¿½ï¿½Æ¥ï¿½ (0 ï¿½ï¿½ï¿½Lï¿½ï¿½ï¿½ï¿½)');
+define('_MB_APCAL_MAXGIFSADAY','ï¿½]ï¿½wï¿½Cï¿½ï¿½ï¿½ï¿½Ü³Ì¦hï¿½Xï¿½Ó¨Æ¥ï¿½');
+define('_MB_APCAL_JUSTONCEADAYAPLUGIN','ï¿½Cï¿½ï¿½ plugin ï¿½Cï¿½Ñ¶È¯ï¿½ï¿½ï¿½Ü¤@ï¿½Ó¨Æ¥ï¿½');
 
 }
 
-?>

@@ -22,7 +22,7 @@ define('_AM_FMT_SERVER_TZ_ALL','Timezone of the server (winter): %+2.1f<br />Tim
 define('_AM_FMT_SERVER_TZ_SYSTEM','Timezone in winter: %+2.1f');
 define('_AM_TH_SERVER_TZ_COUNT','Events');
 define('_AM_TH_SERVER_TZ_VALUE','Timezone');
-define('_AM_TH_SERVER_TZ_VALUE_TO','Changes (-14.0°¡14.0)');
+define('_AM_TH_SERVER_TZ_VALUE_TO','Changes (-14.0ÔøΩÔøΩ14.0)');
 define('_AM_JSALRT_SERVER_TZ','Don\'t forget backing-up events table before this operation');
 define('_AM_NOTICE_SERVER_TZ','If your server set the timezone area with summer time (=Day Light Saving) and some events were registerd in APCal 0.6x or 0.7x, dont\'t push this button.<br />eg) It is natural to display both -5.0 and -4.0 in EDT');
 define('_AM_MB_SUCCESSTZUPDATE','Events are modified with the timezone(s).');
@@ -47,98 +47,96 @@ define( 'APCAL_AM_LOADED' , 1 ) ;
 // titles
 
 // Appended by Xoops Language Checker -GIJOE- in 2004-06-22 18:39:03
-define('_AM_OPT_PAST','Fˆrr');
+define('_AM_OPT_PAST', 'F√∂rr');
 define('_AM_OPT_FUTURE','Framtida');
-define('_AM_OPT_PASTANDFUTURE','Fˆrr&Framtida');
+define('_AM_OPT_PASTANDFUTURE','F√∂rr&Framtida');
 
-define("_AM_CONFIG","Konfigureringsmeny fˆr APCal");
-define("_AM_GENERALCONF","Generella inst‰llningar fˆr APCal");
-define("_AM_ADMISSION","Godk‰nna h‰ndelser");
-define("_AM_ICALENDAR_IO","iCalendar I/O");
-define("_AM_ICALENDAR_IMPORT","Importera iCalendar");
-define("_AM_ICALENDAR_EXPORT","Exportera iCalendar");
-define("_AM_GROUPPERM","Gruppr‰ttigheter");
-define("_AM_MYBLOCKSADMIN","APCal's Block&Grupp administration");
+define('_AM_CONFIG', 'Konfigureringsmeny f√∂r APCal');
+define('_AM_GENERALCONF', 'Generella inst√§llningar f√∂r APCal');
+define('_AM_ADMISSION', 'Godk√§nna h√§ndelser');
+define('_AM_ICALENDAR_IO', 'iCalendar I/O');
+define('_AM_ICALENDAR_IMPORT', 'Importera iCalendar');
+define('_AM_ICALENDAR_EXPORT', 'Exportera iCalendar');
+    define('_AM_GROUPPERM', 'Gruppr√§ttigheter');
+define('_AM_MYBLOCKSADMIN', "APCal's Block&Grupp administration");
 
 // forms
-define("_AM_BUTTON_EXTRACT","Packa upp");
-define("_AM_BUTTON_ADMIT","Godk‰nn");
-define("_AM_CONFIRM_DELETE","OK att radera?");
+define('_AM_BUTTON_EXTRACT', 'Packa upp');
+    define('_AM_BUTTON_ADMIT', 'Godk√§nn');
+define('_AM_CONFIRM_DELETE', 'OK att radera?');
 
 // format
-define("_AM_DTFMT_LIST_ALLDAY",'y-m-d');
-define("_AM_DTFMT_LIST_NORMAL",'y-m-d<\b\r />H:i');
+define('_AM_DTFMT_LIST_ALLDAY', 'y-m-d');
+define('_AM_DTFMT_LIST_NORMAL', 'y-m-d<\b\r />H:i');
 
 // admission
-define("_AM_LABEL_ADMIT","Markerade h‰ndelser kommer: att godk‰nnas ");
-define("_AM_MES_ADMITTED","H‰ndelse(r) har godk‰nnts");
-define("_AM_ADMIT_TH0","Anv‰ndare");
-define("_AM_ADMIT_TH1","Start Datum&Tid");
-define("_AM_ADMIT_TH2","Slut Datum&Tid");
-define("_AM_ADMIT_TH3","Titel");
-define("_AM_ADMIT_TH4","Regel");
+    define('_AM_LABEL_ADMIT', 'Markerade h√§ndelser kommer: att godk√§nnas ');
+    define('_AM_MES_ADMITTED', 'H√§ndelse(r) har godk√§nnts');
+    define('_AM_ADMIT_TH0', 'Anv√§ndare');
+define('_AM_ADMIT_TH1', 'Start Datum&Tid');
+define('_AM_ADMIT_TH2', 'Slut Datum&Tid');
+define('_AM_ADMIT_TH3', 'Titel');
+define('_AM_ADMIT_TH4', 'Regel');
 
 // iCalendar I/O
 
-define("_AM_LABEL_IMPORTFROMWEB","Importera iCalendar data frÂn web (Angiven URL skall starta pÂ 'http://' eller 'webcal://')");
-define("_AM_LABEL_UPLOADFROMFILE","Ladda upp iCalendar data (V‰lj en fil pÂ Er lokala dator)");
-define("_AM_BUTTON_IMPORT","Import!");
-define("_AM_BUTTON_UPLOAD","Ladda upp!");
-define("_AM_LABEL_IO_CHECKEDITEMS","Markerade h‰ndelser kommer:");
-define("_AM_LABEL_IO_OUTPUT","att bli exporterade till iCalendar");
-define("_AM_LABEL_IO_SELECTPLATFORM","V‰lj plattform");
-define("_AM_LABEL_IO_DELETE","att bli raderade ");
-define("_AM_MES_DELETED","H‰ndelse(r) har raderats");
-define("_AM_IO_TH0","Anv‰ndare");
-define("_AM_IO_TH1","Start Datum&Tid");
-define("_AM_IO_TH2","Slut Datum&Tid");
-define("_AM_IO_TH3","Titel");
-define("_AM_IO_TH4","Regel");
-define("_AM_IO_TH5","Godk‰nda");
+    define('_AM_LABEL_IMPORTFROMWEB', "Importera iCalendar data fr√•n web (Angiven URL skall starta p√• 'http://' eller 'webcal://')");
+    define('_AM_LABEL_UPLOADFROMFILE', 'Ladda upp iCalendar data (V√§lj en fil p√• Er lokala dator)');
+define('_AM_BUTTON_IMPORT', 'Import!');
+define('_AM_BUTTON_UPLOAD', 'Ladda upp!');
+    define('_AM_LABEL_IO_CHECKEDITEMS', 'Markerade h√§ndelser kommer:');
+define('_AM_LABEL_IO_OUTPUT', 'att bli exporterade till iCalendar');
+    define('_AM_LABEL_IO_SELECTPLATFORM', 'V√§lj plattform');
+define('_AM_LABEL_IO_DELETE', 'att bli raderade ');
+    define('_AM_MES_DELETED', 'H√§ndelse(r) har raderats');
+    define('_AM_IO_TH0', 'Anv√§ndare');
+define('_AM_IO_TH1', 'Start Datum&Tid');
+define('_AM_IO_TH2', 'Slut Datum&Tid');
+define('_AM_IO_TH3', 'Titel');
+define('_AM_IO_TH4', 'Regel');
+    define('_AM_IO_TH5', 'Godk√§nda');
 
 // Group's Permissions
-define( '_AM_GPERM_G_INSERTABLE' , "L‰gga Till" ) ;
-define( '_AM_GPERM_G_SUPERINSERT' , "Super L‰gga Till" ) ;
-define( '_AM_GPERM_G_EDITABLE' , "Editera" ) ;
-define( '_AM_GPERM_G_SUPEREDIT' , "Super Editera" ) ;
-define( '_AM_GPERM_G_DELETABLE' , "Radera" ) ;
-define( '_AM_GPERM_G_SUPERDELETE' , "Super Radera" ) ;
-define( '_AM_GPERM_G_TOUCHOTHERS' , "Kan nÂ andra" ) ;
-define( '_AM_GROUPPERMDESC' , "Markera vad respektive grupp har r‰ttighet att urfˆra.<br />Om denna funktion anv‰nds, markera 'Behˆrigheter fˆr anv‰ndare' till 'Specificerad i Gruppr‰ttigheterna' fˆrst i 'Inst‰llningar'.<br />Inst‰llningarna fˆr grupperna 'Administrator' och 'Guest' kommer att ignoreras." ) ;
-
-
-
+    define('_AM_GPERM_G_INSERTABLE', 'L√§gga Till');
+    define('_AM_GPERM_G_SUPERINSERT', 'Super L√§gga Till');
+define('_AM_GPERM_G_EDITABLE' , 'Editera') ;
+define('_AM_GPERM_G_SUPEREDIT' , 'Super Editera') ;
+define('_AM_GPERM_G_DELETABLE' , 'Radera') ;
+define('_AM_GPERM_G_SUPERDELETE' , 'Super Radera') ;
+    define('_AM_GPERM_G_TOUCHOTHERS', 'Kan n√• andra');
+    define('_AM_GROUPPERMDESC',
+           "Markera vad respektive grupp har r√§ttighet att urf√∂ra.<br />Om denna funktion anv√§nds, markera 'Beh√∂righeter f√∂r anv√§ndare' till 'Specificerad i Gruppr√§ttigheterna' f√∂rst i 'Inst√§llningar'.<br />Inst√§llningarna f√∂r grupperna 'Administrator' och 'Guest' kommer att ignoreras.");
 
 // Appended by Xoops Language Checker -GIJOE- in 2004-01-14 18:31:01
-define('_AM_MENU_EVENTS','H‰ndelse Administration');
+    define('_AM_MENU_EVENTS', 'H√§ndelse Administration');
 define('_AM_MENU_CATEGORIES','Kategori Administration');
-define('_AM_MENU_CAT2GROUP','R‰ttigheter fˆr Kategorier');
-define('_AM_TABLEMAINTAIN','Tabell UnderhÂll (Uppgradera)');
+    define('_AM_MENU_CAT2GROUP', 'R√§ttigheter f√∂r Kategorier');
+    define('_AM_TABLEMAINTAIN', 'Tabell Underh√•ll (Uppgradera)');
 define('_AM_BUTTON_MOVE','Flytta');
 define('_AM_BUTTON_COPY','Kopiera');
-define('_AM_CONFIRM_MOVE','Ta bort l‰nk till den gamla kategorin och l‰gg till en l‰nk till den specificerade kategorin?');
-define('_AM_CONFIRM_COPY','L‰gg till en l‰nk till specificerad l‰nk?');
+    define('_AM_CONFIRM_MOVE', 'Ta bort l√§nk till den gamla kategorin och l√§gg till en l√§nk till den specificerade kategorin?');
+    define('_AM_CONFIRM_COPY', 'L√§gg till en l√§nk till specificerad l√§nk?');
 define('_AM_BUTTON_EXPORT','Exportera!');
-define('_AM_MES_EVENTLINKTOCAT','h‰ndelse(r) har l‰nkats till denna kategori');
-define('_AM_MES_EVENTUNLINKED','l‰nk till h‰ndelse(r) har tagits bort frÂn denna kategori');
-define('_AM_FMT_IMPORTED','h‰ndelse(r) har importerats frÂn \'%s\'');
-define('_AM_CAT2GROUPDESC','Markera de kategorier som respektive grupp har tillgÂng till');
+    define('_AM_MES_EVENTLINKTOCAT', 'h√§ndelse(r) har l√§nkats till denna kategori');
+    define('_AM_MES_EVENTUNLINKED', 'l√§nk till h√§ndelse(r) har tagits bort fr√•n denna kategori');
+    define('_AM_FMT_IMPORTED', 'h√§ndelse(r) har importerats fr√•n \'%s\'');
+    define('_AM_CAT2GROUPDESC', 'Markera de kategorier som respektive grupp har tillg√•ng till');
 define('_AM_MB_SUCCESSUPDATETABLE','Uppdatering av tabell(er) lyckades');
 define('_AM_MB_FAILUPDATETABLE','Uppdatering av tabell(er) misslyckades');
-define('_AM_NOTICE_NOERRORS','Det finns inga fel pÂ tabeller eller records.');
+    define('_AM_NOTICE_NOERRORS', 'Det finns inga fel p√• tabeller eller records.');
 define('_AM_ALRT_CATTABLENOTEXIST','Kategori tabellen finns inte.<br />
 Vill Ni skapa tabellen?');
-define('_AM_ALRT_OLDTABLE','Tabellstrukturen ‰r gammal.<br />
+    define('_AM_ALRT_OLDTABLE', 'Tabellstrukturen √§r gammal.<br />
 Vill Ni uppgradera tabellerna?');
-define('_AM_ALRT_TOOOLDTABLE','Det upptr‰dde ett tabell fel.<br />
-Ni kanske anv‰nde APCal 0.3x eller tidigare.<br />
-Uppgradera fˆrst till 0.4x eller 0.5x.');
-define('_AM_FMT_WRONGSTZ','Det finns %s h‰ndelse(r) som har fel tidszon registrerad.<br />Vill Ni reparera dem?');
+    define('_AM_ALRT_TOOOLDTABLE', 'Det upptr√§dde ett tabell fel.<br />
+Ni kanske anv√§nde piCal 0.3x eller tidigare.<br />
+Uppgradera f√∂rst till 0.4x eller 0.5x.');
+    define('_AM_FMT_WRONGSTZ', 'Det finns %s h√§ndelse(r) som har fel tidszon registrerad.<br />Vill Ni reparera dem?');
 define('_AM_CAT_TH_TITLE','Titel');
 define('_AM_CAT_TH_DESC','Beskrivning');
 define('_AM_CAT_TH_PARENT','Huvud Kategori');
 define('_AM_CAT_TH_OPTIONS','Optioner');
-define('_AM_CAT_TH_LASTMODIFY','Senast ‰ndrad');
+    define('_AM_CAT_TH_LASTMODIFY', 'Senast √§ndrad');
 define('_AM_CAT_TH_OPERATION','Aktivitet');
 define('_AM_CAT_TH_ENABLED','Aktiv');
 define('_AM_CAT_TH_WEIGHT','Vikt');
@@ -147,7 +145,7 @@ define('_AM_BTN_UPDATE','Uppdatera');
 define('_AM_MENU_CAT_EDIT','Editera en Kategori');
 define('_AM_MENU_CAT_NEW','Skapa en ny Kategori');
 define('_AM_MB_MAKESUBCAT','UnderKategori');
-define('_AM_MB_MAKETOPCAT','Skapa en kategori i ˆversta nivÂn');
+    define('_AM_MB_MAKETOPCAT', 'Skapa en kategori i √∂versta niv√•n');
 define('_AM_MB_CAT_INSERTED','Ny kategori skapad');
 define('_AM_MB_CAT_UPDATED','Kategori uppdaterad');
 define('_AM_FMT_CAT_DELETED','%s Kategorier raderade');
@@ -156,4 +154,4 @@ define('_AM_FMT_CATDELCONFIRM','Vill Ni radera kategori %s ?');
 
 }
 
-?>
+

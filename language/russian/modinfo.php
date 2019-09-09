@@ -11,124 +11,124 @@ define( 'APCAL_MI_LOADED' , 1 ) ;
 // Module Info
 
 // The name of this module
-define("_MI_APCAL_NAME","APCal");
+define('_MI_APCAL_NAME', 'APCal');
 
 // A brief description of this module
-define("_MI_APCAL_DESC","Ìîäóëü Êàëåíäàðÿ");
+define('_MI_APCAL_DESC', 'ÐœÐ¾Ð´ÑƒÐ»ÑŒ ÐšÐ°Ð»ÐµÐ½Ð´Ð°Ñ€Ñ');
 
 // Default Locale
-define("_MI_APCAL_DEFAULTLOCALE","russia");
+define('_MI_APCAL_DEFAULTLOCALE', 'russia');
 
 // Names of blocks for this module (Not all module has blocks)
-define("_MI_APCAL_BNAME_MINICAL","ÌèíèÊàëåíäàðü");
-define("_MI_APCAL_BNAME_MINICAL_DESC","Ïîêàçûâàåò áëîê ÌèíèÊàëåíäàðü");
-define("_MI_APCAL_BNAME_MINICALEX","ÌèíèÊàëåíäàðü");
-define("_MI_APCAL_BNAME_MINICALEX_DESC","Áëîê ÌèíèÊàëåíäàðü ñ ñèñòåìîé ïëàãèíîâ");
-define("_MI_APCAL_BNAME_MONTHCAL","Êàëåíäàðü");
-define("_MI_APCAL_BNAME_MONTHCAL_DESC","Ïîêàçûâàåò ïîëíîðàçìåðíûé ìåñÿ÷íûé êàëåíäàðü");
-define("_MI_APCAL_BNAME_TODAYS","Ñåãîäíÿøíèå ñîáûòèÿ");
-define("_MI_APCAL_BNAME_TODAYS_DESC","Ïîêàçûâàåò ñåãîäíÿøíèå ñîáûòèÿ");
-define("_MI_APCAL_BNAME_THEDAYS","Ñîáûòèÿ íà %s");
-define("_MI_APCAL_BNAME_THEDAYS_DESC","Ïîêàçûâàåò ñîáûòèÿ óêàçàííîãî äíÿ");
-define("_MI_APCAL_BNAME_COMING","Áëèæàéøèå ñîáûòèÿ");
-define("_MI_APCAL_BNAME_COMING_DESC","Ïîêàçûâàåò íàñòóïàþùèå ñîáûòèÿ");
-define("_MI_APCAL_BNAME_AFTER","Ñîáûòèÿ ïîñëå %s");
-define("_MI_APCAL_BNAME_AFTER_DESC","Ïîêàçûâàåò ñîáûòèÿ ïîñëå óêàçàííîãî äíÿ");
-define("_MI_APCAL_BNAME_NEW","Íîâûå ñîáûòèÿ");
-define("_MI_APCAL_BNAME_NEW_DESC","Ïîêàçûâàåò ñîáûòèÿ â ïîðÿäêå ñîçäàíèÿ (íîâûå ðàíüøå)");
+define('_MI_APCAL_BNAME_MINICAL', 'ÐœÐ¸Ð½Ð¸ÐšÐ°Ð»ÐµÐ½Ð´Ð°Ñ€ÑŒ');
+define('_MI_APCAL_BNAME_MINICAL_DESC', 'ÐŸÐ¾ÐºÐ°Ð·Ñ‹Ð²Ð°ÐµÑ‚ Ð±Ð»Ð¾Ðº ÐœÐ¸Ð½Ð¸ÐšÐ°Ð»ÐµÐ½Ð´Ð°Ñ€ÑŒ');
+define('_MI_APCAL_BNAME_MINICALEX', 'ÐœÐ¸Ð½Ð¸ÐšÐ°Ð»ÐµÐ½Ð´Ð°Ñ€ÑŒ');
+define('_MI_APCAL_BNAME_MINICALEX_DESC', 'Ð‘Ð»Ð¾Ðº ÐœÐ¸Ð½Ð¸ÐšÐ°Ð»ÐµÐ½Ð´Ð°Ñ€ÑŒ Ñ ÑÐ¸ÑÑ‚ÐµÐ¼Ð¾Ð¹ Ð¿Ð»Ð°Ð³Ð¸Ð½Ð¾Ð²');
+define('_MI_APCAL_BNAME_MONTHCAL', 'ÐšÐ°Ð»ÐµÐ½Ð´Ð°Ñ€ÑŒ');
+define('_MI_APCAL_BNAME_MONTHCAL_DESC', 'ÐŸÐ¾ÐºÐ°Ð·Ñ‹Ð²Ð°ÐµÑ‚ Ð¿Ð¾Ð»Ð½Ð¾Ñ€Ð°Ð·Ð¼ÐµÑ€Ð½Ñ‹Ð¹ Ð¼ÐµÑÑÑ‡Ð½Ñ‹Ð¹ ÐºÐ°Ð»ÐµÐ½Ð´Ð°Ñ€ÑŒ');
+define('_MI_APCAL_BNAME_TODAYS', 'Ð¡ÐµÐ³Ð¾Ð´Ð½ÑÑˆÐ½Ð¸Ðµ ÑÐ¾Ð±Ñ‹Ñ‚Ð¸Ñ');
+define('_MI_APCAL_BNAME_TODAYS_DESC', 'ÐŸÐ¾ÐºÐ°Ð·Ñ‹Ð²Ð°ÐµÑ‚ ÑÐµÐ³Ð¾Ð´Ð½ÑÑˆÐ½Ð¸Ðµ ÑÐ¾Ð±Ñ‹Ñ‚Ð¸Ñ');
+define('_MI_APCAL_BNAME_THEDAYS', 'Ð¡Ð¾Ð±Ñ‹Ñ‚Ð¸Ñ Ð½Ð° %s');
+define('_MI_APCAL_BNAME_THEDAYS_DESC', 'ÐŸÐ¾ÐºÐ°Ð·Ñ‹Ð²Ð°ÐµÑ‚ ÑÐ¾Ð±Ñ‹Ñ‚Ð¸Ñ ÑƒÐºÐ°Ð·Ð°Ð½Ð½Ð¾Ð³Ð¾ Ð´Ð½Ñ');
+define('_MI_APCAL_BNAME_COMING', 'Ð‘Ð»Ð¸Ð¶Ð°Ð¹ÑˆÐ¸Ðµ ÑÐ¾Ð±Ñ‹Ñ‚Ð¸Ñ');
+define('_MI_APCAL_BNAME_COMING_DESC', 'ÐŸÐ¾ÐºÐ°Ð·Ñ‹Ð²Ð°ÐµÑ‚ Ð½Ð°ÑÑ‚ÑƒÐ¿Ð°ÑŽÑ‰Ð¸Ðµ ÑÐ¾Ð±Ñ‹Ñ‚Ð¸Ñ');
+define('_MI_APCAL_BNAME_AFTER', 'Ð¡Ð¾Ð±Ñ‹Ñ‚Ð¸Ñ Ð¿Ð¾ÑÐ»Ðµ %s');
+define('_MI_APCAL_BNAME_AFTER_DESC', 'ÐŸÐ¾ÐºÐ°Ð·Ñ‹Ð²Ð°ÐµÑ‚ ÑÐ¾Ð±Ñ‹Ñ‚Ð¸Ñ Ð¿Ð¾ÑÐ»Ðµ ÑƒÐºÐ°Ð·Ð°Ð½Ð½Ð¾Ð³Ð¾ Ð´Ð½Ñ');
+define('_MI_APCAL_BNAME_NEW', 'ÐÐ¾Ð²Ñ‹Ðµ ÑÐ¾Ð±Ñ‹Ñ‚Ð¸Ñ');
+define('_MI_APCAL_BNAME_NEW_DESC', 'ÐŸÐ¾ÐºÐ°Ð·Ñ‹Ð²Ð°ÐµÑ‚ ÑÐ¾Ð±Ñ‹Ñ‚Ð¸Ñ Ð² Ð¿Ð¾Ñ€ÑÐ´ÐºÐµ ÑÐ¾Ð·Ð´Ð°Ð½Ð¸Ñ (Ð½Ð¾Ð²Ñ‹Ðµ Ñ€Ð°Ð½ÑŒÑˆÐµ)');
 
 // Names of submenu
-define("_MI_APCAL_SM_SUBMIT","Äîáàâèòü");
+    define('_MI_APCAL_SM_SUBMIT', 'Ð”Ð¾Ð±Ð°Ð²Ð¸Ñ‚ÑŒ');
 
 //define("_MI_APCAL_ADMENU1","");
 
 // Title of config items
-define("_MI_USERS_AUTHORITY", "Ïðàâà ïîëüçîâàòåëÿ");
-define("_MI_GUESTS_AUTHORITY", "Ïðàâà ãîñòÿ");
-define("_MI_DEFAULT_VIEW", "Âèä ïî óìîë÷àíèþ â öåíòðå");
-define("_MI_MINICAL_TARGET", "Âèä ïî óìîë÷àíèþ ïî ññûëêå èç ÌèíèÊàëåíäàðÿ");
-define("_MI_COMING_NUMROWS", "Êîëè÷åñòâî ñîáûòèé â áëîêå áëèæàéøèõ ñîáûòèé");
-define("_MI_SKINFOLDER", "Ñêèí (èìÿ äèðåêòîðèè â images)");
-define("_MI_APCAL_LOCALE", "Ëîêàëü (ïðîâåðüòå ôàéëû â locales/*.php)");
-define("_MI_SUNDAYCOLOR", "Öâåò âîñêðåñåíüÿ");
-define("_MI_WEEKDAYCOLOR", "Öâåò äíÿ íåäåëè");
-define("_MI_SATURDAYCOLOR", "Öâåò ñóááîòû");
-define("_MI_HOLIDAYCOLOR", "Öâåò ïðàçäíèêà");
-define("_MI_TARGETDAYCOLOR", "Öâåò âûáðàííîãî äíÿ");
-define("_MI_SUNDAYBGCOLOR", "Ôîí âîñêðåñåíüÿ");
-define("_MI_WEEKDAYBGCOLOR", "Ôîí äíÿ íåäåëè");
-define("_MI_SATURDAYBGCOLOR", "Ôîí ñóááîòû");
-define("_MI_HOLIDAYBGCOLOR", "Ôîí ïðàçäíèêà");
-define("_MI_TARGETDAYBGCOLOR", "Ôîí âûáðàííîãî äíÿ");
-define("_MI_CALHEADCOLOR", "Öâåò çàãîëîâêà êàëåíäàðÿ");
-define("_MI_CALHEADBGCOLOR", "Ôîí çàãîëîâêà êàëåíäàðÿ");
-define("_MI_CALFRAMECSS", "Ñòèëü ðàìêè êàëåíäàðÿ");
-define("_MI_CANOUTPUTICS", "Ýêñïîðò â ics-ôàéëû");
-define("_MI_MAXRRULEEXTRACT", "Ìàêñèìàëüíîå êîë-âî ñîáûòèé, ñîçäàâàåìûõ ïî ïðàâèëó ïîâòîðà");
-define("_MI_WEEKSTARTFROM", "Äåíü íà÷àëà íåäåëè");
-define("_MI_WEEKNUMBERING", "Ïðàâèëî íóìåðàöèè íåäåëü");
-define("_MI_DAYSTARTFROM", "Ãðàíèöà äëÿ ðàçäåëåíèÿ äíåé");
-define("_MI_TIMEZONE_USING", "×àñîâîé ïîÿñ ñåðâåðà");
-define("_MI_USE24HOUR", "24 ÷àñîâàÿ ñèñòåìà (Íåò - 12 ÷àñîâàÿ ñèñòåìà)");
-define("_MI_NAMEORUNAME" , "Îòîáðàæàòü èìÿ" ) ;
-define("_MI_DESCNAMEORUNAME" , "Âûáåðèòå, êàêîå èìÿ îòîáðàæàòü" ) ;
+define('_MI_USERS_AUTHORITY', 'ÐŸÑ€Ð°Ð²Ð° Ð¿Ð¾Ð»ÑŒÐ·Ð¾Ð²Ð°Ñ‚ÐµÐ»Ñ');
+define('_MI_GUESTS_AUTHORITY', 'ÐŸÑ€Ð°Ð²Ð° Ð³Ð¾ÑÑ‚Ñ');
+define('_MI_DEFAULT_VIEW', 'Ð’Ð¸Ð´ Ð¿Ð¾ ÑƒÐ¼Ð¾Ð»Ñ‡Ð°Ð½Ð¸ÑŽ Ð² Ñ†ÐµÐ½Ñ‚Ñ€Ðµ');
+define('_MI_MINICAL_TARGET', 'Ð’Ð¸Ð´ Ð¿Ð¾ ÑƒÐ¼Ð¾Ð»Ñ‡Ð°Ð½Ð¸ÑŽ Ð¿Ð¾ ÑÑÑ‹Ð»ÐºÐµ Ð¸Ð· ÐœÐ¸Ð½Ð¸ÐšÐ°Ð»ÐµÐ½Ð´Ð°Ñ€Ñ');
+define('_MI_COMING_NUMROWS', 'ÐšÐ¾Ð»Ð¸Ñ‡ÐµÑÑ‚Ð²Ð¾ ÑÐ¾Ð±Ñ‹Ñ‚Ð¸Ð¹ Ð² Ð±Ð»Ð¾ÐºÐµ Ð±Ð»Ð¸Ð¶Ð°Ð¹ÑˆÐ¸Ñ… ÑÐ¾Ð±Ñ‹Ñ‚Ð¸Ð¹');
+define('_MI_SKINFOLDER', 'Ð¡ÐºÐ¸Ð½ (Ð¸Ð¼Ñ Ð´Ð¸Ñ€ÐµÐºÑ‚Ð¾Ñ€Ð¸Ð¸ Ð² images)');
+define('_MI_APCAL_LOCALE', 'Ð›Ð¾ÐºÐ°Ð»ÑŒ (Ð¿Ñ€Ð¾Ð²ÐµÑ€ÑŒÑ‚Ðµ Ñ„Ð°Ð¹Ð»Ñ‹ Ð² locales/*.php)');
+define('_MI_SUNDAYCOLOR', 'Ð¦Ð²ÐµÑ‚ Ð²Ð¾ÑÐºÑ€ÐµÑÐµÐ½ÑŒÑ');
+define('_MI_WEEKDAYCOLOR', 'Ð¦Ð²ÐµÑ‚ Ð´Ð½Ñ Ð½ÐµÐ´ÐµÐ»Ð¸');
+define('_MI_SATURDAYCOLOR', 'Ð¦Ð²ÐµÑ‚ ÑÑƒÐ±Ð±Ð¾Ñ‚Ñ‹');
+define('_MI_HOLIDAYCOLOR', 'Ð¦Ð²ÐµÑ‚ Ð¿Ñ€Ð°Ð·Ð´Ð½Ð¸ÐºÐ°');
+define('_MI_TARGETDAYCOLOR', 'Ð¦Ð²ÐµÑ‚ Ð²Ñ‹Ð±Ñ€Ð°Ð½Ð½Ð¾Ð³Ð¾ Ð´Ð½Ñ');
+define('_MI_SUNDAYBGCOLOR', 'Ð¤Ð¾Ð½ Ð²Ð¾ÑÐºÑ€ÐµÑÐµÐ½ÑŒÑ');
+define('_MI_WEEKDAYBGCOLOR', 'Ð¤Ð¾Ð½ Ð´Ð½Ñ Ð½ÐµÐ´ÐµÐ»Ð¸');
+define('_MI_SATURDAYBGCOLOR', 'Ð¤Ð¾Ð½ ÑÑƒÐ±Ð±Ð¾Ñ‚Ñ‹');
+define('_MI_HOLIDAYBGCOLOR', 'Ð¤Ð¾Ð½ Ð¿Ñ€Ð°Ð·Ð´Ð½Ð¸ÐºÐ°');
+define('_MI_TARGETDAYBGCOLOR', 'Ð¤Ð¾Ð½ Ð²Ñ‹Ð±Ñ€Ð°Ð½Ð½Ð¾Ð³Ð¾ Ð´Ð½Ñ');
+define('_MI_CALHEADCOLOR', 'Ð¦Ð²ÐµÑ‚ Ð·Ð°Ð³Ð¾Ð»Ð¾Ð²ÐºÐ° ÐºÐ°Ð»ÐµÐ½Ð´Ð°Ñ€Ñ');
+define('_MI_CALHEADBGCOLOR', 'Ð¤Ð¾Ð½ Ð·Ð°Ð³Ð¾Ð»Ð¾Ð²ÐºÐ° ÐºÐ°Ð»ÐµÐ½Ð´Ð°Ñ€Ñ');
+define('_MI_CALFRAMECSS', 'Ð¡Ñ‚Ð¸Ð»ÑŒ Ñ€Ð°Ð¼ÐºÐ¸ ÐºÐ°Ð»ÐµÐ½Ð´Ð°Ñ€Ñ');
+define('_MI_CANOUTPUTICS', 'Ð­ÐºÑÐ¿Ð¾Ñ€Ñ‚ Ð² ics-Ñ„Ð°Ð¹Ð»Ñ‹');
+define('_MI_MAXRRULEEXTRACT', 'ÐœÐ°ÐºÑÐ¸Ð¼Ð°Ð»ÑŒÐ½Ð¾Ðµ ÐºÐ¾Ð»-Ð²Ð¾ ÑÐ¾Ð±Ñ‹Ñ‚Ð¸Ð¹, ÑÐ¾Ð·Ð´Ð°Ð²Ð°ÐµÐ¼Ñ‹Ñ… Ð¿Ð¾ Ð¿Ñ€Ð°Ð²Ð¸Ð»Ñƒ Ð¿Ð¾Ð²Ñ‚Ð¾Ñ€Ð°');
+define('_MI_WEEKSTARTFROM', 'Ð”ÐµÐ½ÑŒ Ð½Ð°Ñ‡Ð°Ð»Ð° Ð½ÐµÐ´ÐµÐ»Ð¸');
+define('_MI_WEEKNUMBERING', 'ÐŸÑ€Ð°Ð²Ð¸Ð»Ð¾ Ð½ÑƒÐ¼ÐµÑ€Ð°Ñ†Ð¸Ð¸ Ð½ÐµÐ´ÐµÐ»ÑŒ');
+define('_MI_DAYSTARTFROM', 'Ð“Ñ€Ð°Ð½Ð¸Ñ†Ð° Ð´Ð»Ñ Ñ€Ð°Ð·Ð´ÐµÐ»ÐµÐ½Ð¸Ñ Ð´Ð½ÐµÐ¹');
+define('_MI_TIMEZONE_USING', 'Ð§Ð°ÑÐ¾Ð²Ð¾Ð¹ Ð¿Ð¾ÑÑ ÑÐµÑ€Ð²ÐµÑ€Ð°');
+define('_MI_USE24HOUR', '24 Ñ‡Ð°ÑÐ¾Ð²Ð°Ñ ÑÐ¸ÑÑ‚ÐµÐ¼Ð° (ÐÐµÑ‚ - 12 Ñ‡Ð°ÑÐ¾Ð²Ð°Ñ ÑÐ¸ÑÑ‚ÐµÐ¼Ð°)');
+define('_MI_NAMEORUNAME', 'ÐžÑ‚Ð¾Ð±Ñ€Ð°Ð¶Ð°Ñ‚ÑŒ Ð¸Ð¼Ñ') ;
+define('_MI_DESCNAMEORUNAME', 'Ð’Ñ‹Ð±ÐµÑ€Ð¸Ñ‚Ðµ, ÐºÐ°ÐºÐ¾Ðµ Ð¸Ð¼Ñ Ð¾Ñ‚Ð¾Ð±Ñ€Ð°Ð¶Ð°Ñ‚ÑŒ') ;
 
 // Description of each config items
-define("_MI_EDITBYGUESTDSC", "Ðàçðåøèòü ñîçäàâàòü ñîáûòèÿ ãîñòÿì");
+define('_MI_EDITBYGUESTDSC', 'Ð Ð°Ð·Ñ€ÐµÑˆÐ¸Ñ‚ÑŒ ÑÐ¾Ð·Ð´Ð°Ð²Ð°Ñ‚ÑŒ ÑÐ¾Ð±Ñ‹Ñ‚Ð¸Ñ Ð³Ð¾ÑÑ‚ÑÐ¼');
 
 // Options of each config items
-define("_MI_OPT_AUTH_NONE", "Íå ìîæåò ñîçäàâàòü ñîáûòèÿ");
-define("_MI_OPT_AUTH_WAIT", "Ìîæåò ñîçäàâàòü ñîáûòèÿ, òðåáóåòñÿ ïîäòâåðæäåíèå");
-define("_MI_OPT_AUTH_POST", "Ìîæåò ñîçäàâàòü ñîáûòèÿ, ïîäòâåðæäàåòñÿ àâòîìàòè÷åñêè");
-define("_MI_OPT_AUTH_BYGROUP", "Ðàñïèñàíî â ïðàâàõ äëÿ ãðóïï");
-define("_MI_OPT_MINI_PHPSELF", "Òåêóùàÿ ñòðàíèöà");
-define("_MI_OPT_MINI_MONTHLY", "Êàëåíäàðü ïî ìåñÿöàì");
-define("_MI_OPT_MINI_WEEKLY", "Êàëåíäàðü ïî íåäåëÿì");
-define("_MI_OPT_MINI_DAILY", "Êàëåíäàðü ïî äíÿì");
-define("_MI_OPT_MINI_LIST", "Ñïèñîê ñîáûòèé");
-define("_MI_OPT_CANOUTPUTICS", "Äà (ìîæíî ýêñïîðòèðîâàòü)");
-define("_MI_OPT_CANNOTOUTPUTICS", "Íåò (íåëüçÿ ýêñïîðòèðîâàòü)");
-define("_MI_OPT_STARTFROMSUN", "Âîñêðåñåíüå");
-define("_MI_OPT_STARTFROMMON", "Ïîíåäåëüíèê");
-define("_MI_OPT_WEEKNOEACHMONTH", "Íåäåëè ìåñÿöà");
-define("_MI_OPT_WEEKNOWHOLEYEAR", "Íåäåëè ãîäà");
-define("_MI_OPT_USENAME" , "Íàñòîÿùåå èìÿ" ) ;
-define("_MI_OPT_USEUNAME" , "Èìÿ ïîëüçîâàòåëÿ" ) ;
-define("_MI_OPT_TZ_USEXOOPS" , "Èç êîíôèãóðàöèè XOOPS" ) ;
-define("_MI_OPT_TZ_USEWINTER" , "Çèìíåå âðåìÿ, ñîîáù¸ííîå ñåðâåðîì (ðåêîìåíäóåòñÿ)" ) ;
-define("_MI_OPT_TZ_USESUMMER" , "Ëåòíåå âðåìÿ, ñîîáù¸ííîå ñåðâåðîì" ) ;
+define('_MI_OPT_AUTH_NONE', 'ÐÐµ Ð¼Ð¾Ð¶ÐµÑ‚ ÑÐ¾Ð·Ð´Ð°Ð²Ð°Ñ‚ÑŒ ÑÐ¾Ð±Ñ‹Ñ‚Ð¸Ñ');
+define('_MI_OPT_AUTH_WAIT', 'ÐœÐ¾Ð¶ÐµÑ‚ ÑÐ¾Ð·Ð´Ð°Ð²Ð°Ñ‚ÑŒ ÑÐ¾Ð±Ñ‹Ñ‚Ð¸Ñ, Ñ‚Ñ€ÐµÐ±ÑƒÐµÑ‚ÑÑ Ð¿Ð¾Ð´Ñ‚Ð²ÐµÑ€Ð¶Ð´ÐµÐ½Ð¸Ðµ');
+define('_MI_OPT_AUTH_POST', 'ÐœÐ¾Ð¶ÐµÑ‚ ÑÐ¾Ð·Ð´Ð°Ð²Ð°Ñ‚ÑŒ ÑÐ¾Ð±Ñ‹Ñ‚Ð¸Ñ, Ð¿Ð¾Ð´Ñ‚Ð²ÐµÑ€Ð¶Ð´Ð°ÐµÑ‚ÑÑ Ð°Ð²Ñ‚Ð¾Ð¼Ð°Ñ‚Ð¸Ñ‡ÐµÑÐºÐ¸');
+define('_MI_OPT_AUTH_BYGROUP', 'Ð Ð°ÑÐ¿Ð¸ÑÐ°Ð½Ð¾ Ð² Ð¿Ñ€Ð°Ð²Ð°Ñ… Ð´Ð»Ñ Ð³Ñ€ÑƒÐ¿Ð¿');
+define('_MI_OPT_MINI_PHPSELF', 'Ð¢ÐµÐºÑƒÑ‰Ð°Ñ ÑÑ‚Ñ€Ð°Ð½Ð¸Ñ†Ð°');
+define('_MI_OPT_MINI_MONTHLY', 'ÐšÐ°Ð»ÐµÐ½Ð´Ð°Ñ€ÑŒ Ð¿Ð¾ Ð¼ÐµÑÑÑ†Ð°Ð¼');
+define('_MI_OPT_MINI_WEEKLY', 'ÐšÐ°Ð»ÐµÐ½Ð´Ð°Ñ€ÑŒ Ð¿Ð¾ Ð½ÐµÐ´ÐµÐ»ÑÐ¼');
+define('_MI_OPT_MINI_DAILY', 'ÐšÐ°Ð»ÐµÐ½Ð´Ð°Ñ€ÑŒ Ð¿Ð¾ Ð´Ð½ÑÐ¼');
+define('_MI_OPT_MINI_LIST', 'Ð¡Ð¿Ð¸ÑÐ¾Ðº ÑÐ¾Ð±Ñ‹Ñ‚Ð¸Ð¹');
+define('_MI_OPT_CANOUTPUTICS', 'Ð”Ð° (Ð¼Ð¾Ð¶Ð½Ð¾ ÑÐºÑÐ¿Ð¾Ñ€Ñ‚Ð¸Ñ€Ð¾Ð²Ð°Ñ‚ÑŒ)');
+define('_MI_OPT_CANNOTOUTPUTICS', 'ÐÐµÑ‚ (Ð½ÐµÐ»ÑŒÐ·Ñ ÑÐºÑÐ¿Ð¾Ñ€Ñ‚Ð¸Ñ€Ð¾Ð²Ð°Ñ‚ÑŒ)');
+define('_MI_OPT_STARTFROMSUN', 'Ð’Ð¾ÑÐºÑ€ÐµÑÐµÐ½ÑŒÐµ');
+define('_MI_OPT_STARTFROMMON', 'ÐŸÐ¾Ð½ÐµÐ´ÐµÐ»ÑŒÐ½Ð¸Ðº');
+define('_MI_OPT_WEEKNOEACHMONTH', 'ÐÐµÐ´ÐµÐ»Ð¸ Ð¼ÐµÑÑÑ†Ð°');
+define('_MI_OPT_WEEKNOWHOLEYEAR', 'ÐÐµÐ´ÐµÐ»Ð¸ Ð³Ð¾Ð´Ð°');
+define('_MI_OPT_USENAME', 'ÐÐ°ÑÑ‚Ð¾ÑÑ‰ÐµÐµ Ð¸Ð¼Ñ') ;
+define('_MI_OPT_USEUNAME', 'Ð˜Ð¼Ñ Ð¿Ð¾Ð»ÑŒÐ·Ð¾Ð²Ð°Ñ‚ÐµÐ»Ñ') ;
+define('_MI_OPT_TZ_USEXOOPS', 'Ð˜Ð· ÐºÐ¾Ð½Ñ„Ð¸Ð³ÑƒÑ€Ð°Ñ†Ð¸Ð¸ XOOPS') ;
+define('_MI_OPT_TZ_USEWINTER', 'Ð—Ð¸Ð¼Ð½ÐµÐµ Ð²Ñ€ÐµÐ¼Ñ, ÑÐ¾Ð¾Ð±Ñ‰Ñ‘Ð½Ð½Ð¾Ðµ ÑÐµÑ€Ð²ÐµÑ€Ð¾Ð¼ (Ñ€ÐµÐºÐ¾Ð¼ÐµÐ½Ð´ÑƒÐµÑ‚ÑÑ)') ;
+define('_MI_OPT_TZ_USESUMMER', 'Ð›ÐµÑ‚Ð½ÐµÐµ Ð²Ñ€ÐµÐ¼Ñ, ÑÐ¾Ð¾Ð±Ñ‰Ñ‘Ð½Ð½Ð¾Ðµ ÑÐµÑ€Ð²ÐµÑ€Ð¾Ð¼') ;
 
 // Admin Menus
-define("_MI_APCAL_ADMENU0","Ïîäòâåðæäåíèå ñîáûòèé");
-define("_MI_APCAL_ADMENU1","Ìåíåäæåð ñîáûòèé");
-define("_MI_APCAL_ADMENU_CAT","Êàòåãîðèè");
-define("_MI_APCAL_ADMENU_CAT2GROUP","Ïðàâà êàòåãîðèé");
-define("_MI_APCAL_ADMENU2","Ïðàâà ãðóïï");
-define("_MI_APCAL_ADMENU_TM","Ïîääåðæêà òàáëèö");
-define("_MI_APCAL_ADMENU_PLUGINS","Ïëàãèíû");
-define("_MI_APCAL_ADMENU_ICAL","Èìïîðò");
-define("_MI_APCAL_ADMENU_MYBLOCKSADMIN","Áëîêè");
+define('_MI_APCAL_ADMENU0', 'ÐŸÐ¾Ð´Ñ‚Ð²ÐµÑ€Ð¶Ð´ÐµÐ½Ð¸Ðµ ÑÐ¾Ð±Ñ‹Ñ‚Ð¸Ð¹');
+define('_MI_APCAL_ADMENU1', 'ÐœÐµÐ½ÐµÐ´Ð¶ÐµÑ€ ÑÐ¾Ð±Ñ‹Ñ‚Ð¸Ð¹');
+define('_MI_APCAL_ADMENU_CAT', 'ÐšÐ°Ñ‚ÐµÐ³Ð¾Ñ€Ð¸Ð¸');
+define('_MI_APCAL_ADMENU_CAT2GROUP', 'ÐŸÑ€Ð°Ð²Ð° ÐºÐ°Ñ‚ÐµÐ³Ð¾Ñ€Ð¸Ð¹');
+define('_MI_APCAL_ADMENU2', 'ÐŸÑ€Ð°Ð²Ð° Ð³Ñ€ÑƒÐ¿Ð¿');
+define('_MI_APCAL_ADMENU_TM', 'ÐŸÐ¾Ð´Ð´ÐµÑ€Ð¶ÐºÐ° Ñ‚Ð°Ð±Ð»Ð¸Ñ†');
+define('_MI_APCAL_ADMENU_PLUGINS', 'ÐŸÐ»Ð°Ð³Ð¸Ð½Ñ‹');
+define('_MI_APCAL_ADMENU_ICAL', 'Ð˜Ð¼Ð¿Ð¾Ñ€Ñ‚');
+define('_MI_APCAL_ADMENU_MYBLOCKSADMIN', 'Ð‘Ð»Ð¾ÐºÐ¸');
 
 // Text for notifications
-define('_MI_APCAL_GLOBAL_NOTIFY', 'Ãëîáàëüíûå');
-define('_MI_APCAL_GLOBAL_NOTIFYDSC', 'Ãëîáàëüíûå íàñòðîéêè îïîâåùåíèé APCal.');
-define('_MI_APCAL_CATEGORY_NOTIFY', 'Êàòåãîðèÿ');
-define('_MI_APCAL_CATEGORY_NOTIFYDSC', 'Íàñòðîéêè îïîâåùåíèé äëÿ òåêóùåé êàòåãîðèè.');
-define('_MI_APCAL_EVENT_NOTIFY', 'Ñîáûòèå');
-define('_MI_APCAL_EVENT_NOTIFYDSC', 'Íàñòðîéêè îïîâåùåíèÿ äëÿ òåêóùåãî ñîáûòèÿ.');
+define('_MI_APCAL_GLOBAL_NOTIFY', 'Ð“Ð»Ð¾Ð±Ð°Ð»ÑŒÐ½Ñ‹Ðµ');
+define('_MI_APCAL_GLOBAL_NOTIFYDSC', 'Ð“Ð»Ð¾Ð±Ð°Ð»ÑŒÐ½Ñ‹Ðµ Ð½Ð°ÑÑ‚Ñ€Ð¾Ð¹ÐºÐ¸ Ð¾Ð¿Ð¾Ð²ÐµÑ‰ÐµÐ½Ð¸Ð¹ piCal.');
+define('_MI_APCAL_CATEGORY_NOTIFY', 'ÐšÐ°Ñ‚ÐµÐ³Ð¾Ñ€Ð¸Ñ');
+define('_MI_APCAL_CATEGORY_NOTIFYDSC', 'ÐÐ°ÑÑ‚Ñ€Ð¾Ð¹ÐºÐ¸ Ð¾Ð¿Ð¾Ð²ÐµÑ‰ÐµÐ½Ð¸Ð¹ Ð´Ð»Ñ Ñ‚ÐµÐºÑƒÑ‰ÐµÐ¹ ÐºÐ°Ñ‚ÐµÐ³Ð¾Ñ€Ð¸Ð¸.');
+define('_MI_APCAL_EVENT_NOTIFY', 'Ð¡Ð¾Ð±Ñ‹Ñ‚Ð¸Ðµ');
+define('_MI_APCAL_EVENT_NOTIFYDSC', 'ÐÐ°ÑÑ‚Ñ€Ð¾Ð¹ÐºÐ¸ Ð¾Ð¿Ð¾Ð²ÐµÑ‰ÐµÐ½Ð¸Ñ Ð´Ð»Ñ Ñ‚ÐµÐºÑƒÑ‰ÐµÐ³Ð¾ ÑÐ¾Ð±Ñ‹Ñ‚Ð¸Ñ.');
 
-define('_MI_APCAL_GLOBAL_NEWEVENT_NOTIFY', 'Íîâîå ñîáûòèå');
-define('_MI_APCAL_GLOBAL_NEWEVENT_NOTIFYCAP', 'Îïîâåñòèòü ìåíÿ ïðè ñîçäàíèè íîâîãî ñîáûòèÿ.');
-define('_MI_APCAL_GLOBAL_NEWEVENT_NOTIFYDSC', 'Îïîâåñòèòü ìåíÿ î ñîçäàíèè íîâîãî ñîáûòèÿ, âêëþ÷èâ îïèñàíèå ñîáûòèÿ.');
-define('_MI_APCAL_GLOBAL_NEWEVENT_NOTIFYSBJ', '[{X_SITENAME}] {X_MODULE} àâòî-îïîâåùåíèå : Íîâîå ñîáûòèå');
+define('_MI_APCAL_GLOBAL_NEWEVENT_NOTIFY', 'ÐÐ¾Ð²Ð¾Ðµ ÑÐ¾Ð±Ñ‹Ñ‚Ð¸Ðµ');
+define('_MI_APCAL_GLOBAL_NEWEVENT_NOTIFYCAP', 'ÐžÐ¿Ð¾Ð²ÐµÑÑ‚Ð¸Ñ‚ÑŒ Ð¼ÐµÐ½Ñ Ð¿Ñ€Ð¸ ÑÐ¾Ð·Ð´Ð°Ð½Ð¸Ð¸ Ð½Ð¾Ð²Ð¾Ð³Ð¾ ÑÐ¾Ð±Ñ‹Ñ‚Ð¸Ñ.');
+define('_MI_APCAL_GLOBAL_NEWEVENT_NOTIFYDSC', 'ÐžÐ¿Ð¾Ð²ÐµÑÑ‚Ð¸Ñ‚ÑŒ Ð¼ÐµÐ½Ñ Ð¾ ÑÐ¾Ð·Ð´Ð°Ð½Ð¸Ð¸ Ð½Ð¾Ð²Ð¾Ð³Ð¾ ÑÐ¾Ð±Ñ‹Ñ‚Ð¸Ñ, Ð²ÐºÐ»ÑŽÑ‡Ð¸Ð² Ð¾Ð¿Ð¸ÑÐ°Ð½Ð¸Ðµ ÑÐ¾Ð±Ñ‹Ñ‚Ð¸Ñ.');
+define('_MI_APCAL_GLOBAL_NEWEVENT_NOTIFYSBJ', '[{X_SITENAME}] {X_MODULE} Ð°Ð²Ñ‚Ð¾-Ð¾Ð¿Ð¾Ð²ÐµÑ‰ÐµÐ½Ð¸Ðµ : ÐÐ¾Ð²Ð¾Ðµ ÑÐ¾Ð±Ñ‹Ñ‚Ð¸Ðµ');
 
-define('_MI_APCAL_CATEGORY_NEWEVENT_NOTIFY', 'Íîâîå ñîáûòèå â êàòåãîðèè');
-define('_MI_APCAL_CATEGORY_NEWEVENT_NOTIFYCAP', 'Îïîâåñòèòü ìåíÿ î ñîçäàíèè íîâîãî ñîáûòèÿ â êàòåãîðèè.');
-define('_MI_APCAL_CATEGORY_NEWEVENT_NOTIFYDSC', 'Îïîâåñòèòü ìåíÿ î ñîçäàíèè íîâîãî ñîáûòèÿ â êàòåãîðèè, âêëþ÷èâ îïèñàíèå ñîáûòèÿ.');
-define('_MI_APCAL_CATEGORY_NEWEVENT_NOTIFYSBJ', '[{X_SITENAME}] {X_MODULE} àâòî-îïîâåùåíèå : Íîâîå ñîáûòèå â êàòåãîðèè {CATEGORY_TITLE}');
+define('_MI_APCAL_CATEGORY_NEWEVENT_NOTIFY', 'ÐÐ¾Ð²Ð¾Ðµ ÑÐ¾Ð±Ñ‹Ñ‚Ð¸Ðµ Ð² ÐºÐ°Ñ‚ÐµÐ³Ð¾Ñ€Ð¸Ð¸');
+define('_MI_APCAL_CATEGORY_NEWEVENT_NOTIFYCAP', 'ÐžÐ¿Ð¾Ð²ÐµÑÑ‚Ð¸Ñ‚ÑŒ Ð¼ÐµÐ½Ñ Ð¾ ÑÐ¾Ð·Ð´Ð°Ð½Ð¸Ð¸ Ð½Ð¾Ð²Ð¾Ð³Ð¾ ÑÐ¾Ð±Ñ‹Ñ‚Ð¸Ñ Ð² ÐºÐ°Ñ‚ÐµÐ³Ð¾Ñ€Ð¸Ð¸.');
+define('_MI_APCAL_CATEGORY_NEWEVENT_NOTIFYDSC', 'ÐžÐ¿Ð¾Ð²ÐµÑÑ‚Ð¸Ñ‚ÑŒ Ð¼ÐµÐ½Ñ Ð¾ ÑÐ¾Ð·Ð´Ð°Ð½Ð¸Ð¸ Ð½Ð¾Ð²Ð¾Ð³Ð¾ ÑÐ¾Ð±Ñ‹Ñ‚Ð¸Ñ Ð² ÐºÐ°Ñ‚ÐµÐ³Ð¾Ñ€Ð¸Ð¸, Ð²ÐºÐ»ÑŽÑ‡Ð¸Ð² Ð¾Ð¿Ð¸ÑÐ°Ð½Ð¸Ðµ ÑÐ¾Ð±Ñ‹Ñ‚Ð¸Ñ.');
+define('_MI_APCAL_CATEGORY_NEWEVENT_NOTIFYSBJ', '[{X_SITENAME}] {X_MODULE} Ð°Ð²Ñ‚Ð¾-Ð¾Ð¿Ð¾Ð²ÐµÑ‰ÐµÐ½Ð¸Ðµ : ÐÐ¾Ð²Ð¾Ðµ ÑÐ¾Ð±Ñ‹Ñ‚Ð¸Ðµ Ð² ÐºÐ°Ñ‚ÐµÐ³Ð¾Ñ€Ð¸Ð¸ {CATEGORY_TITLE}');
 
 
 
 }
 
-?>
+

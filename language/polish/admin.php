@@ -7,124 +7,124 @@ define('APCAL_COPYRIGHT' , '<a href="http://xoops.antiquespromotion.ca" title="C
 
 
 // titles
-define("_AM_ADMISSION"                       , "Akceptowanie wydarzeñ");
-define("_AM_MENU_EVENTS"                     , "Zarz±dzanie wydarzeniami");
-define("_AM_MENU_CATEGORIES"                 , "Zarz±dzanie kategoriami");
-define("_AM_MENU_CAT2GROUP"                  , "Dostêp do kategorii");
-define("_AM_ICALENDAR_IMPORT"                , "Import z iCalendar");
-define("_AM_GROUPPERM"                       , "Uprawnienia");
-define("_AM_TABLEMAINTAIN"                   , "Table Maintenance (Upgrade)");
-define("_AM_MYBLOCKSADMIN"                   , "Bloki i grupy");
+define('_AM_ADMISSION', 'Akceptowanie wydarzeï¿½');
+define('_AM_MENU_EVENTS', 'Zarzï¿½dzanie wydarzeniami');
+define('_AM_MENU_CATEGORIES', 'Zarzï¿½dzanie kategoriami');
+define('_AM_MENU_CAT2GROUP', 'Dostï¿½p do kategorii');
+define('_AM_ICALENDAR_IMPORT', 'Import z iCalendar');
+define('_AM_GROUPPERM', 'Uprawnienia');
+define('_AM_TABLEMAINTAIN', 'Table Maintenance (Upgrade)');
+define('_AM_MYBLOCKSADMIN', 'Bloki i grupy');
 
 // forms
-define("_AM_BUTTON_EXTRACT"                  , "Extract");
-define("_AM_BUTTON_ADMIT"                    , "Admit");
-define("_AM_BUTTON_MOVE"                     , "Przenie¶");
-define("_AM_BUTTON_COPY"                     , "Kopiuj");
-define("_AM_CONFIRM_DELETE"                  , "Usun±æ wiadomo¶æ(ci)?");
-define("_AM_CONFIRM_MOVE"                    , "Czy chcesz usun±æ link do starej kategorii i dodaæ link do wybranej kategorii?");
-define("_AM_CONFIRM_COPY"                    , "Dodaæ link do wybranej kategorii");
-define("_AM_OPT_PAST"                        , "Przesz³o¶æ");
-define("_AM_OPT_FUTURE"                      , "Przysz³o¶æ");
-define("_AM_OPT_PASTANDFUTURE"               , "Przesz³o¶æ i Przysz³o¶æ");
+define('_AM_BUTTON_EXTRACT', 'Extract');
+define('_AM_BUTTON_ADMIT', 'Admit');
+define('_AM_BUTTON_MOVE', 'Przenieï¿½');
+define('_AM_BUTTON_COPY', 'Kopiuj');
+define('_AM_CONFIRM_DELETE', 'Usunï¿½ï¿½ wiadomoï¿½ï¿½(ci)?');
+define('_AM_CONFIRM_MOVE', 'Czy chcesz usunï¿½ï¿½ link do starej kategorii i dodaï¿½ link do wybranej kategorii?');
+define('_AM_CONFIRM_COPY', 'Dodaï¿½ link do wybranej kategorii');
+define('_AM_OPT_PAST', 'Przeszï¿½oï¿½ï¿½');
+define('_AM_OPT_FUTURE', 'Przyszï¿½oï¿½ï¿½');
+define('_AM_OPT_PASTANDFUTURE', 'Przeszï¿½oï¿½ï¿½ i Przyszï¿½oï¿½ï¿½');
 
 // format
-define("_AM_DTFMT_LIST_ALLDAY"               , 'y-m-d');
-define("_AM_DTFMT_LIST_NORMAL"               , 'y-m-d<\b\r />H:i');
+define('_AM_DTFMT_LIST_ALLDAY', 'y-m-d');
+define('_AM_DTFMT_LIST_NORMAL', 'y-m-d<\b\r />H:i');
 
 // timezones
-define("_AM_TZOPT_SERVER"                    , "Tak jak na serwerze");
-define("_AM_TZOPT_GMT"                       , "Jak GMT");
-define("_AM_TZOPT_USER"                      , "Jak strefa u¿ytkownika:");
+define('_AM_TZOPT_SERVER', 'Tak jak na serwerze');
+define('_AM_TZOPT_GMT', 'Jak GMT');
+define('_AM_TZOPT_USER', 'Jak strefa uï¿½ytkownika:');
 
 // admission
-define("_AM_LABEL_ADMIT"                     , "Sprawdzone, dodaæ?");
-define("_AM_MES_ADMITTED"                    , "Dodano wydarzenie(a)");
-define("_AM_ADMIT_TH0"                       , "U¿ytkownik");
-define("_AM_ADMIT_TH1"                       , "Pocz±tek");
-define("_AM_ADMIT_TH2"                       , "Data wyga¶niêcia");
-define("_AM_ADMIT_TH3"                       , "Tytyu³");
-define("_AM_ADMIT_TH4"                       , "Regu³a");
+define('_AM_LABEL_ADMIT', 'Sprawdzone, dodaï¿½?');
+define('_AM_MES_ADMITTED', 'Dodano wydarzenie(a)');
+define('_AM_ADMIT_TH0', 'Uï¿½ytkownik');
+define('_AM_ADMIT_TH1', 'Poczï¿½tek');
+define('_AM_ADMIT_TH2', 'Data wygaï¿½niï¿½cia');
+define('_AM_ADMIT_TH3', 'Tytyuï¿½');
+define('_AM_ADMIT_TH4', 'Reguï¿½a');
 
 // events manager & importing iCalendar
 
-define("_AM_LABEL_IMPORTFROMWEB"             , "Importuj dane iCalendar z sieci (URL musi sie zaczynaæ od 'http://' lub 'webcal://')");
-define("_AM_LABEL_UPLOADFROMFILE"            , "Wgraj dane iCalendar (Wybierz plik ze swojego komputera)");
-define("_AM_LABEL_IO_CHECKEDITEMS"           , "Sprawdzone wydarzenia:");
-define("_AM_LABEL_IO_OUTPUT"                 , "eksportuj do iCalendar");
-define("_AM_LABEL_IO_DELETE"                 , "usuñ");
-define("_AM_MES_EVENTLINKTOCAT"              , "wydarzenie(a) zosta³o dodane");
-define("_AM_MES_EVENTUNLINKED"               , "wydarzenie(a) zosta³o przesuniête do starej kategorii");
-define("_AM_FMT_IMPORTED"                    , "wydarzenie(a) zosta³o zainportowane z'%s'");
-define("_AM_MES_DELETED"                     , "wydarzenie(a) has been deleted");
-define("_AM_IO_TH0"                          , "U¿ytkownik");
-define("_AM_IO_TH1"                          , "Pocz±tek");
-define("_AM_IO_TH2"                          , "Data wyga¶niêcia");
-define("_AM_IO_TH3"                          , "Tytu³");
-define("_AM_IO_TH4"                          , "Regu³a");
-define("_AM_IO_TH5"                          , "Dostêp");
+define('_AM_LABEL_IMPORTFROMWEB', "Importuj dane iCalendar z sieci (URL musi sie zaczynaï¿½ od 'http://' lub 'webcal://')");
+define('_AM_LABEL_UPLOADFROMFILE', 'Wgraj dane iCalendar (Wybierz plik ze swojego komputera)');
+define('_AM_LABEL_IO_CHECKEDITEMS', 'Sprawdzone wydarzenia:');
+define('_AM_LABEL_IO_OUTPUT', 'eksportuj do iCalendar');
+define('_AM_LABEL_IO_DELETE', 'usuï¿½');
+define('_AM_MES_EVENTLINKTOCAT', 'wydarzenie(a) zostaï¿½o dodane');
+define('_AM_MES_EVENTUNLINKED', 'wydarzenie(a) zostaï¿½o przesuniï¿½te do starej kategorii');
+define('_AM_FMT_IMPORTED', "wydarzenie(a) zostaï¿½o zainportowane z'%s'");
+define('_AM_MES_DELETED', 'wydarzenie(a) has been deleted');
+define('_AM_IO_TH0', 'Uï¿½ytkownik');
+define('_AM_IO_TH1', 'Poczï¿½tek');
+define('_AM_IO_TH2', 'Data wygaï¿½niï¿½cia');
+define('_AM_IO_TH3', 'Tytuï¿½');
+define('_AM_IO_TH4', 'Reguï¿½a');
+define('_AM_IO_TH5', 'Dostï¿½p');
 
 // Group's Permissions
-define( '_AM_GPERM_G_INSERTABLE'             , "Mo¿e dodawaæ" ) ;
-define( '_AM_GPERM_G_SUPERINSERT'            , "Super dodawanie" ) ;
-define( '_AM_GPERM_G_EDITABLE'               , "Mo¿e edytowaæ" ) ;
-define( '_AM_GPERM_G_SUPEREDIT'              , "Super edytowanie" ) ;
-define( '_AM_GPERM_G_DELETABLE'              , "Mo¿e usuwaæ" ) ;
-define( '_AM_GPERM_G_SUPERDELETE'            , "Super usuwanie" ) ;
-define( '_AM_GPERM_G_TOUCHOTHERS'            , "Mo¿e ruszaæ inne" ) ;
-define( '_AM_CAT2GROUPDESC'                  , "Wybierz uprawnienia dla ka¿dej grupy" ) ;
-define( '_AM_GROUPPERMDESC'                  , "Wybierz uprawnienia dla ka¿dej grupy<br />Je¿eli chcesz, ustaw z 'W³adze u¿ytkowników' na Sprecyzowane w Grupach.<br />Ustawienia grup : Administratora i Go¶cia bêd± zignorowane." ) ;
+define('_AM_GPERM_G_INSERTABLE'             , 'Moï¿½e dodawaï¿½') ;
+define('_AM_GPERM_G_SUPERINSERT'            , 'Super dodawanie') ;
+define('_AM_GPERM_G_EDITABLE'               , 'Moï¿½e edytowaï¿½') ;
+define('_AM_GPERM_G_SUPEREDIT'              , 'Super edytowanie') ;
+define('_AM_GPERM_G_DELETABLE'              , 'Moï¿½e usuwaï¿½') ;
+define('_AM_GPERM_G_SUPERDELETE'            , 'Super usuwanie') ;
+define('_AM_GPERM_G_TOUCHOTHERS'            , 'Moï¿½e ruszaï¿½ inne') ;
+define('_AM_CAT2GROUPDESC'                  , 'Wybierz uprawnienia dla kaï¿½dej grupy') ;
+define( '_AM_GROUPPERMDESC'                  , "Wybierz uprawnienia dla kaï¿½dej grupy<br />Jeï¿½eli chcesz, ustaw z 'Wï¿½adze uï¿½ytkownikï¿½w' na Sprecyzowane w Grupach.<br />Ustawienia grup : Administratora i Goï¿½cia bï¿½dï¿½ zignorowane." ) ;
 
 // Table Maintenance
-define( '_AM_MB_SUCCESSUPDATETABLE'          , "Modu³ pomy¶lnie uaktualniony" ) ;
-define( '_AM_MB_FAILUPDATETABLE'             , "B³±d podczas uaktualniania modu³u" ) ;
-define( '_AM_NOTICE_NOERRORS'                , "Modu³ uaktualniony bezb³êdnie." ) ;
-define( '_AM_ALRT_CATTABLENOTEXIST'          , "Kategoria nie istnieje.<br />Czy chcesz j± stworzyæ ?" ) ;
-define( '_AM_ALRT_OLDTABLE'                  , "Struktura wydarzeñ jest stara.<br />Czy chcesz uaktualniæ tabelê ?" ) ;
-define( '_AM_ALRT_TOOOLDTABLE'               , "Wyst±pi³ b³±d.<br />Mozliwe ¿e u¿ywasz starej wercji APCal.<br />Uaktualnij do najnowszej wersji." ) ;
-define( '_AM_FMT_SERVER_TZ_ALL'              , "Strefa czasowa na tym serwerze (zima): %+2.1f<br />Strefa czasowa na tym serwerze (lato): %+2.1f<br />Nazwa strefy na tym serwerze: %s<br />Warto¶æ w XOOPS'ie : %+2.1f<br />APCal u¿ywa: %+2.1f<br />" ) ;
-define( '_AM_TH_SERVER_TZ_COUNT'             , "Wydarzenia" ) ;
-define( '_AM_TH_SERVER_TZ_VALUE'             , "Strefa czasowa" ) ;
-define( '_AM_TH_SERVER_TZ_VALUE_TO'          , "Zmiana (-14.0·Á14.0)" ) ;
-define( '_AM_JSALRT_SERVER_TZ'               , "Nie zapomnij zrobiæ kopii zapasowej" ) ;
-define( '_AM_NOTICE_SERVER_TZ'               , "Je¿eli twój serwer ma ustawiony czas letni i jakie¶ wydarzenia s± zarejestrowane w APCal 0.6x lub 0.7x, nie klikaj na ten guzik.<br />eg) To jest normalne ¿e pokazuje obie: -5.0 i -4.0 w EDT(Eastern Daylight Time)" ) ;
-define( '_AM_MB_SUCCESSTZUPDATE'             , "Wydarzenia i strefy czasowe zosta³y zmodyfikowane." ) ;
+define('_AM_MB_SUCCESSUPDATETABLE'          , 'Moduï¿½ pomyï¿½lnie uaktualniony') ;
+define('_AM_MB_FAILUPDATETABLE'             , 'Bï¿½ï¿½d podczas uaktualniania moduï¿½u') ;
+define('_AM_NOTICE_NOERRORS'                , 'Moduï¿½ uaktualniony bezbï¿½ï¿½dnie.') ;
+define('_AM_ALRT_CATTABLENOTEXIST'          , 'Kategoria nie istnieje.<br />Czy chcesz jï¿½ stworzyï¿½ ?') ;
+define('_AM_ALRT_OLDTABLE'                  , 'Struktura wydarzeï¿½ jest stara.<br />Czy chcesz uaktualniï¿½ tabelï¿½ ?') ;
+define('_AM_ALRT_TOOOLDTABLE'               , 'Wystï¿½piï¿½ bï¿½ï¿½d.<br />Mozliwe ï¿½e uï¿½ywasz starej wercji APCal.<br />Uaktualnij do najnowszej wersji.') ;
+define( '_AM_FMT_SERVER_TZ_ALL'              , "Strefa czasowa na tym serwerze (zima): %+2.1f<br />Strefa czasowa na tym serwerze (lato): %+2.1f<br />Nazwa strefy na tym serwerze: %s<br />Wartoï¿½ï¿½ w XOOPS'ie : %+2.1f<br />APCal uï¿½ywa: %+2.1f<br />" ) ;
+define('_AM_TH_SERVER_TZ_COUNT'             , 'Wydarzenia') ;
+define('_AM_TH_SERVER_TZ_VALUE'             , 'Strefa czasowa') ;
+define('_AM_TH_SERVER_TZ_VALUE_TO'          , 'Zmiana (-14.0ï¿½ï¿½14.0)') ;
+define('_AM_JSALRT_SERVER_TZ'               , 'Nie zapomnij zrobiï¿½ kopii zapasowej') ;
+define('_AM_NOTICE_SERVER_TZ'               , 'Jeï¿½eli twï¿½j serwer ma ustawiony czas letni i jakieï¿½ wydarzenia sï¿½ zarejestrowane w APCal 0.6x lub 0.7x, nie klikaj na ten guzik.<br />eg) To jest normalne ï¿½e pokazuje obie: -5.0 i -4.0 w EDT(Eastern Daylight Time)') ;
+define('_AM_MB_SUCCESSTZUPDATE'             , 'Wydarzenia i strefy czasowe zostaï¿½y zmodyfikowane.') ;
 
 // Categories
-define( '_AM_CAT_TH_TITLE'                   , 'Tytu³' ) ;
+define( '_AM_CAT_TH_TITLE'                   , 'Tytuï¿½' ) ;
 define( '_AM_CAT_TH_DESC'                    , 'Opis' ) ;
-define( '_AM_CAT_TH_PARENT'                  , 'Katalog nadrzêdny' ) ;
+define( '_AM_CAT_TH_PARENT'                  , 'Katalog nadrzï¿½dny' ) ;
 define( '_AM_CAT_TH_OPTIONS'                 , 'Opcje' ) ;
 define( '_AM_CAT_TH_LASTMODIFY'              , 'Ostatnio zmodyfikowany' ) ;
 define( '_AM_CAT_TH_OPERATION'               , 'Operacja' ) ;
-define( '_AM_CAT_TH_ENABLED'                 , 'W³±cz' ) ;
-define( '_AM_CAT_TH_WEIGHT'                  , 'Wa¿no¶æ' ) ;
+define( '_AM_CAT_TH_ENABLED'                 , 'Wï¿½ï¿½cz' ) ;
+define( '_AM_CAT_TH_WEIGHT'                  , 'Waï¿½noï¿½ï¿½' ) ;
 define( '_AM_CAT_TH_SUBMENU'                 , 'Dopisz w SubMenu' ) ;
 define( '_AM_BTN_UPDATE'                     , 'Uaktualnij' ) ;
 define( '_AM_MENU_CAT_EDIT'                  , 'Edycja kategorii' ) ;
-define( '_AM_MENU_CAT_NEW'                   , 'Utwórz kategoriê' ) ;
+define( '_AM_MENU_CAT_NEW'                   , 'Utwï¿½rz kategoriï¿½' ) ;
 define( '_AM_MB_MAKESUBCAT'                  , 'Podkategoria' ) ;
-define( '_AM_MB_MAKETOPCAT'                  , 'Utwórz now± kategoriê' ) ;
-define( '_AM_MB_CAT_INSERTED'                , 'Utworzono now± kategoriê' ) ;
-define( '_AM_MB_CAT_UPDATED'                 , 'Kategoria pomy¶lnie uaktualniona' ) ;
-define( '_AM_FMT_CAT_DELETED'                , '%s Kategorii usuniêto' ) ;
+define( '_AM_MB_MAKETOPCAT'                  , 'Utwï¿½rz nowï¿½ kategoriï¿½' ) ;
+define( '_AM_MB_CAT_INSERTED'                , 'Utworzono nowï¿½ kategoriï¿½' ) ;
+define( '_AM_MB_CAT_UPDATED'                 , 'Kategoria pomyï¿½lnie uaktualniona' ) ;
+define( '_AM_FMT_CAT_DELETED'                , '%s Kategorii usuniï¿½to' ) ;
 define( '_AM_FMT_CAT_BATCHUPDATED'           , '%s Kategorii uaktualniono' ) ;
-define( '_AM_FMT_CATDELCONFIRM'              , 'Czy na pewno chcesz usun±æ t± kategoriê %s ?' ) ;
+define( '_AM_FMT_CATDELCONFIRM'              , 'Czy na pewno chcesz usunï¿½ï¿½ tï¿½ kategoriï¿½ %s ?' ) ;
 
 // Plugins
 define( '_AM_PI_UPDATED'                     , 'Pluginy uaktualniono' ) ;
 define( '_AM_PI_TH_TYPE'                     , 'Typ' ) ;
 define( '_AM_PI_TH_OPTIONS'                  , 'Opcje (zazwyczaj puste)' ) ;
-define( '_AM_PI_TH_TITLE'                    , 'Tytu³' ) ;
-define( '_AM_PI_TH_DIRNAME'                  , 'Katalog modu³u' ) ;
+define( '_AM_PI_TH_TITLE'                    , 'Tytuï¿½' ) ;
+define( '_AM_PI_TH_DIRNAME'                  , 'Katalog moduï¿½u' ) ;
 define( '_AM_PI_TH_FILE'                     , 'Plik pluginu' ) ;
 define( '_AM_PI_TH_DOTGIF'                   , '.GIF' ) ;
 define( '_AM_PI_TH_OPERATION'                , 'Operacja' ) ;
-define( '_AM_PI_ENABLED'                     , 'W³±czony' ) ;
-define( '_AM_PI_DELETE'                      , 'Usuñ' ) ;
+define( '_AM_PI_ENABLED'                     , 'Wï¿½ï¿½czony' ) ;
+define( '_AM_PI_DELETE'                      , 'Usuï¿½' ) ;
 define( '_AM_PI_NEW'                         , 'Nowy' ) ;
 define( '_AM_PI_VIEWYEARLY'                  , 'Widok roczny' ) ;
-define( '_AM_PI_VIEWMONTHLY'                 , 'Widok miesiêczny' ) ;
+define( '_AM_PI_VIEWMONTHLY'                 , 'Widok miesiï¿½czny' ) ;
 define( '_AM_PI_VIEWWEEKLY'                  , 'Widok tygodniowy' ) ;
 define( '_AM_PI_VIEWDAILY'                   , 'Widok dzienny' ) ;
 
@@ -132,4 +132,4 @@ define( '_AM_PI_VIEWDAILY'                   , 'Widok dzienny' ) ;
 
 }
 
-?>
+

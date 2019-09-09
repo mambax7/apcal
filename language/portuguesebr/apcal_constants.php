@@ -51,15 +51,15 @@ define('_APCAL_MB_LINKTODAY','[Hoje]') ;
 define('_APCAL_MB_NOSUBJECT','(Sem assunto)') ;
 
 define('_APCAL_MB_PREV_DATE','Ontem') ;
-define('_APCAL_MB_NEXT_DATE','Amanhã') ;
+define('_APCAL_MB_NEXT_DATE','Amanhï¿½') ;
 define('_APCAL_MB_PREV_WEEK','Semana anterior') ;
 define('_APCAL_MB_NEXT_WEEK','Semana seguinte') ;
-define('_APCAL_MB_PREV_MONTH','MóÔ anterior') ;
-define('_APCAL_MB_NEXT_MONTH','MóÔ seguinte') ;
+define('_APCAL_MB_PREV_MONTH','Mï¿½ï¿½ anterior') ;
+define('_APCAL_MB_NEXT_MONTH','Mï¿½ï¿½ seguinte') ;
 define('_APCAL_MB_PREV_YEAR','Ano anterior') ;
 define('_APCAL_MB_NEXT_YEAR','Ano seguinte') ;
 
-define('_APCAL_MB_NOEVENT','NåÐ há eventos') ;
+define('_APCAL_MB_NOEVENT','Nï¿½ï¿½ hï¿½ eventos') ;
 define('_APCAL_MB_ADDEVENT','Adicionar um evento') ;
 define('_APCAL_MB_CONTINUING','(Continua)') ;
 define('_APCAL_MB_RESTEVENT_PRE','mais') ;
@@ -70,16 +70,16 @@ define('_APCAL_MB_ALLDAY_EVENT','Evento para o dia inteiro') ;
 define('_APCAL_MB_LONG_EVENT','Mostrar como barra') ;
 define('_APCAL_MB_LONG_SPECIALDAY','Datas importantes e feriados') ;
 
-define('_APCAL_MB_PUBLIC','P“Ãlico') ;
+define('_APCAL_MB_PUBLIC','Pï¿½ï¿½lico') ;
 define('_APCAL_MB_PRIVATE','Particular') ;
 define('_APCAL_MB_PRIVATETARGET',' entre %s') ;
 
-define('_APCAL_MB_LINK_TO_RRULE1ST','Ir para o 1Žº evento ') ;
-define('_APCAL_MB_RRULE1ST','1Žº evento') ;
+define('_APCAL_MB_LINK_TO_RRULE1ST','Ir para o 1ï¿½ï¿½ evento ') ;
+define('_APCAL_MB_RRULE1ST','1ï¿½ï¿½ evento') ;
 
-define('_APCAL_MB_EVENT_NOTREGISTER','NåÐ registrado') ;
+define('_APCAL_MB_EVENT_NOTREGISTER','Nï¿½ï¿½ registrado') ;
 define('_APCAL_MB_EVENT_ADMITTED','Aprovado') ;
-define('_APCAL_MB_EVENT_NEEDADMIT','Pendente de aprovaîåo') ;
+define('_APCAL_MB_EVENT_NEEDADMIT','Pendente de aprovaÃ§Ã£o') ;
 
 define('_APCAL_MB_TITLE_EVENTINFO','Agenda') ;
 define('_APCAL_MB_SUBTITLE_EVENTDETAIL','Mais detalhes') ;
@@ -93,45 +93,45 @@ define('_APCAL_MB_ORDER_DESC','Decrescente') ;
 define('_APCAL_MB_SORTBY','Ordenado por:') ;
 define('_APCAL_MB_CURSORTEDBY','Atualmente ordenados por:') ;
 
-define("_APCAL_MB_LABEL_CHECKEDITEMS","");
-define("_APCAL_MB_LABEL_OUTPUTICS","");
+define('_APCAL_MB_LABEL_CHECKEDITEMS', '');
+define('_APCAL_MB_LABEL_OUTPUTICS', '');
 
-define("_APCAL_MB_ICALSELECTPLATFORM","Escolha um formato para exportaîåo");
+define('_APCAL_MB_ICALSELECTPLATFORM', 'Escolha um formato para exportaï¿½ï¿½o');
 
-define('_APCAL_TH_SUMMARY','TùÕulo') ;
-define('_APCAL_TH_STARTDATETIME','Data e hora de inùÄio') ;
-define('_APCAL_TH_ENDDATETIME','Data e hora de tñÓmino') ;
-define('_APCAL_TH_ALLDAYOPTIONS','Opî÷es do dia') ;
+define('_APCAL_TH_SUMMARY','Tï¿½ï¿½ulo') ;
+define('_APCAL_TH_STARTDATETIME','Data e hora de inï¿½ï¿½io') ;
+define('_APCAL_TH_ENDDATETIME','Data e hora de tï¿½ï¿½mino') ;
+define('_APCAL_TH_ALLDAYOPTIONS','OpÃ§Ãµes do dia') ;
 define('_APCAL_TH_LOCATION','Local') ;
-define('_APCAL_TH_CONTACT','EndereíÐ de contato') ;
+define('_APCAL_TH_CONTACT','Endereï¿½ï¿½ de contato') ;
 define('_APCAL_TH_CATEGORIES','Categorias') ;
 define('_APCAL_TH_SUBMITTER','Autor') ;
 define('_APCAL_TH_CLASS','Tipo') ;
-define('_APCAL_TH_DESCRIPTION','Descriîåo') ;
+define('_APCAL_TH_DESCRIPTION','Descriï¿½ï¿½o') ;
 define('_APCAL_TH_RRULE','Repetir') ;
 define('_APCAL_TH_ADMISSIONSTATUS','Estado') ;
-define('_APCAL_TH_LASTMODIFIED','ŽÚltima modificaîåo') ;
+define('_APCAL_TH_LASTMODIFIED','ï¿½ï¿½ltima modificaï¿½ï¿½o') ;
 
 define('_APCAL_NTC_MONTHLYBYMONTHDAY','(Especificar datas)') ;
-define('_APCAL_NTC_EXTRACTLIMIT','* Apenas %s eventos seråÐ exportados.') ;
-define('_APCAL_NTC_NUMBEROFNEEDADMIT','(%s itens pendentes de aprovaîåo)') ;
+define('_APCAL_NTC_EXTRACTLIMIT','* Apenas %s eventos serï¿½ï¿½ exportados.') ;
+define('_APCAL_NTC_NUMBEROFNEEDADMIT','(%s itens pendentes de aprovaÃ§Ã£o)') ;
 
 define('_APCAL_OPT_PRIVATEMYSELF','Apenas eu') ;
 define('_APCAL_OPT_PRIVATEGROUP','Grupo %s') ;
-define('_APCAL_OPT_PRIVATEINVALID','(grupo inváÍido)') ;
+define('_APCAL_OPT_PRIVATEINVALID','(grupo invï¿½ï¿½ido)') ;
 
 define('_APCAL_MB_OP_AFTER','Depois') ;
 define('_APCAL_MB_OP_BEFORE','Antes') ;
 define('_APCAL_MB_OP_ON','Em') ;
 define('_APCAL_MB_OP_ALL','Todos') ;
 
-define('_APCAL_CNFM_SAVEAS_YN','Você deseja realmente salvá-lo como outro registro?') ;
-define('_APCAL_CNFM_DELETE_YN','Você deseja realmente apagar este registro?') ;
+define('_APCAL_CNFM_SAVEAS_YN','VocÃª deseja realmente salvï¿½-lo como outro registro?') ;
+define('_APCAL_CNFM_DELETE_YN','VocÃª deseja realmente apagar este registro?') ;
 
-define('_APCAL_ERR_INVALID_EVENT_ID','ERRO: o nŽº ID nåÐ foi encontrado.') ;
-define('_APCAL_ERR_NOPERM_TO_SHOW',"ERRO: você nåÐ tem permissåÐ de acesso.") ;
-define('_APCAL_ERR_NOPERM_TO_OUTPUTICS',"ERRO: você nåÐ tem permissåÐ para exportar para o iCalendar.") ;
-define('_APCAL_ERR_LACKINDISPITEM','O item %s está em branco.<br />Use o botåÐ "Voltar" do seu browser!') ;
+define('_APCAL_ERR_INVALID_EVENT_ID','ERRO: o nÃ£o ID nÃ£o foi encontrado.') ;
+define('_APCAL_ERR_NOPERM_TO_SHOW', 'ERRO: vocÃª nÃ£o tem permissÃ£o de acesso.') ;
+define('_APCAL_ERR_NOPERM_TO_OUTPUTICS', 'ERRO: vocÃª nÃ£o tem permissÃ£o para exportar para o iCalendar.') ;
+define('_APCAL_ERR_LACKINDISPITEM','O item %s estï¿½ em branco.<br />Use o botï¿½ï¿½ "Voltar" do seu browser!') ;
 
 define('_APCAL_BTN_JUMP','Pular') ;
 define('_APCAL_BTN_NEWINSERTED','Novo evento') ;
@@ -143,19 +143,19 @@ define('_APCAL_BTN_RESET','Limpar') ;
 define('_APCAL_BTN_OUTPUTICS_WIN','iCalendario(Win)') ;
 define('_APCAL_BTN_OUTPUTICS_MAC','iCalendario(Mac)') ;
 define('_APCAL_BTN_PRINT','Imprimir') ;
-define("_APCAL_BTN_IMPORT","Importar");
-define("_APCAL_BTN_UPLOAD","Atualizar");
-define("_APCAL_BTN_EXPORT","Exportar para iCalendar");
-define("_APCAL_BTN_EXTRACT","Extrair");
-define("_APCAL_BTN_ADMIT","Aprovar");
-define("_APCAL_BTN_MOVE","Mover");
-define("_APCAL_BTN_COPY","Copiar");
+define('_APCAL_BTN_IMPORT', 'Importar');
+define('_APCAL_BTN_UPLOAD', 'Atualizar');
+define('_APCAL_BTN_EXPORT', 'Exportar para iCalendar');
+define('_APCAL_BTN_EXTRACT', 'Extrair');
+define('_APCAL_BTN_ADMIT', 'Aprovar');
+define('_APCAL_BTN_MOVE', 'Mover');
+define('_APCAL_BTN_COPY', 'Copiar');
 
 define('_APCAL_RR_EVERYDAY','Todo dia') ;
 define('_APCAL_RR_EVERYWEEK','Toda semana') ;
-define('_APCAL_RR_EVERYMONTH','Todo móÔ') ;
+define('_APCAL_RR_EVERYMONTH','Todo mï¿½ï¿½') ;
 define('_APCAL_RR_EVERYYEAR','Todo ano') ;
-define('_APCAL_RR_FREQDAILY','DiáÓio') ;
+define('_APCAL_RR_FREQDAILY','Diï¿½ï¿½io') ;
 define('_APCAL_RR_FREQWEEKLY','Semanal') ;
 define('_APCAL_RR_FREQMONTHLY','Mensal') ;
 define('_APCAL_RR_FREQYEARLY','Anual') ;
@@ -165,25 +165,25 @@ define('_APCAL_RR_FREQMONTHLY_PRE','A cada ') ;
 define('_APCAL_RR_FREQYEARLY_PRE','A cada ') ;
 define('_APCAL_RR_FREQDAILY_SUF','dia(s)') ;
 define('_APCAL_RR_FREQWEEKLY_SUF','semana(s)') ;
-define('_APCAL_RR_FREQMONTHLY_SUF','móÔ(es)') ;
+define('_APCAL_RR_FREQMONTHLY_SUF','mï¿½ï¿½(es)') ;
 define('_APCAL_RR_FREQYEARLY_SUF','Ano(s)') ;
 define('_APCAL_RR_PERDAY','cada %s dias') ;
 define('_APCAL_RR_PERWEEK','cada %s semanas') ;
 define('_APCAL_RR_PERMONTH','cada %s meses') ;
 define('_APCAL_RR_PERYEAR','cada %s anos') ;
 define('_APCAL_RR_COUNT','<br />%s vezes') ;
-define('_APCAL_RR_UNTIL','<br />até %s') ;
-define('_APCAL_RR_R_NORRULE','NåÐ repetir') ;
+define('_APCAL_RR_UNTIL','<br />atï¿½ %s') ;
+define('_APCAL_RR_R_NORRULE','Nï¿½ï¿½ repetir') ;
 define('_APCAL_RR_R_YESRRULE','Repetir') ;
 define('_APCAL_RR_OR','ou') ;
-define('_APCAL_RR_S_NOTSELECTED','-nåÐ selecionado-') ;
-define('_APCAL_RR_S_SAMEASBDATE','A mesma data que a de inùÄio') ;
-define('_APCAL_RR_R_NOCOUNTUNTIL','Nenhuma condiîåo de tñÓmino') ;
+define('_APCAL_RR_S_NOTSELECTED','-nÃ£o selecionado-') ;
+define('_APCAL_RR_S_SAMEASBDATE','A mesma data que a de inï¿½ï¿½io') ;
+define('_APCAL_RR_R_NOCOUNTUNTIL','Nenhuma condiï¿½ï¿½o de tï¿½ï¿½mino') ;
 define('_APCAL_RR_R_USECOUNT_PRE','repetir') ;
 define('_APCAL_RR_R_USECOUNT_SUF','vezes') ;
-define('_APCAL_RR_R_USEUNTIL','até') ;
+define('_APCAL_RR_R_USEUNTIL','atï¿½') ;
 
 
 }
 
-?>
+

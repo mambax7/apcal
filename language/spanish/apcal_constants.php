@@ -82,10 +82,10 @@ define('_APCAL_MB_ORDER_DESC','Descendente') ;
 define('_APCAL_MB_SORTBY','Ordenar por:') ;
 define('_APCAL_MB_CURSORTEDBY','Eventos actuales ordenados por:') ;
 
-define("_APCAL_MB_LABEL_CHECKEDITEMS","Los Eventos chequeados son:");
-define("_APCAL_MB_LABEL_OUTPUTICS","Exportar a iCalendar");
+define('_APCAL_MB_LABEL_CHECKEDITEMS', 'Los Eventos chequeados son:');
+define('_APCAL_MB_LABEL_OUTPUTICS', 'Exportar a iCalendar');
 
-define("_APCAL_MB_ICALSELECTPLATFORM","Selecciona Plataforma");
+define('_APCAL_MB_ICALSELECTPLATFORM', 'Selecciona Plataforma');
 
 define('_APCAL_TH_SUMMARY','Nombre del Evento') ;
 define('_APCAL_TH_TIMEZONE','Zona horaria') ;
@@ -119,8 +119,8 @@ define('_APCAL_CNFM_SAVEAS_YN','Estas´seguro de guardarlo como otro evento ?') 
 define('_APCAL_CNFM_DELETE_YN','Est&aacute;s seguro de eliminar este evento ?') ;
 
 define('_APCAL_ERR_INVALID_EVENT_ID','Error: EventID no encontrado') ;
-define('_APCAL_ERR_NOPERM_TO_SHOW',"Error: No tienes permisos para ver esto") ;
-define('_APCAL_ERR_NOPERM_TO_OUTPUTICS',"Error: No tienes permisos para exportar a iCalendar") ;
+define('_APCAL_ERR_NOPERM_TO_SHOW', 'Error: No tienes permisos para ver esto') ;
+define('_APCAL_ERR_NOPERM_TO_OUTPUTICS', 'Error: No tienes permisos para exportar a iCalendar') ;
 define('_APCAL_ERR_LACKINDISPITEM','El campo %s est&aacute; vac&iacute;o.<br />Presiona el bot&oacute;n de Volver de tu navegador!') ;
 
 define('_APCAL_BTN_JUMP','Ir') ;
@@ -134,13 +134,13 @@ define('_APCAL_BTN_RESET','Reiniciar Formulario') ;
 define('_APCAL_BTN_OUTPUTICS_WIN','iCalendar(Win)') ;
 define('_APCAL_BTN_OUTPUTICS_MAC','iCalendar(Mac)') ;
 define('_APCAL_BTN_PRINT','Imprimir') ;
-define("_APCAL_BTN_IMPORT","Importar!");
-define("_APCAL_BTN_UPLOAD","Subir!");
-define("_APCAL_BTN_EXPORT","Exportar!");
-define("_APCAL_BTN_EXTRACT","Extraer");
-define("_APCAL_BTN_ADMIT","Admitir");
-define("_APCAL_BTN_MOVE","Mover");
-define("_APCAL_BTN_COPY","Copiar");
+define('_APCAL_BTN_IMPORT', 'Importar!');
+define('_APCAL_BTN_UPLOAD', 'Subir!');
+define('_APCAL_BTN_EXPORT', 'Exportar!');
+define('_APCAL_BTN_EXTRACT', 'Extraer');
+define('_APCAL_BTN_ADMIT', 'Admitir');
+define('_APCAL_BTN_MOVE', 'Mover');
+define('_APCAL_BTN_COPY', 'Copiar');
 
 define('_APCAL_RR_EVERYDAY','Cada d&iacute;a') ;
 define('_APCAL_RR_EVERYWEEK','Cada Semana') ;
@@ -177,4 +177,4 @@ define('_APCAL_RR_R_USEUNTIL','hasta') ;
 
 }
 
-?>
+

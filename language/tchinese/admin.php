@@ -6,126 +6,126 @@ define( 'APCAL_AM_LOADED' , 1 ) ;
 define('APCAL_COPYRIGHT' , '<a href="http://xoops.antiquespromotion.ca" title="Calendar for Xoops" target="_blank">APCal</a> by <a href="http://www.antiquespromotion.ca" title="Antiques Promotion Canada" target="_blank">AP</a>');
 
 // titles
-define("_AM_ADMISSION","«Ý¼f¨Æ¥óºÞ²z");
-define('_AM_MENU_EVENTS','¨Æ¥óºÞ²z');
-define('_AM_MENU_CATEGORIES','Ãþ§OºÞ²z');
-define("_AM_MENU_CAT2GROUP","Ãþ§Oªº¶i¤JÅv­­");
-define("_AM_ICALENDAR_IMPORT","¶×¤J iCalendar");
-define("_AM_GROUPPERM","¸s²ÕÅv­­ºÞ²z");
-define('_AM_TABLEMAINTAIN','ªí³æºûÅ@ (Upgrade)');
-define('_AM_MYBLOCKSADMIN','APCalªº °Ï¶ô»P¸s²ÕºÞ²z');
+define('_AM_ADMISSION', 'ï¿½Ý¼fï¿½Æ¥ï¿½Þ²z');
+define('_AM_MENU_EVENTS','ï¿½Æ¥ï¿½Þ²z');
+define('_AM_MENU_CATEGORIES','ï¿½ï¿½ï¿½Oï¿½Þ²z');
+define('_AM_MENU_CAT2GROUP', 'ï¿½ï¿½ï¿½Oï¿½ï¿½ï¿½iï¿½Jï¿½vï¿½ï¿½');
+define('_AM_ICALENDAR_IMPORT', 'ï¿½×¤J iCalendar');
+define('_AM_GROUPPERM', 'ï¿½sï¿½ï¿½ï¿½vï¿½ï¿½ï¿½Þ²z');
+define('_AM_TABLEMAINTAIN','ï¿½ï¿½ï¿½ï¿½ï¿½@ (Upgrade)');
+define('_AM_MYBLOCKSADMIN','APCalï¿½ï¿½ ï¿½Ï¶ï¿½ï¿½Pï¿½sï¿½ÕºÞ²z');
 
 // forms
-define("_AM_BUTTON_EXTRACT","´£¨ú");
-define("_AM_BUTTON_ADMIT","½T©w");
-define('_AM_BUTTON_MOVE','²¾°Ê');
-define('_AM_BUTTON_COPY','½Æ»s');
-define("_AM_CONFIRM_DELETE","¯uªº­n§R°£¶Ü¡H");
-define('_AM_CONFIRM_MOVE','­n±NÂÂÃþ§OÄÝ©Ê²¾°£¡Aµ¹¤_·sªºÃþ§OÄÝ©Ê«ü©w¶Ü¡H');
-define('_AM_CONFIRM_COPY','­n·s¼WÃþ§OÄÝ©Ê¶Ü¡H');
-define('_AM_OPT_PAST','¹L©¹¸ê®Æ');
-define('_AM_OPT_FUTURE','¥¼¨Ó¸ê®Æ');
-define('_AM_OPT_PASTANDFUTURE','µL«ü©w');
+define('_AM_BUTTON_EXTRACT', 'ï¿½ï¿½ï¿½ï¿½');
+define('_AM_BUTTON_ADMIT', 'ï¿½Tï¿½w');
+define('_AM_BUTTON_MOVE','ï¿½ï¿½ï¿½ï¿½');
+define('_AM_BUTTON_COPY','ï¿½Æ»s');
+define('_AM_CONFIRM_DELETE', 'ï¿½uï¿½ï¿½ï¿½nï¿½Rï¿½ï¿½ï¿½Ü¡H');
+define('_AM_CONFIRM_MOVE','ï¿½nï¿½Nï¿½ï¿½ï¿½ï¿½ï¿½Oï¿½Ý©Ê²ï¿½ï¿½ï¿½ï¿½Aï¿½ï¿½ï¿½_ï¿½sï¿½ï¿½ï¿½ï¿½ï¿½Oï¿½Ý©Ê«ï¿½ï¿½wï¿½Ü¡H');
+define('_AM_CONFIRM_COPY','ï¿½nï¿½sï¿½Wï¿½ï¿½ï¿½Oï¿½Ý©Ê¶Ü¡H');
+define('_AM_OPT_PAST','ï¿½Lï¿½ï¿½ï¿½ï¿½ï¿½');
+define('_AM_OPT_FUTURE','ï¿½ï¿½ï¿½Ó¸ï¿½ï¿½');
+define('_AM_OPT_PASTANDFUTURE','ï¿½Lï¿½ï¿½ï¿½w');
 
 // format
 define('_AM_DTFMT_LIST_ALLDAY','y-m-d');
 define('_AM_DTFMT_LIST_NORMAL','y-m-d<\b\r />H:i');
 
 // timezones
-define('_AM_TZOPT_SERVER','¦øªA¾¹®É¶¡');
-define('_AM_TZOPT_GMT','GMT¥N¸¹');
-define('_AM_TZOPT_USER','¨Ï¥ÎªÌ®É¶¡');
+define('_AM_TZOPT_SERVER','ï¿½ï¿½ï¿½Aï¿½ï¿½ï¿½É¶ï¿½');
+define('_AM_TZOPT_GMT','GMTï¿½Nï¿½ï¿½');
+define('_AM_TZOPT_USER','ï¿½Ï¥ÎªÌ®É¶ï¿½');
 
 // admission
-define("_AM_LABEL_ADMIT","½T©w®Ö­ã¤w¿ï¨úªº¨Æ¥ó");
-define("_AM_MES_ADMITTED","¨Æ¥ó¤w¸g®Ö­ã¤F");
-define("_AM_ADMIT_TH0","¥Î¤á");
-define("_AM_ADMIT_TH1","¶}©l®É¶¡");
-define("_AM_ADMIT_TH2","µ²§ô®É¶¡");
-define("_AM_ADMIT_TH3","¥DÃD");
-define("_AM_ADMIT_TH4","­«½Æ±ø¥ó");
+define('_AM_LABEL_ADMIT', 'ï¿½Tï¿½wï¿½Ö­ï¿½wï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ¥ï¿½');
+define('_AM_MES_ADMITTED', 'ï¿½Æ¥ï¿½wï¿½gï¿½Ö­ï¿½F');
+define('_AM_ADMIT_TH0', 'ï¿½Î¤ï¿½');
+define('_AM_ADMIT_TH1', 'ï¿½}ï¿½lï¿½É¶ï¿½');
+define('_AM_ADMIT_TH2', 'ï¿½ï¿½ï¿½ï¿½ï¿½É¶ï¿½');
+define('_AM_ADMIT_TH3', 'ï¿½Dï¿½D');
+define('_AM_ADMIT_TH4', 'ï¿½ï¿½ï¿½Æ±ï¿½ï¿½ï¿½');
 
 // iCalendar I/O
-define("_AM_LABEL_IMPORTFROMWEB","±qºô¸ô¤W¶×¤J iCalendar ¸ê®Æ (¿é¤J URL ½Ð¥H 'http://' ©Î 'webcal://' ¶}ÀY)");
-define("_AM_LABEL_UPLOADFROMFILE","¤W¶Ç iCalendar ¸ê®Æ (±q±zªº¥»¾÷¹q¸£¿ï¾ÜÀÉ®×)");
-define("_AM_LABEL_IO_CHECKEDITEMS","¿ï¨úªº¨Æ¥ó¡G");
-define("_AM_LABEL_IO_OUTPUT","¶×¥X¬° iCalendar§Î¦¡");
-define("_AM_LABEL_IO_DELETE","°õ¦æ§R°£");
-define('_AM_MES_EVENTLINKTOCAT','­Ó§Oªº¨Æ¥ó¤w¸gµn°O¨ìÃþ§O¸Ì¡C');
-define('_AM_MES_EVENTUNLINKED','­Ó§Oªº¨Æ¥ó¥H±qÂÂÃþ§O¸Ì²¾°£');
-define('_AM_FMT_IMPORTED','­Ó§Oªº¨Æ¥ó¤w¥Ñ %s ¶×¤J');
-define("_AM_MES_DELETED","¨Æ¥ó¤w§R°£¤F");
-define("_AM_IO_TH0","¥Î¤á");
-define("_AM_IO_TH1","¶}©l¤é´Á®É¶¡");
-define("_AM_IO_TH2","µ²§ô¤é´Á®É¶¡");
-define("_AM_IO_TH3","¥DÃD");
-define("_AM_IO_TH4","­«½Æ");
-define("_AM_IO_TH5","¤w¼f®Ö");
+define('_AM_LABEL_IMPORTFROMWEB', "ï¿½qï¿½ï¿½ï¿½ï¿½ï¿½Wï¿½×¤J iCalendar ï¿½ï¿½ï¿½ (ï¿½ï¿½J URL ï¿½Ð¥H 'http://' ï¿½ï¿½ 'webcal://' ï¿½}ï¿½Y)");
+define('_AM_LABEL_UPLOADFROMFILE', 'ï¿½Wï¿½ï¿½ iCalendar ï¿½ï¿½ï¿½ (ï¿½qï¿½zï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½qï¿½ï¿½ï¿½ï¿½ï¿½ï¿½É®ï¿½)');
+define('_AM_LABEL_IO_CHECKEDITEMS', 'ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ¥ï¿½G');
+define('_AM_LABEL_IO_OUTPUT', 'ï¿½×¥Xï¿½ï¿½ iCalendarï¿½Î¦ï¿½');
+define('_AM_LABEL_IO_DELETE', 'ï¿½ï¿½ï¿½ï¿½Rï¿½ï¿½');
+define('_AM_MES_EVENTLINKTOCAT','ï¿½Ó§Oï¿½ï¿½ï¿½Æ¥ï¿½wï¿½gï¿½nï¿½Oï¿½ï¿½ï¿½ï¿½ï¿½Oï¿½Ì¡C');
+define('_AM_MES_EVENTUNLINKED','ï¿½Ó§Oï¿½ï¿½ï¿½Æ¥ï¿½Hï¿½qï¿½ï¿½ï¿½ï¿½ï¿½Oï¿½Ì²ï¿½ï¿½ï¿½');
+define('_AM_FMT_IMPORTED','ï¿½Ó§Oï¿½ï¿½ï¿½Æ¥ï¿½wï¿½ï¿½ %s ï¿½×¤J');
+define('_AM_MES_DELETED', 'ï¿½Æ¥ï¿½wï¿½Rï¿½ï¿½ï¿½F');
+define('_AM_IO_TH0', 'ï¿½Î¤ï¿½');
+define('_AM_IO_TH1', 'ï¿½}ï¿½lï¿½ï¿½ï¿½ï¿½É¶ï¿½');
+define('_AM_IO_TH2', 'ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½É¶ï¿½');
+define('_AM_IO_TH3', 'ï¿½Dï¿½D');
+define('_AM_IO_TH4', 'ï¿½ï¿½ï¿½ï¿½');
+define('_AM_IO_TH5', 'ï¿½wï¿½fï¿½ï¿½');
 
 // Group's Permissions
-define( '_AM_GPERM_G_INSERTABLE' , "·s¼W¨Æ¥ó") ;
-define( '_AM_GPERM_G_SUPERINSERT' , "·s¼W¨Æ¥ó(¤£»Ý¼f®Ö)") ;
-define( '_AM_GPERM_G_EDITABLE' , "½s¿è¨Æ¥ó") ;
-define( '_AM_GPERM_G_SUPEREDIT' , "½s¿è¨Æ¥ó(¤£»Ý¼f®Ö)") ;
-define( '_AM_GPERM_G_DELETABLE' , "§R°£¨Æ¥ó") ;
-define( '_AM_GPERM_G_SUPERDELETE' , "§R°£¨Æ¥ó(¤£»Ý¼f®Ö)") ;
-define( '_AM_GPERM_G_TOUCHOTHERS' , "ºÞ²z¥L¤H¨Æ¥ó") ;
-define('_AM_CAT2GROUPDESC','°w¹ï¦U¸s²Õ¡A½ÐÂI¿ï¨C­Ó¥i¥H³X°ÝªºÃþ§OÅv­­');
-define( '_AM_GROUPPERMDESC' , "¿ï¾Ü¨C¤@­Ó¸s²Õ©Ò¯à°µªºÅv­­<br />°²¦p±z»Ý­n³o¥\¯à, ¥²¶·¥ý³]©w '¥Î¤áÅv­­' ¬° '¨Ì·Ó¸s²ÕÅv­­³]©w'<br />³oÅv­­³]©w¦bºÞ²z­û»P³X«È³o¨â­Ó¸s²Õ¤¤·|³Q©¿²¤") ;
+define('_AM_GPERM_G_INSERTABLE' , 'ï¿½sï¿½Wï¿½Æ¥ï¿½') ;
+define('_AM_GPERM_G_SUPERINSERT' , 'ï¿½sï¿½Wï¿½Æ¥ï¿½(ï¿½ï¿½ï¿½Ý¼fï¿½ï¿½)') ;
+define('_AM_GPERM_G_EDITABLE' , 'ï¿½sï¿½ï¿½Æ¥ï¿½') ;
+define('_AM_GPERM_G_SUPEREDIT' , 'ï¿½sï¿½ï¿½Æ¥ï¿½(ï¿½ï¿½ï¿½Ý¼fï¿½ï¿½)') ;
+define('_AM_GPERM_G_DELETABLE' , 'ï¿½Rï¿½ï¿½ï¿½Æ¥ï¿½') ;
+define('_AM_GPERM_G_SUPERDELETE' , 'ï¿½Rï¿½ï¿½ï¿½Æ¥ï¿½(ï¿½ï¿½ï¿½Ý¼fï¿½ï¿½)') ;
+define('_AM_GPERM_G_TOUCHOTHERS' , 'ï¿½Þ²zï¿½Lï¿½Hï¿½Æ¥ï¿½') ;
+define('_AM_CAT2GROUPDESC','ï¿½wï¿½ï¿½Uï¿½sï¿½Õ¡Aï¿½ï¿½ï¿½Iï¿½ï¿½Cï¿½Ó¥iï¿½Hï¿½Xï¿½Ýªï¿½ï¿½ï¿½ï¿½Oï¿½vï¿½ï¿½');
+define( '_AM_GROUPPERMDESC' , "ï¿½ï¿½Ü¨Cï¿½@ï¿½Ó¸sï¿½Õ©Ò¯à°µï¿½ï¿½ï¿½vï¿½ï¿½<br />ï¿½ï¿½ï¿½pï¿½zï¿½Ý­nï¿½oï¿½\ï¿½ï¿½, ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½]ï¿½w 'ï¿½Î¤ï¿½ï¿½vï¿½ï¿½' ï¿½ï¿½ 'ï¿½Ì·Ó¸sï¿½ï¿½ï¿½vï¿½ï¿½ï¿½]ï¿½w'<br />ï¿½oï¿½vï¿½ï¿½ï¿½]ï¿½wï¿½bï¿½Þ²zï¿½ï¿½ï¿½Pï¿½Xï¿½È³oï¿½ï¿½Ó¸sï¿½Õ¤ï¿½ï¿½|ï¿½Qï¿½ï¿½ï¿½ï¿½") ;
 
 // Table Maintenance
-define('_AM_MB_SUCCESSUPDATETABLE','ªí³æµ²ºc¤É¯Å¦¨¥\¡I');
-define('_AM_MB_FAILUPDATETABLE','ªí³æµ²ºc¤É¯Å¥¢±Ñ¡I');
-define('_AM_NOTICE_NOERRORS','¤w¤É¯Å¦¨¥\¨Ã¥BµLµo²{¥ô¦ó¿ù»~¡C');
-define('_AM_ALRT_CATTABLENOTEXIST','µL¦¹Ãþ§Oªí³æ¡C<br />¬O§_­n¦Û°Ê¥Í¦¨³o­Óªí³æ¡H');
-define('_AM_ALRT_OLDTABLE','¨Æ¥óªí³æªºµ²ºc¸ûÂÂ¡C<br />¬O§_­n°õ¦æ¤É¯Å¡H');
-define('_AM_ALRT_TOOOLDTABLE','ªí³æ¿ù»~¡I<br />¹w¦ô¥i¯à¬OV0.3©Î¤§«eªºª©¥»¡A<br />½Ð±z¥ý¤É¯Å¨ì V0.4x ©Î 0.5xªºª©¥»¡I');
-define('_AM_FMT_SERVER_TZ_ALL','¥»¦øªA¾¹ªº¥V©u®É°Ï¡G %+2.1f<br />¥»¦øªA¾¹ªº®L©u®É°Ï¡G %+2.1f<br />¦øªA¾¹®É°Ï³]©w©w¸q¡G %s (¦¹³B¦øªA¾¹¹w³]»y¨t¸ò±zºô¯¸¹w³]»y¨t½Ä¬ð·|²£¥Í¶Ã½X¡A¤£¥Î¦b·N)<br />¥»XOOPS¸Ì¦øªA¾¹©Ò¦b¦a¹w³]ªº³]©w­È¡G %+2.1f<br />¦æ¨Æ¾äAPCal±Ä¥Î­È¡G %+2.1f<br />');
-define('_AM_TH_SERVER_TZ_COUNT','Á`¨Æ¥ó¼Æ');
-define('_AM_TH_SERVER_TZ_VALUE','®É°Ï');
-define('_AM_TH_SERVER_TZ_VALUE_TO','ÅÜ§ó­È (-14.0¡Á14.0)');
-define('_AM_JSALRT_SERVER_TZ','¦b³]©w¦¹°Ê§@¤§«e«ØÄ³±z¨Æ¥ý±N¸ê®Æ®w°µ³Æ¥÷¡C');
-define('_AM_NOTICE_SERVER_TZ','¦pªG±zªº¦øªA¾¹¬[³]©ó¤é¥ú¸`¬ù®É°Ï (Day Light Saving) ±N³y¦¨ APCal 0.8¥H«e©Òµn°Oªº¸ê®Æ¥X²{¤@­Ó¤p®É¥ª¥kªº»~®t¡A¦p¦³¨ººØ±¡§Î½Ð¤Å«ö¦¹«ö¶s¡C');
-define('_AM_MB_SUCCESSTZUPDATE','©Ò¦³¸ê®Æ³£¤w«ö·Ó¦¹¦øªA¾¹©Ò¹w³]¤§®É°Ï³]©w§¹¦¨¡C');
+define('_AM_MB_SUCCESSUPDATETABLE','ï¿½ï¿½æµ²ï¿½cï¿½É¯Å¦ï¿½ï¿½\ï¿½I');
+define('_AM_MB_FAILUPDATETABLE','ï¿½ï¿½æµ²ï¿½cï¿½É¯Å¥ï¿½ï¿½Ñ¡I');
+define('_AM_NOTICE_NOERRORS','ï¿½wï¿½É¯Å¦ï¿½ï¿½\ï¿½Ã¥Bï¿½Lï¿½oï¿½{ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½~ï¿½C');
+define('_AM_ALRT_CATTABLENOTEXIST','ï¿½Lï¿½ï¿½ï¿½ï¿½ï¿½Oï¿½ï¿½ï¿½C<br />ï¿½Oï¿½_ï¿½nï¿½Û°Ê¥Í¦ï¿½ï¿½oï¿½Óªï¿½ï¿½H');
+define('_AM_ALRT_OLDTABLE','ï¿½Æ¥ï¿½ï¿½æªºï¿½ï¿½ï¿½cï¿½ï¿½ï¿½Â¡C<br />ï¿½Oï¿½_ï¿½nï¿½ï¿½ï¿½ï¿½É¯Å¡H');
+define('_AM_ALRT_TOOOLDTABLE','ï¿½ï¿½ï¿½ï¿½ï¿½~ï¿½I<br />ï¿½wï¿½ï¿½ï¿½iï¿½ï¿½OV0.3ï¿½Î¤ï¿½ï¿½eï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½A<br />ï¿½Ð±zï¿½ï¿½ï¿½É¯Å¨ï¿½ V0.4x ï¿½ï¿½ 0.5xï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½I');
+define('_AM_FMT_SERVER_TZ_ALL','ï¿½ï¿½ï¿½ï¿½ï¿½Aï¿½ï¿½ï¿½ï¿½ï¿½Vï¿½uï¿½É°Ï¡G %+2.1f<br />ï¿½ï¿½ï¿½ï¿½ï¿½Aï¿½ï¿½ï¿½ï¿½ï¿½Lï¿½uï¿½É°Ï¡G %+2.1f<br />ï¿½ï¿½ï¿½Aï¿½ï¿½ï¿½É°Ï³]ï¿½wï¿½wï¿½qï¿½G %s (ï¿½ï¿½ï¿½Bï¿½ï¿½ï¿½Aï¿½ï¿½ï¿½wï¿½]ï¿½yï¿½tï¿½ï¿½zï¿½ï¿½ï¿½ï¿½ï¿½wï¿½]ï¿½yï¿½tï¿½Ä¬ï¿½|ï¿½ï¿½ï¿½Í¶Ã½Xï¿½Aï¿½ï¿½ï¿½Î¦bï¿½N)<br />ï¿½ï¿½XOOPSï¿½Ì¦ï¿½ï¿½Aï¿½ï¿½ï¿½Ò¦bï¿½aï¿½wï¿½]ï¿½ï¿½ï¿½]ï¿½wï¿½È¡G %+2.1f<br />ï¿½ï¿½Æ¾ï¿½APCalï¿½Ä¥Î­È¡G %+2.1f<br />');
+define('_AM_TH_SERVER_TZ_COUNT','ï¿½`ï¿½Æ¥ï¿½ï¿½');
+define('_AM_TH_SERVER_TZ_VALUE','ï¿½É°ï¿½');
+define('_AM_TH_SERVER_TZ_VALUE_TO','ï¿½Ü§ï¿½ï¿½ (-14.0ï¿½ï¿½14.0)');
+define('_AM_JSALRT_SERVER_TZ','ï¿½bï¿½]ï¿½wï¿½ï¿½ï¿½Ê§@ï¿½ï¿½ï¿½eï¿½ï¿½Ä³ï¿½zï¿½Æ¥ï¿½ï¿½Nï¿½ï¿½Æ®wï¿½ï¿½ï¿½Æ¥ï¿½ï¿½C');
+define('_AM_NOTICE_SERVER_TZ','ï¿½pï¿½Gï¿½zï¿½ï¿½ï¿½ï¿½ï¿½Aï¿½ï¿½ï¿½[ï¿½]ï¿½ï¿½ï¿½ï¿½ï¿½`ï¿½ï¿½ï¿½É°ï¿½ (Day Light Saving) ï¿½Nï¿½yï¿½ï¿½ APCal 0.8ï¿½Hï¿½eï¿½Òµnï¿½Oï¿½ï¿½ï¿½ï¿½Æ¥Xï¿½{ï¿½@ï¿½Ó¤pï¿½É¥ï¿½ï¿½kï¿½ï¿½ï¿½~ï¿½tï¿½Aï¿½pï¿½ï¿½ï¿½ï¿½ï¿½Ø±ï¿½ï¿½Î½Ð¤Å«ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½sï¿½C');
+define('_AM_MB_SUCCESSTZUPDATE','ï¿½Ò¦ï¿½ï¿½ï¿½Æ³ï¿½ï¿½wï¿½ï¿½ï¿½Ó¦ï¿½ï¿½ï¿½ï¿½Aï¿½ï¿½ï¿½Ò¹wï¿½]ï¿½ï¿½ï¿½É°Ï³]ï¿½wï¿½ï¿½ï¿½ï¿½ï¿½C');
 
 // Categories
-define('_AM_CAT_TH_TITLE','Ãþ§O¦WºÙ');
-define('_AM_CAT_TH_DESC','Ãþ§O»¡©ú');
-define('_AM_CAT_TH_PARENT','¥DÃþ§O');
-define('_AM_CAT_TH_OPTIONS','¿ï¶µ');
-define('_AM_CAT_TH_LASTMODIFY','³Ì«á§ó·s¤é');
-define('_AM_CAT_TH_OPERATION','¾Þ§@');
-define('_AM_CAT_TH_ENABLED','¦³®Ä');
-define('_AM_CAT_TH_WEIGHT','±Æ§Ç');
-define('_AM_CAT_TH_SUBMENU','Åã¥Ü¤lÃþ§O');
-define('_AM_BTN_UPDATE','§ó·s');
-define('_AM_MENU_CAT_EDIT','½s¿èÃþ§O');
-define('_AM_MENU_CAT_NEW','·s¼WÃþ§O');
-define('_AM_MB_MAKESUBCAT','¤lÃþ§O');
-define('_AM_MB_MAKETOPCAT','¦b³Ì¤W¼h·s¼WÃþ§O');
-define('_AM_MB_CAT_INSERTED','·sÃþ§O¤w¸g¼W¥[¤F');
-define('_AM_MB_CAT_UPDATED','Ãþ§O¤w§ó·s¡I');
-define('_AM_FMT_CAT_DELETED','¤w§R°£¤F %s Ãþ§O¡I');
-define('_AM_FMT_CAT_BATCHUPDATED','%s Ãþ§O¤w¸g³Q§ó·s¤F¡I');
-define('_AM_FMT_CATDELCONFIRM','±z½T©w­n§R°£ %s ³o­ÓÃþ§O¶Ü¡H');
+define('_AM_CAT_TH_TITLE','ï¿½ï¿½ï¿½Oï¿½Wï¿½ï¿½');
+define('_AM_CAT_TH_DESC','ï¿½ï¿½ï¿½Oï¿½ï¿½ï¿½ï¿½');
+define('_AM_CAT_TH_PARENT','ï¿½Dï¿½ï¿½ï¿½O');
+define('_AM_CAT_TH_OPTIONS','ï¿½ï¶µ');
+define('_AM_CAT_TH_LASTMODIFY','ï¿½Ì«ï¿½ï¿½sï¿½ï¿½');
+define('_AM_CAT_TH_OPERATION','ï¿½Þ§@');
+define('_AM_CAT_TH_ENABLED','ï¿½ï¿½ï¿½ï¿½');
+define('_AM_CAT_TH_WEIGHT','ï¿½Æ§ï¿½');
+define('_AM_CAT_TH_SUBMENU','ï¿½ï¿½Ü¤lï¿½ï¿½ï¿½O');
+define('_AM_BTN_UPDATE','ï¿½ï¿½s');
+define('_AM_MENU_CAT_EDIT','ï¿½sï¿½ï¿½ï¿½ï¿½ï¿½O');
+define('_AM_MENU_CAT_NEW','ï¿½sï¿½Wï¿½ï¿½ï¿½O');
+define('_AM_MB_MAKESUBCAT','ï¿½lï¿½ï¿½ï¿½O');
+define('_AM_MB_MAKETOPCAT','ï¿½bï¿½Ì¤Wï¿½hï¿½sï¿½Wï¿½ï¿½ï¿½O');
+define('_AM_MB_CAT_INSERTED','ï¿½sï¿½ï¿½ï¿½Oï¿½wï¿½gï¿½Wï¿½[ï¿½F');
+define('_AM_MB_CAT_UPDATED','ï¿½ï¿½ï¿½Oï¿½wï¿½ï¿½sï¿½I');
+define('_AM_FMT_CAT_DELETED','ï¿½wï¿½Rï¿½ï¿½ï¿½F %s ï¿½ï¿½ï¿½Oï¿½I');
+define('_AM_FMT_CAT_BATCHUPDATED','%s ï¿½ï¿½ï¿½Oï¿½wï¿½gï¿½Qï¿½ï¿½sï¿½Fï¿½I');
+define('_AM_FMT_CATDELCONFIRM','ï¿½zï¿½Tï¿½wï¿½nï¿½Rï¿½ï¿½ %s ï¿½oï¿½ï¿½ï¿½ï¿½ï¿½Oï¿½Ü¡H');
 
 // Plugins
-define('_AM_PI_UPDATED','¤w¸g§¹¦¨§ó·s¤F¡I');
-define('_AM_PI_TH_TYPE','¾A¥Î©ó');
-define('_AM_PI_TH_OPTIONS','¿ï¶µ (¤@¯ë¬°¸mªÅ)');
-define('_AM_PI_TH_TITLE','Åã¥Ü¼ÐÃD');
-define('_AM_PI_TH_DIRNAME','¥Ø¼Ð¼Ò²Õ');
-define('_AM_PI_TH_FILE','PluginÀÉ®×');
-define('_AM_PI_TH_DOTGIF','¥NªíÂI¹Ï');
-define('_AM_PI_TH_OPERATION','¾Þ§@');
-define('_AM_PI_ENABLED','¦³®Ä');
-define('_AM_PI_DELETE','§R°£');
-define('_AM_PI_NEW','·s³]©w');
-define('_AM_PI_VIEWYEARLY','Åã¥Ü©ó¾ã¦~¾ä');
-define('_AM_PI_VIEWMONTHLY','Åã¥Ü©ó¤j¤ë¾ä');
-define('_AM_PI_VIEWWEEKLY','Åã¥Ü©ó¶g¾ä');
-define('_AM_PI_VIEWDAILY','Åã¥Ü©ó¨C¤é');
+define('_AM_PI_UPDATED','ï¿½wï¿½gï¿½ï¿½ï¿½ï¿½ï¿½ï¿½sï¿½Fï¿½I');
+define('_AM_PI_TH_TYPE','ï¿½Aï¿½Î©ï¿½');
+define('_AM_PI_TH_OPTIONS','ï¿½ï¶µ (ï¿½@ï¿½ë¬°ï¿½mï¿½ï¿½)');
+define('_AM_PI_TH_TITLE','ï¿½ï¿½Ü¼ï¿½ï¿½D');
+define('_AM_PI_TH_DIRNAME','ï¿½Ø¼Ð¼Ò²ï¿½');
+define('_AM_PI_TH_FILE','Pluginï¿½É®ï¿½');
+define('_AM_PI_TH_DOTGIF','ï¿½Nï¿½ï¿½ï¿½Iï¿½ï¿½');
+define('_AM_PI_TH_OPERATION','ï¿½Þ§@');
+define('_AM_PI_ENABLED','ï¿½ï¿½ï¿½ï¿½');
+define('_AM_PI_DELETE','ï¿½Rï¿½ï¿½');
+define('_AM_PI_NEW','ï¿½sï¿½]ï¿½w');
+define('_AM_PI_VIEWYEARLY','ï¿½ï¿½Ü©ï¿½ï¿½~ï¿½ï¿½');
+define('_AM_PI_VIEWMONTHLY','ï¿½ï¿½Ü©ï¿½jï¿½ï¿½ï¿½');
+define('_AM_PI_VIEWWEEKLY','ï¿½ï¿½Ü©ï¿½gï¿½ï¿½');
+define('_AM_PI_VIEWDAILY','ï¿½ï¿½Ü©ï¿½Cï¿½ï¿½');
 
 }
 
-?>
+

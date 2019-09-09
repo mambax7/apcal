@@ -75,7 +75,7 @@ define('_APCAL_MB_PRIVATE','Privato') ;
 define('_APCAL_MB_PRIVATETARGET',' per %s') ;
 
 define('_APCAL_MB_LINK_TO_RRULE1ST','Vai al primo evento ') ;
-define('_APCAL_MB_RRULE1ST','Questo è il primo evento') ;
+define('_APCAL_MB_RRULE1ST','Questo Ã¨ il primo evento') ;
 
 define('_APCAL_MB_EVENT_NOTREGISTER','Non Registrato') ;
 define('_APCAL_MB_EVENT_ADMITTED','Approvato') ;
@@ -93,10 +93,10 @@ define('_APCAL_MB_ORDER_DESC','discendente') ;
 define('_APCAL_MB_SORTBY','Ordina per:') ;
 define('_APCAL_MB_CURSORTEDBY','Eventi ordinati per:') ;
 
-define("_APCAL_MB_LABEL_CHECKEDITEMS","Gli eventi selezionati sono:");
-define("_APCAL_MB_LABEL_OUTPUTICS","da esportare in iCalendar");
+define('_APCAL_MB_LABEL_CHECKEDITEMS', 'Gli eventi selezionati sono:');
+define('_APCAL_MB_LABEL_OUTPUTICS', 'da esportare in iCalendar');
 
-define("_APCAL_MB_ICALSELECTPLATFORM","Seleziona la piattaforma");
+define('_APCAL_MB_ICALSELECTPLATFORM', 'Seleziona la piattaforma');
 
 define('_APCAL_TH_SUMMARY','Sommario') ;
 define('_APCAL_TH_STARTDATETIME','DataOra Inizio') ;
@@ -129,9 +129,9 @@ define('_APCAL_CNFM_SAVEAS_YN','Confermi salvataggio come un altro evento?') ;
 define('_APCAL_CNFM_DELETE_YN','Confermi eliminazione di questo evento?') ;
 
 define('_APCAL_ERR_INVALID_EVENT_ID','Errore: EventID non trovato') ;
-define('_APCAL_ERR_NOPERM_TO_SHOW',"Errore: Non hai i privilegi per visualizzare") ;
-define('_APCAL_ERR_NOPERM_TO_OUTPUTICS',"Errore: Non hai i privilegi per esportare iCalendar") ;
-define('_APCAL_ERR_LACKINDISPITEM','L\'evento %s è vuoto.<br />Premi il pulsante \'indietro\' del browser!') ;
+define('_APCAL_ERR_NOPERM_TO_SHOW', 'Errore: Non hai i privilegi per visualizzare') ;
+define('_APCAL_ERR_NOPERM_TO_OUTPUTICS', 'Errore: Non hai i privilegi per esportare iCalendar') ;
+define('_APCAL_ERR_LACKINDISPITEM','L\'evento %s Ã¨ vuoto.<br />Premi il pulsante \'indietro\' del browser!') ;
 
 define('_APCAL_BTN_JUMP','Vai') ;
 define('_APCAL_BTN_NEWINSERTED','Nuovo inserimento') ;
@@ -143,13 +143,13 @@ define('_APCAL_BTN_RESET','Reimposta') ;
 define('_APCAL_BTN_OUTPUTICS_WIN','iCalendar(Win)') ;
 define('_APCAL_BTN_OUTPUTICS_MAC','iCalendar(Mac)') ;
 define('_APCAL_BTN_PRINT','Stampa') ;
-define("_APCAL_BTN_IMPORT","Importa!");
-define("_APCAL_BTN_UPLOAD","Upload!");
-define("_APCAL_BTN_EXPORT","Esporta!");
-define("_APCAL_BTN_EXTRACT","Estrai");
-define("_APCAL_BTN_ADMIT","Approva");
-define("_APCAL_BTN_MOVE","Muovi");
-define("_APCAL_BTN_COPY","Copia");
+define('_APCAL_BTN_IMPORT', 'Importa!');
+define('_APCAL_BTN_UPLOAD', 'Upload!');
+define('_APCAL_BTN_EXPORT', 'Esporta!');
+define('_APCAL_BTN_EXTRACT', 'Estrai');
+define('_APCAL_BTN_ADMIT', 'Approva');
+define('_APCAL_BTN_MOVE', 'Muovi');
+define('_APCAL_BTN_COPY', 'Copia');
 
 define('_APCAL_RR_EVERYDAY','Tutti i giorni') ;
 define('_APCAL_RR_EVERYWEEK','Tutte le settimane') ;
@@ -185,4 +185,4 @@ define('_APCAL_RR_R_USEUNTIL','fino al') ;
 
 }
 
-?>
+

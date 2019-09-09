@@ -62,7 +62,7 @@ define('_APCAL_MB_LONG_EVENT','Als balk voorstellen') ;
 define('_APCAL_MB_LONG_SPECIALDAY','Verjaardag, etc.') ;
 
 define('_APCAL_MB_PUBLIC','publiek') ;
-define('_APCAL_MB_PRIVATE','privé') ;
+define('_APCAL_MB_PRIVATE','privï¿½') ;
 define('_APCAL_MB_PRIVATETARGET',' %s') ;
 
 define('_APCAL_MB_LINK_TO_RRULE1ST','Naar 1ste activiteit springen') ;
@@ -102,8 +102,8 @@ define('_APCAL_CNFM_SAVEAS_YN','Ingave opslaan - OK?') ;
 define('_APCAL_CNFM_DELETE_YN','Ingave verwijderen -OK?') ;
 
 define('_APCAL_ERR_INVALID_EVENT_ID','Error: EventID niet gevonden') ;
-define('_APCAL_ERR_NOPERM_TO_SHOW',"Error: geen rechten") ;
-define('_APCAL_ERR_NOPERM_TO_OUTPUTICS',"Error: geen rechten voor iCalender output") ;
+define('_APCAL_ERR_NOPERM_TO_SHOW', 'Error: geen rechten') ;
+define('_APCAL_ERR_NOPERM_TO_OUTPUTICS', 'Error: geen rechten voor iCalender output') ;
 define('_APCAL_ERR_LACKINDISPITEM','Ingave %s is leeg.<br />Ga terug') ;
 
 define('_APCAL_BTN_JUMP','Ga naar') ;
@@ -189,4 +189,4 @@ define('_APCAL_BTN_COPY','Copy');
 
 }
 
-?>
+

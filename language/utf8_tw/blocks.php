@@ -28,4 +28,3 @@ define('_MB_APCAL_JUSTONCEADAYAPLUGIN','每個 plugin 每天僅能顯示一個�
 
 }
 
-?>

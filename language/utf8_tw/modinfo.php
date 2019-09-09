@@ -14,26 +14,26 @@ define( 'APCAL_MI_LOADED' , 1 ) ;
 // The name of this module
 
 define('_MI_APCAL_ADMENU_MYBLOCKSADMIN','區塊與群組管理');
-define("_MI_APCAL_NAME","APCal行事曆");
+define('_MI_APCAL_NAME', 'APCal行事曆');
 
 // A brief description of this module
-define("_MI_APCAL_DESC","具有多功能的行事曆模組");
+define('_MI_APCAL_DESC', '具有多功能的行事曆模組');
 
 // Names of blocks for this module (Not all module has blocks)
-define("_MI_APCAL_BNAME_MINICAL","迷你日曆");
-define("_MI_APCAL_BNAME_MINICAL_DESC","顯示迷你日曆區塊");
+define('_MI_APCAL_BNAME_MINICAL', '迷你日曆');
+define('_MI_APCAL_BNAME_MINICAL_DESC', '顯示迷你日曆區塊');
 define('_MI_APCAL_BNAME_MINICALEX','進階小月曆');
 define('_MI_APCAL_BNAME_MINICALEX_DESC','可以搭配 plugin 的小月曆');
-define("_MI_APCAL_BNAME_MONTHCAL","月曆");
-define("_MI_APCAL_BNAME_MONTHCAL_DESC","顯示完整的月曆");
-define("_MI_APCAL_BNAME_TODAYS","今日事件");
-define("_MI_APCAL_BNAME_TODAYS_DESC","顯示今天的事件");
-define("_MI_APCAL_BNAME_THEDAYS","%s 的事件");
-define("_MI_APCAL_BNAME_THEDAYS_DESC","顯示指出日期的事件");
-define("_MI_APCAL_BNAME_COMING","近期事件");
-define("_MI_APCAL_BNAME_COMING_DESC","顯示近期的事件");
-define("_MI_APCAL_BNAME_AFTER","今日以後事件");
-define("_MI_APCAL_BNAME_AFTER_DESC","顯示今日以後的事件");
+define('_MI_APCAL_BNAME_MONTHCAL', '月曆');
+define('_MI_APCAL_BNAME_MONTHCAL_DESC', '顯示完整的月曆');
+define('_MI_APCAL_BNAME_TODAYS', '今日事件');
+define('_MI_APCAL_BNAME_TODAYS_DESC', '顯示今天的事件');
+define('_MI_APCAL_BNAME_THEDAYS', '%s 的事件');
+define('_MI_APCAL_BNAME_THEDAYS_DESC', '顯示指出日期的事件');
+define('_MI_APCAL_BNAME_COMING', '近期事件');
+define('_MI_APCAL_BNAME_COMING_DESC', '顯示近期的事件');
+define('_MI_APCAL_BNAME_AFTER', '今日以後事件');
+define('_MI_APCAL_BNAME_AFTER_DESC', '顯示今日以後的事件');
 
 // Names of submenu
 define('_MI_APCAL_SM_SUBMIT','新增');
@@ -41,50 +41,50 @@ define('_MI_APCAL_SM_SUBMIT','新增');
 //define("_MI_APCAL_ADMENU1","");
 
 // Title of config items
-define("_MI_USERS_AUTHORITY", "用戶權限");
-define("_MI_GUESTS_AUTHORITY", "訪客權限");
-define("_MI_MINICAL_TARGET", "當點選迷你行事曆時所要顯示在畫面中央的行事曆");
-define("_MI_COMING_NUMROWS", "在近期事件區塊顯示事件的數目");
-define("_MI_SKINFOLDER", "行事曆樣式的資料夾名稱 (images目錄內)");
+define('_MI_USERS_AUTHORITY', '用戶權限');
+define('_MI_GUESTS_AUTHORITY', '訪客權限');
+define('_MI_MINICAL_TARGET', '當點選迷你行事曆時所要顯示在畫面中央的行事曆');
+define('_MI_COMING_NUMROWS', '在近期事件區塊顯示事件的數目');
+define('_MI_SKINFOLDER', '行事曆樣式的資料夾名稱 (images目錄內)');
 define('_MI_APCAL_DEFAULTLOCALE','utf8_taiwan');
 define('_MI_APCAL_LOCALE','地域設定 <br />將自動帶入當地例假日，台灣已內建至2010年為止之國曆與農曆假日');
-define("_MI_SUNDAYCOLOR", "星期日的顏色");
-define("_MI_WEEKDAYCOLOR", "平日的顏色");
-define("_MI_SATURDAYCOLOR", "星期六的顏色");
-define("_MI_HOLIDAYCOLOR", "假日的顏色");
-define("_MI_TARGETDAYCOLOR", "預定日的顏色");
-define("_MI_SUNDAYBGCOLOR", "星期日的背景顏色");
-define("_MI_WEEKDAYBGCOLOR", "平日的顏色");
-define("_MI_SATURDAYBGCOLOR", "星期六的背景顏色");
-define("_MI_HOLIDAYBGCOLOR", "假日的背景顏色");
-define("_MI_TARGETDAYBGCOLOR", "預定日的背景顏色");
-define("_MI_CALHEADCOLOR", "行事曆主題部份的顏色");
-define("_MI_CALHEADBGCOLOR", "行事曆主題部份的背景顏色");
-define("_MI_CALFRAMECSS", "行事曆視窗的樣式");
-define("_MI_CANOUTPUTICS", "匯出 ics 檔案的權限");
-define("_MI_MAXRRULEEXTRACT", "重複事件展開上限數.");
-define("_MI_WEEKSTARTFROM", "每週的第一天是");
+define('_MI_SUNDAYCOLOR', '星期日的顏色');
+define('_MI_WEEKDAYCOLOR', '平日的顏色');
+define('_MI_SATURDAYCOLOR', '星期六的顏色');
+define('_MI_HOLIDAYCOLOR', '假日的顏色');
+define('_MI_TARGETDAYCOLOR', '預定日的顏色');
+define('_MI_SUNDAYBGCOLOR', '星期日的背景顏色');
+define('_MI_WEEKDAYBGCOLOR', '平日的顏色');
+define('_MI_SATURDAYBGCOLOR', '星期六的背景顏色');
+define('_MI_HOLIDAYBGCOLOR', '假日的背景顏色');
+define('_MI_TARGETDAYBGCOLOR', '預定日的背景顏色');
+define('_MI_CALHEADCOLOR', '行事曆主題部份的顏色');
+define('_MI_CALHEADBGCOLOR', '行事曆主題部份的背景顏色');
+define('_MI_CALFRAMECSS', '行事曆視窗的樣式');
+define('_MI_CANOUTPUTICS', '匯出 ics 檔案的權限');
+define('_MI_MAXRRULEEXTRACT', '重複事件展開上限數.');
+define('_MI_WEEKSTARTFROM', '每週的第一天是');
 define('_MI_TIMEZONE_USING','伺服器的時區指定');
 define('_MI_USE24HOUR','是否使用24小時制 (如選擇否將自動以12小時制)');
 define('_MI_NAMEORUNAME','顯示發表者名');
 define('_MI_DESCNAMEORUNAME','請選擇顯示帳號或是真實姓名(暱稱)');
 
 // Description of each config items
-define("_MI_EDITBYGUESTDSC", "訪客新增事件的權限");
+define('_MI_EDITBYGUESTDSC', '訪客新增事件的權限');
 
 // Options of each config items
-define("_MI_OPT_AUTH_NONE", "無法新增事件");
-define("_MI_OPT_AUTH_WAIT", "可以新增事件並且需要審核");
-define("_MI_OPT_AUTH_POST", "可以新增事件但不需要審核");
-define("_MI_OPT_AUTH_BYGROUP", "依照群組權限設定");
-define("_MI_OPT_MINI_PHPSELF", "目前頁面");
-define("_MI_OPT_MINI_MONTHLY", "月行事曆");
-define("_MI_OPT_MINI_WEEKLY", "週行事曆");
-define("_MI_OPT_MINI_DAILY", "日行事曆");
-define("_MI_OPT_CANNOTOUTPUTICS", "可以匯出");
-define("_MI_OPT_CANOUTPUTICS", "無法匯出");
-define("_MI_OPT_STARTFROMSUN", "星期日");
-define("_MI_OPT_STARTFROMMON", "星期一");
+define('_MI_OPT_AUTH_NONE', '無法新增事件');
+define('_MI_OPT_AUTH_WAIT', '可以新增事件並且需要審核');
+define('_MI_OPT_AUTH_POST', '可以新增事件但不需要審核');
+define('_MI_OPT_AUTH_BYGROUP', '依照群組權限設定');
+define('_MI_OPT_MINI_PHPSELF', '目前頁面');
+define('_MI_OPT_MINI_MONTHLY', '月行事曆');
+define('_MI_OPT_MINI_WEEKLY', '週行事曆');
+define('_MI_OPT_MINI_DAILY', '日行事曆');
+define('_MI_OPT_CANNOTOUTPUTICS', '可以匯出');
+define('_MI_OPT_CANOUTPUTICS', '無法匯出');
+define('_MI_OPT_STARTFROMSUN', '星期日');
+define('_MI_OPT_STARTFROMMON', '星期一');
 define('_MI_OPT_TZ_USEXOOPS','XOOPS的預設值');
 define('_MI_OPT_TZ_USEWINTER','由伺服器取得的冬令時間 (推薦)');
 define('_MI_OPT_TZ_USESUMMER','由伺服器取得的夏令時間');
@@ -93,9 +93,9 @@ define('_MI_OPT_USEUNAME','登入帳號');
 
 
 // Admin Menus
-define("_MI_APCAL_ADMENU0","待審事件區");
-define("_MI_APCAL_ADMENU1","事件管理區");
-define("_MI_APCAL_ADMENU2","群組權限管理");
+define('_MI_APCAL_ADMENU0', '待審事件區');
+define('_MI_APCAL_ADMENU1', '事件管理區');
+define('_MI_APCAL_ADMENU2', '群組權限管理');
 define('_MI_APCAL_ADMENU_PLUGINS','Plugin管理區');
 
 
@@ -133,4 +133,4 @@ define('_MI_APCAL_CATEGORY_NEWEVENT_NOTIFYSBJ','[{X_SITENAME}] {X_MODULE} ： �
 
 }
 
-?>
+

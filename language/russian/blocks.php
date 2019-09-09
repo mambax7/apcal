@@ -5,32 +5,32 @@ if( defined( 'FOR_XOOPS_LANG_CHECKER' ) || ! defined( 'APCAL_BL_LOADED' ) ) {
 define( 'APCAL_BL_LOADED' , 1 ) ;
 
 // for monthly calendar block
-define('_MB_APCAL_PREV_MONTH','Ïðåäûäóùèé');
-define('_MB_APCAL_NEXT_MONTH','Ñëåäóþùèé');
+define('_MB_APCAL_PREV_MONTH','ÐŸÑ€ÐµÐ´Ñ‹Ð´ÑƒÑ‰Ð¸Ð¹');
+define('_MB_APCAL_NEXT_MONTH','Ð¡Ð»ÐµÐ´ÑƒÑŽÑ‰Ð¸Ð¹');
 define('_MB_APCAL_YEAR','');
 define('_MB_APCAL_MONTH','');
-define('_MB_APCAL_JUMP','Ïåðåéòè');
+define('_MB_APCAL_JUMP','ÐŸÐµÑ€ÐµÐ¹Ñ‚Ð¸');
 
 // for after the day's events block
 // %s means the indicated day
-define('_MB_APCAL_EVENTS_AFTER','Ñîáûòèÿ ïîñëå %s');
+define('_MB_APCAL_EVENTS_AFTER','Ð¡Ð¾Ð±Ñ‹Ñ‚Ð¸Ñ Ð¿Ð¾ÑÐ»Ðµ %s');
 
 // for the day's events block
 // %s means the indicated day
-define('_MB_APCAL_EVENTS_THEDAY','Ñîáûòèÿ íà %s');
+define('_MB_APCAL_EVENTS_THEDAY','Ð¡Ð¾Ð±Ñ‹Ñ‚Ð¸Ñ Ð½Ð° %s');
 
 
-define("_MB_APCAL_MAXITEMS","Ïîêàçûâàòü");
-define("_MB_APCAL_CATSEL","Êàòåãîðèÿ");
-define("_MB_APCAL_CATSELSUB","Ïîêàçûâàòü ïîäêàòåãîðèè");
-define("_MB_APCAL_UNTILDAYS","Äî %s äíåé âêëþ÷èòåëüíî (0 - áåç îãðàíè÷åíèÿ ïî âðåìåíè)");
+define('_MB_APCAL_MAXITEMS', 'ÐŸÐ¾ÐºÐ°Ð·Ñ‹Ð²Ð°Ñ‚ÑŒ');
+define('_MB_APCAL_CATSEL', 'ÐšÐ°Ñ‚ÐµÐ³Ð¾Ñ€Ð¸Ñ');
+define('_MB_APCAL_CATSELSUB', 'ÐŸÐ¾ÐºÐ°Ð·Ñ‹Ð²Ð°Ñ‚ÑŒ Ð¿Ð¾Ð´ÐºÐ°Ñ‚ÐµÐ³Ð¾Ñ€Ð¸Ð¸');
+define('_MB_APCAL_UNTILDAYS', 'Ð”Ð¾ %s Ð´Ð½ÐµÐ¹ Ð²ÐºÐ»ÑŽÑ‡Ð¸Ñ‚ÐµÐ»ÑŒÐ½Ð¾ (0 - Ð±ÐµÐ· Ð¾Ð³Ñ€Ð°Ð½Ð¸Ñ‡ÐµÐ½Ð¸Ñ Ð¿Ð¾ Ð²Ñ€ÐµÐ¼ÐµÐ½Ð¸)');
 
-define("_MB_APCAL_MAXGIFSADAY","Ìàêñèìàëüíîå êîëè÷åñòâî òî÷åê/êàðòèíîê â äåíü");
-define("_MB_APCAL_JUSTONCEADAYAPLUGIN","Ïîêàçûâàòü òîëüêî 1 òî÷êó/êàðòèíêó â äåíü íà ïëàãèí");
-//define("_MB_APCAL_PLUGINS","Àêòèâíûå ïëàãèíû");
+define('_MB_APCAL_MAXGIFSADAY', 'ÐœÐ°ÐºÑÐ¸Ð¼Ð°Ð»ÑŒÐ½Ð¾Ðµ ÐºÐ¾Ð»Ð¸Ñ‡ÐµÑÑ‚Ð²Ð¾ Ñ‚Ð¾Ñ‡ÐµÐº/ÐºÐ°Ñ€Ñ‚Ð¸Ð½Ð¾Ðº Ð² Ð´ÐµÐ½ÑŒ');
+define('_MB_APCAL_JUSTONCEADAYAPLUGIN', 'ÐŸÐ¾ÐºÐ°Ð·Ñ‹Ð²Ð°Ñ‚ÑŒ Ñ‚Ð¾Ð»ÑŒÐºÐ¾ 1 Ñ‚Ð¾Ñ‡ÐºÑƒ/ÐºÐ°Ñ€Ñ‚Ð¸Ð½ÐºÑƒ Ð² Ð´ÐµÐ½ÑŒ Ð½Ð° Ð¿Ð»Ð°Ð³Ð¸Ð½');
+//define("_MB_APCAL_PLUGINS","ÐÐºÑ‚Ð¸Ð²Ð½Ñ‹Ðµ Ð¿Ð»Ð°Ð³Ð¸Ð½Ñ‹");
 //define("_MB_APCAL_PLUGINS_DESC","list the plugin's name separated with , (comma)");
 //define("_MB_APCAL_PLUGINS_VALID","Valid Plugins");
 
 }
 
-?>
+

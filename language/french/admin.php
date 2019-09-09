@@ -19,30 +19,30 @@ define('_AM_BLOCKS', 'Blocs');
 define('_AM_GOTOMODULE', 'Aller au module');
 
 // titles
-define("_AM_ADMISSION","Ev&egrave;nements approuv&eacute;s");
-define("_AM_MENU_EVENTS","Gestionnaire d'&eacute;v&egrave;nements");
-define("_AM_MENU_CATEGORIES","Gestionnaire de cat&eacute;gories");
-define("_AM_MENU_CAT2GROUP","Permissions des cat&eacute;gories");
-define("_AM_ICALENDAR_IMPORT","Imports iCalendar");
-define("_AM_GROUPPERM","Permissions Globlales");
-define("_AM_TABLEMAINTAIN","Maintenance des tables (Mise &agrave; jour)");
-define("_AM_MYBLOCKSADMIN","Admin des blocs et groupes de APCal");
+define('_AM_ADMISSION', 'Ev&egrave;nements approuv&eacute;s');
+define('_AM_MENU_EVENTS', "Gestionnaire d'&eacute;v&egrave;nements");
+define('_AM_MENU_CATEGORIES', 'Gestionnaire de cat&eacute;gories');
+define('_AM_MENU_CAT2GROUP', 'Permissions des cat&eacute;gories');
+define('_AM_ICALENDAR_IMPORT', 'Imports iCalendar');
+define('_AM_GROUPPERM', 'Permissions Globlales');
+define('_AM_TABLEMAINTAIN', 'Maintenance des tables (Mise &agrave; jour)');
+define('_AM_MYBLOCKSADMIN', 'Admin des blocs et groupes de APCal');
 
 // forms
-define("_AM_BUTTON_EXTRACT","Extraire");
-define("_AM_BUTTON_ADMIT","Accepter");
-define("_AM_BUTTON_MOVE","D&eacute;placer");
-define("_AM_BUTTON_COPY","Copier");
-define("_AM_CONFIRM_DELETE","Supprimer le(s) &eacute;v&egrave;nement(s) OK?");
-define("_AM_CONFIRM_MOVE","Retirer le lien de l'ancienne cat&eacute;gorie et ajouter un lien dans la cat&eacute;gorie sp&eacute;cifi&eacute;e OK?");
-define("_AM_CONFIRM_COPY","Ajouter un lien dans la cat&eacute;gorie sp&eacute;cifi&eacute;e OK?");
+define('_AM_BUTTON_EXTRACT', 'Extraire');
+define('_AM_BUTTON_ADMIT', 'Accepter');
+define('_AM_BUTTON_MOVE', 'D&eacute;placer');
+define('_AM_BUTTON_COPY', 'Copier');
+define('_AM_CONFIRM_DELETE', 'Supprimer le(s) &eacute;v&egrave;nement(s) OK?');
+define('_AM_CONFIRM_MOVE', "Retirer le lien de l'ancienne cat&eacute;gorie et ajouter un lien dans la cat&eacute;gorie sp&eacute;cifi&eacute;e OK?");
+define('_AM_CONFIRM_COPY', 'Ajouter un lien dans la cat&eacute;gorie sp&eacute;cifi&eacute;e OK?');
 define('_AM_OPT_PAST','Pass&eacute;s');
 define('_AM_OPT_FUTURE','Futurs');
 define('_AM_OPT_PASTANDFUTURE','Pass&eacute;s&Futurs');
 
 // format
-define("_AM_DTFMT_LIST_ALLDAY",'y-m-d');
-define("_AM_DTFMT_LIST_NORMAL",'y-m-d<\b\r />H:i');
+define('_AM_DTFMT_LIST_ALLDAY', 'y-m-d');
+define('_AM_DTFMT_LIST_NORMAL', 'y-m-d<\b\r />H:i');
 
 // timezones
 define('_AM_TZOPT_SERVER','A l\'heure du fuseau horaire du serveur');
@@ -50,51 +50,51 @@ define('_AM_TZOPT_GMT','A l\'heure GMT');
 define('_AM_TZOPT_USER','A l\'heure du fuseau horaire de l\'utilisateur');
 
 // admission
-define("_AM_LABEL_ADMIT","Les &eacute;v&egrave;nements v&eacute;rifi&eacute;s sont au statut : &agrave; approuver ");
-define("_AM_MES_ADMITTED","Ev&egrave;nement(s) a(ont) &eacute;t&eacute; approuv&eacute;(s)");
-define("_AM_ADMIT_TH0","Utilisateur");
-define("_AM_ADMIT_TH1","Heure de d&eacute;but");
-define("_AM_ADMIT_TH2","Heure de fin");
-define("_AM_ADMIT_TH3","Titre");
-define("_AM_ADMIT_TH4","P&eacute;riodicit&eacute;");
+define('_AM_LABEL_ADMIT', 'Les &eacute;v&egrave;nements v&eacute;rifi&eacute;s sont au statut : &agrave; approuver ');
+define('_AM_MES_ADMITTED', 'Ev&egrave;nement(s) a(ont) &eacute;t&eacute; approuv&eacute;(s)');
+define('_AM_ADMIT_TH0', 'Utilisateur');
+define('_AM_ADMIT_TH1', 'Heure de d&eacute;but');
+define('_AM_ADMIT_TH2', 'Heure de fin');
+define('_AM_ADMIT_TH3', 'Titre');
+define('_AM_ADMIT_TH4', 'P&eacute;riodicit&eacute;');
 
 // events manager & importing iCalendar
-define("_AM_LABEL_IMPORTFROMWEB","Importer les donn&eacute;es d'iCalendar &agrave; partir du web (Rentrer l'URL en commen�ant par 'http://' ou 'webcal://')");
-define("_AM_LABEL_UPLOADFROMFILE","T&eacute;l&eacute;charger les donn&eacute;es d'iCalendar (S&eacute;lectionner un fichier en local sur votre machine)");
-define("_AM_LABEL_IO_CHECKEDITEMS","Les &eacute;v&egrave;nements v&eacute;rifi&eacute;s sont : ");
-define("_AM_LABEL_IO_OUTPUT"," &agrave; exporter dans iCalendar");
-define("_AM_LABEL_IO_DELETE"," &agrave; supprimer ");
-define("_AM_MES_EVENTLINKTOCAT","&eacute;v&egrave;nement(s) ont &eacute;t&eacute; li&eacute;(s) &agrave; cette cat&eacute;gorie");
-define("_AM_MES_EVENTUNLINKED","&eacute;v&egrave;nement(s) ont eu leur(s) lien(s) supprim&eacute; de l'ancienne cat&eacute;gorie");
-define("_AM_FMT_IMPORTED","&eacute;v&egrave;nement(s) ont &eacute;t&eacute; import&eacute;(s) depuis '%s'");
-define("_AM_MES_DELETED","&eacute;v&egrave;nement(s) ont &eacute;t&eacute; supprim&eacute;(s)");
-define("_AM_IO_TH0","Utilisateur");
-define("_AM_IO_TH1","Date et heure de d&eacute;but");
-define("_AM_IO_TH2","Date et heure de fin");
-define("_AM_IO_TH3","Titre");
-define("_AM_IO_TH4","R&egrave;gles");
-define("_AM_IO_TH5","Admission");
+define('_AM_LABEL_IMPORTFROMWEB', "Importer les donn&eacute;es d'iCalendar &agrave; partir du web (Rentrer l'URL en commen�ant par 'http://' ou 'webcal://')");
+define('_AM_LABEL_UPLOADFROMFILE', "T&eacute;l&eacute;charger les donn&eacute;es d'iCalendar (S&eacute;lectionner un fichier en local sur votre machine)");
+define('_AM_LABEL_IO_CHECKEDITEMS', 'Les &eacute;v&egrave;nements v&eacute;rifi&eacute;s sont : ');
+define('_AM_LABEL_IO_OUTPUT', ' &agrave; exporter dans iCalendar');
+define('_AM_LABEL_IO_DELETE', ' &agrave; supprimer ');
+define('_AM_MES_EVENTLINKTOCAT', '&eacute;v&egrave;nement(s) ont &eacute;t&eacute; li&eacute;(s) &agrave; cette cat&eacute;gorie');
+define('_AM_MES_EVENTUNLINKED', "&eacute;v&egrave;nement(s) ont eu leur(s) lien(s) supprim&eacute; de l'ancienne cat&eacute;gorie");
+define('_AM_FMT_IMPORTED', "&eacute;v&egrave;nement(s) ont &eacute;t&eacute; import&eacute;(s) depuis '%s'");
+define('_AM_MES_DELETED', '&eacute;v&egrave;nement(s) ont &eacute;t&eacute; supprim&eacute;(s)');
+define('_AM_IO_TH0', 'Utilisateur');
+define('_AM_IO_TH1', 'Date et heure de d&eacute;but');
+define('_AM_IO_TH2', 'Date et heure de fin');
+define('_AM_IO_TH3', 'Titre');
+define('_AM_IO_TH4', 'R&egrave;gles');
+define('_AM_IO_TH5', 'Admission');
 
 // Group's Permissions
-define( '_AM_GPERM_G_INSERTABLE' , "peut ajouter" ) ;
-define( '_AM_GPERM_G_SUPERINSERT' , "super ajout" ) ;
-define( '_AM_GPERM_G_EDITABLE' , "peut &eacute;diter" ) ;
-define( '_AM_GPERM_G_SUPEREDIT' , "super &eacute;dition" ) ;
-define( '_AM_GPERM_G_DELETABLE' , "peut supprimer" ) ;
-define( '_AM_GPERM_G_SUPERDELETE' , "super suppression" ) ;
-define( '_AM_GPERM_G_TOUCHOTHERS' , "peut modifier les autres" ) ;
-define( '_AM_CAT2GROUPDESC' , "Cochez les cat&eacute;gories auxquelles vous pouvez acc&eacute;der" ) ;
+define('_AM_GPERM_G_INSERTABLE' , 'peut ajouter') ;
+define('_AM_GPERM_G_SUPERINSERT' , 'super ajout') ;
+define('_AM_GPERM_G_EDITABLE' , 'peut &eacute;diter') ;
+define('_AM_GPERM_G_SUPEREDIT' , 'super &eacute;dition') ;
+define('_AM_GPERM_G_DELETABLE' , 'peut supprimer') ;
+define('_AM_GPERM_G_SUPERDELETE' , 'super suppression') ;
+define('_AM_GPERM_G_TOUCHOTHERS' , 'peut modifier les autres') ;
+define('_AM_CAT2GROUPDESC' , 'Cochez les cat&eacute;gories auxquelles vous pouvez acc&eacute;der') ;
 define( '_AM_GROUPPERMDESC' , "S&eacute;lectionner les actions que tous les groupes sont autoris&eacute;s &agrave; faire<br/>Si vous avez besoin de ce dispositif, d&eacute;finissez d'abord les 'Droits Utilisateurs' &agrave; Sp&eacute;cifier dans les permissions des groupes.<br />Les r&eacute;glages des groupes administrateurs et invit&eacute;s seront ignor&eacute;s." ) ;
 
 // Table Maintenance
-define( '_AM_MB_SUCCESSUPDATETABLE' , "La mise &agrave; jour de la(des) table(s) a &eacute;t&eacute; effectu&eacute;e avec succ&egrave;s" ) ;
-define( '_AM_MB_FAILUPDATETABLE' , "La mise &agrave; jour de la(des) table(s) a &eacute;chou&eacute;" ) ;
-define( '_AM_NOTICE_NOERRORS' , "Aucune erreur d&eacute;tect&eacute;e dans les tables et les enregistrements." ) ;
+define('_AM_MB_SUCCESSUPDATETABLE' , 'La mise &agrave; jour de la(des) table(s) a &eacute;t&eacute; effectu&eacute;e avec succ&egrave;s') ;
+define('_AM_MB_FAILUPDATETABLE' , 'La mise &agrave; jour de la(des) table(s) a &eacute;chou&eacute;') ;
+define('_AM_NOTICE_NOERRORS' , 'Aucune erreur d&eacute;tect&eacute;e dans les tables et les enregistrements.') ;
 define( '_AM_ALRT_CATTABLENOTEXIST' , "La table cat&eacute;gories n'existe pas.<br />\nVoulez-vous cr&eacute;er cette table ?" ) ;
 define( '_AM_ALRT_OLDTABLE' , "La structure de la table &egrave;venements est ancienne.<br />\nVoulez-vous mettre &agrave; jour la table ?" ) ;
 define( '_AM_ALRT_TOOOLDTABLE' , "La table retourne une erreur.<br />\nPeut-&ecirc;tre utilisiez vous APCal 0.3x ou pr&eacute;c&eacute;dent.<br />\nPremi&egrave;rement, Mettez &agrave; jour vers 0.4x or 0.5x." ) ;
 define( '_AM_FMT_SERVER_TZ_ALL',"Les Fuseau Horaire du Serveur (heure d'hiver) est: %+2.1f<br />Le Fuseau Horaire du Serveur (heure d'&eacute;t&eacute;) est : %+2.1f<br />Le Nom de la zone du serveur est: %s<br />La valeur issue de la configuration de XOOPS est: %+2.1f<br />La valeur que APCal utilise est: %+2.1f<br />");
-define( '_AM_FMT_WRONGSTZ' , "Il y a %s &eacute;v&egrave;nement(s) qui sont enregistr&eacute;(s) avec un mauvais fuseau horaire.<br />Voulez-vous les r&eacute;parer ?" ) ;
+define('_AM_FMT_WRONGSTZ' , 'Il y a %s &eacute;v&egrave;nement(s) qui sont enregistr&eacute;(s) avec un mauvais fuseau horaire.<br />Voulez-vous les r&eacute;parer ?') ;
 define( '_AM_TH_SERVER_TZ_COUNT','Ev&egrave;nements');
 define( '_AM_TH_SERVER_TZ_VALUE','Fuseau Horaire');
 define( '_AM_TH_SERVER_TZ_VALUE_TO','Modifications (-14.0�+14.0)');
@@ -156,4 +156,4 @@ define('_AM_BADMIN', 'Administration des blocs');
 
 }
 
-?>
+

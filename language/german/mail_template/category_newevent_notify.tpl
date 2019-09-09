@@ -2,13 +2,13 @@ Hallo {X_UNAME},
 
 Ein neuer Termin "{EVENT_SUMMARY}" in der Kategorie "{CATEGORY_TITLE}" wurde erstellt auf der Webseite {X_SITENAME}.
 
-Folgender Link fó…rt direkt zu diesem Termin:
+Folgender Link f√ºhrt direkt zu diesem Termin:
 {EVENT_URI}
 
 -----------
 
 Diese Nachricht wurde gesendet, weil die automatische Benachrichtigung -
-wenn neue Termine auf unserer Seite eingetragen werden - ausgewÁ…lt worden ist.
+wenn neue Termine auf unserer Seite eingetragen werden - ausgew√§hlt worden ist.
 
 Wenn dies ein Fehler ist oder keine weiteren Nachrichten dieser Art mehr ausgeschickt werden sollen, bitte folgenden Link aufrufen:
 {X_UNSUBSCRIBE_URL}

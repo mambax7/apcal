@@ -6,10 +6,10 @@ define( 'APCAL_BL_LOADED'  , 1 ) ;
 
 // for monthly calendar block
 define('_MB_APCAL_PREV_MONTH'     , 'Poprzedni');
-define('_MB_APCAL_NEXT_MONTH'     , 'Nastêpny');
+define('_MB_APCAL_NEXT_MONTH'     , 'Nastï¿½pny');
 define('_MB_APCAL_YEAR'           , '');
 define('_MB_APCAL_MONTH'          , '');
-define('_MB_APCAL_JUMP'           , 'Id¼');
+define('_MB_APCAL_JUMP'           , 'Idï¿½');
 
 // for after the day's events block
 // %s means the indicated day
@@ -20,14 +20,14 @@ define('_MB_APCAL_EVENTS_AFTER'   , 'Wydarzenia po %s');
 define('_MB_APCAL_EVENTS_THEDAY'  , 'Wydarzenia w %s');
 
 
-define("_MB_APCAL_MAXITEMS"       , "Wy¶wietl");
-define("_MB_APCAL_CATSEL"         , "Kategoria");
-define("_MB_APCAL_CATSELSUB"      , "Wy¶wietl podkategorie");
-define("_MB_APCAL_UNTILDAYS"      , "Do %s dni najwiêcej (0 - nieskoñczono¶æ)");
+define('_MB_APCAL_MAXITEMS', 'Wyï¿½wietl');
+define('_MB_APCAL_CATSEL', 'Kategoria');
+define('_MB_APCAL_CATSELSUB', 'Wyï¿½wietl podkategorie');
+define('_MB_APCAL_UNTILDAYS', 'Do %s dni najwiï¿½cej (0 - nieskoï¿½czonoï¿½ï¿½)');
 
-define("_MB_APCAL_MAXGIFSADAY"    , "Maksymalna liczba  wydarzeñ na dzieñ");
-define("_MB_APCAL_JUSTONCEADAYAPLUGIN", "Wy¶wietl tylko 1 wydarzenie na dzieñ i na plugin");
+define('_MB_APCAL_MAXGIFSADAY', 'Maksymalna liczba  wydarzeï¿½ na dzieï¿½');
+define('_MB_APCAL_JUSTONCEADAYAPLUGIN', 'Wyï¿½wietl tylko 1 wydarzenie na dzieï¿½ i na plugin');
 
 }
 
-?>
+

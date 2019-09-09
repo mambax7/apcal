@@ -5,169 +5,169 @@ if( defined( 'FOR_XOOPS_LANG_CHECKER' ) || ! defined( 'APCAL_CNST_LOADED' ) ) {
 
 
 // Appended by Xoops Language Checker -GIJOE- in 2005-09-09 18:17:12
-define('_APCAL_MB_LINK_TO_RRULE1ST','³Ìªì³]©wªº¤é´Á');
-define('_APCAL_MB_RRULE1ST','²Ä¤@¦¸µo¥Íªº¤é´Á');
+define('_APCAL_MB_LINK_TO_RRULE1ST','ï¿½Ìªï¿½]ï¿½wï¿½ï¿½ï¿½ï¿½ï¿½');
+define('_APCAL_MB_RRULE1ST','ï¿½Ä¤@ï¿½ï¿½ï¿½oï¿½Íªï¿½ï¿½ï¿½ï¿½');
 
-define('_APCAL_BTN_DELETE_ONE','³æµ§§R°£');
+define('_APCAL_BTN_DELETE_ONE','ï¿½æµ§ï¿½Rï¿½ï¿½');
 
 define('_APCAL_JS_CALENDAR','calendar-tw.js');
-define('_APCAL_JSFMT_YMDN','%Y¦~ %B %d¤é (%A)');
+define('_APCAL_JSFMT_YMDN','%Yï¿½~ %B %dï¿½ï¿½ (%A)');
 define('_APCAL_DTFMT_MINUTE','i');
-define('_APCAL_FMT_YMDN','%1$s¦~ %2$s %3$s %4$s');
+define('_APCAL_FMT_YMDN','%1$sï¿½~ %2$s %3$s %4$s');
 define('_APCAL_FMT_DHI','%1$s %2$s:%3$s');
 define('_APCAL_FMT_HI','%1$s:%2$s');
-define('_APCAL_TH_TIMEZONE','®É°Ï');
+define('_APCAL_TH_TIMEZONE','ï¿½É°ï¿½');
 
 define( 'APCAL_CNST_LOADED' , 1 ) ;
 
 define('_APCAL_FMT_MD','%1$s%2$s') ;
-define('_APCAL_FMT_YMD','%1$s¦~ %2$s %3$s') ;
-define('_APCAL_FMT_YMW','%1$s¦~ %2$s %3$s ') ;
-define('_APCAL_FMT_YEAR_MONTH','%1$s¦~ %2$s') ;
-define('_APCAL_FMT_YEAR','%s¦~') ;
+define('_APCAL_FMT_YMD','%1$sï¿½~ %2$s %3$s') ;
+define('_APCAL_FMT_YMW','%1$sï¿½~ %2$s %3$s ') ;
+define('_APCAL_FMT_YEAR_MONTH','%1$sï¿½~ %2$s') ;
+define('_APCAL_FMT_YEAR','%sï¿½~') ;
 
-define('_APCAL_ICON_DAILY','¤é¾ä') ;
-define('_APCAL_ICON_WEEKLY','¶g¾ä') ;
-define('_APCAL_ICON_MONTHLY','¤ë¾ä') ;
-define('_APCAL_ICON_YEARLY','¦~¾ä') ;
+define('_APCAL_ICON_DAILY','ï¿½ï¿½ï¿½') ;
+define('_APCAL_ICON_WEEKLY','ï¿½gï¿½ï¿½') ;
+define('_APCAL_ICON_MONTHLY','ï¿½ï¿½ï¿½') ;
+define('_APCAL_ICON_YEARLY','ï¿½~ï¿½ï¿½') ;
 
-define('_APCAL_MB_LINKTODAY','¤µ¤Ñ') ;
-define('_APCAL_MB_NOSUBJECT','(¨S¦³¥DÃD)') ;
+define('_APCAL_MB_LINKTODAY','ï¿½ï¿½ï¿½ï¿½') ;
+define('_APCAL_MB_NOSUBJECT','(ï¿½Sï¿½ï¿½ï¿½Dï¿½D)') ;
 
-define('_APCAL_MB_PREV_DATE','«e¤@¤Ñ') ;
-define('_APCAL_MB_NEXT_DATE','¦¸¤@¤Ñ') ;
-define('_APCAL_MB_PREV_WEEK','¤W¶g') ;
-define('_APCAL_MB_NEXT_WEEK','¤U¶g') ;
-define('_APCAL_MB_PREV_MONTH','¤W­Ó¤ë') ;
-define('_APCAL_MB_NEXT_MONTH','¤U­Ó¤ë') ;
-define('_APCAL_MB_PREV_YEAR','«e¤@¦~') ;
-define('_APCAL_MB_NEXT_YEAR','¦¸¤@¦~') ;
+define('_APCAL_MB_PREV_DATE','ï¿½eï¿½@ï¿½ï¿½') ;
+define('_APCAL_MB_NEXT_DATE','ï¿½ï¿½ï¿½@ï¿½ï¿½') ;
+define('_APCAL_MB_PREV_WEEK','ï¿½Wï¿½g') ;
+define('_APCAL_MB_NEXT_WEEK','ï¿½Uï¿½g') ;
+define('_APCAL_MB_PREV_MONTH','ï¿½Wï¿½Ó¤ï¿½') ;
+define('_APCAL_MB_NEXT_MONTH','ï¿½Uï¿½Ó¤ï¿½') ;
+define('_APCAL_MB_PREV_YEAR','ï¿½eï¿½@ï¿½~') ;
+define('_APCAL_MB_NEXT_YEAR','ï¿½ï¿½ï¿½@ï¿½~') ;
 
-define('_APCAL_MB_NOEVENT','¨S¦³¨Æ¥ó') ;
-define('_APCAL_MB_ADDEVENT','·s¼W¨Æ¥ó') ;
-define('_APCAL_MB_CONTINUING','(Ä~Äò)') ;
-define('_APCAL_MB_RESTEVENT_PRE','§ó¦h') ;
-define('_APCAL_MB_RESTEVENT_SUF','¨Æ¥ó') ;
-define('_APCAL_MB_TIMESEPARATOR','¡ã') ;
+define('_APCAL_MB_NOEVENT','ï¿½Sï¿½ï¿½ï¿½Æ¥ï¿½') ;
+define('_APCAL_MB_ADDEVENT','ï¿½sï¿½Wï¿½Æ¥ï¿½') ;
+define('_APCAL_MB_CONTINUING','(ï¿½~ï¿½ï¿½)') ;
+define('_APCAL_MB_RESTEVENT_PRE','ï¿½ï¿½h') ;
+define('_APCAL_MB_RESTEVENT_SUF','ï¿½Æ¥ï¿½') ;
+define('_APCAL_MB_TIMESEPARATOR','ï¿½ï¿½') ;
 
-define('_APCAL_MB_ALLDAY_EVENT','¥þ¤Ñ¨Æ¥ó') ;
-define('_APCAL_MB_LONG_EVENT','ªø´Á¨Æ¥ó') ;
-define('_APCAL_MB_LONG_SPECIALDAY','¶g¦~¬ö©À¤é¡E°²¤éµ¥') ;
+define('_APCAL_MB_ALLDAY_EVENT','ï¿½ï¿½ï¿½Ñ¨Æ¥ï¿½') ;
+define('_APCAL_MB_LONG_EVENT','ï¿½ï¿½ï¿½ï¿½ï¿½Æ¥ï¿½') ;
+define('_APCAL_MB_LONG_SPECIALDAY','ï¿½gï¿½~ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Eï¿½ï¿½ï¿½éµ¥') ;
 
-define('_APCAL_MB_PUBLIC','¤½¶}¨Æ¥ó') ;
-define('_APCAL_MB_PRIVATE','¤£¤½¶}¨Æ¥ó') ;
-define('_APCAL_MB_PRIVATETARGET','¡@¡@¤½¶}©ó¡G %s');
+define('_APCAL_MB_PUBLIC','ï¿½ï¿½ï¿½}ï¿½Æ¥ï¿½') ;
+define('_APCAL_MB_PRIVATE','ï¿½ï¿½ï¿½ï¿½ï¿½}ï¿½Æ¥ï¿½') ;
+define('_APCAL_MB_PRIVATETARGET','ï¿½@ï¿½@ï¿½ï¿½ï¿½}ï¿½ï¿½G %s');
 
-define('_APCAL_MB_EVENT_NOTREGISTER','©|¥¼¬ö¿ý') ;
-define('_APCAL_MB_EVENT_ADMITTED','¤w¼f®Ö') ;
-define('_APCAL_MB_EVENT_NEEDADMIT','¼f®Ö¤¤') ;
+define('_APCAL_MB_EVENT_NOTREGISTER','ï¿½|ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½') ;
+define('_APCAL_MB_EVENT_ADMITTED','ï¿½wï¿½fï¿½ï¿½') ;
+define('_APCAL_MB_EVENT_NEEDADMIT','ï¿½fï¿½Ö¤ï¿½') ;
 
-define('_APCAL_MB_TITLE_EVENTINFO','¦æ¨Æ¾ä') ;
-define('_APCAL_MB_SUBTITLE_EVENTDETAIL','Æ[¬Ý¸Ô±¡') ;
-define('_APCAL_MB_SUBTITLE_EVENTEDIT','½s¿è') ;
+define('_APCAL_MB_TITLE_EVENTINFO','ï¿½ï¿½Æ¾ï¿½') ;
+define('_APCAL_MB_SUBTITLE_EVENTDETAIL','ï¿½[ï¿½Ý¸Ô±ï¿½') ;
+define('_APCAL_MB_SUBTITLE_EVENTEDIT','ï¿½sï¿½ï¿½') ;
 
-define('_APCAL_MB_HOUR_SUF','®É') ;
-define('_APCAL_MB_MINUTE_SUF','¤À') ;
+define('_APCAL_MB_HOUR_SUF','ï¿½ï¿½') ;
+define('_APCAL_MB_MINUTE_SUF','ï¿½ï¿½') ;
 
-define('_APCAL_TH_SUMMARY','¨Æ¥ó¦W') ;
-define('_APCAL_TH_STARTDATETIME','¶}©l¤é®É') ;
-define('_APCAL_TH_ENDDATETIME','µ²§ô¤é®É') ;
-define('_APCAL_TH_ALLDAYOPTIONS','¥þ¤Ñ¿ï¶µ') ;
-define('_APCAL_TH_LOCATION','¬ÛÃö³õ©Ò') ;
-define('_APCAL_TH_CONTACT','¬ÛÃö¤H­û') ;
-define('_APCAL_TH_CLASS','Ãþ§O') ;
-define('_APCAL_TH_DESCRIPTION','¸Ô²Ó¤º®e') ;
-define('_APCAL_TH_RRULE','­«½Æ¿ï¶µ') ;
-define('_APCAL_TH_ADMISSIONSTATUS','ª¬ºA') ;
+define('_APCAL_TH_SUMMARY','ï¿½Æ¥ï¿½W') ;
+define('_APCAL_TH_STARTDATETIME','ï¿½}ï¿½lï¿½ï¿½ï¿½') ;
+define('_APCAL_TH_ENDDATETIME','ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½') ;
+define('_APCAL_TH_ALLDAYOPTIONS','ï¿½ï¿½ï¿½Ñ¿ï¶µ') ;
+define('_APCAL_TH_LOCATION','ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½') ;
+define('_APCAL_TH_CONTACT','ï¿½ï¿½ï¿½ï¿½ï¿½Hï¿½ï¿½') ;
+define('_APCAL_TH_CLASS','ï¿½ï¿½ï¿½O') ;
+define('_APCAL_TH_DESCRIPTION','ï¿½Ô²Ó¤ï¿½ï¿½e') ;
+define('_APCAL_TH_RRULE','ï¿½ï¿½ï¿½Æ¿ï¶µ') ;
+define('_APCAL_TH_ADMISSIONSTATUS','ï¿½ï¿½ï¿½A') ;
 
-define('_APCAL_NTC_MONTHLYBYMONTHDAY',' (½Ð«ü©w¤é´Á)') ;
-define('_APCAL_NTC_EXTRACTLIMIT','¡°­«½Æ¤W­­ %s ¶µ¨Æ¥ó') ;
-define('_APCAL_NTC_NUMBEROFNEEDADMIT','(%s¥ó©|¥¼®Ö¥i¨Æ¥ó)') ;
+define('_APCAL_NTC_MONTHLYBYMONTHDAY',' (ï¿½Ð«ï¿½ï¿½wï¿½ï¿½ï¿½)') ;
+define('_APCAL_NTC_EXTRACTLIMIT','ï¿½ï¿½ï¿½ï¿½ï¿½Æ¤Wï¿½ï¿½ %s ï¿½ï¿½ï¿½Æ¥ï¿½') ;
+define('_APCAL_NTC_NUMBEROFNEEDADMIT','(%sï¿½ï¿½|ï¿½ï¿½ï¿½Ö¥iï¿½Æ¥ï¿½)') ;
 
-define('_APCAL_OPT_PRIVATEMYSELF','­Ó¤H±MÄÝ') ;
-define('_APCAL_OPT_PRIVATEGROUP','¸s²Õ¡G%s') ;
-define('_APCAL_OPT_PRIVATEINVALID','(µL®Äªº¸s²Õ)') ;
+define('_APCAL_OPT_PRIVATEMYSELF','ï¿½Ó¤Hï¿½Mï¿½ï¿½') ;
+define('_APCAL_OPT_PRIVATEGROUP','ï¿½sï¿½Õ¡G%s') ;
+define('_APCAL_OPT_PRIVATEINVALID','(ï¿½Lï¿½Äªï¿½ï¿½sï¿½ï¿½)') ;
 
-define('_APCAL_CNFM_SAVEAS_YN','±z­nÀx¦s¦¨¥t¤@µ§¬ö¿ý¶Ü¡H') ;
-define('_APCAL_CNFM_DELETE_YN','±z­n§R°£³oµ§¬ö¿ý¶Ü¡H') ;
+define('_APCAL_CNFM_SAVEAS_YN','ï¿½zï¿½nï¿½xï¿½sï¿½ï¿½ï¿½tï¿½@ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ü¡H') ;
+define('_APCAL_CNFM_DELETE_YN','ï¿½zï¿½nï¿½Rï¿½ï¿½ï¿½oï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ü¡H') ;
 
-define('_APCAL_ERR_INVALID_EVENT_ID','¿ù»~¡G¨S¦³µo²{¨Æ¥óID') ;
-define('_APCAL_ERR_NOPERM_TO_SHOW',"¿ù»~¡G±z¨S¦³Æ[¬ÝªºÅv­­") ;
-define('_APCAL_ERR_NOPERM_TO_OUTPUTICS',"¿ù»~¡G±z¨S¦³¶×¥X¦Ü iCalendar ªºÅv­­") ;
-define('_APCAL_ERR_LACKINDISPITEM','ÁÙ¦³ %s ©|¥¼¿é¤J¡C<br />½Ð«ö¦^¤W¤@­¶¦A¿é¤J') ;
+define('_APCAL_ERR_INVALID_EVENT_ID','ï¿½ï¿½ï¿½~ï¿½Gï¿½Sï¿½ï¿½ï¿½oï¿½{ï¿½Æ¥ï¿½ID') ;
+define('_APCAL_ERR_NOPERM_TO_SHOW', 'ï¿½ï¿½ï¿½~ï¿½Gï¿½zï¿½Sï¿½ï¿½ï¿½[ï¿½Ýªï¿½ï¿½vï¿½ï¿½') ;
+define('_APCAL_ERR_NOPERM_TO_OUTPUTICS', 'ï¿½ï¿½ï¿½~ï¿½Gï¿½zï¿½Sï¿½ï¿½ï¿½×¥Xï¿½ï¿½ iCalendar ï¿½ï¿½ï¿½vï¿½ï¿½') ;
+define('_APCAL_ERR_LACKINDISPITEM','ï¿½Ù¦ï¿½ %s ï¿½|ï¿½ï¿½ï¿½ï¿½Jï¿½C<br />ï¿½Ð«ï¿½ï¿½^ï¿½Wï¿½@ï¿½ï¿½ï¿½Aï¿½ï¿½J') ;
 
-define('_APCAL_BTN_JUMP','¤Á´«') ;
-define('_APCAL_BTN_NEWINSERTED','·s¼W') ;
-define('_APCAL_BTN_SUBMITCHANGES',' ÅÜ§ó! ') ;
-define('_APCAL_BTN_SAVEAS','Àx¦s¬°') ;
-define('_APCAL_BTN_DELETE','§R°£') ;
-define('_APCAL_BTN_EDITEVENT','½s¿è') ;
-define('_APCAL_BTN_RESET','­«³]') ;
+define('_APCAL_BTN_JUMP','ï¿½ï¿½ï¿½ï¿½') ;
+define('_APCAL_BTN_NEWINSERTED','ï¿½sï¿½W') ;
+define('_APCAL_BTN_SUBMITCHANGES',' ï¿½Ü§ï¿½! ') ;
+define('_APCAL_BTN_SAVEAS','ï¿½xï¿½sï¿½ï¿½') ;
+define('_APCAL_BTN_DELETE','ï¿½Rï¿½ï¿½') ;
+define('_APCAL_BTN_EDITEVENT','ï¿½sï¿½ï¿½') ;
+define('_APCAL_BTN_RESET','ï¿½ï¿½ï¿½]') ;
 define('_APCAL_BTN_OUTPUTICS_WIN','iCalendar(Win)') ;
 define('_APCAL_BTN_OUTPUTICS_MAC','iCalendar(Mac)') ;
 
-define('_APCAL_RR_EVERYDAY','¨C¤Ñ') ;
-define('_APCAL_RR_EVERYWEEK','¨C¶g') ;
-define('_APCAL_RR_EVERYMONTH','¨C¤ë') ;
-define('_APCAL_RR_EVERYYEAR','¨C¦~') ;
-define('_APCAL_RR_FREQDAILY','¤é­«½Æ') ;
-define('_APCAL_RR_FREQWEEKLY','¶g­«½Æ') ;
-define('_APCAL_RR_FREQMONTHLY','¤ë­«½Æ') ;
-define('_APCAL_RR_FREQYEARLY','¦~­«½Æ') ;
-define('_APCAL_RR_FREQDAILY_PRE','¨C¹j¡G') ;
-define('_APCAL_RR_FREQWEEKLY_PRE','¨C¹j¡G') ;
-define('_APCAL_RR_FREQMONTHLY_PRE','¨C¹j¡G') ;
-define('_APCAL_RR_FREQYEARLY_PRE','¨C¹j¡G') ;
-define('_APCAL_RR_FREQDAILY_SUF','¤é') ;
-define('_APCAL_RR_FREQWEEKLY_SUF','¶g') ;
-define('_APCAL_RR_FREQMONTHLY_SUF','¤ë') ;
-define('_APCAL_RR_FREQYEARLY_SUF','¦~') ;
-define('_APCAL_RR_PERDAY','¨C %s ¤é') ;
-define('_APCAL_RR_PERWEEK','¨C %s ¶g') ;
-define('_APCAL_RR_PERMONTH','¨C %s ¤ë') ;
-define('_APCAL_RR_PERYEAR','¨C %s ¦~') ;
-define('_APCAL_RR_COUNT','<br />%s ¦¸') ;
-define('_APCAL_RR_UNTIL','<br />¨ì %s') ;
-define('_APCAL_RR_R_NORRULE','«D­«½Æ¨Æ¥ó') ;
-define('_APCAL_RR_R_YESRRULE','­«½Æ¨Æ¥ó') ;
-define('_APCAL_RR_OR','©Î') ;
-define('_APCAL_RR_S_NOTSELECTED','-¨S¦³¿ï¾Ü-') ;
-define('_APCAL_RR_S_SAMEASBDATE','»P¶}©l¤é´Á¦P¤@¤Ñ') ;
-define('_APCAL_RR_R_NOCOUNTUNTIL','¨S¦³­­¨î') ;
-define('_APCAL_RR_R_USECOUNT_PRE','­«½Æ¦¸¼Æ') ;
-define('_APCAL_RR_R_USECOUNT_SUF','¦¸') ;
-define('_APCAL_RR_R_USEUNTIL','ª½¨ì') ;
+define('_APCAL_RR_EVERYDAY','ï¿½Cï¿½ï¿½') ;
+define('_APCAL_RR_EVERYWEEK','ï¿½Cï¿½g') ;
+define('_APCAL_RR_EVERYMONTH','ï¿½Cï¿½ï¿½') ;
+define('_APCAL_RR_EVERYYEAR','ï¿½Cï¿½~') ;
+define('_APCAL_RR_FREQDAILY','ï¿½é­«ï¿½ï¿½') ;
+define('_APCAL_RR_FREQWEEKLY','ï¿½gï¿½ï¿½ï¿½ï¿½') ;
+define('_APCAL_RR_FREQMONTHLY','ï¿½ë­«ï¿½ï¿½') ;
+define('_APCAL_RR_FREQYEARLY','ï¿½~ï¿½ï¿½ï¿½ï¿½') ;
+define('_APCAL_RR_FREQDAILY_PRE','ï¿½Cï¿½jï¿½G') ;
+define('_APCAL_RR_FREQWEEKLY_PRE','ï¿½Cï¿½jï¿½G') ;
+define('_APCAL_RR_FREQMONTHLY_PRE','ï¿½Cï¿½jï¿½G') ;
+define('_APCAL_RR_FREQYEARLY_PRE','ï¿½Cï¿½jï¿½G') ;
+define('_APCAL_RR_FREQDAILY_SUF','ï¿½ï¿½') ;
+define('_APCAL_RR_FREQWEEKLY_SUF','ï¿½g') ;
+define('_APCAL_RR_FREQMONTHLY_SUF','ï¿½ï¿½') ;
+define('_APCAL_RR_FREQYEARLY_SUF','ï¿½~') ;
+define('_APCAL_RR_PERDAY','ï¿½C %s ï¿½ï¿½') ;
+define('_APCAL_RR_PERWEEK','ï¿½C %s ï¿½g') ;
+define('_APCAL_RR_PERMONTH','ï¿½C %s ï¿½ï¿½') ;
+define('_APCAL_RR_PERYEAR','ï¿½C %s ï¿½~') ;
+define('_APCAL_RR_COUNT','<br />%s ï¿½ï¿½') ;
+define('_APCAL_RR_UNTIL','<br />ï¿½ï¿½ %s') ;
+define('_APCAL_RR_R_NORRULE','ï¿½Dï¿½ï¿½ï¿½Æ¨Æ¥ï¿½') ;
+define('_APCAL_RR_R_YESRRULE','ï¿½ï¿½ï¿½Æ¨Æ¥ï¿½') ;
+define('_APCAL_RR_OR','ï¿½ï¿½') ;
+define('_APCAL_RR_S_NOTSELECTED','-ï¿½Sï¿½ï¿½ï¿½ï¿½ï¿½-') ;
+define('_APCAL_RR_S_SAMEASBDATE','ï¿½Pï¿½}ï¿½lï¿½ï¿½ï¿½ï¿½Pï¿½@ï¿½ï¿½') ;
+define('_APCAL_RR_R_NOCOUNTUNTIL','ï¿½Sï¿½ï¿½ï¿½ï¿½ï¿½ï¿½') ;
+define('_APCAL_RR_R_USECOUNT_PRE','ï¿½ï¿½ï¿½Æ¦ï¿½ï¿½ï¿½') ;
+define('_APCAL_RR_R_USECOUNT_SUF','ï¿½ï¿½') ;
+define('_APCAL_RR_R_USEUNTIL','ï¿½ï¿½ï¿½ï¿½') ;
 
-define('_APCAL_TH_SUBMITTER','µoªíªÌ');
+define('_APCAL_TH_SUBMITTER','ï¿½oï¿½ï¿½ï¿½');
 
-define('_APCAL_FMT_YW','%1$s¦~ ²Ä%2$s¶g ');
-define('_APCAL_FMT_WEEKNO','²Ä%s¶g');
-define('_APCAL_ICON_LIST','Åã¥Ü¦æ¨Æ¤@Äýªí');
-define('_APCAL_MB_SHOWALLCAT','Åã¥Ü¥þ³¡Ãþ§O');
-define('_APCAL_MB_ORDER_ASC','¤Éò»');
-define('_APCAL_MB_ORDER_DESC','­°ò»');
-define('_APCAL_MB_SORTBY','±Æ¦C¶¶§Ç¡G');
-define('_APCAL_MB_CURSORTEDBY','¥Ø«eªº±Æ¦C¤è¦¡¡G');
-define('_APCAL_TH_CATEGORIES','Ãþ§O');
-define('_APCAL_TH_LASTMODIFIED','³Ì«á§ó·s¤é');
-define('_APCAL_BTN_PRINT','¦C¦L');
+define('_APCAL_FMT_YW','%1$sï¿½~ ï¿½ï¿½%2$sï¿½g ');
+define('_APCAL_FMT_WEEKNO','ï¿½ï¿½%sï¿½g');
+define('_APCAL_ICON_LIST','ï¿½ï¿½Ü¦ï¿½Æ¤@ï¿½ï¿½ï¿½ï¿½');
+define('_APCAL_MB_SHOWALLCAT','ï¿½ï¿½Ü¥ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½O');
+define('_APCAL_MB_ORDER_ASC','ï¿½ï¿½ï¿½');
+define('_APCAL_MB_ORDER_DESC','ï¿½ï¿½ï¿½');
+define('_APCAL_MB_SORTBY','ï¿½Æ¦Cï¿½ï¿½ï¿½Ç¡G');
+define('_APCAL_MB_CURSORTEDBY','ï¿½Ø«eï¿½ï¿½ï¿½Æ¦Cï¿½è¦¡ï¿½G');
+define('_APCAL_TH_CATEGORIES','ï¿½ï¿½ï¿½O');
+define('_APCAL_TH_LASTMODIFIED','ï¿½Ì«ï¿½ï¿½sï¿½ï¿½');
+define('_APCAL_BTN_PRINT','ï¿½Cï¿½L');
 
 define('_APCAL_FMT_YMDO','%1$s%2$s%3$s%4$s');
-define('_APCAL_MB_LABEL_CHECKEDITEMS','±N¿ï¨úªº¨Æ¥ó¡G');
-define('_APCAL_MB_LABEL_OUTPUTICS','¨Ï¥Î iCalendar ¶×¥X');
-define('_APCAL_MB_ICALSELECTPLATFORM','¿ï¾Ü¥­»O');
-define('_APCAL_MB_OP_AFTER','©¹«áªº¨Æ¥ó');
-define('_APCAL_MB_OP_BEFORE','¤§«eªº¨Æ¥ó');
-define('_APCAL_MB_OP_ON','©ó');
-define('_APCAL_MB_OP_ALL','¥þ³¡');
-define('_APCAL_BTN_IMPORT','°õ¦æ¶×¤J');
-define('_APCAL_BTN_UPLOAD','°õ¦æ§ó·s');
-define('_APCAL_BTN_EXPORT','¿é¥X');
-define('_APCAL_BTN_EXTRACT','Â^¨ú');
-define('_APCAL_BTN_ADMIT','®Ö¥i');
-define('_APCAL_BTN_MOVE','²¾°Ê');
-define('_APCAL_BTN_COPY','½Æ»s');
+define('_APCAL_MB_LABEL_CHECKEDITEMS','ï¿½Nï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ¥ï¿½G');
+define('_APCAL_MB_LABEL_OUTPUTICS','ï¿½Ï¥ï¿½ iCalendar ï¿½×¥X');
+define('_APCAL_MB_ICALSELECTPLATFORM','ï¿½ï¿½Ü¥ï¿½ï¿½O');
+define('_APCAL_MB_OP_AFTER','ï¿½ï¿½ï¿½áªºï¿½Æ¥ï¿½');
+define('_APCAL_MB_OP_BEFORE','ï¿½ï¿½ï¿½eï¿½ï¿½ï¿½Æ¥ï¿½');
+define('_APCAL_MB_OP_ON','ï¿½ï¿½');
+define('_APCAL_MB_OP_ALL','ï¿½ï¿½ï¿½ï¿½');
+define('_APCAL_BTN_IMPORT','ï¿½ï¿½ï¿½ï¿½×¤J');
+define('_APCAL_BTN_UPLOAD','ï¿½ï¿½ï¿½ï¿½ï¿½s');
+define('_APCAL_BTN_EXPORT','ï¿½ï¿½X');
+define('_APCAL_BTN_EXTRACT','ï¿½^ï¿½ï¿½');
+define('_APCAL_BTN_ADMIT','ï¿½Ö¥i');
+define('_APCAL_BTN_MOVE','ï¿½ï¿½ï¿½ï¿½');
+define('_APCAL_BTN_COPY','ï¿½Æ»s');
 
 }
 
-?>
+

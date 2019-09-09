@@ -30,4 +30,3 @@ define('_MB_APCAL_JUSTONCEADAYAPLUGIN','Afficher seulement une image par jour et
 
 }
 
-?>

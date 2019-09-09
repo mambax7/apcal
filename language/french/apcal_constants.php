@@ -36,7 +36,7 @@ define('_APCAL_ICON_YEARLY','Vue Annuelle') ;
 
 define('_APCAL_MB_SHOWALLCAT','Toutes les cat&eacute;gories');
 
-define("_APCAL_MB_LINKTODAY","Aujourd'hui") ;
+define('_APCAL_MB_LINKTODAY', "Aujourd'hui") ;
 define('_APCAL_MB_NOSUBJECT','(Pas de Sujet)') ;
 define('_APCAL_MB_PREV_DATE','Hier') ;
 define('_APCAL_MB_NEXT_DATE','Demain') ;
@@ -48,7 +48,7 @@ define('_APCAL_MB_PREV_YEAR','Ann&eacute;e pr&eacute;c&eacute;dente') ;
 define('_APCAL_MB_NEXT_YEAR','Ann&eacute;e suivante') ;
 
 
-define("_APCAL_MB_NOEVENT","Pas d'&eacute;v&egrave;nements") ;
+define('_APCAL_MB_NOEVENT', "Pas d'&eacute;v&egrave;nements") ;
 define('_APCAL_MB_ADDEVENT','Ajouter un &eacute;v&egrave;nement') ;
 define('_APCAL_MB_CONTINUING','(continuer)') ;
 define('_APCAL_MB_RESTEVENT_PRE','plus') ;
@@ -63,12 +63,12 @@ define('_APCAL_MB_PUBLIC','Public') ;
 define('_APCAL_MB_PRIVATE','Priv&eacute;') ;
 define('_APCAL_MB_PRIVATETARGET',' parmi %s') ;
 
-define("_APCAL_MB_LINK_TO_RRULE1ST","Sauter jusqu'au premier &eacute;v&egrave;nement ") ;
-define("_APCAL_MB_RRULE1ST","C'est le premier &eacute;v&egrave;nement") ;
+define('_APCAL_MB_LINK_TO_RRULE1ST', "Sauter jusqu'au premier &eacute;v&egrave;nement ") ;
+define('_APCAL_MB_RRULE1ST', "C'est le premier &eacute;v&egrave;nement") ;
 
 define('_APCAL_MB_EVENT_NOTREGISTER','Non enregistr&eacute;') ;
 define('_APCAL_MB_EVENT_ADMITTED','Approuv&eacute;') ;
-define("_APCAL_MB_EVENT_NEEDADMIT","En attente d'approbation") ;
+define('_APCAL_MB_EVENT_NEEDADMIT', "En attente d'approbation") ;
 
 define('_APCAL_MB_TITLE_EVENTINFO',"Informations sur l'&eacute;v&egrave;nement") ;
 define('_APCAL_MB_SUBTITLE_EVENTDETAIL',"D&eacute;tails de l'&eacute;v&egrave;nement") ;
@@ -103,9 +103,9 @@ define('_APCAL_TH_RRULE','P&eacute;riodicit&eacute;') ;
 define('_APCAL_TH_ADMISSIONSTATUS','Statut') ;
 define('_APCAL_TH_LASTMODIFIED','Derni&egrave;re modification');
 
-define("_APCAL_NTC_MONTHLYBYMONTHDAY","(Num&eacute;ro d'entr&eacute;e)") ;
+define('_APCAL_NTC_MONTHLYBYMONTHDAY', "(Num&eacute;ro d'entr&eacute;e)") ;
 define('_APCAL_NTC_EXTRACTLIMIT','** Seulement %s &eacute;v&egrave;nements au maximum sont g&eacute;n&eacute;r&eacute;s.') ;
-define("_APCAL_NTC_NUMBEROFNEEDADMIT","(%s &eacute;l&eacute;ments n&eacute;cessitent une approbation)") ;
+define('_APCAL_NTC_NUMBEROFNEEDADMIT', '(%s &eacute;l&eacute;ments n&eacute;cessitent une approbation)') ;
 
 define('_APCAL_OPT_PRIVATEMYSELF','seulement moi') ;
 define('_APCAL_OPT_PRIVATEGROUP','groupe %s') ;
@@ -116,13 +116,13 @@ define('_APCAL_MB_OP_BEFORE','Avant');
 define('_APCAL_MB_OP_ON','Sur');
 define('_APCAL_MB_OP_ALL','Tout');
 
-define("_APCAL_CNFM_SAVEAS_YN","Etes-vous d'accord pour sauvegarder ceci comme nouvel enregistrement ?") ;
-define("_APCAL_CNFM_DELETE_YN","Etes-vous d'accord pour supprimer cet enregistrement ?") ;
+define('_APCAL_CNFM_SAVEAS_YN', "Etes-vous d'accord pour sauvegarder ceci comme nouvel enregistrement ?") ;
+define('_APCAL_CNFM_DELETE_YN', "Etes-vous d'accord pour supprimer cet enregistrement ?") ;
 
 define('_APCAL_ERR_INVALID_EVENT_ID','Erreur: EventID non trouv&eacute;') ;
 define('_APCAL_ERR_NOPERM_TO_SHOW',"Erreur: Vous n'avez pas la permission de voir") ;
 define('_APCAL_ERR_NOPERM_TO_OUTPUTICS',"Erreur: Vous n'avez pas la permission d'extraire iCalendar") ;
-define("_APCAL_ERR_LACKINDISPITEM","L'&eacute;l&eacute;ment %s est vide.<br />Retournez en cliquant sur le bouton Pr&eacute;c&eacute;dent de notre navigateur web") ;
+define('_APCAL_ERR_LACKINDISPITEM', "L'&eacute;l&eacute;ment %s est vide.<br />Retournez en cliquant sur le bouton Pr&eacute;c&eacute;dent de notre navigateur web") ;
 
 define('_APCAL_BTN_JUMP','Saut') ;
 define('_APCAL_BTN_NEWINSERTED','Nouvelle insertion') ;
@@ -164,7 +164,7 @@ define('_APCAL_RR_PERWEEK','toutes les %s semaines') ;
 define('_APCAL_RR_PERMONTH','tous les %s mois') ;
 define('_APCAL_RR_PERYEAR','tous les %s ans') ;
 define('_APCAL_RR_COUNT','<br />%s fois') ;
-define("_APCAL_RR_UNTIL","<br />jusqu'&agrave; %s") ;
+define('_APCAL_RR_UNTIL', "<br />jusqu'&agrave; %s") ;
 define('_APCAL_RR_R_NORRULE','R&eacute;currence Non') ;
 define('_APCAL_RR_R_YESRRULE','R&eacute;currence Oui') ;
 define('_APCAL_RR_OR','ou') ;
@@ -173,7 +173,7 @@ define('_APCAL_RR_S_SAMEASBDATE','Identique &agrave; la date de d&eacute;but') ;
 define('_APCAL_RR_R_NOCOUNTUNTIL','Pas de conditions de fin') ;
 define('_APCAL_RR_R_USECOUNT_PRE','r&eacute;p&eacute;ter') ;
 define('_APCAL_RR_R_USECOUNT_SUF','fois') ;
-define("_APCAL_RR_R_USEUNTIL","jusqu'&agrave;") ;
+define('_APCAL_RR_R_USEUNTIL', "jusqu'&agrave;") ;
 
 // Added by goffy for online registration handling
 define('_APCAL_RO_CANCEL','Action annul&eacute;e');
@@ -271,4 +271,4 @@ define('_APCAL_RO_SUCCESS_COPY_EVENT','&Eacute;v&eacute;nement copi&eacute; avec
 
 }
 
-?>
+

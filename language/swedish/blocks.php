@@ -14,31 +14,28 @@ define('_MB_APCAL_PLUGINS_VALID','Giltiga Plugin moduler');
 // Appended by Xoops Language Checker -GIJOE- in 2005-01-08 04:36:50
 define('_MB_APCAL_MAXITEMS','Visa');
 define('_MB_APCAL_CATSEL','Kategori');
-define('_MB_APCAL_CATSELSUB','Visa också underkategorier');
-define('_MB_APCAL_UNTILDAYS','Antal %s dagar (0 betyder oçÏdligt)');
+    define('_MB_APCAL_CATSELSUB', 'Visa ocksÃ¥ underkategorier');
+    define('_MB_APCAL_UNTILDAYS', 'Antal %s dagar (0 betyder oÃ¤ndligt)');
 
-define( 'APCAL_BL_LOADED' , 1 ) ;
+    define('PICAL_BL_LOADED', 1);
 
 // for monthly calendar block
-define('_MB_APCAL_PREV_MONTH','F‹Óra');
-define('_MB_APCAL_NEXT_MONTH','NçÔta');
-define('_MB_APCAL_YEAR','ŽÅr');
-define('_MB_APCAL_MONTH','MéÏad');
-define('_MB_APCAL_JUMP','Gå till');
+    define('_MB_APCAL_PREV_MONTH', 'FÃ¶rra');
+    define('_MB_APCAL_NEXT_MONTH', 'NÃ¤sta');
+    define('_MB_APCAL_YEAR', 'Ã…r');
+    define('_MB_APCAL_MONTH', 'MÃ¥nad');
+    define('_MB_APCAL_JUMP', 'GÃ¥ till');
 
 // for after the day's events block
 // %s means the indicated day
-define('_MB_APCAL_EVENTS_AFTER','HçÏdelser efter %s');
+    define('_MB_APCAL_EVENTS_AFTER', 'HÃ¤ndelser efter %s');
 
 // for the day's events block
 // %s means the indicated day
-define('_MB_APCAL_EVENTS_THEDAY','HçÏdelser den %s');
-
-
+    define('_MB_APCAL_EVENTS_THEDAY', 'HÃ¤ndelser den %s');
 
 // Appended by Xoops Language Checker -GIJOE- in 2004-01-14 18:31:01
 define('_MB_APCAL_MAXNEWITEMS','Visa');
 
 }
 
-?>

@@ -5,19 +5,16 @@ if( defined( 'FOR_XOOPS_LANG_CHECKER' ) || ! defined( 'APCAL_MB_LOADED' ) ) {
 define( 'APCAL_MB_LOADED' , 1 ) ;
 
 // index.php
-define('_MB_APCAL_ERR_NOPERMTOUPDATE',"у вас нет прав изменять события");
-define('_APCAL_APURL', 'http://xoops.antiquespromotion.ca');
-define('_APCAL_APURL2', 'http://www.antiquespromotion.ca');
-define('APCAL_COPYRIGHT' , '<a href="http://xoops.antiquespromotion.ca" title="Calendar for Xoops" target="_blank">APCal</a> by <a href="http://www.antiquespromotion.ca" title="Antiques Promotion Canada" target="_blank">AP</a>');
-define('_MB_APCAL_ERR_NOPERMTOINSERT',"У вас нет прав создавать события");
-define('_MB_APCAL_ERR_NOPERMTODELETE',"У вас нет прав удалять события");
-define('_MB_APCAL_ALT_PRINTTHISEVENT','Печать этого события');
+define('_MB_APCAL_ERR_NOPERMTOUPDATE', 'Сѓ РІР°СЃ РЅРµС‚ РїСЂР°РІ РёР·РјРµРЅСЏС‚СЊ СЃРѕР±С‹С‚РёСЏ');
+define('_MB_APCAL_ERR_NOPERMTOINSERT', 'РЈ РІР°СЃ РЅРµС‚ РїСЂР°РІ СЃРѕР·РґР°РІР°С‚СЊ СЃРѕР±С‹С‚РёСЏ');
+define('_MB_APCAL_ERR_NOPERMTODELETE', 'РЈ РІР°СЃ РЅРµС‚ РїСЂР°РІ СѓРґР°Р»СЏС‚СЊ СЃРѕР±С‹С‚РёСЏ');
+define('_MB_APCAL_ALT_PRINTTHISEVENT','РџРµС‡Р°С‚СЊ СЌС‚РѕРіРѕ СЃРѕР±С‹С‚РёСЏ');
 
 // print.php
-define('_MB_APCAL_COMESFROM','Это событие с сайта %s');
-//define('_MB_APCAL_PARMALINK','Линк этого события');
+define('_MB_APCAL_COMESFROM','Р­С‚Рѕ СЃРѕР±С‹С‚РёРµ СЃ СЃР°Р№С‚Р° %s');
+//define('_MB_APCAL_PARMALINK','Р›РёРЅРє СЌС‚РѕРіРѕ СЃРѕР±С‹С‚РёСЏ');
 
 
 }
 
-?>
+

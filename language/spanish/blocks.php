@@ -5,17 +5,17 @@ if( defined( 'FOR_XOOPS_LANG_CHECKER' ) || ! defined( 'APCAL_BL_LOADED' ) ) {
 
 
 // Appended by Xoops Language Checker -GIJOE- in 2005-04-22 12:02:00
-define('_MB_APCAL_MAXGIFSADAY','Puntos m&aacute;Ùimos por dùÂ');
-define('_MB_APCAL_JUSTONCEADAYAPLUGIN','Mostrar solamente un punto por dùÂ o por plugin');
+define('_MB_APCAL_MAXGIFSADAY','Puntos mÃ¡ximos por dÃ­a');
+define('_MB_APCAL_JUSTONCEADAYAPLUGIN','Mostrar solamente un punto por dÃ­a o por plugin');
 define('_MB_APCAL_PLUGINS','Plugins Activos');
 define('_MB_APCAL_PLUGINS_DESC','Lista de plugins separados por, (comas)');
-define('_MB_APCAL_PLUGINS_VALID','Plugins V&aacute;&Iacute;idos');
+define('_MB_APCAL_PLUGINS_VALID','Plugins VÃ¡lidos');
 
 // Appended by Xoops Language Checker -GIJOE- in 2005-01-08 04:36:48
 define('_MB_APCAL_MAXITEMS','Mostrar');
-define('_MB_APCAL_CATSEL','CategorùÂ');
-define('_MB_APCAL_CATSELSUB','Mostrar tambien subcategorùÂs');
-define('_MB_APCAL_UNTILDAYS','Durante %s los dùÂs (0 implica siempre)');
+define('_MB_APCAL_CATSEL','CategorÃ­a');
+define('_MB_APCAL_CATSELSUB','Mostrar tambien subcategorÃ­as');
+define('_MB_APCAL_UNTILDAYS','Durante %s los dÃ­as (0 implica siempre)');
 
 define( 'APCAL_BL_LOADED' , 1 ) ;
 
@@ -27,11 +27,11 @@ define('_MB_APCAL_PREV_MONTH','Anterior');
 define('_MB_APCAL_NEXT_MONTH','Siguiente');
 define('_MB_APCAL_YEAR','');
 define('_MB_APCAL_MONTH','');
-define('_MB_APCAL_JUMP','Ir');
+define('_MB_APCAL_JUMP','Saltar');
 
 // for after the day's events block
 // %s means the indicated day
-define('_MB_APCAL_EVENTS_AFTER','Eventos despuÃ±Ô %s');
+define('_MB_APCAL_EVENTS_AFTER','Eventos despuÃ©s %s');
 
 // for the day's events block
 // %s means the indicated day
@@ -44,4 +44,3 @@ define('_MB_APCAL_MAXNEWITEMS','Mostrar');
 
 }
 
-?>

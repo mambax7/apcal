@@ -1,33 +1,31 @@
 <?php
 
-if( defined( 'FOR_XOOPS_LANG_CHECKER' ) || ! defined( 'APCAL_BL_LOADED' ) ) {
+if (defined('FOR_XOOPS_LANG_CHECKER') || !defined('APCAL_BL_LOADED')) {
 
-define( 'APCAL_BL_LOADED' , 1 ) ;
+    define('APCAL_BL_LOADED', 1);
 
-// for monthly calendar block
-define('_MB_APCAL_PREV_MONTH','Á°·î');
-define('_MB_APCAL_NEXT_MONTH','Íâ·î');
-define('_MB_APCAL_YEAR','Ç¯');
-define('_MB_APCAL_MONTH','·î');
-define('_MB_APCAL_JUMP','Jump');
+    // for monthly calendar block
+    define('_MB_APCAL_PREV_MONTH', 'å‰æœˆ');
+    define('_MB_APCAL_NEXT_MONTH', 'ç¿Œæœˆ');
+    define('_MB_APCAL_YEAR', 'å¹´');
+    define('_MB_APCAL_MONTH', 'æœˆ');
+    define('_MB_APCAL_JUMP', 'Jump');
 
-// for after the day's events block
-// %s means the indicated day
-define('_MB_APCAL_EVENTS_AFTER','%s°Ê¹ß¤ÎÍ½Äê');
+    // for after the day's events block
+    // %s means the indicated day
+    define('_MB_APCAL_EVENTS_AFTER', '%sä»¥é™ã®äºˆå®š');
 
-// for the day's events block
-// %s means the indicated day
-define('_MB_APCAL_EVENTS_THEDAY','%s¤ÎÍ½Äê');
+    // for the day's events block
+    // %s means the indicated day
+    define('_MB_APCAL_EVENTS_THEDAY', '%sã®äºˆå®š');
 
-
-define("_MB_APCAL_MAXITEMS","É½¼¨·ï¿ô");
-define("_MB_APCAL_CATSEL","¥«¥Æ¥´¥ê¡¼¹Ê¤ê¹þ¤ß");
-define("_MB_APCAL_CATSELSUB","ÇÛ²¼¤Î¥«¥Æ¥´¥ê¡¼¤âÉ½¼¨¤¹¤ë");
-define("_MB_APCAL_UNTILDAYS","ºÇÂç %s Æü¸å¤Þ¤Ç¤ÎÍ½Äê¤òÉ½¼¨¤¹¤ë¡Ê0¤Ê¤éÀ©¸Â¤Ê¤·¡Ë");
-define("_MB_APCAL_MAXGIFSADAY","£±Æü¤¢¤¿¤ê¤ÎGIF¥ê¥ó¥¯É½¼¨·ï¿ô");
-define("_MB_APCAL_JUSTONCEADAYAPLUGIN","£±¥×¥é¥°¥¤¥ó¤¢¤¿¤ê£±Æü£±·ï¤·¤«É½¼¨¤·¤Ê¤¤");
-
+    define('_MB_APCAL_MAXITEMS', 'è¡¨ç¤ºä»¶æ•°');
+    define('_MB_APCAL_CATSEL', 'ã‚«ãƒ†ã‚´ãƒªãƒ¼çµžã‚Šè¾¼ã¿');
+    define('_MB_APCAL_CATSELSUB', 'é…ä¸‹ã®ã‚«ãƒ†ã‚´ãƒªãƒ¼ã‚‚è¡¨ç¤ºã™ã‚‹');
+    define('_MB_APCAL_UNTILDAYS', 'æœ€å¤§ %s æ—¥å¾Œã¾ã§ã®äºˆå®šã‚’è¡¨ç¤ºã™ã‚‹ï¼ˆ0ãªã‚‰åˆ¶é™ãªã—ï¼‰');
+    define('_MB_APCAL_MAXGIFSADAY', 'ï¼‘æ—¥ã‚ãŸã‚Šã®GIFãƒªãƒ³ã‚¯è¡¨ç¤ºä»¶æ•°');
+    define('_MB_APCAL_JUSTONCEADAYAPLUGIN', 'ï¼‘ãƒ—ãƒ©ã‚°ã‚¤ãƒ³ã‚ãŸã‚Šï¼‘æ—¥ï¼‘ä»¶ã—ã‹è¡¨ç¤ºã—ãªã„');
 
 }
 
-?>
+

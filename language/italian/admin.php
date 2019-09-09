@@ -22,7 +22,7 @@ define('_AM_FMT_SERVER_TZ_ALL','Timezone of the server (winter): %+2.1f<br />Tim
 define('_AM_FMT_SERVER_TZ_SYSTEM','Timezone in winter: %+2.1f');
 define('_AM_TH_SERVER_TZ_COUNT','Events');
 define('_AM_TH_SERVER_TZ_VALUE','Timezone');
-define('_AM_TH_SERVER_TZ_VALUE_TO','Changes (-14.0°¡14.0)');
+define('_AM_TH_SERVER_TZ_VALUE_TO','Changes (-14.0¬°√Å14.0)');
 define('_AM_JSALRT_SERVER_TZ','Don\'t forget backing-up events table before this operation');
 define('_AM_NOTICE_SERVER_TZ','If your server set the timezone area with summer time (=Day Light Saving) and some events were registerd in APCal 0.6x or 0.7x, dont\'t push this button.<br />eg) It is natural to display both -5.0 and -4.0 in EDT');
 define('_AM_MB_SUCCESSTZUPDATE','Events are modified with the timezone(s).');
@@ -45,79 +45,79 @@ define( 'APCAL_AM_LOADED' , 1 ) ;
 
 
 // titles
-define("_AM_CONFIG","Configurazione di APCal");
-define("_AM_GENERALCONF","Impostazioni generali di APCal");
-define("_AM_ADMISSION","Eventi da approvare");
-define("_AM_MENU_EVENTS","Gestione Eventi");
-define("_AM_MENU_CATEGORIES","Gestione Categorie");
-define("_AM_MENU_CAT2GROUP","Permessi delle categorie");
-define("_AM_ICALENDAR_IMPORT","Importazione iCalendar");
-define("_AM_GROUPPERM","Permessi Globali");
-define("_AM_TABLEMAINTAIN","Manutenzione Tabella");
-define("_AM_MYBLOCKSADMIN","Amministrazione Blocchi&Gruppi");
+define('_AM_CONFIG', 'Configurazione di APCal');
+define('_AM_GENERALCONF', 'Impostazioni generali di APCal');
+define('_AM_ADMISSION', 'Eventi da approvare');
+define('_AM_MENU_EVENTS', 'Gestione Eventi');
+define('_AM_MENU_CATEGORIES', 'Gestione Categorie');
+define('_AM_MENU_CAT2GROUP', 'Permessi delle categorie');
+define('_AM_ICALENDAR_IMPORT', 'Importazione iCalendar');
+define('_AM_GROUPPERM', 'Permessi Globali');
+define('_AM_TABLEMAINTAIN', 'Manutenzione Tabella');
+define('_AM_MYBLOCKSADMIN', 'Amministrazione Blocchi&Gruppi');
 
 // forms
-define("_AM_BUTTON_EXTRACT","Estrai");
-define("_AM_BUTTON_ADMIT","Approva");
-define("_AM_BUTTON_MOVE","Muovi");
-define("_AM_BUTTON_COPY","Copia");
-define("_AM_CONFIRM_DELETE","Eliminazione Eventi, OK?");
-define("_AM_CONFIRM_MOVE","Rimozione del link dalla categoria precedente e Inserimento del link alla categoria specificata, OK?");
-define("_AM_CONFIRM_COPY","Inserimento di un link alla categoria specificata, OK?");
-define("_AM_OPT_PAST","Passato");
-define("_AM_OPT_FUTURE","Futuro");
-define("_AM_OPT_PASTANDFUTURE","Passato&Futuro");
+define('_AM_BUTTON_EXTRACT', 'Estrai');
+define('_AM_BUTTON_ADMIT', 'Approva');
+define('_AM_BUTTON_MOVE', 'Muovi');
+define('_AM_BUTTON_COPY', 'Copia');
+define('_AM_CONFIRM_DELETE', 'Eliminazione Eventi, OK?');
+define('_AM_CONFIRM_MOVE', 'Rimozione del link dalla categoria precedente e Inserimento del link alla categoria specificata, OK?');
+define('_AM_CONFIRM_COPY', 'Inserimento di un link alla categoria specificata, OK?');
+define('_AM_OPT_PAST', 'Passato');
+define('_AM_OPT_FUTURE', 'Futuro');
+define('_AM_OPT_PASTANDFUTURE', 'Passato&Futuro');
 
 // format
-define("_AM_DTFMT_LIST_ALLDAY",'y-m-d');
-define("_AM_DTFMT_LIST_NORMAL",'y-m-d<\b\r />H:i');
+define('_AM_DTFMT_LIST_ALLDAY', 'y-m-d');
+define('_AM_DTFMT_LIST_NORMAL', 'y-m-d<\b\r />H:i');
 
 // admission
-define("_AM_LABEL_ADMIT","Gli eventi selezionati sono: da approvare");
-define("_AM_MES_ADMITTED","Gli eventi sono stati approvati");
-define("_AM_ADMIT_TH0","Utente");
-define("_AM_ADMIT_TH1","Dataora Inizio");
-define("_AM_ADMIT_TH2","Dataora Fine");
-define("_AM_ADMIT_TH3","Titolo");
-define("_AM_ADMIT_TH4","Rrule");
+define('_AM_LABEL_ADMIT', 'Gli eventi selezionati sono: da approvare');
+define('_AM_MES_ADMITTED', 'Gli eventi sono stati approvati');
+define('_AM_ADMIT_TH0', 'Utente');
+define('_AM_ADMIT_TH1', 'Dataora Inizio');
+define('_AM_ADMIT_TH2', 'Dataora Fine');
+define('_AM_ADMIT_TH3', 'Titolo');
+define('_AM_ADMIT_TH4', 'Rrule');
 
 // events manager & importing iCalendar
 
-define("_AM_LABEL_IMPORTFROMWEB","Importa iCalendar dal web (Inserisci l'URL preceduto da 'http://' o 'webcal://')");
-define("_AM_LABEL_UPLOADFROMFILE","Invia iCalendar (Seleziona un file dal tuo computer locale)");
-define("_AM_LABEL_IO_CHECKEDITEMS","Gli eventi selezionati sono:");
-define("_AM_LABEL_IO_OUTPUT","da esportare in iCalendar");
-define("_AM_LABEL_IO_DELETE","da eliminare");
-define("_AM_MES_EVENTLINKTOCAT","eventi sono stati collegati da questa categoria");
-define("_AM_MES_EVENTUNLINKED","collegamenti agli eventi sono stati rimossi dalla categoria precedente");
-define("_AM_FMT_IMPORTED","eventi sono stati importati da '%s'");
-define("_AM_MES_DELETED","eventi sono dati eliminati");
-define("_AM_IO_TH0","Utente");
-define("_AM_IO_TH1","Dataora Inizio");
-define("_AM_IO_TH2","Dataora Fine");
-define("_AM_IO_TH3","Titolo");
-define("_AM_IO_TH4","Rrule");
-define("_AM_IO_TH5","Approvazione");
+define('_AM_LABEL_IMPORTFROMWEB', "Importa iCalendar dal web (Inserisci l'URL preceduto da 'http://' o 'webcal://')");
+define('_AM_LABEL_UPLOADFROMFILE', 'Invia iCalendar (Seleziona un file dal tuo computer locale)');
+define('_AM_LABEL_IO_CHECKEDITEMS', 'Gli eventi selezionati sono:');
+define('_AM_LABEL_IO_OUTPUT', 'da esportare in iCalendar');
+define('_AM_LABEL_IO_DELETE', 'da eliminare');
+define('_AM_MES_EVENTLINKTOCAT', 'eventi sono stati collegati da questa categoria');
+define('_AM_MES_EVENTUNLINKED', 'collegamenti agli eventi sono stati rimossi dalla categoria precedente');
+define('_AM_FMT_IMPORTED', "eventi sono stati importati da '%s'");
+define('_AM_MES_DELETED', 'eventi sono dati eliminati');
+define('_AM_IO_TH0', 'Utente');
+define('_AM_IO_TH1', 'Dataora Inizio');
+define('_AM_IO_TH2', 'Dataora Fine');
+define('_AM_IO_TH3', 'Titolo');
+define('_AM_IO_TH4', 'Rrule');
+define('_AM_IO_TH5', 'Approvazione');
 
 // Group's Permissions
-define( '_AM_GPERM_G_INSERTABLE' , "PuÚ inserire" ) ;
-define( '_AM_GPERM_G_SUPERINSERT' , "Super inserimento" ) ;
-define( '_AM_GPERM_G_EDITABLE' , "PuÚ modificare" ) ;
-define( '_AM_GPERM_G_SUPEREDIT' , "Super modifica" ) ;
-define( '_AM_GPERM_G_DELETABLE' , "PuÚ eliminare" ) ;
-define( '_AM_GPERM_G_SUPERDELETE' , "Super eliminazione" ) ;
-define( '_AM_GPERM_G_TOUCHOTHERS' , "PuÚ intervenire sugli altri" ) ;
+define('_AM_GPERM_G_INSERTABLE' , 'Pu√≤ inserire') ;
+define('_AM_GPERM_G_SUPERINSERT' , 'Super inserimento') ;
+define('_AM_GPERM_G_EDITABLE' , 'Pu√≤ modificare') ;
+define('_AM_GPERM_G_SUPEREDIT' , 'Super modifica') ;
+define('_AM_GPERM_G_DELETABLE' , 'Pu√≤ eliminare') ;
+define('_AM_GPERM_G_SUPERDELETE' , 'Super eliminazione') ;
+define('_AM_GPERM_G_TOUCHOTHERS' , 'Pu√≤ intervenire sugli altri') ;
 define( '_AM_CAT2GROUPDESC' , "Seleziona le categorie a cui vuoi consentire l'accesso" ) ;
 define( '_AM_GROUPPERMDESC' , "Seleziona i permessi per ciascun gruppo <br />Per rendere attive queste impostazioni, seleziona prima 'Specificato nei Permessi di Gruppo' in Preferenze &gt; Permessi degli Utenti.<br />Le impostazioni dei gruppi 'Amministratori' e 'Ospiti' sono comunque ignorate." ) ;
 
 // Table Maintenance
-define( '_AM_MB_SUCCESSUPDATETABLE' , "Aggiornamento tabelle avvenuto con successo" ) ;
-define( '_AM_MB_FAILUPDATETABLE' , "Aggiornamento tabelle fallito" ) ;
-define( '_AM_NOTICE_NOERRORS' , "Errore con le tabelle o i dati." ) ;
+define('_AM_MB_SUCCESSUPDATETABLE' , 'Aggiornamento tabelle avvenuto con successo') ;
+define('_AM_MB_FAILUPDATETABLE' , 'Aggiornamento tabelle fallito') ;
+define('_AM_NOTICE_NOERRORS' , 'Errore con le tabelle o i dati.') ;
 define( '_AM_ALRT_CATTABLENOTEXIST' , "La tabella delle categorie non esiste.<br />\nVuoi creare la tabella?" ) ;
-define( '_AM_ALRT_OLDTABLE' , "La struttura della tabella degli eventi Ë obsoleta.<br />\nVuoi aggiornare la tabella?" ) ;
-define( '_AM_ALRT_TOOOLDTABLE' , "Si Ë verificato un errore nella tabella.<br />\nForse hai usato APCal 0.3x o precedente.<br />\nAggiorna alla versione 0.4x o 0.5x prima." ) ;
-define( '_AM_FMT_WRONGSTZ' , "Ci sono %s eventi registrati con un fuso orario errato.<br />Vuoi correggerli?" ) ;
+define( '_AM_ALRT_OLDTABLE' , "La struttura della tabella degli eventi √® obsoleta.<br />\nVuoi aggiornare la tabella?" ) ;
+define( '_AM_ALRT_TOOOLDTABLE' , "Si √® verificato un errore nella tabella.<br />\nForse hai usato APCal 0.3x o precedente.<br />\nAggiorna alla versione 0.4x o 0.5x prima." ) ;
+define('_AM_FMT_WRONGSTZ' , 'Ci sono %s eventi registrati con un fuso orario errato.<br />Vuoi correggerli?') ;
 
 // Categories
 define( '_AM_CAT_TH_TITLE' , 'Titolo' ) ;
@@ -142,4 +142,4 @@ define( '_AM_FMT_CATDELCONFIRM' , 'Vuoi eliminare la categoria %s ?' ) ;
 
 }
 
-?>
+

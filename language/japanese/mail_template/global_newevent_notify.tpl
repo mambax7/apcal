@@ -1,21 +1,21 @@
-{X_UNAME}¤µ¤ó¡¢¤³¤ó¤Ë¤Á¤Ï
+{X_UNAME}ã•ã‚“ã€ã“ã‚“ã«ã¡ã¯
 
-{X_SITENAME}¤Ë¤Æ¥¹¥±¥¸¥å¡¼¥ë¤¬ÅÐÏ¿¤µ¤ì¤Þ¤·¤¿¡£
+{X_SITENAME}ã«ã¦ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ãŒç™»éŒ²ã•ã‚Œã¾ã—ãŸã€‚
 
-Ì¾¾Î: {EVENT_SUMMARY}
+åç§°: {EVENT_SUMMARY}
 
-¾Ü¤·¤¯¤Ï²¼µ­URL¤Ë¥¢¥¯¥»¥¹¤·¤Æ¤¯¤À¤µ¤¤¡§
+è©³ã—ãã¯ä¸‹è¨˜URLã«ã‚¢ã‚¯ã‚»ã‚¹ã—ã¦ãã ã•ã„ï¼š
 {EVENT_URI}
 
 -----------
 
-¤³¤Î¥á¡¼¥ë¤ÏXOOPS¤Î¼«Æ°ÄÌÃÎµ¡Ç½¤Ë¤è¤Ã¤ÆÁ÷¿®¤µ¤ì¤Æ¤¤¤Þ¤¹
+ã“ã®ãƒ¡ãƒ¼ãƒ«ã¯XOOPSã®è‡ªå‹•é€šçŸ¥æ©Ÿèƒ½ã«ã‚ˆã£ã¦é€ä¿¡ã•ã‚Œã¦ã„ã¾ã™
 
-¼«Æ°ÄÌÃÎ¤òÄä»ß¤·¤¿¤¤¾ì¹ç¤Ï²¼µ­¤ÎURL¤Ë¥¢¥¯¥»¥¹¤·¤Æ¤¯¤À¤µ¤¤¡§
+è‡ªå‹•é€šçŸ¥ã‚’åœæ­¢ã—ãŸã„å ´åˆã¯ä¸‹è¨˜ã®URLã«ã‚¢ã‚¯ã‚»ã‚¹ã—ã¦ãã ã•ã„ï¼š
 {X_UNSUBSCRIBE_URL}
 
 -----------
 {X_SITENAME} ({X_SITEURL}) 
-´ÉÍý¿Í
+ç®¡ç†äºº
 {X_ADMINMAIL}
 -----------

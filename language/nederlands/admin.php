@@ -22,7 +22,7 @@ define('_AM_FMT_SERVER_TZ_ALL','Timezone of the server (winter): %+2.1f<br />Tim
 define('_AM_FMT_SERVER_TZ_SYSTEM','Timezone in winter: %+2.1f');
 define('_AM_TH_SERVER_TZ_COUNT','Events');
 define('_AM_TH_SERVER_TZ_VALUE','Timezone');
-define('_AM_TH_SERVER_TZ_VALUE_TO','Changes (-14.0¡Á14.0)');
+define('_AM_TH_SERVER_TZ_VALUE_TO','Changes (-14.0ï¿½ï¿½14.0)');
 define('_AM_JSALRT_SERVER_TZ','Don\'t forget backing-up events table before this operation');
 define('_AM_NOTICE_SERVER_TZ','If your server set the timezone area with summer time (=Day Light Saving) and some events were registerd in APCal 0.6x or 0.7x, dont\'t push this button.<br />eg) It is natural to display both -5.0 and -4.0 in EDT');
 define('_AM_MB_SUCCESSTZUPDATE','Events are modified with the timezone(s).');
@@ -51,54 +51,54 @@ define('_AM_OPT_PAST','Past');
 define('_AM_OPT_FUTURE','Future');
 define('_AM_OPT_PASTANDFUTURE','Past&Future');
 
-define("_AM_CONFIG","APCal-configuratie");
-define("_AM_GENERALCONF","Instellingen");
-define("_AM_ADMISSION","Activiteitsvrijgave");
-define("_AM_ICALENDAR_IO","iCalendar I/O");
-define("_AM_ICALENDAR_IMPORT","Import iCalendar");
-define("_AM_ICALENDAR_EXPORT","Export iCalendar");
-define("_AM_GROUPPERM","Groepsrechten");
+define('_AM_CONFIG', 'APCal-configuratie');
+define('_AM_GENERALCONF', 'Instellingen');
+define('_AM_ADMISSION', 'Activiteitsvrijgave');
+define('_AM_ICALENDAR_IO', 'iCalendar I/O');
+define('_AM_ICALENDAR_IMPORT', 'Import iCalendar');
+define('_AM_ICALENDAR_EXPORT', 'Export iCalendar');
+define('_AM_GROUPPERM', 'Groepsrechten');
 
 // forms
-define("_AM_BUTTON_EXTRACT","Filteren");
-define("_AM_BUTTON_ADMIT","Vrijgeven");
-define("_AM_CONFIRM_DELETE","Verwijderen OK?");
+define('_AM_BUTTON_EXTRACT', 'Filteren');
+define('_AM_BUTTON_ADMIT', 'Vrijgeven');
+define('_AM_CONFIRM_DELETE', 'Verwijderen OK?');
 
 // admission
-define("_AM_LABEL_ADMIT","Geselecteerde activiteit: ");
-define("_AM_MES_ADMITTED","Activiteit wordt vrijgegeven");
-define("_AM_ADMIT_TH0","Gebruiker");
-define("_AM_ADMIT_TH1","Begin");
-define("_AM_ADMIT_TH2","Eind");
-define("_AM_ADMIT_TH3","Titel");
-define("_AM_ADMIT_TH4","Terugkeerpatroon");
+define('_AM_LABEL_ADMIT', 'Geselecteerde activiteit: ');
+define('_AM_MES_ADMITTED', 'Activiteit wordt vrijgegeven');
+define('_AM_ADMIT_TH0', 'Gebruiker');
+define('_AM_ADMIT_TH1', 'Begin');
+define('_AM_ADMIT_TH2', 'Eind');
+define('_AM_ADMIT_TH3', 'Titel');
+define('_AM_ADMIT_TH4', 'Terugkeerpatroon');
 
 // iCalendar I/O
 
-define("_AM_LABEL_IMPORTFROMWEB","iCalendar Data vanuit het web importeren (URL begint met 'http://' of 'webcal://')");
-define("_AM_LABEL_UPLOADFROMFILE","iCalendar Data uploaden (lokaal bestand)");
-define("_AM_BUTTON_IMPORT","Importeren");
-define("_AM_BUTTON_UPLOAD","Uploaden");
-define("_AM_LABEL_IO_CHECKEDITEMS","Geselecteerde activiteiten:");
-define("_AM_LABEL_IO_OUTPUT","worden naar iCalendar geexporteerd");
-define("_AM_LABEL_IO_SELECTPLATFORM","Platform selecteren");
-define("_AM_LABEL_IO_DELETE","worden verwijderd");
-define("_AM_MES_DELETED","Activiteiten worden verwijderd");
-define("_AM_IO_TH0","Gebruiker");
-define("_AM_IO_TH1","Begin");
-define("_AM_IO_TH2","Eind");
-define("_AM_IO_TH3","Titel");
-define("_AM_IO_TH4","Terugkeerpatroon");
-define("_AM_IO_TH5","Vrijgeven");
+define('_AM_LABEL_IMPORTFROMWEB', "iCalendar Data vanuit het web importeren (URL begint met 'http://' of 'webcal://')");
+define('_AM_LABEL_UPLOADFROMFILE', 'iCalendar Data uploaden (lokaal bestand)');
+define('_AM_BUTTON_IMPORT', 'Importeren');
+define('_AM_BUTTON_UPLOAD', 'Uploaden');
+define('_AM_LABEL_IO_CHECKEDITEMS', 'Geselecteerde activiteiten:');
+define('_AM_LABEL_IO_OUTPUT', 'worden naar iCalendar geexporteerd');
+define('_AM_LABEL_IO_SELECTPLATFORM', 'Platform selecteren');
+define('_AM_LABEL_IO_DELETE', 'worden verwijderd');
+define('_AM_MES_DELETED', 'Activiteiten worden verwijderd');
+define('_AM_IO_TH0', 'Gebruiker');
+define('_AM_IO_TH1', 'Begin');
+define('_AM_IO_TH2', 'Eind');
+define('_AM_IO_TH3', 'Titel');
+define('_AM_IO_TH4', 'Terugkeerpatroon');
+define('_AM_IO_TH5', 'Vrijgeven');
 
 // Group's Permissions
-define( '_AM_GPERM_G_INSERTABLE' , "mogen toevoegen" ) ;
-define( '_AM_GPERM_G_SUPERINSERT' , "mogen toevoegen (superinsert!)" ) ;
-define( '_AM_GPERM_G_EDITABLE' , "mogen editeren" ) ;
-define( '_AM_GPERM_G_SUPEREDIT' , "mogen editeren (superedit!)" ) ;
-define( '_AM_GPERM_G_DELETABLE' , "mogen verwijderen") ;
-define( '_AM_GPERM_G_SUPERDELETE' , "mogen verwijderen (superdelete!)" ) ;
-define( '_AM_GPERM_G_TOUCHOTHERS' , "mogen ingaves van anderen wijzigen" ) ;
+define('_AM_GPERM_G_INSERTABLE' , 'mogen toevoegen') ;
+define('_AM_GPERM_G_SUPERINSERT' , 'mogen toevoegen (superinsert!)') ;
+define('_AM_GPERM_G_EDITABLE' , 'mogen editeren') ;
+define('_AM_GPERM_G_SUPEREDIT' , 'mogen editeren (superedit!)') ;
+define('_AM_GPERM_G_DELETABLE' , 'mogen verwijderen') ;
+define('_AM_GPERM_G_SUPERDELETE' , 'mogen verwijderen (superdelete!)') ;
+define('_AM_GPERM_G_TOUCHOTHERS' , 'mogen ingaves van anderen wijzigen') ;
 define( '_AM_GROUPPERMDESC' , "Hier kunnen de rechten van elke gebruikersgroep apart ingesteld worden.<br />Om deze functie te activeren, moet u eerst onder 'Instellingen -> Rechten voor gebruikers' de optie 'Vastgelegd door groepsrechten' selecteren. <br />Opmerking: de instellingen voor de groepen, 'Webmasters' en 'Anonymous Users' worden genegeerd.<br/>" ) ;
 
 
@@ -156,4 +156,4 @@ define('_AM_FMT_CATDELCONFIRM','Do you want to delete category %s ?');
 
 }
 
-?>
+

@@ -7,8 +7,7 @@ El siguiente enlace muestra el evento:
 
 -----------
 
-Usted a recibido este mensaje por que usted a seleccionado ser
-notificado cuando se aÅ¬den eventos al sitio.
+Usted a recibido este mensaje por que usted a seleccionado ser notificado cuando se a√±aden eventos al sitio.
 
 Si este evento es un error o usted no quiere recibir futuras notificaciones,
 por favor actualice su subcripciones visitando el siguiente enlace:

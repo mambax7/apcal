@@ -92,8 +92,8 @@ define('_APCAL_CNFM_SAVEAS_YN','您要儲存成另一筆紀錄嗎？') ;
 define('_APCAL_CNFM_DELETE_YN','您要刪除這筆紀錄嗎？') ;
 
 define('_APCAL_ERR_INVALID_EVENT_ID','錯誤：沒有發現事件ID') ;
-define('_APCAL_ERR_NOPERM_TO_SHOW',"錯誤：您沒有觀看的權限") ;
-define('_APCAL_ERR_NOPERM_TO_OUTPUTICS',"錯誤：您沒有匯出至 iCalendar 的權限") ;
+define('_APCAL_ERR_NOPERM_TO_SHOW', '錯誤：您沒有觀看的權限') ;
+define('_APCAL_ERR_NOPERM_TO_OUTPUTICS', '錯誤：您沒有匯出至 iCalendar 的權限') ;
 define('_APCAL_ERR_LACKINDISPITEM','還有 %s 尚未輸入。<br />請按回上一頁再輸入') ;
 
 define('_APCAL_BTN_JUMP','切換') ;
@@ -170,4 +170,4 @@ define('_APCAL_BTN_COPY','複製');
 
 }
 
-?>
+

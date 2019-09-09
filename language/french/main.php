@@ -85,4 +85,3 @@ define('_APCAL_GPLUS_LNG', 'fr');
 
 }
 
-?>

@@ -1,4 +1,4 @@
-Olá {X_UNAME},
+OlÃ¡ {X_UNAME},
 
 Um novo evento "{EVENT_SUMMARY}" na categoria "{CATEGORY_TITLE}" foi criado em {X_SITENAME}.
 
@@ -7,12 +7,12 @@ Clique neste link para ver o evento:Follow this link to view the event:
 
 -----------
 
-Você esta recebendo esta mensagem pois selecionou a opcåÐ para ser notificado quando novos eventos såÐ adicionados no site.
+VocÃª esta recebendo esta mensagem pois selecionou a opÃ§Ã£o para ser notificado quando novos eventos sÃ£o adicionados no site.
 
-Caso você nåÐ queira mais receber futuras notificaî÷es por favor atualize suas opî÷es visitando o link abaixo:
+Caso vocÃª nÃ£o queira mais receber futuras notificaÃ§Ãµes por favor atualize suas opÃ§Ãµes visitando o link abaixo:
 {X_UNSUBSCRIBE_URL}
 
-Por favor nåÐ responda a esta mensagem.
+Por favor nÃ£o responda Ã  esta mensagem.
 
 -----------
 

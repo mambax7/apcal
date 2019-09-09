@@ -7,21 +7,21 @@ define('APCAL_COPYRIGHT' , '<a href="http://xoops.antiquespromotion.ca" title="C
 
 
 // titles
-define("_AM_ADMISSION","待審事件管理");
+define('_AM_ADMISSION', '待審事件管理');
 define('_AM_MENU_EVENTS','事件管理');
 define('_AM_MENU_CATEGORIES','類別管理');
-define("_AM_MENU_CAT2GROUP","類別的進入權限");
-define("_AM_ICALENDAR_IMPORT","匯入 iCalendar");
-define("_AM_GROUPPERM","群組權限管理");
+define('_AM_MENU_CAT2GROUP', '類別的進入權限');
+define('_AM_ICALENDAR_IMPORT', '匯入 iCalendar');
+define('_AM_GROUPPERM', '群組權限管理');
 define('_AM_TABLEMAINTAIN','表單維護 (Upgrade)');
 define('_AM_MYBLOCKSADMIN','APCal的 區塊與群組管理');
 
 // forms
-define("_AM_BUTTON_EXTRACT","提取");
-define("_AM_BUTTON_ADMIT","確定");
+define('_AM_BUTTON_EXTRACT', '提取');
+define('_AM_BUTTON_ADMIT', '確定');
 define('_AM_BUTTON_MOVE','移動');
 define('_AM_BUTTON_COPY','複製');
-define("_AM_CONFIRM_DELETE","真的要刪除嗎？");
+define('_AM_CONFIRM_DELETE', '真的要刪除嗎？');
 define('_AM_CONFIRM_MOVE','要將舊類別屬性移除，給于新的類別屬性指定嗎？');
 define('_AM_CONFIRM_COPY','要新增類別屬性嗎？');
 define('_AM_OPT_PAST','過往資料');
@@ -38,39 +38,39 @@ define('_AM_TZOPT_GMT','GMT代號');
 define('_AM_TZOPT_USER','使用者時間');
 
 // admission
-define("_AM_LABEL_ADMIT","確定核准已選取的事件");
-define("_AM_MES_ADMITTED","事件已經核准了");
-define("_AM_ADMIT_TH0","用戶");
-define("_AM_ADMIT_TH1","開始時間");
-define("_AM_ADMIT_TH2","結束時間");
-define("_AM_ADMIT_TH3","主題");
-define("_AM_ADMIT_TH4","重複條件");
+define('_AM_LABEL_ADMIT', '確定核准已選取的事件');
+define('_AM_MES_ADMITTED', '事件已經核准了');
+define('_AM_ADMIT_TH0', '用戶');
+define('_AM_ADMIT_TH1', '開始時間');
+define('_AM_ADMIT_TH2', '結束時間');
+define('_AM_ADMIT_TH3', '主題');
+define('_AM_ADMIT_TH4', '重複條件');
 
 // iCalendar I/O
-define("_AM_LABEL_IMPORTFROMWEB","從網路上匯入 iCalendar 資料 (輸入 URL 請以 'http://' 或 'webcal://' 開頭)");
-define("_AM_LABEL_UPLOADFROMFILE","上傳 iCalendar 資料 (從您的本機電腦選擇檔案)");
-define("_AM_LABEL_IO_CHECKEDITEMS","選取的事件：");
-define("_AM_LABEL_IO_OUTPUT","匯出為 iCalendar形式");
-define("_AM_LABEL_IO_DELETE","執行刪除");
+define('_AM_LABEL_IMPORTFROMWEB', "從網路上匯入 iCalendar 資料 (輸入 URL 請以 'http://' 或 'webcal://' 開頭)");
+define('_AM_LABEL_UPLOADFROMFILE', '上傳 iCalendar 資料 (從您的本機電腦選擇檔案)');
+define('_AM_LABEL_IO_CHECKEDITEMS', '選取的事件：');
+define('_AM_LABEL_IO_OUTPUT', '匯出為 iCalendar形式');
+define('_AM_LABEL_IO_DELETE', '執行刪除');
 define('_AM_MES_EVENTLINKTOCAT','個別的事件已經登記到類別裡。');
 define('_AM_MES_EVENTUNLINKED','個別的事件以從舊類別裡移除');
 define('_AM_FMT_IMPORTED','個別的事件已由 %s 匯入');
-define("_AM_MES_DELETED","事件已刪除了");
-define("_AM_IO_TH0","用戶");
-define("_AM_IO_TH1","開始日期時間");
-define("_AM_IO_TH2","結束日期時間");
-define("_AM_IO_TH3","主題");
-define("_AM_IO_TH4","重複");
-define("_AM_IO_TH5","已審核");
+define('_AM_MES_DELETED', '事件已刪除了');
+define('_AM_IO_TH0', '用戶');
+define('_AM_IO_TH1', '開始日期時間');
+define('_AM_IO_TH2', '結束日期時間');
+define('_AM_IO_TH3', '主題');
+define('_AM_IO_TH4', '重複');
+define('_AM_IO_TH5', '已審核');
 
 // Group's Permissions
-define( '_AM_GPERM_G_INSERTABLE' , "新增事件") ;
-define( '_AM_GPERM_G_SUPERINSERT' , "新增事件(不需審核)") ;
-define( '_AM_GPERM_G_EDITABLE' , "編輯事件") ;
-define( '_AM_GPERM_G_SUPEREDIT' , "編輯事件(不需審核)") ;
-define( '_AM_GPERM_G_DELETABLE' , "刪除事件") ;
-define( '_AM_GPERM_G_SUPERDELETE' , "刪除事件(不需審核)") ;
-define( '_AM_GPERM_G_TOUCHOTHERS' , "管理他人事件") ;
+define('_AM_GPERM_G_INSERTABLE' , '新增事件') ;
+define('_AM_GPERM_G_SUPERINSERT' , '新增事件(不需審核)') ;
+define('_AM_GPERM_G_EDITABLE' , '編輯事件') ;
+define('_AM_GPERM_G_SUPEREDIT' , '編輯事件(不需審核)') ;
+define('_AM_GPERM_G_DELETABLE' , '刪除事件') ;
+define('_AM_GPERM_G_SUPERDELETE' , '刪除事件(不需審核)') ;
+define('_AM_GPERM_G_TOUCHOTHERS' , '管理他人事件') ;
 define('_AM_CAT2GROUPDESC','針對各群組，請點選每個可以訪問的類別權限');
 define( '_AM_GROUPPERMDESC' , "選擇每一個群組所能做的權限<br />假如您需要這功能, 必須先設定 '用戶權限' 為 '依照群組權限設定'<br />這權限設定在管理員與訪客這兩個群組中會被忽略") ;
 
@@ -129,4 +129,4 @@ define('_AM_PI_VIEWDAILY','顯示於每日');
 
 }
 
-?>
+

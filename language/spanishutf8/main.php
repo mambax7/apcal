@@ -5,17 +5,17 @@ if( defined( 'FOR_XOOPS_LANG_CHECKER' ) || ! defined( 'APCAL_MB_LOADED' ) ) {
 define( 'APCAL_MB_LOADED' , 1 ) ;
 
 // index.php
-define('_MB_APCAL_ERR_NOPERMTOUPDATE',"Usted no tiene permisos para cambiar eventos");
+define('_MB_APCAL_ERR_NOPERMTOUPDATE', 'Usted no tiene permisos para cambiar eventos');
 define('_APCAL_APURL', 'http://xoops.antiquespromotion.ca');
 define('_APCAL_APURL2', 'http://www.antiquespromotion.ca');
-define('APCAL_COPYRIGHT' , '<a href="http://xoops.antiquespromotion.ca" title="Calendar for Xoops" target="_blank">APCal</a> by <a href="http://www.antiquespromotion.ca" title="Promoci&oacute;n de antig¸edades Canad&aacute;" target="_blank">AP</a>');
-define('_MB_APCAL_ERR_NOPERMTOINSERT',"Usted no tiene permisos para aÅ¬dir eventos");
-define('_MB_APCAL_ERR_NOPERMTODELETE',"Usted no tiene permisos para eliminar eventos");
-define('_MB_APCAL_ALT_PRINTTHISEVENT',"Imprimir este evento");
+define('APCAL_COPYRIGHT' , '<a href="http://xoops.antiquespromotion.ca" title="Calendar for Xoops" target="_blank">APCal</a> by <a href="http://www.antiquespromotion.ca" title="Promoci&oacute;n de antigÔøΩedades Canad&aacute;" target="_blank">AP</a>');
+define('_MB_APCAL_ERR_NOPERMTOINSERT', 'Usted no tiene permisos para aÔøΩÔøΩdir eventos');
+define('_MB_APCAL_ERR_NOPERMTODELETE', 'Usted no tiene permisos para eliminar eventos');
+define('_MB_APCAL_ALT_PRINTTHISEVENT', 'Imprimir este evento');
 define('_APCAL_CALENDAR', 'Calendario');
 
 // print.php
-define('_MB_APCAL_COMESFROM',"Este evento viene de %s");
+define('_MB_APCAL_COMESFROM', 'Este evento viene de %s');
 
 // edit event
 define('_APCAL_TH_GETCOORDS', 'Encontrar posici&oacute;n');
@@ -35,7 +35,7 @@ define('_APCAL_SAMEHOURS', 'Usar las mismas horas para cada d&iacute;a');
 // API texts
 define('_APCAL_PROVIDEDBY', 'Resultados provistos por');
 define('_APCAL_X', 'por');
-define('_APCAL_AP', 'Promoci&oacute;n de antig¸edades Canad&aacute;');
+define('_APCAL_AP', 'Promoci&oacute;n de antigÔøΩedades Canad&aacute;');
 define('_APCAL_CALENDAROF', 'Calendario de');
 
 // Share admin
@@ -85,4 +85,4 @@ define('_APCAL_GPLUS_LNG', 'en');
 
 }
 
-?>
+

@@ -11,111 +11,111 @@ define( 'APCAL_MI_LOADED' , 1 ) ;
 // Module Info
 
 // The name of this module
-define("_MI_APCAL_NAME"              ,"APCal");
+define('_MI_APCAL_NAME', 'APCal');
 
 // A brief description of this module
-define("_MI_APCAL_DESC"              ,"Kalendarz z harmonogramem");
+define('_MI_APCAL_DESC', 'Kalendarz z harmonogramem');
 
 // Default Locale
-define("_MI_APCAL_DEFAULTLOCALE"     ,"Poland");
+define('_MI_APCAL_DEFAULTLOCALE', 'Poland');
 
 // Names of blocks for this module (Not all module has blocks)
-define("_MI_APCAL_BNAME_MINICAL"            , "MiniCalendarz");
-define("_MI_APCAL_BNAME_MINICAL_DESC"       , "Wyswietl blok MiniCalendarza");
-define("_MI_APCAL_BNAME_MINICALEX"          , "MiniCalendarEx");
-define("_MI_APCAL_BNAME_MINICALEX_DESC"     , "Extensible minicalendar z pluginem systemu");
-define("_MI_APCAL_BNAME_MONTHCAL"           , "Miesiêczny kalendarz");
-define("_MI_APCAL_BNAME_MONTHCAL_DESC"      , "Wy¶wietl pe³ny widkok Miesiêcznego kalendarza");
-define("_MI_APCAL_BNAME_TODAYS"             , "Dzisiejsze wydarzenia");
-define("_MI_APCAL_BNAME_TODAYS_DESC"        , "Wy¶wietl wydarzenia na dzi¶");
-define("_MI_APCAL_BNAME_THEDAYS"            , "Wydarzenia w %s");
-define("_MI_APCAL_BNAME_THEDAYS_DESC"       , "Wy¶wietl wydarzenia dla wskazanego dnia");
-define("_MI_APCAL_BNAME_COMING"             , "Nadchodz±ce wydarzenia");
-define("_MI_APCAL_BNAME_COMING_DESC"        , "Wy¶wietl nadchodz±ce wydarzenia");
-define("_MI_APCAL_BNAME_AFTER"              , "Wydarzenia po %s");
-define("_MI_APCAL_BNAME_AFTER_DESC"         , "Wy¶wietl wydarzenia po wksazanym dniu");
-define("_MI_APCAL_BNAME_NEW"                , "Nowe wydarzenia");
-define("_MI_APCAL_BNAME_NEW_DESC"           , "Nowe wydarzenia bêd± wy¿ej ni¿ starsze");
+define('_MI_APCAL_BNAME_MINICAL', 'MiniCalendarz');
+define('_MI_APCAL_BNAME_MINICAL_DESC', 'WyÅ›wietl blok MiniCalendarza');
+define('_MI_APCAL_BNAME_MINICALEX', 'MiniCalendarEx');
+define('_MI_APCAL_BNAME_MINICALEX_DESC', 'Rozszerzalny minikalendarz z wtyczkÄ… systemowÄ…');
+define('_MI_APCAL_BNAME_MONTHCAL', 'MiesiÄ™czny kalendarz');
+define('_MI_APCAL_BNAME_MONTHCAL_DESC', 'WyÅ›wietl peÅ‚ny widkok miesiÄ™cznego kalendarza');
+define('_MI_APCAL_BNAME_TODAYS', 'Dzisiejsze wydarzenia');
+define('_MI_APCAL_BNAME_TODAYS_DESC', 'WyÅ›wietl wydarzenia na dzieÅ„');
+define('_MI_APCAL_BNAME_THEDAYS', 'Wydarzenia w %s');
+define('_MI_APCAL_BNAME_THEDAYS_DESC', 'WyÅ›wietl wydarzenia dla wskazanego dnia');
+define('_MI_APCAL_BNAME_COMING', 'NadchodzÄ…ce wydarzenia');
+define('_MI_APCAL_BNAME_COMING_DESC', 'WyÅ›wietl nadchodzÄ…cee wydarzenia');
+define('_MI_APCAL_BNAME_AFTER', 'Wydarzenia po %s');
+define('_MI_APCAL_BNAME_AFTER_DESC', 'WyÅ›wietl wydarzenia po wksazanym dniu');
+define('_MI_APCAL_BNAME_NEW', 'Nowe wydarzenia');
+define('_MI_APCAL_BNAME_NEW_DESC', 'Nowe wydarzenia bÄ™dÄ… wyÅ¼ej niÅ¼ starsze');
 
 // Names of submenu
-define("_MI_APCAL_SM_SUBMIT"                ,"Dodaj");
+define('_MI_APCAL_SM_SUBMIT', 'Dodaj');
 
 //define("_MI_APCAL_ADMENU1","");
 
 // Title of config items
-define("_MI_USERS_AUTHORITY"                , "Prawa u¿ytkowników");
-define("_MI_GUESTS_AUTHORITY"               , "Prawa go¶ci");
-define("_MI_DEFAULT_VIEW"                   , "Domy¶lny widok na ¶rodku");
-define("_MI_MINICAL_TARGET"                 , "Docelowy widok z MiniCalendarza");
-define("_MI_COMING_NUMROWS"                 , "Liczba wydarzeñ w bloku Nadchodz±cych Wydarzeñ");
-define("_MI_SKINFOLDER"                     , "Nazwa folderu ze skórk±");
-define("_MI_APCAL_LOCALE"                   , "Lokacja (sprawd¼ pliki w locales/*.php)");
-define("_MI_SUNDAYCOLOR"                    , "Kolor niedziel");
-define("_MI_WEEKDAYCOLOR"                   , "Kolor zwyk³ego dnia");
-define("_MI_SATURDAYCOLOR"                  , "Kolor soboty");
-define("_MI_HOLIDAYCOLOR"                   , "Kolor wakacji");
-define("_MI_TARGETDAYCOLOR"                 , "Kolor wybranego dnia");
-define("_MI_SUNDAYBGCOLOR"                  , "T³o niedzieli");
-define("_MI_WEEKDAYBGCOLOR"                 , "T³o zwyk³ego dnia");
-define("_MI_SATURDAYBGCOLOR"                , "T³o soboty");
-define("_MI_HOLIDAYBGCOLOR"                 , "T³o wakacji");
-define("_MI_TARGETDAYBGCOLOR"               , "T³o wybranego dnia");
-define("_MI_CALHEADCOLOR"                   , "Kolor nag³ówka");
-define("_MI_CALHEADBGCOLOR"                 , "T³o nag³ówka");
-define("_MI_CALFRAMECSS"                    , "Styl ramki kalendarza");
-define("_MI_CANOUTPUTICS"                   , "Permission of outputting ics files");
-define("_MI_MAXRRULEEXTRACT"                , "Upper limit of events extracted by Rrule.(COUNT)");
-define("_MI_WEEKSTARTFROM"                  , "Dzieñ zaczyn±jcy tydzieñ");
-define("_MI_WEEKNUMBERING"                  , "Numbering rule for weeks");
-define("_MI_DAYSTARTFROM"                   , "Linia graniczna pomiêdzy dniami");
-define("_MI_TIMEZONE_USING"                 , "Strefa czasowa serwera");
-define("_MI_USE24HOUR"                      , "24-godzinny system (Lub 12-godzinny)");
-define("_MI_NAMEORUNAME"                    , "Wy¶wietlaæ nick autora wydarzenia" ) ;
-define("_MI_DESCNAMEORUNAME"                , "Wybierz je¿eli 'imiê' jest pokazywane" ) ;
+define('_MI_USERS_AUTHORITY', 'Prawa uÅ¼ytkownikÃ³w');
+define('_MI_GUESTS_AUTHORITY', 'Prawa goÅ›ci');
+define('_MI_DEFAULT_VIEW', 'DomyÅ›lny widok na Å›rodku');
+define('_MI_MINICAL_TARGET', 'Docelowy widok z MiniCalendarza');
+define('_MI_COMING_NUMROWS', 'Liczba wydarzeÅ„ w bloku nadchodzÄ…cych WydarzeÅ„');
+define('_MI_SKINFOLDER', 'Nazwa folderu ze skÃ³rki');
+define('_MI_APCAL_LOCALE', 'Lokacja (sprawdÅº pliki w locales/*.php)');
+define('_MI_SUNDAYCOLOR', 'Kolor niedziel');
+define('_MI_WEEKDAYCOLOR', 'Kolor zwykÅ‚ego dnia');
+define('_MI_SATURDAYCOLOR', 'Kolor soboty');
+define('_MI_HOLIDAYCOLOR', 'Kolor wakacji');
+define('_MI_TARGETDAYCOLOR', 'Kolor wybranego dnia');
+define('_MI_SUNDAYBGCOLOR', 'TÅ‚o niedzieli');
+define('_MI_WEEKDAYBGCOLOR', 'TÅ‚o zwykÅ‚ego dnia');
+define('_MI_SATURDAYBGCOLOR', 'TÅ‚o soboty');
+define('_MI_HOLIDAYBGCOLOR', 'TÅ‚o wakacji');
+define('_MI_TARGETDAYBGCOLOR', 'TÅ‚o wybranego dnia');
+define('_MI_CALHEADCOLOR', 'Kolor nagÅ‚Ã³wka');
+define('_MI_CALHEADBGCOLOR', 'TÅ‚o nagÅ‚Ã³wka');
+define('_MI_CALFRAMECSS', 'Styl ramki kalendarza');
+define('_MI_CANOUTPUTICS', 'Zezwolenie na wysyÅ‚anie plikÃ³w ICS');
+define('_MI_MAXRRULEEXTRACT', 'GÃ³rny limit zdarzeÅ„ wyodrÄ™bniony wedÅ‚ug reguÅ‚y (COUNT');
+define('_MI_WEEKSTARTFROM', 'DzieÅ„  zaczynajÄ…cy tydzieÅ„');
+define('_MI_WEEKNUMBERING', 'ReguÅ‚a numeracji tygodniowej');
+define('_MI_DAYSTARTFROM', 'Linia graniczna pomiÄ™dzy dniami');
+define('_MI_TIMEZONE_USING', 'Strefa czasowa serwera');
+define('_MI_USE24HOUR', '24-godzinny system (Lub 12-godzinny)');
+define('_MI_NAMEORUNAME', 'WyÅ›wietlaÅ„ nick autora wydarzenia') ;
+define('_MI_DESCNAMEORUNAME', "Wybierz jeÅ¼eli 'imiÄ™' jest pokazywane" ) ;
 
 // Description of each config items
-define("_MI_EDITBYGUESTDSC"                 , "Uprawnienia dodawanie wydarzeñ przez go¶ci");
+define('_MI_EDITBYGUESTDSC', 'Uprawnienia dodawanie wydarzeÅ„ przez goÅ›ci');
 
 // Options of each config items
-define("_MI_OPT_AUTH_NONE"                  , "nie mo¿e dodawaæ");
-define("_MI_OPT_AUTH_WAIT"                  , "mo¿e ale musi to zaakceptowaæ administrator");
-define("_MI_OPT_AUTH_POST"                  , "mo¿e dodawaæ bez akceptacji administratora");
-define("_MI_OPT_AUTH_BYGROUP"               , "Ustawienia grup");
-define("_MI_OPT_MINI_PHPSELF"               , "Obecna strona");
-define("_MI_OPT_MINI_MONTHLY"               , "Miesiêczny kalendarz");
-define("_MI_OPT_MINI_WEEKLY"                , "Tygodniowy kalendarz");
-define("_MI_OPT_MINI_DAILY"                 , "Dzienny kalendarz");
-define("_MI_OPT_MINI_LIST"                  , "Lista wydarzeñ");
-define("_MI_OPT_CANOUTPUTICS"               , "mo¿e przetworzyæ");
-define("_MI_OPT_CANNOTOUTPUTICS"            , "nie mo¿e przetworzyæ");
-define("_MI_OPT_STARTFROMSUN"               , "Niedziela");
-define("_MI_OPT_STARTFROMMON"               , "Poniedzia³ek");
-define("_MI_OPT_WEEKNOEACHMONTH"            , "przez ka¿dy miesi±c");
-define("_MI_OPT_WEEKNOWHOLEYEAR"            , "przez ca³ rok");
-define("_MI_OPT_USENAME"                    , "Prawdziwe imiê" ) ;
-define("_MI_OPT_USEUNAME"                   , "Login" ) ;
-define("_MI_OPT_TZ_USEXOOPS"                , "Ustawienia Xoopsa" ) ;
-define("_MI_OPT_TZ_USEWINTER"               , "warto¶æ z serwera jako czas zimowy (zalecane)" ) ;
-define("_MI_OPT_TZ_USESUMMER"               , "warto¶æ z serwera jako czas letni" ) ;
+define('_MI_OPT_AUTH_NONE', 'nie moÅ¼e dodawaÄ‡');
+define('_MI_OPT_AUTH_WAIT', 'moÅ¼e ale musi to zaakceptowaÄ‡ administrator');
+define('_MI_OPT_AUTH_POST', 'moÅ¼e dodawaÄ‡ bez akceptacji administratora');
+define('_MI_OPT_AUTH_BYGROUP', 'Ustawienia grup');
+define('_MI_OPT_MINI_PHPSELF', 'Obecna strona');
+define('_MI_OPT_MINI_MONTHLY', 'MiesiÄ™czny kalendarz');
+define('_MI_OPT_MINI_WEEKLY', 'Tygodniowy kalendarz');
+define('_MI_OPT_MINI_DAILY', 'Dzienny kalendarz');
+define('_MI_OPT_MINI_LIST', 'Lista wydarzeÅ„');
+define('_MI_OPT_CANOUTPUTICS', 'moÅ¼e przetworzyÄ‡');
+define('_MI_OPT_CANNOTOUTPUTICS', 'nie moÅ¼e przetworzyÄ‡');
+define('_MI_OPT_STARTFROMSUN', 'Niedziela');
+define('_MI_OPT_STARTFROMMON', 'PoniedziaÅ‚ek');
+define('_MI_OPT_WEEKNOEACHMONTH', 'przez kaÅ¼dy miesiÄ…c');
+define('_MI_OPT_WEEKNOWHOLEYEAR', 'przez caÅ‚y rok');
+define('_MI_OPT_USENAME', 'Prawdziwe imiÄ™') ;
+define('_MI_OPT_USEUNAME', 'Login') ;
+define('_MI_OPT_TZ_USEXOOPS', 'Ustawienia Xoopsa') ;
+define('_MI_OPT_TZ_USEWINTER', 'wartoÅ›Ä‡ z serwera jako czas zimowy (zalecane)') ;
+define('_MI_OPT_TZ_USESUMMER', 'wartoÅ›Ä‡ z serwera jako czas letni') ;
 
 // Admin Menus
-define("_MI_APCAL_ADMENU0"                  , "Wydarzenia do akceptacji");
-define("_MI_APCAL_ADMENU1"                  , "Zarz±dzanie wydarzeniami");
-define("_MI_APCAL_ADMENU_CAT"               , "Zarz±dzanie kategoriami");
-define("_MI_APCAL_ADMENU_CAT2GROUP"         , "Uprawnienia dostêpu do kategorii");
-define("_MI_APCAL_ADMENU2"                  , "Globalne uprawnienia dostêpu");
-define("_MI_APCAL_ADMENU_TM"                , "Tabela");
-define("_MI_APCAL_ADMENU_PLUGINS"           , "Zarz±dzanie pluginami");
-define("_MI_APCAL_ADMENU_ICAL"              , "Import z iCalendar");
-define("_MI_APCAL_ADMENU_MYBLOCKSADMIN"     , "Bloki i grupy");
+define('_MI_APCAL_ADMENU0', 'Wydarzenia do akceptacji');
+define('_MI_APCAL_ADMENU1', 'ZarzÄ…dzanie wydarzeniami');
+define('_MI_APCAL_ADMENU_CAT', 'ZarzÄ…dzanie kategoriami');
+define('_MI_APCAL_ADMENU_CAT2GROUP', 'Uprawnienia dostÄ™pu do kategorii');
+define('_MI_APCAL_ADMENU2', 'Globalne uprawnienia dostÄ™pu');
+define('_MI_APCAL_ADMENU_TM', 'Tabela');
+define('_MI_APCAL_ADMENU_PLUGINS', 'ZarzÄ…dzanie pluginami');
+define('_MI_APCAL_ADMENU_ICAL', 'Import z iCalendar');
+define('_MI_APCAL_ADMENU_MYBLOCKSADMIN', 'Bloki i grupy');
 
 // Text for notifications
-define('_MI_APCAL_GLOBAL_NOTIFY'            , 'Ogólne');
-define('_MI_APCAL_GLOBAL_NOTIFYDSC'         , 'Opcje powiadomieñ.');
+define('_MI_APCAL_GLOBAL_NOTIFY'            , 'OgÄ‡lne');
+define('_MI_APCAL_GLOBAL_NOTIFYDSC'         , 'Opcje powiadomieÅ„.');
 define('_MI_APCAL_CATEGORY_NOTIFY'          , 'Kategorie');
-define('_MI_APCAL_CATEGORY_NOTIFYDSC'       , 'Opcje powiadomieñ, które odnosz± siê do aktualnej kategorii.');
+define('_MI_APCAL_CATEGORY_NOTIFYDSC'       , 'Opcje powiadomieÅ„, ktÄ‡re odnoszÄ… siÄ™ do aktualnej kategorii.');
 define('_MI_APCAL_EVENT_NOTIFY'             , 'Wydarzenie');
-define('_MI_APCAL_EVENT_NOTIFYDSC'          , 'Opcje powiadomieñ, które odnosz± siê do aktualnego wydarzenia.');
+define('_MI_APCAL_EVENT_NOTIFYDSC'          , 'Opcje powiadomieÅ„, ktÄ‡re odnoszÄ… siÄ™ do aktualnego wydarzenia.');
 
 define('_MI_APCAL_GLOBAL_NEWEVENT_NOTIFY'       , 'Nowe wydarzenie');
 define('_MI_APCAL_GLOBAL_NEWEVENT_NOTIFYCAP'    , 'Powiadom mnie kiedy zostanie utworzone nowe wydarzenie.');
@@ -127,8 +127,6 @@ define('_MI_APCAL_CATEGORY_NEWEVENT_NOTIFYCAP'  , 'Powiadom mnie kiedy zostanie 
 define('_MI_APCAL_CATEGORY_NEWEVENT_NOTIFYDSC'  , 'Powiadom mnie kiedy zostanie utworzone nowe wydarzenie w kategorii (+opis).');
 define('_MI_APCAL_CATEGORY_NEWEVENT_NOTIFYSBJ'  , '[{X_SITENAME}] {X_MODULE} auto-notify : Nowe wydarzenie w {CATEGORY_TITLE}');
 
-
-
 }
 
-?>
+

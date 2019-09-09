@@ -1,23 +1,23 @@
 Hej {X_UNAME},
 
-En ny hçÏdelse "{EVENT_SUMMARY}" i kategori "{CATEGORY_TITLE}" har skapats hos {X_SITENAME}.
+En ny hÃ¤ndelse "{EVENT_SUMMARY}" i kategori "{CATEGORY_TITLE}" har skapats hos {X_SITENAME}.
 
-Klicka på denna lçÏk f‹Ó att lçÔa hçÏdelsen:
+Klicka pÃ¥ denna lÃ¤nk fÃ¶r att lÃ¤sa hÃ¤ndelsen:
 {EVENT_URI}
 
 -----------
 
-Ni féÓ detta meddelande på grund av att Ni har valt att bli underrçÕtade 
-nçÓ nya hçÏdelser har lagts till i véÓ kalender.
+Ni fÃ¥r detta meddelande pÃ¥ grund av att Ni har valt att bli underrÃ¤ttade
+nÃ¤r nya hÃ¤ndelser har lagts till i vÃ¥r kalender.
 
-Om detta çÓ fel eller om Ni inte ‹Ïskar mottaga fler underrçÕtelser, 
-vçÏligen uppdatera Era prenumerationer genom att bes‹Ìa lçÏken nedanf‹Ó:
+Om detta Ã¤r fel eller om Ni inte Ã¶nskar mottaga fler underrÃ¤ttelser,
+vÃ¤nligen uppdatera Era prenumerationer genom att besÃ¶ka lÃ¤nken nedanfÃ¶r:
 {X_UNSUBSCRIBE_URL}
 
-Var vçÏlig och svara inte på detta meddelande.
+Var vÃ¤nlig och svara inte pÃ¥ detta meddelande.
 
 -----------
 
-{X_SITENAME} ({X_SITEURL}) 
+{X_SITENAME} ({X_SITEURL})
 webmaster
 {X_ADMINMAIL}

@@ -5,17 +5,17 @@ if( defined( 'FOR_XOOPS_LANG_CHECKER' ) || ! defined( 'APCAL_BL_LOADED' ) ) {
 
 
 // Appended by Xoops Language Checker -GIJOE- in 2005-04-22 12:02:00
-define('_MB_APCAL_MAXGIFSADAY','Puntos m&aacute;Ùimos por dùÂ');
-define('_MB_APCAL_JUSTONCEADAYAPLUGIN','Mostrar solamente un punto por dùÂ o por plugin');
+define('_MB_APCAL_MAXGIFSADAY','Puntos m&aacute;ï¿½imos por dï¿½ï¿½');
+define('_MB_APCAL_JUSTONCEADAYAPLUGIN','Mostrar solamente un punto por dï¿½ï¿½ o por plugin');
 define('_MB_APCAL_PLUGINS','Plugins Activos');
 define('_MB_APCAL_PLUGINS_DESC','Lista de plugins separados por, (comas)');
 define('_MB_APCAL_PLUGINS_VALID','Plugins V&aacute;&Iacute;idos');
 
 // Appended by Xoops Language Checker -GIJOE- in 2005-01-08 04:36:48
 define('_MB_APCAL_MAXITEMS','Mostrar');
-define('_MB_APCAL_CATSEL','CategorùÂ');
-define('_MB_APCAL_CATSELSUB','Mostrar tambien subcategorùÂs');
-define('_MB_APCAL_UNTILDAYS','Durante %s los dùÂs (0 implica siempre)');
+define('_MB_APCAL_CATSEL','Categorï¿½ï¿½');
+define('_MB_APCAL_CATSELSUB','Mostrar tambien subcategorï¿½ï¿½s');
+define('_MB_APCAL_UNTILDAYS','Durante %s los dï¿½ï¿½s (0 implica siempre)');
 
 define( 'APCAL_BL_LOADED' , 1 ) ;
 
@@ -31,7 +31,7 @@ define('_MB_APCAL_JUMP','Ir');
 
 // for after the day's events block
 // %s means the indicated day
-define('_MB_APCAL_EVENTS_AFTER','Eventos despuÃ±Ô %s');
+define('_MB_APCAL_EVENTS_AFTER','Eventos despuÃ±ï¿½ %s');
 
 // for the day's events block
 // %s means the indicated day
@@ -44,4 +44,3 @@ define('_MB_APCAL_MAXNEWITEMS','Mostrar');
 
 }
 
-?>
