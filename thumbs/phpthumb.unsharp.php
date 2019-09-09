@@ -59,16 +59,16 @@ class phpUnsharpMask
         // imgcreatetruecolor. No url! $img must be a truecolor image.
 
         // Attempt to calibrate the parameters to Photoshop:
-        $amount = min($amount, 500) * 0.016;
-        $radius = abs(round(min(50, $radius) * 2)); // Only integers make sense.
+        $amount    = min($amount, 500) * 0.016;
+        $radius    = abs(round(min(50, $radius) * 2)); // Only integers make sense.
         $threshold = min(255, $threshold);
         if (0 == $radius) {
             return true;
         }
-        $w = imagesx($img);
-        $h = imagesy($img);
+        $w         = imagesx($img);
+        $h         = imagesy($img);
         $imgCanvas = imagecreatetruecolor($w, $h);
-        $imgBlur = imagecreatetruecolor($w, $h);
+        $imgBlur   = imagecreatetruecolor($w, $h);
 
         // Gaussian blur matrix:
         //
@@ -105,9 +105,9 @@ class phpUnsharpMask
             for ($x = 0; $x < $w - 1; $x++) { // each row
                 for ($y = 0; $y < $h; $y++) { // each pixel
                     $rgbOrig = imagecolorat($img, $x, $y);
-                    $rOrig = (($rgbOrig >> 16) & 0xFF);
-                    $gOrig = (($rgbOrig >> 8) & 0xFF);
-                    $bOrig = ($rgbOrig & 0xFF);
+                    $rOrig   = (($rgbOrig >> 16) & 0xFF);
+                    $gOrig   = (($rgbOrig >> 8) & 0xFF);
+                    $bOrig   = ($rgbOrig & 0xFF);
 
                     $rgbBlur = imagecolorat($imgBlur, $x, $y);
 
@@ -131,9 +131,9 @@ class phpUnsharpMask
             for ($x = 0; $x < $w; $x++) { // each row
                 for ($y = 0; $y < $h; $y++) { // each pixel
                     $rgbOrig = imagecolorat($img, $x, $y);
-                    $rOrig = (($rgbOrig >> 16) & 0xFF);
-                    $gOrig = (($rgbOrig >> 8) & 0xFF);
-                    $bOrig = ($rgbOrig & 0xFF);
+                    $rOrig   = (($rgbOrig >> 16) & 0xFF);
+                    $gOrig   = (($rgbOrig >> 8) & 0xFF);
+                    $bOrig   = ($rgbOrig & 0xFF);
 
                     $rgbBlur = imagecolorat($imgBlur, $x, $y);
 
@@ -141,9 +141,9 @@ class phpUnsharpMask
                     $gBlur = (($rgbBlur >> 8) & 0xFF);
                     $bBlur = ($rgbBlur & 0xFF);
 
-                    $rNew = min(255, max(0, ($amount * ($rOrig - $rBlur)) + $rOrig));
-                    $gNew = min(255, max(0, ($amount * ($gOrig - $gBlur)) + $gOrig));
-                    $bNew = min(255, max(0, ($amount * ($bOrig - $bBlur)) + $bOrig));
+                    $rNew   = min(255, max(0, ($amount * ($rOrig - $rBlur)) + $rOrig));
+                    $gNew   = min(255, max(0, ($amount * ($gOrig - $gBlur)) + $gOrig));
+                    $bNew   = min(255, max(0, ($amount * ($bOrig - $bBlur)) + $bOrig));
                     $rgbNew = ($rNew << 16) + ($gNew << 8) + $bNew;
                     imagesetpixel($img, $x, $y, $rgbNew);
                 }

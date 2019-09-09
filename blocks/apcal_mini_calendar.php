@@ -18,6 +18,7 @@
  * @author       Antiques Promotion (http://www.antiquespromotion.ca)
  * @author       GIJ=CHECKMATE (PEAK Corp. http://www.peak.ne.jp/)
  */
+
 use  XoopsModules\Apcal;
 
 if (!defined('APCAL_BLOCK_MINI_CALENDAR_INCLUDED')) {
@@ -59,7 +60,7 @@ if (!defined('APCAL_BLOCK_MINI_CALENDAR_INCLUDED')) {
 
         // setting physical & virtual paths
         $mod_path = XOOPS_ROOT_PATH . "/modules/$moduleDirName";
-        $mod_url = XOOPS_URL . "/modules/$moduleDirName";
+        $mod_url  = XOOPS_URL . "/modules/$moduleDirName";
 
         // defining class of APCal
         //        if (!class_exists('APCal_xoops')) {
@@ -76,36 +77,36 @@ if (!defined('APCAL_BLOCK_MINI_CALENDAR_INCLUDED')) {
         // setting properties of APCal
         $cal->conn = $GLOBALS['xoopsDB']->conn;
         include "$mod_path/include/read_configs.php";
-        $cal->base_url = $mod_url;
-        $cal->base_path = $mod_path;
-        $cal->images_url = "$mod_url/assets/images/$skin_folder";
+        $cal->base_url    = $mod_url;
+        $cal->base_path   = $mod_path;
+        $cal->images_url  = "$mod_url/assets/images/$skin_folder";
         $cal->images_path = "$mod_path/assets/images/$skin_folder";
 
         switch ($mini_calendar_target) {
             case 'MONTHLY':
-                $get_target = "$mod_url/index.php";
+                $get_target   = "$mod_url/index.php";
                 $query_string = 'smode=Monthly';
                 break;
             case 'WEEKLY':
-                $get_target = "$mod_url/index.php";
+                $get_target   = "$mod_url/index.php";
                 $query_string = 'smode=Weekly';
                 break;
             case 'DAILY':
-                $get_target = "$mod_url/index.php";
+                $get_target   = "$mod_url/index.php";
                 $query_string = 'smode=Daily';
                 break;
             case 'LIST':
-                $get_target = "$mod_url/index.php";
+                $get_target   = "$mod_url/index.php";
                 $query_string = 'smode=List';
                 break;
             default:
             case 'PHP_SELF':
-                $get_target = '';
+                $get_target   = '';
                 $query_string = '';
                 break;
         }
 
-        $block = [];
+        $block            = [];
         $block['content'] = $cal->get_mini_calendar_html($get_target, $query_string);
 
         // ¥­¥ã¥Ã¥·¥å¤Î½ñ¤­½Ð¤·

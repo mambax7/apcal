@@ -25,7 +25,7 @@ $starttime = array_sum(explode(' ', microtime())); // could be called as microti
 // this script relies on the superglobal arrays, fake it here for old PHP versions
 if (PHP_VERSION < '4.1.0') {
     $_SERVER = $HTTP_SERVER_VARS;
-    $_GET = $HTTP_GET_VARS;
+    $_GET    = $HTTP_GET_VARS;
 }
 
 /**
@@ -60,7 +60,7 @@ function RedirectToCachedFile()
     global $phpThumb;
 
     $nice_cachefile = str_replace(DIRECTORY_SEPARATOR, '/', $phpThumb->cache_filename);
-    $nice_docroot = str_replace(DIRECTORY_SEPARATOR, '/', rtrim($phpThumb->config_document_root, '/\\'));
+    $nice_docroot   = str_replace(DIRECTORY_SEPARATOR, '/', rtrim($phpThumb->config_document_root, '/\\'));
 
     $parsed_url = phpthumb_functions::ParseURLbetter(@$_SERVER['HTTP_REFERER']);
 
@@ -199,7 +199,7 @@ if (empty($phpThumb->config_disable_pathinfo_parsing) && (empty($_GET) || isset(
     for ($i = 0; $i < count($args) - 2; $i++) {
         @list($key, $value) = explode('=', @$args[$i]);
         if ('[]' === mb_substr($key, -2)) {
-            $array_key_name = mb_substr($key, 0, -2);
+            $array_key_name          = mb_substr($key, 0, -2);
             $_GET[$array_key_name][] = $value;
             $phpThumb->DebugMessage('PATH_INFO."' . $array_key_name . '[]" = "' . $value . '"', __FILE__, __LINE__);
         } else {
@@ -466,7 +466,7 @@ foreach ($_GET as $key => $value) {
             // all other parameters will cause some processing,
             // therefore cannot pass through original image unmodified
             $CanPassThroughDirectly = false;
-            $UnAllowedGET[] = $key;
+            $UnAllowedGET[]         = $key;
             break;
     }
 }
@@ -521,9 +521,9 @@ while ($CanPassThroughDirectly && $phpThumb->src) {
                 break 2;
         }
 
-        $ImageCreateFunctions = [1 => 'imagecreatefromgif', 2 => 'imagecreatefromjpeg', 3 => 'imagecreatefrompng', 18 => 'imagecreatefromwebp'];
+        $ImageCreateFunctions   = [1 => 'imagecreatefromgif', 2 => 'imagecreatefromjpeg', 3 => 'imagecreatefrompng', 18 => 'imagecreatefromwebp'];
         $theImageCreateFunction = @$ImageCreateFunctions[$phpThumb->getimagesizeinfo[2]];
-        $dummyImage = false;
+        $dummyImage             = false;
         if ($phpThumb->config_disable_onlycreateable_passthru || (function_exists($theImageCreateFunction) && ($dummyImage = @$theImageCreateFunction($SourceFilename)))) {
             // great
             if (@is_resource($dummyImage)) {

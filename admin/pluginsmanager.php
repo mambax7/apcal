@@ -11,12 +11,13 @@
 
 /**
  * @copyright    {@link https://xoops.org/ XOOPS Project}
- * @license     {@link http://www.fsf.org/copyleft/gpl.html GNU public license}
+ * @license      {@link http://www.fsf.org/copyleft/gpl.html GNU public license}
  * @package
  * @since
  * @author       XOOPS Development Team,
  * @author       GIJ=CHECKMATE (PEAK Corp. http://www.peak.ne.jp/)
  */
+
 use XoopsModules\Apcal;
 
 require_once dirname(dirname(dirname(__DIR__))) . '/include/cp_header.php';
@@ -34,18 +35,18 @@ $mydirnumber = '' === $regs[2] ? '' : (int)$regs[2];
 
 // fetch & sanitize from POST & GET
 $action = empty($_POST['action']) ? '' : preg_replace('/[^a-zA-Z0-9_-]/', '', $_POST['type']);
-$type = empty($_GET['type']) ? 'monthly' : preg_replace('/[^a-zA-Z0-9_-]/', '', $_GET['type']);
+$type   = empty($_GET['type']) ? 'monthly' : preg_replace('/[^a-zA-Z0-9_-]/', '', $_GET['type']);
 
-$limit_type = preg_replace('/([^0-9A-Za-z_.-]+)/', '', @$_GET['limit_type']);
+$limit_type    = preg_replace('/([^0-9A-Za-z_.-]+)/', '', @$_GET['limit_type']);
 $limit_dirname = preg_replace('/([^0-9A-Za-z_.-]+)/', '', @$_GET['limit_dirname']);
-$limit_file = preg_replace('/([^0-9A-Za-z_.-]+)/', '', @$_GET['limit_file']);
+$limit_file    = preg_replace('/([^0-9A-Za-z_.-]+)/', '', @$_GET['limit_file']);
 
 // connection to MySQL
 $conn = $GLOBALS['xoopsDB']->conn;
 
 // setting physical & virtual paths
 $mod_path = XOOPS_ROOT_PATH . "/modules/$moduleDirName";
-$mod_url = XOOPS_URL . "/modules/$moduleDirName";
+$mod_url  = XOOPS_URL . "/modules/$moduleDirName";
 
 // creating an instance of APCal
 $cal = new \ApcalXoops('', $xoopsConfig['language'], true);
@@ -53,9 +54,9 @@ $cal = new \ApcalXoops('', $xoopsConfig['language'], true);
 // setting properties of APCal
 $cal->conn = $conn;
 require dirname(__DIR__) . '/include/read_configs.php';
-$cal->base_url = $mod_url;
-$cal->base_path = $mod_path;
-$cal->images_url = "$mod_url/assets/images/$skin_folder";
+$cal->base_url    = $mod_url;
+$cal->base_path   = $mod_path;
+$cal->images_url  = "$mod_url/assets/images/$skin_folder";
 $cal->images_path = "$mod_path/assets/images/$skin_folder";
 
 // XOOPS´ØÏ¢¤Î½é´ü²½
@@ -93,11 +94,11 @@ if (!empty($_POST['update'])) {
         }
 
         $pi_options4sql = addslashes($_POST['pi_options'][0]);
-        $pi_weight4sql = \Xmf\Request::getInt('pi_weight', 0, 'POST')[0];
-        $pi_title4sql = addslashes($_POST['pi_titles'][0]);
+        $pi_weight4sql  = \Xmf\Request::getInt('pi_weight', 0, 'POST')[0];
+        $pi_title4sql   = addslashes($_POST['pi_titles'][0]);
         $pi_dirname4sql = addslashes($_POST['pi_dirnames'][0]);
-        $pi_file4sql = addslashes($_POST['pi_files'][0]);
-        $pi_dotgif4sql = addslashes($_POST['pi_dotgifs'][0]);
+        $pi_file4sql    = addslashes($_POST['pi_files'][0]);
+        $pi_dotgif4sql  = addslashes($_POST['pi_dotgifs'][0]);
 
         foreach ($types as $type) {
             $type4sql = addslashes($type);
@@ -117,20 +118,18 @@ if (!empty($_POST['update'])) {
                 die($GLOBALS['xoopsDB']->error());
             }
         } else {
-            $pi_type4sql = addslashes($_POST['pi_types'][$pi_id]);
+            $pi_type4sql    = addslashes($_POST['pi_types'][$pi_id]);
             $pi_options4sql = addslashes($_POST['pi_options'][$pi_id]);
-            $pi_weight4sql = \Xmf\Request::getInt('pi_weight', 0, 'POST')[$pi_id];
-            $pi_title4sql = addslashes($_POST['pi_titles'][$pi_id]);
-            $pi_title4sql = addslashes($_POST['pi_titles'][$pi_id]);
+            $pi_weight4sql  = \Xmf\Request::getInt('pi_weight', 0, 'POST')[$pi_id];
+            $pi_title4sql   = addslashes($_POST['pi_titles'][$pi_id]);
+            $pi_title4sql   = addslashes($_POST['pi_titles'][$pi_id]);
             $pi_dirname4sql = addslashes($_POST['pi_dirnames'][$pi_id]);
-            $pi_file4sql = addslashes($_POST['pi_files'][$pi_id]);
-            $pi_dotgif4sql = addslashes($_POST['pi_dotgifs'][$pi_id]);
+            $pi_file4sql    = addslashes($_POST['pi_files'][$pi_id]);
+            $pi_dotgif4sql  = addslashes($_POST['pi_dotgifs'][$pi_id]);
             $pi_enabled4sql = !empty($_POST['pi_enableds'][$pi_id]) ? 1 : 0;
 
-            if (!$GLOBALS['xoopsDB']->query(
-                "UPDATE $cal->plugin_table SET pi_type='$pi_type4sql', pi_options='$pi_options4sql', pi_weight='$pi_weight4sql', pi_title='$pi_title4sql', pi_dirname='$pi_dirname4sql', pi_file='$pi_file4sql', pi_dotgif='$pi_dotgif4sql', pi_enabled='$pi_enabled4sql' WHERE pi_id=$pi_id",
-                $conn
-            )) {
+            if (!$GLOBALS['xoopsDB']->query("UPDATE $cal->plugin_table SET pi_type='$pi_type4sql', pi_options='$pi_options4sql', pi_weight='$pi_weight4sql', pi_title='$pi_title4sql', pi_dirname='$pi_dirname4sql', pi_file='$pi_file4sql', pi_dotgif='$pi_dotgif4sql', pi_enabled='$pi_enabled4sql' WHERE pi_id=$pi_id",
+                                            $conn)) {
                 die($GLOBALS['xoopsDB']->error());
             }
         }
@@ -145,7 +144,7 @@ if (!empty($_POST['update'])) {
         }
     }
 
-    $mes = urlencode(sprintf(_AM_APCAL_PI_UPDATED));
+    $mes                 = urlencode(sprintf(_AM_APCAL_PI_UPDATED));
     $redirect_str4header = strtr("Location: $cal->connection://{$_SERVER['HTTP_HOST']}{$_SERVER['PHP_SELF']}?mes=$mes&limit_type=$limit_type&limit_dirname=$limit_dirname&limit_file=$limit_file", "\r\n\0", '   ');
 
     header($redirect_str4header);
@@ -170,20 +169,20 @@ foreach ($mcx_blocks as $bid => $title) {
     $type_options .= "<option value='mcx{$bid}'>" . $myts->htmlSpecialChars($title) . "</option>\n";
 }
 $type_options4new = "<option value=''>----</option>\n<option value='all'>" . _ALL . "</option>\n" . $type_options;
-$type_options = "<option value=''>----</option>\n" . $type_options;
+$type_options     = "<option value=''>----</option>\n" . $type_options;
 
 // dirname options
 $dirname_options = "<option value=''>----</option>\n";
-$dn_rs = $GLOBALS['xoopsDB']->query('SELECT dirname FROM ' . $GLOBALS['xoopsDB']->prefix('modules'));
+$dn_rs           = $GLOBALS['xoopsDB']->query('SELECT dirname FROM ' . $GLOBALS['xoopsDB']->prefix('modules'));
 while (list($dirname) = $GLOBALS['xoopsDB']->fetchRow($dn_rs)) {
     $dirname_options .= "<option value='$dirname'>$dirname</option>\n";
 }
 
 // plugin file options
 $file_options = "<option value=''>----</option>\n";
-$plugins_dir = $cal->base_path . '/' . $cal->plugins_path_monthly;
-$dir_handle = opendir($plugins_dir);
-$valid_files = [];
+$plugins_dir  = $cal->base_path . '/' . $cal->plugins_path_monthly;
+$dir_handle   = opendir($plugins_dir);
+$valid_files  = [];
 while (false !== ($file = readdir($dir_handle))) {
     if (is_file("$plugins_dir/$file")) {
         list($node, $ext) = explode('.', $file);
@@ -196,14 +195,14 @@ while (false !== ($file = readdir($dir_handle))) {
 closedir($dir_handle);
 sort($valid_files);
 foreach ($valid_files as $file) {
-    $file4disp = htmlspecialchars($file, ENT_QUOTES);
+    $file4disp    = htmlspecialchars($file, ENT_QUOTES);
     $file_options .= "<option value='$file4disp'>$file4disp</option>\n";
 }
 
 // dotgif options
 $dotgif_options = '';
-$dir_handle = opendir($cal->images_path);
-$valid_images = [];
+$dir_handle     = opendir($cal->images_path);
+$valid_images   = [];
 while (false !== ($file = readdir($dir_handle))) {
     if (is_file("$cal->images_path/$file")) {
         list($node, $ext) = explode('.', $file);
@@ -219,7 +218,7 @@ while (false !== ($file = readdir($dir_handle))) {
 closedir($dir_handle);
 sort($valid_images);
 foreach ($valid_images as $file) {
-    $file4disp = htmlspecialchars($file, ENT_QUOTES);
+    $file4disp      = htmlspecialchars($file, ENT_QUOTES);
     $dotgif_options .= "<option value='$file4disp'>$file4disp</option>\n";
 }
 
@@ -235,7 +234,7 @@ $columns = [
     'pi_enabled',
     'pi_weight',
 ];
-$order = in_array(@$_GET['order'], $columns) ? $_GET['order'] : 'pi_type';
+$order   = in_array(@$_GET['order'], $columns) ? $_GET['order'] : 'pi_type';
 // type limitation
 if (!empty($limit_type)) {
     $whr_type = "pi_type='" . addslashes($limit_type) . "'";
@@ -293,10 +292,10 @@ $oddeven = 'odd';
 while ($plugin = $GLOBALS['xoopsDB']->fetchObject($prs)) {
     $oddeven = ('odd' === $oddeven ? 'even' : 'odd');
 
-    $pi_id = (int)$plugin->pi_id;
-    $enable_checked = $plugin->pi_enabled ? 'checked' : '';
-    $pi_title = $myts->htmlSpecialChars($plugin->pi_title);
-    $del_confirm = 'confirm("' . sprintf(_AM_APCAL_FMT_CATDELCONFIRM, $pi_title) . '")';
+    $pi_id           = (int)$plugin->pi_id;
+    $enable_checked  = $plugin->pi_enabled ? 'checked' : '';
+    $pi_title        = $myts->htmlSpecialChars($plugin->pi_title);
+    $del_confirm     = 'confirm("' . sprintf(_AM_APCAL_FMT_CATDELCONFIRM, $pi_title) . '")';
     $pi_options4disp = htmlspecialchars($plugin->pi_options, ENT_QUOTES);
     echo "
       <tr>

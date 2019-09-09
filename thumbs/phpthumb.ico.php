@@ -20,27 +20,27 @@ class phpthumb_ico
      */
     public function GD2ICOstring(&$gd_image_array)
     {
-        $ImageWidths = [];
+        $ImageWidths  = [];
         $ImageHeights = [];
-        $bpp = [];
-        $totalcolors = [];
-        $icXOR = [];
-        $icAND = [];
-        $icANDmask = [];
+        $bpp          = [];
+        $totalcolors  = [];
+        $icXOR        = [];
+        $icAND        = [];
+        $icANDmask    = [];
         foreach ($gd_image_array as $key => $gd_image) {
-            $ImageWidths[$key] = imagesx($gd_image);
+            $ImageWidths[$key]  = imagesx($gd_image);
             $ImageHeights[$key] = imagesy($gd_image);
-            $bpp[$key] = imageistruecolor($gd_image) ? 32 : 24;
-            $totalcolors[$key] = imagecolorstotal($gd_image);
+            $bpp[$key]          = imageistruecolor($gd_image) ? 32 : 24;
+            $totalcolors[$key]  = imagecolorstotal($gd_image);
 
             $icXOR[$key] = '';
             for ($y = $ImageHeights[$key] - 1; $y >= 0; $y--) {
                 for ($x = 0; $x < $ImageWidths[$key]; $x++) {
                     $argb = phpthumb_functions::GetPixelColor($gd_image, $x, $y);
-                    $a = round(255 * ((127 - $argb['alpha']) / 127));
-                    $r = $argb['red'];
-                    $g = $argb['green'];
-                    $b = $argb['blue'];
+                    $a    = round(255 * ((127 - $argb['alpha']) / 127));
+                    $r    = $argb['red'];
+                    $g    = $argb['green'];
+                    $b    = $argb['blue'];
 
                     if (32 == $bpp[$key]) {
                         $icXOR[$key] .= chr($b) . chr($g) . chr($r) . chr($a);
@@ -104,9 +104,9 @@ class phpthumb_ico
             $icondata .= chr($bpp[$key]) . "\x00";                      // wBitCount;       // Bits per pixel
 
             $dwBytesInRes = 40 + mb_strlen($icXOR[$key]) + mb_strlen($icAND[$key]);
-            $icondata .= phpthumb_functions::LittleEndian2String($dwBytesInRes, 4);       // dwBytesInRes;    // How many bytes in this resource?
+            $icondata     .= phpthumb_functions::LittleEndian2String($dwBytesInRes, 4);       // dwBytesInRes;    // How many bytes in this resource?
 
-            $icondata .= phpthumb_functions::LittleEndian2String($dwImageOffset, 4);      // dwImageOffset;   // Where in the file is this image?
+            $icondata      .= phpthumb_functions::LittleEndian2String($dwImageOffset, 4);      // dwImageOffset;   // Where in the file is this image?
             $dwImageOffset += mb_strlen($BitmapInfoHeader[$key]);
             $dwImageOffset += mb_strlen($icXOR[$key]);
             $dwImageOffset += mb_strlen($icAND[$key]);

@@ -199,12 +199,12 @@ if (defined('FOR_XOOPS_LANG_CHECKER') || !defined('APCAL_CNST_LOADED')) {
     define('_APCAL_RO_LASTNAME', 'Nom');
     define('_APCAL_RO_EMAIL', 'Courriel');
     define('_APCAL_RO_EXTRAINFO1', ''); //use it as you want; if you keep it blank, it will be invisible; if you change later, it has no effect on the data himself
-define('_APCAL_RO_EXTRAINFO2', ''); //use it as you want, if you keep it blank, it will be invisible
-define('_APCAL_RO_EXTRAINFO3', ''); //use it as you want, if you keep it blank, it will be invisible
-define('_APCAL_RO_EXTRAINFO4', ''); //use it as you want, if you keep it blank, it will be invisible
-define('_APCAL_RO_EXTRAINFO5', ''); //use it as you want, if you keep it blank, it will be invisible
+    define('_APCAL_RO_EXTRAINFO2', ''); //use it as you want, if you keep it blank, it will be invisible
+    define('_APCAL_RO_EXTRAINFO3', ''); //use it as you want, if you keep it blank, it will be invisible
+    define('_APCAL_RO_EXTRAINFO4', ''); //use it as you want, if you keep it blank, it will be invisible
+    define('_APCAL_RO_EXTRAINFO5', ''); //use it as you want, if you keep it blank, it will be invisible
 
-define('_APCAL_RO_BTN_CONF_ADD', 'Confirmer l&#39;inscription');
+    define('_APCAL_RO_BTN_CONF_ADD', 'Confirmer l&#39;inscription');
     define('_APCAL_RO_BTN_CONF_ADD_MORE', 'Confirmer votre inscription et invitez plus de gens');
     define('_APCAL_RO_BTN_CONF_REMOVE', 'Confirmer la d&eacute;sinscription');
     define('_APCAL_RO_BTN_CANCEL', 'Annuler');

@@ -11,7 +11,7 @@
 
 /**
  * @copyright    {@link https://xoops.org/ XOOPS Project}
- * @license     {@link http://www.fsf.org/copyleft/gpl.html GNU public license}
+ * @license      {@link http://www.fsf.org/copyleft/gpl.html GNU public license}
  * @package
  * @since
  * @author       XOOPS Development Team,
@@ -24,8 +24,8 @@ require_once XOOPS_ROOT_PATH . '/class/template.php';
 
 // initials
 $xoops_system_path = XOOPS_ROOT_PATH . '/modules/system';
-$db = \XoopsDatabaseFactory::getDatabaseConnection();
-$myts = \MyTextSanitizer::getInstance();
+$db                = \XoopsDatabaseFactory::getDatabaseConnection();
+$myts              = \MyTextSanitizer::getInstance();
 
 // determine language
 $language = $xoopsConfig['language'];
@@ -55,18 +55,18 @@ if (!empty($_GET['dirname'])) {
 
 if (!empty($target_module) && is_object($target_module)) {
     // specified by dirname (for tplsadmin as an independent module)
-    $target_mid = $target_module->getVar('mid');
-    $target_dirname = $target_module->getVar('dirname');
+    $target_mid         = $target_module->getVar('mid');
+    $target_dirname     = $target_module->getVar('dirname');
     $target_dirname4sql = addslashes($target_dirname);
-    $target_mname = $target_module->getVar('name') . '&nbsp;' . sprintf('(%2.2f)', $target_module->getVar('version') / 100.0);
-    $query4redirect = '?dirname=' . urlencode(strip_tags($_GET['dirname']));
+    $target_mname       = $target_module->getVar('name') . '&nbsp;' . sprintf('(%2.2f)', $target_module->getVar('version') / 100.0);
+    $query4redirect     = '?dirname=' . urlencode(strip_tags($_GET['dirname']));
 } else {
     // not specified by dirname (for 3rd party modules as mytplsadmin)
-    $target_mid = $xoopsModule->getVar('mid');
-    $target_dirname = $xoopsModule->getVar('dirname');
+    $target_mid         = $xoopsModule->getVar('mid');
+    $target_dirname     = $xoopsModule->getVar('dirname');
     $target_dirname4sql = addslashes($target_dirname);
-    $target_mname = $xoopsModule->getVar('name');
-    $query4redirect = '';
+    $target_mname       = $xoopsModule->getVar('name');
+    $query4redirect     = '';
 }
 
 // check access right (needs system_admin of tplset)
@@ -87,7 +87,7 @@ if (!empty($_POST['clone_tplset_do']) && !empty($_POST['clone_tplset_from']) && 
     }
 
     $tplset_from = $myts->stripSlashesGPC($_POST['clone_tplset_from']);
-    $tplset_to = $myts->stripSlashesGPC($_POST['clone_tplset_to']);
+    $tplset_to   = $myts->stripSlashesGPC($_POST['clone_tplset_to']);
     // check tplset_name "from" and "to"
     if (!preg_match('/^[0-9A-Za-z_-]{1,16}$/', $_POST['clone_tplset_from'])) {
         die('a wrong template name is specified.');
@@ -176,7 +176,7 @@ if (is_array(@$_POST['del_do'])) {
                 die("You can't remove 'default' template.");
             }
 
-            $tpl = new \XoopsTpl();
+            $tpl                = new \XoopsTpl();
             $tpl->force_compile = true;
 
             foreach ($_POST["{$tplset_from}_check"] as $tplfile_tmp => $val) {
@@ -184,7 +184,7 @@ if (is_array(@$_POST['del_do'])) {
                     continue;
                 }
                 $tplfile = $myts->stripSlashesGPC($tplfile_tmp);
-                $result = $db->query('SELECT tpl_id FROM ' . $db->prefix('tplfile') . " WHERE tpl_tplset='" . addslashes($tplset_from) . "' AND tpl_file='" . addslashes($tplfile) . "'");
+                $result  = $db->query('SELECT tpl_id FROM ' . $db->prefix('tplfile') . " WHERE tpl_tplset='" . addslashes($tplset_from) . "' AND tpl_file='" . addslashes($tplfile) . "'");
                 while (list($tpl_id) = $db->fetchRow($result)) {
                     $tpl_id = (int)$tpl_id;
                     $db->query('DELETE FROM ' . $db->prefix('tplfile') . " WHERE tpl_id=$tpl_id");
@@ -204,17 +204,17 @@ if (is_array(@$_POST['del_do'])) {
 //************//
 
 // get tplsets
-$sql = 'SELECT DISTINCT tpl_tplset FROM ' . $db->prefix('tplfile') . " ORDER BY tpl_tplset='default' DESC,tpl_tplset";
-$srs = $db->query($sql);
-$tplsets = [];
+$sql             = 'SELECT DISTINCT tpl_tplset FROM ' . $db->prefix('tplfile') . " ORDER BY tpl_tplset='default' DESC,tpl_tplset";
+$srs             = $db->query($sql);
+$tplsets         = [];
 $tplsets_th4disp = '';
-$tplset_options = "<option value=''>----</option>\n";
+$tplset_options  = "<option value=''>----</option>\n";
 while (list($tplset) = $db->fetchRow($srs)) {
-    $tplset4disp = htmlspecialchars($tplset, ENT_QUOTES);
-    $tplsets[] = $tplset;
-    $th_style = $tplset == $xoopsConfig['template_set'] ? "style='color:yellow;'" : '';
+    $tplset4disp     = htmlspecialchars($tplset, ENT_QUOTES);
+    $tplsets[]       = $tplset;
+    $th_style        = $tplset == $xoopsConfig['template_set'] ? "style='color:yellow;'" : '';
     $tplsets_th4disp .= "<th $th_style><input type='checkbox' onclick=\"with(document.MainForm){for (i=0;i<length;i++) {if(elements[i].type=='checkbox'&&elements[i].name.indexOf('{$tplset4disp}_check')>=0) {elements[i].checked=this.checked;}}}\">DB-{$tplset4disp}</th>";
-    $tplset_options .= "<option value='$tplset4disp'>$tplset4disp</option>\n";
+    $tplset_options  .= "<option value='$tplset4disp'>$tplset4disp</option>\n";
 }
 
 // get tpl_file owned by the module
@@ -251,7 +251,7 @@ $fingerprint_styles = [
 
 // template ROWS
 while (list($tpl_file, $tpl_desc, $type, $count) = $db->fetchRow($frs)) {
-    $evenodd = 'even' === @$evenodd ? 'odd' : 'even';
+    $evenodd                 = 'even' === @$evenodd ? 'odd' : 'even';
     $fingerprint_style_count = 0;
 
     // information about the template
@@ -268,7 +268,7 @@ while (list($tpl_file, $tpl_desc, $type, $count) = $db->fetchRow($frs)) {
     // the base file template column
     $basefilepath = XOOPS_ROOT_PATH . '/modules/' . $target_dirname . '/templates/' . ('block' === $type ? 'blocks/' : '') . $tpl_file;
     if (file_exists($basefilepath)) {
-        $fingerprint = get_fingerprint(file($basefilepath));
+        $fingerprint                = get_fingerprint(file($basefilepath));
         $fingerprints[$fingerprint] = 1;
         echo "<td class='$evenodd'>" . formatTimestamp(filemtime($basefilepath), 'm') . '<br>' . mb_substr($fingerprint, 0, 16) . "<br><input type='checkbox' name='basecheck[$tpl_file]' value='1'></td>\n";
     } else {
@@ -280,9 +280,9 @@ while (list($tpl_file, $tpl_desc, $type, $count) = $db->fetchRow($frs)) {
         $tplset4disp = htmlspecialchars($tplset, ENT_QUOTES);
 
         // query for templates in db
-        $drs = $db->query('SELECT * FROM ' . $db->prefix('tplfile') . ' f NATURAL LEFT JOIN ' . $db->prefix('tplsource') . " s WHERE tpl_file='" . addslashes($tpl_file) . "' AND tpl_tplset='" . addslashes($tplset) . "'");
+        $drs     = $db->query('SELECT * FROM ' . $db->prefix('tplfile') . ' f NATURAL LEFT JOIN ' . $db->prefix('tplsource') . " s WHERE tpl_file='" . addslashes($tpl_file) . "' AND tpl_tplset='" . addslashes($tplset) . "'");
         $numrows = $db->getRowsNum($drs);
-        $tpl = $db->fetchArray($drs);
+        $tpl     = $db->fetchArray($drs);
         if (empty($tpl['tpl_id'])) {
             echo "<td class='$evenodd'>($numrows)</td>\n";
         } else {
@@ -291,7 +291,7 @@ while (list($tpl_file, $tpl_desc, $type, $count) = $db->fetchRow($frs)) {
                 $style = $fingerprints[$fingerprint];
             } else {
                 ++$fingerprint_style_count;
-                $style = $fingerprint_styles[$fingerprint_style_count];
+                $style                      = $fingerprint_styles[$fingerprint_style_count];
                 $fingerprints[$fingerprint] = $style;
             }
             echo "<td class='$evenodd' style='$style;'>"
@@ -428,7 +428,7 @@ function copy_templates_f2db($tplset_to, $whr_append = '1')
     while (false !== ($row = $db->fetchArray($result))) {
         $basefilepath = XOOPS_ROOT_PATH . '/modules/' . $row['tpl_module'] . '/templates/' . ('block' === $row['tpl_type'] ? 'blocks/' : '') . $row['tpl_file'];
 
-        $tpl_source = rtrim(file_get_contents($basefilepath));
+        $tpl_source   = rtrim(file_get_contents($basefilepath));
         $lastmodified = filemtime($basefilepath);
 
         $drs = $db->query('SELECT tpl_id FROM ' . $db->prefix('tplfile') . " WHERE tpl_tplset='" . addslashes($tplset_to) . "' AND ($whr_append) AND tpl_file='" . addslashes($row['tpl_file']) . "' AND tpl_refid='" . addslashes($row['tpl_refid']) . "'");

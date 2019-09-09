@@ -26,6 +26,6 @@ if (defined('FOR_XOOPS_LANG_CHECKER') || !defined('APCAL_BL_LOADED')) {
     define('_MB_APCAL_MAXGIFSADAY', 'Максимальное количество точек/картинок в день');
     define('_MB_APCAL_JUSTONCEADAYAPLUGIN', 'Показывать только 1 точку/картинку в день на плагин');
     //define("_MB_APCAL_PLUGINS","Активные плагины");
-//define("_MB_APCAL_PLUGINS_DESC","list the plugin's name separated with , (comma)");
-//define("_MB_APCAL_PLUGINS_VALID","Valid Plugins");
+    //define("_MB_APCAL_PLUGINS_DESC","list the plugin's name separated with , (comma)");
+    //define("_MB_APCAL_PLUGINS_VALID","Valid Plugins");
 }

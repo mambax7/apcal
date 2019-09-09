@@ -19,6 +19,7 @@
  * @param $xoopsModule
  * @return bool
  */
+
 use XoopsModules\Apcal;
 
 /**
@@ -66,7 +67,7 @@ function xoops_module_install_apcal(\XoopsModule $xoopsModule)
     $utility = new \XoopsModules\Apcal\Utility();
 
     //------------------------------------
-    $ret = true;
+    $ret    = true;
     $errors = transferTable('event');
     if ('' !== $errors) {
         $ret = false;
@@ -146,13 +147,13 @@ function transferTable($tablename)
     $errors = '';
     $result = $GLOBALS['xoopsDB']->queryF("SELECT * FROM {$GLOBALS['xoopsDB']->prefix('pical_' . $tablename)}");
     while (false !== ($row = $GLOBALS['xoopsDB']->fetchArray($result))) {
-        $fields = '';
-        $values = '';
+        $fields  = '';
+        $values  = '';
         $isFirst = true;
         foreach ($row as $field => $value) {
             if ('id' !== $field && 'start_date' !== $field && 'end_date' !== $field) {
-                $fields .= ($isFirst ? '' : ', ') . $field;
-                $values .= ($isFirst ? '' : ', ') . $GLOBALS['xoopsDB']->quote($value);
+                $fields  .= ($isFirst ? '' : ', ') . $field;
+                $values  .= ($isFirst ? '' : ', ') . $GLOBALS['xoopsDB']->quote($value);
                 $isFirst = false;
             }
         }
@@ -167,13 +168,13 @@ function transferTable($tablename)
 
 function setDefaultPerm()
 {
-    $moduleHnd = xoops_getHandler('module');
-    $module = $moduleHnd->getByDirname('apcal');
-    $modid = $module->getVar('mid');
+    $moduleHnd        = xoops_getHandler('module');
+    $module           = $moduleHnd->getByDirname('apcal');
+    $modid            = $module->getVar('mid');
     $grouppermHandler = xoops_getHandler('groupperm');
     //$item_ids = array(1, 2, 4, 8, 32);
 
-    $pical_cat = $grouppermHandler->getObjects(new \Criteria('gperm_name', 'pical_cat'));
+    $pical_cat    = $grouppermHandler->getObjects(new \Criteria('gperm_name', 'pical_cat'));
     $pical_global = $grouppermHandler->getObjects(new \Criteria('gperm_name', 'pical_global'));
 
     foreach ($pical_cat as $cat_perm) {

@@ -17,6 +17,7 @@
  * @author       XOOPS Development Team,
  * @author       GIJ=CHECKMATE (PEAK Corp. http://www.peak.ne.jp/)
  */
+
 use XoopsModules\Apcal;
 
 //header( "Location: admission.php" ) ;
@@ -31,7 +32,7 @@ xoops_cp_header();
 $adminObject = \Xmf\Module\Admin::getInstance();
 $adminObject->displayNavigation(basename(__FILE__));
 
-$MODURL = XOOPS_URL . '/modules/' . $xoopsModule->getVar('dirname');
+$MODURL  = XOOPS_URL . '/modules/' . $xoopsModule->getVar('dirname');
 $MODPATH = XOOPS_ROOT_PATH . '/modules/' . $xoopsModule->getVar('dirname');
 
 $cal = new Apcal\BaseApcal();
@@ -41,14 +42,14 @@ $rs = $GLOBALS['xoopsDB']->query("SELECT COUNT(id) FROM {$cal->table} WHERE admi
 //$nbWaitingEvents = mysql_result($rs, 0, 0);
 
 $nbWaitingEvents = 0;
-$resultRow = $GLOBALS['xoopsDB']->fetchRow($rs);
+$resultRow       = $GLOBALS['xoopsDB']->fetchRow($rs);
 if (false !== $resultRow && isset($resultRow[0])) {
     $nbWaitingEvents = $resultRow[0];
 }
 
 $rs = $GLOBALS['xoopsDB']->query("SELECT COUNT(id) FROM {$cal->table} WHERE end>UNIX_TIMESTAMP() AND (rrule_pid=0 OR rrule_pid=id)");
 //$nbEvents = mysql_result($rs, 0, 0);
-$nbEvents = 0;
+$nbEvents  = 0;
 $resultRow = $GLOBALS['xoopsDB']->fetchRow($rs);
 if (false !== $resultRow && isset($resultRow[0])) {
     $nbEvents = $resultRow[0];
@@ -56,7 +57,7 @@ if (false !== $resultRow && isset($resultRow[0])) {
 
 $rs = $GLOBALS['xoopsDB']->query("SELECT COUNT(cid) FROM {$cal->cat_table}");
 //$nbCats = mysql_result($rs, 0, 0);
-$nbCats = 0;
+$nbCats    = 0;
 $resultRow = $GLOBALS['xoopsDB']->fetchRow($rs);
 if (false !== $resultRow && isset($resultRow[0])) {
     $nbCats = $resultRow[0];

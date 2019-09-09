@@ -125,7 +125,8 @@ if (defined('FOR_XOOPS_LANG_CHECKER') || !defined('_MI_APCAL_APCALLOADED')) {
     define('_MI_APCAL_EDITBYGUESTDSC', 'Berechtigungen für Gäste, um Termine hinzuzufügen');
     define('_MI_APCAL_LOCALEDESC', 'Die Feiertage sind standardmäßig nur für USA, Canada, Canada-fr und Frankreich verfügbar. Bei anderen Ländern bitte überprüfen und erforderlichenfalls selbst erstellen.');
     define('_MI_APCAL_DESCNAMEORUNAME', 'Auswahl, welcher Name angezeigt wird');
-    define('_MI_APCAL_DESCUSEURLREWRITE', '<b>Damit Url-Rewriting richtig funktioniert, kopieren sie bitte /modules/APCal/doc/.htaccess in das Verzeichnis /modules/APCal/.</b><br /><br />Url-Rewriting funktioniert nur, wenn \'mod_rewrite\' auf dem Server installiert ist. Für Details kontaktieren Sie bitte Ihren System-Administrator.');
+    define('_MI_APCAL_DESCUSEURLREWRITE',
+           '<b>Damit Url-Rewriting richtig funktioniert, kopieren sie bitte /modules/APCal/doc/.htaccess in das Verzeichnis /modules/APCal/.</b><br /><br />Url-Rewriting funktioniert nur, wenn \'mod_rewrite\' auf dem Server installiert ist. Für Details kontaktieren Sie bitte Ihren System-Administrator.');
     define('_MI_APCAL_WIDERWEEKENDDESC', 'Für Mehrfachauswahl bitte die \'Strg\'-Taste gedrückt halten.');
     define('_MI_APCAL_THMORDEFAULTDESC', 'Theme verwenden: Hier den Namen der CSS-Datei angeben (die Verwendung einer CSS wird empfohlen)<br />Individuell anpassen: Bitte die nächsten 13 Felder ausfüllen.<br />Standard: Verwendung der Standardfarben.');
 

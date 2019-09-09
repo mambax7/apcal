@@ -40,7 +40,7 @@ defined('XOOPS_ROOT_PATH') || die('Restricted access');
 
 // set range (added 86400 second margin "begin" & "end")
 $range_start_s = mktime(0, 0, 0, $this->month, $this->date - 1, $this->year);
-$range_end_s = mktime(0, 0, 0, $this->month, $this->date + 2, $this->year);
+$range_end_s   = mktime(0, 0, 0, $this->month, $this->date + 2, $this->year);
 
 // query (added 86400 second margin "begin" & "end")
 $result = $db->query('SELECT title,lid,`time_update` FROM ' . $db->prefix('weblinks_link') . " WHERE `time_update` >= $range_start_s AND `time_update` < $range_end_s");
@@ -51,15 +51,15 @@ while (list($title, $id, $server_time) = $db->fetchRow($result)) {
         continue;
     }
     $target_date = date('j', $user_time);
-    $tmp_array = [
-        'dotgif' => $plugin['dotgif'],
-        'dirname' => $plugin['dirname'],
-        'link' => XOOPS_URL . "/modules/{$plugin['dirname']}/singlelink.php?lid=$id&amp;caldate={$this->year}-{$this->month}-$target_date",
-        'id' => $id,
+    $tmp_array   = [
+        'dotgif'      => $plugin['dotgif'],
+        'dirname'     => $plugin['dirname'],
+        'link'        => XOOPS_URL . "/modules/{$plugin['dirname']}/singlelink.php?lid=$id&amp;caldate={$this->year}-{$this->month}-$target_date",
+        'id'          => $id,
         'server_time' => $server_time,
-        'user_time' => $user_time,
-        'name' => 'lid',
-        'title' => $myts->htmlSpecialChars($title),
+        'user_time'   => $user_time,
+        'name'        => 'lid',
+        'title'       => $myts->htmlSpecialChars($title),
         'description' => '',
     ];
 

@@ -35,19 +35,19 @@ class DHTML_Calendar
         $calendar_lib_path = '/calendar/',
         $lang = 'en',
         $theme = 'calendar-win2k-1',
-        $stripped = true
-    ) {
+        $stripped = true)
+    {
         if ($stripped) {
-            $this->calendar_file = 'calendar_stripped.js';
+            $this->calendar_file       = 'calendar_stripped.js';
             $this->calendar_setup_file = 'calendar-setup_stripped.js';
         } else {
-            $this->calendar_file = 'calendar.js';
+            $this->calendar_file       = 'calendar.js';
             $this->calendar_setup_file = 'calendar-setup.js';
         }
-        $this->calendar_lang_file = 'lang/calendar-' . $lang . '.js';
+        $this->calendar_lang_file  = 'lang/calendar-' . $lang . '.js';
         $this->calendar_theme_file = $theme . '.css';
-        $this->calendar_lib_path = preg_replace('/\/+$/', '/', $calendar_lib_path);
-        $this->calendar_options = [
+        $this->calendar_lib_path   = preg_replace('/\/+$/', '/', $calendar_lib_path);
+        $this->calendar_options    = [
             'ifFormat' => '%Y/%m/%d',
             'daFormat' => '%Y/%m/%d',
         ];
@@ -81,13 +81,13 @@ class DHTML_Calendar
     }
 
     /**
-     * @param  array $other_options
+     * @param array $other_options
      * @return string
      */
     public function _make_calendar($other_options = [])
     {
         $js_options = $this->_make_js_hash(array_merge($this->calendar_options, $other_options));
-        $code = ('<script type="text/javascript">Calendar.setup({' . $js_options . '});</script>');
+        $code       = ('<script type="text/javascript">Calendar.setup({' . $js_options . '});</script>');
 
         return $code;
     }
@@ -98,9 +98,9 @@ class DHTML_Calendar
      */
     public function make_input_field($cal_options = [], $field_attributes = [])
     {
-        $id = $this->_gen_id();
+        $id      = $this->_gen_id();
         $attrstr = $this->_make_html_attr(array_merge($field_attributes, [
-            'id' => $this->_field_id($id),
+            'id'   => $this->_field_id($id),
             'type' => 'text',
         ]));
         echo '<input ' . $attrstr . '>';
@@ -108,7 +108,7 @@ class DHTML_Calendar
 
         $options = array_merge($cal_options, [
             'inputField' => $this->_field_id($id),
-            'button' => $this->_trigger_id($id),
+            'button'     => $this->_trigger_id($id),
         ]);
         echo $this->_make_calendar($options);
     }

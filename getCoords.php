@@ -11,7 +11,7 @@
 
 /**
  * @copyright    {@link https://xoops.org/ XOOPS Project}
- * @license     {@link http://www.fsf.org/copyleft/gpl.html GNU public license}
+ * @license      {@link http://www.fsf.org/copyleft/gpl.html GNU public license}
  * @package      AM Reviews
  * @since
  * @author       XOOPS Development Team, GIJ=CHECKMATE (PEAK Corp. http://www.peak.ne.jp/)
@@ -19,7 +19,7 @@
 require dirname(dirname(__DIR__)) . '/mainfile.php';
 require_once XOOPS_ROOT_PATH . '/class/template.php';
 
-    $moduleDirName = basename(__DIR__);
+$moduleDirName = basename(__DIR__);
 /** @var \XoopsModules\Apcal\Helper $helper */
 $helper = \XoopsModules\Apcal\Helper::getInstance();
 
@@ -29,5 +29,5 @@ if (!isset($GLOBALS['xoopsTpl']) || !($GLOBALS['xoopsTpl'] instanceof XoopsTpl))
 }
 
 $xoopsTpl = new \XoopsTpl();
- $xoopsTpl->assign('api_key', $helper->getConfig('apcal_mapsapi'));
+$xoopsTpl->assign('api_key', $helper->getConfig('apcal_mapsapi'));
 $xoopsTpl->display('db:apcal_getCoords.tpl');

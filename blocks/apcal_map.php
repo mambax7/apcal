@@ -17,6 +17,7 @@
  * @author       XOOPS Development Team,
  * @author       Antiques Promotion (http://www.antiquespromotion.ca)
  */
+
 use XoopsModules\Apcal;
 
 if (!defined('APCAL_BLOCK_MAP_INCLUDED')) {
@@ -36,7 +37,7 @@ if (!defined('APCAL_BLOCK_MAP_INCLUDED')) {
 
         // setting physical & virtual paths
         $mod_path = XOOPS_ROOT_PATH . "/modules/$moduleDirName";
-        $mod_url = XOOPS_URL . "/modules/$moduleDirName";
+        $mod_url  = XOOPS_URL . "/modules/$moduleDirName";
 
         // defining class of APCal
         //        if (!class_exists('APCal_xoops')) {
@@ -53,9 +54,9 @@ if (!defined('APCAL_BLOCK_MAP_INCLUDED')) {
         // setting properties of APCal
         $cal->conn = $GLOBALS['xoopsDB']->conn;
         include "$mod_path/include/read_configs.php";
-        $cal->base_url = $mod_url;
-        $cal->base_path = $mod_path;
-        $cal->images_url = "$mod_url/assets/images/$skin_folder";
+        $cal->base_url    = $mod_url;
+        $cal->base_path   = $mod_path;
+        $cal->images_url  = "$mod_url/assets/images/$skin_folder";
         $cal->images_path = "$mod_path/assets/images/$skin_folder";
 
         $cal->get_monthly_html($mod_url);

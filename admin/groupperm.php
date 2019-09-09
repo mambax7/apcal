@@ -17,6 +17,7 @@
  * @author       XOOPS Development Team,
  * @author       GIJ=CHECKMATE (PEAK Corp. http://www.peak.ne.jp/)
  */
+
 use XoopsModules\Apcal;
 
 $moduleDirName = basename(dirname(__DIR__));
@@ -52,10 +53,10 @@ if (!empty($_POST['submit'])) {
 }
 
 $item_list = [
-    '1' => _AM_APCAL_GPERM_G_INSERTABLE,
-    '2' => _AM_APCAL_GPERM_G_SUPERINSERT,
-    '4' => _AM_APCAL_GPERM_G_EDITABLE,
-    '8' => _AM_APCAL_GPERM_G_SUPEREDIT,
+    '1'  => _AM_APCAL_GPERM_G_INSERTABLE,
+    '2'  => _AM_APCAL_GPERM_G_SUPERINSERT,
+    '4'  => _AM_APCAL_GPERM_G_EDITABLE,
+    '8'  => _AM_APCAL_GPERM_G_SUPEREDIT,
     //  '16' => _AM_APCAL_GPERM_G_DELETABLE ,
     '32' => _AM_APCAL_GPERM_G_SUPERDELETE, //  '64' => _AM_APCAL_GPERM_G_TOUCHOTHERS
 ];

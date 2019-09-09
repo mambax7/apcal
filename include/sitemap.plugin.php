@@ -17,6 +17,7 @@
  * @author       XOOPS Development Team,
  * @author       GIJ=CHECKMATE (PEAK Corp. http://www.peak.ne.jp/)
  */
+
 use XoopsModules\Apcal;
 
 defined('XOOPS_ROOT_PATH') || die('Restricted access');
@@ -49,7 +50,7 @@ if (!function_exists('b_sitemap_APCal_base')) {
 
         // setting physical & virtual paths
         $mod_path = XOOPS_ROOT_PATH . "/modules/$moduleDirName";
-        $mod_url = XOOPS_URL . "/modules/$moduleDirName";
+        $mod_url  = XOOPS_URL . "/modules/$moduleDirName";
 
         // defining class of APCal
         //        if (!class_exists('APCal_xoops')) {
@@ -58,7 +59,7 @@ if (!function_exists('b_sitemap_APCal_base')) {
         //        }
 
         // creating an instance of APCal
-        $cal = new Apcal\ApcalXoops('', $xoopsConfig['language'], true);
+        $cal                = new Apcal\ApcalXoops('', $xoopsConfig['language'], true);
         $cal->use_server_TZ = true;
 
         // setting properties of APCal
@@ -74,9 +75,9 @@ if (!function_exists('b_sitemap_APCal_base')) {
             }
 
             $ret['parent'][] = [
-                'id' => $cat->cid,
+                'id'    => $cat->cid,
                 'title' => $myts->htmlSpecialChars($cat->cat_title),
-                'url' => "index.php?cid=$cat->cid",
+                'url'   => "index.php?cid=$cat->cid",
             ];
         }
 

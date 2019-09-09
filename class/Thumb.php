@@ -18,17 +18,17 @@ class thumb
         $imgPath = XOOPS_UPLOAD_PATH . '/apcal/' . $filename;
 
         $imgInfo = getimagesize($imgPath);
-        $oWidth = $imgInfo[0];
+        $oWidth  = $imgInfo[0];
         $oHeight = $imgInfo[1];
-        $ratio = $oHeight / $oWidth;
-        $nWidth = $maxWidth;
+        $ratio   = $oHeight / $oWidth;
+        $nWidth  = $maxWidth;
         $nHeight = $maxHeight;
 
         if ($ratio > 1) {
             $nHeight = $maxHeight;
-            $nWidth = $nHeight / $ratio;
+            $nWidth  = $nHeight / $ratio;
         } else {
-            $nWidth = $maxWidth;
+            $nWidth  = $maxWidth;
             $nHeight = $nWidth * $ratio;
         }
 
@@ -43,12 +43,12 @@ class thumb
     public static function save($filename, $maxWidth, $maxHeight)
     {
         $thumbPath = XOOPS_UPLOAD_PATH . '/apcal/thumbs/' . $filename;
-        $imgPath = XOOPS_UPLOAD_PATH . '/apcal/' . $filename;
-        $nSize = self::make($filename, $maxWidth, $maxHeight);
-        $imgInfo = getimagesize($imgPath);
-        $oWidth = $imgInfo[0];
-        $oHeight = $imgInfo[1];
-        $fileType = $imgInfo[2];
+        $imgPath   = XOOPS_UPLOAD_PATH . '/apcal/' . $filename;
+        $nSize     = self::make($filename, $maxWidth, $maxHeight);
+        $imgInfo   = getimagesize($imgPath);
+        $oWidth    = $imgInfo[0];
+        $oHeight   = $imgInfo[1];
+        $fileType  = $imgInfo[2];
 
         switch ($fileType) {
             case IMAGETYPE_JPEG:
@@ -63,7 +63,7 @@ class thumb
                 break;
         }
 
-        $nImg = imagecreatetruecolor($nSize['width'], $nSize['height']);
+        $nImg    = imagecreatetruecolor($nSize['width'], $nSize['height']);
         $bgColor = imagecolorallocate($nImg, 0xFF, 0xFF, 0xFF);
         imagefill($nImg, 0, 0, $bgColor);
         imagecopyresampled($nImg, $img, 0, 0, 0, 0, $nSize['width'], $nSize['height'], $oWidth, $oHeight);

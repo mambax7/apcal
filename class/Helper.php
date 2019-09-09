@@ -31,12 +31,12 @@ class Helper extends \Xmf\Module\Helper
     public $debug;
 
     /**
-     * @internal param $debug
      * @param bool $debug
+     * @internal param $debug
      */
     public function __construct($debug = false)
     {
-        $this->debug = $debug;
+        $this->debug   = $debug;
         $this->dirname = basename(dirname(__DIR__));
     }
 
@@ -79,9 +79,9 @@ class Helper extends \Xmf\Module\Helper
             throw new \RuntimeException("Class '$class' not found");
         }
         /** @var \XoopsMySQLDatabase $db */
-        $db = \XoopsDatabaseFactory::getDatabaseConnection();
+        $db     = \XoopsDatabaseFactory::getDatabaseConnection();
         $helper = self::getInstance();
-        $ret = new $class($db, $helper);
+        $ret    = new $class($db, $helper);
         $this->addLog("Getting handler '{$name}'");
 
         return $ret;

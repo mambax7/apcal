@@ -93,7 +93,8 @@ if (defined('FOR_XOOPS_LANG_CHECKER') || !defined('APCAL_AM_LOADED')) {
     define('_AM_GPERM_G_DELETABLE', 'mogen verwijderen');
     define('_AM_GPERM_G_SUPERDELETE', 'mogen verwijderen (superdelete!)');
     define('_AM_GPERM_G_TOUCHOTHERS', 'mogen ingaves van anderen wijzigen');
-    define('_AM_GROUPPERMDESC', "Hier kunnen de rechten van elke gebruikersgroep apart ingesteld worden.<br />Om deze functie te activeren, moet u eerst onder 'Instellingen -> Rechten voor gebruikers' de optie 'Vastgelegd door groepsrechten' selecteren. <br />Opmerking: de instellingen voor de groepen, 'Webmasters' en 'Anonymous Users' worden genegeerd.<br/>");
+    define('_AM_GROUPPERMDESC',
+           "Hier kunnen de rechten van elke gebruikersgroep apart ingesteld worden.<br />Om deze functie te activeren, moet u eerst onder 'Instellingen -> Rechten voor gebruikers' de optie 'Vastgelegd door groepsrechten' selecteren. <br />Opmerking: de instellingen voor de groepen, 'Webmasters' en 'Anonymous Users' worden genegeerd.<br/>");
 
     // Appended by Xoops Language Checker -GIJOE- in 2003-11-14 16:47:58
     define('_AM_DTFMT_LIST_ALLDAY', 'y-m-d');

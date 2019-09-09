@@ -18,6 +18,7 @@
  * @author       Antiques Promotion (http://www.antiquespromotion.ca)
  * @author       GIJ=CHECKMATE (PEAK Corp. http://www.peak.ne.jp/)
  */
+
 use XoopsModules\Apcal;
 
 require dirname(__DIR__) . '/preloads/autoloader.php';
@@ -32,50 +33,50 @@ if (is_object($helper->getModule())) {
 
 $adminmenu[] = [
     'title' => _MI_APCAL_INDEX,
-    'link' => 'admin/index.php',
-    'icon' => 'assets/images/admin/home.png',
+    'link'  => 'admin/index.php',
+    'icon'  => 'assets/images/admin/home.png',
 ];
 
 $adminmenu[] = [
     'title' => _MI_APCAL_ADMENU0,
-    'link' => 'admin/admission.php',
-    'icon' => 'assets/images/admin/admitting.png',
+    'link'  => 'admin/admission.php',
+    'icon'  => 'assets/images/admin/admitting.png',
 ];
 
 $adminmenu[] = [
     'title' => _MI_APCAL_ADMENU1,
-    'link' => 'admin/events.php',
-    'icon' => 'assets/images/admin/events.png',
+    'link'  => 'admin/events.php',
+    'icon'  => 'assets/images/admin/events.png',
 ];
 
 $adminmenu[] = [
     'title' => _MI_APCAL_ADMENU_CAT,
-    'link' => 'admin/categories.php',
-    'icon' => 'assets/images/admin/category.png',
+    'link'  => 'admin/categories.php',
+    'icon'  => 'assets/images/admin/category.png',
 ];
 
 $adminmenu[] = [
     'title' => _MI_APCAL_ADMENU_CAT2GROUP,
-    'link' => 'admin/cat2groupperm.php',
-    'icon' => 'assets/images/admin/permissions.png',
+    'link'  => 'admin/cat2groupperm.php',
+    'icon'  => 'assets/images/admin/permissions.png',
 ];
 
 $adminmenu[] = [
     'title' => _MI_APCAL_ADMENU2,
-    'link' => 'admin/groupperm.php',
-    'icon' => 'assets/images/admin/permissions.png',
+    'link'  => 'admin/groupperm.php',
+    'icon'  => 'assets/images/admin/permissions.png',
 ];
 
 $adminmenu[] = [
     'title' => _MI_APCAL_ADMENU_MYBLOCKSADMIN,
-    'link' => 'admin/myblocksadmin.php',
-    'icon' => $pathIcon32 . '/block.png',
+    'link'  => 'admin/myblocksadmin.php',
+    'icon'  => $pathIcon32 . '/block.png',
 ];
 
 $adminmenu[] = [
     'title' => _MI_APCAL_ADMENU_ICAL,
-    'link' => 'admin/icalendar_import.php',
-    'icon' => 'assets/images/admin/import.png',
+    'link'  => 'admin/icalendar_import.php',
+    'icon'  => 'assets/images/admin/import.png',
 ];
 
 //$adminmenu[] = [
@@ -102,6 +103,6 @@ $adminmenu[] = [
 
 $adminmenu[] = [
     'title' => _MI_APCAL_ABOUT,
-    'link' => 'admin/about.php',
-    'icon' => $pathIcon32 . '/about.png',
+    'link'  => 'admin/about.php',
+    'icon'  => $pathIcon32 . '/about.png',
 ];

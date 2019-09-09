@@ -17,6 +17,7 @@
  * @author       XOOPS Development Team,
  * @author       GIJ=CHECKMATE (PEAK Corp. http://www.peak.ne.jp/)
  */
+
 use XoopsModules\Apcal;
 
 require_once dirname(dirname(dirname(__DIR__))) . '/include/cp_header.php';
@@ -68,16 +69,16 @@ if (!empty($_GET['dirname'])) {
 
 if (!empty($target_module) && is_object($target_module)) {
     // specified by dirname
-    $target_mid = $target_module->getVar('mid');
-    $target_mname = $target_module->getVar('name') . '&nbsp;' . sprintf('(%2.2f)', $target_module->getVar('version') / 100.0);
+    $target_mid     = $target_module->getVar('mid');
+    $target_mname   = $target_module->getVar('name') . '&nbsp;' . sprintf('(%2.2f)', $target_module->getVar('version') / 100.0);
     $query4redirect = '?dirname=' . urlencode(strip_tags($_GET['dirname']));
 } elseif (\Xmf\Request::hasVar('mid', 'GET') && 0 == $_GET['mid'] || 'blocksadmin' === $xoopsModule->getVar('dirname')) {
-    $target_mid = 0;
-    $target_mname = '';
+    $target_mid     = 0;
+    $target_mname   = '';
     $query4redirect = '?mid=0';
 } else {
-    $target_mid = $xoopsModule->getVar('mid');
-    $target_mname = $xoopsModule->getVar('name');
+    $target_mid     = $xoopsModule->getVar('mid');
+    $target_mname   = $xoopsModule->getVar('name');
     $query4redirect = '';
 }
 
@@ -89,9 +90,9 @@ if (!$grouppermHandler->checkRight('system_admin', XOOPS_SYSTEM_BLOCK, $xoopsUse
 
 // get blocks owned by the module (Imported from xoopsblock.php then modified)
 //$block_arr = \XoopsBlock::getByModule( $target_mid ) ;
-$db = \XoopsDatabaseFactory::getDatabaseConnection();
-$sql = 'SELECT * FROM ' . $db->prefix('newblocks') . " WHERE mid='$target_mid' ORDER BY visible DESC,side,weight";
-$result = $db->query($sql);
+$db        = \XoopsDatabaseFactory::getDatabaseConnection();
+$sql       = 'SELECT * FROM ' . $db->prefix('newblocks') . " WHERE mid='$target_mid' ORDER BY visible DESC,side,weight";
+$result    = $db->query($sql);
 $block_arr = [];
 while (false !== ($myrow = $db->fetchArray($result))) {
     $block_arr[] = new \XoopsBlock($myrow);
@@ -103,16 +104,16 @@ function list_blocks()
 
     // cachetime options
     $cachetimes = [
-        '0' => _NOCACHE,
-        '30' => sprintf(_SECONDS, 30),
-        '60' => _MINUTE,
-        '300' => sprintf(_MINUTES, 5),
-        '1800' => sprintf(_MINUTES, 30),
-        '3600' => _HOUR,
-        '18000' => sprintf(_HOURS, 5),
-        '86400' => _DAY,
-        '259200' => sprintf(_DAYS, 3),
-        '604800' => _WEEK,
+        '0'       => _NOCACHE,
+        '30'      => sprintf(_SECONDS, 30),
+        '60'      => _MINUTE,
+        '300'     => sprintf(_MINUTES, 5),
+        '1800'    => sprintf(_MINUTES, 30),
+        '3600'    => _HOUR,
+        '18000'   => sprintf(_HOURS, 5),
+        '86400'   => _DAY,
+        '259200'  => sprintf(_DAYS, 3),
+        '604800'  => _WEEK,
         '2592000' => _MONTH,
     ];
 
@@ -130,17 +131,17 @@ function list_blocks()
         </tr>\n";
 
     // blocks displaying loop
-    $class = 'even';
+    $class         = 'even';
     $block_configs = get_block_configs();
     foreach (array_keys($block_arr) as $i) {
         $sseln = $ssel0 = $ssel1 = $ssel2 = $ssel3 = $ssel4 = $ssel5 = $ssel6 = $ssel7 = '';
         $scoln = $scol0 = $scol1 = $scol2 = $scol3 = $scol4 = $ssel5 = $ssel6 = $ssel7 = '';
 
-        $weight = $block_arr[$i]->getVar('weight');
-        $title = $block_arr[$i]->getVar('title');
-        $name = $block_arr[$i]->getVar('name');
+        $weight     = $block_arr[$i]->getVar('weight');
+        $title      = $block_arr[$i]->getVar('title');
+        $name       = $block_arr[$i]->getVar('name');
         $bcachetime = $block_arr[$i]->getVar('bcachetime');
-        $bid = $block_arr[$i]->getVar('bid');
+        $bid        = $block_arr[$i]->getVar('bid');
 
         // visible and side
         if (1 != $block_arr[$i]->getVar('visible')) {
@@ -195,19 +196,19 @@ function list_blocks()
         }
 
         // target modules
-        $db = \XoopsDatabaseFactory::getDatabaseConnection();
-        $result = $db->query('SELECT module_id FROM ' . $db->prefix('block_module_link') . " WHERE block_id='$bid'");
+        $db            = \XoopsDatabaseFactory::getDatabaseConnection();
+        $result        = $db->query('SELECT module_id FROM ' . $db->prefix('block_module_link') . " WHERE block_id='$bid'");
         $selected_mids = [];
         while (list($selected_mid) = $db->fetchRow($result)) {
             $selected_mids[] = (int)$selected_mid;
         }
         /** @var \XoopsModuleHandler $moduleHandler */
         $moduleHandler = xoops_getHandler('module');
-        $criteria = new \CriteriaCompo(new \Criteria('hasmain', 1));
+        $criteria      = new \CriteriaCompo(new \Criteria('hasmain', 1));
         $criteria->add(new \Criteria('isactive', 1));
-        $module_list = $moduleHandler->getList($criteria);
+        $module_list     = $moduleHandler->getList($criteria);
         $module_list[-1] = _AM_APCAL_TOPPAGE;
-        $module_list[0] = _AM_APCAL_ALLPAGES;
+        $module_list[0]  = _AM_APCAL_ALLPAGES;
         ksort($module_list);
         $module_options = '';
         foreach ($module_list as $mid => $mname) {

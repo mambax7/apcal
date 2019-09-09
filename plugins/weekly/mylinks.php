@@ -38,9 +38,9 @@ defined('XOOPS_ROOT_PATH') || die('Restricted access');
 */
 
 // set range (added 86400 second margin "begin" & "end")
-$wtop_date = $this->date - ($this->day - $this->week_start + 7) % 7;
+$wtop_date     = $this->date - ($this->day - $this->week_start + 7) % 7;
 $range_start_s = mktime(0, 0, 0, $this->month, $wtop_date - 1, $this->year);
-$range_end_s = mktime(0, 0, 0, $this->month, $wtop_date + 8, $this->year);
+$range_end_s   = mktime(0, 0, 0, $this->month, $wtop_date + 8, $this->year);
 
 // query (added 86400 second margin "begin" & "end")
 $result = $db->query('SELECT title,lid,`date`,cid FROM ' . $db->prefix('mylinks_links') . " WHERE `date` >= $range_start_s AND `date` < $range_end_s AND `status` > 0");
@@ -49,15 +49,15 @@ while (list($title, $id, $server_time, $cid) = $db->fetchRow($result)) {
     $user_time = $server_time + $tzoffset_s2u;
     // if( date( 'n' , $user_time ) != $this->month ) continue ;
     $target_date = date('j', $user_time);
-    $tmp_array = [
-        'dotgif' => $plugin['dotgif'],
-        'dirname' => $plugin['dirname'],
-        'link' => XOOPS_URL . "/modules/{$plugin['dirname']}/singlelink.php?lid=$id&amp;cid=$cid&amp;caldate={$this->year}-{$this->month}-$target_date",
-        'id' => $id,
+    $tmp_array   = [
+        'dotgif'      => $plugin['dotgif'],
+        'dirname'     => $plugin['dirname'],
+        'link'        => XOOPS_URL . "/modules/{$plugin['dirname']}/singlelink.php?lid=$id&amp;cid=$cid&amp;caldate={$this->year}-{$this->month}-$target_date",
+        'id'          => $id,
         'server_time' => $server_time,
-        'user_time' => $user_time,
-        'name' => 'lid',
-        'title' => $myts->htmlSpecialChars($title),
+        'user_time'   => $user_time,
+        'name'        => 'lid',
+        'title'       => $myts->htmlSpecialChars($title),
     ];
 
     // multiple gifs allowed per a plugin & per a day

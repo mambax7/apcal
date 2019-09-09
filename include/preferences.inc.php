@@ -36,7 +36,7 @@ if ('showmod' === $op) {
         exit();
     }
     $config = $configHandler->getConfigs(new \Criteria('conf_modid', $mod));
-    $count = count($config);
+    $count  = count($config);
     if ($count < 1) {
         redirect_header('admin.php?fct=preferences', 1);
     }
@@ -44,7 +44,7 @@ if ('showmod' === $op) {
     $form = new \XoopsThemeForm(_MD_APCAL_MODCONFIG, 'pref_form', 'admin.php?fct=preferences', 'post', true);
     /** @var \XoopsModuleHandler $moduleHandler */
     $moduleHandler = xoops_getHandler('module');
-    $module = $moduleHandler->get($mod);
+    $module        = $moduleHandler->get($mod);
     //        if (file_exists(XOOPS_ROOT_PATH . '/modules/' . $module->getVar('dirname') . '/language/' . $xoopsConfig['language'] . '/modinfo.php')) {
     //            require_once XOOPS_ROOT_PATH . '/modules/' . $module->getVar('dirname') . '/language/' . $xoopsConfig['language'] . '/modinfo.php';
     //        }
@@ -60,7 +60,7 @@ if ('showmod' === $op) {
         require_once XOOPS_ROOT_PATH . '/language/' . $xoopsConfig['language'] . '/notification.php';
     }
 
-    $modname = $module->getVar('name');
+    $modname    = $module->getVar('name');
     $buttonTray = new \XoopsFormElementTray('');
     if ($module->getInfo('adminindex')) {
         //      $form->addElement(new \XoopsFormHidden('redirect', XOOPS_URL.'/modules/'.$module->getVar('dirname').'/'.$module->getInfo('adminindex')));
@@ -69,7 +69,7 @@ if ('showmod' === $op) {
     for ($i = 0; $i < $count; ++$i) {
         $title4tray = (!defined($config[$i]->getVar('conf_desc'))
                        || '' === constant($config[$i]->getVar('conf_desc'))) ? constant($config[$i]->getVar('conf_title')) : constant($config[$i]->getVar('conf_title')) . '<br><br><span style="font-weight:normal;">' . constant($config[$i]->getVar('conf_desc')) . '</span>'; // GIJ
-        $title = ''; // GIJ
+        $title      = ''; // GIJ
         switch ($config[$i]->getVar('conf_formtype')) {
             case 'textarea':
                 $myts = \MyTextSanitizer::getInstance();
@@ -81,7 +81,7 @@ if ('showmod' === $op) {
                 }
                 break;
             case 'select':
-                $ele = new \XoopsFormSelect($title, $config[$i]->getVar('conf_name'), $config[$i]->getConfValueForOutput());
+                $ele     = new \XoopsFormSelect($title, $config[$i]->getVar('conf_name'), $config[$i]->getConfValueForOutput());
                 $options = $configHandler->getConfigOptions(new \Criteria('conf_id', $config[$i]->getVar('conf_id')));
                 $opcount = count($options);
                 for ($j = 0; $j < $opcount; ++$j) {
@@ -91,7 +91,7 @@ if ('showmod' === $op) {
                 }
                 break;
             case 'select_multi':
-                $ele = new \XoopsFormSelect($title, $config[$i]->getVar('conf_name'), $config[$i]->getConfValueForOutput(), 5, true);
+                $ele     = new \XoopsFormSelect($title, $config[$i]->getVar('conf_name'), $config[$i]->getConfValueForOutput(), 5, true);
                 $options = $configHandler->getConfigOptions(new \Criteria('conf_id', $config[$i]->getVar('conf_id')));
                 $opcount = count($options);
                 for ($j = 0; $j < $opcount; ++$j) {
@@ -122,19 +122,19 @@ if ('showmod' === $op) {
                 break;
             case 'password':
                 $myts = \MyTextSanitizer::getInstance();
-                $ele = new \XoopsFormPassword($title, $config[$i]->getVar('conf_name'), 50, 255, $myts->htmlSpecialChars($config[$i]->getConfValueForOutput()));
+                $ele  = new \XoopsFormPassword($title, $config[$i]->getVar('conf_name'), 50, 255, $myts->htmlSpecialChars($config[$i]->getConfValueForOutput()));
                 break;
             case 'color':
                 $myts = \MyTextSanitizer::getInstance();
-                $ele = new \XoopsFormColorPicker($title, $config[$i]->getVar('conf_name'), $myts->htmlSpecialChars($config[$i]->getConfValueForOutput()));
+                $ele  = new \XoopsFormColorPicker($title, $config[$i]->getVar('conf_name'), $myts->htmlSpecialChars($config[$i]->getConfValueForOutput()));
                 break;
             case 'textbox':
             default:
                 $myts = \MyTextSanitizer::getInstance();
-                $ele = new \XoopsFormText($title, $config[$i]->getVar('conf_name'), 50, 255, $myts->htmlSpecialChars($config[$i]->getConfValueForOutput()));
+                $ele  = new \XoopsFormText($title, $config[$i]->getVar('conf_name'), 50, 255, $myts->htmlSpecialChars($config[$i]->getConfValueForOutput()));
                 break;
         }
-        $hidden = new \XoopsFormHidden('conf_ids[]', $config[$i]->getVar('conf_id'));
+        $hidden   = new \XoopsFormHidden('conf_ids[]', $config[$i]->getVar('conf_id'));
         $ele_tray = new \XoopsFormElementTray($title4tray, '');
         $ele_tray->addElement($ele);
         $ele_tray->addElement($hidden);
@@ -170,14 +170,14 @@ if ('save' === $op) {
     if (\Xmf\Request::hasVar('conf_ids', 'POST')) {
         $conf_ids = $_POST['conf_ids'];
     }
-    $count = count($conf_ids);
-    $tpl_updated = false;
-    $theme_updated = false;
+    $count            = count($conf_ids);
+    $tpl_updated      = false;
+    $theme_updated    = false;
     $startmod_updated = false;
-    $lang_updated = false;
+    $lang_updated     = false;
     if ($count > 0) {
         for ($i = 0; $i < $count; ++$i) {
-            $config = $configHandler->getConfig($conf_ids[$i]);
+            $config    = $configHandler->getConfig($conf_ids[$i]);
             $new_value = $_POST[$config->getVar('conf_name')];
             if (is_array($new_value) || $new_value != $config->getVar('conf_value')) {
                 // if language has been changed
@@ -210,8 +210,8 @@ if ('save' === $op) {
                         // generate compiled files for the new theme
                         // block files only for now..
                         $tplfileHandler = xoops_getHandler('tplfile');
-                        $dtemplates = $tplfileHandler->find('default', 'block');
-                        $dcount = count($dtemplates);
+                        $dtemplates     = $tplfileHandler->find('default', 'block');
+                        $dcount         = count($dtemplates);
 
                         // need to do this to pass to xoops_template_touch function
                         $GLOBALS['xoopsConfig']['template_set'] = $newtplset;
@@ -229,7 +229,7 @@ if ('save' === $op) {
 
                         // generate image cache files from image binary data, save them under cache/
                         $imageHandler = xoops_getHandler('imagesetimg');
-                        $imagefiles = $imageHandler->getObjects(new \Criteria('tplset_name', $newtplset), true);
+                        $imagefiles   = $imageHandler->getObjects(new \Criteria('tplset_name', $newtplset), true);
                         foreach (array_keys($imagefiles) as $j) {
                             if (!$fp = fopen(XOOPS_CACHE_PATH . '/' . $newtplset . '_' . $imagefiles[$j]->getVar('imgsetimg_file'), 'wb')) {
                             } else {
@@ -244,12 +244,12 @@ if ('save' === $op) {
                 // add read permission for the start module to all groups
                 if (!$startmod_updated && '--' != $new_value && XOOPS_CONF == $config->getVar('conf_catid')
                     && 'startpage' === $config->getVar('conf_name')) {
-                    $memberHandler = xoops_getHandler('member');
-                    $groups = $memberHandler->getGroupList();
+                    $memberHandler    = xoops_getHandler('member');
+                    $groups           = $memberHandler->getGroupList();
                     $grouppermHandler = xoops_getHandler('groupperm');
                     /** @var \XoopsModuleHandler $moduleHandler */
                     $moduleHandler = xoops_getHandler('module');
-                    $module = $moduleHandler->getByDirname($new_value);
+                    $module        = $moduleHandler->getByDirname($new_value);
                     foreach ($groups as $groupid => $groupname) {
                         if (!$grouppermHandler->checkRight('module_read', $module->getVar('mid'), $groupid)) {
                             $grouppermHandler->addRight('module_read', $module->getVar('mid'), $groupid);

@@ -8,8 +8,8 @@ function convertmycontacts($strcontact)
 {
     // Ermitteln aller einzelnen Wörter von Kontakt aus Termin piCal
     // Umwandeln der einzelnen Namen in Link auf Benutzerkonto, wenn Name ein Mitgliedsname ist
-    $strsearch = ' ';
-    $strnew = '';
+    $strsearch    = ' ';
+    $strnew       = '';
     $strseperator = '';
 
     $pos1 = 0;
@@ -18,7 +18,7 @@ function convertmycontacts($strcontact)
     if (false === $pos2) {
         //echo "<br>kein leerzeichen";
         $struser = $strcontact;
-        $struid = getuid($struser);
+        $struid  = getuid($struser);
         if (-1 == $struid) {
             $strnew = $struser;
         } else {
@@ -30,7 +30,7 @@ function convertmycontacts($strcontact)
             //alle wörter zwischen Leerzeichen ermitteln
             $struser = mb_substr($strcontact, $pos1, $pos2 - $pos1);
             if (',' === mb_substr($struser, -1)) {
-                $struser = mb_substr($struser, 0, -1);
+                $struser      = mb_substr($struser, 0, -1);
                 $strseperator = ', ';
             } else {
                 $strseperator = ' ';
@@ -48,7 +48,7 @@ function convertmycontacts($strcontact)
         if (0 == $pos2) {
             //Rest ab letztem Leerzeichen einlesen
             $struser = mb_substr($strcontact, $pos1);
-            $struid = getuid($struser);
+            $struid  = getuid($struser);
             if (-1 == $struid) {
                 $strnew .= $struser;
             } else {
@@ -66,8 +66,8 @@ function convertmycontacts($strcontact)
  */
 function getuid($UserName)
 {
-    $rc = -1;
-    $db = \XoopsDatabaseFactory::getDatabaseConnection();
+    $rc  = -1;
+    $db  = \XoopsDatabaseFactory::getDatabaseConnection();
     $sql = 'SELECT uid FROM ' . $db->prefix('users') . " WHERE uname = '" . $UserName . "' LIMIT 0,1";
 
     $result = $db->query($sql);
@@ -75,7 +75,7 @@ function getuid($UserName)
         if (1 == $db->getRowsNum($result)) {
             $member = $GLOBALS['xoopsDB']->fetchObject($result);
             $userid = $member->uid;
-            $rc = $userid;
+            $rc     = $userid;
         }
     }
 

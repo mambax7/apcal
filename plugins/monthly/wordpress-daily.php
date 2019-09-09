@@ -42,7 +42,7 @@ $mydirnumber = '' === $regs[2] ? '' : (int)$regs[2];
 
 // set range (added 86400 second margin "begin" & "end")
 $range_start_s = mktime(0, 0, 0, $this->month, 0, $this->year);
-$range_end_s = mktime(0, 0, 0, $this->month + 1, 1, $this->year);
+$range_end_s   = mktime(0, 0, 0, $this->month + 1, 1, $this->year);
 
 // query (added 86400 second margin "begin" & "end")
 $result = $db->query('SELECT post_title,ID,UNIX_TIMESTAMP(post_date) FROM ' . $db->prefix("wp{$mydirnumber}_posts") . " WHERE UNIX_TIMESTAMP(post_date) >= $range_start_s AND UNIX_TIMESTAMP(post_date) < $range_end_s AND post_status='publish'");
@@ -52,17 +52,17 @@ while (list($title, $id, $server_time) = $db->fetchRow($result)) {
     if (date('n', $user_time) != $this->month) {
         continue;
     }
-    $target_date = date('j', $user_time);
-    $target_Ymd = sprintf('%04d%02d%02d', $this->year, $this->month, $target_date);
-    $tmp_array = [
-        'dotgif' => $plugin['dotgif'],
-        'dirname' => $plugin['dirname'],
-        'link' => XOOPS_URL . "/modules/{$plugin['dirname']}/index.php?m=$target_Ymd&amp;caldate={$this->year}-{$this->month}-$target_date",
-        'id' => $target_Ymd,
+    $target_date                                      = date('j', $user_time);
+    $target_Ymd                                       = sprintf('%04d%02d%02d', $this->year, $this->month, $target_date);
+    $tmp_array                                        = [
+        'dotgif'      => $plugin['dotgif'],
+        'dirname'     => $plugin['dirname'],
+        'link'        => XOOPS_URL . "/modules/{$plugin['dirname']}/index.php?m=$target_Ymd&amp;caldate={$this->year}-{$this->month}-$target_date",
+        'id'          => $target_Ymd,
         'server_time' => $server_time,
-        'user_time' => $user_time,
-        'name' => 'm',
-        'title' => $myts->htmlSpecialChars($title),
+        'user_time'   => $user_time,
+        'name'        => 'm',
+        'title'       => $myts->htmlSpecialChars($title),
     ];
     $plugin_returns[$target_date][$plugin['dirname']] = $tmp_array;
 }

@@ -41,11 +41,11 @@ $form->addElement(new \XoopsFormRadioYN(_AM_VISIBLE, 'bvisible', $block['visible
 $mod_select = new \XoopsFormSelect(_AM_VISIBLEIN, 'bmodule', $block['modules'], 5, true);
 /** @var \XoopsModuleHandler $moduleHandler */
 $moduleHandler = xoops_getHandler('module');
-$criteria = new \CriteriaCompo(new \Criteria('hasmain', 1));
+$criteria      = new \CriteriaCompo(new \Criteria('hasmain', 1));
 $criteria->add(new \Criteria('isactive', 1));
-$module_list = $moduleHandler->getList($criteria);
+$module_list     = $moduleHandler->getList($criteria);
 $module_list[-1] = _AM_TOPPAGE;
-$module_list[0] = _AM_ALLPAGES;
+$module_list[0]  = _AM_ALLPAGES;
 ksort($module_list);
 $mod_select->addOptionArray($module_list);
 $form->addElement($mod_select);
@@ -54,8 +54,8 @@ $form->addElement(new \XoopsFormText(_AM_TITLE, 'btitle', 50, 255, $block['title
 if ($block['is_custom']) {
     // Custom Block's textarea
     $notice_for_tags = '<span style="font-size:x-small;font-weight:bold;">' . _AM_USEFULTAGS . '</span><br><span style="font-size:x-small;font-weight:normal;">' . sprintf(_AM_BLOCKTAG1, '{X_SITEURL}', XOOPS_URL . '/') . '</span>';
-    $current_op = 'clone' === @$_GET['op'] ? 'clone' : 'edit';
-    $uri_to_myself = XOOPS_URL . "/modules/blocksadmin/admin/admin.php?fct=blocksadmin&amp;op=$current_op&amp;bid={$block['bid']}";
+    $current_op      = 'clone' === @$_GET['op'] ? 'clone' : 'edit';
+    $uri_to_myself   = XOOPS_URL . "/modules/blocksadmin/admin/admin.php?fct=blocksadmin&amp;op=$current_op&amp;bid={$block['bid']}";
     // $can_use_spaw = check_browser_can_use_spaw() ;
     $can_use_spaw = true;
     if ($usespaw && $can_use_spaw) {
@@ -68,7 +68,7 @@ if ($block['is_custom']) {
         $textarea->setDescription($notice_for_tags . "<br><br><a href='$uri_to_myself&amp;usespaw=0'>NORMAL</a>");
         ob_end_clean();
     } else {
-        $myts = \MyTextSanitizer::getInstance();
+        $myts     = \MyTextSanitizer::getInstance();
         $textarea = new \XoopsFormDhtmlTextArea(_AM_CONTENT, 'bcontent', $myts->htmlSpecialChars($block['content']), 15, 70);
         if ($can_use_spaw) {
             $textarea->setDescription($notice_for_tags . "<br><br><a href='$uri_to_myself&amp;usespaw=1'>SPAW</a>");
@@ -84,7 +84,7 @@ if ($block['is_custom']) {
 } else {
     if ('' !== $block['template'] && !defined('XOOPS_ORETEKI')) {
         $tplfileHandler = xoops_getHandler('tplfile');
-        $btemplate = $tplfileHandler->find($GLOBALS['xoopsConfig']['template_set'], 'block', $block['bid']);
+        $btemplate      = $tplfileHandler->find($GLOBALS['xoopsConfig']['template_set'], 'block', $block['bid']);
         if (count($btemplate) > 0) {
             $form->addElement(new \XoopsFormLabel(_AM_CONTENT, '<a href="mytplsform.php?tpl_file=' . $btemplate[0]->getVar('tpl_file') . '&amp;tpl_tplset=' . htmlspecialchars($GLOBALS['xoopsConfig']['template_set'], ENT_QUOTES) . '">' . _AM_EDITTPL . '</a>'));
         } else {
@@ -100,16 +100,16 @@ if ($block['is_custom']) {
 }
 $cache_select = new \XoopsFormSelect(_AM_BCACHETIME, 'bcachetime', $block['cachetime']);
 $cache_select->addOptionArray([
-                                  '0' => _NOCACHE,
-                                  '30' => sprintf(_SECONDS, 30),
-                                  '60' => _MINUTE,
-                                  '300' => sprintf(_MINUTES, 5),
-                                  '1800' => sprintf(_MINUTES, 30),
-                                  '3600' => _HOUR,
-                                  '18000' => sprintf(_HOURS, 5),
-                                  '86400' => _DAY,
-                                  '259200' => sprintf(_DAYS, 3),
-                                  '604800' => _WEEK,
+                                  '0'       => _NOCACHE,
+                                  '30'      => sprintf(_SECONDS, 30),
+                                  '60'      => _MINUTE,
+                                  '300'     => sprintf(_MINUTES, 5),
+                                  '1800'    => sprintf(_MINUTES, 30),
+                                  '3600'    => _HOUR,
+                                  '18000'   => sprintf(_HOURS, 5),
+                                  '86400'   => _DAY,
+                                  '259200'  => sprintf(_DAYS, 3),
+                                  '604800'  => _WEEK,
                                   '2592000' => _MONTH,
                               ]);
 $form->addElement($cache_select);

@@ -25,10 +25,10 @@ $moduleDirName = basename(dirname(__DIR__));
 if (!preg_match('/^(\D+)(\d*)$/', $moduleDirName, $regs)) {
     echo('invalid dirname: ' . htmlspecialchars($moduleDirName, ENT_QUOTES | ENT_HTML5));
 }
-$mydirnumber = '' === $regs[2] ? '' : (int)$regs[2];
-$cal->table = $GLOBALS['xoopsDB']->prefix("apcal{$mydirnumber}_event");
-$cal->cat_table = $GLOBALS['xoopsDB']->prefix("apcal{$mydirnumber}_cat");
-$cal->pic_table = $GLOBALS['xoopsDB']->prefix("apcal{$mydirnumber}_pictures");
+$mydirnumber       = '' === $regs[2] ? '' : (int)$regs[2];
+$cal->table        = $GLOBALS['xoopsDB']->prefix("apcal{$mydirnumber}_event");
+$cal->cat_table    = $GLOBALS['xoopsDB']->prefix("apcal{$mydirnumber}_cat");
+$cal->pic_table    = $GLOBALS['xoopsDB']->prefix("apcal{$mydirnumber}_pictures");
 $cal->plugin_table = $GLOBALS['xoopsDB']->prefix("apcal{$mydirnumber}_plugins");
 
 global $xoopsDB, $xoopsUser, $xoopsConfig;
@@ -85,16 +85,16 @@ if (is_object($xoopsUser)) {
 
     if ($isadmin) {
         // ����Ԥθ��¡ʴ���Ԥ��ѹ������鼫ưŪ�˾�ǧ�Ȥ����
-        $insertable = true;
-        $editable = true;
-        $deletable = true;
+        $insertable           = true;
+        $editable             = true;
+        $deletable            = true;
         $admission_insert_sql = ',admission=1';
         $admission_update_sql = ',admission=1';
-        $whr_sql_append = '';
+        $whr_sql_append       = '';
 
         // ����ԤΥ��ƥ��ꥢ���������¡������ƥ����
-        $sql = "SELECT cid,pid,cat_shorttitle,cat_title,cat_desc,color,ismenuitem,cat_depth,canbemain FROM $cal->cat_table ORDER BY weight";
-        $rs = $GLOBALS['xoopsDB']->query($sql);
+        $sql             = "SELECT cid,pid,cat_shorttitle,cat_title,cat_desc,color,ismenuitem,cat_depth,canbemain FROM $cal->cat_table ORDER BY weight";
+        $rs              = $GLOBALS['xoopsDB']->query($sql);
         $cal->categories = [];
         while (false !== ($cat = $GLOBALS['xoopsDB']->fetchObject($rs))) {
             $cal->categories[(int)$cat->cid] = $cat;
@@ -108,19 +108,19 @@ if (is_object($xoopsUser)) {
     } else {
         // ���̥桼���ϼ�ʬ�ν�°���륰�롼�פΤ�
         $my_group_ids = $memberHandler->getGroupsByUser($user_id);
-        $cal->groups = [];
-        $ids4sql = '(';
+        $cal->groups  = [];
+        $ids4sql      = '(';
         foreach ($my_group_ids as $id) {
             $cal->groups[$id] = $system_groups[$id];
-            $ids4sql .= "$id,";
+            $ids4sql          .= "$id,";
         }
         $ids4sql .= '0)';
 
         // ���̥桼���Υ��ƥ��ꥢ����������
-        $sql = "SELECT distinct cid,pid,cat_shorttitle,cat_title,cat_desc,color,ismenuitem,cat_depth,canbemain FROM $cal->cat_table LEFT JOIN "
+        $sql             = "SELECT distinct cid,pid,cat_shorttitle,cat_title,cat_desc,color,ismenuitem,cat_depth,canbemain FROM $cal->cat_table LEFT JOIN "
                            . $GLOBALS['xoopsDB']->prefix('group_permission')
                            . " ON cid=gperm_itemid WHERE gperm_name='apcal_cat' AND gperm_modid='$mid' AND enabled AND gperm_groupid IN $ids4sql ORDER BY weight";
-        $rs = $GLOBALS['xoopsDB']->query($sql);
+        $rs              = $GLOBALS['xoopsDB']->query($sql);
         $cal->categories = [];
         while (false !== ($cat = $GLOBALS['xoopsDB']->fetchObject($rs))) {
             $cal->categories[(int)$cat->cid] = $cat;
@@ -157,26 +157,26 @@ if (is_object($xoopsUser)) {
             $whr_sql_append = "AND uid=$user_id ";
         } elseif ($users_authority & 1) {
             // ��Ͽ�Ĥʤ��Խ���ġʤ�����user_id�����פ���ɬ�פ������
-            $insertable = true;
-            $editable = true;
+            $insertable     = true;
+            $editable       = true;
             $whr_sql_append = "AND uid=$user_id ";
             if ($users_authority & 2) {
                 // ��ǧ������ʤ������Խ������⾵ǧ����
-                $deletable = true;
+                $deletable            = true;
                 $admission_insert_sql = ',admission=1';
                 $admission_update_sql = '';
             } else {
                 // ��ǧ��ɬ�פʾ��ϡ��������Խ������龵ǧɬ��
                 // ���ˤĤ��Ƥϡ����ǧ�λ��Ȥߤ���ޤ�̵����Ե���
-                $deletable = false;
+                $deletable            = false;
                 $admission_insert_sql = ',admission=0';
                 $admission_update_sql = ',admission=0';
             }
         } else {
             // ��Ͽ�ԲĤʤ餹�٤��Ե���
-            $insertable = $editable = $deletable = false;
+            $insertable           = $editable = $deletable = false;
             $admission_insert_sql = $admission_update_sql = '';
-            $whr_sql_append = 'AND 0';
+            $whr_sql_append       = 'AND 0';
         }
     }
 } else {
@@ -188,12 +188,12 @@ if (is_object($xoopsUser)) {
     }
 
     // �����ȤΥ��ƥ��ꥢ����������
-    $sql = "SELECT distinct cid,pid,cat_title,cat_desc,color,ismenuitem,cat_depth,canbemain FROM $cal->cat_table LEFT JOIN "
+    $sql             = "SELECT distinct cid,pid,cat_title,cat_desc,color,ismenuitem,cat_depth,canbemain FROM $cal->cat_table LEFT JOIN "
                        . $GLOBALS['xoopsDB']->prefix('group_permission')
                        . " ON cid=gperm_itemid WHERE gperm_name='apcal_cat' AND gperm_modid='$mid' AND enabled AND gperm_groupid='"
                        . XOOPS_GROUP_ANONYMOUS
                        . "' ORDER BY weight";
-    $rs = $GLOBALS['xoopsDB']->query($sql);
+    $rs              = $GLOBALS['xoopsDB']->query($sql);
     $cal->categories = [];
     while (false !== ($cat = $GLOBALS['xoopsDB']->fetchObject($rs))) {
         $cal->categories[(int)$cat->cid] = $cat;
@@ -203,11 +203,11 @@ if (is_object($xoopsUser)) {
     }
 
     // �����ȤΥ��?�Х븢��
-    $user_id = 0;
-    $isadmin = false;
-    $insertable = (bool)($guests_authority & 1);
-    $editable = false;        // �����ȤϾ���Խ����¤ʤ�
-    $deletable = false;    // �����ȤϾ�˺��¤ʤ�
+    $user_id              = 0;
+    $isadmin              = false;
+    $insertable           = (bool)($guests_authority & 1);
+    $editable             = false;        // �����ȤϾ���Խ����¤ʤ�
+    $deletable            = false;    // �����ȤϾ�˺��¤ʤ�
     $admission_insert_sql = ',admission=' . (($guests_authority & 2) ? '1' : '0');
     $admission_update_sql = '';
     // �����Ȥ����������롼�������Բ�
@@ -216,10 +216,10 @@ if (is_object($xoopsUser)) {
 
 // �Ƽ︢�¤�APCal���֥������Ȥؤ���Ͽ
 $cal->insertable = $insertable;
-$cal->editable = $editable;
-$cal->deletable = $deletable;
-$cal->user_id = $user_id;
-$cal->isadmin = $isadmin;
+$cal->editable   = $editable;
+$cal->deletable  = $deletable;
+$cal->user_id    = $user_id;
+$cal->isadmin    = $isadmin;
 
 // �?������ɹ�ľ��
 if (!empty($cal->locale)) {
@@ -251,7 +251,7 @@ if (!function_exists('mb_convert_encoding')) {
     /**
      * @param         $str
      * @param         $from
-     * @param  string $to
+     * @param string  $to
      * @return mixed
      */
     function mb_convert_encoding($str, $from, $to = 'auto')

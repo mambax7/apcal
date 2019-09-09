@@ -12,6 +12,7 @@ namespace XoopsModules\Apcal;
  *
  * @package Text_Diff
  */
+
 use  XoopsModules\Apcal;
 
 class Text_Diff_Renderer
@@ -72,11 +73,11 @@ class Text_Diff_Renderer
      */
     public function render($diff)
     {
-        $xi = $yi = 1;
-        $block = false;
+        $xi      = $yi = 1;
+        $block   = false;
         $context = [];
 
-        $nlead = $this->_leading_context_lines;
+        $nlead  = $this->_leading_context_lines;
         $ntrail = $this->_trailing_context_lines;
 
         $output = $this->_startDiff();
@@ -92,16 +93,16 @@ class Text_Diff_Renderer
                             $block[] = new Apcal\Text_Diff_Op_copy($context);
                         }
                         $output .= $this->_block($x0, $ntrail + $xi - $x0, $y0, $ntrail + $yi - $y0, $block);
-                        $block = false;
+                        $block  = false;
                     }
                 }
                 $context = $edit->orig;
             } else {
                 if (!is_array($block)) {
                     $context = array_slice($context, count($context) - $nlead);
-                    $x0 = $xi - count($context);
-                    $y0 = $yi - count($context);
-                    $block = [];
+                    $x0      = $xi - count($context);
+                    $y0      = $yi - count($context);
+                    $block   = [];
                     if ($context) {
                         $block[] = new Apcal\Text_Diff_Op_copy($context);
                     }
@@ -210,7 +211,7 @@ class Text_Diff_Renderer
 
     /**
      * @param         $lines
-     * @param  string $prefix
+     * @param string  $prefix
      * @return string
      */
     public function _lines($lines, $prefix = ' ')

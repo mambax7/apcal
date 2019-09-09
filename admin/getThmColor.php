@@ -17,6 +17,7 @@
  * @author       XOOPS Development Team,
  * @author       Antiques Promotion (http://www.antiquespromotion.ca)
  */
+
 use XoopsModules\Apcal;
 
 require_once dirname(dirname(dirname(__DIR__))) . '/mainfile.php';
@@ -25,35 +26,35 @@ error_reporting(0);
 $xoopsLogger->activated = false;
 
 $useDefault = isset($_GET['default']) && 2 == $_GET['default'];
-$css = new Apcal\CssParser($_GET['filename']);
+$css        = new Apcal\CssParser($_GET['filename']);
 
-$color = $css->parseColor('a', 'color');
+$color                          = $css->parseColor('a', 'color');
 $colors['apcal_saturday_color'] = $color && !$useDefault ? $color : '#666666';
-$colors['apcal_sunday_color'] = $color && !$useDefault ? $color : '#666666';
-$colors['apcal_holiday_color'] = $color && !$useDefault ? $color : '#666666';
+$colors['apcal_sunday_color']   = $color && !$useDefault ? $color : '#666666';
+$colors['apcal_holiday_color']  = $color && !$useDefault ? $color : '#666666';
 
-$color = $css->parseColor('odd', 'background');
+$color                            = $css->parseColor('odd', 'background');
 $colors['apcal_saturday_bgcolor'] = $color && !$useDefault ? $color : '#E9E9E9';
-$colors['apcal_sunday_bgcolor'] = $color && !$useDefault ? $color : '#E9E9E9';
-$colors['apcal_holiday_bgcolor'] = $color && !$useDefault ? $color : '#E9E9E9';
+$colors['apcal_sunday_bgcolor']   = $color && !$useDefault ? $color : '#E9E9E9';
+$colors['apcal_holiday_bgcolor']  = $color && !$useDefault ? $color : '#E9E9E9';
 
-$color = $css->parseColor('body', 'color');
+$color                         = $css->parseColor('body', 'color');
 $colors['apcal_weekday_color'] = $color && !$useDefault ? $color : '#000000';
 $colors['apcal_calhead_color'] = $color && !$useDefault ? $color : '#000000';
 
-$color = $css->parseColor('even', 'background');
+$color                           = $css->parseColor('even', 'background');
 $colors['apcal_weekday_bgcolor'] = $color && !$useDefault ? $color : '#dee3e7';
 $colors['apcal_calhead_bgcolor'] = $color && !$useDefault ? $color : '#dee3e7';
 
-$color = $css->parseColor('head', 'background');
+$color                             = $css->parseColor('head', 'background');
 $colors['apcal_targetday_bgcolor'] = $color && !$useDefault ? $color : '#6699FF';
-$colors['apcal_allcats_color'] = $color && !$useDefault ? $color : '#6699FF';
+$colors['apcal_allcats_color']     = $color && !$useDefault ? $color : '#6699FF';
 
-$color = $css->parseColor('table', 'border');
+$color                     = $css->parseColor('table', 'border');
 $colors['apcal_frame_css'] = $color && !$useDefault ? $color : '#000000';
 
 $colors['apcal_event_bgcolor'] = '#EEEEEE';
-$colors['apcal_event_color'] = '#000000';
+$colors['apcal_event_color']   = '#000000';
 $colors['apcal_allcats_color'] = '#5555AA';
 
 echo json_encode($colors);

@@ -127,32 +127,32 @@ class GroupFormCheckBox extends \XoopsFormElement
         $ret = '';
 
         if (count($this->_appendix) > 0) {
-            $ret .= '<table class="outer"><tr>';
+            $ret  .= '<table class="outer"><tr>';
             $cols = 1;
             foreach ($this->_appendix as $append) {
                 if ($cols > 4) {
-                    $ret .= '</tr><tr>';
+                    $ret  .= '</tr><tr>';
                     $cols = 1;
                 }
                 $checked = $append['selected'] ? 'checked' : '';
-                $name = 'perms[' . $append['permname'] . ']';
-                $itemid = $append['itemid'];
-                $itemid = $append['itemid'];
-                $ret .= "<td class=\"odd\"><input type=\"checkbox\" name=\"{$name}[groups][$this->_groupId][$itemid]\" id=\"{$name}[groups][$this->_groupId][$itemid]\" value=\"1\" $checked>{$append['itemname']}<input type=\"hidden\" name=\"{$name}[parents][$itemid]\" value=\"\"><input type=\"hidden\" name=\"{$name}[itemname][$itemid]\" value=\"{$append['itemname']}\"><br></td>";
+                $name    = 'perms[' . $append['permname'] . ']';
+                $itemid  = $append['itemid'];
+                $itemid  = $append['itemid'];
+                $ret     .= "<td class=\"odd\"><input type=\"checkbox\" name=\"{$name}[groups][$this->_groupId][$itemid]\" id=\"{$name}[groups][$this->_groupId][$itemid]\" value=\"1\" $checked>{$append['itemname']}<input type=\"hidden\" name=\"{$name}[parents][$itemid]\" value=\"\"><input type=\"hidden\" name=\"{$name}[itemname][$itemid]\" value=\"{$append['itemname']}\"><br></td>";
                 ++$cols;
             }
             $ret .= '</tr></table>';
         }
 
-        $ret .= '<table class="outer"><tr>';
+        $ret  .= '<table class="outer"><tr>';
         $cols = 1;
         if (!empty($this->_optionTree[0]['children'])) {
             foreach ($this->_optionTree[0]['children'] as $topitem) {
                 if ($cols > 4) {
-                    $ret .= '</tr><tr>';
+                    $ret  .= '</tr><tr>';
                     $cols = 1;
                 }
-                $tree = '<td class="odd">';
+                $tree   = '<td class="odd">';
                 $prefix = '';
                 $this->_renderOptionTree($tree, $this->_optionTree[$topitem], $prefix);
                 $ret .= $tree . '</td>';
@@ -181,7 +181,7 @@ class GroupFormCheckBox extends \XoopsFormElement
         // sure permissions to parent items are added as well.
         foreach ($parentIds as $pid) {
             $parent_ele = $this->getName() . '[groups][' . $this->_groupId . '][' . $pid . ']';
-            $tree .= "var ele = xoopsGetElementById('" . $parent_ele . "'); if (ele.checked !== true) {ele.checked = this.checked;}";
+            $tree       .= "var ele = xoopsGetElementById('" . $parent_ele . "'); if (ele.checked !== true) {ele.checked = this.checked;}";
         }
         // If there are child elements, add javascript that will
         // make them unchecked when this element is unchecked to make
@@ -189,7 +189,7 @@ class GroupFormCheckBox extends \XoopsFormElement
         // is no permission to this item.
         foreach ($option['allchild'] as $cid) {
             $child_ele = $this->getName() . '[groups][' . $this->_groupId . '][' . $cid . ']';
-            $tree .= "var ele = xoopsGetElementById('" . $child_ele . "'); if (this.checked !== true) {ele.checked = false;}";
+            $tree      .= "var ele = xoopsGetElementById('" . $child_ele . "'); if (this.checked !== true) {ele.checked = false;}";
         }
         $tree .= '" value="1"';
         if (isset($this->_value) && in_array($option['id'], $this->_value)) {

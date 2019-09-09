@@ -37,7 +37,7 @@ if (!function_exists('b_waiting_APCal_base')) {
     function b_waiting_APCal_base($moduleDirName)
     {
         $xoopsDB = \XoopsDatabaseFactory::getDatabaseConnection();
-        $block = [];
+        $block   = [];
 
         // get $mydirnumber
         if (!preg_match('/^(\D+)(\d*)$/', $moduleDirName, $regs)) {

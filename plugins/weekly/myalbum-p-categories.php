@@ -44,9 +44,9 @@ if (!preg_match('/^(\D+)(\d*)$/', $plugin['dirname'], $regs)) {
 $mydirnumber = '' === $regs[2] ? '' : (int)$regs[2];
 
 // set range (added 86400 second margin "begin" & "end")
-$wtop_date = $this->date - ($this->day - $this->week_start + 7) % 7;
+$wtop_date     = $this->date - ($this->day - $this->week_start + 7) % 7;
 $range_start_s = mktime(0, 0, 0, $this->month, $wtop_date - 1, $this->year);
-$range_end_s = mktime(0, 0, 0, $this->month, $wtop_date + 8, $this->year);
+$range_end_s   = mktime(0, 0, 0, $this->month, $wtop_date + 8, $this->year);
 
 // query (added 86400 second margin "begin" & "end")
 $result = $db->query('SELECT cid,min(`date`) FROM ' . $db->prefix("myalbum{$mydirnumber}_photos") . " WHERE `date` >= $range_start_s AND `date` < $range_end_s AND `status` > 0 GROUP BY cid");
@@ -59,15 +59,15 @@ while (list($cid, $server_time) = $db->fetchRow($result)) {
     list($title) = $db->fetchRow($crs);
 
     $target_date = date('j', $user_time);
-    $tmp_array = [
-        'dotgif' => $plugin['dotgif'],
-        'dirname' => $plugin['dirname'],
-        'link' => XOOPS_URL . "/modules/{$plugin['dirname']}/viewcat.php?cid=$cid&amp;caldate={$this->year}-{$this->month}-$target_date",
-        'id' => $cid,
+    $tmp_array   = [
+        'dotgif'      => $plugin['dotgif'],
+        'dirname'     => $plugin['dirname'],
+        'link'        => XOOPS_URL . "/modules/{$plugin['dirname']}/viewcat.php?cid=$cid&amp;caldate={$this->year}-{$this->month}-$target_date",
+        'id'          => $cid,
         'server_time' => $server_time,
-        'user_time' => $user_time,
-        'name' => 'cid',
-        'title' => $myts->htmlSpecialChars($title),
+        'user_time'   => $user_time,
+        'name'        => 'cid',
+        'title'       => $myts->htmlSpecialChars($title),
     ];
 
     // multiple gifs allowed per a plugin & per a day

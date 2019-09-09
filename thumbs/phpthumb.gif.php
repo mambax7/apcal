@@ -174,7 +174,7 @@ function gif_outputAsJpeg($gif, $lpszFileName, $bgColor = -1)
 function gif_getSize($gif, &$width, &$height)
 {
     if (isset($gif) && ('cgif' === @get_class($gif)) && $gif->loaded()) {
-        $width = $gif->width();
+        $width  = $gif->width();
         $height = $gif->height();
     } elseif (@file_exists($gif)) {
         $myGIF = new CGIF();
@@ -226,10 +226,10 @@ class CGIFLZW
         unset($this->Stack);
         unset($this->Buf);
 
-        $this->Next = range(0, (1 << $this->MAX_LZW_BITS) - 1);
-        $this->Vals = range(0, (1 << $this->MAX_LZW_BITS) - 1);
+        $this->Next  = range(0, (1 << $this->MAX_LZW_BITS) - 1);
+        $this->Vals  = range(0, (1 << $this->MAX_LZW_BITS) - 1);
         $this->Stack = range(0, (1 << ($this->MAX_LZW_BITS + 1)) - 1);
-        $this->Buf = range(0, 279);
+        $this->Buf   = range(0, 279);
     }
 
     ///////////////////////////////////////////////////////////////////////////
@@ -241,9 +241,9 @@ class CGIFLZW
      */
     public function deCompress($data, &$datLen)
     {
-        $stLen = mb_strlen($data);
+        $stLen  = mb_strlen($data);
         $datLen = 0;
-        $ret = '';
+        $ret    = '';
 
         // INITIALIZATION
         $this->LZWCommand($data, true);
@@ -272,12 +272,12 @@ class CGIFLZW
     {
         if ($bInit) {
             $this->SetCodeSize = ord($data[0]);
-            $data = mb_substr($data, 1);
+            $data              = mb_substr($data, 1);
 
-            $this->CodeSize = $this->SetCodeSize + 1;
-            $this->ClearCode = 1 << $this->SetCodeSize;
-            $this->EndCode = $this->ClearCode + 1;
-            $this->MaxCode = $this->ClearCode + 2;
+            $this->CodeSize    = $this->SetCodeSize + 1;
+            $this->ClearCode   = 1 << $this->SetCodeSize;
+            $this->EndCode     = $this->ClearCode + 1;
+            $this->MaxCode     = $this->ClearCode + 2;
             $this->MaxCodeSize = $this->ClearCode << 1;
 
             $this->GetCode($data, $bInit);
@@ -302,7 +302,7 @@ class CGIFLZW
             $this->Fresh = 0;
             do {
                 $this->FirstCode = $this->GetCode($data, $bInit);
-                $this->OldCode = $this->FirstCode;
+                $this->OldCode   = $this->FirstCode;
             } while ($this->FirstCode == $this->ClearCode);
 
             return $this->FirstCode;
@@ -326,12 +326,12 @@ class CGIFLZW
                     $this->Vals[$i] = 0;
                 }
 
-                $this->CodeSize = $this->SetCodeSize + 1;
+                $this->CodeSize    = $this->SetCodeSize + 1;
                 $this->MaxCodeSize = $this->ClearCode << 1;
-                $this->MaxCode = $this->ClearCode + 2;
-                $this->sp = 0;
-                $this->FirstCode = $this->GetCode($data, $bInit);
-                $this->OldCode = $this->FirstCode;
+                $this->MaxCode     = $this->ClearCode + 2;
+                $this->sp          = 0;
+                $this->FirstCode   = $this->GetCode($data, $bInit);
+                $this->OldCode     = $this->FirstCode;
 
                 return $this->FirstCode;
             }
@@ -357,7 +357,7 @@ class CGIFLZW
                 $Code = $this->Next[$Code];
             }
 
-            $this->FirstCode = $this->Vals[$Code];
+            $this->FirstCode        = $this->Vals[$Code];
             $this->Stack[$this->sp] = $this->FirstCode;
             $this->sp++;
 
@@ -393,9 +393,9 @@ class CGIFLZW
     public function GetCode(&$data, $bInit)
     {
         if ($bInit) {
-            $this->CurBit = 0;
-            $this->LastBit = 0;
-            $this->Done = 0;
+            $this->CurBit   = 0;
+            $this->LastBit  = 0;
+            $this->Done     = 0;
             $this->LastByte = 2;
 
             return 1;
@@ -415,7 +415,7 @@ class CGIFLZW
             $this->Buf[1] = $this->Buf[$this->LastByte - 1];
 
             $Count = ord($data[0]);
-            $data = mb_substr($data, 1);
+            $data  = mb_substr($data, 1);
 
             if ($Count) {
                 for ($i = 0; $i < $Count; $i++) {
@@ -427,8 +427,8 @@ class CGIFLZW
             }
 
             $this->LastByte = 2 + $Count;
-            $this->CurBit = ($this->CurBit - $this->LastBit) + 16;
-            $this->LastBit = (2 + $Count) << 3;
+            $this->CurBit   = ($this->CurBit - $this->LastBit) + 16;
+            $this->LastBit  = (2 + $Count) << 3;
         }
 
         $iRet = 0;
@@ -470,7 +470,7 @@ class CGIFCOLORTABLE
      */
     public function load($lpData, $num)
     {
-        $this->m_nColors = 0;
+        $this->m_nColors  = 0;
         $this->m_arColors = [];
 
         for ($i = 0; $i < $num; $i++) {
@@ -532,9 +532,9 @@ class CGIFCOLORTABLE
     public function colorIndex($rgb)
     {
         $rgb = (int)$rgb & 0xFFFFFF;
-        $r1 = ($rgb & 0x0000FF);
-        $g1 = ($rgb & 0x00FF00) >> 8;
-        $b1 = ($rgb & 0xFF0000) >> 16;
+        $r1  = ($rgb & 0x0000FF);
+        $g1  = ($rgb & 0x00FF00) >> 8;
+        $b1  = ($rgb & 0xFF0000) >> 16;
         $idx = -1;
         $dif = 0;
 
@@ -542,7 +542,7 @@ class CGIFCOLORTABLE
             $r2 = ($this->m_arColors[$i] & 0x000000FF);
             $g2 = ($this->m_arColors[$i] & 0x0000FF00) >> 8;
             $b2 = ($this->m_arColors[$i] & 0x00FF0000) >> 16;
-            $d = abs($r2 - $r1) + abs($g2 - $g1) + abs($b2 - $b1);
+            $d  = abs($r2 - $r1) + abs($g2 - $g1) + abs($b2 - $b1);
 
             if ((-1 == $idx) || ($d < $dif)) {
                 $idx = $i;
@@ -605,20 +605,20 @@ class CGIFFILEHEADER
             return false;
         }
 
-        $this->m_nWidth = $this->w2i(mb_substr($lpData, 6, 2));
+        $this->m_nWidth  = $this->w2i(mb_substr($lpData, 6, 2));
         $this->m_nHeight = $this->w2i(mb_substr($lpData, 8, 2));
         if (!$this->m_nWidth || !$this->m_nHeight) {
             return false;
         }
 
-        $b = ord($lpData[10]);
-        $this->m_bGlobalClr = ($b & 0x80) ? true : false;
-        $this->m_nColorRes = ($b & 0x70) >> 4;
-        $this->m_bSorted = ($b & 0x08) ? true : false;
-        $this->m_nTableSize = 2 << ($b & 0x07);
-        $this->m_nBgColor = ord($lpData[11]);
+        $b                   = ord($lpData[10]);
+        $this->m_bGlobalClr  = ($b & 0x80) ? true : false;
+        $this->m_nColorRes   = ($b & 0x70) >> 4;
+        $this->m_bSorted     = ($b & 0x08) ? true : false;
+        $this->m_nTableSize  = 2 << ($b & 0x07);
+        $this->m_nBgColor    = ord($lpData[11]);
         $this->m_nPixelRatio = ord($lpData[12]);
-        $hdrLen = 13;
+        $hdrLen              = 13;
 
         if ($this->m_bGlobalClr) {
             $this->m_colorTable = new CGIFCOLORTABLE();
@@ -687,21 +687,21 @@ class CGIFIMAGEHEADER
     {
         $hdrLen = 0;
 
-        $this->m_nLeft = $this->w2i(mb_substr($lpData, 0, 2));
-        $this->m_nTop = $this->w2i(mb_substr($lpData, 2, 2));
-        $this->m_nWidth = $this->w2i(mb_substr($lpData, 4, 2));
+        $this->m_nLeft   = $this->w2i(mb_substr($lpData, 0, 2));
+        $this->m_nTop    = $this->w2i(mb_substr($lpData, 2, 2));
+        $this->m_nWidth  = $this->w2i(mb_substr($lpData, 4, 2));
         $this->m_nHeight = $this->w2i(mb_substr($lpData, 6, 2));
 
         if (!$this->m_nWidth || !$this->m_nHeight) {
             return false;
         }
 
-        $b = ord($lpData[8]);
-        $this->m_bLocalClr = ($b & 0x80) ? true : false;
+        $b                  = ord($lpData[8]);
+        $this->m_bLocalClr  = ($b & 0x80) ? true : false;
         $this->m_bInterlace = ($b & 0x40) ? true : false;
-        $this->m_bSorted = ($b & 0x20) ? true : false;
+        $this->m_bSorted    = ($b & 0x20) ? true : false;
         $this->m_nTableSize = 2 << ($b & 0x07);
-        $hdrLen = 9;
+        $hdrLen             = 9;
 
         if ($this->m_bLocalClr) {
             $this->m_colorTable = new CGIFCOLORTABLE();
@@ -770,7 +770,7 @@ class CGIFIMAGE
         $datLen = 0;
 
         while (true) {
-            $b = ord($data[0]);
+            $b    = ord($data[0]);
             $data = mb_substr($data, 1);
             $datLen++;
 
@@ -786,14 +786,14 @@ class CGIFIMAGE
                     if (!$this->m_gih->load($data, $len = 0)) {
                         return false;
                     }
-                    $data = mb_substr($data, $len);
+                    $data   = mb_substr($data, $len);
                     $datLen += $len;
 
                     // ALLOC BUFFER
                     if (!($this->m_data = $this->m_lzw->deCompress($data, $len = 0))) {
                         return false;
                     }
-                    $data = mb_substr($data, $len);
+                    $data   = mb_substr($data, $len);
                     $datLen += $len;
 
                     if ($this->m_gih->m_bInterlace) {
@@ -821,15 +821,15 @@ class CGIFIMAGE
     {
         $extLen = 0;
 
-        $b = ord($data[0]);
+        $b    = ord($data[0]);
         $data = mb_substr($data, 1);
         $extLen++;
 
         switch ($b) {
             case 0xF9: // Graphic Control
-                $b = ord($data[1]);
-                $this->m_disp = ($b & 0x1C) >> 2;
-                $this->m_bUser = ($b & 0x02) ? true : false;
+                $b              = ord($data[1]);
+                $this->m_disp   = ($b & 0x1C) >> 2;
+                $this->m_bUser  = ($b & 0x02) ? true : false;
                 $this->m_bTrans = ($b & 0x01) ? true : false;
                 $this->m_nDelay = $this->w2i(mb_substr($data, 2, 2));
                 $this->m_nTrans = ord($data[4]);
@@ -844,14 +844,14 @@ class CGIFIMAGE
         }
 
         // SKIP DEFAULT AS DEFS MAY CHANGE
-        $b = ord($data[0]);
+        $b    = ord($data[0]);
         $data = mb_substr($data, 1);
         $extLen++;
         while ($b > 0) {
-            $data = mb_substr($data, $b);
+            $data   = mb_substr($data, $b);
             $extLen += $b;
-            $b = ord($data[0]);
-            $data = mb_substr($data, 1);
+            $b      = ord($data[0]);
+            $data   = mb_substr($data, 1);
             $extLen++;
         }
 
@@ -874,8 +874,8 @@ class CGIFIMAGE
     public function deInterlace()
     {
         $data = $this->m_data;
-        $s = 0;
-        $y = 0;
+        $s    = 0;
+        $y    = 0;
 
         for ($i = 0; $i < 4; $i++) {
             switch ($i) {
@@ -898,7 +898,7 @@ class CGIFIMAGE
             }
 
             for (; $y < $this->m_gih->m_nHeight; $y += $s) {
-                $lne = mb_substr($this->m_data, 0, $this->m_gih->m_nWidth);
+                $lne          = mb_substr($this->m_data, 0, $this->m_gih->m_nWidth);
                 $this->m_data = mb_substr($this->m_data, $this->m_gih->m_nWidth);
 
                 $data = mb_substr($data, 0, $y * $this->m_gih->m_nWidth) . $lne . mb_substr($data, ($y + 1) * $this->m_gih->m_nWidth);
@@ -926,9 +926,9 @@ class CGIF
     // CONSTRUCTOR
     public function __construct()
     {
-        $this->m_gfh = new CGIFFILEHEADER();
-        $this->m_img = new CGIFIMAGE();
-        $this->m_lpData = '';
+        $this->m_gfh     = new CGIFFILEHEADER();
+        $this->m_img     = new CGIFIMAGE();
+        $this->m_lpData  = '';
         $this->m_bLoaded = false;
     }
 
@@ -991,7 +991,7 @@ class CGIF
             return false;
         }
 
-        $width = $gfh->m_nWidth;
+        $width  = $gfh->m_nWidth;
         $height = $gfh->m_nHeight;
 
         return true;
@@ -1014,26 +1014,26 @@ class CGIF
         // PREPARE COLOR TABLE (RGBQUADs)
         if ($this->m_img->m_gih->m_bLocalClr) {
             $nColors = $this->m_img->m_gih->m_nTableSize;
-            $rgbq = $this->m_img->m_gih->m_colorTable->toRGBQuad();
+            $rgbq    = $this->m_img->m_gih->m_colorTable->toRGBQuad();
             if (-1 != $bgColor) {
                 $bgColor = $this->m_img->m_gih->m_colorTable->colorIndex($bgColor);
             }
         } elseif ($this->m_gfh->m_bGlobalClr) {
             $nColors = $this->m_gfh->m_nTableSize;
-            $rgbq = $this->m_gfh->m_colorTable->toRGBQuad();
+            $rgbq    = $this->m_gfh->m_colorTable->toRGBQuad();
             if (-1 != $bgColor) {
                 $bgColor = $this->m_gfh->m_colorTable->colorIndex($bgColor);
             }
         } else {
             $nColors = 0;
-            $rgbq = '';
+            $rgbq    = '';
             $bgColor = -1;
         }
 
         // PREPARE BITMAP BITS
         $data = $this->m_img->m_data;
         $nPxl = ($this->m_gfh->m_nHeight - 1) * $this->m_gfh->m_nWidth;
-        $bmp = '';
+        $bmp  = '';
         $nPad = ($this->m_gfh->m_nWidth % 4) ? 4 - ($this->m_gfh->m_nWidth % 4) : 0;
         for ($y = 0; $y < $this->m_gfh->m_nHeight; $y++) {
             for ($x = 0; $x < $this->m_gfh->m_nWidth; $x++, $nPxl++) {
@@ -1117,26 +1117,26 @@ class CGIF
         // PREPARE COLOR TABLE (RGBQUADs)
         if ($this->m_img->m_gih->m_bLocalClr) {
             $nColors = $this->m_img->m_gih->m_nTableSize;
-            $pal = $this->m_img->m_gih->m_colorTable->toString();
+            $pal     = $this->m_img->m_gih->m_colorTable->toString();
             if (-1 != $bgColor) {
                 $bgColor = $this->m_img->m_gih->m_colorTable->colorIndex($bgColor);
             }
         } elseif ($this->m_gfh->m_bGlobalClr) {
             $nColors = $this->m_gfh->m_nTableSize;
-            $pal = $this->m_gfh->m_colorTable->toString();
+            $pal     = $this->m_gfh->m_colorTable->toString();
             if (-1 != $bgColor) {
                 $bgColor = $this->m_gfh->m_colorTable->colorIndex($bgColor);
             }
         } else {
             $nColors = 0;
-            $pal = '';
+            $pal     = '';
             $bgColor = -1;
         }
 
         // PREPARE BITMAP BITS
         $data = $this->m_img->m_data;
         $nPxl = 0;
-        $bmp = '';
+        $bmp  = '';
         for ($y = 0; $y < $this->m_gfh->m_nHeight; $y++) {
             $bmp .= "\x00";
             for ($x = 0; $x < $this->m_gfh->m_nWidth; $x++, $nPxl++) {
@@ -1229,7 +1229,7 @@ class CGIF
             die('No color table available in getGD_PixelPlotterVersion()');
         }
 
-        $PlottingIMG = imagecreate($this->m_gfh->m_nWidth, $this->m_gfh->m_nHeight);
+        $PlottingIMG    = imagecreate($this->m_gfh->m_nWidth, $this->m_gfh->m_nHeight);
         $NumColorsInPal = floor(mb_strlen($pal) / 3);
         $ThisImageColor = [];
         for ($i = 0; $i < $NumColorsInPal; $i++) {

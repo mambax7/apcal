@@ -11,12 +11,13 @@
 
 /**
  * @copyright    {@link https://xoops.org/ XOOPS Project}
- * @license     {@link http://www.fsf.org/copyleft/gpl.html GNU public license}
+ * @license      {@link http://www.fsf.org/copyleft/gpl.html GNU public license}
  * @package
  * @since
  * @author       XOOPS Development Team,
  * @author       GIJ=CHECKMATE (PEAK Corp. http://www.peak.ne.jp/)
  */
+
 use XoopsModules\Apcal;
 
 require_once __DIR__ . '/admin_header.php';
@@ -34,9 +35,9 @@ $mydirnumber = '' === $regs[2] ? '' : (int)$regs[2];
 //require_once XOOPS_ROOT_PATH . "/modules/$moduleDirName/include/gtickets.php";
 
 // SERVER, GET �ѿ��μ���
-$tz = isset($_GET['tz']) ? preg_replace('/[^a-zA-Z0-9_-]/', '', $_GET['tz']) : 'y';
-$pos = \Xmf\Request::getInt('pos', 0, 'GET');
-$num = \Xmf\Request::getInt('num', 20, 'GET');
+$tz   = isset($_GET['tz']) ? preg_replace('/[^a-zA-Z0-9_-]/', '', $_GET['tz']) : 'y';
+$pos  = \Xmf\Request::getInt('pos', 0, 'GET');
+$num  = \Xmf\Request::getInt('num', 20, 'GET');
 $done = \Xmf\Request::getString('done', '', 'GET');
 
 // MySQL�ؤ���³
@@ -44,7 +45,7 @@ $conn = $GLOBALS['xoopsDB']->conn;
 
 // setting physical & virtual paths
 $mod_path = XOOPS_ROOT_PATH . "/modules/$moduleDirName";
-$mod_url = XOOPS_URL . "/modules/$moduleDirName";
+$mod_url  = XOOPS_URL . "/modules/$moduleDirName";
 
 // creating an instance of APCal
 $cal = new Apcal\ApcalXoops('', $xoopsConfig['language'], true);
@@ -52,33 +53,33 @@ $cal = new Apcal\ApcalXoops('', $xoopsConfig['language'], true);
 // setting properties of APCal
 $cal->conn = $conn;
 require dirname(__DIR__) . '/include/read_configs.php';
-$cal->base_url = $mod_url;
-$cal->base_path = $mod_path;
-$cal->images_url = "$mod_url/assets/images/$skin_folder";
+$cal->base_url    = $mod_url;
+$cal->base_path   = $mod_path;
+$cal->images_url  = "$mod_url/assets/images/$skin_folder";
 $cal->images_path = "$mod_path/assets/images/$skin_folder";
 
 // Timezone �ν���
-$serverTZ = $cal->server_TZ;
-$userTZ = $xoopsUser->timezone();
+$serverTZ  = $cal->server_TZ;
+$userTZ    = $xoopsUser->timezone();
 $tzoptions = "
     <option value='s'>" . _AM_APCAL_TZOPT_SERVER . "</option>
     <option value='g'>" . _AM_APCAL_TZOPT_GMT . "</option>
     <option value='y'>" . _AM_APCAL_TZOPT_USER . "</option>\n";
 switch ($tz) {
     case 's':
-        $tzoffset = 0;
-        $tzdisp = ($serverTZ >= 0 ? '+' : '-') . sprintf('%02d:%02d', abs($serverTZ), abs($serverTZ) * 60 % 60);
+        $tzoffset  = 0;
+        $tzdisp    = ($serverTZ >= 0 ? '+' : '-') . sprintf('%02d:%02d', abs($serverTZ), abs($serverTZ) * 60 % 60);
         $tzoptions = str_replace("'s'>", "'s' selected>", $tzoptions);
         break;
     case 'g':
-        $tzoffset = -$serverTZ * 3600;
-        $tzdisp = 'GMT';
+        $tzoffset  = -$serverTZ * 3600;
+        $tzdisp    = 'GMT';
         $tzoptions = str_replace("'g'>", "'g' selected>", $tzoptions);
         break;
     default:
     case 'y':
-        $tzoffset = ($userTZ - $serverTZ) * 3600;
-        $tzdisp = ($userTZ >= 0 ? '+' : '-') . sprintf('%02d:%02d', abs($userTZ), abs($userTZ) * 60 % 60);
+        $tzoffset  = ($userTZ - $serverTZ) * 3600;
+        $tzdisp    = ($userTZ >= 0 ? '+' : '-') . sprintf('%02d:%02d', abs($userTZ), abs($userTZ) * 60 % 60);
         $tzoptions = str_replace("'y'>", "'y' selected>", $tzoptions);
         break;
 }
@@ -133,7 +134,7 @@ if (\Xmf\Request::hasVar('http_import', 'POST') && !empty($_POST['import_uri']))
         $sql = "DELETE FROM $cal->table WHERE ($whr 0) AND (rrule_pid=0 OR rrule_pid=id)";
         $GLOBALS['xoopsDB']->query($sql);
         $records = $GLOBALS['xoopsDB']->getAffectedRows($conn);
-        $sql = "DELETE FROM $cal->table WHERE $whr 0 ";
+        $sql     = "DELETE FROM $cal->table WHERE $whr 0 ";
         if (!$GLOBALS['xoopsDB']->query($sql)) {
             echo $GLOBALS['xoopsDB']->error();
         } else {
@@ -155,14 +156,14 @@ if ('imported' === $done && isset($_GET['mes'])) {
 
 // クエリ（１時間以内のレコードだけを表示）
 $older_limit = time() - 3600;
-$whr = "UNIX_TIMESTAMP(dtstamp) > $older_limit AND (rrule_pid=0 OR rrule_pid=id)";
+$whr         = "UNIX_TIMESTAMP(dtstamp) > $older_limit AND (rrule_pid=0 OR rrule_pid=id)";
 
 //$rs          = $xoopsDB->query("SELECT COUNT(id) FROM $cal->table WHERE $whr");
 //$numrows     = mysql_result($rs, 0, 0);
 //$rs          = $xoopsDB->query("SELECT * FROM $cal->table WHERE $whr ORDER BY dtstamp DESC LIMIT $pos,$num");
 
-$rs = $GLOBALS['xoopsDB']->query("SELECT COUNT(id) FROM $cal->table WHERE $whr");
-$numrows = 0;
+$rs        = $GLOBALS['xoopsDB']->query("SELECT COUNT(id) FROM $cal->table WHERE $whr");
+$numrows   = 0;
 $resultRow = $GLOBALS['xoopsDB']->fetchRow($rs);
 if (false !== $resultRow && isset($resultRow[0])) {
     $numrows = $resultRow[0];
@@ -171,7 +172,7 @@ $rs = $GLOBALS['xoopsDB']->query("SELECT * FROM $cal->table WHERE $whr ORDER BY 
 
 // ページ分割処理
 require XOOPS_ROOT_PATH . '/class/pagenav.php';
-$nav = new \XoopsPageNav($numrows, $num, $pos, 'pos', "tz=$tz&amp;num=$num");
+$nav      = new \XoopsPageNav($numrows, $num, $pos, 'pos', "tz=$tz&amp;num=$num");
 $nav_html = $nav->renderNav(10);
 if ($numrows <= 0) {
     $nav_num_info = _NONE;
@@ -238,9 +239,9 @@ echo '
 ";
 
 // �ꥹ�Ƚ�����
-$myts = \MyTextSanitizer::getInstance();
+$myts    = \MyTextSanitizer::getInstance();
 $oddeven = 'odd';
-$count = 0;
+$count   = 0;
 while ($event = $GLOBALS['xoopsDB']->fetchObject($rs)) {
     $oddeven = ('odd' === $oddeven ? 'even' : 'odd');
     if (++$count < $new_imported) {
@@ -250,10 +251,10 @@ while ($event = $GLOBALS['xoopsDB']->fetchObject($rs)) {
     }
     if ($event->allday) {
         $start_desc = date(_AM_APCAL_DTFMT_LIST_ALLDAY, $event->start) . '<br>(' . _APCAL_MB_ALLDAY_EVENT . ')';
-        $end_desc = date(_AM_APCAL_DTFMT_LIST_ALLDAY, $event->end - 300) . '<br>(' . _APCAL_MB_ALLDAY_EVENT . ')';
+        $end_desc   = date(_AM_APCAL_DTFMT_LIST_ALLDAY, $event->end - 300) . '<br>(' . _APCAL_MB_ALLDAY_EVENT . ')';
     } else {
         $start_desc = date(_AM_APCAL_DTFMT_LIST_NORMAL, $event->start + $tzoffset);
-        $end_desc = date(_AM_APCAL_DTFMT_LIST_NORMAL, $event->end + $tzoffset);
+        $end_desc   = date(_AM_APCAL_DTFMT_LIST_NORMAL, $event->end + $tzoffset);
     }
     $summary4disp = $myts->htmlSpecialChars($event->summary);
     echo "

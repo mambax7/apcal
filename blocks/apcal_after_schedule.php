@@ -18,6 +18,7 @@
  * @author       Antiques Promotion (http://www.antiquespromotion.ca)
  * @author       GIJ=CHECKMATE (PEAK Corp. http://www.peak.ne.jp/)
  */
+
 use  XoopsModules\Apcal;
 
 if (!defined('APCAL_BLOCK_AFTER_SCHEDULE_INCLUDED')) {
@@ -37,13 +38,13 @@ if (!defined('APCAL_BLOCK_AFTER_SCHEDULE_INCLUDED')) {
         global $xoopsConfig, $xoopsDB;
 
         $moduleDirName = empty($options[0]) ? basename(dirname(__DIR__)) : $options[0];
-        $maxitem = empty($options[1]) ? 10 : (int)$options[1];
-        $now_cid = empty($options[2]) ? 0 : (int)$options[2];
-        $untildays = empty($options[4]) ? 0 : (int)$options[4];
+        $maxitem       = empty($options[1]) ? 10 : (int)$options[1];
+        $now_cid       = empty($options[2]) ? 0 : (int)$options[2];
+        $untildays     = empty($options[4]) ? 0 : (int)$options[4];
 
         // setting physical & virtual paths
         $mod_path = XOOPS_ROOT_PATH . "/modules/$moduleDirName";
-        $mod_url = XOOPS_URL . "/modules/$moduleDirName";
+        $mod_url  = XOOPS_URL . "/modules/$moduleDirName";
 
         // defining class of APCal
         //        if (!class_exists('APCal_xoops')) {
@@ -60,9 +61,9 @@ if (!defined('APCAL_BLOCK_AFTER_SCHEDULE_INCLUDED')) {
         // setting properties of APCal
         $cal->conn = $GLOBALS['xoopsDB']->conn;
         include "$mod_path/include/read_configs.php";
-        $cal->base_url = $mod_url;
-        $cal->base_path = $mod_path;
-        $cal->images_url = "$mod_url/assets/images/$skin_folder";
+        $cal->base_url    = $mod_url;
+        $cal->base_path   = $mod_path;
+        $cal->images_url  = "$mod_url/assets/images/$skin_folder";
         $cal->images_path = "$mod_path/assets/images/$skin_folder";
 
         // ¥Ö¥í¥Ã¥¯ÇÛÎó¤Î¼«Ê¬¼«¿È¤ò½ñ¤­´¹¤¨¤ë title ¤Ë %s ¤ò´Þ¤á¤ë¤³¤È
@@ -73,7 +74,7 @@ if (!defined('APCAL_BLOCK_AFTER_SCHEDULE_INCLUDED')) {
             global $block_arr, $i;
             if (is_object($block_arr[$i])) {
                 $title_fmt = $block_arr[$i]->getVar('title');
-                $title = sprintf($title_fmt, sprintf(_APCAL_FMT_MD, $cal->month_short_names[date('n', $cal->unixtime)], $cal->date_short_names[date('j', $cal->unixtime)]));
+                $title     = sprintf($title_fmt, sprintf(_APCAL_FMT_MD, $cal->month_short_names[date('n', $cal->unixtime)], $cal->date_short_names[date('j', $cal->unixtime)]));
                 $block_arr[$i]->setVar('title', $title);
             }
         }
@@ -92,28 +93,28 @@ if (!defined('APCAL_BLOCK_AFTER_SCHEDULE_INCLUDED')) {
         global $xoopsDB, $xoopsConfig;
 
         $moduleDirName = empty($options[0]) ? basename(dirname(__DIR__)) : $options[0];
-        $maxitem = empty($options[1]) ? 10 : (int)$options[1];
-        $now_cid = empty($options[2]) ? 0 : (int)$options[2];
-        $untildays = empty($options[4]) ? 0 : (int)$options[4];
+        $maxitem       = empty($options[1]) ? 10 : (int)$options[1];
+        $now_cid       = empty($options[2]) ? 0 : (int)$options[2];
+        $untildays     = empty($options[4]) ? 0 : (int)$options[4];
 
         // setting physical & virtual paths
         $mod_path = XOOPS_ROOT_PATH . "/modules/$moduleDirName";
-        $mod_url = XOOPS_URL . "/modules/$moduleDirName";
+        $mod_url  = XOOPS_URL . "/modules/$moduleDirName";
 
         // defining class of APCal
         //        require_once "$mod_path/class/APCal.php";
         //        require_once "$mod_path/class/APCal_xoops.php";
 
         // creating an instance of APCal
-        $cal = new Apcal\ApcalXoops(date('Y-n-j'), $xoopsConfig['language'], true);
+        $cal                = new Apcal\ApcalXoops(date('Y-n-j'), $xoopsConfig['language'], true);
         $cal->use_server_TZ = true;
 
         // setting properties of APCal
         $cal->conn = $GLOBALS['xoopsDB']->conn;
         include "$mod_path/include/read_configs.php";
-        $cal->base_url = $mod_url;
-        $cal->base_path = $mod_path;
-        $cal->images_url = "$mod_url/assets/images/$skin_folder";
+        $cal->base_url    = $mod_url;
+        $cal->base_path   = $mod_path;
+        $cal->images_url  = "$mod_url/assets/images/$skin_folder";
         $cal->images_path = "$mod_path/assets/images/$skin_folder";
 
         $ret = "<input type='hidden' name='options[0]' value='$moduleDirName'>\n";
@@ -126,10 +127,10 @@ if (!defined('APCAL_BLOCK_AFTER_SCHEDULE_INCLUDED')) {
         $ret .= _MB_APCAL_CATSEL . ':';
         $ret .= "<select name='options[2]'>\n<option value='0'>" . _ALL . "</option>\n";
         foreach ($cal->categories as $cid => $cat) {
-            $selected = $now_cid == $cid ? 'selected' : '';
-            $depth_desc = str_repeat('-', (int)$cat->cat_depth);
+            $selected       = $now_cid == $cid ? 'selected' : '';
+            $depth_desc     = str_repeat('-', (int)$cat->cat_depth);
             $cat_title4show = $cal->text_sanitizer_for_show($cat->cat_title);
-            $ret .= "\t<option value='$cid' $selected>$depth_desc $cat_title4show</option>\n";
+            $ret            .= "\t<option value='$cid' $selected>$depth_desc $cat_title4show</option>\n";
         }
         $ret .= "</select><br>\n";
 

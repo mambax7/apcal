@@ -11,12 +11,13 @@
 
 /**
  * @copyright    {@link https://xoops.org/ XOOPS Project}
- * @license     {@link http://www.fsf.org/copyleft/gpl.html GNU public license}
+ * @license      {@link http://www.fsf.org/copyleft/gpl.html GNU public license}
  * @package
  * @since
  * @author       XOOPS Development Team,
  * @author       GIJ=CHECKMATE (PEAK Corp. http://www.peak.ne.jp/)
  */
+
 use XoopsModules\Apcal;
 
 require_once __DIR__ . '/admin_header.php';
@@ -34,11 +35,11 @@ $mydirnumber = '' === $regs[2] ? '' : (int)$regs[2];
 //require_once XOOPS_ROOT_PATH . "/modules/$moduleDirName/include/gtickets.php";
 
 // SERVER, GET �ѿ��μ���
-$tz = isset($_GET['tz']) ? preg_replace('/[^a-zA-Z0-9_-]/', '', $_GET['tz']) : 'y';
-$pos = \Xmf\Request::getInt('pos', 0, 'GET');
-$num = \Xmf\Request::getInt('num', 20, 'GET');
-$cid = \Xmf\Request::getInt('cid', 0, 'GET');
-$txt = isset($_GET['txt']) ? trim($_GET['txt']) : '';
+$tz   = isset($_GET['tz']) ? preg_replace('/[^a-zA-Z0-9_-]/', '', $_GET['tz']) : 'y';
+$pos  = \Xmf\Request::getInt('pos', 0, 'GET');
+$num  = \Xmf\Request::getInt('num', 20, 'GET');
+$cid  = \Xmf\Request::getInt('cid', 0, 'GET');
+$txt  = isset($_GET['txt']) ? trim($_GET['txt']) : '';
 $done = \Xmf\Request::getString('done', '', 'GET');
 
 // MySQL�ؤ���³
@@ -46,7 +47,7 @@ $conn = $GLOBALS['xoopsDB']->conn;
 
 // setting physical & virtual paths
 $mod_path = XOOPS_ROOT_PATH . "/modules/$moduleDirName";
-$mod_url = XOOPS_URL . "/modules/$moduleDirName";
+$mod_url  = XOOPS_URL . "/modules/$moduleDirName";
 
 // creating an instance of APCal
 $cal = new Apcal\ApcalXoops('', $xoopsConfig['language'], true);
@@ -54,9 +55,9 @@ $cal = new Apcal\ApcalXoops('', $xoopsConfig['language'], true);
 // setting properties of APCal
 $cal->conn = $conn;
 require dirname(__DIR__) . '/include/read_configs.php';
-$cal->base_url = $mod_url;
-$cal->base_path = $mod_path;
-$cal->images_url = "$mod_url/assets/images/$skin_folder";
+$cal->base_url    = $mod_url;
+$cal->base_path   = $mod_path;
+$cal->images_url  = "$mod_url/assets/images/$skin_folder";
 $cal->images_path = "$mod_path/assets/images/$skin_folder";
 
 // ��̤��ˤ��ʤ���ߡʥǥե���Ȥ�̤���
@@ -64,22 +65,22 @@ $pf_options = "
     <option value='future'>" . _AM_APCAL_OPT_FUTURE . "</option>
     <option value='past'>" . _AM_APCAL_OPT_PAST . "</option>
     <option value='pandf'>" . _AM_APCAL_OPT_PASTANDFUTURE . "</option>\n";
-$pf = empty($_GET['pf']) ? 'future' : preg_replace('/[^a-zA-Z0-9_-]/', '', $_GET['pf']);
+$pf         = empty($_GET['pf']) ? 'future' : preg_replace('/[^a-zA-Z0-9_-]/', '', $_GET['pf']);
 switch ($pf) {
     case 'past':
         $pf_options = str_replace("'past'>", "'past' selected>", $pf_options);
-        $whr_pf = "start<'" . time() . "'";
+        $whr_pf     = "start<'" . time() . "'";
         break;
     case 'pandf':
         $pf_options = str_replace("'pandf'>", "'pandf' selected>", $pf_options);
-        $whr_pf = '1';
+        $whr_pf     = '1';
         break;
     default:
         $pf = 'future';
     // no break
     case 'future':
         $pf_options = str_replace("'future'>", "'future' selected>", $pf_options);
-        $whr_pf = "end>'" . time() . "'";
+        $whr_pf     = "end>'" . time() . "'";
         break;
 }
 
@@ -92,27 +93,27 @@ ob_end_clean();
 $cat_selbox4extract = str_replace("<option value='0'>", "<option value='0'>" . _ALL . "</option>\n<option value='-1'" . (-1 == $cid ? 'selected' : '') . '>', $cat_selbox);
 
 // Timezone �ν���
-$serverTZ = $cal->server_TZ;
-$userTZ = $xoopsUser->timezone();
+$serverTZ  = $cal->server_TZ;
+$userTZ    = $xoopsUser->timezone();
 $tzoptions = "
     <option value='s'>" . _AM_APCAL_TZOPT_SERVER . "</option>
     <option value='g'>" . _AM_APCAL_TZOPT_GMT . "</option>
     <option value='y'>" . _AM_APCAL_TZOPT_USER . "</option>\n";
 switch ($tz) {
     case 's':
-        $tzoffset = 0;
-        $tzdisp = ($serverTZ >= 0 ? '+' : '-') . sprintf('%02d:%02d', abs($serverTZ), abs($serverTZ) * 60 % 60);
+        $tzoffset  = 0;
+        $tzdisp    = ($serverTZ >= 0 ? '+' : '-') . sprintf('%02d:%02d', abs($serverTZ), abs($serverTZ) * 60 % 60);
         $tzoptions = str_replace("'s'>", "'s' selected>", $tzoptions);
         break;
     case 'g':
-        $tzoffset = -$serverTZ * 3600;
-        $tzdisp = 'GMT';
+        $tzoffset  = -$serverTZ * 3600;
+        $tzdisp    = 'GMT';
         $tzoptions = str_replace("'g'>", "'g' selected>", $tzoptions);
         break;
     default:
     case 'y':
-        $tzoffset = ($userTZ - $serverTZ) * 3600;
-        $tzdisp = ($userTZ >= 0 ? '+' : '-') . sprintf('%02d:%02d', abs($userTZ), abs($userTZ) * 60 % 60);
+        $tzoffset  = ($userTZ - $serverTZ) * 3600;
+        $tzdisp    = ($userTZ >= 0 ? '+' : '-') . sprintf('%02d:%02d', abs($userTZ), abs($userTZ) * 60 % 60);
         $tzoptions = str_replace("'y'>", "'y' selected>", $tzoptions);
         break;
 }
@@ -134,7 +135,7 @@ if (\Xmf\Request::hasVar('delete', 'POST')) {
         $sql = "DELETE FROM $cal->table WHERE ($whr 0) AND (rrule_pid=0 OR rrule_pid=id)";
         $GLOBALS['xoopsDB']->query($sql);
         $records = $GLOBALS['xoopsDB']->getAffectedRows($conn);
-        $sql = "DELETE FROM $cal->table WHERE $whr 0 ";
+        $sql     = "DELETE FROM $cal->table WHERE $whr 0 ";
         if (!$GLOBALS['xoopsDB']->query($sql)) {
             echo $GLOBALS['xoopsDB']->error();
         } else {
@@ -152,9 +153,9 @@ if (\Xmf\Request::hasVar('delete', 'POST')) {
     }
 
     // ���ƥ��꡼�ؤΥ���ɲ�
-    $cid = \Xmf\Request::getInt('cid', 0, 'POST');
+    $cid     = \Xmf\Request::getInt('cid', 0, 'POST');
     $cid4sql = sprintf('%05d,', $cid);
-    $whr = '';
+    $whr     = '';
     foreach ($_POST['ids'] as $id) {
         $whr .= "id=$id OR rrule_pid=$id OR ";
     }
@@ -163,7 +164,7 @@ if (\Xmf\Request::hasVar('delete', 'POST')) {
         echo $GLOBALS['xoopsDB']->error();
     }
     $records = $GLOBALS['xoopsDB']->getAffectedRows($conn);
-    $mes = urlencode("$records " . _AM_APCAL_MES_EVENTLINKTOCAT);
+    $mes     = urlencode("$records " . _AM_APCAL_MES_EVENTLINKTOCAT);
     $cal->redirect("cid=$cid&num=$num&tz=$tz&done=copied&mes=$mes");
     exit;
 } elseif (\Xmf\Request::hasVar('movelink', 'POST') && isset($_POST['ids']) && is_array($_POST['ids']) && isset($_POST['cid'])
@@ -174,11 +175,11 @@ if (\Xmf\Request::hasVar('delete', 'POST')) {
     }
 
     // ���ƥ��꡼�ؤΥ�󥯰�ư�ޤ��Ϻ��
-    $cid = \Xmf\Request::getInt('cid', 0, 'POST');
-    $cid4sql = $cid > 0 ? sprintf('%05d,', $cid) : '';
-    $old_cid = \Xmf\Request::getInt('old_cid', 0, 'POST');
+    $cid         = \Xmf\Request::getInt('cid', 0, 'POST');
+    $cid4sql     = $cid > 0 ? sprintf('%05d,', $cid) : '';
+    $old_cid     = \Xmf\Request::getInt('old_cid', 0, 'POST');
     $old_cid4sql = sprintf('%05d,', $old_cid);
-    $whr = '';
+    $whr         = '';
     foreach ($_POST['ids'] as $id) {
         $whr .= "id=$id OR rrule_pid=$id OR ";
     }
@@ -240,8 +241,8 @@ $whr = "$whr_cid AND $whr_txt AND $whr_pf AND rrule_pid=0 OR $whr_cid AND $whr_t
 //$numrows = mysql_result($rs, 0, 0);
 //$rs      = $xoopsDB->query("SELECT * FROM $cal->table WHERE $whr ORDER BY start,end LIMIT $pos,$num");
 
-$rs = $GLOBALS['xoopsDB']->query("SELECT COUNT(id) FROM $cal->table WHERE $whr");
-$numrows = 0;
+$rs        = $GLOBALS['xoopsDB']->query("SELECT COUNT(id) FROM $cal->table WHERE $whr");
+$numrows   = 0;
 $resultRow = $GLOBALS['xoopsDB']->fetchRow($rs);
 if (false !== $resultRow && isset($resultRow[0])) {
     $numrows = $resultRow[0];
@@ -250,7 +251,7 @@ $rs = $GLOBALS['xoopsDB']->query("SELECT * FROM $cal->table WHERE $whr ORDER BY 
 
 // Page Navigation
 require XOOPS_ROOT_PATH . '/class/pagenav.php';
-$nav = new \XoopsPageNav($numrows, $num, $pos, 'pos', "cid=$cid&amp;tz=$tz&amp;num=$num&amp;pf=$pf&amp;txt=" . urlencode($txt));
+$nav      = new \XoopsPageNav($numrows, $num, $pos, 'pos', "cid=$cid&amp;tz=$tz&amp;num=$num&amp;pf=$pf&amp;txt=" . urlencode($txt));
 $nav_html = $nav->renderNav(10);
 if ($numrows <= 0) {
     $nav_num_info = _NONE;
@@ -309,16 +310,16 @@ echo '
 ";
 
 // �ꥹ�Ƚ�����
-$myts = \MyTextSanitizer::getInstance();
+$myts    = \MyTextSanitizer::getInstance();
 $oddeven = 'odd';
 while ($event = $GLOBALS['xoopsDB']->fetchObject($rs)) {
     $oddeven = ('odd' === $oddeven ? 'even' : 'odd');
     if ($event->allday) {
         $start_desc = date(_AM_APCAL_DTFMT_LIST_ALLDAY, $event->start) . '<br>(' . _APCAL_MB_ALLDAY_EVENT . ')';
-        $end_desc = date(_AM_APCAL_DTFMT_LIST_ALLDAY, $event->end - 300) . '<br>(' . _APCAL_MB_ALLDAY_EVENT . ')';
+        $end_desc   = date(_AM_APCAL_DTFMT_LIST_ALLDAY, $event->end - 300) . '<br>(' . _APCAL_MB_ALLDAY_EVENT . ')';
     } else {
         $start_desc = date(_AM_APCAL_DTFMT_LIST_NORMAL, $event->start + $tzoffset);
-        $end_desc = date(_AM_APCAL_DTFMT_LIST_NORMAL, $event->end + $tzoffset);
+        $end_desc   = date(_AM_APCAL_DTFMT_LIST_NORMAL, $event->end + $tzoffset);
     }
     $summary4disp = $myts->htmlSpecialChars($event->summary);
     echo "
