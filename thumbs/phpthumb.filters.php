@@ -1130,7 +1130,7 @@ class phpthumb_filters
                     return true;
                 }
                 $this->DebugMessage('FAILED: imagefilter($gdimg, IMG_FILTER_COLORIZE)', __FILE__, __LINE__);
-                // fall through and try it the hard way
+            // fall through and try it the hard way
             } else {
                 $this->DebugMessage('FAILED: imagefilter($gdimg, IMG_FILTER_GRAYSCALE)', __FILE__, __LINE__);
                 // fall through and try it the hard way

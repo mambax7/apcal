@@ -83,8 +83,10 @@ if (defined('FOR_XOOPS_LANG_CHECKER') || !defined('APCAL_AM_LOADED')) {
     define('_AM_GPERM_G_SUPERDELETE', 'super suppression');
     define('_AM_GPERM_G_TOUCHOTHERS', 'peut modifier les autres');
     define('_AM_CAT2GROUPDESC', 'Cochez les cat&eacute;gories auxquelles vous pouvez acc&eacute;der');
-    define('_AM_GROUPPERMDESC',
-           "S&eacute;lectionner les actions que tous les groupes sont autoris&eacute;s &agrave; faire<br/>Si vous avez besoin de ce dispositif, d&eacute;finissez d'abord les 'Droits Utilisateurs' &agrave; Sp&eacute;cifier dans les permissions des groupes.<br />Les r&eacute;glages des groupes administrateurs et invit&eacute;s seront ignor&eacute;s.");
+    define(
+        '_AM_GROUPPERMDESC',
+        "S&eacute;lectionner les actions que tous les groupes sont autoris&eacute;s &agrave; faire<br/>Si vous avez besoin de ce dispositif, d&eacute;finissez d'abord les 'Droits Utilisateurs' &agrave; Sp&eacute;cifier dans les permissions des groupes.<br />Les r&eacute;glages des groupes administrateurs et invit&eacute;s seront ignor&eacute;s."
+    );
 
     // Table Maintenance
     define('_AM_MB_SUCCESSUPDATETABLE', 'La mise &agrave; jour de la(des) table(s) a &eacute;t&eacute; effectu&eacute;e avec succ&egrave;s');
@@ -93,15 +95,19 @@ if (defined('FOR_XOOPS_LANG_CHECKER') || !defined('APCAL_AM_LOADED')) {
     define('_AM_ALRT_CATTABLENOTEXIST', "La table cat&eacute;gories n'existe pas.<br />\nVoulez-vous cr&eacute;er cette table ?");
     define('_AM_ALRT_OLDTABLE', "La structure de la table &egrave;venements est ancienne.<br />\nVoulez-vous mettre &agrave; jour la table ?");
     define('_AM_ALRT_TOOOLDTABLE', "La table retourne une erreur.<br />\nPeut-&ecirc;tre utilisiez vous APCal 0.3x ou pr&eacute;c&eacute;dent.<br />\nPremi&egrave;rement, Mettez &agrave; jour vers 0.4x or 0.5x.");
-    define('_AM_FMT_SERVER_TZ_ALL',
-           "Les Fuseau Horaire du Serveur (heure d'hiver) est: %+2.1f<br />Le Fuseau Horaire du Serveur (heure d'&eacute;t&eacute;) est : %+2.1f<br />Le Nom de la zone du serveur est: %s<br />La valeur issue de la configuration de XOOPS est: %+2.1f<br />La valeur que APCal utilise est: %+2.1f<br />");
+    define(
+        '_AM_FMT_SERVER_TZ_ALL',
+        "Les Fuseau Horaire du Serveur (heure d'hiver) est: %+2.1f<br />Le Fuseau Horaire du Serveur (heure d'&eacute;t&eacute;) est : %+2.1f<br />Le Nom de la zone du serveur est: %s<br />La valeur issue de la configuration de XOOPS est: %+2.1f<br />La valeur que APCal utilise est: %+2.1f<br />"
+    );
     define('_AM_FMT_WRONGSTZ', 'Il y a %s &eacute;v&egrave;nement(s) qui sont enregistr&eacute;(s) avec un mauvais fuseau horaire.<br />Voulez-vous les r&eacute;parer ?');
     define('_AM_TH_SERVER_TZ_COUNT', 'Ev&egrave;nements');
     define('_AM_TH_SERVER_TZ_VALUE', 'Fuseau Horaire');
     define('_AM_TH_SERVER_TZ_VALUE_TO', 'Modifications (-14.0�+14.0)');
     define('_AM_JSALRT_SERVER_TZ', 'N\'oubliez pas de sauvegarder la table des &eacute;v&egrave;nements avant de r&eacute;aliser cette op&eacute;ration');
-    define('_AM_NOTICE_SERVER_TZ',
-           'Si votre serveur d&eacute;finit les fuseaux horaires  avec l\'heure d\'&eacute;t&eacute; (= sauvegarde &agrave; l\'heure solaire) et que quelques &eacute;v&egrave;nements &eacute;taient enregistr&eacute;s sous APCal 0.6x ou 0.7x, n\'appuyer pas sur ce bouton.<br />eg) Il est naturel d\'afficher les deux -5.0 et -4.0 en EDT (Eastern Daylight Time)');
+    define(
+        '_AM_NOTICE_SERVER_TZ',
+        'Si votre serveur d&eacute;finit les fuseaux horaires  avec l\'heure d\'&eacute;t&eacute; (= sauvegarde &agrave; l\'heure solaire) et que quelques &eacute;v&egrave;nements &eacute;taient enregistr&eacute;s sous APCal 0.6x ou 0.7x, n\'appuyer pas sur ce bouton.<br />eg) Il est naturel d\'afficher les deux -5.0 et -4.0 en EDT (Eastern Daylight Time)'
+    );
     define('_AM_MB_SUCCESSTZUPDATE', 'Les &eacute;v&egrave;nements ont &eacute;t&eacute; modifi&eacute;s avec leur(s fuseau(x) horaires(s).');
 
     // Categories

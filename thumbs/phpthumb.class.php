@@ -2349,8 +2349,11 @@ class phpthumb
                                         if (preg_match('# \\-crop "([\d]+)x([\d]+)\\+0\\+0" #', $commandline, $matches)) {
                                             $commandline = str_replace(' -crop "' . $matches[1] . 'x' . $matches[2] . '+0+0" ', ' -crop ' . phpthumb_functions::escapeshellarg_replacement(($matches[1] - (2 * $width)) . 'x' . ($matches[2] - (2 * $width)) . '+0+0') . ' ', $commandline);
                                         } elseif (preg_match('# \\-' . $IMresizeParameter . ' "([0-9]+)x([0-9]+)" #', $commandline, $matches)) {
-                                            $commandline = str_replace(' -' . $IMresizeParameter . ' "' . $matches[1] . 'x' . $matches[2] . '" ', ' -' . $IMresizeParameter . ' ' . phpthumb_functions::escapeshellarg_replacement(($matches[1] - (2 * $width)) . 'x' . ($matches[2] - (2 * $width))) . ' ',
-                                                                       $commandline);
+                                            $commandline = str_replace(
+                                                ' -' . $IMresizeParameter . ' "' . $matches[1] . 'x' . $matches[2] . '" ',
+                                                ' -' . $IMresizeParameter . ' ' . phpthumb_functions::escapeshellarg_replacement(($matches[1] - (2 * $width)) . 'x' . ($matches[2] - (2 * $width))) . ' ',
+                                                $commandline
+                                            );
                                         }
                                         $successfullyProcessedFilters[] = $filterkey;
                                     }
@@ -3812,8 +3815,11 @@ class phpthumb
                         break;
                 }
             } else {
-                $this->DebugMessage('image is ' . $getimagesizeinfo[0] . 'x' . $getimagesizeinfo[1] . ' and therefore contains more pixels (' . ($getimagesizeinfo[0] * $getimagesizeinfo[1]) . ') than $this->config_max_source_pixels setting (' . $this->config_max_source_pixels . ')', __FILE__,
-                                    __LINE__);
+                $this->DebugMessage(
+                    'image is ' . $getimagesizeinfo[0] . 'x' . $getimagesizeinfo[1] . ' and therefore contains more pixels (' . ($getimagesizeinfo[0] * $getimagesizeinfo[1]) . ') than $this->config_max_source_pixels setting (' . $this->config_max_source_pixels . ')',
+                    __FILE__,
+                    __LINE__
+                );
 
                 return false;
             }

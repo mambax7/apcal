@@ -128,8 +128,10 @@ if (!empty($_POST['update'])) {
             $pi_dotgif4sql  = addslashes($_POST['pi_dotgifs'][$pi_id]);
             $pi_enabled4sql = !empty($_POST['pi_enableds'][$pi_id]) ? 1 : 0;
 
-            if (!$GLOBALS['xoopsDB']->query("UPDATE $cal->plugin_table SET pi_type='$pi_type4sql', pi_options='$pi_options4sql', pi_weight='$pi_weight4sql', pi_title='$pi_title4sql', pi_dirname='$pi_dirname4sql', pi_file='$pi_file4sql', pi_dotgif='$pi_dotgif4sql', pi_enabled='$pi_enabled4sql' WHERE pi_id=$pi_id",
-                                            $conn)) {
+            if (!$GLOBALS['xoopsDB']->query(
+                "UPDATE $cal->plugin_table SET pi_type='$pi_type4sql', pi_options='$pi_options4sql', pi_weight='$pi_weight4sql', pi_title='$pi_title4sql', pi_dirname='$pi_dirname4sql', pi_file='$pi_file4sql', pi_dotgif='$pi_dotgif4sql', pi_enabled='$pi_enabled4sql' WHERE pi_id=$pi_id",
+                $conn
+            )) {
                 die($GLOBALS['xoopsDB']->error());
             }
         }

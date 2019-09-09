@@ -98,8 +98,10 @@ if (defined('FOR_XOOPS_LANG_CHECKER') || !defined('APCAL_AM_LOADED')) {
     define('_AM_GPERM_G_DELETABLE', 'Radera');
     define('_AM_GPERM_G_SUPERDELETE', 'Super Radera');
     define('_AM_GPERM_G_TOUCHOTHERS', 'Kan nå andra');
-    define('_AM_GROUPPERMDESC',
-           "Markera vad respektive grupp har rättighet att urföra.<br />Om denna funktion används, markera 'Behörigheter för användare' till 'Specificerad i Grupprättigheterna' först i 'Inställningar'.<br />Inställningarna för grupperna 'Administrator' och 'Guest' kommer att ignoreras.");
+    define(
+        '_AM_GROUPPERMDESC',
+        "Markera vad respektive grupp har rättighet att urföra.<br />Om denna funktion används, markera 'Behörigheter för användare' till 'Specificerad i Grupprättigheterna' först i 'Inställningar'.<br />Inställningarna för grupperna 'Administrator' och 'Guest' kommer att ignoreras."
+    );
 
     // Appended by Xoops Language Checker -GIJOE- in 2004-01-14 18:31:01
     define('_AM_MENU_EVENTS', 'Händelse Administration');

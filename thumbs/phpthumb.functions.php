@@ -548,10 +548,13 @@ class phpthumb_functions
                 $alphapct     = $OverlayPixel['alpha'] / 127;
                 $overlaypct   = (1 - $alphapct) * $opacipct;
 
-                $newcolor = self::ImageColorAllocateAlphaSafe($dst_im, 127 == $RealPixel['alpha'] ? $OverlayPixel['red'] : (127 == $OverlayPixel['alpha'] ? $RealPixel['red'] : (round($RealPixel['red'] * (1 - $overlaypct)) + ($OverlayPixel['red'] * $overlaypct))),
-                                                              127 == $RealPixel['alpha'] ? $OverlayPixel['green'] : (127 == $OverlayPixel['alpha'] ? $RealPixel['green'] : (round($RealPixel['green'] * (1 - $overlaypct)) + ($OverlayPixel['green'] * $overlaypct))),
-                                                              127 == $RealPixel['alpha'] ? $OverlayPixel['blue'] : (127 == $OverlayPixel['alpha'] ? $RealPixel['blue'] : (round($RealPixel['blue'] * (1 - $overlaypct)) + ($OverlayPixel['blue'] * $overlaypct))), //					0);
-                                                              min([$RealPixel['alpha'], floor($OverlayPixel['alpha'] * $opacipct)]));
+                $newcolor = self::ImageColorAllocateAlphaSafe(
+                    $dst_im,
+                    127 == $RealPixel['alpha'] ? $OverlayPixel['red'] : (127 == $OverlayPixel['alpha'] ? $RealPixel['red'] : (round($RealPixel['red'] * (1 - $overlaypct)) + ($OverlayPixel['red'] * $overlaypct))),
+                    127 == $RealPixel['alpha'] ? $OverlayPixel['green'] : (127 == $OverlayPixel['alpha'] ? $RealPixel['green'] : (round($RealPixel['green'] * (1 - $overlaypct)) + ($OverlayPixel['green'] * $overlaypct))),
+                    127 == $RealPixel['alpha'] ? $OverlayPixel['blue'] : (127 == $OverlayPixel['alpha'] ? $RealPixel['blue'] : (round($RealPixel['blue'] * (1 - $overlaypct)) + ($OverlayPixel['blue'] * $overlaypct))), //					0);
+                                                              min([$RealPixel['alpha'], floor($OverlayPixel['alpha'] * $opacipct)])
+                );
 
                 imagesetpixel($dst_im, $dst_x + $x, $dst_y + $y, $newcolor);
             }

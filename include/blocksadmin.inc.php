@@ -513,8 +513,8 @@ function myblocksadmin_update_block(
     $bctype,
     $bcachetime,
     $bmodule,
-    $options = [])
-{
+    $options = []
+) {
     global $xoopsConfig;
     /* if (empty($bmodule)) {
         xoops_cp_header();
@@ -617,8 +617,8 @@ function myblocksadmin_update_blockinstance(
     $bcachetime,
     $bmodule,
     $options = [],
-    $bid = null)
-{
+    $bid = null
+) {
     global $xoopsDB;
 
     $instanceHandler = xoops_getHandler('blockinstance');

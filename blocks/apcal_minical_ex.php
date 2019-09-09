@@ -85,7 +85,7 @@ if (!defined('APCAL_BLOCK_MINICAL_EX')) {
             && (empty($_GET['caldate'])
                 || in_array(mb_substr($_GET['caldate'], 0, 4), [date('Y'), date('Y') - 1]))) {
             $enable_cache = true;
-            //      $enable_cache = false ;
+        //      $enable_cache = false ;
         } else {
             $enable_cache = false;
         }

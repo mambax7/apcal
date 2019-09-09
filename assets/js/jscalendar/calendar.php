@@ -35,8 +35,8 @@ class DHTML_Calendar
         $calendar_lib_path = '/calendar/',
         $lang = 'en',
         $theme = 'calendar-win2k-1',
-        $stripped = true)
-    {
+        $stripped = true
+    ) {
         if ($stripped) {
             $this->calendar_file       = 'calendar_stripped.js';
             $this->calendar_setup_file = 'calendar-setup_stripped.js';

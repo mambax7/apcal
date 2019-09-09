@@ -87,8 +87,10 @@ if (defined('FOR_XOOPS_LANG_CHECKER') || !defined('_AM_APCAL_AM_LOADED')) {
     define('_AM_APCAL_GPERM_G_RO_SUPEREDIT', 'dürfen Anmeldungen anderer Teilnehmer bearbeiten/löschen');
     define('_AM_APCAL_GPERM_G_TOUCHOTHERS', 'dürfen die Eingaben anderer Benutzer ändern');
     define('_AM_APCAL_CAT2GROUPDESC', 'Kategorien auswählen, zu denen Zugriff gewährt werden soll');
-    define('_AM_APCAL_GROUPPERMDESC',
-           "Hier können die Berechtigungen für jede Benutzergruppe einzeln eingestellt werden.<br />Um diese Funktion zu aktivieren, muss zuerst unter 'Einstellungen -> Berechtigungen für Benutzer' die Option 'Festgelegt durch Gruppenberechtigungen' ausgewählt werden.<br />Anmerkung: Die Einstellungen für die Gruppe 'Administratoren'(Webmasters) wird ignoriert.");
+    define(
+        '_AM_APCAL_GROUPPERMDESC',
+        "Hier können die Berechtigungen für jede Benutzergruppe einzeln eingestellt werden.<br />Um diese Funktion zu aktivieren, muss zuerst unter 'Einstellungen -> Berechtigungen für Benutzer' die Option 'Festgelegt durch Gruppenberechtigungen' ausgewählt werden.<br />Anmerkung: Die Einstellungen für die Gruppe 'Administratoren'(Webmasters) wird ignoriert."
+    );
 
     // Table Maintenance
     define('_AM_APCAL_MB_SUCCESSUPDATETABLE', 'Tabellen-Update war erfolgreich');

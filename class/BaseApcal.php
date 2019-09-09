@@ -3918,7 +3918,8 @@ END:VTIMEZONE\r\n";
          */
         public function get_long_ymdn($time)
         {
-            return sprintf(_APCAL_FMT_YMDN, // format
+            return sprintf(
+                _APCAL_FMT_YMDN, // format
                            date('Y', $time), // Y
                            $this->month_long_names[date('n', $time)], // M
                            $this->date_long_names[date('j', $time)], // D
@@ -3934,7 +3935,8 @@ END:VTIMEZONE\r\n";
          */
         public function get_middle_md($time)
         {
-            return sprintf(_APCAL_FMT_MD, // format
+            return sprintf(
+                _APCAL_FMT_MD, // format
                            $this->month_middle_names[date('n', $time)], // M
                            $this->date_short_names[date('j', $time)] // D
             );
@@ -3953,7 +3955,9 @@ END:VTIMEZONE\r\n";
 
             $hour4disp = $this->use24 ? $this->hour_names_24[date('G', $time) + $hour_offset] : $this->hour_names_12[date('G', $time) + $hour_offset];
 
-            return sprintf(_APCAL_FMT_DHI, $this->date_short_names[date('j', $time)], // D
+            return sprintf(
+                _APCAL_FMT_DHI,
+                $this->date_short_names[date('j', $time)], // D
                            $hour4disp, // H
                            date(_APCAL_DTFMT_MINUTE, $time) // I
             );
@@ -3972,7 +3976,9 @@ END:VTIMEZONE\r\n";
 
             $hour4disp = $this->use24 ? $this->hour_names_24[date('G', $time) + $hour_offset] : $this->hour_names_12[date('G', $time) + $hour_offset];
 
-            return sprintf(_APCAL_FMT_HI, $hour4disp, // H
+            return sprintf(
+                _APCAL_FMT_HI,
+                $hour4disp, // H
                            date(_APCAL_DTFMT_MINUTE, $time) // I
             );
         }
@@ -4074,8 +4080,8 @@ END:VTIMEZONE\r\n";
             $admission = true,
             $is_start_date = null,
             $is_end_date = null,
-            $border_for_2400 = null)
-        {
+            $border_for_2400 = null
+        ) {
             if (!isset($is_start_date)) {
                 $is_start_date = (date('Y-n-j', $start) == $ynj);
             }
@@ -4146,8 +4152,8 @@ END:VTIMEZONE\r\n";
             $tzoffset,
             $border_for_2400,
             $justify = true,
-            $admission = true)
-        {
+            $admission = true
+        ) {
             $start = $event->start + $tzoffset;
             $end   = $event->end + $tzoffset;
 
